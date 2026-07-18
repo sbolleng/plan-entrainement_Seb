@@ -354,6 +354,85 @@
   .check-item label { font-size: 0.85rem; cursor: pointer; line-height: 1.4; }
   .check-item.done label { color: var(--muted); text-decoration: line-through; }
 
+  /* WEEK DAY CARDS — Cette semaine */
+  .week-day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  @media (max-width: 600px) { .week-day-card { grid-template-columns: 1fr; } }
+  .week-day-card.past { opacity: 0.55; }
+  .week-day-card.today {
+    border-color: var(--accent);
+    background: var(--surface2);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .week-day-left { display: flex; flex-direction: column; gap: 0.35rem; }
+  .week-day-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .week-day-card.today .week-day-name { color: var(--accent); font-weight: 700; }
+  .week-day-num { font-size: 1.6rem; font-weight: 700; color: var(--text); line-height: 1; }
+  .week-day-card.today .week-day-num { color: var(--accent); font-size: 1.9rem; }
+  .week-day-today-flag {
+    display: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    width: fit-content;
+  }
+  .week-day-card.today .week-day-today-flag { display: block; }
+  .week-day-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
+  .week-day-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .week-day-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.75rem; }
+  .week-track {
+    border-top: 1px solid var(--border);
+    padding-top: 0.65rem;
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .week-track label.week-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .week-track input[type="checkbox"] { accent-color: var(--accent); cursor: pointer; }
+  .week-track textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    padding: 0.5rem 0.6rem;
+    resize: vertical;
+    min-height: 2.2rem;
+  }
+  .week-track textarea::placeholder { color: var(--muted); }
+  .sb-cross { background: rgba(126,184,245,0.12); color: #7eb8f5; }
+  .sb-kine { background: rgba(180,130,255,0.12); color: #b482ff; }
+
   /* TIMELINE */
   .timeline {
     position: relative;
@@ -517,7 +596,7 @@
     <button class="tab" onclick="showSection('velo', this)">Vélo</button>
     <button class="tab" onclick="showSection('renforcement', this)">Renfo</button>
     <button class="tab" onclick="showSection('nutrition', this)">Nutrition</button>
-    <button class="tab" onclick="showSection('blessures', this)">Blessures</button>
+    <button class="tab" onclick="showSection('trails', this)">Trails à surveiller</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
   </div>
 </nav>
@@ -526,98 +605,165 @@
 
   <!-- ========== CETTE SEMAINE ========== -->
   <section id="semaine_en_cours" class="section active">
-    <div class="section-title">Semaine du 7 au 13 juillet 2026 · Rééducation fibula</div>
+    <div class="section-title">Semaine du 13 au 19 juillet 2026 · Rééducation fibula</div>
 
     <div class="card card-warning" style="margin-bottom:1.5rem;">
       <div class="tag tag-orange">Contexte</div>
-      <h3>Attelle jusqu'au ~20 juillet · pas de course</h3>
-      <p>Fissure fibula 2,5 mm. Le médecin autorise la reprise si absence de douleur dans 2 semaines. Cette semaine : vélo et renfo uniquement. Pas de fractionné, pas de sortie longue.</p>
+      <h3>Attelle jusqu'au 20 (à confirmer) · pas de course</h3>
+      <p>Fissure fibula 2,5 mm et kiné genou droit en cours. Reprise course conditionnée à l'absence de douleur, date à confirmer. Cette semaine : vélo et renfo uniquement. Pas de fractionné, pas de sortie longue.</p>
     </div>
 
     <!-- JOUR PAR JOUR -->
     <div style="display:flex; flex-direction:column; gap:0.75rem;">
 
       <!-- LUN -->
-      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
-        <div>
-          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Lundi 7</div>
-          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A + B</div>
+      <div class="week-day-card" data-date="2026-07-13">
+        <div class="week-day-left">
+          <div class="week-day-today-flag">Aujourd'hui</div>
+          <div class="week-day-name">Lundi</div>
+          <div class="week-day-num">13</div>
         </div>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min</div>
-          <div style="font-size:0.8rem; color:var(--muted);">Gainage dynamique (Bloc A) + protocole kiné jambes (Bloc B). Pas de course.</div>
+          <div class="week-day-badges">
+            <span class="tag tag-green" style="margin:0;">A</span>
+            <span class="tag tag-orange" style="margin:0;">B</span>
+          </div>
+          <div class="week-day-title">Renforcement matinal · 30 min</div>
+          <div class="week-day-desc">Circuit de gainage dynamique associé au protocole kiné des membres inférieurs. Aucune sollicitation en course : la cheville reste au repos complet ce jour.</div>
+          <div class="week-track">
+            <label class="week-check"><input type="checkbox" data-day="2026-07-13" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-13" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, charge utilisée…)"></textarea>
+          </div>
         </div>
       </div>
 
       <!-- MAR -->
-      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
-        <div>
-          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Mardi 8</div>
-          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A + C</div>
+      <div class="week-day-card" data-date="2026-07-14">
+        <div class="week-day-left">
+          <div class="week-day-today-flag">Aujourd'hui</div>
+          <div class="week-day-name">Mardi</div>
+          <div class="week-day-num">14</div>
         </div>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min</div>
-          <div style="font-size:0.8rem; color:var(--muted);">Gainage dynamique (Bloc A) + abdos fonctionnels (Bloc C).</div>
+          <div class="week-day-badges">
+            <span class="tag tag-green" style="margin:0;">A</span>
+            <span class="tag tag-purple" style="margin:0;">C</span>
+          </div>
+          <div class="week-day-title">Renforcement matinal · 30 min</div>
+          <div class="week-day-desc">Gainage dynamique associé au travail abdominal fonctionnel. Séance sans charge sur les membres inférieurs, en cohérence avec la fenêtre de récupération entre deux blocs B.</div>
+          <div class="week-track">
+            <label class="week-check"><input type="checkbox" data-day="2026-07-14" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-14" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, charge utilisée…)"></textarea>
+          </div>
         </div>
       </div>
 
       <!-- MER -->
-      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem; border-color:rgba(126,184,245,0.4);">
-        <div>
-          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Mercredi 9</div>
-          <div style="font-size:1.1rem; font-weight:700; color:#7eb8f5;">Vélo</div>
+      <div class="week-day-card" data-date="2026-07-15">
+        <div class="week-day-left">
+          <div class="week-day-today-flag">Aujourd'hui</div>
+          <div class="week-day-name">Mercredi</div>
+          <div class="week-day-num">15</div>
         </div>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin (A + D) · 30 min <span style="color:var(--muted); font-weight:400;">puis</span> Vélo · 45 min</div>
-          <div style="font-size:0.8rem; color:var(--muted);">Référence séance dernière : 118 W moy. · 87 rpm · 44 min. Objectif aujourd'hui : même durée, même effort ressenti. Ne pas forcer.</div>
+          <div class="week-day-badges">
+            <span class="tag tag-green" style="margin:0;">A</span>
+            <span class="tag tag-blue" style="margin:0;">D</span>
+            <span class="sortie-badge sb-cross">VÉLO</span>
+          </div>
+          <div class="week-day-title">Renfo matin (A+D) · 30 min, puis vélo · 45 min</div>
+          <div class="week-day-desc">Référence de la dernière séance : 118 W de puissance moyenne, 87 rpm, 44 minutes. L'objectif du jour est la régularité de l'effort — pas la progression. Ne pas forcer.</div>
+          <div class="week-track">
+            <label class="week-check"><input type="checkbox" data-day="2026-07-15" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-15" onchange="saveLog(this)" placeholder="Commentaire (watts, cadence, ressenti…)"></textarea>
+          </div>
         </div>
       </div>
 
       <!-- JEU -->
-      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
-        <div>
-          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Jeudi 10</div>
-          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">B + C</div>
+      <div class="week-day-card" data-date="2026-07-16">
+        <div class="week-day-left">
+          <div class="week-day-today-flag">Aujourd'hui</div>
+          <div class="week-day-name">Jeudi</div>
+          <div class="week-day-num">16</div>
         </div>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min</div>
-          <div style="font-size:0.8rem; color:var(--muted);">Protocole kiné jambes (Bloc B) + abdos fonctionnels (Bloc C). Pas de fractionné — cheville pas encore prête.</div>
+          <div class="week-day-badges">
+            <span class="tag tag-orange" style="margin:0;">B</span>
+            <span class="tag tag-purple" style="margin:0;">C</span>
+          </div>
+          <div class="week-day-title">Renforcement matinal · 30 min</div>
+          <div class="week-day-desc">Reprise du protocole kiné pour les membres inférieurs, complétée par le travail abdominal fonctionnel. Le fractionné demeure suspendu : la cheville n'a pas encore reçu le feu vert.</div>
+          <div class="week-track">
+            <label class="week-check"><input type="checkbox" data-day="2026-07-16" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-16" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, charge utilisée…)"></textarea>
+          </div>
         </div>
       </div>
 
       <!-- VEN -->
-      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
-        <div>
-          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Vendredi 11</div>
-          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A + D</div>
+      <div class="week-day-card" data-date="2026-07-17">
+        <div class="week-day-left">
+          <div class="week-day-today-flag">Aujourd'hui</div>
+          <div class="week-day-name">Vendredi</div>
+          <div class="week-day-num">17</div>
         </div>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min <span style="color:#b482ff; font-size:0.8rem;">+ Kiné cheville</span></div>
-          <div style="font-size:0.8rem; color:var(--muted);">Gainage dynamique (Bloc A) + pompes (Bloc D). Première séance kiné cheville aujourd'hui — informer le kiné du protocole renfo en cours.</div>
+          <div class="week-day-badges">
+            <span class="tag tag-green" style="margin:0;">A</span>
+            <span class="tag tag-blue" style="margin:0;">D</span>
+            <span class="sortie-badge sb-kine">KINÉ</span>
+          </div>
+          <div class="week-day-title">Renfo matin · 30 min + kiné cheville</div>
+          <div class="week-day-desc">Gainage dynamique et travail du haut du corps, précédant la première séance de kinésithérapie dédiée à la cheville. Le protocole de renforcement en cours doit être communiqué au praticien.</div>
+          <div class="week-track">
+            <label class="week-check"><input type="checkbox" data-day="2026-07-17" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-17" onchange="saveLog(this)" placeholder="Commentaire (retour du kiné, ressenti…)"></textarea>
+          </div>
         </div>
       </div>
 
       <!-- SAM -->
-      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
-        <div>
-          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Samedi 12</div>
-          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A+B+C+D</div>
+      <div class="week-day-card" data-date="2026-07-18">
+        <div class="week-day-left">
+          <div class="week-day-today-flag">Aujourd'hui</div>
+          <div class="week-day-name">Samedi</div>
+          <div class="week-day-num">18</div>
         </div>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo complet matin · 45–60 min</div>
-          <div style="font-size:0.8rem; color:var(--muted);">Session complète des 4 blocs. Pas de sortie longue cette semaine — cheville.</div>
+          <div class="week-day-badges">
+            <span class="tag tag-green" style="margin:0;">A</span>
+            <span class="tag tag-orange" style="margin:0;">B</span>
+            <span class="tag tag-purple" style="margin:0;">C</span>
+            <span class="tag tag-blue" style="margin:0;">D</span>
+          </div>
+          <div class="week-day-title">Renforcement complet · 45–60 min</div>
+          <div class="week-day-desc">Séance regroupant les quatre blocs de renforcement. Aucune sortie longue cette semaine : la cheville prime encore sur le calendrier.</div>
+          <div class="week-track">
+            <label class="week-check"><input type="checkbox" data-day="2026-07-18" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-18" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, charge utilisée…)"></textarea>
+          </div>
         </div>
       </div>
 
       <!-- DIM -->
-      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem; opacity:0.7;">
-        <div>
-          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Dimanche 13</div>
-          <div style="font-size:1.1rem; font-weight:700; color:var(--muted);">A + C</div>
+      <div class="week-day-card" data-date="2026-07-19">
+        <div class="week-day-left">
+          <div class="week-day-today-flag">Aujourd'hui</div>
+          <div class="week-day-name">Dimanche</div>
+          <div class="week-day-num">19</div>
         </div>
         <div>
-          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo léger · récup active · 30–45 min</div>
-          <div style="font-size:0.8rem; color:var(--muted);">Gainage + abdos. Corps au repos. Aucune contrainte.</div>
+          <div class="week-day-badges">
+            <span class="tag tag-green" style="margin:0;">A</span>
+            <span class="tag tag-purple" style="margin:0;">C</span>
+          </div>
+          <div class="week-day-title">Renfo léger · récupération active · 30–45 min</div>
+          <div class="week-day-desc">Gainage et travail abdominal, sans intensité recherchée. Le corps reste au repos — aucune contrainte n'est imposée aujourd'hui.</div>
+          <div class="week-track">
+            <label class="week-check"><input type="checkbox" data-day="2026-07-19" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-19" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, charge utilisée…)"></textarea>
+          </div>
         </div>
       </div>
 
@@ -627,8 +773,8 @@
 
     <div class="card card-accent">
       <div class="tag tag-green">Prochain jalon</div>
-      <h3>~20 juillet — reprise course si sans douleur</h3>
-      <p style="font-size:0.85rem;">Première sortie : EF 25–30 min sur terrain plat uniquement. Pas de dénivelé, pas de terrain instable. La semaine prochaine sera mise à jour après le retour du kiné du 11 juillet.</p>
+      <h3>Le 20 (à confirmer) — reprise course si sans douleur</h3>
+      <p style="font-size:0.85rem;">Première sortie : EF 25–30 min sur terrain plat uniquement. Pas de dénivelé, pas de terrain instable. Concerne genou et cheville.</p>
     </div>
 
   </section>
@@ -642,14 +788,8 @@
     <div class="timeline">
 
       <div class="tl-item current">
-        <div class="tl-date">28 JUIN 2026</div>
-        <div class="tl-title">🏁 Trail du Bois des Côtes <span style="color:var(--accent); font-size:0.8rem;">Course A</span></div>
-        <div class="tl-meta">33,3 km · 1 200 m D+ · Bailleul-sur-Thérain (Oise) · <strong style="color:var(--accent);">Préparatoire</strong></div>
-      </div>
-
-      <div class="tl-item" style="margin-bottom:0.5rem;">
         <div class="tl-date">JUIL — OCT 2026</div>
-        <div class="tl-title" style="color:var(--muted);">Phase de consolidation</div>
+        <div class="tl-title">Phase de consolidation</div>
         <div class="tl-meta">Récupération + montée progressive du volume · introduction D+ régulier</div>
       </div>
 
@@ -685,10 +825,10 @@
 
     <div class="phase-sep">Phase 1</div>
     <div class="phase-block" style="border-left:3px solid var(--accent);">
-      <div class="phase-period">Juin 2026<br>28 juin : course</div>
+      <div class="phase-period">Juin — Juil<br>2026</div>
       <div class="phase-content">
-        <h4>Affûtage Bois des Côtes</h4>
-        <p>Objectif : finisher sans blessure. Renfo quotidien, 3 sorties/semaine, semaine d'affûtage à J−7. Volume contenu, genou géré.</p>
+        <h4>Rééducation & retour progressif</h4>
+        <p>Suivi kiné en cours pour le genou droit et la cheville gauche (fissure fibula). Vélo et renfo quotidien en attendant la reprise course, prévue le 20 (à confirmer) pour les deux.</p>
       </div>
     </div>
 
@@ -730,14 +870,14 @@
     <hr class="divider">
 
     <div class="card card-warning">
-      <div class="tag tag-orange">Différence clé Bois des Côtes → Sancy</div>
+      <div class="tag tag-orange">Différence clé Forez → Sancy</div>
       <div class="grid-2" style="margin:0;">
         <div>
-          <p style="font-size:0.82rem; margin-bottom:0.5rem;"><strong>Bois des Côtes</strong></p>
+          <p style="font-size:0.82rem; margin-bottom:0.5rem;"><strong>Forez Trails</strong></p>
           <ul class="clean" style="font-size:0.82rem;">
-            <li>1 200 m D+ fragmenté, pics courts répétés</li>
-            <li>Terrain forêt de l'Oise, technique modéré</li>
-            <li>Ratio km/D+ : 36 m/km</li>
+            <li>1 100 m D+ · Puy-de-Dôme, terrain déjà volcanique</li>
+            <li>Bon terrain de validation pour le profil Sancy</li>
+            <li>Ratio km/D+ : 33 m/km</li>
           </ul>
         </div>
         <div>
@@ -745,7 +885,7 @@
           <ul class="clean" style="font-size:0.82rem;">
             <li>2 000 m D+ sur terrain volcanique</li>
             <li>Dénivelé plus soutenu, descentes longues</li>
-            <li>Ratio km/D+ : 60 m/km — 67% plus exigeant</li>
+            <li>Ratio km/D+ : 60 m/km — ~80% plus exigeant que Forez</li>
           </ul>
         </div>
       </div>
@@ -1185,14 +1325,14 @@
     <div class="section-title">Renforcement musculaire · Quotidien · Trail-specific</div>
 
     <div class="grid-2" style="margin-bottom:1.5rem;">
-      <div class="card card-accent">
-        <div class="tag tag-green">Genou droit · Kiné en cours</div>
-        <h3>Bloc B validé avec protocole</h3>
-        <p style="font-size:0.85rem;">Le kiné a validé les exercices en charge. Protocole prescrit intégré ci-dessous. Progression à valider séance par séance avec lui.</p>
+      <div class="card card-warning">
+        <div class="tag tag-orange">Genou droit · Kiné en cours</div>
+        <h3>Bloc B sous protocole</h3>
+        <p style="font-size:0.85rem;">Suivi kiné actif. Charges validées progressivement, séance par séance. Reprise course prévue le 20 (à confirmer).</p>
       </div>
       <div class="card card-warning">
         <div class="tag tag-orange">Cheville gauche · Fissure fibula</div>
-        <h3>Reprise course ~20 juillet</h3>
+        <h3>Kiné en cours · reprise le 20 (à confirmer)</h3>
         <p style="font-size:0.85rem;">Fissure 2,5 mm sur la pointe de la fibula. Vélo et natation validés. Course si absence de douleur. Bloc B adapté — surveiller appui cheville.</p>
       </div>
     </div>
@@ -1377,24 +1517,6 @@
       </div>
     </div>
 
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Conversion reps → temps (Interval Timer)</h3>
-    <div class="card">
-      <table>
-        <thead><tr><th>Exercice</th><th>Reps</th><th>Temps estimé</th></tr></thead>
-        <tbody>
-          <tr><td>Hollow body hold</td><td>hold</td><td>35–45 sec</td></tr>
-          <tr><td>Dead bug avec bande</td><td>10/côté</td><td>~55 sec</td></tr>
-          <tr><td>Russian twist</td><td>15/côté</td><td>~45 sec</td></tr>
-          <tr><td>Pompes classiques</td><td>12–15</td><td>~40 sec</td></tr>
-          <tr><td>Squat bulgare</td><td>10/côté</td><td>~50 sec</td></tr>
-          <tr><td>Mollets excentriques</td><td>15 lents</td><td>~60 sec</td></tr>
-          <tr><td>Repos entre sets</td><td>—</td><td>30 sec</td></tr>
-        </tbody>
-      </table>
-      <p class="info">Recommandé : <strong>Interval Timer (HIIT)</strong> — gratuit iOS/Android. Paramétrer chaque bloc comme un circuit avec repos intégrés.</p>
-    </div>
   </section>
 
   <!-- ========== NUTRITION ========== -->
@@ -1461,7 +1583,54 @@
 
     <hr class="divider">
 
-    <h3 style="margin-bottom:0.75rem;">Stratégie course (valable Bois des Côtes, Forez, Sancy)</h3>
+    <h3 style="margin-bottom:0.75rem;">Repas quotidien · Exemple de journée type</h3>
+    <p class="muted" style="font-size:0.82rem; margin-bottom:1rem;">Répartition indicative sur une journée d'entraînement (~108g protéines / ~240g glucides / ~70g lipides au total). À ajuster selon la faim et l'intensité du jour.</p>
+
+    <div class="card card-accent" style="margin-bottom:1rem;">
+      <div class="tag tag-green">Petit-déjeuner · cible</div>
+      <h3>~20–25g protéines · 55–65g glucides · 12–15g lipides</h3>
+      <p style="font-size:0.85rem;">Banane + 2 œufs apporte une base solide (~13g protéines · 28g glucides · 10g lipides) mais reste en-deçà de la cible sur une journée d'entraînement. Compléter avec l'une de ces options :</p>
+      <ul class="clean" style="font-size:0.85rem;">
+        <li>2 tranches de pain complet ou 40g de flocons d'avoine — apporte le complément glucidique</li>
+        <li>1 cuillère à soupe de purée d'amande ou de cacahuète — lipides de qualité, satiété prolongée</li>
+        <li>Café ou thé — sans incidence sur les macros</li>
+      </ul>
+      <p class="info">Exemple complet : banane + 2 œufs + 40g de flocons d'avoine + 1 c. à soupe de purée d'amande ≈ 22g protéines · 60g glucides · 17g lipides.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="tag tag-orange">Déjeuner</div>
+        <h3>Base glucides + protéines</h3>
+        <ul class="clean" style="font-size:0.85rem;">
+          <li>Céréale complète (riz, quinoa, pâtes complètes) — 150–200g cuit</li>
+          <li>Protéine maigre (poulet, poisson, œufs, tofu) — 120–150g</li>
+          <li>Légumes à volonté + une source de bons lipides (huile d'olive, avocat)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="tag tag-blue">Dîner</div>
+        <h3>Récupération & sommeil</h3>
+        <ul class="clean" style="font-size:0.85rem;">
+          <li>Protéine + légumes + glucides modérés — plus léger si repos le lendemain</li>
+          <li>Poisson gras 1–2×/semaine — apport oméga-3, récupération</li>
+          <li>Éviter l'excès de fibres ou de graisses tard le soir avant une séance matinale</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card card-warning" style="margin-top:1rem;">
+      <div class="tag tag-orange">Collations utiles</div>
+      <ul class="clean" style="font-size:0.85rem;">
+        <li>Fruit + poignée d'oléagineux (amandes, noix) entre les repas</li>
+        <li>Yaourt grec ou fromage blanc + fruit — bonne densité protéique, léger</li>
+        <li>Compote + biscuits secs ou barre maison avant une séance en fin de journée</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Stratégie course (valable Forez, Sancy)</h3>
     <div class="card card-warning">
       <ul class="clean">
         <li>Petit-déj J−3h : porridge avoine + miel + banane + café</li>
@@ -1473,95 +1642,144 @@
 
   </section>
 
-  <!-- ========== BLESSURES ========== -->
-  <section id="blessures" class="section">
-    <div class="section-title">Gestion blessures & prévention</div>
+  <!-- ========== TRAILS À SURVEILLER ========== -->
+  <section id="trails" class="section">
+    <div class="section-title">Trails à surveiller · Calendrier indicatif</div>
 
-    <div class="checklist" style="margin-bottom:1.5rem;">
-      <h3 style="margin-bottom:0.75rem;">Actions immédiates</h3>
-      <div class="check-item done" id="ci1">
-        <input type="checkbox" id="c1" checked onchange="toggleCheck('ci1','c1')">
-        <label for="c1"><strong>Kiné genou</strong> — suivi en cours · protocole Bloc B validé</label>
-      </div>
-      <div class="check-item done" id="ci2">
-        <input type="checkbox" id="c2" checked onchange="toggleCheck('ci2','c2')">
-        <label for="c2"><strong>Échographie cheville</strong> — passée · fissure fibula 2,5 mm confirmée · tendons OK</label>
-      </div>
-      <div class="check-item" id="ci3">
-        <input type="checkbox" id="c3" onchange="toggleCheck('ci3','c3')">
-        <label for="c3">Kiné cheville à partir du 11 juillet — rééducation fibula + proprioception</label>
-      </div>
-      <div class="check-item" id="ci4">
-        <input type="checkbox" id="c4" onchange="toggleCheck('ci4','c4')">
-        <label for="c4">Reprise course ~20 juillet si absence totale de douleur — EF plat uniquement d'abord</label>
-      </div>
-      <div class="check-item" id="ci5">
-        <input type="checkbox" id="c5" onchange="toggleCheck('ci5','c5')">
-        <label for="c5">Tester semelles sur première sortie de reprise — valider compatibilité Brooks + orthèses</label>
-      </div>
-      <div class="check-item" id="ci6">
-        <input type="checkbox" id="c6" onchange="toggleCheck('ci6','c6')">
-        <label for="c6">Synchroniser données vélo sur Strava — suivi FC et progression</label>
-      </div>
+    <p class="muted" style="font-size:0.82rem; margin-bottom:1.5rem;">Dates vérifiées le 18 juillet 2026 à partir des sites officiels et plateformes d'inscription. Les éditions "à confirmer" ne sont pas encore officiellement annoncées — à revérifier à l'approche de la période habituelle. Ouverture des inscriptions non recherchée (généralement 2 à 6 mois avant la course selon l'événement) : à vérifier sur le site de chaque organisateur.</p>
+
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Événement</th>
+          <th>Course(s)</th>
+          <th>Distance · D+</th>
+          <th>Mois</th>
+          <th>Date prévisionnelle</th>
+          <th>Dernière édition connue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Forez Trails</strong><br><span class="muted" style="font-size:0.75rem;">Augerolles (63)</span></td>
+          <td>L'Augerolloise</td>
+          <td>33 km · D+1100</td>
+          <td>Mars</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début mars 2027</td>
+          <td>8 mars 2026</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>Grands Trails Esprit Volcans</strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
+          <td>La Directissime</td>
+          <td>34 km · D+770 / D-1800</td>
+          <td>Septembre</td>
+          <td>13 septembre 2026</td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td>Gergo Trail</td>
+          <td>22 km · D+900</td>
+          <td>Septembre</td>
+          <td>13 septembre 2026</td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong>Festival des Templiers</strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
+          <td>Marathon des Causses</td>
+          <td>34,1 km · D+1581</td>
+          <td>Octobre</td>
+          <td>Sam. 17 octobre 2026</td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td>Marathon du Larzac</td>
+          <td>33,3 km · D+1400</td>
+          <td>Octobre</td>
+          <td>Ven. 16 octobre 2026</td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td>Monna Lisa</td>
+          <td>~33 km · D+1176</td>
+          <td>Octobre</td>
+          <td>Sam. 17 octobre 2026</td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td><strong>Grands Trails d'Auvergne</strong><br><span class="muted" style="font-size:0.75rem;">Lac d'Aubusson (63)</span></td>
+          <td>Trail du Lac</td>
+          <td>27 km · D+850</td>
+          <td>Octobre</td>
+          <td>10 octobre 2026</td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td><strong>Trail des 3 Rocs</strong><br><span class="muted" style="font-size:0.75rem;">St-Antonin-Noble-Val (82)</span></td>
+          <td>Trail des 3 Rocs</td>
+          <td>31 km · D+1400</td>
+          <td>Novembre</td>
+          <td>8 novembre 2026 <span class="muted" style="font-size:0.72rem;">(nouvelle date d'édition)</span></td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td colspan="6" style="background:rgba(180,130,255,0.06); font-size:0.78rem; color:var(--muted); font-style:italic;">— Plaisir —</td>
+        </tr>
+        <tr>
+          <td><strong>Trail Nocturne des Rois</strong><br><span class="muted" style="font-size:0.75rem;">Villemur-sur-Tarn (31)</span></td>
+          <td>La Gaspard</td>
+          <td>14,7 km · D+260</td>
+          <td>Janvier</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> janvier 2027</td>
+          <td>17 janvier 2026</td>
+        </tr>
+        <tr>
+          <td><strong>Marathon de Montauban</strong><br><span class="muted" style="font-size:0.75rem;">Montauban (82)</span></td>
+          <td>10 km ou Semi (21,1 km)</td>
+          <td>—</td>
+          <td>Mars</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~fin mars 2027</td>
+          <td class="muted">~29 mars 2026 (à revérifier)</td>
+        </tr>
+        <tr>
+          <td colspan="6" style="background:rgba(180,130,255,0.06); font-size:0.78rem; color:var(--muted); font-style:italic;">— Optionnel —</td>
+        </tr>
+        <tr>
+          <td><strong>Trail du Sancy</strong><br><span class="muted" style="font-size:0.75rem;">Mont-Dore (63)</span></td>
+          <td>24 km (indiqué)</td>
+          <td>24 km · D+1160</td>
+          <td>Juin 2027</td>
+          <td colspan="2" class="muted">Aucune édition de juin retrouvée pour ce nom — seules éditions identifiées : Trail hivernal (33/23 km, janvier) et Trail du Sancy objectif (33,5 km, septembre). À vérifier directement sur sancy.com.</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>Trail des 4×1800</strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span></td>
+          <td>La 4×1800</td>
+          <td>32 km · D+2000 <span class="muted" style="font-size:0.72rem;">(35 km indiqué)</span></td>
+          <td>Juillet</td>
+          <td>17–18 juillet 2026 <span style="color:var(--accent2); font-size:0.72rem;">— ce week-end</span></td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td>Trail des Crêtes</td>
+          <td>21 km · D+1100 <span class="muted" style="font-size:0.72rem;">(22 km/1200 indiqué)</span></td>
+          <td>Juillet</td>
+          <td>17–18 juillet 2026</td>
+          <td class="muted">Non vérifiée (2025)</td>
+        </tr>
+        <tr>
+          <td><strong>Schneider Electric Marathon de Paris</strong></td>
+          <td>Marathon</td>
+          <td>42,195 km</td>
+          <td>Avril 2028</td>
+          <td class="muted">Non annoncée — historiquement 1er/2e dimanche d'avril</td>
+          <td>12 avril 2026</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
 
-    <div class="grid-2">
-      <div class="card card-warning">
-        <div class="tag tag-orange">Genou droit · Suivi kiné actif</div>
-        <h3>Protocole en cours</h3>
-        <ul class="clean">
-          <li>Fentes bulgares 5×12 / 8 kg validées</li>
-          <li>Squat unijambiste 2×6 kg validé</li>
-          <li>Stop si douleur ≥ 3/10 à l'effort</li>
-          <li>Pas d'augmentation charge sans kiné</li>
-        </ul>
-      </div>
-      <div class="card card-alert">
-        <div class="tag tag-red">Cheville gauche · Fissure fibula</div>
-        <h3>Fissure 2,5 mm · repos relatif</h3>
-        <ul class="clean">
-          <li>Attelle jusqu'au ~20 juillet</li>
-          <li>Vélo stationnaire et natation validés</li>
-          <li>Kiné à partir du 11 juillet</li>
-          <li>Course si absence douleur ~20 juillet</li>
-          <li>Pas de terrain technique avant feu vert total</li>
-        </ul>
-      </div>
-    </div>
+    <p class="info" style="margin-top:1rem;">Coïncidence à noter : le Trail des 4×1800 se déroule ce week-end même (17–18 juillet 2026). Les distances indiquées entre parenthèses sont celles que tu avais notées — elles diffèrent légèrement des chiffres officiels trouvés, à vérifier avant inscription.</p>
 
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Règles d'arrêt en course</h3>
-    <div class="card card-warning">
-      <ul class="clean">
-        <li>Genou ≥ 3/10 constant → arrêt au prochain ravito</li>
-        <li>Modification de foulée pour compenser → arrêt immédiat</li>
-        <li>Douleur vive cheville → arrêt immédiat</li>
-        <li>Finir blessé compromet le Forez 2027 et le Sancy — pas de héroïsme</li>
-      </ul>
-    </div>
-
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Routine quotidienne · 10 min</h3>
-    <div class="exercise-grid">
-      <div class="exercise-item">
-        <div class="exercise-name">Foam roller quadriceps</div>
-        <div class="exercise-detail">2 min / côté</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-name">Étirement ischio-jambiers</div>
-        <div class="exercise-detail">2 × 30 sec / côté · jamais à froid</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-name">Mobilité cheville</div>
-        <div class="exercise-detail">Cercles + dorsiflexion · 2 min</div>
-      </div>
-      <div class="exercise-item">
-        <div class="exercise-name">Pigeon (fessiers)</div>
-        <div class="exercise-detail">45 sec / côté · clé bandelette ITB</div>
-      </div>
-    </div>
   </section>
 
   <!-- ========== PROFIL ========== -->
@@ -1589,7 +1807,7 @@
         <table>
           <tbody>
             <tr><td class="muted">Genou droit</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Kiné actif · protocole en cours</span></td></tr>
-            <tr><td class="muted">Cheville gauche</td><td><span class="status status-ko"><span class="dot dot-red"></span>Fissure fibula · attelle ~20/07</span></td></tr>
+            <tr><td class="muted">Cheville gauche</td><td><span class="status status-ko"><span class="dot dot-red"></span>Fissure fibula · kiné actif · reprise le 20 (à confirmer)</span></td></tr>
             <tr><td class="muted">Semelles</td><td><span class="status status-ok"><span class="dot dot-green"></span>Confirmées</span></td></tr>
             <tr><td class="muted">Nutrition</td><td><span class="status status-ko"><span class="dot dot-red"></span>Théorique</span></td></tr>
             <tr><td class="muted">Renfo quotidien</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · Bloc B validé kiné</span></td></tr>
@@ -1604,7 +1822,6 @@
     <h3 style="margin-bottom:0.75rem;">Objectifs</h3>
     <div class="card card-accent">
       <ul class="clean">
-        <li><span style="color:var(--muted); text-decoration:line-through;">28 juin 2026 — Bois des Côtes</span> <span style="color:var(--red); font-size:0.8rem;">Annulé · canicule</span></li>
         <li><strong>Mars 2027</strong> — Forez Trails 33 km / 1 100 m D+ · intermédiaire · finisher</li>
         <li><strong>Sept. 2027</strong> — Trail du Sancy 33,5 km / 2 000 m D+ · <strong style="color:#b482ff;">objectif A · finisher</strong></li>
       </ul>
@@ -1646,7 +1863,6 @@
 
   function updateCountdown() {
     const races = [
-      { date: new Date('2026-06-28T08:00:00'), name: 'Bois des Côtes' },
       { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
       { date: new Date('2027-09-13T08:00:00'), name: 'Sancy' }
     ];
@@ -1664,6 +1880,44 @@
     const cb = document.getElementById(id);
     container.classList.toggle('done', cb.checked);
   }
+
+  // ===== Highlight dynamique du jour en cours =====
+  function pad2(n) { return n.toString().padStart(2, '0'); }
+  function todayISO() {
+    const d = new Date();
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+  function markToday() {
+    const t = todayISO();
+    document.querySelectorAll('.week-day-card[data-date]').forEach(card => {
+      const d = card.dataset.date;
+      card.classList.remove('today', 'past');
+      if (d === t) card.classList.add('today');
+      else if (d < t) card.classList.add('past');
+    });
+  }
+  markToday();
+
+  // ===== Suivi des séances (coché + commentaire) — stocké en local sur cet appareil =====
+  function saveLog(el) {
+    const day = el.dataset.day;
+    const key = 'sancy-log-' + day;
+    let data = {};
+    try { data = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { data = {}; }
+    if (el.type === 'checkbox') data.done = el.checked;
+    else data.comment = el.value;
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+  function loadLogs() {
+    document.querySelectorAll('[data-day]').forEach(el => {
+      const key = 'sancy-log-' + el.dataset.day;
+      let data = {};
+      try { data = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { data = {}; }
+      if (el.type === 'checkbox') el.checked = !!data.done;
+      if (el.tagName === 'TEXTAREA') el.value = data.comment || '';
+    });
+  }
+  loadLogs();
 </script>
 
 </body>
