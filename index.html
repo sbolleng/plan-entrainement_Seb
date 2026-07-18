@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAP — Projet Sancy 2027</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0e0f0f;
+    --surface: #161818;
+    --surface2: #1e2121;
+    --border: #2a2e2e;
+    --accent: #c8f542;
+    --accent2: #f5a623;
+    --text: #e8ebe8;
+    --muted: #7a8a7a;
+    --red: #e05c5c;
+    --orange: #f5a623;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  header {
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-grid {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 2rem;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: normal; color: var(--accent); }
+
+  .countdown-block { text-align: right; }
+
+  #countdown-days {
+    font-family: 'Space Mono', monospace;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+
+  .countdown-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .countdown-sub {
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .race-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 0.15rem; }
+
+  .stat-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .altimetry-bar {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg,
+      var(--surface2) 0%, var(--accent) 6%, var(--surface2) 9%,
+      var(--accent2) 14%, var(--surface2) 18%, var(--accent) 24%,
+      var(--surface2) 28%, var(--accent2) 35%, var(--accent) 42%,
+      var(--surface2) 47%, var(--accent2) 53%, var(--surface2) 58%,
+      var(--accent) 64%, var(--surface2) 69%, var(--accent2) 76%,
+      var(--surface2) 81%, var(--accent) 88%, var(--surface2) 93%,
+      var(--accent2) 97%, var(--surface2) 100%
+    );
+    margin-top: 2rem;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .tab {
+    padding: 0.9rem 1.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    font-weight: 500;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab:hover { color: var(--text); }
+
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-accent { border-left: 3px solid var(--accent); }
+  .card-warning { border-left: 3px solid var(--orange); }
+  .card-alert { border-left: 3px solid var(--red); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 700px) { .week-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+  }
+  .day-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .day-type { font-size: 0.7rem; font-weight: 600; }
+  .day-rest { color: var(--muted); }
+  .day-run { color: var(--accent); }
+  .day-strength { color: var(--accent2); }
+  .day-cross { color: #7eb8f5; }
+  .day-note { font-size: 0.62rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.3; }
+
+  ul.clean {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  ul.clean li {
+    padding-left: 1.25rem;
+    position: relative;
+    font-size: 0.9rem;
+  }
+  ul.clean li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .tag-green { background: rgba(200,245,66,0.12); color: var(--accent); }
+  .tag-orange { background: rgba(245,166,35,0.12); color: var(--accent2); }
+  .tag-red { background: rgba(224,92,92,0.12); color: var(--red); }
+  .tag-blue { background: rgba(126,184,245,0.12); color: #7eb8f5; }
+  .tag-purple { background: rgba(180,130,255,0.12); color: #b482ff; }
+
+  .progress-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
+  .progress-label { font-size: 0.8rem; width: 140px; flex-shrink: 0; color: var(--muted); }
+  .progress-bar { flex: 1; height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 2px; background: var(--accent); }
+  .progress-val { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); width: 40px; text-align: right; }
+
+  .exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .exercise-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+  }
+  .exercise-name { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .exercise-detail { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1rem; }
+  th {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+  }
+  .status-ok { background: rgba(200,245,66,0.1); color: var(--accent); }
+  .status-warn { background: rgba(245,166,35,0.1); color: var(--accent2); }
+  .status-ko { background: rgba(224,92,92,0.1); color: var(--red); }
+
+  .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .dot-green { background: var(--accent); }
+  .dot-orange { background: var(--accent2); }
+  .dot-red { background: var(--red); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .mono { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--accent); }
+  p { margin-bottom: 0.75rem; font-size: 0.9rem; }
+  .muted { color: var(--muted); }
+  .info { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
+
+  .checklist { display: flex; flex-direction: column; gap: 0.5rem; }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .check-item:hover { border-color: var(--accent); }
+  .check-item input[type="checkbox"] { margin-top: 0.1rem; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+  .check-item label { font-size: 0.85rem; cursor: pointer; line-height: 1.4; }
+  .check-item.done label { color: var(--muted); text-decoration: line-through; }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--border);
+  }
+  .tl-item.done::before { background: var(--muted); border-color: var(--muted); }
+  .tl-item.current::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(200,245,66,0.2); }
+  .tl-item.next::before { background: var(--accent2); border-color: var(--accent2); }
+  .tl-item.goal::before { background: #b482ff; border-color: #b482ff; box-shadow: 0 0 0 3px rgba(180,130,255,0.2); }
+
+  .tl-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+  .tl-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
+  .tl-meta { font-size: 0.78rem; color: var(--muted); }
+
+  /* PHASE BLOCKS */
+  .phase-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  @media (max-width: 600px) { .phase-block { grid-template-columns: 1fr; } }
+
+  .phase-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .phase-content h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .phase-content p { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+  .phase-sep {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 1.25rem 0 0.6rem;
+    padding-left: 0;
+  }
+
+  /* SORTIE TABLE */
+  .sortie-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .sb-ef { background: rgba(200,245,66,0.1); color: var(--accent); }
+  .sb-long { background: rgba(245,166,35,0.15); color: var(--accent2); }
+  .sb-frac { background: rgba(126,184,245,0.12); color: #7eb8f5; }
+  .sb-race { background: rgba(224,92,92,0.12); color: var(--red); font-weight: 700; }
+  .sb-tempo { background: rgba(180,130,255,0.12); color: #b482ff; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-grid">
+    <div>
+      <div class="eyebrow">Projet trail · 15 mois · juin 2026 → sept. 2027</div>
+      <h1>Trail du<br><em>Sancy 2027</em></h1>
+      <div class="race-stats">
+        <div class="stat">
+          <span class="stat-val">33,5 km</span>
+          <span class="stat-label">Distance objectif</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">+2 000 m</span>
+          <span class="stat-label">D+ objectif</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">3 courses</span>
+          <span class="stat-label">Étapes prépa</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">Finisher</span>
+          <span class="stat-label">Objectif</span>
+        </div>
+      </div>
+    </div>
+    <div class="countdown-block">
+      <span id="countdown-days">—</span>
+      <span class="countdown-label" id="countdown-label">jours</span>
+      <div class="countdown-sub" id="countdown-sub"></div>
+    </div>
+  </div>
+  <div class="altimetry-bar"></div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="tab active" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
+    <button class="tab" onclick="showSection('plan', this)">Plan 15 mois</button>
+    <button class="tab" onclick="showSection('sorties', this)">Sorties</button>
+    <button class="tab" onclick="showSection('semaine', this)">Semaine type</button>
+    <button class="tab" onclick="showSection('velo', this)">Vélo</button>
+    <button class="tab" onclick="showSection('renforcement', this)">Renfo</button>
+    <button class="tab" onclick="showSection('nutrition', this)">Nutrition</button>
+    <button class="tab" onclick="showSection('blessures', this)">Blessures</button>
+    <button class="tab" onclick="showSection('profil', this)">Profil</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ========== CETTE SEMAINE ========== -->
+  <section id="semaine_en_cours" class="section active">
+    <div class="section-title">Semaine du 7 au 13 juillet 2026 · Rééducation fibula</div>
+
+    <div class="card card-warning" style="margin-bottom:1.5rem;">
+      <div class="tag tag-orange">Contexte</div>
+      <h3>Attelle jusqu'au ~20 juillet · pas de course</h3>
+      <p>Fissure fibula 2,5 mm. Le médecin autorise la reprise si absence de douleur dans 2 semaines. Cette semaine : vélo et renfo uniquement. Pas de fractionné, pas de sortie longue.</p>
+    </div>
+
+    <!-- JOUR PAR JOUR -->
+    <div style="display:flex; flex-direction:column; gap:0.75rem;">
+
+      <!-- LUN -->
+      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Lundi 7</div>
+          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A + B</div>
+        </div>
+        <div>
+          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min</div>
+          <div style="font-size:0.8rem; color:var(--muted);">Gainage dynamique (Bloc A) + protocole kiné jambes (Bloc B). Pas de course.</div>
+        </div>
+      </div>
+
+      <!-- MAR -->
+      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Mardi 8</div>
+          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A + C</div>
+        </div>
+        <div>
+          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min</div>
+          <div style="font-size:0.8rem; color:var(--muted);">Gainage dynamique (Bloc A) + abdos fonctionnels (Bloc C).</div>
+        </div>
+      </div>
+
+      <!-- MER -->
+      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem; border-color:rgba(126,184,245,0.4);">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Mercredi 9</div>
+          <div style="font-size:1.1rem; font-weight:700; color:#7eb8f5;">Vélo</div>
+        </div>
+        <div>
+          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin (A + D) · 30 min <span style="color:var(--muted); font-weight:400;">puis</span> Vélo · 45 min</div>
+          <div style="font-size:0.8rem; color:var(--muted);">Référence séance dernière : 118 W moy. · 87 rpm · 44 min. Objectif aujourd'hui : même durée, même effort ressenti. Ne pas forcer.</div>
+        </div>
+      </div>
+
+      <!-- JEU -->
+      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Jeudi 10</div>
+          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">B + C</div>
+        </div>
+        <div>
+          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min</div>
+          <div style="font-size:0.8rem; color:var(--muted);">Protocole kiné jambes (Bloc B) + abdos fonctionnels (Bloc C). Pas de fractionné — cheville pas encore prête.</div>
+        </div>
+      </div>
+
+      <!-- VEN -->
+      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Vendredi 11</div>
+          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A + D</div>
+        </div>
+        <div>
+          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo matin · 30 min <span style="color:#b482ff; font-size:0.8rem;">+ Kiné cheville</span></div>
+          <div style="font-size:0.8rem; color:var(--muted);">Gainage dynamique (Bloc A) + pompes (Bloc D). Première séance kiné cheville aujourd'hui — informer le kiné du protocole renfo en cours.</div>
+        </div>
+      </div>
+
+      <!-- SAM -->
+      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem;">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Samedi 12</div>
+          <div style="font-size:1.1rem; font-weight:700; color:var(--accent2);">A+B+C+D</div>
+        </div>
+        <div>
+          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo complet matin · 45–60 min</div>
+          <div style="font-size:0.8rem; color:var(--muted);">Session complète des 4 blocs. Pas de sortie longue cette semaine — cheville.</div>
+        </div>
+      </div>
+
+      <!-- DIM -->
+      <div class="card" style="display:grid; grid-template-columns:80px 1fr; gap:1rem; align-items:center; padding:1.25rem 1.5rem; opacity:0.7;">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Dimanche 13</div>
+          <div style="font-size:1.1rem; font-weight:700; color:var(--muted);">A + C</div>
+        </div>
+        <div>
+          <div style="font-size:0.9rem; font-weight:600; margin-bottom:0.2rem;">Renfo léger · récup active · 30–45 min</div>
+          <div style="font-size:0.8rem; color:var(--muted);">Gainage + abdos. Corps au repos. Aucune contrainte.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <div class="card card-accent">
+      <div class="tag tag-green">Prochain jalon</div>
+      <h3>~20 juillet — reprise course si sans douleur</h3>
+      <p style="font-size:0.85rem;">Première sortie : EF 25–30 min sur terrain plat uniquement. Pas de dénivelé, pas de terrain instable. La semaine prochaine sera mise à jour après le retour du kiné du 11 juillet.</p>
+    </div>
+
+  </section>
+
+  <!-- ========== PLAN 15 MOIS ========== -->
+  <section id="plan" class="section">
+    <div class="section-title">Plan général · Juin 2026 → Septembre 2027</div>
+
+    <h2 style="margin-bottom:1.5rem;">La route vers le Sancy</h2>
+
+    <div class="timeline">
+
+      <div class="tl-item current">
+        <div class="tl-date">28 JUIN 2026</div>
+        <div class="tl-title">🏁 Trail du Bois des Côtes <span style="color:var(--accent); font-size:0.8rem;">Course A</span></div>
+        <div class="tl-meta">33,3 km · 1 200 m D+ · Bailleul-sur-Thérain (Oise) · <strong style="color:var(--accent);">Préparatoire</strong></div>
+      </div>
+
+      <div class="tl-item" style="margin-bottom:0.5rem;">
+        <div class="tl-date">JUIL — OCT 2026</div>
+        <div class="tl-title" style="color:var(--muted);">Phase de consolidation</div>
+        <div class="tl-meta">Récupération + montée progressive du volume · introduction D+ régulier</div>
+      </div>
+
+      <div class="tl-item" style="margin-bottom:0.5rem;">
+        <div class="tl-date">NOV 2026 — JAN 2027</div>
+        <div class="tl-title" style="color:var(--muted);">Phase de développement</div>
+        <div class="tl-meta">Volume maximal · sorties longues 20–25 km · D+ hebdo en hausse</div>
+      </div>
+
+      <div class="tl-item next">
+        <div class="tl-date">MARS 2027 (date à confirmer)</div>
+        <div class="tl-title">🏁 Forez Trails — L'Augerolloise <span style="color:var(--accent2); font-size:0.8rem;">Course B</span></div>
+        <div class="tl-meta">33 km · 1 100 m D+ · Augerolles, Puy-de-Dôme · <strong style="color:var(--accent2);">Intermédiaire</strong></div>
+      </div>
+
+      <div class="tl-item" style="margin-bottom:0.5rem;">
+        <div class="tl-date">AVR — JUIL 2027</div>
+        <div class="tl-title" style="color:var(--muted);">Phase spécifique Sancy</div>
+        <div class="tl-meta">Sorties longues avec D+ soutenu · simulation profil volcanique · affûtage final</div>
+      </div>
+
+      <div class="tl-item goal">
+        <div class="tl-date">SEPTEMBRE 2027</div>
+        <div class="tl-title">🏔️ Trail du Sancy <span style="color:#b482ff; font-size:0.8rem;">Objectif A</span></div>
+        <div class="tl-meta">33,5 km · 2 000 m D+ · Massif du Sancy · <strong style="color:#b482ff;">FINISHER</strong></div>
+      </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:1rem;">Phases de préparation</h3>
+
+    <div class="phase-sep">Phase 1</div>
+    <div class="phase-block" style="border-left:3px solid var(--accent);">
+      <div class="phase-period">Juin 2026<br>28 juin : course</div>
+      <div class="phase-content">
+        <h4>Affûtage Bois des Côtes</h4>
+        <p>Objectif : finisher sans blessure. Renfo quotidien, 3 sorties/semaine, semaine d'affûtage à J−7. Volume contenu, genou géré.</p>
+      </div>
+    </div>
+
+    <div class="phase-sep">Phase 2</div>
+    <div class="phase-block">
+      <div class="phase-period">Juil — Sept<br>2026</div>
+      <div class="phase-content">
+        <h4>Récupération & consolidation</h4>
+        <p>2–3 semaines de récup post-course, puis reprise progressive. Sorties longues portées à 18–22 km. Introduction du D+ sur Île-de-France (forêt de Fontainebleau, buttes de l'Essonne).</p>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-period">Oct — Déc<br>2026</div>
+      <div class="phase-content">
+        <h4>Construction du volume</h4>
+        <p>Montée à 40–50 km/semaine. Sortie longue 22–27 km. D+ hebdo cible : 600–800 m. Bloc renfo maintenu. Fractionné côte 1×/semaine.</p>
+      </div>
+    </div>
+
+    <div class="phase-sep">Phase 3</div>
+    <div class="phase-block" style="border-left:3px solid var(--accent2);">
+      <div class="phase-period">Jan — Mars<br>2027</div>
+      <div class="phase-content">
+        <h4>Pic de forme → Forez Trails</h4>
+        <p>Volume max (~50 km/sem). Sortie longue 25–28 km avec D+. 2 semaines d'affûtage avant Forez. Course test pour valider la stratégie de gestion d'effort sur terrain similaire au Sancy.</p>
+      </div>
+    </div>
+
+    <div class="phase-sep">Phase 4</div>
+    <div class="phase-block" style="border-left:3px solid #b482ff;">
+      <div class="phase-period">Avr — Sept<br>2027</div>
+      <div class="phase-content">
+        <h4>Spécifique Sancy</h4>
+        <p>Sorties D+ soutenu (Vosges, Auvergne si possible). Simulation profil : enchaînement montées/descentes sur 3–4 h. Sortie longue max 28–30 km / 1 500 m D+. Affûtage 3 semaines avant course.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="card card-warning">
+      <div class="tag tag-orange">Différence clé Bois des Côtes → Sancy</div>
+      <div class="grid-2" style="margin:0;">
+        <div>
+          <p style="font-size:0.82rem; margin-bottom:0.5rem;"><strong>Bois des Côtes</strong></p>
+          <ul class="clean" style="font-size:0.82rem;">
+            <li>1 200 m D+ fragmenté, pics courts répétés</li>
+            <li>Terrain forêt de l'Oise, technique modéré</li>
+            <li>Ratio km/D+ : 36 m/km</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:0.82rem; margin-bottom:0.5rem;"><strong>Sancy</strong></p>
+          <ul class="clean" style="font-size:0.82rem;">
+            <li>2 000 m D+ sur terrain volcanique</li>
+            <li>Dénivelé plus soutenu, descentes longues</li>
+            <li>Ratio km/D+ : 60 m/km — 67% plus exigeant</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========== SORTIES ========== -->
+  <section id="sorties" class="section">
+    <div class="section-title">Planning des sorties · Juin 2026 → Septembre 2027</div>
+
+    <p class="muted" style="font-size:0.82rem; margin-bottom:1.5rem;">3 sorties course/semaine · Vélo mercredi fixe · Fractionné jeudi · Sortie longue samedi prioritaire</p>
+
+    <div class="phase-sep" style="margin-top:0;">Phase 1 · Juillet 2026 · Rééducation fibula</div>
+    <table>
+      <thead>
+        <tr><th>Semaine</th><th>Lundi<br>Course EF</th><th>Mercredi<br>Vélo</th><th>Jeudi<br>Fractionné</th><th>Sortie longue<br>Samedi</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="mono">Juil S1–S2</span><br><span class="muted" style="font-size:0.7rem;">Attelle · pas de course</span></td>
+          <td style="color:var(--muted);">— pas de course</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 40–45 min endurance</td>
+          <td style="color:var(--muted);">— pas de course</td>
+          <td style="color:var(--muted);">— pas de course</td>
+        </tr>
+        <tr>
+          <td><span class="mono">Juil S3–S4</span><br><span class="muted" style="font-size:0.7rem;">Reprise si sans douleur</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 25–30 min plat</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 45 min</td>
+          <td><span class="sortie-badge sb-ef">EF</span> 30 min plat</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 10–12 km plat</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="phase-sep">Phase 2 · Août — Décembre 2026</div>
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Lundi · EF</th><th>Mercredi · Vélo</th><th>Jeudi · Fractionné</th><th>Samedi · Longue</th><th>D+ hebdo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Août S1–S2<br>Reprise douce</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 35–45 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 45 min</td>
+          <td><span class="sortie-badge sb-ef">EF</span> 35 min · pas encore frac</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 14–16 km</td>
+          <td style="color:var(--muted);">200–300 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Août S3–S4<br>Construction</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 45–55 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 50 min</td>
+          <td><span class="sortie-badge sb-frac">FRAC</span> côte 6×1 min</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 16–20 km · D+ intro</td>
+          <td style="color:var(--accent2);">300–500 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Sept–Oct<br>Volume</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 50–60 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 55 min intervalles</td>
+          <td><span class="sortie-badge sb-frac">FRAC</span> 6×2 min</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 20–23 km · 400–600 m D+</td>
+          <td style="color:var(--accent2);">500–700 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Nov–Déc<br>Pic volume</span></td>
+          <td><span class="sortie-badge sb-tempo">TEMPO</span> 50–55 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 60 min fractionné</td>
+          <td><span class="sortie-badge sb-frac">FRAC</span> 8×2 min / côte longue</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 22–25 km · 500–700 m D+</td>
+          <td style="color:var(--accent);">600–800 m</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="phase-sep">Phase 3 · Janvier — Mars 2027</div>
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Lundi · EF/Tempo</th><th>Mercredi · Vélo</th><th>Jeudi · Fractionné</th><th>Samedi · Longue</th><th>D+ hebdo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Jan–Fév<br>Pic volume</span></td>
+          <td><span class="sortie-badge sb-tempo">TEMPO</span> 55 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 70 min intervalles</td>
+          <td><span class="sortie-badge sb-frac">FRAC</span> 10×2 min</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 25–28 km · 700–900 m D+</td>
+          <td style="color:var(--accent);">700–900 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Fév S3–S4<br>Affûtage Forez</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 40 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 45 min endurance</td>
+          <td>Activation légère</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 18–20 km</td>
+          <td style="color:var(--muted);">400–500 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Mars 2027</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 25 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 30 min léger</td>
+          <td>Mobilité</td>
+          <td><span class="sortie-badge sb-race">COURSE</span> Forez Trails 33 km</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="phase-sep">Phase 4 · Avril — Septembre 2027</div>
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Lundi · EF/Tempo</th><th>Mercredi · Vélo</th><th>Jeudi · Fractionné</th><th>Samedi · Longue</th><th>D+ hebdo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Avr–Mai<br>Récup + reprise</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 45–55 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 55 min</td>
+          <td><span class="sortie-badge sb-frac">FRAC</span> côte</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 20–25 km · D+ soutenu</td>
+          <td style="color:var(--accent2);">600–800 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Juin–Juil<br>Spécifique</span></td>
+          <td><span class="sortie-badge sb-tempo">TEMPO</span> 55–65 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 70 min fractionné</td>
+          <td><span class="sortie-badge sb-frac">FRAC</span> 10×2 min côte</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 26–30 km · 1 000–1 500 m D+</td>
+          <td style="color:var(--accent);">900–1 100 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Août S1–S3<br>Affûtage</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 40–50 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 45 min endurance</td>
+          <td>Activation légère</td>
+          <td><span class="sortie-badge sb-long">LONG</span> 20–22 km · D+ réduit</td>
+          <td style="color:var(--muted);">500–600 m</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Août S4 · J−7</span></td>
+          <td><span class="sortie-badge sb-ef">EF</span> 25 min</td>
+          <td><span class="sortie-badge sb-cross" style="background:rgba(126,184,245,0.12);color:#7eb8f5;">VÉLO</span> 30 min léger</td>
+          <td>Mobilité</td>
+          <td><span class="sortie-badge sb-ef">EF</span> 12 km plat</td>
+          <td style="color:var(--muted);">100 m max</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Sept 2027</span></td>
+          <td colspan="3" style="color:var(--muted);">Repos / activation</td>
+          <td><span class="sortie-badge sb-race">COURSE</span> Trail du Sancy 33,5 km</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card card-accent" style="margin-top:1rem;">
+      <div class="tag tag-green">Terrains D+ recommandés depuis Paris</div>
+      <ul class="clean" style="font-size:0.85rem;">
+        <li><strong>Forêt de Fontainebleau</strong> — chaos gréseux, dénivelé limité mais technique · 45 min de Paris</li>
+        <li><strong>Buttes de l'Essonne / Chevreuse</strong> — D+ modéré 200–400 m par sortie · accessible train</li>
+        <li><strong>Montagne de Reims</strong> — 1h de Paris, sorties 400–600 m D+ possibles</li>
+        <li><strong>Weekend délocalisé</strong> · Vosges ou Auvergne en phase spécifique (Phase 4) pour simuler le Sancy</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ========== SEMAINE TYPE ========== -->
+  <section id="semaine" class="section">
+    <div class="section-title">Semaine type · Structure quotidienne</div>
+
+    <h2 style="margin-bottom:0.5rem;">Semaine type</h2>
+    <p class="muted" style="font-size:0.8rem; margin-bottom:1.25rem;">Renfo quotidien · 3 sorties course · vélo mercredi · fractionné jeudi</p>
+
+    <div class="week-grid">
+      <div class="day-card" style="border-color: rgba(200,245,66,0.25);">
+        <div class="day-label">Lun</div>
+        <div class="day-type day-run">Course EF</div>
+        <div class="day-note" style="color:var(--accent); font-size:0.65rem;">50–60 min · midi/soir</div>
+        <div style="border-top:1px solid var(--border); margin-top:0.5rem; padding-top:0.4rem;">
+          <div class="day-type day-strength" style="font-size:0.68rem;">Renfo 30 min · matin</div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-label">Mar</div>
+        <div class="day-type" style="color:var(--muted); font-size:0.75rem;">Renfo seul</div>
+        <div class="day-note">30 min · matin</div>
+      </div>
+      <div class="day-card" style="border-color: rgba(126,184,245,0.25);">
+        <div class="day-label">Mer</div>
+        <div class="day-type day-cross">Vélo</div>
+        <div class="day-note" style="color:#7eb8f5; font-size:0.65rem;">45–55 min · matin · fixe</div>
+        <div style="border-top:1px solid var(--border); margin-top:0.5rem; padding-top:0.4rem;">
+          <div class="day-type day-strength" style="font-size:0.68rem;">Renfo 30 min · matin</div>
+        </div>
+      </div>
+      <div class="day-card" style="border-color: rgba(180,130,255,0.2);">
+        <div class="day-label">Jeu</div>
+        <div class="day-type" style="color:#b482ff;">Fractionné</div>
+        <div class="day-note" style="color:#b482ff; font-size:0.65rem;">40–50 min · soir</div>
+        <div style="border-top:1px solid var(--border); margin-top:0.5rem; padding-top:0.4rem;">
+          <div class="day-type day-strength" style="font-size:0.68rem;">Renfo 30 min · matin</div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-label">Ven</div>
+        <div class="day-type" style="color:var(--muted); font-size:0.75rem;">Renfo seul</div>
+        <div class="day-note">30 min · matin</div>
+      </div>
+      <div class="day-card" style="border-color: rgba(245,166,35,0.3);">
+        <div class="day-label">Sam</div>
+        <div class="day-type day-run" style="color:var(--accent2);">Sortie longue</div>
+        <div class="day-note" style="color:var(--accent2); font-size:0.65rem;">15–30 km · D+</div>
+        <div style="border-top:1px solid var(--border); margin-top:0.5rem; padding-top:0.4rem;">
+          <div class="day-type day-strength" style="font-size:0.68rem;">Renfo 45–60 min · matin</div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-label">Dim</div>
+        <div class="day-type" style="color:var(--muted); font-size:0.75rem;">Renfo seul</div>
+        <div class="day-note">45 min · récup active</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-blue">Structure des 3 sorties course</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
+        <div>
+          <div style="font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Sortie 1 · Lundi</div>
+          <div style="font-size:0.82rem; color:var(--accent);">EF 50–60 min</div>
+          <div style="font-size:0.72rem; color:var(--muted);">Endurance fondamentale · plat ou légère côte</div>
+        </div>
+        <div>
+          <div style="font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Sortie 2 · Jeudi</div>
+          <div style="font-size:0.82rem; color:#b482ff;">Fractionné 40–50 min</div>
+          <div style="font-size:0.72rem; color:var(--muted);">24h après vélo · jambes récupérées</div>
+        </div>
+        <div>
+          <div style="font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Sortie 3 · Samedi</div>
+          <div style="font-size:0.82rem; color:var(--accent2);">Longue · D+</div>
+          <div style="font-size:0.72rem; color:var(--muted);">Priorité absolue week-end</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Ordre des séances · logique journalière</h3>
+    <div class="card card-accent">
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:0.75rem 1.25rem; align-items:start;">
+        <div style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--accent); padding-top:0.1rem;">MATIN</div>
+        <div>
+          <div style="font-size:0.88rem; font-weight:600; margin-bottom:0.2rem;">Renforcement · 30 min (sem) / 45–60 min (week)</div>
+          <div style="font-size:0.78rem; color:var(--muted);">Muscles frais = qualité d'exécution maximale. Mercredi : vélo après renfo ou dans le même créneau matin.</div>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--muted); padding-top:0.1rem;">MIDI/SOIR</div>
+        <div>
+          <div style="font-size:0.88rem; font-weight:600; margin-bottom:0.2rem;">Course · EF lundi / fractionné jeudi / longue samedi</div>
+          <div style="font-size:0.78rem; color:var(--muted);">Corps chaud en fin de journée = meilleur pour les séances intenses. Fractionné jeudi soir = 24h de récup après le vélo mercredi.</div>
+        </div>
+      </div>
+      <hr style="border:none; border-top:1px solid var(--border); margin:1rem 0;">
+      <div style="font-size:0.78rem; color:var(--muted);">
+        ⚠ Vélo mercredi matin — données Technogym à synchroniser sur Strava. Référence séance de base : 44 min · 118 W moy. · 87 rpm · 20 km.
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:0;">
+      <div class="card">
+        <div class="tag tag-green">Lun–Ven · 30 min matin</div>
+        <h3>Renfo ciblé</h3>
+        <p style="font-size:0.85rem;">Blocs selon le mix semaine. Pas épuisant — les jambes restent disponibles pour la course.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-orange">Sam · 45–60 min matin</div>
+        <h3>Renfo complet avant longue</h3>
+        <p style="font-size:0.85rem;">Session A+B+C+D avant la sortie longue. Si trop chargé, décaler Bloc B au dimanche.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========== VÉLO ========== -->
+  <section id="velo" class="section">
+    <div class="section-title">Plan vélo · Cross-training · Rééducation → Sancy 2027</div>
+
+    <div class="card" style="margin-bottom:1.5rem; border-left: 3px solid #7eb8f5;">
+      <div class="tag tag-blue">Séance de référence · 8 juillet 2026</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:0.5rem;">
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:1.1rem; font-weight:700; color:#7eb8f5;">44:41</div>
+          <div style="font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">Durée</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:1.1rem; font-weight:700; color:#7eb8f5;">118 W</div>
+          <div style="font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">Puissance moy.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:1.1rem; font-weight:700; color:#7eb8f5;">87 rpm</div>
+          <div style="font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">Cadence moy.</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace; font-size:1.1rem; font-weight:700; color:#7eb8f5;">20 km</div>
+          <div style="font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">Distance</div>
+        </div>
+      </div>
+      <p class="info" style="margin-top:0.75rem;">Bonne première séance — puissance stable sur la durée, cadence régulière. FC non disponible (pas de ceinture). À intégrer dès que Technogym → Strava est synchronisé.</p>
+    </div>
+
+    <div class="card card-accent" style="margin-bottom:1.5rem;">
+      <div class="tag tag-green">Rôle du vélo dans ta prépa</div>
+      <h3>Mercredi fixe · cardio sans choc articulaire</h3>
+      <p>Pendant la rééducation fibula : seul outil cardio disponible. Cheville en position neutre, zéro risque de torsion. Après reprise course : vélo mercredi matin + fractionné jeudi soir = pic de charge hebdo étalé sur 2 jours. Le fractionné remplace une EF — tu gardes 3 sorties course au total.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+      <div class="card card-alert">
+        <div class="tag tag-red">Phase rééducation · Juil 2026</div>
+        <h3>Objectif : maintenir la base</h3>
+        <ul class="clean" style="font-size:0.85rem;">
+          <li>Vélo stationnaire uniquement — pas de route</li>
+          <li>Résistance modérée — cardio, pas de force</li>
+          <li>Cheville neutre — éviter les pédales trop inclinées</li>
+          <li>Arrêt immédiat si douleur fibula</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="tag tag-blue">Phase course reprise · Août 2026+</div>
+        <h3>Mercredi matin fixe</h3>
+        <ul class="clean" style="font-size:0.85rem;">
+          <li>Vélo stationnaire le matin</li>
+          <li>Fractionné salle l'après-midi / soir</li>
+          <li>Double séance cardio mercredi = pic de charge hebdo</li>
+          <li>Progression résistance + durée progressive</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:0.75rem;">Plan vélo · Juillet → Décembre 2026</h3>
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Fréquence</th><th>Durée</th><th>Résistance</th><th>FC cible</th><th>Objectif</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Juil S1–S2<br>Rééducation</span></td>
+          <td>1–2×/sem</td>
+          <td>30–40 min</td>
+          <td>Légère (3–4/10)</td>
+          <td>120–135 bpm</td>
+          <td>Maintien cardio · test cheville</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Juil S3–S4<br>Reprise course</span></td>
+          <td>1×/sem mer</td>
+          <td>40–45 min</td>
+          <td>Modérée (4–5/10)</td>
+          <td>130–145 bpm</td>
+          <td>Complémentarité course légère</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Août–Sept<br>Construction</span></td>
+          <td>1×/sem mer</td>
+          <td>45–55 min</td>
+          <td>Modérée–soutenue (5–6/10)</td>
+          <td>135–150 bpm</td>
+          <td>Cardio complémentaire · volume</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Oct–Déc<br>Volume</span></td>
+          <td>1×/sem mer</td>
+          <td>55–70 min</td>
+          <td>Soutenue avec pics (6–7/10)</td>
+          <td>140–160 bpm</td>
+          <td>Fractionné vélo · simulation côte</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Jan–Mars 2027<br>Spécifique</span></td>
+          <td>1×/sem mer</td>
+          <td>60–75 min</td>
+          <td>Intervalles structurés</td>
+          <td>145–165 bpm</td>
+          <td>VO2max · résistance musculaire</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Séances types vélo stationnaire</h3>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="tag tag-green">Séance endurance · 45 min</div>
+        <h3>Base aérobie</h3>
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted" style="font-size:0.8rem;">0–5 min</td><td style="font-size:0.8rem;">Échauffement résistance légère</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">5–40 min</td><td style="font-size:0.8rem;">Effort constant FC 130–145 bpm</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">40–45 min</td><td style="font-size:0.8rem;">Récupération progressive</td></tr>
+          </tbody>
+        </table>
+        <p class="info" style="margin-top:0.75rem;">Phase rééducation et reprise. Jamais à bout de souffle.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-orange">Séance fractionné · 55 min</div>
+        <h3>Simulation montée</h3>
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted" style="font-size:0.8rem;">0–10 min</td><td style="font-size:0.8rem;">Échauffement progressif</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">10–45 min</td><td style="font-size:0.8rem;">6 × (3 min résistance forte + 2 min récup)</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">45–55 min</td><td style="font-size:0.8rem;">Retour au calme</td></tr>
+          </tbody>
+        </table>
+        <p class="info" style="margin-top:0.75rem;">À partir d'août. Simule l'effort des montées répétées du Sancy.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="card card-warning">
+      <div class="tag tag-orange">Points de vigilance</div>
+      <ul class="clean" style="font-size:0.85rem;">
+        <li>Réglage selle : jambe quasi tendue en bas de pédale — évite la sursollicitation du genou droit</li>
+        <li>Cale-pied neutre — pas d'inclinaison latérale qui contraindrait la fibula</li>
+        <li>Douleur genou ou fibula → réduire résistance immédiatement, pas la cadence</li>
+        <li>Données Strava vélo à synchroniser pour suivre la progression FC et puissance</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ========== RENFORCEMENT ========== -->
+  <section id="renforcement" class="section">
+    <div class="section-title">Renforcement musculaire · Quotidien · Trail-specific</div>
+
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+      <div class="card card-accent">
+        <div class="tag tag-green">Genou droit · Kiné en cours</div>
+        <h3>Bloc B validé avec protocole</h3>
+        <p style="font-size:0.85rem;">Le kiné a validé les exercices en charge. Protocole prescrit intégré ci-dessous. Progression à valider séance par séance avec lui.</p>
+      </div>
+      <div class="card card-warning">
+        <div class="tag tag-orange">Cheville gauche · Fissure fibula</div>
+        <h3>Reprise course ~20 juillet</h3>
+        <p style="font-size:0.85rem;">Fissure 2,5 mm sur la pointe de la fibula. Vélo et natation validés. Course si absence de douleur. Bloc B adapté — surveiller appui cheville.</p>
+      </div>
+    </div>
+
+    <!-- MIX SEMAINE -->
+    <h3 style="margin-bottom:0.75rem;">Mix semaine · 4 blocs répartis</h3>
+    <table style="margin-bottom:1.5rem;">
+      <thead>
+        <tr><th>Jour</th><th>Blocs</th><th>Durée</th><th>Logique</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="mono">Lun</span></td>
+          <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-orange" style="margin:0;">B</span></td>
+          <td>30 min</td>
+          <td style="font-size:0.8rem; color:var(--muted);">Début de semaine · stabilisation + MI</td>
+        </tr>
+        <tr>
+          <td><span class="mono">Mar</span></td>
+          <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-purple" style="margin:0;">C</span></td>
+          <td>30 min</td>
+          <td style="font-size:0.8rem; color:var(--muted);">Abdos fonctionnels · pas de charge MI</td>
+        </tr>
+        <tr>
+          <td><span class="mono">Mer</span></td>
+          <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-blue" style="margin:0;">D</span></td>
+          <td>30 min</td>
+          <td style="font-size:0.8rem; color:var(--muted);">Haut du corps · avant fractionné salle</td>
+        </tr>
+        <tr>
+          <td><span class="mono">Jeu</span></td>
+          <td><span class="tag tag-orange" style="margin:0 0.2rem 0 0;">B</span><span class="tag tag-purple" style="margin:0;">C</span></td>
+          <td>30 min</td>
+          <td style="font-size:0.8rem; color:var(--muted);">MI + abdos · pas de gainage répété</td>
+        </tr>
+        <tr>
+          <td><span class="mono">Ven</span></td>
+          <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-blue" style="margin:0;">D</span></td>
+          <td>30 min</td>
+          <td style="font-size:0.8rem; color:var(--muted);">Haut du corps · avant course EF</td>
+        </tr>
+        <tr style="background:rgba(245,166,35,0.04);">
+          <td><span class="mono">Sam</span></td>
+          <td>
+            <span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span>
+            <span class="tag tag-orange" style="margin:0 0.2rem 0 0;">B</span>
+            <span class="tag tag-purple" style="margin:0 0.2rem 0 0;">C</span>
+            <span class="tag tag-blue" style="margin:0;">D</span>
+          </td>
+          <td>45–60 min</td>
+          <td style="font-size:0.8rem; color:var(--muted);">Session complète · avant sortie longue</td>
+        </tr>
+        <tr>
+          <td><span class="mono">Dim</span></td>
+          <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-purple" style="margin:0;">C</span></td>
+          <td>45 min</td>
+          <td style="font-size:0.8rem; color:var(--muted);">Récup active · pas de charge MI</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="info" style="margin-bottom:1.5rem;">Bloc B (MI) = 3×/semaine max — 48h de récup entre deux sessions quadris/mollets. Bloc A quasi quotidien — gainage dynamique récupère vite.</p>
+
+    <hr class="divider">
+
+    <!-- BLOC A -->
+    <h3 style="margin-bottom:0.2rem;">
+      <span class="tag tag-green" style="margin:0 0.5rem 0 0;">A</span>
+      Gainage dynamique & stabilisation
+    </h3>
+    <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Version améliorée — statique remplacé par du dynamique + proprioception</p>
+    <div class="exercise-grid">
+      <div class="exercise-item">
+        <div class="exercise-name">Planche transfert latéral</div>
+        <div class="exercise-detail">3 × 10 transferts<br>Gainage + déstabilisation</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Planche latérale + rotation</div>
+        <div class="exercise-detail">3 × 10 / côté<br>Obliques + épaule</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Dead bug avec bande</div>
+        <div class="exercise-detail">3 × 10 / côté<br>Gainage lombaire profond</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Bird-dog pause 2 sec</div>
+        <div class="exercise-detail">3 × 10 / côté<br>Extension tenue = +intensité</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Hollow body hold</div>
+        <div class="exercise-detail">3 × 30–45 sec<br>Gainage abdo profond · exigeant</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Pont fessier unilatéral</div>
+        <div class="exercise-detail">3 × 12 / côté<br>Fessiers + stabilisation bassin</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- BLOC B -->
+    <h3 style="margin-bottom:0.2rem;">
+      <span class="tag tag-orange" style="margin:0 0.5rem 0 0;">B</span>
+      Membres inférieurs — protocole kiné
+    </h3>
+    <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">3×/semaine · protocole prescrit · progression avec kiné</p>
+    <div class="exercise-grid">
+      <div class="exercise-item" style="border-color: rgba(200,245,66,0.3);">
+        <div class="exercise-name">Fente bulgare lestée</div>
+        <div class="exercise-detail">5 × 12 / côté<br>8 kg / bras (haltères)<br><span style="color:var(--accent); font-size:0.68rem;">✓ Validé kiné</span></div>
+      </div>
+      <div class="exercise-item" style="border-color: rgba(200,245,66,0.3);">
+        <div class="exercise-name">Squat unijambiste chargé</div>
+        <div class="exercise-detail">Protocole kiné<br>2 × 6 kg (haltères)<br><span style="color:var(--accent); font-size:0.68rem;">✓ Validé kiné</span></div>
+      </div>
+      <div class="exercise-item" style="border-color: rgba(200,245,66,0.3);">
+        <div class="exercise-name">Extension latérale jambe</div>
+        <div class="exercise-detail">Debout · élastique entre cuisses<br>Abducteurs + stabilisation<br><span style="color:var(--accent); font-size:0.68rem;">✓ Validé kiné</span></div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Mollets excentriques</div>
+        <div class="exercise-detail">3 × 15 lentes<br>Anti-tendinite · préventif<br><span style="color:var(--orange); font-size:0.68rem;">⚠ Surveiller fibula</span></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:1rem; padding:1rem;">
+      <p style="font-size:0.8rem; color:var(--muted); margin:0;">
+        <strong style="color:var(--text);">Progression Bloc B</strong> — ne pas augmenter les charges sans validation kiné. Objectif actuel : maîtrise technique parfaite avant d'augmenter le poids. Prochain palier squat unijambiste à définir avec lui.
+      </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- BLOC C -->
+    <h3 style="margin-bottom:0.2rem;">
+      <span class="tag tag-purple" style="margin:0 0.5rem 0 0;">C</span>
+      Abdos fonctionnels
+    </h3>
+    <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Chaîne antérieure + rotation · zéro impact genou</p>
+    <div class="exercise-grid">
+      <div class="exercise-item">
+        <div class="exercise-name">Ab wheel / walkout</div>
+        <div class="exercise-detail">3 × 8–10 reps<br>Si pas de roue : planche walkout</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Russian twist lesté</div>
+        <div class="exercise-detail">3 × 15 / côté<br>Rotation + obliques</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Toe touches crunch</div>
+        <div class="exercise-detail">3 × 15<br>Chaîne antérieure</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Mountain climbers lents</div>
+        <div class="exercise-detail">3 × 20 alternés<br>Abdos + hanches · <span style="color:var(--orange); font-size:0.68rem;">⚠ version lente</span></div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- BLOC D -->
+    <h3 style="margin-bottom:0.2rem;">
+      <span class="tag tag-blue" style="margin:0 0.5rem 0 0;">D</span>
+      Pompes & poussée — haut du corps
+    </h3>
+    <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Posture en montée + gainage dynamique · zéro impact genou</p>
+    <div class="exercise-grid">
+      <div class="exercise-item">
+        <div class="exercise-name">Pompes classiques</div>
+        <div class="exercise-detail">3 × 12–15<br>Base · technique propre</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Pompes déclinées</div>
+        <div class="exercise-detail">3 × 10 pieds surélevés<br>Épaules + haut pec · posture montée</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Pompes → planche hold</div>
+        <div class="exercise-detail">3 × 8 + hold 2 sec<br>Enchaînement pompe + gainage</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Dips sur chaise</div>
+        <div class="exercise-detail">3 × 10<br>Triceps + stabilisation</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Conversion reps → temps (Interval Timer)</h3>
+    <div class="card">
+      <table>
+        <thead><tr><th>Exercice</th><th>Reps</th><th>Temps estimé</th></tr></thead>
+        <tbody>
+          <tr><td>Hollow body hold</td><td>hold</td><td>35–45 sec</td></tr>
+          <tr><td>Dead bug avec bande</td><td>10/côté</td><td>~55 sec</td></tr>
+          <tr><td>Russian twist</td><td>15/côté</td><td>~45 sec</td></tr>
+          <tr><td>Pompes classiques</td><td>12–15</td><td>~40 sec</td></tr>
+          <tr><td>Squat bulgare</td><td>10/côté</td><td>~50 sec</td></tr>
+          <tr><td>Mollets excentriques</td><td>15 lents</td><td>~60 sec</td></tr>
+          <tr><td>Repos entre sets</td><td>—</td><td>30 sec</td></tr>
+        </tbody>
+      </table>
+      <p class="info">Recommandé : <strong>Interval Timer (HIIT)</strong> — gratuit iOS/Android. Paramétrer chaque bloc comme un circuit avec repos intégrés.</p>
+    </div>
+  </section>
+
+  <!-- ========== NUTRITION ========== -->
+  <section id="nutrition" class="section">
+    <div class="section-title">Nutrition · Trail running · 60 kg</div>
+
+    <div class="card card-accent" style="margin-bottom:1.5rem;">
+      <div class="tag tag-green">Principe directeur</div>
+      <h3>Performer sans dépasser 60 kg</h3>
+      <p>L'objectif n'est pas de perdre du poids mais de maintenir la composition actuelle en augmentant la charge. Densité nutritionnelle élevée, pas de restriction calorique.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="tag tag-orange">Jours d'entraînement</div>
+        <h3>Macros cibles</h3>
+        <div class="progress-row">
+          <span class="progress-label">Protéines</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+          <span class="progress-val">~108g</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Glucides</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:80%; background:var(--accent2)"></div></div>
+          <span class="progress-val">~240g</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Lipides</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:55%; background:#7eb8f5"></div></div>
+          <span class="progress-val">~70g</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="tag tag-blue">Jours de repos</div>
+        <h3>Macros réduites</h3>
+        <div class="progress-row">
+          <span class="progress-label">Protéines</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+          <span class="progress-val">~108g</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Glucides</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:55%; background:var(--accent2)"></div></div>
+          <span class="progress-val">~160g</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Lipides</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:55%; background:#7eb8f5"></div></div>
+          <span class="progress-val">~70g</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:1.5rem 0 0.75rem;">Timing péri-entraînement</h3>
+    <table>
+      <thead><tr><th>Moment</th><th>Quoi</th><th>Objectif</th></tr></thead>
+      <tbody>
+        <tr><td><span class="mono">J−2h</span></td><td>Repas glucidique léger (riz, pâtes, pain)</td><td>Glycogène disponible</td></tr>
+        <tr><td><span class="mono">J−30 min</span></td><td>Banane ou 2 dattes</td><td>Énergie immédiate sans pesanteur</td></tr>
+        <tr><td><span class="mono">Pendant &gt;60 min</span></td><td>1 gel ou 30g glucides / 45 min · eau régulière</td><td>Éviter le mur glycémique</td></tr>
+        <tr><td><span class="mono">J+30 min</span></td><td>Protéines + glucides (yaourt + fruits, ou shake)</td><td>Fenêtre anabolique · récupération</td></tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Stratégie course (valable Bois des Côtes, Forez, Sancy)</h3>
+    <div class="card card-warning">
+      <ul class="clean">
+        <li>Petit-déj J−3h : porridge avoine + miel + banane + café</li>
+        <li>En course : gel toutes les 45 min à partir du km 10</li>
+        <li>Hydratation : 400–500 ml/h · eau + électrolytes si chaud</li>
+        <li>Rien de nouveau le jour J — produits testés uniquement à l'entraînement</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ========== BLESSURES ========== -->
+  <section id="blessures" class="section">
+    <div class="section-title">Gestion blessures & prévention</div>
+
+    <div class="checklist" style="margin-bottom:1.5rem;">
+      <h3 style="margin-bottom:0.75rem;">Actions immédiates</h3>
+      <div class="check-item done" id="ci1">
+        <input type="checkbox" id="c1" checked onchange="toggleCheck('ci1','c1')">
+        <label for="c1"><strong>Kiné genou</strong> — suivi en cours · protocole Bloc B validé</label>
+      </div>
+      <div class="check-item done" id="ci2">
+        <input type="checkbox" id="c2" checked onchange="toggleCheck('ci2','c2')">
+        <label for="c2"><strong>Échographie cheville</strong> — passée · fissure fibula 2,5 mm confirmée · tendons OK</label>
+      </div>
+      <div class="check-item" id="ci3">
+        <input type="checkbox" id="c3" onchange="toggleCheck('ci3','c3')">
+        <label for="c3">Kiné cheville à partir du 11 juillet — rééducation fibula + proprioception</label>
+      </div>
+      <div class="check-item" id="ci4">
+        <input type="checkbox" id="c4" onchange="toggleCheck('ci4','c4')">
+        <label for="c4">Reprise course ~20 juillet si absence totale de douleur — EF plat uniquement d'abord</label>
+      </div>
+      <div class="check-item" id="ci5">
+        <input type="checkbox" id="c5" onchange="toggleCheck('ci5','c5')">
+        <label for="c5">Tester semelles sur première sortie de reprise — valider compatibilité Brooks + orthèses</label>
+      </div>
+      <div class="check-item" id="ci6">
+        <input type="checkbox" id="c6" onchange="toggleCheck('ci6','c6')">
+        <label for="c6">Synchroniser données vélo sur Strava — suivi FC et progression</label>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card-warning">
+        <div class="tag tag-orange">Genou droit · Suivi kiné actif</div>
+        <h3>Protocole en cours</h3>
+        <ul class="clean">
+          <li>Fentes bulgares 5×12 / 8 kg validées</li>
+          <li>Squat unijambiste 2×6 kg validé</li>
+          <li>Stop si douleur ≥ 3/10 à l'effort</li>
+          <li>Pas d'augmentation charge sans kiné</li>
+        </ul>
+      </div>
+      <div class="card card-alert">
+        <div class="tag tag-red">Cheville gauche · Fissure fibula</div>
+        <h3>Fissure 2,5 mm · repos relatif</h3>
+        <ul class="clean">
+          <li>Attelle jusqu'au ~20 juillet</li>
+          <li>Vélo stationnaire et natation validés</li>
+          <li>Kiné à partir du 11 juillet</li>
+          <li>Course si absence douleur ~20 juillet</li>
+          <li>Pas de terrain technique avant feu vert total</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Règles d'arrêt en course</h3>
+    <div class="card card-warning">
+      <ul class="clean">
+        <li>Genou ≥ 3/10 constant → arrêt au prochain ravito</li>
+        <li>Modification de foulée pour compenser → arrêt immédiat</li>
+        <li>Douleur vive cheville → arrêt immédiat</li>
+        <li>Finir blessé compromet le Forez 2027 et le Sancy — pas de héroïsme</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Routine quotidienne · 10 min</h3>
+    <div class="exercise-grid">
+      <div class="exercise-item">
+        <div class="exercise-name">Foam roller quadriceps</div>
+        <div class="exercise-detail">2 min / côté</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Étirement ischio-jambiers</div>
+        <div class="exercise-detail">2 × 30 sec / côté · jamais à froid</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Mobilité cheville</div>
+        <div class="exercise-detail">Cercles + dorsiflexion · 2 min</div>
+      </div>
+      <div class="exercise-item">
+        <div class="exercise-name">Pigeon (fessiers)</div>
+        <div class="exercise-detail">45 sec / côté · clé bandelette ITB</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROFIL ========== -->
+  <section id="profil" class="section">
+    <div class="section-title">Profil athlète · Données de référence</div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="tag tag-green">Données actuelles</div>
+        <table>
+          <tbody>
+            <tr><td class="muted">Poids</td><td><span class="mono">60 kg</span></td></tr>
+            <tr><td class="muted">Sorties / semaine</td><td><span class="mono">3</span></td></tr>
+            <tr><td class="muted">Renfo / semaine</td><td><span class="mono">7 (quotidien)</span></td></tr>
+            <tr><td class="muted">Terrain principal</td><td>Seine · Issy-Boulogne</td></tr>
+            <tr><td class="muted">Montre</td><td>Huawei Watch GT6</td></tr>
+            <tr><td class="muted">Tracking</td><td>Strava</td></tr>
+            <tr><td class="muted">Cadence</td><td><span class="mono">~167 spm</span></td></tr>
+            <tr><td class="muted">Volume depuis nov. 25</td><td><span class="mono">~570 km · 5 567 m D+</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="tag tag-orange">État des systèmes</div>
+        <table>
+          <tbody>
+            <tr><td class="muted">Genou droit</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Kiné actif · protocole en cours</span></td></tr>
+            <tr><td class="muted">Cheville gauche</td><td><span class="status status-ko"><span class="dot dot-red"></span>Fissure fibula · attelle ~20/07</span></td></tr>
+            <tr><td class="muted">Semelles</td><td><span class="status status-ok"><span class="dot dot-green"></span>Confirmées</span></td></tr>
+            <tr><td class="muted">Nutrition</td><td><span class="status status-ko"><span class="dot dot-red"></span>Théorique</span></td></tr>
+            <tr><td class="muted">Renfo quotidien</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · Bloc B validé kiné</span></td></tr>
+            <tr><td class="muted">Vélo stationnaire</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · mercredi matin</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Objectifs</h3>
+    <div class="card card-accent">
+      <ul class="clean">
+        <li><span style="color:var(--muted); text-decoration:line-through;">28 juin 2026 — Bois des Côtes</span> <span style="color:var(--red); font-size:0.8rem;">Annulé · canicule</span></li>
+        <li><strong>Mars 2027</strong> — Forez Trails 33 km / 1 100 m D+ · intermédiaire · finisher</li>
+        <li><strong>Sept. 2027</strong> — Trail du Sancy 33,5 km / 2 000 m D+ · <strong style="color:#b482ff;">objectif A · finisher</strong></li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Progression Strava · Nov 2025 → Juin 2026</h3>
+    <div class="card">
+      <div class="progress-row">
+        <span class="progress-label">Cadence</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+        <span class="progress-val">+12 spm</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">D+ cumulé</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:70%; background:var(--accent2)"></div></div>
+        <span class="progress-val">5 567m</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">Volume total</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:65%; background:#7eb8f5"></div></div>
+        <span class="progress-val">~570km</span>
+      </div>
+      <p class="info" style="margin-top:0.75rem;">Données Strava à jour dès reconnexion du connecteur.</p>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function updateCountdown() {
+    const races = [
+      { date: new Date('2026-06-28T08:00:00'), name: 'Bois des Côtes' },
+      { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
+      { date: new Date('2027-09-13T08:00:00'), name: 'Sancy' }
+    ];
+    const now = new Date();
+    const next = races.find(r => r.date > now);
+    if (!next) return;
+    const diff = Math.ceil((next.date - now) / (1000 * 60 * 60 * 24));
+    document.getElementById('countdown-days').textContent = diff;
+    document.getElementById('countdown-sub').textContent = '→ ' + next.name;
+  }
+  updateCountdown();
+
+  function toggleCheck(cid, id) {
+    const container = document.getElementById(cid);
+    const cb = document.getElementById(id);
+    container.classList.toggle('done', cb.checked);
+  }
+</script>
+
+</body>
+</html>
