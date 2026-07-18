@@ -597,6 +597,7 @@
     <button class="tab" onclick="showSection('renforcement', this)">Renfo</button>
     <button class="tab" onclick="showSection('nutrition', this)">Nutrition</button>
     <button class="tab" onclick="showSection('trails', this)">Trails à surveiller</button>
+    <button class="tab" onclick="showSection('stats', this)">Stats</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
   </div>
 </nav>
@@ -1174,6 +1175,37 @@
   <section id="velo" class="section">
     <div class="section-title">Plan vélo · Cross-training · Rééducation → Sancy 2027</div>
 
+    <h3 style="margin-bottom:0.75rem;">Séances types vélo stationnaire</h3>
+
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+      <div class="card">
+        <div class="tag tag-green">Séance endurance · 45 min</div>
+        <h3>Base aérobie</h3>
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted" style="font-size:0.8rem;">0–5 min</td><td style="font-size:0.8rem;">Échauffement résistance légère</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">5–40 min</td><td style="font-size:0.8rem;">Effort constant FC 130–145 bpm</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">40–45 min</td><td style="font-size:0.8rem;">Récupération progressive</td></tr>
+          </tbody>
+        </table>
+        <p class="info" style="margin-top:0.75rem;">Phase rééducation et reprise. Jamais à bout de souffle.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-orange">Séance fractionné · 55 min</div>
+        <h3>Simulation montée</h3>
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted" style="font-size:0.8rem;">0–10 min</td><td style="font-size:0.8rem;">Échauffement progressif</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">10–45 min</td><td style="font-size:0.8rem;">6 × (3 min résistance forte + 2 min récup)</td></tr>
+            <tr><td class="muted" style="font-size:0.8rem;">45–55 min</td><td style="font-size:0.8rem;">Retour au calme</td></tr>
+          </tbody>
+        </table>
+        <p class="info" style="margin-top:0.75rem;">À partir d'août. Simule l'effort des montées répétées du Sancy.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
     <div class="card" style="margin-bottom:1.5rem; border-left: 3px solid #7eb8f5;">
       <div class="tag tag-blue">Séance de référence · 8 juillet 2026</div>
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:0.5rem;">
@@ -1274,37 +1306,6 @@
         </tr>
       </tbody>
     </table>
-
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Séances types vélo stationnaire</h3>
-
-    <div class="grid-2">
-      <div class="card">
-        <div class="tag tag-green">Séance endurance · 45 min</div>
-        <h3>Base aérobie</h3>
-        <table style="margin:0;">
-          <tbody>
-            <tr><td class="muted" style="font-size:0.8rem;">0–5 min</td><td style="font-size:0.8rem;">Échauffement résistance légère</td></tr>
-            <tr><td class="muted" style="font-size:0.8rem;">5–40 min</td><td style="font-size:0.8rem;">Effort constant FC 130–145 bpm</td></tr>
-            <tr><td class="muted" style="font-size:0.8rem;">40–45 min</td><td style="font-size:0.8rem;">Récupération progressive</td></tr>
-          </tbody>
-        </table>
-        <p class="info" style="margin-top:0.75rem;">Phase rééducation et reprise. Jamais à bout de souffle.</p>
-      </div>
-      <div class="card">
-        <div class="tag tag-orange">Séance fractionné · 55 min</div>
-        <h3>Simulation montée</h3>
-        <table style="margin:0;">
-          <tbody>
-            <tr><td class="muted" style="font-size:0.8rem;">0–10 min</td><td style="font-size:0.8rem;">Échauffement progressif</td></tr>
-            <tr><td class="muted" style="font-size:0.8rem;">10–45 min</td><td style="font-size:0.8rem;">6 × (3 min résistance forte + 2 min récup)</td></tr>
-            <tr><td class="muted" style="font-size:0.8rem;">45–55 min</td><td style="font-size:0.8rem;">Retour au calme</td></tr>
-          </tbody>
-        </table>
-        <p class="info" style="margin-top:0.75rem;">À partir d'août. Simule l'effort des montées répétées du Sancy.</p>
-      </div>
-    </div>
 
     <hr class="divider">
 
@@ -1436,7 +1437,7 @@
     <!-- BLOC B -->
     <h3 style="margin-bottom:0.2rem;">
       <span class="tag tag-orange" style="margin:0 0.5rem 0 0;">B</span>
-      Membres inférieurs — protocole kiné
+      Membres inférieurs
     </h3>
     <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">3×/semaine · protocole prescrit · progression avec kiné</p>
     <div class="exercise-grid">
@@ -1456,11 +1457,6 @@
         <div class="exercise-name">Mollets excentriques</div>
         <div class="exercise-detail">3 × 15 lentes<br>Anti-tendinite · préventif<br><span style="color:var(--orange); font-size:0.68rem;">⚠ Surveiller fibula</span></div>
       </div>
-    </div>
-    <div class="card" style="margin-bottom:1rem; padding:1rem;">
-      <p style="font-size:0.8rem; color:var(--muted); margin:0;">
-        <strong style="color:var(--text);">Progression Bloc B</strong> — ne pas augmenter les charges sans validation kiné. Objectif actuel : maîtrise technique parfaite avant d'augmenter le poids. Prochain palier squat unijambiste à définir avec lui.
-      </p>
     </div>
 
     <hr class="divider">
@@ -1657,7 +1653,7 @@
           <th>Distance · D+</th>
           <th>Mois</th>
           <th>Date prévisionnelle</th>
-          <th>Dernière édition connue</th>
+          <th>Date d'ouverture des dossards</th>
         </tr>
       </thead>
       <tbody>
@@ -1667,79 +1663,60 @@
           <td>33 km · D+1100</td>
           <td>Mars</td>
           <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début mars 2027</td>
-          <td>8 mars 2026</td>
+          <td class="muted">Non communiquée précisément — tarif de base jusqu'au 31/01 en 2026, ouverture probable à l'automne 2026</td>
         </tr>
         <tr>
           <td rowspan="2"><strong>Grands Trails Esprit Volcans</strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
           <td>La Directissime</td>
           <td>34 km · D+770 / D-1800</td>
           <td>Septembre</td>
-          <td>13 septembre 2026</td>
-          <td class="muted">Non vérifiée (2025)</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
+          <td class="muted">Non communiquée</td>
         </tr>
         <tr>
           <td>Gergo Trail</td>
           <td>22 km · D+900</td>
           <td>Septembre</td>
-          <td>13 septembre 2026</td>
-          <td class="muted">Non vérifiée (2025)</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
+          <td class="muted">Non communiquée</td>
         </tr>
         <tr>
           <td rowspan="3"><strong>Festival des Templiers</strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
           <td>Marathon des Causses</td>
           <td>34,1 km · D+1581</td>
           <td>Octobre</td>
-          <td>Sam. 17 octobre 2026</td>
-          <td class="muted">Non vérifiée (2025)</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
+          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
         </tr>
         <tr>
           <td>Marathon du Larzac</td>
           <td>33,3 km · D+1400</td>
           <td>Octobre</td>
-          <td>Ven. 16 octobre 2026</td>
-          <td class="muted">Non vérifiée (2025)</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
+          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
         </tr>
         <tr>
           <td>Monna Lisa</td>
           <td>~33 km · D+1176</td>
           <td>Octobre</td>
-          <td>Sam. 17 octobre 2026</td>
-          <td class="muted">Non vérifiée (2025)</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
+          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
         </tr>
         <tr>
           <td><strong>Grands Trails d'Auvergne</strong><br><span class="muted" style="font-size:0.75rem;">Lac d'Aubusson (63)</span></td>
           <td>Trail du Lac</td>
           <td>27 km · D+850</td>
           <td>Octobre</td>
-          <td>10 octobre 2026</td>
-          <td class="muted">Non vérifiée (2025)</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début octobre 2027</td>
+          <td class="muted">~fin décembre 2026 (2026 : 24 décembre 2025 à midi)</td>
         </tr>
         <tr>
           <td><strong>Trail des 3 Rocs</strong><br><span class="muted" style="font-size:0.75rem;">St-Antonin-Noble-Val (82)</span></td>
           <td>Trail des 3 Rocs</td>
           <td>31 km · D+1400</td>
           <td>Novembre</td>
-          <td>8 novembre 2026 <span class="muted" style="font-size:0.72rem;">(nouvelle date d'édition)</span></td>
-          <td class="muted">Non vérifiée (2025)</td>
-        </tr>
-        <tr>
-          <td colspan="6" style="background:rgba(180,130,255,0.06); font-size:0.78rem; color:var(--muted); font-style:italic;">— Plaisir —</td>
-        </tr>
-        <tr>
-          <td><strong>Trail Nocturne des Rois</strong><br><span class="muted" style="font-size:0.75rem;">Villemur-sur-Tarn (31)</span></td>
-          <td>La Gaspard</td>
-          <td>14,7 km · D+260</td>
-          <td>Janvier</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> janvier 2027</td>
-          <td>17 janvier 2026</td>
-        </tr>
-        <tr>
-          <td><strong>Marathon de Montauban</strong><br><span class="muted" style="font-size:0.75rem;">Montauban (82)</span></td>
-          <td>10 km ou Semi (21,1 km)</td>
-          <td>—</td>
-          <td>Mars</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~fin mars 2027</td>
-          <td class="muted">~29 mars 2026 (à revérifier)</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~novembre 2027 <span class="muted" style="font-size:0.72rem;">(date déplacée en 2026, à reconfirmer)</span></td>
+          <td class="muted">Non communiquée</td>
         </tr>
         <tr>
           <td colspan="6" style="background:rgba(180,130,255,0.06); font-size:0.78rem; color:var(--muted); font-style:italic;">— Optionnel —</td>
@@ -1757,28 +1734,42 @@
           <td>32 km · D+2000 <span class="muted" style="font-size:0.72rem;">(35 km indiqué)</span></td>
           <td>Juillet</td>
           <td>17–18 juillet 2026 <span style="color:var(--accent2); font-size:0.72rem;">— ce week-end</span></td>
-          <td class="muted">Non vérifiée (2025)</td>
+          <td class="muted">Non communiquée</td>
         </tr>
         <tr>
           <td>Trail des Crêtes</td>
           <td>21 km · D+1100 <span class="muted" style="font-size:0.72rem;">(22 km/1200 indiqué)</span></td>
           <td>Juillet</td>
           <td>17–18 juillet 2026</td>
-          <td class="muted">Non vérifiée (2025)</td>
-        </tr>
-        <tr>
-          <td><strong>Schneider Electric Marathon de Paris</strong></td>
-          <td>Marathon</td>
-          <td>42,195 km</td>
-          <td>Avril 2028</td>
-          <td class="muted">Non annoncée — historiquement 1er/2e dimanche d'avril</td>
-          <td>12 avril 2026</td>
+          <td class="muted">Non communiquée</td>
         </tr>
       </tbody>
     </table>
     </div>
 
+    <hr class="divider">
+
+    <div class="phase-sep" style="margin-top:0;">Objectif ?</div>
+    <div class="card card-accent">
+      <div class="tag tag-green">Schneider Electric Marathon de Paris</div>
+      <h3>42,195 km · avenue des Champs-Élysées</h3>
+      <p style="font-size:0.85rem;">Dernière édition connue (ASO) : 12 avril 2026. Changement majeur : la Ville de Paris a retiré l'organisation à ASO après près de 30 ans — le groupement Cadence (Keneo, Havas, Avena Event) reprend la concession 2027–2030. L'édition 2027 est déjà datée : <strong>dimanche 11 avril 2027</strong>, avec ouverture des inscriptions annoncée pour septembre 2026. Aucune date officielle pour 2028 à ce stade — à surveiller une fois l'édition 2027 passée.</p>
+    </div>
+
+
     <p class="info" style="margin-top:1rem;">Coïncidence à noter : le Trail des 4×1800 se déroule ce week-end même (17–18 juillet 2026). Les distances indiquées entre parenthèses sont celles que tu avais notées — elles diffèrent légèrement des chiffres officiels trouvés, à vérifier avant inscription.</p>
+
+  </section>
+
+  <!-- ========== STATS (à venir) ========== -->
+  <section id="stats" class="section">
+    <div class="section-title">Stats · KPIs Strava</div>
+
+    <div class="card card-accent">
+      <div class="tag tag-green">On verra plus tard</div>
+      <h3>Tableau de bord en attente</h3>
+      <p style="font-size:0.85rem;">Cette rubrique accueillera les KPIs tirés de Strava : volume hebdomadaire, D+ cumulé, progression d'allure, répartition du temps par discipline (course / vélo / renfo) et taux de respect du plan. Bloqué pour l'instant sur la connexion du connecteur Strava — à reprendre une fois débloqué, avec la fonction serverless (Cloudflare Workers) pour le bouton "actualiser".</p>
+    </div>
 
   </section>
 
