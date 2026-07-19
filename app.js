@@ -80,3 +80,18 @@ function showSection(id, btn) {
     });
   }
   loadLogs();
+
+  // ===== Suivi nutrition (checklist simple) — stocké en local sur cet appareil =====
+  function saveNutriLog(el) {
+    const key = 'sancy-nutri-' + el.dataset.nutri;
+    localStorage.setItem(key, el.checked ? '1' : '0');
+    el.closest('.check-item').classList.toggle('done', el.checked);
+  }
+  function loadNutriLogs() {
+    document.querySelectorAll('[data-nutri]').forEach(el => {
+      const val = localStorage.getItem('sancy-nutri-' + el.dataset.nutri);
+      el.checked = val === '1';
+      el.closest('.check-item').classList.toggle('done', el.checked);
+    });
+  }
+  loadNutriLogs();

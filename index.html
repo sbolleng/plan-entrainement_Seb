@@ -86,12 +86,6 @@
   <section id="semaine_en_cours" class="section active">
     <div class="section-title">Semaine du 13 au 19 juillet 2026 · Rééducation fibula</div>
 
-    <div class="card card-warning" style="margin-bottom:1.5rem;">
-      <div class="tag tag-orange">Contexte</div>
-      <h3>Attelle jusqu'au 20 (à confirmer) · pas de course</h3>
-      <p>Fissure fibula 2,5 mm et kiné genou droit en cours. Reprise course conditionnée à l'absence de douleur, date à confirmer. Cette semaine : vélo et renfo uniquement. Pas de fractionné, pas de sortie longue.</p>
-    </div>
-
     <!-- JOUR PAR JOUR -->
     <div style="display:flex; flex-direction:column; gap:0.75rem;">
 
@@ -251,9 +245,39 @@
     <hr class="divider">
 
     <div class="card card-accent">
-      <div class="tag tag-green">Prochain jalon</div>
-      <h3>Le 20 (à confirmer) — reprise course si sans douleur</h3>
-      <p style="font-size:0.85rem;">Première sortie : EF 25–30 min sur terrain plat uniquement. Pas de dénivelé, pas de terrain instable. Concerne genou et cheville.</p>
+      <div class="tag tag-green">Suivi nutrition</div>
+      <h3>Plan nutrition respecté · jour par jour</h3>
+      <div class="checklist">
+        <div class="check-item">
+          <input type="checkbox" id="nutri-2026-07-13" data-nutri="2026-07-13" onchange="saveNutriLog(this)">
+          <label for="nutri-2026-07-13">Lundi 13 juillet</label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="nutri-2026-07-14" data-nutri="2026-07-14" onchange="saveNutriLog(this)">
+          <label for="nutri-2026-07-14">Mardi 14 juillet</label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="nutri-2026-07-15" data-nutri="2026-07-15" onchange="saveNutriLog(this)">
+          <label for="nutri-2026-07-15">Mercredi 15 juillet</label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="nutri-2026-07-16" data-nutri="2026-07-16" onchange="saveNutriLog(this)">
+          <label for="nutri-2026-07-16">Jeudi 16 juillet</label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="nutri-2026-07-17" data-nutri="2026-07-17" onchange="saveNutriLog(this)">
+          <label for="nutri-2026-07-17">Vendredi 17 juillet</label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="nutri-2026-07-18" data-nutri="2026-07-18" onchange="saveNutriLog(this)">
+          <label for="nutri-2026-07-18">Samedi 18 juillet</label>
+        </div>
+        <div class="check-item">
+          <input type="checkbox" id="nutri-2026-07-19" data-nutri="2026-07-19" onchange="saveNutriLog(this)">
+          <label for="nutri-2026-07-19">Dimanche 19 juillet</label>
+        </div>
+      </div>
+      <p class="info" style="margin-top:0.75rem;">Basé sur les repas types de l'onglet Guide → Nutrition.</p>
     </div>
 
   </section>
@@ -292,7 +316,7 @@
 
       <div class="tl-item goal">
         <div class="tl-date">SEPTEMBRE 2027 <span class="tl-countdown" data-target="2027-09-13"></span></div>
-        <div class="tl-title">🏔️ Trail du Sancy <span style="color:#b482ff; font-size:0.8rem;">Objectif A</span></div>
+        <div class="tl-title">🏔️ Trails du Sancy Oxsitis <span style="color:#b482ff; font-size:0.8rem;">Objectif A</span></div>
         <div class="tl-meta">33,5 km · 2 000 m D+ · Massif du Sancy · <strong style="color:#b482ff;">FINISHER</strong></div>
       </div>
 
@@ -1031,7 +1055,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>Forez Trails</strong><br><span class="muted" style="font-size:0.75rem;">Augerolles (63)</span></td>
+          <td><strong><a href="https://fr.milesrepublic.com/event/forez-trails-15451" target="_blank" rel="noopener">Forez Trails</a></strong><br><span class="muted" style="font-size:0.75rem;">Augerolles (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
           <td>L'Augerolloise</td>
           <td>33 km · D+1100</td>
           <td>Mars</td>
@@ -1039,7 +1063,22 @@
           <td class="muted">Non communiquée précisément — tarif de base jusqu'au 31/01 en 2026, ouverture probable à l'automne 2026</td>
         </tr>
         <tr>
-          <td rowspan="2"><strong>Grands Trails Esprit Volcans</strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
+          <td rowspan="2"><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span></td>
+          <td>La 4×1800</td>
+          <td>32 km · D+2000 <span class="muted" style="font-size:0.72rem;">(35 km indiqué)</span></td>
+          <td>Juillet</td>
+          <td>17–18 juillet 2026 <span style="color:var(--accent2); font-size:0.72rem;">— ce week-end</span></td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td>Trail des Crêtes</td>
+          <td>21 km · D+1100 <span class="muted" style="font-size:0.72rem;">(22 km/1200 indiqué)</span></td>
+          <td>Juillet</td>
+          <td>17–18 juillet 2026</td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Grands Trails Esprit Volcans</a></strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
           <td>La Directissime</td>
           <td>34 km · D+770 / D-1800</td>
           <td>Septembre</td>
@@ -1054,7 +1093,15 @@
           <td class="muted">Non communiquée</td>
         </tr>
         <tr>
-          <td rowspan="3"><strong>Festival des Templiers</strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
+          <td><strong>Trails du Sancy Oxsitis</strong><br><span class="muted" style="font-size:0.75rem;">Mont-Dore (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
+          <td>Trails du Sancy Oxsitis</td>
+          <td>33,5 km · D+2000</td>
+          <td>Septembre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
+          <td class="muted">Non communiquée — à vérifier sur sancy.com</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong><a href="https://fr.milesrepublic.com/event/festival-des-templiers-5719" target="_blank" rel="noopener">Festival des Templiers</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
           <td>Marathon des Causses</td>
           <td>34,1 km · D+1581</td>
           <td>Octobre</td>
@@ -1076,7 +1123,7 @@
           <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
         </tr>
         <tr>
-          <td><strong>Grands Trails d'Auvergne</strong><br><span class="muted" style="font-size:0.75rem;">Lac d'Aubusson (63)</span></td>
+          <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Grands Trails d'Auvergne</a></strong><br><span class="muted" style="font-size:0.75rem;">Lac d'Aubusson (63)</span></td>
           <td>Trail du Lac</td>
           <td>27 km · D+850</td>
           <td>Octobre</td>
@@ -1084,36 +1131,11 @@
           <td class="muted">~fin décembre 2026 (2026 : 24 décembre 2025 à midi)</td>
         </tr>
         <tr>
-          <td><strong>Trail des 3 Rocs</strong><br><span class="muted" style="font-size:0.75rem;">St-Antonin-Noble-Val (82)</span></td>
+          <td><strong><a href="https://fr.milesrepublic.com/event/trail-des-3-rocs-16262" target="_blank" rel="noopener">Trail des 3 Rocs</a></strong><br><span class="muted" style="font-size:0.75rem;">St-Antonin-Noble-Val (82)</span></td>
           <td>Trail des 3 Rocs</td>
           <td>31 km · D+1400</td>
           <td>Novembre</td>
           <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~novembre 2027 <span class="muted" style="font-size:0.72rem;">(date déplacée en 2026, à reconfirmer)</span></td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td colspan="6" style="background:rgba(180,130,255,0.06); font-size:0.78rem; color:var(--muted); font-style:italic;">— Optionnel —</td>
-        </tr>
-        <tr>
-          <td><strong>Trail du Sancy</strong><br><span class="muted" style="font-size:0.75rem;">Mont-Dore (63)</span></td>
-          <td>24 km (indiqué)</td>
-          <td>24 km · D+1160</td>
-          <td>Juin 2027</td>
-          <td colspan="2" class="muted">Aucune édition de juin retrouvée pour ce nom — seules éditions identifiées : Trail hivernal (33/23 km, janvier) et Trail du Sancy objectif (33,5 km, septembre). À vérifier directement sur sancy.com.</td>
-        </tr>
-        <tr>
-          <td rowspan="2"><strong>Trail des 4×1800</strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span></td>
-          <td>La 4×1800</td>
-          <td>32 km · D+2000 <span class="muted" style="font-size:0.72rem;">(35 km indiqué)</span></td>
-          <td>Juillet</td>
-          <td>17–18 juillet 2026 <span style="color:var(--accent2); font-size:0.72rem;">— ce week-end</span></td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td>Trail des Crêtes</td>
-          <td>21 km · D+1100 <span class="muted" style="font-size:0.72rem;">(22 km/1200 indiqué)</span></td>
-          <td>Juillet</td>
-          <td>17–18 juillet 2026</td>
           <td class="muted">Non communiquée</td>
         </tr>
       </tbody>
@@ -1122,7 +1144,7 @@
 
     <hr class="divider">
 
-    <div class="phase-sep" style="margin-top:0;">Objectif ?</div>
+    <div class="phase-sep" style="margin-top:0;">2028 ?</div>
     <div class="card card-accent">
       <div class="tag tag-green">Schneider Electric Marathon de Paris</div>
       <h3>42,195 km · avenue des Champs-Élysées</h3>

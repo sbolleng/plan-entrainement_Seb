@@ -335,6 +335,8 @@
 
   .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
   .mono { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--accent); }
+  a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(255,212,0,0.35); }
+  a:hover { border-color: var(--accent2); }
   p { margin-bottom: 0.75rem; font-size: 0.9rem; }
   .muted { color: var(--muted); }
   .info { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
