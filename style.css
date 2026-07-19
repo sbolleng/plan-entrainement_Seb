@@ -503,6 +503,9 @@
     letter-spacing: 0.1em;
     margin-bottom: 0.2rem;
   }
+  .tl-countdown {
+    color: var(--accent);
+  }
   .tl-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
   .tl-meta { font-size: 0.78rem; color: var(--muted); }
 

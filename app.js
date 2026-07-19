@@ -13,6 +13,16 @@ function showSection(id, btn) {
     btn.classList.add('active');
   }
 
+  function updateTimelineCountdowns() {
+    const now = new Date();
+    document.querySelectorAll('.tl-countdown[data-target]').forEach(el => {
+      const target = new Date(el.dataset.target + 'T00:00:00');
+      const diff = Math.round((target - now) / (1000 * 60 * 60 * 24));
+      el.textContent = diff > 0 ? '· J-' + diff : (diff === 0 ? "· aujourd'hui" : '· J+' + Math.abs(diff));
+    });
+  }
+  updateTimelineCountdowns();
+
   function updateCountdown() {
     const races = [
       { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
