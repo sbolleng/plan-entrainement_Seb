@@ -337,6 +337,43 @@
   .mono { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--accent); }
   a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(255,212,0,0.35); }
   a:hover { border-color: var(--accent2); }
+
+  .stats-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.6rem;
+    height: 130px;
+    margin: 1rem 0 0.5rem;
+  }
+  .stats-bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+  }
+  .stats-bar-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .stats-bar {
+    width: 100%;
+    max-width: 26px;
+    background: var(--accent);
+    border-radius: 3px 3px 0 0;
+    min-height: 2px;
+  }
+  .stats-bar-col.is-current .stats-bar { background: var(--accent2); }
+  .stats-bar-label {
+    font-size: 0.6rem;
+    color: var(--muted);
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
   p { margin-bottom: 0.75rem; font-size: 0.9rem; }
   .muted { color: var(--muted); }
   .info { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
