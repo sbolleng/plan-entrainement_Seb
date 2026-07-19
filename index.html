@@ -71,11 +71,8 @@
 <nav>
   <div class="nav-inner">
     <button class="tab active" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
-    <button class="tab" onclick="showSection('plan', this)">Plan 15 mois</button>
-    <button class="tab" onclick="showSection('sorties', this)">Sorties</button>
+    <button class="tab" onclick="showSection('feuilleroute', this)">Feuille de route</button>
     <button class="tab" onclick="showSection('guide', this)">Guide</button>
-    <button class="tab" onclick="showSection('trails', this)">Trails à surveiller</button>
-    <button class="tab" onclick="showSection('stats', this)">Stats</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
   </div>
 </nav>
@@ -282,11 +279,18 @@
 
   </section>
 
-  <!-- ========== PLAN 15 MOIS ========== -->
-  <section id="plan" class="section">
-    <div class="section-title">Plan général · Juin 2026 → Septembre 2027</div>
+  <!-- ========== FEUILLE DE ROUTE (Plan + Sorties + Trails à surveiller) ========== -->
+  <section id="feuilleroute" class="section">
+    <div class="section-title">Feuille de route · Plan, sorties, courses à surveiller</div>
 
-    <h2 style="margin-bottom:1.5rem;">La route vers le Sancy</h2>
+    <div class="subnav">
+      <button class="subtab active" onclick="showSubsection('fr-vue', this)">Vue d'ensemble</button>
+      <button class="subtab" onclick="showSubsection('fr-sorties', this)">Sorties détaillées</button>
+      <button class="subtab" onclick="showSubsection('fr-trails', this)">Courses à surveiller</button>
+    </div>
+
+    <div id="fr-vue" class="subsection active">
+          <h2 style="margin-bottom:1.5rem;">La route vers le Sancy</h2>
 
     <div class="timeline">
 
@@ -370,12 +374,10 @@
         <p>Sorties D+ soutenu (Vosges, Auvergne si possible). Simulation profil : enchaînement montées/descentes sur 3–4 h. Sortie longue max 28–30 km / 1 500 m D+. Affûtage 3 semaines avant course.</p>
       </div>
     </div>
+    </div>
 
-  </section>
-
-  <!-- ========== SORTIES ========== -->
-  <section id="sorties" class="section">
-    <div class="section-title">Planning des sorties · Juin 2026 → Septembre 2027</div>
+    <div id="fr-sorties" class="subsection">
+      <h3 style="margin-bottom:0.75rem;">Planning des sorties · Juin 2026 → Septembre 2027</h3>
 
     <p class="muted" style="font-size:0.82rem; margin-bottom:1.5rem;">3 sorties course/semaine · Vélo mercredi fixe · Fractionné jeudi · Sortie longue samedi prioritaire</p>
 
@@ -539,6 +541,126 @@
         <li><strong>Montagne de Reims</strong> — 1h de Paris, sorties 400–600 m D+ possibles</li>
         <li><strong>Weekend délocalisé</strong> · Vosges ou Auvergne en phase spécifique (Phase 4) pour simuler le Sancy</li>
       </ul>
+    </div>
+    </div>
+
+    <div id="fr-trails" class="subsection">
+      <h3 style="margin-bottom:0.75rem;">Trails à surveiller · Calendrier indicatif</h3>
+
+    <p class="muted" style="font-size:0.82rem; margin-bottom:1.5rem;">Dates vérifiées le 18 juillet 2026 à partir des sites officiels et plateformes d'inscription. Les éditions "à confirmer" ne sont pas encore officiellement annoncées — à revérifier à l'approche de la période habituelle. Ouverture des inscriptions non recherchée (généralement 2 à 6 mois avant la course selon l'événement) : à vérifier sur le site de chaque organisateur.</p>
+
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Événement</th>
+          <th>Course(s)</th>
+          <th>Distance · D+</th>
+          <th>Mois</th>
+          <th>Date prévisionnelle</th>
+          <th>Date d'ouverture des dossards</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="https://fr.milesrepublic.com/event/forez-trails-15451" target="_blank" rel="noopener">Forez Trails</a></strong><br><span class="muted" style="font-size:0.75rem;">Augerolles (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
+          <td>L'Augerolloise</td>
+          <td>33 km · D+1100</td>
+          <td>Mars</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début mars 2027</td>
+          <td class="muted">Non communiquée précisément — tarif de base jusqu'au 31/01 en 2026, ouverture probable à l'automne 2026</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span></td>
+          <td>La 4×1800</td>
+          <td>32 km · D+2000 <span class="muted" style="font-size:0.72rem;">(35 km indiqué)</span></td>
+          <td>Juillet</td>
+          <td>17–18 juillet 2026 <span style="color:var(--accent2); font-size:0.72rem;">— ce week-end</span></td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td>Trail des Crêtes</td>
+          <td>21 km · D+1100 <span class="muted" style="font-size:0.72rem;">(22 km/1200 indiqué)</span></td>
+          <td>Juillet</td>
+          <td>17–18 juillet 2026</td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Grands Trails Esprit Volcans</a></strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
+          <td>La Directissime</td>
+          <td>34 km · D+770 / D-1800</td>
+          <td>Septembre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td>Gergo Trail</td>
+          <td>22 km · D+900</td>
+          <td>Septembre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td><strong>Trails du Sancy Oxsitis</strong><br><span class="muted" style="font-size:0.75rem;">Mont-Dore (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
+          <td>Trails du Sancy Oxsitis</td>
+          <td>33,5 km · D+2000</td>
+          <td>Septembre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
+          <td class="muted">Non communiquée — à vérifier sur sancy.com</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong><a href="https://fr.milesrepublic.com/event/festival-des-templiers-5719" target="_blank" rel="noopener">Festival des Templiers</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
+          <td>Marathon des Causses</td>
+          <td>34,1 km · D+1581</td>
+          <td>Octobre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
+          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
+        </tr>
+        <tr>
+          <td>Marathon du Larzac</td>
+          <td>33,3 km · D+1400</td>
+          <td>Octobre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
+          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
+        </tr>
+        <tr>
+          <td>Monna Lisa</td>
+          <td>~33 km · D+1176</td>
+          <td>Octobre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
+          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Grands Trails d'Auvergne</a></strong><br><span class="muted" style="font-size:0.75rem;">Lac d'Aubusson (63)</span></td>
+          <td>Trail du Lac</td>
+          <td>27 km · D+850</td>
+          <td>Octobre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début octobre 2027</td>
+          <td class="muted">~fin décembre 2026 (2026 : 24 décembre 2025 à midi)</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://fr.milesrepublic.com/event/trail-des-3-rocs-16262" target="_blank" rel="noopener">Trail des 3 Rocs</a></strong><br><span class="muted" style="font-size:0.75rem;">St-Antonin-Noble-Val (82)</span></td>
+          <td>Trail des 3 Rocs</td>
+          <td>31 km · D+1400</td>
+          <td>Novembre</td>
+          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~novembre 2027 <span class="muted" style="font-size:0.72rem;">(date déplacée en 2026, à reconfirmer)</span></td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <hr class="divider">
+
+    <div class="phase-sep" style="margin-top:0;">2028 ?</div>
+    <div class="card card-accent">
+      <div class="tag tag-green">Schneider Electric Marathon de Paris</div>
+      <h3>42,195 km · avenue des Champs-Élysées</h3>
+      <p style="font-size:0.85rem;">Dernière édition connue (ASO) : 12 avril 2026. Changement majeur : la Ville de Paris a retiré l'organisation à ASO après près de 30 ans — le groupement Cadence (Keneo, Havas, Avena Event) reprend la concession 2027–2030. L'édition 2027 est déjà datée : <strong>dimanche 11 avril 2027</strong>, avec ouverture des inscriptions annoncée pour septembre 2026. Aucune date officielle pour 2028 à ce stade — à surveiller une fois l'édition 2027 passée.</p>
+    </div>
+
+
+    <p class="info" style="margin-top:1rem;">Coïncidence à noter : le Trail des 4×1800 se déroule ce week-end même (17–18 juillet 2026). Les distances indiquées entre parenthèses sont celles que tu avais notées — elles diffèrent légèrement des chiffres officiels trouvés, à vérifier avant inscription.</p>
     </div>
 
   </section>
@@ -1035,139 +1157,6 @@
 
   </section>
 
-  <!-- ========== TRAILS À SURVEILLER ========== -->
-  <section id="trails" class="section">
-    <div class="section-title">Trails à surveiller · Calendrier indicatif</div>
-
-    <p class="muted" style="font-size:0.82rem; margin-bottom:1.5rem;">Dates vérifiées le 18 juillet 2026 à partir des sites officiels et plateformes d'inscription. Les éditions "à confirmer" ne sont pas encore officiellement annoncées — à revérifier à l'approche de la période habituelle. Ouverture des inscriptions non recherchée (généralement 2 à 6 mois avant la course selon l'événement) : à vérifier sur le site de chaque organisateur.</p>
-
-    <div class="table-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Événement</th>
-          <th>Course(s)</th>
-          <th>Distance · D+</th>
-          <th>Mois</th>
-          <th>Date prévisionnelle</th>
-          <th>Date d'ouverture des dossards</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong><a href="https://fr.milesrepublic.com/event/forez-trails-15451" target="_blank" rel="noopener">Forez Trails</a></strong><br><span class="muted" style="font-size:0.75rem;">Augerolles (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
-          <td>L'Augerolloise</td>
-          <td>33 km · D+1100</td>
-          <td>Mars</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début mars 2027</td>
-          <td class="muted">Non communiquée précisément — tarif de base jusqu'au 31/01 en 2026, ouverture probable à l'automne 2026</td>
-        </tr>
-        <tr>
-          <td rowspan="2"><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span></td>
-          <td>La 4×1800</td>
-          <td>32 km · D+2000 <span class="muted" style="font-size:0.72rem;">(35 km indiqué)</span></td>
-          <td>Juillet</td>
-          <td>17–18 juillet 2026 <span style="color:var(--accent2); font-size:0.72rem;">— ce week-end</span></td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td>Trail des Crêtes</td>
-          <td>21 km · D+1100 <span class="muted" style="font-size:0.72rem;">(22 km/1200 indiqué)</span></td>
-          <td>Juillet</td>
-          <td>17–18 juillet 2026</td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td rowspan="2"><strong><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Grands Trails Esprit Volcans</a></strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
-          <td>La Directissime</td>
-          <td>34 km · D+770 / D-1800</td>
-          <td>Septembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td>Gergo Trail</td>
-          <td>22 km · D+900</td>
-          <td>Septembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td><strong>Trails du Sancy Oxsitis</strong><br><span class="muted" style="font-size:0.75rem;">Mont-Dore (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
-          <td>Trails du Sancy Oxsitis</td>
-          <td>33,5 km · D+2000</td>
-          <td>Septembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
-          <td class="muted">Non communiquée — à vérifier sur sancy.com</td>
-        </tr>
-        <tr>
-          <td rowspan="3"><strong><a href="https://fr.milesrepublic.com/event/festival-des-templiers-5719" target="_blank" rel="noopener">Festival des Templiers</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
-          <td>Marathon des Causses</td>
-          <td>34,1 km · D+1581</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
-          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
-        </tr>
-        <tr>
-          <td>Marathon du Larzac</td>
-          <td>33,3 km · D+1400</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
-          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
-        </tr>
-        <tr>
-          <td>Monna Lisa</td>
-          <td>~33 km · D+1176</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
-          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
-        </tr>
-        <tr>
-          <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Grands Trails d'Auvergne</a></strong><br><span class="muted" style="font-size:0.75rem;">Lac d'Aubusson (63)</span></td>
-          <td>Trail du Lac</td>
-          <td>27 km · D+850</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début octobre 2027</td>
-          <td class="muted">~fin décembre 2026 (2026 : 24 décembre 2025 à midi)</td>
-        </tr>
-        <tr>
-          <td><strong><a href="https://fr.milesrepublic.com/event/trail-des-3-rocs-16262" target="_blank" rel="noopener">Trail des 3 Rocs</a></strong><br><span class="muted" style="font-size:0.75rem;">St-Antonin-Noble-Val (82)</span></td>
-          <td>Trail des 3 Rocs</td>
-          <td>31 km · D+1400</td>
-          <td>Novembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~novembre 2027 <span class="muted" style="font-size:0.72rem;">(date déplacée en 2026, à reconfirmer)</span></td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-    <hr class="divider">
-
-    <div class="phase-sep" style="margin-top:0;">2028 ?</div>
-    <div class="card card-accent">
-      <div class="tag tag-green">Schneider Electric Marathon de Paris</div>
-      <h3>42,195 km · avenue des Champs-Élysées</h3>
-      <p style="font-size:0.85rem;">Dernière édition connue (ASO) : 12 avril 2026. Changement majeur : la Ville de Paris a retiré l'organisation à ASO après près de 30 ans — le groupement Cadence (Keneo, Havas, Avena Event) reprend la concession 2027–2030. L'édition 2027 est déjà datée : <strong>dimanche 11 avril 2027</strong>, avec ouverture des inscriptions annoncée pour septembre 2026. Aucune date officielle pour 2028 à ce stade — à surveiller une fois l'édition 2027 passée.</p>
-    </div>
-
-
-    <p class="info" style="margin-top:1rem;">Coïncidence à noter : le Trail des 4×1800 se déroule ce week-end même (17–18 juillet 2026). Les distances indiquées entre parenthèses sont celles que tu avais notées — elles diffèrent légèrement des chiffres officiels trouvés, à vérifier avant inscription.</p>
-
-  </section>
-
-  <!-- ========== STATS (à venir) ========== -->
-  <section id="stats" class="section">
-    <div class="section-title">Stats · KPIs Strava</div>
-
-    <div class="card card-accent">
-      <div class="tag tag-green">On verra plus tard</div>
-      <h3>Tableau de bord en attente</h3>
-      <p style="font-size:0.85rem;">Cette rubrique accueillera les KPIs tirés de Strava : volume hebdomadaire, D+ cumulé, progression d'allure, répartition du temps par discipline (course / vélo / renfo) et taux de respect du plan. Bloqué pour l'instant sur la connexion du connecteur Strava — à reprendre une fois débloqué, avec la fonction serverless (Cloudflare Workers) pour le bouton "actualiser".</p>
-    </div>
-
-  </section>
-
   <!-- ========== PROFIL ========== -->
   <section id="profil" class="section">
     <div class="section-title">Profil athlète · Données de référence</div>
@@ -1237,6 +1226,14 @@
         <span class="progress-val">~570km</span>
       </div>
       <p class="info" style="margin-top:0.75rem;">Données Strava à jour dès reconnexion du connecteur.</p>
+    </div>
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Stats · KPIs Strava</h3>
+        <div class="card card-accent">
+      <div class="tag tag-green">On verra plus tard</div>
+      <h3>Tableau de bord en attente</h3>
+      <p style="font-size:0.85rem;">Cette rubrique accueillera les KPIs tirés de Strava : volume hebdomadaire, D+ cumulé, progression d'allure, répartition du temps par discipline (course / vélo / renfo) et taux de respect du plan. Bloqué pour l'instant sur la connexion du connecteur Strava — à reprendre une fois débloqué, avec la fonction serverless (Cloudflare Workers) pour le bouton "actualiser".</p>
     </div>
 
   </section>
