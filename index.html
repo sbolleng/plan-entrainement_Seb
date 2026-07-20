@@ -1339,7 +1339,7 @@
 
     <div class="card card-accent" style="margin-bottom:1rem;">
       <div class="tag tag-green">📊 Calculé depuis Strava le 20 juillet 2026</div>
-      <p style="font-size:0.82rem; margin-bottom:0;">Période nov. 2025 → juin 2026 (avant l'arrêt pour blessure), 54 sorties extérieur. Les séances tapis sont exclues des calculs d'allure : l'allure y est imposée par la machine, elle fausserait la tendance. La ligne pointillée jaune sur chaque graphe est la tendance linéaire.</p>
+      <p style="font-size:0.82rem; margin-bottom:0;">Période nov. 2025 → juin 2026 (avant l'arrêt pour blessure), 54 sorties extérieur. Les séances tapis sont exclues des calculs d'allure : l'allure y est imposée par la machine, elle fausserait la tendance. Sur les graphes en barres, la ligne pointillée jaune est la tendance linéaire.</p>
     </div>
 
     <div class="card" style="margin-bottom:1rem;">
@@ -1372,32 +1372,32 @@
       <div class="tag tag-green">Cadence moyenne</div>
       <h3>Foulée · pas/min</h3>
       <div class="stats-chart" id="chart-cadence"></div>
-      <p class="info"><strong>C'est ta meilleure progression, et elle est nette : 154 → 167 spm (+13).</strong> Contrairement à l'allure, la tendance est régulière et peu bruitée. Une cadence élevée raccourcit la foulée, réduit le temps de contact au sol et surtout <strong>diminue l'impact sur le genou et le tibia</strong> — précisément les structures qui t'ont posé problème. La zone considérée comme efficiente se situe autour de 170–180 spm : tu es désormais à l'entrée de cette plage, et la sortie du 19 juillet est à 170. Objectif raisonnable : stabiliser 170–175 sans forcer, plutôt que viser plus haut.</p>
-    </div>
-
-    <div class="card" style="margin-bottom:1rem;">
-      <div class="tag tag-red">Fréquence cardiaque à l'effort</div>
-      <h3>FC moyenne en sortie · bpm</h3>
-      <div class="stats-chart" id="chart-hr"></div>
-      <p class="info">Une séance représentative par mois (le calcul sur les 69 sorties demanderait un appel par activité). Février est le point haut (165 bpm), juin le point bas (145 bpm) — mais attention, une FC basse peut simplement signifier une sortie plus tranquille. Prise seule, cette courbe dit peu de choses : c'est l'efficience cardiaque ci-dessous qui est lisible.</p>
+      <div class="stats-legend">
+        <span><i style="background:var(--accent);"></i>Cadence mensuelle</span>
+        <span><i style="background:var(--accent2);"></i>Repère 170 spm</span>
+      </div>
+      <p class="info"><strong>C'est ta meilleure progression, et elle est nette : 154 → 167 spm (+13).</strong> Contrairement à l'allure, la courbe monte de façon régulière et peu bruitée. Une cadence élevée raccourcit la foulée, réduit le temps de contact au sol et surtout <strong>diminue l'impact sur le genou et le tibia</strong> — précisément les structures qui t'ont posé problème. La zone considérée comme efficiente se situe autour de 170–180 spm : tu arrives au seuil, et la sortie du 19 juillet est à 170. Objectif raisonnable : stabiliser 170–175 sans forcer, plutôt que viser plus haut.</p>
     </div>
 
     <div class="card" style="margin-bottom:1rem;">
       <div class="tag tag-green">Efficience cardiaque</div>
       <h3>Battements par km-effort</h3>
       <div class="stats-chart" id="chart-efficiency"></div>
-      <p class="info"><strong>Barre plus haute = plus efficient.</strong> On divise le nombre total de battements d'une sortie par sa distance en km-effort : combien de battements de cœur te coûte 1 km. Ça neutralise à la fois l'allure, la distance et le dénivelé — c'est le KPI le plus honnête pour juger de la forme aérobie. <strong>Résultat : 893 en février → 776 en juillet, soit −13 %.</strong> C'est une vraie amélioration, et c'est le signal le plus solide de toutes ces courbes.</p>
+      <p class="info"><strong>La courbe descend = tu progresses.</strong> On divise le nombre total de battements d'une sortie par sa distance en km-effort : combien de battements de cœur te coûte 1 km. Ça neutralise à la fois l'allure, la distance et le dénivelé — c'est le KPI le plus honnête pour juger de la forme aérobie. <strong>Résultat : 893 en février → 781 en juin, soit −12,5 %.</strong> C'est une vraie amélioration, et le signal le plus solide de toutes ces courbes.</p>
     </div>
 
     <div class="card card-alert" style="margin-bottom:1rem;">
       <div class="tag tag-red">Écart de spécificité</div>
-      <h3>Dénivelé par km · m/km</h3>
+      <h3>Dénivelé par km · m/km · réel et trajectoire cible</h3>
       <div class="stats-chart" id="chart-dpk"></div>
       <div class="stats-legend">
-        <span><i style="background:var(--accent2);"></i>Cible Forez · 33 m/km</span>
-        <span><i style="background:var(--red);"></i>Cible Sancy · 60 m/km</span>
+        <span><i style="background:var(--accent);"></i>Réel</span>
+        <span><i style="background:#7eb8f5;"></i>Cible</span>
+        <span><i style="background:var(--accent2);"></i>Forez · 33 m/km</span>
+        <span><i style="background:var(--red);"></i>Sancy · 60 m/km</span>
       </div>
-      <p class="info"><strong>C'est ton principal point faible, et de loin.</strong> Tu tournes autour de 9–10 m/km, hors mois de course. Forez demande 33 m/km, le Sancy 60 m/km — soit <strong>6 fois ton ratio actuel</strong>. Le cardio et la cadence suivent, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui t'attend. Seul mars s'en approche un peu (17,7 m/km), et uniquement grâce à la course elle-même. C'est le chantier n°1 des phases 2 à 4.</p>
+      <p class="info"><strong>C'est ton principal point faible, et de loin.</strong> Tu tournes autour de 9–10 m/km hors mois de course, quand le Sancy en demande 60 — soit six fois plus. Le cardio et la cadence suivent, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui t'attend. Seul mars 2026 s'en approche (17,7 m/km), et uniquement grâce à la course elle-même.</p>
+      <p class="info" style="margin-top:0.5rem;">La courbe bleue est la trajectoire proposée, calée sur les objectifs de D+ hebdomadaire déjà inscrits dans l'onglet Sorties : montée progressive à 20 m/km d'ici décembre 2026, 24 en février, pic à 40 m/km en juillet 2027, puis affûtage. <strong>Un point important : la moyenne d'entraînement n'atteindra jamais les 60 m/km du jour J</strong>, et c'est normal — les sorties de semaine restent plates en Île-de-France. Ce qui doit approcher 60, c'est la <strong>sortie longue du samedi</strong> : c'est elle qu'il faut emmener à Fontainebleau, en Essonne, puis en Auvergne ou dans les Vosges en phase 4.</p>
     </div>
 
     <hr class="divider">

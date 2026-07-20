@@ -185,16 +185,129 @@ function showSection(id, btn) {
     }));
   }
 
+  // ---- Graphiques en courbe (SVG + points positionnés) --------------------
+  // Les propriétés de layout critiques sont posées en inline pour rester
+  // fonctionnelles même si la feuille de style n'est pas à jour.
+  function renderLineChart(containerId, cfg) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    const H = cfg.height || 140;
+    const all = [];
+    cfg.series.forEach(s => s.values.forEach(v => { if (v !== null && v !== undefined) all.push(v); }));
+    (cfg.refLines || []).forEach(r => all.push(r.val));
+    if (!all.length) return;
+
+    const min = cfg.min !== undefined ? cfg.min : Math.min(...all);
+    const max = cfg.max !== undefined ? cfg.max : Math.max(...all);
+    const span = (max - min) || 1;
+    const n = cfg.labels.length;
+
+    const xAt = i => n > 1 ? 4 + (i / (n - 1)) * 92 : 50;
+    const yAt = v => 8 + (1 - (v - min) / span) * 84;   // 0 = haut
+
+    let svgParts = '';
+
+    (cfg.refLines || []).forEach(function (r) {
+      const y = yAt(r.val);
+      svgParts += '<line x1="0" y1="' + y + '" x2="100" y2="' + y + '" stroke="' + r.color +
+        '" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke" opacity="0.7" />';
+    });
+
+    cfg.series.forEach(function (s) {
+      const pts = [];
+      s.values.forEach(function (v, i) {
+        if (v !== null && v !== undefined) pts.push(xAt(i) + ',' + yAt(v));
+      });
+      if (pts.length > 1) {
+        svgParts += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="' + s.color +
+          '" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"' +
+          (s.dashed ? ' stroke-dasharray="5 4"' : '') + ' />';
+      }
+    });
+
+    let dots = '';
+    cfg.series.forEach(function (s) {
+      s.values.forEach(function (v, i) {
+        if (v === null || v === undefined) return;
+        const left = xAt(i), bottom = 100 - yAt(v);
+        dots += '<span style="position:absolute;left:' + left + '%;bottom:' + bottom +
+          '%;width:7px;height:7px;border-radius:50%;background:' + s.color +
+          ';transform:translate(-50%,50%);"></span>';
+        const show = s.showValues === 'all' || (Array.isArray(s.showValues) && s.showValues.indexOf(i) !== -1);
+        if (show) {
+          const txt = cfg.formatter ? cfg.formatter(v) : v;
+          dots += '<span style="position:absolute;left:' + left + '%;bottom:' + bottom +
+            '%;transform:translate(-50%,0);margin-bottom:9px;font-family:\'Space Mono\',monospace;' +
+            'font-size:0.55rem;color:var(--muted);white-space:nowrap;">' + txt + '</span>';
+        }
+      });
+    });
+
+    const labels = cfg.labels.map(function (lb, i) {
+      if (!lb) return '';
+      return '<span style="position:absolute;left:' + xAt(i) + '%;transform:translateX(-50%);' +
+        'font-size:0.58rem;color:var(--muted);white-space:nowrap;">' + lb + '</span>';
+    }).join('');
+
+    el.innerHTML =
+      '<div style="position:relative;height:' + H + 'px;">' +
+        '<svg viewBox="0 0 100 100" preserveAspectRatio="none" ' +
+        'style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;">' + svgParts + '</svg>' +
+        dots +
+      '</div>' +
+      '<div style="position:relative;height:1.1rem;margin-top:0.5rem;">' + labels + '</div>';
+  }
+
   function renderStatsCharts() {
     renderBarChart('chart-distance', seriesFrom('distanceKm'));
     renderBarChart('chart-dplus', seriesFrom('dplusM'));
     renderBarChart('chart-pace', seriesFrom('paceSecPerKm'), { invert: true, formatter: fmtPace });
-    renderBarChart('chart-cadence', seriesFrom('cadenceSpm'));
-    renderBarChart('chart-hr', seriesFrom('hrBpm'));
-    renderBarChart('chart-efficiency', seriesFrom('effBeats'), { invert: true });
-    renderBarChart('chart-dpk', seriesFrom('dpk'), {
-      max: 65,
-      formatter: function (v) { return v.toFixed(1); },
+
+    const moisReels = ['Nov', 'Déc', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'];
+
+    // Cadence · courbe
+    renderLineChart('chart-cadence', {
+      labels: moisReels,
+      min: 145, max: 172,
+      series: [{
+        values: statsMonthly.slice(0, 8).map(m => m.cadenceSpm),
+        color: 'var(--accent)', showValues: 'all'
+      }],
+      refLines: [{ val: 170, color: 'var(--accent2)' }]
+    });
+
+    // Efficience cardiaque · courbe (baisse = mieux)
+    renderLineChart('chart-efficiency', {
+      labels: moisReels,
+      min: 750, max: 910,
+      series: [{
+        values: statsMonthly.slice(0, 8).map(m => m.effBeats),
+        color: 'var(--accent)', showValues: 'all'
+      }]
+    });
+
+    // D+/km · réel + trajectoire cible jusqu'au Sancy
+    renderLineChart('chart-dpk', {
+      height: 160,
+      min: 0, max: 65,
+      labels: ['Nov 25', '', '', '', 'Mar 26', '', '', '', 'Juil 26', '', '', '',
+               'Nov 26', '', '', '', 'Mar 27', '', '', '', 'Juil 27', '', 'Sep 27'],
+      formatter: v => v.toFixed(0),
+      series: [
+        {
+          values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1,
+                   null, null, null, null, null, null, null, null,
+                   null, null, null, null, null, null, null],
+          color: 'var(--accent)', showValues: [4, 7]
+        },
+        {
+          values: [null, null, null, null, null, null, null, 9.1,
+                   5, 10, 13, 16, 18, 20, 22, 24,
+                   33, 22, 28, 34, 40, 28, 60],
+          color: '#7eb8f5', dashed: true, showValues: [16, 20, 22]
+        }
+      ],
       refLines: [
         { val: 33, color: 'var(--accent2)' },
         { val: 60, color: 'var(--red)' }
