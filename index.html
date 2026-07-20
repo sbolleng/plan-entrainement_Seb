@@ -1344,19 +1344,40 @@
 
     <div class="card card-accent" style="margin-bottom:1rem;">
       <div class="tag tag-green">📊 Généré depuis Strava le 19 juillet 2026</div>
-      <h3>Volume mensuel course · Nov 2025 → Juil 2026</h3>
-      <div class="stats-chart">
-        <div class="stats-bar-col"><span class="stats-bar-val">68</span><div class="stats-bar" style="height:57%"></div><span class="stats-bar-label">Nov</span></div>
-        <div class="stats-bar-col"><span class="stats-bar-val">75</span><div class="stats-bar" style="height:63%"></div><span class="stats-bar-label">Déc</span></div>
-        <div class="stats-bar-col"><span class="stats-bar-val">71</span><div class="stats-bar" style="height:60%"></div><span class="stats-bar-label">Jan</span></div>
-        <div class="stats-bar-col"><span class="stats-bar-val">62</span><div class="stats-bar" style="height:52%"></div><span class="stats-bar-label">Fév</span></div>
-        <div class="stats-bar-col"><span class="stats-bar-val">73</span><div class="stats-bar" style="height:61%"></div><span class="stats-bar-label">Mar</span></div>
-        <div class="stats-bar-col"><span class="stats-bar-val">119</span><div class="stats-bar" style="height:100%"></div><span class="stats-bar-label">Avr</span></div>
-        <div class="stats-bar-col"><span class="stats-bar-val">65</span><div class="stats-bar" style="height:55%"></div><span class="stats-bar-label">Mai</span></div>
-        <div class="stats-bar-col"><span class="stats-bar-val">76</span><div class="stats-bar" style="height:63%"></div><span class="stats-bar-label">Juin</span></div>
-        <div class="stats-bar-col is-current"><span class="stats-bar-val">0</span><div class="stats-bar" style="height:2px"></div><span class="stats-bar-label">Juil*</span></div>
-      </div>
-      <p class="info" style="margin-top:0.5rem;">En km. Avril = pic de volume (119 km, dont la rando/course de 37 km/500m D+). *Juillet : 0 km course, uniquement du vélo pendant la rééducation (44 km sur 5 séances).</p>
+      <p style="font-size:0.82rem; margin-bottom:0;">4 courbes de progression sur la période nov. 2025 → juin 2026 (avant l'arrêt pour blessure), calculées à partir de l'ensemble des sorties course enregistrées. La FC est basée sur une séance représentative par mois plutôt que la totalité — voir note en bas de page.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-blue">Volume mensuel</div>
+      <h3>Distance course · km</h3>
+      <div class="stats-chart" id="chart-distance"></div>
+      <p class="info" style="margin-top:0.5rem;">Avril = pic de volume (dont la rando/course de 37 km · 500 m D+). Juillet : 0 km course, uniquement du vélo pendant la rééducation.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-orange">Dénivelé mensuel</div>
+      <h3>D+ cumulé · m</h3>
+      <div class="stats-chart" id="chart-dplus"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-purple">Allure moyenne</div>
+      <h3>Rythme · min/km</h3>
+      <div class="stats-chart" id="chart-pace"></div>
+      <p class="info" style="margin-top:0.5rem;">Barre plus haute = plus rapide. Mélange sorties longues et séances qualité — à lire comme tendance globale, pas comme allure cible.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-green">Cadence moyenne</div>
+      <h3>Foulée · spm</h3>
+      <div class="stats-chart" id="chart-cadence"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-red">Fréquence cardiaque</div>
+      <h3>FC moyenne · bpm</h3>
+      <div class="stats-chart" id="chart-hr"></div>
+      <p class="info" style="margin-top:0.5rem;">Une séance représentative par mois, pas une moyenne de toutes les sorties (calcul complet trop coûteux à récupérer). Juin plus bas : sortie test post-genou, allure prudente.</p>
     </div>
 
     <div class="grid-2" style="margin-bottom:1rem;">

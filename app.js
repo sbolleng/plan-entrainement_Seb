@@ -81,6 +81,73 @@ function showSection(id, btn) {
   }
   loadLogs();
 
+  // ===== Stats · graphiques de progression (données Strava, calculées le 19/07/2026) =====
+  // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
+  const statsMonthly = [
+    { label: 'Nov',  distanceKm: 68.1,  dplusM: 436,  paceSecPerKm: 386, cadenceSpm: 154, hrBpm: 152 },
+    { label: 'Déc',  distanceKm: 75.1,  dplusM: 790,  paceSecPerKm: 404, cadenceSpm: 151, hrBpm: 151 },
+    { label: 'Jan',  distanceKm: 71.4,  dplusM: 621,  paceSecPerKm: 354, cadenceSpm: 161, hrBpm: 156 },
+    { label: 'Fév',  distanceKm: 62.4,  dplusM: 402,  paceSecPerKm: 365, cadenceSpm: 158, hrBpm: 165 },
+    { label: 'Mar',  distanceKm: 72.8,  dplusM: 1290, paceSecPerKm: 381, cadenceSpm: 163, hrBpm: 163 },
+    { label: 'Avr',  distanceKm: 118.9, dplusM: 1118, paceSecPerKm: 363, cadenceSpm: 163, hrBpm: 156 },
+    { label: 'Mai',  distanceKm: 65.1,  dplusM: 650,  paceSecPerKm: 376, cadenceSpm: 163, hrBpm: 160 },
+    { label: 'Juin', distanceKm: 75.5,  dplusM: 690,  paceSecPerKm: 347, cadenceSpm: 167, hrBpm: 145 },
+    { label: 'Juil*', distanceKm: 0,    dplusM: 0,    paceSecPerKm: null, cadenceSpm: null, hrBpm: null },
+  ];
+
+  function fmtPace(sec) {
+    if (!sec) return '—';
+    const m = Math.floor(sec / 60), s = Math.round(sec % 60);
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  function renderBarChart(containerId, values, opts) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    opts = opts || {};
+    const nums = values.map(v => v.val).filter(v => v !== null && v !== undefined);
+    if (!nums.length) return;
+    const max = opts.max || Math.max(...nums);
+    const min = opts.invert ? Math.min(...nums) : 0;
+    el.innerHTML = values.map(v => {
+      const isNull = v.val === null || v.val === undefined;
+      let pct;
+      if (isNull) pct = 0;
+      else if (opts.invert) {
+        // faster/lower is "taller" (e.g. pace): invert scale
+        pct = Math.round(((max - v.val) / (max - min)) * 80 + 20);
+      } else {
+        pct = Math.round((v.val / max) * 100);
+      }
+      const display = isNull ? '—' : (opts.formatter ? opts.formatter(v.val) : Math.round(v.val));
+      const currentClass = v.current ? ' is-current' : '';
+      return '<div class="stats-bar-col' + currentClass + '">' +
+        '<span class="stats-bar-val">' + display + '</span>' +
+        '<div class="stats-bar" style="height:' + Math.max(pct, 2) + '%"></div>' +
+        '<span class="stats-bar-label">' + v.label + '</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  function renderStatsCharts() {
+    renderBarChart('chart-distance', statsMonthly.map((m, i) => ({
+      label: m.label, val: m.distanceKm, current: i === statsMonthly.length - 1
+    })));
+    renderBarChart('chart-dplus', statsMonthly.map((m, i) => ({
+      label: m.label, val: m.dplusM, current: i === statsMonthly.length - 1
+    })));
+    renderBarChart('chart-pace', statsMonthly.map((m, i) => ({
+      label: m.label, val: m.paceSecPerKm, current: i === statsMonthly.length - 1
+    })), { invert: true, formatter: fmtPace });
+    renderBarChart('chart-cadence', statsMonthly.map((m, i) => ({
+      label: m.label, val: m.cadenceSpm, current: i === statsMonthly.length - 1
+    })));
+    renderBarChart('chart-hr', statsMonthly.map((m, i) => ({
+      label: m.label, val: m.hrBpm, current: i === statsMonthly.length - 1
+    })));
+  }
+  renderStatsCharts();
+
   // ===== Suivi nutrition (checklist simple) — stocké en local sur cet appareil =====
   function saveNutriLog(el) {
     const key = 'sancy-nutri-' + el.dataset.nutri;
