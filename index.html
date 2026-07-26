@@ -71,6 +71,7 @@
 <nav>
   <div class="nav-inner">
     <button class="tab active" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
+    <button class="tab" onclick="showSection('reprise', this)">Reprise</button>
     <button class="tab" onclick="showSection('feuilleroute', this)">Feuille de route</button>
     <button class="tab" onclick="showSection('guide', this)">Guide</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
@@ -81,154 +82,153 @@
 
   <!-- ========== CETTE SEMAINE ========== -->
   <section id="semaine_en_cours" class="section active">
-    <div class="section-title">Semaine du 20 au 26 juillet 2026 · Reprise course</div>
+    <div class="section-title">Semaine du 27 juillet au 2 août 2026 · Reprise · Semaine 3</div>
 
     <div class="card card-accent" style="margin-bottom:1.5rem;">
-      <div class="tag tag-green">🏃 Reprise effective · 19 juillet</div>
-      <h3>5,02 km · 5'38"/km · FC 149 · cadence 170</h3>
-      <p style="font-size:0.85rem;">Première course depuis 22 jours, un jour plus tôt que la date prévue. La séance est de très bonne facture : FC moyenne à 149 bpm, soit pleinement en Z2 malgré une allure soutenue, et une cadence de 170 pas/min — ta meilleure valeur à ce jour. Sortie non synchronisée sur Strava, donc absente des graphiques de la rubrique Stats.</p>
-      <p style="font-size:0.85rem; margin-bottom:0;">Le plan de la semaine part de là : <strong>3 sorties, environ 16 km au total, terrain plat uniquement.</strong> Soit à peu près 60 % du volume d'avant blessure. Le dénivelé et le fractionné restent hors sujet tant que le kiné n'a pas confirmé.</p>
+      <div class="tag tag-green">Semaine 2 validée le 26/07</div>
+      <h3>Semaine 3 · de 13×(1'C/1'M) au passage des blocs de 2 min</h3>
+      <p style="font-size:0.85rem;">La semaine suit le protocole Clinique du Coureur (onglet Reprise). 5 séances course, terrain plat, allure jogging sur les blocs de course. <strong>Pas de sortie longue, pas de dénivelé</strong> tant que la reprise n'est pas terminée. Le renfo passe à une organisation orientée cuisses, stabilité, fessiers et abdos.</p>
+      <p style="font-size:0.85rem; margin-bottom:0;">Badges renfo : <strong>F</strong> cuisses (force) · <strong>S</strong> stabilité &amp; fessiers · <strong>A</strong> abdos/tronc · <strong>H</strong> haut du corps · <strong>C/M</strong> séance course/marche. Détail des exercices dans Guide → Renfo.</p>
     </div>
 
     <!-- JOUR PAR JOUR -->
     <div style="display:flex; flex-direction:column; gap:0.75rem;">
 
-      <div class="week-day-card" data-date="2026-07-20">
+      <div class="week-day-card" data-date="2026-07-27">
         <div class="week-day-left">
           <div class="week-day-today-flag">Aujourd'hui</div>
           <div class="week-day-name">Lundi</div>
-          <div class="week-day-num">20</div>
+          <div class="week-day-num">27</div>
         </div>
         <div>
           <div class="week-day-badges">
-            <span class="tag tag-green" style="margin:0;">A</span>
-            <span class="tag tag-orange" style="margin:0;">B</span>
+            <span class="tag tag-green" style="margin:0;">F</span>
+            <span class="tag tag-orange" style="margin:0;">S</span>
+            <span class="sortie-badge sb-ef" style="margin:0;">C/M</span>
           </div>
-          <div class="week-day-title">Renforcement A+B · 30 min · pas de course</div>
-          <div class="week-day-desc">Lendemain de la reprise : on ne court pas. Sur une fissure osseuse, le signal qui compte n'est pas la douleur pendant l'effort mais celle qui apparaît dans les 24 à 48 h qui suivent. Journée d'observation, protocole kiné membres inférieurs normalement.</div>
+          <div class="week-day-title">Renfo Cuisses + Stabilité · 45 min, puis 13×(1'C/1'M)</div>
+          <div class="week-day-desc">Première séance de la semaine 3. Le nombre de répétitions de course monte à 13, toujours 1 min course / 1 min marche. Terrain plat, allure d'un jogging tranquille sur les blocs de course. Renfo le matin : cuisses (fentes, soulevé de terre) + stabilité.</div>
           <div class="week-track">
-            <label class="week-check"><input type="checkbox" data-day="2026-07-20" onchange="saveLog(this)"> Séance réalisée</label>
-            <textarea data-day="2026-07-20" onchange="saveLog(this)" placeholder="Noter toute gêne cheville ou genou apparue depuis hier"></textarea>
+            <label class="week-check"><input type="checkbox" data-day="2026-07-27" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-27" onchange="saveLog(this)" placeholder="Ressenti cheville/genou, allure des blocs C…"></textarea>
           </div>
         </div>
       </div>
-      <div class="week-day-card" data-date="2026-07-21">
+      <div class="week-day-card" data-date="2026-07-28">
         <div class="week-day-left">
           <div class="week-day-today-flag">Aujourd'hui</div>
           <div class="week-day-name">Mardi</div>
-          <div class="week-day-num">21</div>
+          <div class="week-day-num">28</div>
         </div>
         <div>
           <div class="week-day-badges">
-            <span class="tag tag-green" style="margin:0;">A</span>
-            <span class="tag tag-purple" style="margin:0;">C</span>
-            <span class="sortie-badge sb-ef" style="margin:0;">EF</span>
+            <span class="tag tag-purple" style="margin:0;">A</span>
+            <span class="tag tag-orange" style="margin:0;">S</span>
+            <span class="sortie-badge sb-ef" style="margin:0;">C/M</span>
           </div>
-          <div class="week-day-title">Renfo A+C · 30 min, puis EF 4–5 km</div>
-          <div class="week-day-desc">Deuxième sortie de la reprise. Terrain strictement plat, allure libre mais FC tenue en Z2 (140–153 bpm). Ne pas chercher à retrouver le 5'38" d'hier — si la FC monte au-dessus de 153, ralentir sans état d'âme.</div>
+          <div class="week-day-title">Renfo Abdos + Stabilité · 45 min, puis 14×(1'C/1'M)</div>
+          <div class="week-day-desc">14 répétitions. On ajoute une minute de course par rapport à hier. Renfo axé gainage/abdos et proprioception — pas de charge lourde sur les jambes deux jours de suite.</div>
           <div class="week-track">
-            <label class="week-check"><input type="checkbox" data-day="2026-07-21" onchange="saveLog(this)"> Séance réalisée</label>
-            <textarea data-day="2026-07-21" onchange="saveLog(this)" placeholder="Commentaire (FC moyenne, ressenti cheville…)"></textarea>
+            <label class="week-check"><input type="checkbox" data-day="2026-07-28" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-28" onchange="saveLog(this)" placeholder="Ressenti, gêne éventuelle apparue depuis hier…"></textarea>
           </div>
         </div>
       </div>
-      <div class="week-day-card" data-date="2026-07-22">
+      <div class="week-day-card" data-date="2026-07-29">
         <div class="week-day-left">
           <div class="week-day-today-flag">Aujourd'hui</div>
           <div class="week-day-name">Mercredi</div>
-          <div class="week-day-num">22</div>
+          <div class="week-day-num">29</div>
         </div>
         <div>
           <div class="week-day-badges">
-            <span class="tag tag-green" style="margin:0;">A</span>
-            <span class="tag tag-blue" style="margin:0;">D</span>
-            <span class="sortie-badge sb-cross" style="margin:0;">VÉLO</span>
+            <span class="tag tag-green" style="margin:0;">F</span>
+            <span class="tag tag-purple" style="margin:0;">A</span>
+            <span class="sortie-badge sb-cross" style="margin:0;">VÉLO ?</span>
           </div>
-          <div class="week-day-title">Renfo A+D · 30 min, puis vélo · 45 min</div>
-          <div class="week-day-desc">Mercredi vélo maintenu, il reste utile même avec la course qui reprend : il ajoute du volume aérobie sans impact articulaire. Référence de la dernière séance : 20 km · 44:33 · 119 W · 85 rpm.</div>
+          <div class="week-day-title">Renfo Cuisses + Abdos · 45 min · vélo possible</div>
+          <div class="week-day-desc">Jour sans course. Le protocole autorise un transfert « moins stressant » : si tu veux ajouter du cardio sans impact, le vélo a sa place ici (option, pas obligation). Sinon, repos course et renfo seul.</div>
           <div class="week-track">
-            <label class="week-check"><input type="checkbox" data-day="2026-07-22" onchange="saveLog(this)"> Séance réalisée</label>
-            <textarea data-day="2026-07-22" onchange="saveLog(this)" placeholder="Commentaire (watts, cadence, ressenti…)"></textarea>
+            <label class="week-check"><input type="checkbox" data-day="2026-07-29" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-29" onchange="saveLog(this)" placeholder="Vélo fait ? watts/cadence, ou repos…"></textarea>
           </div>
         </div>
       </div>
-      <div class="week-day-card" data-date="2026-07-23">
+      <div class="week-day-card" data-date="2026-07-30">
         <div class="week-day-left">
           <div class="week-day-today-flag">Aujourd'hui</div>
           <div class="week-day-name">Jeudi</div>
-          <div class="week-day-num">23</div>
+          <div class="week-day-num">30</div>
         </div>
         <div>
           <div class="week-day-badges">
-            <span class="tag tag-orange" style="margin:0;">B</span>
-            <span class="tag tag-purple" style="margin:0;">C</span>
+            <span class="tag tag-orange" style="margin:0;">S</span>
+            <span class="tag tag-blue" style="margin:0;">H</span>
+            <span class="sortie-badge sb-ef" style="margin:0;">C/M</span>
           </div>
-          <div class="week-day-title">Renforcement B+C · 30 min · pas de course</div>
-          <div class="week-day-desc">Jour sans impact entre deux sorties. Le fractionné reste suspendu — pas avant plusieurs semaines de course sans douleur : c'est le type de séance qui recharge le plus violemment l'os.</div>
+          <div class="week-day-title">Renfo Stabilité + Haut · 45 min, puis 15×(1'C/1'M)</div>
+          <div class="week-day-desc">15 répétitions : le plus haut niveau en 1'C/1'M avant de passer aux blocs de 2 minutes. Si les sensations sont bonnes, la séance suivante allongera la course.</div>
           <div class="week-track">
-            <label class="week-check"><input type="checkbox" data-day="2026-07-23" onchange="saveLog(this)"> Séance réalisée</label>
-            <textarea data-day="2026-07-23" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, charge utilisée…)"></textarea>
+            <label class="week-check"><input type="checkbox" data-day="2026-07-30" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-30" onchange="saveLog(this)" placeholder="Sensations sur 15 reps, cheville en fin de séance…"></textarea>
           </div>
         </div>
       </div>
-      <div class="week-day-card" data-date="2026-07-24">
+      <div class="week-day-card" data-date="2026-07-31">
         <div class="week-day-left">
           <div class="week-day-today-flag">Aujourd'hui</div>
           <div class="week-day-name">Vendredi</div>
-          <div class="week-day-num">24</div>
+          <div class="week-day-num">31</div>
         </div>
         <div>
           <div class="week-day-badges">
-            <span class="tag tag-green" style="margin:0;">A</span>
-            <span class="tag tag-blue" style="margin:0;">D</span>
-            <span class="sortie-badge sb-kine" style="margin:0;">KINÉ</span>
+            <span class="tag tag-green" style="margin:0;">F</span>
+            <span class="tag tag-orange" style="margin:0;">S</span>
+            <span class="sortie-badge sb-ef" style="margin:0;">C/M</span>
           </div>
-          <div class="week-day-title">Renfo A+D · 30 min + kiné cheville</div>
-          <div class="week-day-desc">Séance clé de la semaine : faire valider la reprise et le volume prévu pour la semaine suivante. Points à remonter — la sortie du 19 (5 km, sans douleur ?), celle du 21, et la question du retour progressif du dénivelé.</div>
+          <div class="week-day-title">Renfo Cuisses + Stabilité · 45 min, puis 3×(2'C/1'M)</div>
+          <div class="week-day-desc">Bascule vers les blocs de 2 minutes de course. Seulement 3 répétitions car chaque bloc est plus long : le volume de course reste proche, mais la marche se raréfie. Renfo cuisses + stabilité.</div>
           <div class="week-track">
-            <label class="week-check"><input type="checkbox" data-day="2026-07-24" onchange="saveLog(this)"> Séance réalisée</label>
-            <textarea data-day="2026-07-24" onchange="saveLog(this)" placeholder="Retour du kiné · feu vert pour la suite ?"></textarea>
+            <label class="week-check"><input type="checkbox" data-day="2026-07-31" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-07-31" onchange="saveLog(this)" placeholder="Ressenti du passage à 2 min de course continue…"></textarea>
           </div>
         </div>
       </div>
-      <div class="week-day-card" data-date="2026-07-25">
+      <div class="week-day-card" data-date="2026-08-01">
         <div class="week-day-left">
           <div class="week-day-today-flag">Aujourd'hui</div>
           <div class="week-day-name">Samedi</div>
-          <div class="week-day-num">25</div>
+          <div class="week-day-num">1</div>
         </div>
         <div>
           <div class="week-day-badges">
-            <span class="tag tag-green" style="margin:0;">A</span>
-            <span class="tag tag-orange" style="margin:0;">B</span>
-            <span class="tag tag-purple" style="margin:0;">C</span>
-            <span class="tag tag-blue" style="margin:0;">D</span>
-            <span class="sortie-badge sb-long" style="margin:0;">LONG</span>
+            <span class="tag tag-purple" style="margin:0;">A</span>
+            <span class="tag tag-blue" style="margin:0;">H</span>
+            <span class="sortie-badge sb-ef" style="margin:0;">C/M</span>
           </div>
-          <div class="week-day-title">Renfo complet · 45–60 min, puis 6 km plat</div>
-          <div class="week-day-desc">Sortie la plus longue de la semaine, et elle reste modeste : 6 km, plat, en Z2. Toujours pas de dénivelé ni de terrain instable — la cheville n'a pas encore été testée en appui irrégulier.</div>
+          <div class="week-day-title">Renfo Abdos + Haut · 45 min, puis 4×(2'C/1'M)</div>
+          <div class="week-day-desc">4 blocs de 2'C/1'M. Dernière séance course de la semaine. Toujours plat — pas de dénivelé ni de sortie longue tant que la reprise n'est pas terminée. Renfo plus léger (abdos + haut du corps).</div>
           <div class="week-track">
-            <label class="week-check"><input type="checkbox" data-day="2026-07-25" onchange="saveLog(this)"> Séance réalisée</label>
-            <textarea data-day="2026-07-25" onchange="saveLog(this)" placeholder="Commentaire (FC, ressenti, douleur…)"></textarea>
+            <label class="week-check"><input type="checkbox" data-day="2026-08-01" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-08-01" onchange="saveLog(this)" placeholder="Bilan des blocs de 2 min, ressenti général…"></textarea>
           </div>
         </div>
       </div>
-      <div class="week-day-card" data-date="2026-07-26">
+      <div class="week-day-card" data-date="2026-08-02">
         <div class="week-day-left">
           <div class="week-day-today-flag">Aujourd'hui</div>
           <div class="week-day-name">Dimanche</div>
-          <div class="week-day-num">26</div>
+          <div class="week-day-num">2</div>
         </div>
         <div>
           <div class="week-day-badges">
-            <span class="tag tag-green" style="margin:0;">A</span>
-            <span class="tag tag-purple" style="margin:0;">C</span>
+            <span class="tag tag-orange" style="margin:0;">S</span>
           </div>
-          <div class="week-day-title">Renfo léger · récupération active · 30–45 min</div>
-          <div class="week-day-desc">Gainage et abdos sans intensité. Bilan de la semaine à faire : 3 sorties course, environ 16 km au total contre 17–19 km/semaine avant blessure — le curseur est volontairement bas.</div>
+          <div class="week-day-title">Renfo Stabilité seul · récupération active · 30–45 min</div>
+          <div class="week-day-desc">Journée sans course. Proprioception et gainage doux uniquement. Bilan de la semaine : 5 séances course (S3 complète), passage réussi ou non aux blocs de 2 minutes — à noter pour ajuster la semaine 4.</div>
           <div class="week-track">
-            <label class="week-check"><input type="checkbox" data-day="2026-07-26" onchange="saveLog(this)"> Séance réalisée</label>
-            <textarea data-day="2026-07-26" onchange="saveLog(this)" placeholder="Bilan de la semaine (douleurs, sensations générales)"></textarea>
+            <label class="week-check"><input type="checkbox" data-day="2026-08-02" onchange="saveLog(this)"> Séance réalisée</label>
+            <textarea data-day="2026-08-02" onchange="saveLog(this)" placeholder="Bilan semaine 3 (douleurs, progression, sensations)"></textarea>
           </div>
         </div>
       </div>
@@ -238,13 +238,14 @@
     <hr class="divider">
 
     <div class="card card-warning">
-      <div class="tag tag-orange">Règles de la phase de reprise</div>
+      <div class="tag tag-orange">Cadre de la semaine</div>
       <ul class="clean" style="font-size:0.85rem;">
-        <li>Terrain plat exclusivement — pas de dénivelé, pas de sol instable</li>
-        <li>FC tenue en Z2 (140–153 bpm) : c'est le volume qui reconstruit, pas l'intensité</li>
-        <li>Aucun fractionné jusqu'à validation kiné</li>
-        <li>Douleur pendant la course → arrêt immédiat. Douleur apparue le lendemain → signal d'alerte, on saute la sortie suivante</li>
-        <li>Progression de volume plafonnée à environ +10 % par semaine</li>
+        <li>5 séances course/marche selon le protocole (min. 4, max. 6 autorisé)</li>
+        <li>Terrain plat exclusivement — ni dénivelé, ni sortie longue</li>
+        <li>Sur les blocs de course : allure d'un jogging régulier, jamais forcer</li>
+        <li>Douleur pendant → arrêt. Douleur le lendemain → répéter la séance précédente plutôt qu'avancer</li>
+        <li>Vélo mercredi = option, pas obligation (transfert moins stressant validé par le protocole)</li>
+        <li>Jours de course indicatifs (Lun/Mar/Jeu/Ven/Sam) — déplaçables selon ton agenda</li>
       </ul>
     </div>
 
@@ -254,109 +255,396 @@
       <h3 style="margin-bottom:0.5rem; font-size:0.85rem;">Petit-déjeuner</h3>
       <div class="checklist" style="margin-bottom:1.25rem;">
         <div class="check-item">
-          <input type="checkbox" id="nutri-pdej-2026-07-20" data-nutri="pdej-2026-07-20" onchange="saveNutriLog(this)">
-          <label for="nutri-pdej-2026-07-20">Lundi 20</label>
+          <input type="checkbox" id="nutri-pdej-2026-07-27" data-nutri="pdej-2026-07-27" onchange="saveNutriLog(this)">
+          <label for="nutri-pdej-2026-07-27">Lundi 27</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-pdej-2026-07-21" data-nutri="pdej-2026-07-21" onchange="saveNutriLog(this)">
-          <label for="nutri-pdej-2026-07-21">Mardi 21</label>
+          <input type="checkbox" id="nutri-pdej-2026-07-28" data-nutri="pdej-2026-07-28" onchange="saveNutriLog(this)">
+          <label for="nutri-pdej-2026-07-28">Mardi 28</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-pdej-2026-07-22" data-nutri="pdej-2026-07-22" onchange="saveNutriLog(this)">
-          <label for="nutri-pdej-2026-07-22">Mercredi 22</label>
+          <input type="checkbox" id="nutri-pdej-2026-07-29" data-nutri="pdej-2026-07-29" onchange="saveNutriLog(this)">
+          <label for="nutri-pdej-2026-07-29">Mercredi 29</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-pdej-2026-07-23" data-nutri="pdej-2026-07-23" onchange="saveNutriLog(this)">
-          <label for="nutri-pdej-2026-07-23">Jeudi 23</label>
+          <input type="checkbox" id="nutri-pdej-2026-07-30" data-nutri="pdej-2026-07-30" onchange="saveNutriLog(this)">
+          <label for="nutri-pdej-2026-07-30">Jeudi 30</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-pdej-2026-07-24" data-nutri="pdej-2026-07-24" onchange="saveNutriLog(this)">
-          <label for="nutri-pdej-2026-07-24">Vendredi 24</label>
+          <input type="checkbox" id="nutri-pdej-2026-07-31" data-nutri="pdej-2026-07-31" onchange="saveNutriLog(this)">
+          <label for="nutri-pdej-2026-07-31">Vendredi 31</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-pdej-2026-07-25" data-nutri="pdej-2026-07-25" onchange="saveNutriLog(this)">
-          <label for="nutri-pdej-2026-07-25">Samedi 25</label>
+          <input type="checkbox" id="nutri-pdej-2026-08-01" data-nutri="pdej-2026-08-01" onchange="saveNutriLog(this)">
+          <label for="nutri-pdej-2026-08-01">Samedi 1</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-pdej-2026-07-26" data-nutri="pdej-2026-07-26" onchange="saveNutriLog(this)">
-          <label for="nutri-pdej-2026-07-26">Dimanche 26</label>
+          <input type="checkbox" id="nutri-pdej-2026-08-02" data-nutri="pdej-2026-08-02" onchange="saveNutriLog(this)">
+          <label for="nutri-pdej-2026-08-02">Dimanche 2</label>
         </div>
       </div>
       <h3 style="margin-bottom:0.5rem; font-size:0.85rem;">Déjeuner</h3>
       <div class="checklist" style="margin-bottom:1.25rem;">
         <div class="check-item">
-          <input type="checkbox" id="nutri-dej-2026-07-20" data-nutri="dej-2026-07-20" onchange="saveNutriLog(this)">
-          <label for="nutri-dej-2026-07-20">Lundi 20</label>
+          <input type="checkbox" id="nutri-dej-2026-07-27" data-nutri="dej-2026-07-27" onchange="saveNutriLog(this)">
+          <label for="nutri-dej-2026-07-27">Lundi 27</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-dej-2026-07-21" data-nutri="dej-2026-07-21" onchange="saveNutriLog(this)">
-          <label for="nutri-dej-2026-07-21">Mardi 21</label>
+          <input type="checkbox" id="nutri-dej-2026-07-28" data-nutri="dej-2026-07-28" onchange="saveNutriLog(this)">
+          <label for="nutri-dej-2026-07-28">Mardi 28</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-dej-2026-07-22" data-nutri="dej-2026-07-22" onchange="saveNutriLog(this)">
-          <label for="nutri-dej-2026-07-22">Mercredi 22</label>
+          <input type="checkbox" id="nutri-dej-2026-07-29" data-nutri="dej-2026-07-29" onchange="saveNutriLog(this)">
+          <label for="nutri-dej-2026-07-29">Mercredi 29</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-dej-2026-07-23" data-nutri="dej-2026-07-23" onchange="saveNutriLog(this)">
-          <label for="nutri-dej-2026-07-23">Jeudi 23</label>
+          <input type="checkbox" id="nutri-dej-2026-07-30" data-nutri="dej-2026-07-30" onchange="saveNutriLog(this)">
+          <label for="nutri-dej-2026-07-30">Jeudi 30</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-dej-2026-07-24" data-nutri="dej-2026-07-24" onchange="saveNutriLog(this)">
-          <label for="nutri-dej-2026-07-24">Vendredi 24</label>
+          <input type="checkbox" id="nutri-dej-2026-07-31" data-nutri="dej-2026-07-31" onchange="saveNutriLog(this)">
+          <label for="nutri-dej-2026-07-31">Vendredi 31</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-dej-2026-07-25" data-nutri="dej-2026-07-25" onchange="saveNutriLog(this)">
-          <label for="nutri-dej-2026-07-25">Samedi 25</label>
+          <input type="checkbox" id="nutri-dej-2026-08-01" data-nutri="dej-2026-08-01" onchange="saveNutriLog(this)">
+          <label for="nutri-dej-2026-08-01">Samedi 1</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-dej-2026-07-26" data-nutri="dej-2026-07-26" onchange="saveNutriLog(this)">
-          <label for="nutri-dej-2026-07-26">Dimanche 26</label>
+          <input type="checkbox" id="nutri-dej-2026-08-02" data-nutri="dej-2026-08-02" onchange="saveNutriLog(this)">
+          <label for="nutri-dej-2026-08-02">Dimanche 2</label>
         </div>
       </div>
       <h3 style="margin-bottom:0.5rem; font-size:0.85rem;">Dîner</h3>
       <div class="checklist" style="margin-bottom:1.25rem;">
         <div class="check-item">
-          <input type="checkbox" id="nutri-diner-2026-07-20" data-nutri="diner-2026-07-20" onchange="saveNutriLog(this)">
-          <label for="nutri-diner-2026-07-20">Lundi 20</label>
+          <input type="checkbox" id="nutri-diner-2026-07-27" data-nutri="diner-2026-07-27" onchange="saveNutriLog(this)">
+          <label for="nutri-diner-2026-07-27">Lundi 27</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-diner-2026-07-21" data-nutri="diner-2026-07-21" onchange="saveNutriLog(this)">
-          <label for="nutri-diner-2026-07-21">Mardi 21</label>
+          <input type="checkbox" id="nutri-diner-2026-07-28" data-nutri="diner-2026-07-28" onchange="saveNutriLog(this)">
+          <label for="nutri-diner-2026-07-28">Mardi 28</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-diner-2026-07-22" data-nutri="diner-2026-07-22" onchange="saveNutriLog(this)">
-          <label for="nutri-diner-2026-07-22">Mercredi 22</label>
+          <input type="checkbox" id="nutri-diner-2026-07-29" data-nutri="diner-2026-07-29" onchange="saveNutriLog(this)">
+          <label for="nutri-diner-2026-07-29">Mercredi 29</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-diner-2026-07-23" data-nutri="diner-2026-07-23" onchange="saveNutriLog(this)">
-          <label for="nutri-diner-2026-07-23">Jeudi 23</label>
+          <input type="checkbox" id="nutri-diner-2026-07-30" data-nutri="diner-2026-07-30" onchange="saveNutriLog(this)">
+          <label for="nutri-diner-2026-07-30">Jeudi 30</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-diner-2026-07-24" data-nutri="diner-2026-07-24" onchange="saveNutriLog(this)">
-          <label for="nutri-diner-2026-07-24">Vendredi 24</label>
+          <input type="checkbox" id="nutri-diner-2026-07-31" data-nutri="diner-2026-07-31" onchange="saveNutriLog(this)">
+          <label for="nutri-diner-2026-07-31">Vendredi 31</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-diner-2026-07-25" data-nutri="diner-2026-07-25" onchange="saveNutriLog(this)">
-          <label for="nutri-diner-2026-07-25">Samedi 25</label>
+          <input type="checkbox" id="nutri-diner-2026-08-01" data-nutri="diner-2026-08-01" onchange="saveNutriLog(this)">
+          <label for="nutri-diner-2026-08-01">Samedi 1</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-diner-2026-07-26" data-nutri="diner-2026-07-26" onchange="saveNutriLog(this)">
-          <label for="nutri-diner-2026-07-26">Dimanche 26</label>
+          <input type="checkbox" id="nutri-diner-2026-08-02" data-nutri="diner-2026-08-02" onchange="saveNutriLog(this)">
+          <label for="nutri-diner-2026-08-02">Dimanche 2</label>
         </div>
       </div>
       <h3 style="margin-bottom:0.5rem; font-size:0.85rem;">Poisson gras · 1-2×/semaine</h3>
       <div class="checklist">
         <div class="check-item">
-          <input type="checkbox" id="nutri-poisson-2026-07-20-1" data-nutri="poisson-2026-07-20-1" onchange="saveNutriLog(this)">
-          <label for="nutri-poisson-2026-07-20-1">Repas poisson gras 1</label>
+          <input type="checkbox" id="nutri-poisson-2026-07-27-1" data-nutri="poisson-2026-07-27-1" onchange="saveNutriLog(this)">
+          <label for="nutri-poisson-2026-07-27-1">Repas poisson gras 1</label>
         </div>
         <div class="check-item">
-          <input type="checkbox" id="nutri-poisson-2026-07-20-2" data-nutri="poisson-2026-07-20-2" onchange="saveNutriLog(this)">
-          <label for="nutri-poisson-2026-07-20-2">Repas poisson gras 2</label>
+          <input type="checkbox" id="nutri-poisson-2026-07-27-2" data-nutri="poisson-2026-07-27-2" onchange="saveNutriLog(this)">
+          <label for="nutri-poisson-2026-07-27-2">Repas poisson gras 2</label>
         </div>
       </div>
-      <p class="info" style="margin-top:0.75rem;">Menus types dans l'onglet Guide → Nutrition. Le poisson gras n'a que 2 cases car il n'est visé que 1 à 2 fois par semaine, pas tous les jours.</p>
+      <p class="info" style="margin-top:0.75rem;">Menus types dans l'onglet Guide → Nutrition.</p>
     </div>
+
+  </section>
+
+  <!-- ========== REPRISE (Clinique du Coureur Fractionné-I) ========== -->
+  <section id="reprise" class="section">
+    <div class="section-title">Plan de reprise · Clinique du Coureur · Programme Fractionné-I</div>
+
+    <div class="card card-accent" style="margin-bottom:1.5rem;">
+      <div class="tag tag-green">Protocole kiné · retour à la course après fissure fibula</div>
+      <h3>8 semaines, de l'intervalle course/marche à la course continue</h3>
+      <p style="font-size:0.85rem;">Chaque séance enchaîne des blocs <strong>course (C)</strong> et <strong>marche (M)</strong>. On augmente d'abord le nombre de répétitions de course courte, puis on allonge la course en réduisant la marche, jusqu'à 30 min en continu en semaine 8. Objectif : recharger l'os progressivement sans le brusquer.</p>
+      <p style="font-size:0.85rem; margin-bottom:0;"><strong>Progression actuelle : semaine 2 terminée</strong> (10×1'C/1'M validé le 26/07). La semaine à venir démarre la semaine 3.</p>
+    </div>
+
+    <div class="rep-grid">
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 1</span>
+          <span class="rep-week-tag">1'C / 1'M</span>
+          <span class="rep-week-count" data-week="1">5/5</span>
+        </div>
+        <label class="rep-row done" id="reprow-S1-1">
+          <input type="checkbox" data-rep="S1-1" checked onchange="saveRep(this)">
+          <span class="rep-name">5'M + 3×(1'C/1'M) + 5'M</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row done" id="reprow-S1-2">
+          <input type="checkbox" data-rep="S1-2" checked onchange="saveRep(this)">
+          <span class="rep-name">4×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row done" id="reprow-S1-3">
+          <input type="checkbox" data-rep="S1-3" checked onchange="saveRep(this)">
+          <span class="rep-name">5×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row done" id="reprow-S1-4">
+          <input type="checkbox" data-rep="S1-4" checked onchange="saveRep(this)">
+          <span class="rep-name">6×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row done" id="reprow-S1-5">
+          <input type="checkbox" data-rep="S1-5" checked onchange="saveRep(this)">
+          <span class="rep-name">7×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 2</span>
+          <span class="rep-week-tag">1'C / 1'M</span>
+          <span class="rep-week-count" data-week="2">3/5</span>
+        </div>
+        <label class="rep-row done" id="reprow-S2-1">
+          <input type="checkbox" data-rep="S2-1" checked onchange="saveRep(this)">
+          <span class="rep-name">8×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row done" id="reprow-S2-2">
+          <input type="checkbox" data-rep="S2-2" checked onchange="saveRep(this)">
+          <span class="rep-name">9×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row done" id="reprow-S2-3">
+          <input type="checkbox" data-rep="S2-3" checked onchange="saveRep(this)">
+          <span class="rep-name">10×(1'C/1'M)</span>
+          <span class="rep-date">26/07</span>
+        </label>
+        <label class="rep-row" id="reprow-S2-4">
+          <input type="checkbox" data-rep="S2-4" onchange="saveRep(this)">
+          <span class="rep-name">11×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S2-5">
+          <input type="checkbox" data-rep="S2-5" onchange="saveRep(this)">
+          <span class="rep-name">12×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 3</span>
+          <span class="rep-week-tag">1'→2'C</span>
+          <span class="rep-week-count" data-week="3">0/5</span>
+        </div>
+        <label class="rep-row" id="reprow-S3-1">
+          <input type="checkbox" data-rep="S3-1" onchange="saveRep(this)">
+          <span class="rep-name">13×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S3-2">
+          <input type="checkbox" data-rep="S3-2" onchange="saveRep(this)">
+          <span class="rep-name">14×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S3-3">
+          <input type="checkbox" data-rep="S3-3" onchange="saveRep(this)">
+          <span class="rep-name">15×(1'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S3-4">
+          <input type="checkbox" data-rep="S3-4" onchange="saveRep(this)">
+          <span class="rep-name">3×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S3-5">
+          <input type="checkbox" data-rep="S3-5" onchange="saveRep(this)">
+          <span class="rep-name">4×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 4</span>
+          <span class="rep-week-tag">2'C / 1'M</span>
+          <span class="rep-week-count" data-week="4">0/5</span>
+        </div>
+        <label class="rep-row" id="reprow-S4-1">
+          <input type="checkbox" data-rep="S4-1" onchange="saveRep(this)">
+          <span class="rep-name">5×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S4-2">
+          <input type="checkbox" data-rep="S4-2" onchange="saveRep(this)">
+          <span class="rep-name">6×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S4-3">
+          <input type="checkbox" data-rep="S4-3" onchange="saveRep(this)">
+          <span class="rep-name">7×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S4-4">
+          <input type="checkbox" data-rep="S4-4" onchange="saveRep(this)">
+          <span class="rep-name">8×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S4-5">
+          <input type="checkbox" data-rep="S4-5" onchange="saveRep(this)">
+          <span class="rep-name">9×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 5</span>
+          <span class="rep-week-tag">2'→3'C</span>
+          <span class="rep-week-count" data-week="5">0/5</span>
+        </div>
+        <label class="rep-row" id="reprow-S5-1">
+          <input type="checkbox" data-rep="S5-1" onchange="saveRep(this)">
+          <span class="rep-name">10×(2'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S5-2">
+          <input type="checkbox" data-rep="S5-2" onchange="saveRep(this)">
+          <span class="rep-name">3×(3'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S5-3">
+          <input type="checkbox" data-rep="S5-3" onchange="saveRep(this)">
+          <span class="rep-name">4×(3'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S5-4">
+          <input type="checkbox" data-rep="S5-4" onchange="saveRep(this)">
+          <span class="rep-name">5×(3'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S5-5">
+          <input type="checkbox" data-rep="S5-5" onchange="saveRep(this)">
+          <span class="rep-name">6×(3'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 6</span>
+          <span class="rep-week-tag">3'→4'C</span>
+          <span class="rep-week-count" data-week="6">0/5</span>
+        </div>
+        <label class="rep-row" id="reprow-S6-1">
+          <input type="checkbox" data-rep="S6-1" onchange="saveRep(this)">
+          <span class="rep-name">7×(3'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S6-2">
+          <input type="checkbox" data-rep="S6-2" onchange="saveRep(this)">
+          <span class="rep-name">8×(3'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S6-3">
+          <input type="checkbox" data-rep="S6-3" onchange="saveRep(this)">
+          <span class="rep-name">2×(4'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S6-4">
+          <input type="checkbox" data-rep="S6-4" onchange="saveRep(this)">
+          <span class="rep-name">3×(4'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S6-5">
+          <input type="checkbox" data-rep="S6-5" onchange="saveRep(this)">
+          <span class="rep-name">4×(4'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 7</span>
+          <span class="rep-week-tag">4'→9'C</span>
+          <span class="rep-week-count" data-week="7">0/5</span>
+        </div>
+        <label class="rep-row" id="reprow-S7-1">
+          <input type="checkbox" data-rep="S7-1" onchange="saveRep(this)">
+          <span class="rep-name">5×(4'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S7-2">
+          <input type="checkbox" data-rep="S7-2" onchange="saveRep(this)">
+          <span class="rep-name">6×(4'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S7-3">
+          <input type="checkbox" data-rep="S7-3" onchange="saveRep(this)">
+          <span class="rep-name">1×(9'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S7-4">
+          <input type="checkbox" data-rep="S7-4" onchange="saveRep(this)">
+          <span class="rep-name">2×(9'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S7-5">
+          <input type="checkbox" data-rep="S7-5" onchange="saveRep(this)">
+          <span class="rep-name">3×(9'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+      <div class="rep-week">
+        <div class="rep-week-head">
+          <span class="rep-week-num">Semaine 8</span>
+          <span class="rep-week-tag">continu</span>
+          <span class="rep-week-count" data-week="8">0/5</span>
+        </div>
+        <label class="rep-row" id="reprow-S8-1">
+          <input type="checkbox" data-rep="S8-1" onchange="saveRep(this)">
+          <span class="rep-name">1×(14'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S8-2">
+          <input type="checkbox" data-rep="S8-2" onchange="saveRep(this)">
+          <span class="rep-name">2×(14'C/1'M)</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S8-3">
+          <input type="checkbox" data-rep="S8-3" onchange="saveRep(this)">
+          <span class="rep-name">20'C continu</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S8-4">
+          <input type="checkbox" data-rep="S8-4" onchange="saveRep(this)">
+          <span class="rep-name">25'C continu</span>
+          <span class="rep-date"></span>
+        </label>
+        <label class="rep-row" id="reprow-S8-5">
+          <input type="checkbox" data-rep="S8-5" onchange="saveRep(this)">
+          <span class="rep-name">30'C continu</span>
+          <span class="rep-date"></span>
+        </label>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="card card-warning">
+      <div class="tag tag-orange">Règles du protocole</div>
+      <ul class="clean" style="font-size:0.85rem;">
+        <li>Débuter et terminer par 5 min de marche (facultatif)</li>
+        <li>Selon les symptômes et le confort : reprendre l'entraînement précédent, répéter le même, ou sauter 1 à 2 entraînements</li>
+        <li>Courir minimum 4×/semaine, maximum 6×/semaine — <strong>rythme retenu : 5/semaine</strong></li>
+        <li>Compléter avec un transfert mécaniquement moins stressant : vélo ou aquajogging</li>
+        <li><strong>M</strong> = marche régulière · <strong>C</strong> = course, allure d'un jogging régulier</li>
+      </ul>
+    </div>
+
+    <p class="info">Source : La Clinique du Coureur — Programme Fractionné-I. Coche chaque séance réalisée ; la progression se reporte automatiquement dans « Cette semaine ».</p>
 
   </section>
 
@@ -784,7 +1072,12 @@
     <div id="g-semaine" class="subsection active">
 
       <h2 style="margin-bottom:0.5rem;">Semaine type</h2>
-      <p class="muted" style="font-size:0.8rem; margin-bottom:1.25rem;">Renfo quotidien · 3 sorties course · vélo mercredi · fractionné jeudi</p>
+      <p class="muted" style="font-size:0.8rem; margin-bottom:1.25rem;">Renfo quotidien · 3 sorties course · vélo optionnel · fractionné jeudi</p>
+
+      <div class="card card-warning" style="margin-bottom:1.25rem;">
+        <div class="tag tag-orange">Structure cible · après la reprise</div>
+        <p style="font-size:0.85rem; margin-bottom:0;">Ceci est la semaine type visée <strong>une fois le plan de reprise terminé</strong> (voir onglet Reprise). En ce moment, la semaine réelle suit le protocole Clinique du Coureur : séances course/marche, pas de sortie longue, pas de fractionné. Reviens à cette structure quand la course continue de 30 min sera acquise.</p>
+      </div>
 
       <div class="week-grid">
         <div class="day-card" style="border-color: rgba(200,245,66,0.25);">
@@ -802,8 +1095,8 @@
         </div>
         <div class="day-card" style="border-color: rgba(126,184,245,0.25);">
           <div class="day-label">Mer</div>
-          <div class="day-type day-cross">Vélo</div>
-          <div class="day-note" style="color:#7eb8f5; font-size:0.65rem;">45–55 min · matin · fixe</div>
+          <div class="day-type day-cross">Vélo ?</div>
+          <div class="day-note" style="color:#7eb8f5; font-size:0.65rem;">45–55 min · optionnel</div>
           <div style="border-top:1px solid var(--border); margin-top:0.5rem; padding-top:0.4rem;">
             <div class="day-type day-strength" style="font-size:0.68rem;">Renfo 30 min · matin</div>
           </div>
@@ -897,187 +1190,127 @@
     <!-- ---------- RENFO ---------- -->
     <div id="g-renfo" class="subsection">
 
-      <!-- MIX SEMAINE -->
-      <h3 style="margin-bottom:0.75rem;">Mix semaine · 4 blocs répartis</h3>
+      <h2 style="margin-bottom:0.5rem;">Renforcement · cuisses, stabilité, fessiers, abdos</h2>
+      <p class="muted" style="font-size:0.8rem; margin-bottom:1.25rem;">45 min/jour en moyenne · priorité absolue aux membres inférieurs et à la stabilité · exercices prescrits en kiné</p>
+
+      <div class="card card-warning" style="margin-bottom:1.5rem;">
+        <div class="tag tag-orange">Charges lourdes · à valider avec le kiné</div>
+        <p style="font-size:0.85rem; margin-bottom:0;">Les charges à 20 kg (fentes, soulevé de terre) sont indicatives : elles se valident et progressent séance par séance avec le kiné, en cohérence avec la reprise course. Sur une fissure fibula récente, renfo lourd et course en intervalles cumulent de la charge — écouter les signaux à 24-48 h.</p>
+      </div>
+
+      <h3 style="margin-bottom:0.75rem;">Répartition sur la semaine</h3>
       <div class="table-scroll">
-      <table style="margin-bottom:1.5rem;">
+      <table style="margin-bottom:1rem;">
         <thead>
-          <tr><th>Jour</th><th>Blocs</th><th>Durée</th><th>Logique</th></tr>
+          <tr><th>Jour</th><th>Blocs</th><th>Durée</th><th>Dominante</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td><span class="mono">Lun</span></td>
-            <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-orange" style="margin:0;">B</span></td>
-            <td>30 min</td>
-            <td style="font-size:0.8rem; color:var(--muted);">Début de semaine · stabilisation + MI</td>
-          </tr>
-          <tr>
-            <td><span class="mono">Mar</span></td>
-            <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-purple" style="margin:0;">C</span></td>
-            <td>30 min</td>
-            <td style="font-size:0.8rem; color:var(--muted);">Abdos fonctionnels · pas de charge MI</td>
-          </tr>
-          <tr>
-            <td><span class="mono">Mer</span></td>
-            <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-blue" style="margin:0;">D</span></td>
-            <td>30 min</td>
-            <td style="font-size:0.8rem; color:var(--muted);">Haut du corps · avant fractionné salle</td>
-          </tr>
-          <tr>
-            <td><span class="mono">Jeu</span></td>
-            <td><span class="tag tag-orange" style="margin:0 0.2rem 0 0;">B</span><span class="tag tag-purple" style="margin:0;">C</span></td>
-            <td>30 min</td>
-            <td style="font-size:0.8rem; color:var(--muted);">MI + abdos · pas de gainage répété</td>
-          </tr>
-          <tr>
-            <td><span class="mono">Ven</span></td>
-            <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-blue" style="margin:0;">D</span></td>
-            <td>30 min</td>
-            <td style="font-size:0.8rem; color:var(--muted);">Haut du corps · avant course EF</td>
-          </tr>
-          <tr style="background:rgba(245,166,35,0.04);">
-            <td><span class="mono">Sam</span></td>
-            <td>
-              <span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span>
-              <span class="tag tag-orange" style="margin:0 0.2rem 0 0;">B</span>
-              <span class="tag tag-purple" style="margin:0 0.2rem 0 0;">C</span>
-              <span class="tag tag-blue" style="margin:0;">D</span>
-            </td>
-            <td>45–60 min</td>
-            <td style="font-size:0.8rem; color:var(--muted);">Session complète · avant sortie longue</td>
-          </tr>
-          <tr>
-            <td><span class="mono">Dim</span></td>
-            <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-purple" style="margin:0;">C</span></td>
-            <td>45 min</td>
-            <td style="font-size:0.8rem; color:var(--muted);">Récup active · pas de charge MI</td>
-          </tr>
+          <tr><td><span class="mono">Lun</span></td><td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">F</span><span class="tag tag-orange" style="margin:0;">S</span></td><td>45 min</td><td style="font-size:0.8rem; color:var(--muted);">Cuisses lourd + stabilité</td></tr>
+          <tr><td><span class="mono">Mar</span></td><td><span class="tag tag-purple" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-orange" style="margin:0;">S</span></td><td>45 min</td><td style="font-size:0.8rem; color:var(--muted);">Abdos + fessiers/proprio</td></tr>
+          <tr><td><span class="mono">Mer</span></td><td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">F</span><span class="tag tag-purple" style="margin:0;">A</span></td><td>45 min</td><td style="font-size:0.8rem; color:var(--muted);">Cuisses + abdos</td></tr>
+          <tr><td><span class="mono">Jeu</span></td><td><span class="tag tag-orange" style="margin:0 0.2rem 0 0;">S</span><span class="tag tag-blue" style="margin:0;">H</span></td><td>45 min</td><td style="font-size:0.8rem; color:var(--muted);">Stabilité + haut du corps</td></tr>
+          <tr><td><span class="mono">Ven</span></td><td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">F</span><span class="tag tag-orange" style="margin:0;">S</span></td><td>45 min</td><td style="font-size:0.8rem; color:var(--muted);">Cuisses + stabilité</td></tr>
+          <tr><td><span class="mono">Sam</span></td><td><span class="tag tag-purple" style="margin:0 0.2rem 0 0;">A</span><span class="tag tag-blue" style="margin:0;">H</span></td><td>45 min</td><td style="font-size:0.8rem; color:var(--muted);">Abdos + haut (plus léger)</td></tr>
+          <tr><td><span class="mono">Dim</span></td><td><span class="tag tag-orange" style="margin:0;">S</span></td><td>30–45 min</td><td style="font-size:0.8rem; color:var(--muted);">Récup active · proprio douce</td></tr>
         </tbody>
       </table>
       </div>
-
-      <p class="info" style="margin-bottom:1.5rem;">Bloc B (MI) = 3×/semaine max — 48h de récup entre deux sessions quadris/mollets. Bloc A quasi quotidien — gainage dynamique récupère vite.</p>
+      <p class="info" style="margin-bottom:1.5rem;">Sur la semaine : cuisses 3× · stabilité/fessiers 5× · abdos 3× · haut 3×. 48 h minimum entre deux grosses séances cuisses lourdes pour protéger genou et cheville.</p>
 
       <hr class="divider">
 
-      <!-- BLOC A -->
       <h3 style="margin-bottom:0.2rem;">
-        <span class="tag tag-green" style="margin:0 0.5rem 0 0;">A</span>
-        Gainage dynamique & stabilisation
+        <span class="tag tag-green" style="margin:0 0.5rem 0 0;">F</span>
+        Cuisses · force
       </h3>
-      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Version améliorée — statique remplacé par du dynamique + proprioception</p>
+      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Quadriceps, chaîne complète, charges lourdes · 3×/semaine</p>
       <div class="exercise-grid">
         <div class="exercise-item">
-          <div class="exercise-name">Planche transfert latéral</div>
-          <div class="exercise-detail">3 × 10 transferts<br>Gainage + déstabilisation</div>
+          <div class="exercise-name">Fentes + montée de genou</div>
+          <div class="exercise-detail">4 × 12 · haltères 20 kg<br>Unilatéral · chaîne complète</div>
         </div>
         <div class="exercise-item">
-          <div class="exercise-name">Planche latérale + rotation</div>
-          <div class="exercise-detail">3 × 10 / côté<br>Obliques + épaule</div>
+          <div class="exercise-name">Fente sur box + chaise</div>
+          <div class="exercise-detail">4 × 12 · 20 kg<br>Amplitude + isométrie enchaînée</div>
         </div>
         <div class="exercise-item">
-          <div class="exercise-name">Dead bug avec bande</div>
-          <div class="exercise-detail">3 × 10 / côté<br>Gainage lombaire profond</div>
+          <div class="exercise-name">Soulevé de terre</div>
+          <div class="exercise-detail">4 × 10 · 20 kg<br>Chaîne postérieure · fessiers</div>
         </div>
         <div class="exercise-item">
-          <div class="exercise-name">Bird-dog pause 2 sec</div>
-          <div class="exercise-detail">3 × 10 / côté<br>Extension tenue = +intensité</div>
-        </div>
-        <div class="exercise-item">
-          <div class="exercise-name">Hollow body hold</div>
-          <div class="exercise-detail">3 × 30–45 sec<br>Gainage abdo profond · exigeant</div>
-        </div>
-        <div class="exercise-item">
-          <div class="exercise-name">Pont fessier unilatéral</div>
-          <div class="exercise-detail">3 × 12 / côté<br>Fessiers + stabilisation bassin</div>
+          <div class="exercise-name">Leg extension <span class="muted" style="font-size:0.68rem;">(si salle)</span></div>
+          <div class="exercise-detail">4 séries<br>Isolation quadriceps · optionnel</div>
         </div>
       </div>
 
       <hr class="divider">
 
-      <!-- BLOC B -->
       <h3 style="margin-bottom:0.2rem;">
-        <span class="tag tag-orange" style="margin:0 0.5rem 0 0;">B</span>
-        Membres inférieurs
+        <span class="tag tag-orange" style="margin:0 0.5rem 0 0;">S</span>
+        Stabilité &amp; fessiers
       </h3>
-      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">3×/semaine · protocole prescrit · progression avec kiné</p>
+      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Proprioception, abducteurs, équilibre unipodal · quasi quotidien · clé anti-récidive cheville</p>
       <div class="exercise-grid">
-        <div class="exercise-item" style="border-color: rgba(200,245,66,0.3);">
-          <div class="exercise-name">Fente bulgare lestée</div>
-          <div class="exercise-detail">5 × 12 / côté<br>8 kg / bras (haltères)</div>
-        </div>
-        <div class="exercise-item" style="border-color: rgba(200,245,66,0.3);">
-          <div class="exercise-name">Squat unijambiste chargé</div>
-          <div class="exercise-detail">Protocole kiné<br>2 × 6 kg (haltères)</div>
-        </div>
-        <div class="exercise-item" style="border-color: rgba(200,245,66,0.3);">
-          <div class="exercise-name">Extension latérale jambe</div>
-          <div class="exercise-detail">Debout · élastique entre cuisses<br>Abducteurs + stabilisation</div>
+        <div class="exercise-item">
+          <div class="exercise-name">Élévation latérale jambe lestée</div>
+          <div class="exercise-detail">4 × (10 larges + 10 petites + statique)<br>Lest 1 kg · abducteurs</div>
         </div>
         <div class="exercise-item">
-          <div class="exercise-name">Mollets excentriques</div>
-          <div class="exercise-detail">3 × 15 lentes<br>Anti-tendinite · préventif<br><span style="color:var(--orange); font-size:0.68rem;">⚠ Surveiller fibula</span></div>
+          <div class="exercise-name">Pas chassés demi-squat + levers latéraux</div>
+          <div class="exercise-detail">Élastique<br>Fessiers moyens · stabilité latérale</div>
+        </div>
+        <div class="exercise-item">
+          <div class="exercise-name">Chaise sur une jambe</div>
+          <div class="exercise-detail">4 × 30 s · 30 s pause<br>Isométrie quadri + équilibre</div>
+        </div>
+        <div class="exercise-item">
+          <div class="exercise-name">Kettlebell around the world · 1 jambe</div>
+          <div class="exercise-detail">4 × 10 chaque sens, puis autre jambe<br>Gainage + proprioception</div>
         </div>
       </div>
 
       <hr class="divider">
 
-      <!-- BLOC C -->
       <h3 style="margin-bottom:0.2rem;">
-        <span class="tag tag-purple" style="margin:0 0.5rem 0 0;">C</span>
-        Abdos fonctionnels
+        <span class="tag tag-purple" style="margin:0 0.5rem 0 0;">A</span>
+        Abdos · tronc
       </h3>
-      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Chaîne antérieure + rotation · zéro impact genou</p>
+      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Gainage, chaîne antérieure · 3×/semaine · zéro impact articulaire</p>
       <div class="exercise-grid">
         <div class="exercise-item">
-          <div class="exercise-name">Ab wheel / walkout</div>
-          <div class="exercise-detail">3 × 8–10 reps<br>Si pas de roue : planche walkout</div>
+          <div class="exercise-name">Crunch</div>
+          <div class="exercise-detail">Séries au ressenti<br>Chaîne antérieure</div>
         </div>
         <div class="exercise-item">
-          <div class="exercise-name">Russian twist lesté</div>
-          <div class="exercise-detail">3 × 15 / côté<br>Rotation + obliques</div>
-        </div>
-        <div class="exercise-item">
-          <div class="exercise-name">Toe touches crunch</div>
-          <div class="exercise-detail">3 × 15<br>Chaîne antérieure</div>
-        </div>
-        <div class="exercise-item">
-          <div class="exercise-name">Mountain climbers lents</div>
-          <div class="exercise-detail">3 × 20 alternés<br>Abdos + hanches</div>
+          <div class="exercise-name">Gainage dynamique</div>
+          <div class="exercise-detail">Planche, dead bug, hollow body<br>Complément gainage profond</div>
         </div>
       </div>
+      <p class="info">Bloc à étoffer au fil des exercices que tu ajouteras.</p>
 
       <hr class="divider">
 
-      <!-- BLOC D -->
       <h3 style="margin-bottom:0.2rem;">
-        <span class="tag tag-blue" style="margin:0 0.5rem 0 0;">D</span>
-        Pompes & poussée — haut du corps
+        <span class="tag tag-blue" style="margin:0 0.5rem 0 0;">H</span>
+        Haut du corps · accessoire
       </h3>
-      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Posture en montée + gainage dynamique · zéro impact genou</p>
+      <p class="muted" style="font-size:0.78rem; margin-bottom:0.75rem;">Posture en montée · non prioritaire · 3×/semaine</p>
       <div class="exercise-grid">
         <div class="exercise-item">
-          <div class="exercise-name">Pompes classiques</div>
-          <div class="exercise-detail">3 × 12–15<br>Base · technique propre</div>
-        </div>
-        <div class="exercise-item">
-          <div class="exercise-name">Pompes déclinées</div>
-          <div class="exercise-detail">3 × 10 pieds surélevés<br>Épaules + haut pec · posture montée</div>
-        </div>
-        <div class="exercise-item">
-          <div class="exercise-name">Pompes → planche hold</div>
-          <div class="exercise-detail">3 × 8 + hold 2 sec<br>Enchaînement pompe + gainage</div>
-        </div>
-        <div class="exercise-item">
-          <div class="exercise-name">Dips sur chaise</div>
-          <div class="exercise-detail">3 × 10<br>Triceps + stabilisation</div>
+          <div class="exercise-name">Pompes</div>
+          <div class="exercise-detail">Séries au ressenti<br>Poussée · gainage · posture montée</div>
         </div>
       </div>
+      <p class="info">Bloc volontairement léger : le haut du corps sert la posture en côte, ce n'est pas la priorité de la prépa.</p>
 
     </div>
 
-    <!-- ---------- VÉLO ---------- -->
     <div id="g-velo" class="subsection">
+
+      <div class="card card-accent" style="margin-bottom:1.5rem;">
+        <div class="tag tag-green">Le vélo : une option, pas une obligation</div>
+        <p style="font-size:0.85rem; margin-bottom:0;">Le protocole de reprise recommande de compléter la course par un transfert « mécaniquement moins stressant » — le vélo en fait partie. C'est donc une <strong>possibilité dans la semaine</strong> (typiquement le mercredi, jour sans course) si tu veux ajouter du cardio sans impact articulaire, mais rien ne t'y oblige. Les séances ci-dessous sont là quand tu en as envie.</p>
+      </div>
 
       <h3 style="margin-bottom:0.75rem;">Séances types vélo stationnaire</h3>
 
@@ -1272,14 +1505,14 @@
         <table>
           <tbody>
             <tr><td class="muted">Poids</td><td><span class="mono">60 kg</span></td></tr>
-            <tr><td class="muted">Sorties / semaine</td><td><span class="mono">3</span></td></tr>
-            <tr><td class="muted">Renfo / semaine</td><td><span class="mono">7 (quotidien)</span></td></tr>
+            <tr><td class="muted">Sorties / semaine</td><td><span class="mono">5</span> <span class="muted" style="font-size:0.75rem;">(reprise course/marche)</span></td></tr>
+            <tr><td class="muted">Renfo / semaine</td><td><span class="mono">7 (quotidien)</span> <span class="muted" style="font-size:0.75rem;">· cuisses/stabilité</span></td></tr>
             <tr><td class="muted">Terrain principal</td><td>Seine · Issy-Boulogne</td></tr>
             <tr><td class="muted">Montre</td><td>Huawei Watch GT6</td></tr>
             <tr><td class="muted">Tracking</td><td>Strava</td></tr>
             <tr><td class="muted">Cadence</td><td><span class="mono">~170 spm</span></td></tr>
             <tr><td class="muted">Volume depuis nov. 25</td><td><span class="mono">~609 km · 5 997 m D+ (course)</span></td></tr>
-            <tr><td class="muted">Dernière course</td><td><span class="mono">19 juil. 2026</span> <span class="muted" style="font-size:0.75rem;">(reprise)</span></td></tr>
+            <tr><td class="muted">Dernière course</td><td><span class="mono">26 juil. 2026</span> <span class="muted" style="font-size:0.75rem;">(reprise S2)</span></td></tr>
             <tr><td class="muted">Vélo depuis blessure</td><td><span class="mono">~44 km</span> <span class="muted" style="font-size:0.75rem;">(5 séances depuis le 8 juil.)</span></td></tr>
           </tbody>
         </table>
@@ -1291,7 +1524,8 @@
         <table>
           <tbody>
             <tr><td class="muted">Genou droit</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Kiné actif · protocole en cours</span></td></tr>
-            <tr><td class="muted">Cheville gauche</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Fissure fibula · reprise course le 19 juil. · kiné actif</span></td></tr>
+            <tr><td class="muted">Cheville gauche</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Fissure fibula · en reprise · kiné actif</span></td></tr>
+            <tr><td class="muted">Plan de reprise</td><td><span class="status status-ok"><span class="dot dot-green"></span>Semaine 2/8 validée · Clinique du Coureur</span></td></tr>
             <tr><td class="muted">Semelles</td><td><span class="status status-ok"><span class="dot dot-green"></span>Confirmées</span></td></tr>
             <tr><td class="muted">Nutrition</td><td><span class="status status-ko"><span class="dot dot-red"></span>Théorique</span></td></tr>
             <tr><td class="muted">Renfo quotidien</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · Bloc B validé kiné</span></td></tr>
@@ -1469,7 +1703,7 @@
         <div class="table-scroll">
         <table style="margin:0;">
           <tbody>
-            <tr><td class="muted">Dernière course</td><td><span class="mono">19 juil.</span> <span class="muted" style="font-size:0.72rem;">(non synchro Strava)</span></td></tr>
+            <tr><td class="muted">Dernière course</td><td><span class="mono">26 juil.</span> <span class="muted" style="font-size:0.72rem;">(reprise S2)</span></td></tr>
             <tr><td class="muted">Arrêt précédent</td><td><span class="mono">22 j</span> <span class="muted" style="font-size:0.72rem;">(27 juin → 19 juil.)</span></td></tr>
             <tr><td class="muted">Séances vélo (juillet)</td><td><span class="mono">5</span></td></tr>
             <tr><td class="muted">Volume vélo (juillet)</td><td><span class="mono">44,4 km</span></td></tr>

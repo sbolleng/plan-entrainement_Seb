@@ -316,6 +316,35 @@ function showSection(id, btn) {
   }
   renderStatsCharts();
 
+  // ===== Plan de reprise (Clinique du Coureur) — stocké en local =====
+  function updateRepCounts() {
+    for (let w = 1; w <= 8; w++) {
+      const boxes = document.querySelectorAll('input[data-rep^="S' + w + '-"]');
+      let done = 0;
+      boxes.forEach(b => { if (b.checked) done++; });
+      const badge = document.querySelector('.rep-week-count[data-week="' + w + '"]');
+      if (badge) badge.textContent = done + '/5';
+    }
+  }
+  function saveRep(el) {
+    localStorage.setItem('sancy-rep-' + el.dataset.rep, el.checked ? '1' : '0');
+    const row = el.closest('.rep-row');
+    if (row) row.classList.toggle('done', el.checked);
+    updateRepCounts();
+  }
+  function loadRep() {
+    document.querySelectorAll('[data-rep]').forEach(el => {
+      const val = localStorage.getItem('sancy-rep-' + el.dataset.rep);
+      if (val !== null) {
+        el.checked = val === '1';
+        const row = el.closest('.rep-row');
+        if (row) row.classList.toggle('done', el.checked);
+      }
+    });
+    updateRepCounts();
+  }
+  loadRep();
+
   // ===== Suivi nutrition (checklist simple) — stocké en local sur cet appareil =====
   function saveNutriLog(el) {
     const key = 'sancy-nutri-' + el.dataset.nutri;

@@ -416,6 +416,63 @@
   .zone-chip { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
   .zone-bpm { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--accent2); white-space: nowrap; }
 
+  /* REPRISE — plan Clinique du Coureur */
+  .rep-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 640px) { .rep-grid { grid-template-columns: 1fr; } }
+  .rep-week {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem 0.6rem;
+  }
+  .rep-week-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .rep-week-num { font-size: 0.9rem; font-weight: 700; }
+  .rep-week-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface2);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+  }
+  .rep-week-count {
+    margin-left: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+  }
+  .rep-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    cursor: pointer;
+    font-size: 0.82rem;
+  }
+  .rep-row input[type="checkbox"] { accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+  .rep-name { flex: 1; }
+  .rep-row.done .rep-name { color: var(--muted); text-decoration: line-through; }
+  .rep-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    min-width: 3rem;
+    text-align: right;
+  }
+
   p { margin-bottom: 0.75rem; font-size: 0.9rem; }
   .muted { color: var(--muted); }
   .info { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.5rem; }
