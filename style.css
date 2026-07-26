@@ -472,6 +472,7 @@
     min-width: 3rem;
     text-align: right;
   }
+  .rep-date-proj { color: var(--muted); opacity: 0.65; }
 
   p { margin-bottom: 0.75rem; font-size: 0.9rem; }
   .muted { color: var(--muted); }
@@ -598,6 +599,63 @@
   .week-track textarea::placeholder { color: var(--muted); }
   .sb-cross { background: rgba(126,184,245,0.12); color: #7eb8f5; }
   .sb-kine { background: rgba(180,130,255,0.12); color: #b482ff; }
+
+  /* Jour détaillé */
+  .week-day-body { display: flex; flex-direction: column; gap: 0.9rem; }
+  .day-section {
+    border-left: 2px solid var(--border);
+    padding-left: 0.85rem;
+  }
+  .day-section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .day-section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .day-section-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+  .day-block { margin-bottom: 0.6rem; }
+  .day-block:last-child { margin-bottom: 0; }
+  .day-block-head {
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .day-exos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+  }
+  .day-exos li {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding-left: 0.9rem;
+    position: relative;
+    line-height: 1.4;
+  }
+  .day-exos li::before {
+    content: '·';
+    position: absolute;
+    left: 0.2rem;
+    color: var(--accent);
+  }
 
   /* TIMELINE */
   .timeline {
