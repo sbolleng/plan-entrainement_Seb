@@ -25,6 +25,7 @@ function showSection(id, btn) {
 
   function updateCountdown() {
     const races = [
+      { date: new Date('2026-11-28T08:00:00'), name: 'Trail de Senlis' },
       { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
       { date: new Date('2027-09-13T08:00:00'), name: 'Sancy' }
     ];
@@ -329,7 +330,11 @@ function showSection(id, btn) {
   function saveRep(el) {
     localStorage.setItem('sancy-rep-' + el.dataset.rep, el.checked ? '1' : '0');
     const row = el.closest('.rep-row');
-    if (row) row.classList.toggle('done', el.checked);
+    if (row) {
+      row.classList.toggle('done', el.checked);
+      // une séance rattrapée n'est plus « sautée »
+      if (el.checked) row.classList.remove('skipped');
+    }
     updateRepCounts();
   }
   function loadRep() {

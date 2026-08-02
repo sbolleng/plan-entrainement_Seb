@@ -473,6 +473,14 @@
     text-align: right;
   }
   .rep-date-proj { color: var(--muted); opacity: 0.65; }
+  .rep-row.skipped .rep-name { color: var(--muted); text-decoration: line-through; opacity: 0.6; }
+  .rep-row.skipped input[type="checkbox"] { opacity: 0.4; }
+  .rep-date-skip {
+    color: var(--muted);
+    opacity: 0.8;
+    font-style: italic;
+    font-size: 0.62rem;
+  }
 
   p { margin-bottom: 0.75rem; font-size: 0.9rem; }
   .muted { color: var(--muted); }
@@ -704,6 +712,60 @@
   }
   .tl-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
   .tl-meta { font-size: 0.78rem; color: var(--muted); }
+
+  /* FRISE DES ÉCHÉANCES (Cette semaine) */
+  .deadlines {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .deadlines-head {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .deadlines-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(11rem, 1fr);
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+  }
+  .dl-item {
+    border-top: 2px solid var(--border);
+    padding-top: 0.5rem;
+    min-width: 0;
+  }
+  .dl-item.dl-now { border-top-color: var(--accent); }
+  .dl-item.dl-goal { border-top-color: #b482ff; }
+  .dl-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .dl-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.15rem; }
+  .dl-item.dl-goal .dl-title { color: #b482ff; }
+  .dl-meta { font-size: 0.7rem; color: var(--muted); line-height: 1.35; }
+  .dl-opt {
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    border-radius: 3px;
+    padding: 0 0.25rem;
+    vertical-align: middle;
+  }
+  @media (max-width: 640px) {
+    .deadlines-track { grid-auto-columns: minmax(9.5rem, 1fr); }
+  }
 
   /* PHASE BLOCKS */
   .phase-block {
