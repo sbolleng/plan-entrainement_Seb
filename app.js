@@ -151,7 +151,7 @@ function showSection(id, btn) {
   }
   loadLogs();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 20/07/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 03/08/2026) =====
   // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -164,7 +164,11 @@ function showSection(id, btn) {
     { label: 'Avr',  distanceKm: 118.9, dplusM: 1118, paceSecPerKm: 332, cadenceSpm: 163, hrBpm: 156, effBeats: 825, dpk: 9.4 },
     { label: 'Mai',  distanceKm: 65.1,  dplusM: 650,  paceSecPerKm: 339, cadenceSpm: 163, hrBpm: 160, effBeats: 780, dpk: 10.0 },
     { label: 'Juin', distanceKm: 75.5,  dplusM: 690,  paceSecPerKm: 307, cadenceSpm: 167, hrBpm: 145, effBeats: 781, dpk: 9.1 },
-    { label: 'Juil', distanceKm: null,  dplusM: null, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: null },
+    // Juillet et août sont des mois de reprise course/marche : la distance et le D+ sont
+    // réels, mais allure, cadence et efficience ne sont pas comparables aux mois de course
+    // continue (les blocs de marche les faussent) — laissés à null volontairement.
+    { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
+    { label: 'Août', distanceKm: 12.1,  dplusM: 238,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 19.6 },
   ];
 
   function fmtPace(sec) {
