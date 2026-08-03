@@ -713,60 +713,197 @@
   .tl-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
   .tl-meta { font-size: 0.78rem; color: var(--muted); }
 
-  /* CARTES COURSES + COMPTE À REBOURS J/H/M/S (Objectif) */
-  .race-board {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  /* LIGNE DE TEMPS DES COURSES (Objectif 26-27) */
+  .race-timeline {
+    position: relative;
+    padding-left: 2rem;
     margin-bottom: 1.5rem;
   }
-  .race-card {
+  .race-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 1.6rem;
+    bottom: 1.6rem;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .race-step {
+    position: relative;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-left: 3px solid var(--border);
+    border-left: 3px solid var(--accent2);
     border-radius: 10px;
     padding: 1.1rem 1.25rem 1.25rem;
+    margin-bottom: 1.25rem;
   }
-  .race-card.is-step { border-left-color: var(--accent2); }
-  .race-card.is-b { border-left-color: var(--accent); }
-  .race-card.is-goal {
+  .race-step::before {
+    content: '';
+    position: absolute;
+    left: calc(-2rem + 3px);
+    top: 1.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent2);
+    border: 2px solid var(--accent2);
+  }
+  .race-step.is-b { border-left-color: var(--accent); }
+  .race-step.is-b::before { background: var(--accent); border-color: var(--accent); }
+  .race-step.is-goal {
     border-left-color: #b482ff;
     box-shadow: inset 0 0 0 1px rgba(180,130,255,0.12);
   }
+  .race-step.is-goal::before {
+    background: #b482ff;
+    border-color: #b482ff;
+    box-shadow: 0 0 0 3px rgba(180,130,255,0.2);
+  }
+  .race-step.is-horizon {
+    border-left-color: var(--border);
+    background: transparent;
+  }
+  .race-step.is-horizon::before { background: var(--surface); border-color: var(--border); }
 
-  .race-head {
+  .rs-top {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
+    margin-bottom: 0.45rem;
   }
-  .race-name { font-size: 1rem; font-weight: 600; }
-  .race-when {
+  .rs-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    background: rgba(255,212,0,0.12);
+    color: var(--accent2);
+  }
+  .rs-badge-b { background: rgba(255,183,0,0.14); color: var(--accent); }
+  .rs-badge-goal { background: rgba(180,130,255,0.14); color: #b482ff; }
+  .rs-badge-muted { background: rgba(143,168,201,0.1); color: var(--muted); }
+  .rs-when {
     font-family: 'Space Mono', monospace;
     font-size: 0.68rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent2);
     white-space: nowrap;
   }
-  .race-specs {
+  .rs-name { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .rs-name a { color: inherit; border-bottom: 1px solid rgba(255,212,0,0.35); }
+  .rs-name a:hover { color: var(--accent2); }
+  .rs-specs {
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
     color: var(--muted);
-    letter-spacing: 0.05em;
-    margin-top: 0.15rem;
+    letter-spacing: 0.04em;
   }
-  .race-lines { margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.3rem; }
-  .race-line { font-size: 0.8rem; color: var(--muted); }
-  .race-line strong { color: var(--text); font-weight: 600; }
-  .race-line .race-key {
+  .rs-desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.9rem; }
+
+  .rs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+  .rs-cell {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.7rem;
+  }
+  .rs-key {
+    display: block;
     font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-right: 0.4rem;
+    margin-bottom: 0.3rem;
+  }
+  .rs-cell p { font-size: 0.79rem; color: var(--muted); line-height: 1.5; }
+  .rs-cell p strong { color: var(--text); }
+  .rs-target {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+
+  /* BLOCS REPLIABLES */
+  .fold {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+  .fold > summary {
+    cursor: pointer;
+    padding: 0.75rem 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .fold > summary::-webkit-details-marker { display: none; }
+  .fold > summary::after { content: '+'; font-size: 1rem; color: var(--accent); flex-shrink: 0; }
+  .fold[open] > summary::after { content: '–'; }
+  .fold > summary:hover { color: var(--text); }
+  .fold .fold-body { padding-bottom: 1rem; }
+  .fold-in { background: var(--bg); margin: 0.9rem 0 0; }
+  .fold-day { background: var(--bg); margin: 0 0 0.6rem; }
+  .fold-day .fold-body { padding-bottom: 0.5rem; }
+
+  /* BANDEAU « OÙ J'EN SUIS » (Cette semaine) */
+  .status-band {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .sb-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 0.75rem 0.9rem;
+  }
+  .sb-item.sb-goal { border-left-color: #b482ff; }
+  .sb-key {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .sb-val { display: block; font-size: 0.95rem; font-weight: 600; }
+  .sb-val .tl-countdown {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+  }
+  .sb-slash { color: var(--muted); font-weight: 400; }
+  .sb-sub { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 0.15rem; }
+  @media (max-width: 700px) { .status-band { grid-template-columns: 1fr; } }
+
+  .phase-races {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    margin-bottom: 1rem;
   }
 
   .race-cd {
@@ -799,7 +936,7 @@
     text-transform: uppercase;
     color: var(--muted);
   }
-  .race-card.is-goal .rc-num { color: #b482ff; }
+  .race-step.is-goal .rc-num { color: #b482ff; }
   .race-cd.is-past {
     display: block;
     background: var(--bg);
@@ -825,7 +962,11 @@
   @media (max-width: 600px) {
     .rc-num { font-size: 1.25rem; }
     .race-cd { gap: 0.3rem; }
-    .race-card { padding: 1rem; }
+    .race-step { padding: 1rem; }
+    .rs-grid { grid-template-columns: 1fr; }
+    .race-timeline { padding-left: 1.5rem; }
+    .race-step::before { left: calc(-1.5rem + 3px); }
+    .race-timeline::before { left: 4px; }
   }
 
   /* FRISE DES ÉCHÉANCES (Cette semaine) */
