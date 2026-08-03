@@ -72,16 +72,14 @@
 <nav>
   <div class="nav-inner">
     <button class="tab active" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
-    <button class="tab" onclick="showSection('reprise', this)">Reprise</button>
-    <button class="tab" onclick="showSection('objectif', this)">Objectif</button>
-    <button class="tab" onclick="showSection('feuilleroute', this)">Feuille de route</button>
-    <button class="tab" onclick="showSection('guide', this)">Guide</button>
+    <button class="tab" onclick="showSection('plan', this)">Plan</button>
+    <button class="tab" onclick="showSection('objectif', this)">Objectif 26-27</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
+    <button class="tab" onclick="showSection('guide', this)">Guide</button>
   </div>
 </nav>
 
 <main>
-
   <!-- ========== CETTE SEMAINE ========== -->
   <section id="semaine_en_cours" class="section active">
     <div class="section-title">Semaine du 3 au 9 août 2026 · Reprise · Fin S3 → Semaine 4</div>
@@ -99,35 +97,22 @@
       <p style="font-size:0.85rem; margin-bottom:0;">Tes deux dernières séances sont notées <strong>cheville 5/5</strong> mais <strong>genou 2/5</strong>. La cheville a suivi, le genou encaisse la reprise de charge. Sur les blocs de 2 min, surveille-le en priorité : si la gêne monte pendant ou persiste le lendemain, reste sur le même palier une séance de plus au lieu d'avancer. Le protocole l'autorise explicitement.</p>
     </div>
 
-    <!-- FRISE DES ÉCHÉANCES -->
-    <div class="deadlines">
-      <div class="deadlines-head">Prochaines échéances</div>
-      <div class="deadlines-track">
-        <div class="dl-item dl-now">
-          <div class="dl-date">8 SEPT 2026</div>
-          <div class="dl-title">Fin de la reprise</div>
-          <div class="dl-meta">30 min de course continue · retour à l'entraînement normal</div>
-        </div>
-        <div class="dl-item">
-          <div class="dl-date">18 OCT 2026 <span class="tl-countdown" data-target="2026-10-18"></span></div>
-          <div class="dl-title">Clam Trail · 20 K</div>
-          <div class="dl-meta">D+315 · Clamart (92) · mode finisher, pas de chrono — reprendre un dossard</div>
-        </div>
-        <div class="dl-item">
-          <div class="dl-date">28–29 NOV 2026 <span class="tl-countdown" data-target="2026-11-28"></span></div>
-          <div class="dl-title">Trail de Senlis · 29 K</div>
-          <div class="dl-meta">D+~400 · Senlis (60) · 18ᵉ édition · premier vrai test distance</div>
-        </div>
-        <div class="dl-item">
-          <div class="dl-date">31 JANV 2027 <span class="tl-countdown" data-target="2027-01-31"></span></div>
-          <div class="dl-title">La Romagnatoise · 27 K</div>
-          <div class="dl-meta">D+960 · Assaut de Gergovie · Romagnat (63) · validation avant Forez</div>
-        </div>
-        <div class="dl-item dl-goal">
-          <div class="dl-date">SEPT 2027 <span class="tl-countdown" data-target="2027-09-13"></span></div>
-          <div class="dl-title">🏔️ Trails du Sancy · 33,5 K</div>
-          <div class="dl-meta">2 000 m D+ · l'objectif A</div>
-        </div>
+    <!-- OÙ J'EN SUIS -->
+    <div class="status-band">
+      <div class="sb-item">
+        <span class="sb-key">Protocole reprise</span>
+        <span class="sb-val">Semaine 4 <span class="sb-slash">/ 8</span></span>
+        <span class="sb-sub">Fin estimée le 8 sept. 2026 · détail dans Plan</span>
+      </div>
+      <div class="sb-item">
+        <span class="sb-key">Prochaine course</span>
+        <span class="sb-val">Clam Trail <span class="tl-countdown" data-target="2026-10-18T09:00:00"></span></span>
+        <span class="sb-sub">20 km · 315 m D+ · Clamart (92)</span>
+      </div>
+      <div class="sb-item sb-goal">
+        <span class="sb-key">Objectif A</span>
+        <span class="sb-val">Sancy <span class="tl-countdown" data-target="2027-09-12T07:00:00"></span></span>
+        <span class="sb-sub">33,5 km · 2 000 m D+ · Le Mont-Dore (63)</span>
       </div>
     </div>
 
@@ -146,8 +131,9 @@
             <div class="day-section-title">3×(2'C/1'M)</div>
             <div class="day-section-desc">Première séance en blocs de 2 min. Enchaîne 3 fois : 2 min de course en jogging tranquille puis 1 min de marche. Volume court exprès — c'est la durée du bloc qui change, pas le total. Encadre de 5 min de marche. Terrain strictement plat.</div>
           </div>
-          <div class="day-section">
-            <div class="day-section-label">Renfo · 45 min</div>
+          <details class="fold fold-day">
+            <summary>Renfo · 45 min · Cuisses · force + Stabilité &amp; fessiers</summary>
+            <div class="fold-body">
           <div class="day-block">
             <div class="day-block-head"><span class="tag tag-green" style="margin:0;">F</span> Cuisses · force</div>
             <ul class="day-exos">
@@ -166,7 +152,8 @@
               <li>Kettlebell around the world 1 jambe · 4×10 chaque sens/jambe</li>
             </ul>
           </div>
-          </div>
+            </div>
+          </details>
           <div class="week-track">
             <label class="week-check"><input type="checkbox" data-day="2026-08-03" onchange="saveLog(this)"> Séance réalisée</label>
             <textarea data-day="2026-08-03" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, allure…)"></textarea>
@@ -185,8 +172,9 @@
             <div class="day-section-title">4×(2'C/1'M)</div>
             <div class="day-section-desc">Une répétition de plus qu'hier, soit 8 min de course cumulée. Même allure, même terrain plat. Cette séance clôture la semaine 3 du protocole.</div>
           </div>
-          <div class="day-section">
-            <div class="day-section-label">Renfo · 45 min</div>
+          <details class="fold fold-day">
+            <summary>Renfo · 45 min · Abdos · tronc + Stabilité &amp; fessiers</summary>
+            <div class="fold-body">
           <div class="day-block">
             <div class="day-block-head"><span class="tag tag-purple" style="margin:0;">A</span> Abdos · tronc</div>
             <ul class="day-exos">
@@ -203,7 +191,8 @@
               <li>Kettlebell around the world 1 jambe · 4×10 chaque sens/jambe</li>
             </ul>
           </div>
-          </div>
+            </div>
+          </details>
           <div class="week-track">
             <label class="week-check"><input type="checkbox" data-day="2026-08-04" onchange="saveLog(this)"> Séance réalisée</label>
             <textarea data-day="2026-08-04" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, allure…)"></textarea>
@@ -221,8 +210,9 @@
             <div class="day-section-label">Repos course</div>
             <div class="day-section-desc">Journée sans course, entre la fin de la semaine 3 et le début de la semaine 4. Récupération active : uniquement le renfo léger ci-dessous. Si le genou tire encore, c'est le bon jour pour du vélo très souple à la place.</div>
           </div>
-          <div class="day-section">
-            <div class="day-section-label">Renfo · 30–45 min</div>
+          <details class="fold fold-day">
+            <summary>Renfo · 30–45 min · Stabilité &amp; fessiers</summary>
+            <div class="fold-body">
           <div class="day-block">
             <div class="day-block-head"><span class="tag tag-orange" style="margin:0;">S</span> Stabilité &amp; fessiers</div>
             <ul class="day-exos">
@@ -232,7 +222,8 @@
               <li>Kettlebell around the world 1 jambe · 4×10 chaque sens/jambe</li>
             </ul>
           </div>
-          </div>
+            </div>
+          </details>
           <div class="week-track">
             <label class="week-check"><input type="checkbox" data-day="2026-08-05" onchange="saveLog(this)"> Séance réalisée</label>
             <textarea data-day="2026-08-05" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, allure…)"></textarea>
@@ -251,8 +242,9 @@
             <div class="day-section-title">5×(2'C/1'M)</div>
             <div class="day-section-desc">Début de la semaine 4. 5 blocs de 2 min, soit 10 min de course cumulée. Tu dépasses ici le volume de course de tes séances en blocs de 1 min — reste vigilant sur le genou.</div>
           </div>
-          <div class="day-section">
-            <div class="day-section-label">Renfo · 45 min</div>
+          <details class="fold fold-day">
+            <summary>Renfo · 45 min · Cuisses · force + Stabilité &amp; fessiers</summary>
+            <div class="fold-body">
           <div class="day-block">
             <div class="day-block-head"><span class="tag tag-green" style="margin:0;">F</span> Cuisses · force</div>
             <ul class="day-exos">
@@ -271,7 +263,8 @@
               <li>Kettlebell around the world 1 jambe · 4×10 chaque sens/jambe</li>
             </ul>
           </div>
-          </div>
+            </div>
+          </details>
           <div class="week-track">
             <label class="week-check"><input type="checkbox" data-day="2026-08-06" onchange="saveLog(this)"> Séance réalisée</label>
             <textarea data-day="2026-08-06" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, allure…)"></textarea>
@@ -290,8 +283,9 @@
             <div class="day-section-title">6×(2'C/1'M)</div>
             <div class="day-section-desc">12 min de course cumulée. L'allure doit rester conversationnelle du premier au dernier bloc : si le dernier est plus dur que le premier, tu es parti trop vite.</div>
           </div>
-          <div class="day-section">
-            <div class="day-section-label">Renfo · 45 min</div>
+          <details class="fold fold-day">
+            <summary>Renfo · 45 min · Abdos · tronc + Haut du corps</summary>
+            <div class="fold-body">
           <div class="day-block">
             <div class="day-block-head"><span class="tag tag-purple" style="margin:0;">A</span> Abdos · tronc</div>
             <ul class="day-exos">
@@ -305,7 +299,8 @@
               <li>Pompes · séries au ressenti</li>
             </ul>
           </div>
-          </div>
+            </div>
+          </details>
           <div class="week-track">
             <label class="week-check"><input type="checkbox" data-day="2026-08-07" onchange="saveLog(this)"> Séance réalisée</label>
             <textarea data-day="2026-08-07" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, allure…)"></textarea>
@@ -324,8 +319,9 @@
             <div class="day-section-title">7×(2'C/1'M)</div>
             <div class="day-section-desc">Plus grosse séance de la semaine : 14 min de course cumulée. Termine la semaine 4 sur une note maîtrisée, sans chercher à en rajouter.</div>
           </div>
-          <div class="day-section">
-            <div class="day-section-label">Renfo · 30 min</div>
+          <details class="fold fold-day">
+            <summary>Renfo · 30 min · Stabilité &amp; fessiers</summary>
+            <div class="fold-body">
           <div class="day-block">
             <div class="day-block-head"><span class="tag tag-orange" style="margin:0;">S</span> Stabilité &amp; fessiers</div>
             <ul class="day-exos">
@@ -335,7 +331,8 @@
               <li>Kettlebell around the world 1 jambe · 4×10 chaque sens/jambe</li>
             </ul>
           </div>
-          </div>
+            </div>
+          </details>
           <div class="week-track">
             <label class="week-check"><input type="checkbox" data-day="2026-08-08" onchange="saveLog(this)"> Séance réalisée</label>
             <textarea data-day="2026-08-08" onchange="saveLog(this)" placeholder="Commentaire (ressenti, douleur, allure…)"></textarea>
@@ -377,9 +374,18 @@
 
   </section>
 
-  <!-- ========== REPRISE (Clinique du Coureur Fractionné-I) ========== -->
-  <section id="reprise" class="section">
-    <div class="section-title">Plan de reprise · Clinique du Coureur · Programme Fractionné-I</div>
+  <!-- ========== PLAN (ligne de temps d'entraînement · phases 0 à 3) ========== -->
+  <section id="plan" class="section">
+    <div class="section-title">Plan d'entraînement · de la reprise au Sancy</div>
+
+    <div class="card card-warning" style="margin-bottom:1.5rem;">
+      <div class="tag tag-orange">Plan recalé le 2 août 2026 · post-blessure</div>
+      <p style="font-size:0.85rem; margin-bottom:0;">La fissure fibula a décalé toute la préparation d'environ trois mois. Le plan repart donc de la phase de reprise Clinique du Coureur (juillet → septembre 2026) avant de reconstruire le volume. Les volumes des phases 1 à 3 sont estimatifs et seront affinés à mesure que la reprise avance.</p>
+    </div>
+
+    <div class="phase-sep">Phase 0 · en cours · Juillet — Septembre 2026</div>
+    <h3 style="margin-bottom:0.5rem;">Reprise course · Clinique du Coureur</h3>
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">Protocole course/marche sur 8 semaines, du 1'C/1'M à la course continue de 30 min. Terrain plat exclusivement, 5 séances/semaine. Renfo cuisses/stabilité/fessiers intensif en parallèle, vélo en complément optionnel. Objectif : recharger l'os sans rechute.</p>
 
     <div class="card card-accent" style="margin-bottom:1.5rem;">
       <div class="tag tag-green">Protocole kiné · retour à la course après fissure fibula</div>
@@ -660,357 +666,23 @@
       </ul>
     </div>
 
+
     <p class="info">Source : La Clinique du Coureur — Programme Fractionné-I. Dates en clair = réalisées ; dates atténuées = prévisionnelles (calées sur 5 séances/semaine, Lun/Mar/Jeu/Ven/Sam). Fin de reprise estimée au 8 septembre 2026 si le rythme tient. Coche chaque séance réalisée ; la progression se reporte dans « Cette semaine ».</p>
 
-  </section>
-
-  <!-- ========== OBJECTIF (vision, timeline, phases, temps cibles) ========== -->
-  <section id="objectif" class="section">
-    <div class="section-title">Objectif · La route vers le Sancy 2027</div>
-
-
-      <div class="card card-warning" style="margin-bottom:1.5rem;">
-        <div class="tag tag-orange">Plan recalé le 2 août 2026 · post-blessure</div>
-        <p style="font-size:0.85rem; margin-bottom:0;">La fissure fibula a décalé toute la préparation d'environ trois mois. Ce plan intègre désormais la phase de reprise Clinique du Coureur (juillet → septembre 2026) avant de reprendre la construction du volume. Les dates de course sont estimatives — voir onglet Reprise pour l'avancement au jour le jour.</p>
-      </div>
-
-      <h2 style="margin-bottom:0.5rem;">Feuille de route courses 2026-2027</h2>
-      <p class="info" style="margin-top:0; margin-bottom:1.25rem;">Quatre dossards de préparation, un objectif A. Chaque course a son compte à rebours en direct — jours, heures, minutes, secondes.</p>
-
-      <div class="race-board">
-
-        <div class="race-card is-step">
-          <div class="race-head">
-            <div>
-              <div class="race-name">Clam Trail</div>
-              <div class="race-specs">20 km · D+315 · Clamart (92)</div>
-            </div>
-            <div class="race-when">18 oct. 2026</div>
-          </div>
-          <div class="race-cd" data-target="2026-10-18T09:00:00"></div>
-          <div class="race-lines">
-            <div class="race-line"><span class="race-key">Reco</span>✅ <strong>Go — mode finisher, pas de chrono</strong></div>
-            <div class="race-line"><span class="race-key">Objectif</span>Reprendre un dossard</div>
-          </div>
-        </div>
-
-        <div class="race-card is-step">
-          <div class="race-head">
-            <div>
-              <div class="race-name">Trail de Senlis</div>
-              <div class="race-specs">29 km · D+~400 · Senlis (60) · 18ᵉ édition</div>
-            </div>
-            <div class="race-when">28–29 nov. 2026</div>
-          </div>
-          <div class="race-cd" data-target="2026-11-28T09:00:00"></div>
-          <div class="race-lines">
-            <div class="race-line"><span class="race-key">Reco</span>✅ <strong>29 km — distance idéale 7 semaines après Clam</strong></div>
-            <div class="race-line"><span class="race-key">Objectif</span>Premier vrai test distance</div>
-          </div>
-        </div>
-
-        <div class="race-card is-step">
-          <div class="race-head">
-            <div>
-              <div class="race-name">La Romagnatoise · Assaut de Gergovie</div>
-              <div class="race-specs">27 km · D+960 · Romagnat (63)</div>
-            </div>
-            <div class="race-when">31 janv. 2027</div>
-          </div>
-          <div class="race-cd" data-target="2027-01-31T09:00:00"></div>
-          <div class="race-lines">
-            <div class="race-line"><span class="race-key">Reco</span>✅ <strong>Assaut de Gergovie — parfait pour ton niveau janvier</strong></div>
-            <div class="race-line"><span class="race-key">Objectif</span>Validation avant Forez</div>
-          </div>
-        </div>
-
-        <div class="race-card is-b">
-          <div class="race-head">
-            <div>
-              <div class="race-name">Forez Trails · L'Augerolloise</div>
-              <div class="race-specs">33 km · D+1100 · Augerolles (63)</div>
-            </div>
-            <div class="race-when">mars 2027</div>
-          </div>
-          <div class="race-cd" data-target="2027-03-07T09:00:00"></div>
-          <div class="race-lines">
-            <div class="race-line"><span class="race-key">Reco</span>✅ <strong style="color:var(--accent);">Objectif B</strong></div>
-            <div class="race-line"><span class="race-key">Objectif</span>Répétition générale Sancy</div>
-          </div>
-        </div>
-
-        <div class="race-card is-goal">
-          <div class="race-head">
-            <div>
-              <div class="race-name">🏔️ Trails du Sancy Oxsitis</div>
-              <div class="race-specs">33,5 km · D+2000 · Mont-Dore (63)</div>
-            </div>
-            <div class="race-when" style="color:#b482ff;">sept. 2027</div>
-          </div>
-          <div class="race-cd" data-target="2027-09-13T09:00:00"></div>
-          <div class="race-lines">
-            <div class="race-line"><span class="race-key">Reco</span>🏔️ <strong style="color:#b482ff;">Objectif A</strong></div>
-            <div class="race-line"><span class="race-key">Objectif</span><strong style="color:#b482ff;">FINISHER</strong></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>Course</th>
-            <th>Date</th>
-            <th>Distance</th>
-            <th>D+</th>
-            <th>Recommandation</th>
-            <th>Objectif</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Clam Trail</strong></td>
-            <td>18 oct. 2026</td>
-            <td>20 km</td>
-            <td>315 m</td>
-            <td>✅ Go — mode finisher, pas de chrono</td>
-            <td>Reprendre un dossard</td>
-          </tr>
-          <tr>
-            <td><strong>Trail de Senlis</strong></td>
-            <td>28–29 nov. 2026</td>
-            <td>29 km</td>
-            <td>~400 m</td>
-            <td>✅ 29 km — distance idéale 7 semaines après Clam</td>
-            <td>Premier vrai test distance</td>
-          </tr>
-          <tr>
-            <td><strong>La Romagnatoise</strong></td>
-            <td>31 janv. 2027</td>
-            <td>27 km</td>
-            <td>960 m</td>
-            <td>✅ Assaut de Gergovie — parfait pour ton niveau janvier</td>
-            <td>Validation avant Forez</td>
-          </tr>
-          <tr>
-            <td><strong>Forez Trails</strong></td>
-            <td>mars 2027</td>
-            <td>33 km</td>
-            <td>1 100 m</td>
-            <td>✅ <strong style="color:var(--accent);">Objectif B</strong></td>
-            <td>Répétition générale Sancy</td>
-          </tr>
-          <tr>
-            <td><strong>Trail du Sancy</strong></td>
-            <td>sept. 2027</td>
-            <td>33,5 km</td>
-            <td>2 000 m</td>
-            <td>🏔️ <strong style="color:#b482ff;">Objectif A</strong></td>
-            <td><strong style="color:#b482ff;">FINISHER</strong></td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-
-      <div class="card card-accent" style="margin-top:1.25rem;">
-        <div class="tag tag-green">Pourquoi l'Assaut de Gergovie (27 km / 960 m D+)</div>
-        <h3>Le bon format pour La Romagnatoise</h3>
-        <ul class="clean" style="font-size:0.85rem; margin-bottom:0;">
-          <li>En janvier tu seras à <strong>4 mois post-reprise</strong> — les jambes seront revenues.</li>
-          <li><strong>960 m D+</strong> est un bon défi sans être excessif — parfait entre Senlis et Forez.</li>
-          <li>C'est <strong>en Auvergne sur les volcans</strong> — terrain spécifique pour préparer le Sancy.</li>
-          <li>La distance est <strong>cohérente avec ta progression</strong>.</li>
-        </ul>
-      </div>
-
-      <hr class="divider">
-
-      <h2 style="margin-bottom:1.5rem;">La route vers le Sancy</h2>
-
-      <div class="timeline">
-
-        <div class="tl-item current">
-          <div class="tl-date">JUIL — SEPT 2026</div>
-          <div class="tl-title">🩹 Reprise course · Clinique du Coureur</div>
-          <div class="tl-meta">Retour progressif course/marche sur 8 semaines · plat · renfo cuisses/stabilité intensif · vélo optionnel</div>
-        </div>
-
-        <div class="tl-item next">
-          <div class="tl-date">OCT — DÉC 2026 <span class="tl-countdown" data-target="2026-10-01"></span></div>
-          <div class="tl-title">Reconstruction du volume</div>
-          <div class="tl-meta">Retour de la course continue · montée progressive à 40 km/sem · réintroduction prudente du D+ · sortie longue jusqu'à 18–22 km</div>
-        </div>
-
-        <div class="tl-item next">
-          <div class="tl-date">18 OCT 2026 <span class="tl-countdown" data-target="2026-10-18"></span></div>
-          <div class="tl-title">🏁 Clam Trail — 20 K <span style="color:var(--accent2); font-size:0.8rem;">retenu</span></div>
-          <div class="tl-meta">20 km · 315 m D+ · Clamart (92) · urbain · <strong style="color:var(--accent2);">mode finisher, pas de chrono — reprendre un dossard</strong></div>
-        </div>
-
-        <div class="tl-item next">
-          <div class="tl-date">28–29 NOV 2026 <span class="tl-countdown" data-target="2026-11-28"></span></div>
-          <div class="tl-title">🏁 Trail de Senlis — 29 K <span style="color:var(--accent2); font-size:0.8rem;">retenu</span></div>
-          <div class="tl-meta">29 km · ~400 m D+ · Senlis (60) · 18ᵉ édition · <strong style="color:var(--accent2);">premier vrai test distance, 7 semaines après Clam</strong></div>
-        </div>
-
-        <div class="tl-item" style="margin-bottom:0.5rem;">
-          <div class="tl-date">JAN — FÉV 2027 <span class="tl-countdown" data-target="2027-01-01"></span></div>
-          <div class="tl-title" style="color:var(--muted);">Développement · D+ et volume</div>
-          <div class="tl-meta">Sorties longues 22–26 km · D+ hebdo en hausse · fractionné côte · cap sur La Romagnatoise</div>
-        </div>
-
-        <div class="tl-item next">
-          <div class="tl-date">31 JANV 2027 <span class="tl-countdown" data-target="2027-01-31"></span></div>
-          <div class="tl-title">🏁 La Romagnatoise — Assaut de Gergovie <span style="color:var(--accent2); font-size:0.8rem;">retenu</span></div>
-          <div class="tl-meta">27 km · 960 m D+ · Romagnat (63) · volcans d'Auvergne · <strong style="color:var(--accent2);">validation avant Forez</strong></div>
-        </div>
-
-        <div class="tl-item next">
-          <div class="tl-date">MARS 2027 (à confirmer) <span class="tl-countdown" data-target="2027-03-07"></span></div>
-          <div class="tl-title">🏁 Forez Trails — L'Augerolloise <span style="color:var(--accent); font-size:0.8rem;">Objectif B</span></div>
-          <div class="tl-meta">33 km · 1 100 m D+ · Augerolles, Puy-de-Dôme · <strong style="color:var(--accent);">répétition générale du Sancy</strong></div>
-        </div>
-
-        <div class="tl-item" style="margin-bottom:0.5rem;">
-          <div class="tl-date">AVR — AOÛT 2027 <span class="tl-countdown" data-target="2027-04-01"></span></div>
-          <div class="tl-title" style="color:var(--muted);">Phase spécifique Sancy</div>
-          <div class="tl-meta">Sorties longues à D+ soutenu · VVX et 4×1800 en préparation · simulation profil volcanique · affûtage final</div>
-        </div>
-
-        <div class="tl-item goal">
-          <div class="tl-date">SEPTEMBRE 2027 <span class="tl-countdown" data-target="2027-09-13"></span></div>
-          <div class="tl-title">🏔️ Trails du Sancy Oxsitis <span style="color:#b482ff; font-size:0.8rem;">Objectif A</span></div>
-          <div class="tl-meta">33,5 km · 2 000 m D+ · Massif du Sancy · <strong style="color:#b482ff;">FINISHER</strong></div>
-        </div>
-
-      </div>
-      <p class="info" style="margin-top:-0.5rem; margin-bottom:1.5rem;">Décomptes calculés sur des dates estimatives — à ajuster dès qu'une date officielle est confirmée.</p>
-
-      <div class="card card-accent">
-        <div class="tag tag-green">📊 Repères réels (Strava)</div>
-        <h3>Où en est la reprise</h3>
-        <p style="font-size:0.85rem;">Arrêt complet de la course du 27 juin au 19 juillet (22 jours). Reprise le 19 juillet (5 km plat, FC 149 en Z2, cadence 170). Semaines 1 et 2 du protocole Clinique du Coureur validées, semaine 3 entamée le 26 juillet : 10× le 26/07, 11× le 28/07, 12× le 30/07, 13× le 01/08 puis <strong>15× le 02/08</strong> (la séance 14× a été sautée). Le vélo a maintenu la base aérobie pendant l'arrêt (5 séances en juillet, 44 km).</p>
-        <p style="font-size:0.85rem;">Point de vigilance : les deux dernières séances sont notées cheville 5/5 mais <strong>genou 2/5</strong>. C'est le genou, pas la fibula, qui limite aujourd'hui la progression.</p>
-        <p style="font-size:0.85rem; margin-bottom:0;">Repère de temps : l'édition 2026 de Forez a été courue le 8 mars (24,4 km · 933 m D+ · 2h58 · FC moy. 163) — référence à dépasser sur l'édition 2027, plus longue.</p>
-      </div>
-
-      <hr class="divider">
-
-      <h3 style="margin-bottom:1rem;">Phases de préparation</h3>
-
-      <div class="phase-sep">Phase 0 · en cours</div>
-      <div class="phase-block" style="border-left:3px solid var(--accent);">
-        <div class="phase-period">Juil — Sept<br>2026</div>
-        <div class="phase-content">
-          <h4>Reprise course · Clinique du Coureur</h4>
-          <p>Protocole course/marche sur 8 semaines, du 1'C/1'M à la course continue de 30 min. Terrain plat exclusivement, 5 séances/semaine. Renfo cuisses/stabilité/fessiers intensif en parallèle. Vélo en complément optionnel. Objectif : recharger l'os sans rechute.</p>
-        </div>
-      </div>
-
-      <div class="phase-sep">Phase 1</div>
-      <div class="phase-block">
-        <div class="phase-period">Oct — Déc<br>2026</div>
-        <div class="phase-content">
-          <h4>Reconstruction du volume</h4>
-          <p>Retour de la course continue. Montée progressive à 40 km/semaine. Réintroduction prudente du dénivelé (Fontainebleau, buttes de l'Essonne). Sortie longue portée à 18–22 km. Renfo maintenu.</p>
-        </div>
-      </div>
-
-      <div class="phase-sep">Phase 2</div>
-      <div class="phase-block" style="border-left:3px solid var(--accent2);">
-        <div class="phase-period">Jan — Mars<br>2027</div>
-        <div class="phase-content">
-          <h4>Développement → Forez Trails</h4>
-          <p>Sorties longues 22–26 km avec D+. D+ hebdo en hausse (500–800 m). Fractionné côte 1×/semaine. La Romagnatoise — Assaut de Gergovie (31 janvier, 27 km / 960 m D+) en course de validation sur les volcans. 2 semaines d'affûtage avant Forez, qui valide la stratégie d'effort sur terrain volcanique.</p>
-        </div>
-      </div>
-
-      <div class="phase-sep">Phase 3</div>
-      <div class="phase-block" style="border-left:3px solid #b482ff;">
-        <div class="phase-period">Avr — Sept<br>2027</div>
-        <div class="phase-content">
-          <h4>Spécifique Sancy</h4>
-          <p>Sorties D+ soutenu (Auvergne, Vosges si possible). VVX (mai) et 4×1800 (juillet) comme préparations grandeur nature — la 4×1800 a un profil quasi identique au Sancy. Sortie longue max 28–30 km / 1 500 m D+. Affûtage 3 semaines avant course.</p>
-        </div>
-      </div>
-
-      <hr class="divider">
-
-      <h3 style="margin-bottom:0.5rem;">Temps cibles estimés</h3>
-      <p class="info" style="margin-top:0;">Projections construites à partir de ta référence réelle : <strong>Forez 2026, 24,4 km / 933 m D+ en 2h58</strong> (FC moy. 163), soit ~7'20/km. Elles supposent une reprise menée à terme sans rechute — à revoir après les premières sorties longues d'octobre.</p>
-
-      <div class="table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>Course</th>
-            <th>Distance · D+</th>
-            <th>Date</th>
-            <th>Temps cible</th>
-            <th>Intention</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Clam Trail</strong><br><span class="muted" style="font-size:0.75rem;">Clamart (92)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Retenu</span></td>
-            <td>20 km · D+315</td>
-            <td>18 oct. 2026</td>
-            <td><span class="muted">sans chrono</span></td>
-            <td>Mode finisher assumé. Reprendre un dossard sans enjeu — profil roulant, rien de technique.</td>
-          </tr>
-          <tr>
-            <td><strong>Trail de Senlis</strong><br><span class="muted" style="font-size:0.75rem;">Senlis (60)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Retenu</span></td>
-            <td>29 km · D+~400</td>
-            <td>28–29 nov. 2026</td>
-            <td><strong style="color:var(--accent2);">3h20 – 3h45</strong></td>
-            <td>Premier vrai test de distance. Valide la capacité à tenir ~3h30 avant d'attaquer 2027.</td>
-          </tr>
-          <tr>
-            <td><strong>La Romagnatoise</strong><br><span class="muted" style="font-size:0.75rem;">Assaut de Gergovie · Romagnat (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Retenu</span></td>
-            <td>27 km · D+960</td>
-            <td>31 janv. 2027</td>
-            <td><strong style="color:var(--accent2);">3h20 – 3h50</strong></td>
-            <td>Validation avant Forez. Premier vrai D+ volcanique depuis la blessure.</td>
-          </tr>
-          <tr>
-            <td><strong>L'Augerolloise</strong><br><span class="muted" style="font-size:0.75rem;">Augerolles (63)</span><br><span class="tag tag-blue" style="margin:0.3rem 0 0;">Objectif B</span></td>
-            <td>33 km · D+1100</td>
-            <td>mars 2027</td>
-            <td><strong style="color:var(--accent2);">4h00 – 4h25</strong></td>
-            <td>Doit battre les 2h58 du Forez 2026 ramenées à la distance. Répétition générale du Sancy.</td>
-          </tr>
-          <tr>
-            <td><strong>Trails du Sancy Oxsitis</strong><br><span class="muted" style="font-size:0.75rem;">Mont-Dore (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif A</span></td>
-            <td>33,5 km · D+2000</td>
-            <td>sept. 2027</td>
-            <td><strong style="color:#b482ff;">5h00 – 5h45</strong></td>
-            <td><strong style="color:#b482ff;">FINISHER.</strong> Le chrono est secondaire — 2 000 m D+, c'est le double de tout ce que tu as couru.</td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-
-  </section>
-
-  <!-- ========== FEUILLE DE ROUTE (Plan + Sorties + Trails à surveiller) ========== -->
-  <section id="feuilleroute" class="section">
-    <div class="section-title">Feuille de route · Plan, sorties, courses à surveiller</div>
-
-    <div class="subnav">
-      <button class="subtab active" onclick="showSubsection('fr-sorties', this)">Sorties détaillées</button>
-      <button class="subtab" onclick="showSubsection('fr-trails', this)">Courses à surveiller</button>
+    <div class="card card-accent" style="margin-top:1rem;">
+      <div class="tag tag-green">📊 Repères réels (Strava)</div>
+      <h3>Où en est la reprise</h3>
+      <p style="font-size:0.85rem;">Arrêt complet de la course du 27 juin au 19 juillet (22 jours). Reprise le 19 juillet (5 km plat, FC 149 en Z2, cadence 170). Semaines 1 et 2 du protocole validées, semaine 3 entamée le 26 juillet : 10× le 26/07, 11× le 28/07, 12× le 30/07, 13× le 01/08 puis <strong>15× le 02/08</strong> (la séance 14× a été sautée). Le vélo a maintenu la base aérobie pendant l'arrêt (5 séances en juillet, 44 km).</p>
+      <p style="font-size:0.85rem; margin-bottom:0;">Point de vigilance : les deux dernières séances sont notées cheville 5/5 mais <strong>genou 2/5</strong>. C'est le genou, pas la fibula, qui limite aujourd'hui la progression.</p>
     </div>
 
-    <div id="fr-sorties" class="subsection active">
-      <h3 style="margin-bottom:0.75rem;">Planning des sorties</h3>
+    <hr class="divider">
 
-    <div class="card card-warning" style="margin-bottom:1.5rem;">
-      <div class="tag tag-orange">Phase de reprise en cours</div>
-      <p style="font-size:0.85rem; margin-bottom:0;">Jusqu'à fin septembre 2026, les séances suivent le protocole Clinique du Coureur (course/marche, plat) — détail dans l'onglet <strong>Reprise</strong> et dans « Cette semaine ». Les tableaux ci-dessous décrivent le planning une fois la course continue retrouvée, à partir d'octobre 2026. Les dates et volumes sont estimatifs et seront affinés à mesure que la reprise avance.</p>
-    </div>
+    <div class="phase-sep">Phase 1 · Octobre — Décembre 2026</div>
+    <h3 style="margin-bottom:0.5rem;">Reconstruction du volume</h3>
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.4rem;">Retour de la course continue. Montée progressive à 40 km/semaine. Réintroduction prudente du dénivelé (Fontainebleau, buttes de l'Essonne). Sortie longue portée à 18–22 km. Renfo maintenu.</p>
+    <p class="phase-races">Mène à → Clam Trail (18 oct.) puis Trail de Senlis (29 nov.)</p>
 
-        <div class="phase-sep">Reconstruction · Octobre — Décembre 2026</div>
     <div class="table-scroll">
     <table>
       <thead>
@@ -1053,7 +725,13 @@
     </table>
     </div>
 
-    <div class="phase-sep">Développement → Forez · Janvier — Mars 2027</div>
+    <hr class="divider">
+
+    <div class="phase-sep">Phase 2 · Janvier — Mars 2027</div>
+    <h3 style="margin-bottom:0.5rem;">Développement → Forez</h3>
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.4rem;">Sorties longues 22–26 km avec D+. D+ hebdo en hausse (500–800 m). Fractionné côte 1×/semaine. 2 semaines d'affûtage avant Forez, qui valide la stratégie d'effort sur terrain volcanique.</p>
+    <p class="phase-races">Mène à → La Romagnatoise (31 janv.) puis Forez Trails (mars)</p>
+
     <div class="table-scroll">
     <table>
       <thead>
@@ -1088,7 +766,13 @@
     </table>
     </div>
 
-    <div class="phase-sep">Spécifique Sancy · Avril — Septembre 2027</div>
+    <hr class="divider">
+
+    <div class="phase-sep">Phase 3 · Avril — Septembre 2027</div>
+    <h3 style="margin-bottom:0.5rem;">Spécifique Sancy</h3>
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.4rem;">Sorties à D+ soutenu (Auvergne, Vosges si possible). VVX (mai) et 4×1800 (juillet) comme préparations grandeur nature — la 4×1800 a un profil quasi identique au Sancy. Sortie longue max 28–30 km / 1 500 m D+. Affûtage 3 semaines avant la course.</p>
+    <p class="phase-races">Mène à → Trails du Sancy Oxsitis (sept. 2027)</p>
+
     <div class="table-scroll">
     <table>
       <thead>
@@ -1146,145 +830,509 @@
         <li><strong>Weekend délocalisé</strong> · Vosges ou Auvergne en phase spécifique (Phase 4) pour simuler le Sancy</li>
       </ul>
     </div>
+
+  </section>
+
+  <!-- ========== OBJECTIF 26-27 (ligne de temps des courses) ========== -->
+  <section id="objectif" class="section">
+    <div class="section-title">Objectif 26-27 · La route vers le Sancy</div>
+
+    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Quatre dossards de préparation, un objectif A. Chaque étape porte tout ce qui la concerne : profil de la course, compte à rebours en direct, recommandation, temps cible et ce qu'il faut avoir dans les jambes à cette date. Les dates non confirmées sont signalées — les décomptes se recalent dès qu'une date officielle tombe.</p>
+
+    <div class="race-timeline">
+
+      <!-- ÉTAPE 1 · CLAM TRAIL -->
+      <div class="race-step">
+        <div class="rs-top">
+          <span class="rs-badge">Étape 1 · retour au dossard</span>
+          <span class="rs-when">Dim. 18 oct. 2026</span>
+        </div>
+        <h3 class="rs-name"><a href="https://www.finishers.com/course/clam-trail" target="_blank" rel="noopener">Clam Trail — 20 K</a></h3>
+        <div class="rs-specs">20 km · 315 m D+ · Clamart (92) · trail urbain</div>
+
+        <div class="race-cd" data-target="2026-10-18T09:00:00"></div>
+
+        <p class="rs-desc">Trail urbain au sud-ouest de Paris, organisé par le CSM Clamart : alternance de rues de quartier et de sentiers en forêt de Meudon. Profil roulant, rien de technique, 315 m de D+ sur 20 km. C'est ton premier dossard depuis la fissure, six semaines après la fin du protocole de reprise — le format le plus raisonnable pour reprendre un numéro sans mettre l'os à l'épreuve.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Recommandation</span>
+            <p>✅ <strong>Go — mode finisher, pas de chrono.</strong></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p>Reprendre un dossard.<br><span class="rs-target">Aucun chrono visé</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dans les jambes à cette date</span>
+            <p>Course continue retrouvée depuis début septembre · sortie longue portée à 16–20 km · D+ hebdo 300–500 m.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p>Ouverture non communiquée — à surveiller sur la <a href="https://www.finishers.com/course/clam-trail" target="_blank" rel="noopener">fiche Finishers</a> dès septembre.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 · TRAIL DE SENLIS -->
+      <div class="race-step">
+        <div class="rs-top">
+          <span class="rs-badge">Étape 2 · test distance</span>
+          <span class="rs-when">Dim. 29 nov. 2026 · 9h30</span>
+        </div>
+        <h3 class="rs-name"><a href="https://trail-de-senlis.adeorun.com/" target="_blank" rel="noopener">Trail de Senlis — 29 K</a></h3>
+        <div class="rs-specs">29 km · ~350–400 m D+ · Senlis (60) · 18ᵉ édition</div>
+
+        <div class="race-cd" data-target="2026-11-29T09:30:00"></div>
+
+        <p class="rs-desc">Forêt d'Halatte, terrain roulant et peu technique : ici c'est la distance qui fait le test, pas le dénivelé. L'événement court sur tout le week-end, le 29 km part le dimanche matin. Sept semaines après Clam, ce qui laisse deux blocs de charge complets entre les deux — c'est l'écart idéal pour progresser sans enchaîner.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Recommandation</span>
+            <p>✅ <strong>29 km — distance idéale 7 semaines après Clam.</strong></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p>Premier vrai test distance.<br><span class="rs-target">3h20 – 3h45</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dans les jambes à cette date</span>
+            <p>Pic de volume nov.–déc. · sortie longue 22–25 km · D+ hebdo 600–800 m · fractionné côte hebdomadaire.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p>Billetterie officielle ouverte sur <a href="https://trail-de-senlis.adeorun.com/inscription" target="_blank" rel="noopener">adeorun</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 3 · LA ROMAGNATOISE -->
+      <div class="race-step">
+        <div class="rs-top">
+          <span class="rs-badge">Étape 3 · validation D+</span>
+          <span class="rs-when">Dim. 31 janv. 2027 · 9h30</span>
+        </div>
+        <h3 class="rs-name"><a href="https://asromagnat-athletisme.fr/assaut-gergovie/" target="_blank" rel="noopener">La Romagnatoise — Assaut de Gergovie</a></h3>
+        <div class="rs-specs">27 km · ~960 m D+ · Romagnat (63) · plateau de Gergovie</div>
+
+        <div class="race-cd" data-target="2027-01-31T09:30:00"></div>
+
+        <p class="rs-desc">Le format long de La Romagnatoise, organisé par l'AS Romagnat Athlétisme sur le week-end des 30 et 31 janvier. Parcours roulant entrecoupé de sentiers techniques et de montées raides sur le plateau de Gergovie. Trail hivernal : prévoir le froid, la boue et une gestion prudente des descentes.</p>
+
+        <details class="fold fold-in">
+          <summary>Pourquoi ce format plutôt qu'un autre</summary>
+          <div class="fold-body">
+            <ul class="clean" style="font-size:0.82rem; margin-bottom:0;">
+              <li>En janvier tu seras à <strong>4 mois post-reprise</strong> — les jambes seront revenues.</li>
+              <li><strong>960 m D+</strong> est un bon défi sans être excessif — parfait entre Senlis et Forez.</li>
+              <li>C'est <strong>en Auvergne sur les volcans</strong> — terrain spécifique pour préparer le Sancy.</li>
+              <li>La distance est <strong>cohérente avec ta progression</strong>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Recommandation</span>
+            <p>✅ <strong>Assaut de Gergovie — parfait pour ton niveau janvier.</strong></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p>Validation avant Forez.<br><span class="rs-target">3h20 – 3h50</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dans les jambes à cette date</span>
+            <p>Pic de volume janv.–fév. · sortie longue 25–28 km / 700–900 m D+ · premier vrai D+ volcanique depuis la blessure.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p>Ouverture non communiquée · tarif indicatif 40 € — à surveiller sur le <a href="https://asromagnat-athletisme.fr/assaut-gergovie/" target="_blank" rel="noopener">site de l'AS Romagnat</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJECTIF B · FOREZ TRAILS -->
+      <div class="race-step is-b">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-b">Objectif B · répétition générale</span>
+          <span class="rs-when">Mars 2027 · à confirmer</span>
+        </div>
+        <h3 class="rs-name"><a href="https://www.finishers.com/course/forez-trails" target="_blank" rel="noopener">Forez Trails — L'Augerolloise</a></h3>
+        <div class="rs-specs">33 km · 1 100 m D+ · Augerolles (63) · monts du Forez</div>
+
+        <div class="race-cd" data-target="2027-03-07T08:00:00"></div>
+
+        <p class="rs-desc">Le seul terrain de cette liste que tu connais déjà : tu as couru l'édition 2026 sur 24,4 km / 933 m D+ en <strong>2h58</strong> (FC moy. 163, ~7'20/km). L'édition 2027 est plus longue et plus dure — c'est précisément l'intérêt. Même massif volcanique que le Sancy, même gestion d'effort sur quatre heures : c'est la répétition générale.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Recommandation</span>
+            <p>✅ <strong style="color:var(--accent);">Objectif B.</strong></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p>Répétition générale Sancy.<br><span class="rs-target">4h00 – 4h25</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dans les jambes à cette date</span>
+            <p>Sortie longue 25–28 km / 700–900 m D+ · 2 semaines d'affûtage · Romagnatoise digérée depuis 5 semaines.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Stratégie</span>
+            <p>Doit battre les 2h58 de 2026 ramenées à la distance. Marche assumée dans les raidillons, FC sous 165 sur la première heure.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p>Tarif de base jusqu'au 31/01 en 2026 — ouverture probable à l'automne 2026 sur <a href="https://www.finishers.com/course/forez-trails" target="_blank" rel="noopener">Finishers</a>.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Date</span>
+            <p>Non confirmée. L'édition 2026 s'est courue le dimanche 8 mars ; le décompte vise le dimanche 7 mars 2027.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJECTIF A · SANCY -->
+      <div class="race-step is-goal">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-goal">🏔️ Objectif A · finisher</span>
+          <span class="rs-when">Sept. 2027 · à confirmer</span>
+        </div>
+        <h3 class="rs-name"><a href="https://www.xttr63.com/nos-evenements/trails-du-sancy-oxsitis-gr-invest/" target="_blank" rel="noopener">Trails du Sancy Oxsitis</a></h3>
+        <div class="rs-specs">33,5 km · 2 000 m D+ · Le Mont-Dore (63) · massif du Sancy</div>
+
+        <div class="race-cd" data-target="2027-09-12T07:00:00"></div>
+
+        <p class="rs-desc">L'édition estivale, organisée par XTTR63 au Mont-Dore. 2 000 m de dénivelé positif sur 33,5 km, soit le double de tout ce que tu as couru à ce jour — Forez 2026 plafonnait à 933 m. La distance ne pose pas de problème après Senlis et Forez ; c'est le dénivelé qui fait la course. Le chrono est secondaire.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Recommandation</span>
+            <p>🏔️ <strong style="color:#b482ff;">Objectif A.</strong></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p><strong style="color:#b482ff;">FINISHER.</strong><br><span class="rs-target" style="color:#b482ff;">5h00 – 5h45</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dans les jambes à cette date</span>
+            <p>Sortie longue max 28–30 km / 1 500 m D+ · VVX (mai) et 4×1800 (juillet) en préparations grandeur nature · affûtage 3 semaines.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Stratégie</span>
+            <p>Marche rapide assumée dans toute côte au-delà de 10 %. Ravitaillement toutes les 40 min dès le départ. FC sous 160 sur les deux premières heures.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p><strong style="color:var(--accent2);">Point de vigilance :</strong> les inscriptions de l'édition estivale ouvrent historiquement en novembre de l'année précédente et partent vite. À surveiller dès <strong>novembre 2026</strong> sur <a href="https://www.xttr63.com/nos-evenements/trails-du-sancy-oxsitis-gr-invest/" target="_blank" rel="noopener">xttr63.com</a>.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Date</span>
+            <p>Non confirmée. Édition estivale généralement mi-septembre ; le décompte vise le dimanche 12 septembre 2027.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HORIZON 2028 -->
+      <div class="race-step is-horizon">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-muted">Horizon · si le Sancy passe</span>
+          <span class="rs-when" style="color:var(--muted);">2028 ?</span>
+        </div>
+        <h3 class="rs-name" style="color:var(--muted);">Marathon de Paris — 42,195 km</h3>
+        <div class="rs-specs">42,195 km · route · avenue des Champs-Élysées</div>
+        <p class="rs-desc" style="margin-top:0.6rem;">Rien n'est décidé, et rien ne se décide avant la ligne d'arrivée du Mont-Dore. Mais un trail de 33,5 km à 2 000 m D+ terminé, c'est un socle d'endurance qui rend le marathon route accessible à moyen terme. À rouvrir en octobre 2027.</p>
+      </div>
+
     </div>
 
-    <div id="fr-trails" class="subsection">
-      <h3 style="margin-bottom:0.75rem;">Trails à surveiller · Calendrier indicatif</h3>
+    <details class="fold">
+      <summary>Autres courses repérées · alternatives et préparations</summary>
+      <div class="fold-body">
+        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Les courses qui ne sont pas dans la feuille de route mais qui gardent un rôle : préparations grandeur nature avant le Sancy, ou solutions de repli si une étape saute. Dates 2027 à reconfirmer à l'approche de la période habituelle.</p>
+        <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Course</th><th>Distance · D+</th><th>Période</th><th>Rôle dans la prépa</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/volvic-volcanic-experience" target="_blank" rel="noopener">Volvic Volcanic Expérience</a></strong><br><span class="muted" style="font-size:0.75rem;">Volvic (63)</span></td>
+              <td>VVX · 24 km</td>
+              <td>Mai 2027</td>
+              <td>Préparation grandeur nature n°1 du Sancy. Terrain volcanique, format court : se cale sans perturber le plan.</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span></td>
+              <td>32 km · D+2000</td>
+              <td>Juillet 2027</td>
+              <td><strong style="color:var(--accent2);">Le profil du Sancy à deux mois près</strong> — même dénivelé, même distance. La meilleure répétition possible.</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Trail du Lac</a></strong><br><span class="muted" style="font-size:0.75rem;">Aubusson-d'Auvergne (63)</span></td>
+              <td>27 km · D+850</td>
+              <td>Octobre 2026</td>
+              <td>Écarté de la feuille de route : 850 m D+ un mois après la fin du protocole, c'est trop tôt. Repli possible si Clam Trail saute.</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Gergo Trail</a></strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
+              <td>22 km · D+900</td>
+              <td>Septembre 2027</td>
+              <td>Même plateau que l'Assaut de Gergovie. Repli si La Romagnatoise saute, ou remise en jambes tardive.</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://fr.milesrepublic.com/event/festival-des-templiers-5719" target="_blank" rel="noopener">Marathon des Causses</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12) · Templiers</span></td>
+              <td>34,1 km · D+1581</td>
+              <td>Octobre 2027</td>
+              <td>Après le Sancy. Inscriptions mi-janvier 2027, à midi, et elles partent en quelques heures — à noter si l'envie prend.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </details>
 
-    <p class="muted" style="font-size:0.82rem; margin-bottom:1.5rem;">Dates vérifiées le 18 juillet 2026 à partir des sites officiels et plateformes d'inscription. Les éditions "à confirmer" ne sont pas encore officiellement annoncées — à revérifier à l'approche de la période habituelle. Ouverture des inscriptions non recherchée (généralement 2 à 6 mois avant la course selon l'événement) : à vérifier sur le site de chaque organisateur.</p>
+  </section>
+  <!-- ========== PROFIL ========== -->
+  <section id="profil" class="section">
+    <div class="section-title">Profil athlète · Données de référence</div>
 
-    <div class="table-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Événement</th>
-          <th>Course(s)</th>
-          <th>Distance · D+</th>
-          <th>Mois</th>
-          <th>Date prévisionnelle</th>
-          <th>Date d'ouverture des dossards</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong><a href="https://www.finishers.com/course/la-romagnatoise-a-lassaut-de-gergovie" target="_blank" rel="noopener">La Romagnatoise</a></strong><br><span class="muted" style="font-size:0.75rem;">Romagnat (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
-          <td>Assaut de Gergovie</td>
-          <td>27 km · D+960</td>
-          <td>Janvier</td>
-          <td>31 janvier 2027</td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td><strong><a href="https://fr.milesrepublic.com/event/forez-trails-15451" target="_blank" rel="noopener">Forez Trails</a></strong><br><span class="muted" style="font-size:0.75rem;">Augerolles (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
-          <td>L'Augerolloise</td>
-          <td>33 km · D+1100</td>
-          <td>Mars</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début mars 2027</td>
-          <td class="muted">Non communiquée précisément — tarif de base jusqu'au 31/01 en 2026, ouverture probable à l'automne 2026</td>
-        </tr>
-        <tr>
-          <td><strong><a href="https://www.finishers.com/course/volvic-volcanic-experience" target="_blank" rel="noopener">Volvic Volcanic Expérience</a></strong><br><span class="muted" style="font-size:0.75rem;">Volvic (63)</span><br><span class="tag tag-blue" style="margin:0.3rem 0 0;">★ Conseillé</span></td>
-          <td>VVX 24 km</td>
-          <td>24 km · D+ à préciser</td>
-          <td>Mai</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~week-end de l'Ascension 2027</td>
-          <td class="muted">Non communiquée — ouverture généralement fin août l'année précédente</td>
-        </tr>
-        <tr>
-          <td rowspan="2"><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span><br><span class="tag tag-blue" style="margin:0.3rem 0 0;">★ Conseillé</span></td>
-          <td>La 4×1800</td>
-          <td>32 km · D+2000 <span class="muted" style="font-size:0.72rem;">(35 km indiqué)</span></td>
-          <td>Juillet</td>
-          <td>17–18 juillet 2026 <span style="color:var(--accent2); font-size:0.72rem;">— ce week-end</span></td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td>Trail des Crêtes</td>
-          <td>21 km · D+1100 <span class="muted" style="font-size:0.72rem;">(22 km/1200 indiqué)</span></td>
-          <td>Juillet</td>
-          <td>17–18 juillet 2026</td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td rowspan="2"><strong><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Grands Trails Esprit Volcans</a></strong><br><span class="muted" style="font-size:0.75rem;">Cournon-d'Auvergne (63)</span></td>
-          <td>La Directissime</td>
-          <td>34 km · D+770 / D-1800</td>
-          <td>Septembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td>Gergo Trail</td>
-          <td>22 km · D+900</td>
-          <td>Septembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-        <tr>
-          <td><strong>Trails du Sancy Oxsitis</strong><br><span class="muted" style="font-size:0.75rem;">Mont-Dore (63)</span><br><span class="tag tag-green" style="margin:0.3rem 0 0;">✓ Objectif retenu</span></td>
-          <td>Trails du Sancy Oxsitis</td>
-          <td>33,5 km · D+2000</td>
-          <td>Septembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-septembre 2027</td>
-          <td class="muted">Non communiquée — à vérifier sur sancy.com</td>
-        </tr>
-        <tr>
-          <td rowspan="3"><strong><a href="https://fr.milesrepublic.com/event/festival-des-templiers-5719" target="_blank" rel="noopener">Festival des Templiers</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
-          <td>Marathon des Causses</td>
-          <td>34,1 km · D+1581</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
-          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
-        </tr>
-        <tr>
-          <td>Marathon du Larzac</td>
-          <td>33,3 km · D+1400</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
-          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
-        </tr>
-        <tr>
-          <td>Monna Lisa</td>
-          <td>~33 km · D+1176</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-octobre 2027</td>
-          <td class="muted">~mi-janvier 2027 (2026 : lundi 19 janvier à midi)</td>
-        </tr>
-        <tr>
-          <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Grands Trails d'Auvergne</a></strong><br><span class="muted" style="font-size:0.75rem;">Lac d'Aubusson (63)</span></td>
-          <td>Trail du Lac</td>
-          <td>27 km · D+850</td>
-          <td>Octobre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~début octobre 2027</td>
-          <td class="muted">~fin décembre 2026 (2026 : 24 décembre 2025 à midi)</td>
-        </tr>
-        <tr>
-          <td><strong><a href="https://fr.milesrepublic.com/event/trail-des-3-rocs-16262" target="_blank" rel="noopener">Trail des 3 Rocs</a></strong><br><span class="muted" style="font-size:0.75rem;">St-Antonin-Noble-Val (82)</span><br><span class="tag tag-blue" style="margin:0.3rem 0 0;">★ Conseillé</span></td>
-          <td>Trail des 3 Rocs</td>
-          <td>31 km · D+1400</td>
-          <td>Novembre</td>
-          <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~novembre 2027 <span class="muted" style="font-size:0.72rem;">(date déplacée en 2026, à reconfirmer)</span></td>
-          <td class="muted">Non communiquée</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="grid-2">
+      <div class="card">
+        <div class="tag tag-green">Données actuelles</div>
+        <div class="table-scroll">
+        <table>
+          <tbody>
+            <tr><td class="muted">Poids</td><td><span class="mono">60 kg</span></td></tr>
+            <tr><td class="muted">Sorties / semaine</td><td><span class="mono">5</span> <span class="muted" style="font-size:0.75rem;">(reprise course/marche)</span></td></tr>
+            <tr><td class="muted">Renfo / semaine</td><td><span class="mono">7 (quotidien)</span> <span class="muted" style="font-size:0.75rem;">· cuisses/stabilité</span></td></tr>
+            <tr><td class="muted">Terrain principal</td><td>Seine · Issy-Boulogne</td></tr>
+            <tr><td class="muted">Montre</td><td>Huawei Watch GT6</td></tr>
+            <tr><td class="muted">Tracking</td><td>Strava</td></tr>
+            <tr><td class="muted">Cadence</td><td><span class="mono">~170 spm</span></td></tr>
+            <tr><td class="muted">Volume depuis nov. 25</td><td><span class="mono">~609 km · 5 997 m D+ (course)</span></td></tr>
+            <tr><td class="muted">Dernière course</td><td><span class="mono">26 juil. 2026</span> <span class="muted" style="font-size:0.75rem;">(reprise S2)</span></td></tr>
+            <tr><td class="muted">Vélo depuis blessure</td><td><span class="mono">~44 km</span> <span class="muted" style="font-size:0.75rem;">(5 séances depuis le 8 juil.)</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="tag tag-orange">État des systèmes</div>
+        <div class="table-scroll">
+        <table>
+          <tbody>
+            <tr><td class="muted">Genou droit</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Kiné actif · protocole en cours</span></td></tr>
+            <tr><td class="muted">Cheville gauche</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Fissure fibula · en reprise · kiné actif</span></td></tr>
+            <tr><td class="muted">Plan de reprise</td><td><span class="status status-ok"><span class="dot dot-green"></span>Semaine 2/8 validée · Clinique du Coureur</span></td></tr>
+            <tr><td class="muted">Semelles</td><td><span class="status status-ok"><span class="dot dot-green"></span>Confirmées</span></td></tr>
+            <tr><td class="muted">Nutrition</td><td><span class="status status-ko"><span class="dot dot-red"></span>Théorique</span></td></tr>
+            <tr><td class="muted">Renfo quotidien</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · Bloc B validé kiné</span></td></tr>
+            <tr><td class="muted">Vélo stationnaire</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · mercredi matin</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
     </div>
 
     <hr class="divider">
 
-    <div class="phase-sep" style="margin-top:0;">2028 ?</div>
+    <h3 style="margin-bottom:0.75rem;">Objectifs</h3>
     <div class="card card-accent">
-      <div class="tag tag-green">Schneider Electric Marathon de Paris</div>
-      <h3>42,195 km · avenue des Champs-Élysées</h3>
-      <p style="font-size:0.85rem;">Dernière édition connue (ASO) : 12 avril 2026. Changement majeur : la Ville de Paris a retiré l'organisation à ASO après près de 30 ans — le groupement Cadence (Keneo, Havas, Avena Event) reprend la concession 2027–2030. L'édition 2027 est déjà datée : <strong>dimanche 11 avril 2027</strong>, avec ouverture des inscriptions annoncée pour septembre 2026. Aucune date officielle pour 2028 à ce stade — à surveiller une fois l'édition 2027 passée.</p>
+      <ul class="clean">
+        <li><strong>Mars 2027</strong> — Forez Trails 33 km / 1 100 m D+ · intermédiaire · finisher</li>
+        <li><strong>Sept. 2027</strong> — Trail du Sancy 33,5 km / 2 000 m D+ · <strong style="color:#b482ff;">objectif A · finisher</strong></li>
+      </ul>
     </div>
 
+    <hr class="divider">
 
-    <p class="info" style="margin-top:1rem;">Coïncidence à noter : le Trail des 4×1800 se déroule ce week-end même (17–18 juillet 2026). Les distances indiquées entre parenthèses sont celles que tu avais notées — elles diffèrent légèrement des chiffres officiels trouvés, à vérifier avant inscription.</p>
+    <h3 style="margin-bottom:0.75rem;">Progression Strava · Nov 2025 → Juin 2026</h3>
+    <div class="card">
+      <div class="progress-row">
+        <span class="progress-label">Cadence</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div>
+        <span class="progress-val">+14 spm</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">D+ cumulé</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:75%; background:var(--accent2)"></div></div>
+        <span class="progress-val">5 997m</span>
+      </div>
+      <div class="progress-row">
+        <span class="progress-label">Volume total</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:70%; background:#7eb8f5"></div></div>
+        <span class="progress-val">~609km</span>
+      </div>
+      <p class="info" style="margin-top:0.75rem;">Mis à jour depuis Strava le 20 juillet 2026 (69 sorties course sur la période, nov. 2025 → 27 juin 2026, avant l'arrêt pour blessure).</p>
     </div>
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Stats · KPIs Strava</h3>
+
+    <div class="card card-accent" style="margin-bottom:1rem;">
+      <div class="tag tag-green">📊 Calculé depuis Strava le 20 juillet 2026</div>
+      <p style="font-size:0.82rem; margin-bottom:0;">Période nov. 2025 → juin 2026 (avant l'arrêt pour blessure), 54 sorties extérieur. Les séances tapis sont exclues des calculs d'allure : l'allure y est imposée par la machine, elle fausserait la tendance. Sur les graphes en barres, la ligne pointillée jaune est la tendance linéaire.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-blue">Volume mensuel</div>
+      <h3>Distance course · km</h3>
+      <div class="stats-chart" id="chart-distance"></div>
+      <p class="info">Avril = pic de volume (dont la rando/course de 37 km · 500 m D+). Juillet : aucune course avant le 19, uniquement du vélo pendant la rééducation.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-orange">Dénivelé mensuel</div>
+      <h3>D+ cumulé · m</h3>
+      <div class="stats-chart" id="chart-dplus"></div>
+      <p class="info">Mars ressort grâce à la course de Forez (933 m D+ sur une seule sortie).</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-purple">Allure d'effort</div>
+      <h3>Rythme corrigé du dénivelé · min/km-effort</h3>
+      <div class="stats-chart" id="chart-pace"></div>
+      <div class="stats-legend">
+        <span><i style="background:var(--accent);"></i>Allure d'effort mensuelle</span>
+        <span><i style="background:var(--accent2);"></i>Tendance</span>
+      </div>
+      <p class="info"><strong>Barre plus haute = plus rapide.</strong> Le km-effort ajoute 1 km fictif tous les 100 m de D+ (convention trail française), ce qui permet de comparer une sortie plate le long de la Seine à une sortie en montagne. Tendance : <strong>−1,6 s/km-effort par mois</strong>, soit environ −11 s sur la période. Juin est le meilleur mois (5:07/km-effort).</p>
+      <p class="info" style="margin-top:0.5rem;">⚠️ À lire avec prudence : une régression tenant compte à la fois de la distance et du dénivelé donne la même direction (−1 s/km par mois) mais <strong>le signal n'est pas statistiquement significatif</strong> (t = −0,5 ; R² = 0,11). Autrement dit la variabilité entre séances (EF, seuil, fartlek, course) est bien plus grande que la progression. Direction encourageante, preuve insuffisante.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-green">Cadence moyenne</div>
+      <h3>Foulée · pas/min</h3>
+      <div class="stats-chart" id="chart-cadence"></div>
+      <div class="stats-legend">
+        <span><i style="background:var(--accent);"></i>Cadence mensuelle</span>
+        <span><i style="background:var(--accent2);"></i>Repère 170 spm</span>
+      </div>
+      <p class="info"><strong>C'est ta meilleure progression, et elle est nette : 154 → 167 spm (+13).</strong> Contrairement à l'allure, la courbe monte de façon régulière et peu bruitée. Une cadence élevée raccourcit la foulée, réduit le temps de contact au sol et surtout <strong>diminue l'impact sur le genou et le tibia</strong> — précisément les structures qui t'ont posé problème. La zone considérée comme efficiente se situe autour de 170–180 spm : tu arrives au seuil, et la sortie du 19 juillet est à 170. Objectif raisonnable : stabiliser 170–175 sans forcer, plutôt que viser plus haut.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-green">Efficience cardiaque</div>
+      <h3>Battements par km-effort</h3>
+      <div class="stats-chart" id="chart-efficiency"></div>
+      <p class="info"><strong>La courbe descend = tu progresses.</strong> On divise le nombre total de battements d'une sortie par sa distance en km-effort : combien de battements de cœur te coûte 1 km. Ça neutralise à la fois l'allure, la distance et le dénivelé — c'est le KPI le plus honnête pour juger de la forme aérobie. <strong>Résultat : 893 en février → 781 en juin, soit −12,5 %.</strong> C'est une vraie amélioration, et le signal le plus solide de toutes ces courbes.</p>
+    </div>
+
+    <div class="card card-alert" style="margin-bottom:1rem;">
+      <div class="tag tag-red">Écart de spécificité</div>
+      <h3>Dénivelé par km · m/km · réel et trajectoire cible</h3>
+      <div class="stats-chart" id="chart-dpk"></div>
+      <div class="stats-legend">
+        <span><i style="background:var(--accent);"></i>Réel</span>
+        <span><i style="background:#7eb8f5;"></i>Cible</span>
+        <span><i style="background:var(--accent2);"></i>Forez · 33 m/km</span>
+        <span><i style="background:var(--red);"></i>Sancy · 60 m/km</span>
+      </div>
+      <p class="info"><strong>C'est ton principal point faible, et de loin.</strong> Tu tournes autour de 9–10 m/km hors mois de course, quand le Sancy en demande 60 — soit six fois plus. Le cardio et la cadence suivent, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui t'attend. Seul mars 2026 s'en approche (17,7 m/km), et uniquement grâce à la course elle-même.</p>
+      <p class="info" style="margin-top:0.5rem;">La courbe bleue est la trajectoire proposée, calée sur les objectifs de D+ hebdomadaire déjà inscrits dans l'onglet Sorties : montée progressive à 20 m/km d'ici décembre 2026, 24 en février, pic à 40 m/km en juillet 2027, puis affûtage. <strong>Un point important : la moyenne d'entraînement n'atteindra jamais les 60 m/km du jour J</strong>, et c'est normal — les sorties de semaine restent plates en Île-de-France. Ce qui doit approcher 60, c'est la <strong>sortie longue du samedi</strong> : c'est elle qu'il faut emmener à Fontainebleau, en Essonne, puis en Auvergne ou dans les Vosges en phase 4.</p>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Fréquence cardiaque · repères et zones</h3>
+
+    <div class="grid-2" style="margin-bottom:1rem;">
+      <div class="card">
+        <div class="tag tag-green">FC de repos</div>
+        <div class="table-scroll">
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted">Juillet 2026</td><td><span class="mono">61 bpm</span></td></tr>
+            <tr><td class="muted">Juin 2026</td><td><span class="mono">62 bpm</span></td></tr>
+            <tr><td class="muted">Moyenne 2026</td><td><span class="mono">63 bpm</span></td></tr>
+            <tr><td class="muted">Moyenne 2025</td><td><span class="mono">66 bpm</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="info">−3 bpm en un an, et la baisse continue pendant la blessure. C'est cohérent avec l'efficience cardiaque ci-dessus : le vélo a préservé la base aérobie et la charge réduite a favorisé la récupération.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-orange">FC max · estimation</div>
+        <div class="table-scroll">
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted">Max observée</td><td><span class="mono">192 bpm</span></td></tr>
+            <tr><td class="muted">Séance</td><td>Forez Trail · 8 mars 2026</td></tr>
+            <tr><td class="muted">2ᵉ valeur</td><td><span class="mono">187 bpm</span> <span class="muted" style="font-size:0.75rem;">(4 janv.)</span></td></tr>
+            <tr><td class="muted">Réserve cardiaque</td><td><span class="mono">131 bpm</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="info">On retient la valeur mesurée plutôt qu'une formule type « 220 − âge » : un maximum atteint en course est bien plus fiable. La vraie FC max est peut-être 1 à 3 bpm au-dessus. À affiner avec un test de terrain, ou avec ton kiné/médecin du sport si tu veux une valeur validée.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-blue">Zones d'entraînement · méthode Karvonen</div>
+      <h3>Calculées sur la réserve cardiaque (192 − 61)</h3>
+      <div class="zone-row">
+        <span class="zone-name"><span class="zone-chip" style="background:#7eb8f5;"></span>Z1 · Récupération</span>
+        <span class="zone-bpm">127 – 140 bpm</span>
+      </div>
+      <div class="zone-row">
+        <span class="zone-name"><span class="zone-chip" style="background:var(--accent);"></span>Z2 · Endurance fondamentale</span>
+        <span class="zone-bpm">140 – 153 bpm</span>
+      </div>
+      <div class="zone-row">
+        <span class="zone-name"><span class="zone-chip" style="background:var(--accent2);"></span>Z3 · Tempo / seuil bas</span>
+        <span class="zone-bpm">153 – 166 bpm</span>
+      </div>
+      <div class="zone-row">
+        <span class="zone-name"><span class="zone-chip" style="background:var(--orange);"></span>Z4 · Seuil / résistance</span>
+        <span class="zone-bpm">166 – 179 bpm</span>
+      </div>
+      <div class="zone-row">
+        <span class="zone-name"><span class="zone-chip" style="background:var(--red);"></span>Z5 · VMA</span>
+        <span class="zone-bpm">179 – 192 bpm</span>
+      </div>
+      <p class="info" style="margin-top:0.75rem;"><strong>Constat en repassant tes séances dans ces zones : de janvier à mai, presque toutes tombent en Z3.</strong> C'est le piège classique — les sorties censées être faciles sont courues trop vite, ce qui fatigue sans construire la base aérobie et augmente le risque de blessure. Juin (145 bpm) et la sortie du 19 juillet (149 bpm) sont enfin en Z2 : c'est la bonne direction. Sur un objectif à 2 000 m D+, viser environ 80 % du volume en Z1–Z2 et réserver Z4–Z5 aux séances vraiment dédiées.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="grid-2" style="margin-bottom:1rem;">
+      <div class="card">
+        <div class="tag tag-orange">Reprise course</div>
+        <div class="table-scroll">
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted">Dernière course</td><td><span class="mono">2 août</span> <span class="muted" style="font-size:0.72rem;">(15×1'C/1'M · reprise S3)</span></td></tr>
+            <tr><td class="muted">Palier atteint</td><td><span class="mono">15×(1'C/1'M)</span> <span class="muted" style="font-size:0.72rem;">→ blocs de 2 min</span></td></tr>
+            <tr><td class="muted">Arrêt précédent</td><td><span class="mono">22 j</span> <span class="muted" style="font-size:0.72rem;">(27 juin → 19 juil.)</span></td></tr>
+            <tr><td class="muted">Courses (juillet)</td><td><span class="mono">4</span> <span class="muted" style="font-size:0.72rem;">· 17,3 km</span></td></tr>
+            <tr><td class="muted">Séances vélo (juillet)</td><td><span class="mono">5</span> <span class="muted" style="font-size:0.72rem;">· 44,4 km</span></td></tr>
+            <tr><td class="muted">Ressenti (2 dern.)</td><td><span class="mono">cheville 5/5</span> · <span class="mono" style="color:var(--orange);">genou 2/5</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="info">La sortie du 19 juillet n'est pas comptée dans les graphiques ci-dessus, faute de synchronisation Strava.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-blue">Repère course · Forez 2026</div>
+        <div class="table-scroll">
+        <table style="margin:0;">
+          <tbody>
+            <tr><td class="muted">Distance · D+</td><td><span class="mono">24,4 km · 933 m</span></td></tr>
+            <tr><td class="muted">Temps</td><td><span class="mono">2h58</span></td></tr>
+            <tr><td class="muted">Allure d'effort</td><td><span class="mono">5:17/km-eff</span></td></tr>
+            <tr><td class="muted">FC moy. / max</td><td><span class="mono">163 / 192 bpm</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="info">Référence à battre sur l'édition 2027, qui sera plus longue (33 km · 1 100 m D+).</p>
+      </div>
+    </div>
+
+    <p class="info">Prochaine étape pour automatiser cette page : la fonction serverless (Cloudflare Workers) pour un bouton « actualiser » qui recalcule ces chiffres à la demande plutôt qu'à la main.</p>
 
   </section>
-
   <!-- ========== GUIDE (Semaine type + Renfo + Vélo + Nutrition) ========== -->
   <section id="guide" class="section">
     <div class="section-title">Guide d'entraînement · Semaine type, renfo, vélo, nutrition</div>
@@ -1721,247 +1769,6 @@
     </div>
 
   </section>
-
-  <!-- ========== PROFIL ========== -->
-  <section id="profil" class="section">
-    <div class="section-title">Profil athlète · Données de référence</div>
-
-    <div class="grid-2">
-      <div class="card">
-        <div class="tag tag-green">Données actuelles</div>
-        <div class="table-scroll">
-        <table>
-          <tbody>
-            <tr><td class="muted">Poids</td><td><span class="mono">60 kg</span></td></tr>
-            <tr><td class="muted">Sorties / semaine</td><td><span class="mono">5</span> <span class="muted" style="font-size:0.75rem;">(reprise course/marche)</span></td></tr>
-            <tr><td class="muted">Renfo / semaine</td><td><span class="mono">7 (quotidien)</span> <span class="muted" style="font-size:0.75rem;">· cuisses/stabilité</span></td></tr>
-            <tr><td class="muted">Terrain principal</td><td>Seine · Issy-Boulogne</td></tr>
-            <tr><td class="muted">Montre</td><td>Huawei Watch GT6</td></tr>
-            <tr><td class="muted">Tracking</td><td>Strava</td></tr>
-            <tr><td class="muted">Cadence</td><td><span class="mono">~170 spm</span></td></tr>
-            <tr><td class="muted">Volume depuis nov. 25</td><td><span class="mono">~609 km · 5 997 m D+ (course)</span></td></tr>
-            <tr><td class="muted">Dernière course</td><td><span class="mono">26 juil. 2026</span> <span class="muted" style="font-size:0.75rem;">(reprise S2)</span></td></tr>
-            <tr><td class="muted">Vélo depuis blessure</td><td><span class="mono">~44 km</span> <span class="muted" style="font-size:0.75rem;">(5 séances depuis le 8 juil.)</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-      <div class="card">
-        <div class="tag tag-orange">État des systèmes</div>
-        <div class="table-scroll">
-        <table>
-          <tbody>
-            <tr><td class="muted">Genou droit</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Kiné actif · protocole en cours</span></td></tr>
-            <tr><td class="muted">Cheville gauche</td><td><span class="status status-warn"><span class="dot dot-orange"></span>Fissure fibula · en reprise · kiné actif</span></td></tr>
-            <tr><td class="muted">Plan de reprise</td><td><span class="status status-ok"><span class="dot dot-green"></span>Semaine 2/8 validée · Clinique du Coureur</span></td></tr>
-            <tr><td class="muted">Semelles</td><td><span class="status status-ok"><span class="dot dot-green"></span>Confirmées</span></td></tr>
-            <tr><td class="muted">Nutrition</td><td><span class="status status-ko"><span class="dot dot-red"></span>Théorique</span></td></tr>
-            <tr><td class="muted">Renfo quotidien</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · Bloc B validé kiné</span></td></tr>
-            <tr><td class="muted">Vélo stationnaire</td><td><span class="status status-ok"><span class="dot dot-green"></span>Actif · mercredi matin</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Objectifs</h3>
-    <div class="card card-accent">
-      <ul class="clean">
-        <li><strong>Mars 2027</strong> — Forez Trails 33 km / 1 100 m D+ · intermédiaire · finisher</li>
-        <li><strong>Sept. 2027</strong> — Trail du Sancy 33,5 km / 2 000 m D+ · <strong style="color:#b482ff;">objectif A · finisher</strong></li>
-      </ul>
-    </div>
-
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Progression Strava · Nov 2025 → Juin 2026</h3>
-    <div class="card">
-      <div class="progress-row">
-        <span class="progress-label">Cadence</span>
-        <div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div>
-        <span class="progress-val">+14 spm</span>
-      </div>
-      <div class="progress-row">
-        <span class="progress-label">D+ cumulé</span>
-        <div class="progress-bar"><div class="progress-fill" style="width:75%; background:var(--accent2)"></div></div>
-        <span class="progress-val">5 997m</span>
-      </div>
-      <div class="progress-row">
-        <span class="progress-label">Volume total</span>
-        <div class="progress-bar"><div class="progress-fill" style="width:70%; background:#7eb8f5"></div></div>
-        <span class="progress-val">~609km</span>
-      </div>
-      <p class="info" style="margin-top:0.75rem;">Mis à jour depuis Strava le 20 juillet 2026 (69 sorties course sur la période, nov. 2025 → 27 juin 2026, avant l'arrêt pour blessure).</p>
-    </div>
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Stats · KPIs Strava</h3>
-
-    <div class="card card-accent" style="margin-bottom:1rem;">
-      <div class="tag tag-green">📊 Calculé depuis Strava le 20 juillet 2026</div>
-      <p style="font-size:0.82rem; margin-bottom:0;">Période nov. 2025 → juin 2026 (avant l'arrêt pour blessure), 54 sorties extérieur. Les séances tapis sont exclues des calculs d'allure : l'allure y est imposée par la machine, elle fausserait la tendance. Sur les graphes en barres, la ligne pointillée jaune est la tendance linéaire.</p>
-    </div>
-
-    <div class="card" style="margin-bottom:1rem;">
-      <div class="tag tag-blue">Volume mensuel</div>
-      <h3>Distance course · km</h3>
-      <div class="stats-chart" id="chart-distance"></div>
-      <p class="info">Avril = pic de volume (dont la rando/course de 37 km · 500 m D+). Juillet : aucune course avant le 19, uniquement du vélo pendant la rééducation.</p>
-    </div>
-
-    <div class="card" style="margin-bottom:1rem;">
-      <div class="tag tag-orange">Dénivelé mensuel</div>
-      <h3>D+ cumulé · m</h3>
-      <div class="stats-chart" id="chart-dplus"></div>
-      <p class="info">Mars ressort grâce à la course de Forez (933 m D+ sur une seule sortie).</p>
-    </div>
-
-    <div class="card" style="margin-bottom:1rem;">
-      <div class="tag tag-purple">Allure d'effort</div>
-      <h3>Rythme corrigé du dénivelé · min/km-effort</h3>
-      <div class="stats-chart" id="chart-pace"></div>
-      <div class="stats-legend">
-        <span><i style="background:var(--accent);"></i>Allure d'effort mensuelle</span>
-        <span><i style="background:var(--accent2);"></i>Tendance</span>
-      </div>
-      <p class="info"><strong>Barre plus haute = plus rapide.</strong> Le km-effort ajoute 1 km fictif tous les 100 m de D+ (convention trail française), ce qui permet de comparer une sortie plate le long de la Seine à une sortie en montagne. Tendance : <strong>−1,6 s/km-effort par mois</strong>, soit environ −11 s sur la période. Juin est le meilleur mois (5:07/km-effort).</p>
-      <p class="info" style="margin-top:0.5rem;">⚠️ À lire avec prudence : une régression tenant compte à la fois de la distance et du dénivelé donne la même direction (−1 s/km par mois) mais <strong>le signal n'est pas statistiquement significatif</strong> (t = −0,5 ; R² = 0,11). Autrement dit la variabilité entre séances (EF, seuil, fartlek, course) est bien plus grande que la progression. Direction encourageante, preuve insuffisante.</p>
-    </div>
-
-    <div class="card" style="margin-bottom:1rem;">
-      <div class="tag tag-green">Cadence moyenne</div>
-      <h3>Foulée · pas/min</h3>
-      <div class="stats-chart" id="chart-cadence"></div>
-      <div class="stats-legend">
-        <span><i style="background:var(--accent);"></i>Cadence mensuelle</span>
-        <span><i style="background:var(--accent2);"></i>Repère 170 spm</span>
-      </div>
-      <p class="info"><strong>C'est ta meilleure progression, et elle est nette : 154 → 167 spm (+13).</strong> Contrairement à l'allure, la courbe monte de façon régulière et peu bruitée. Une cadence élevée raccourcit la foulée, réduit le temps de contact au sol et surtout <strong>diminue l'impact sur le genou et le tibia</strong> — précisément les structures qui t'ont posé problème. La zone considérée comme efficiente se situe autour de 170–180 spm : tu arrives au seuil, et la sortie du 19 juillet est à 170. Objectif raisonnable : stabiliser 170–175 sans forcer, plutôt que viser plus haut.</p>
-    </div>
-
-    <div class="card" style="margin-bottom:1rem;">
-      <div class="tag tag-green">Efficience cardiaque</div>
-      <h3>Battements par km-effort</h3>
-      <div class="stats-chart" id="chart-efficiency"></div>
-      <p class="info"><strong>La courbe descend = tu progresses.</strong> On divise le nombre total de battements d'une sortie par sa distance en km-effort : combien de battements de cœur te coûte 1 km. Ça neutralise à la fois l'allure, la distance et le dénivelé — c'est le KPI le plus honnête pour juger de la forme aérobie. <strong>Résultat : 893 en février → 781 en juin, soit −12,5 %.</strong> C'est une vraie amélioration, et le signal le plus solide de toutes ces courbes.</p>
-    </div>
-
-    <div class="card card-alert" style="margin-bottom:1rem;">
-      <div class="tag tag-red">Écart de spécificité</div>
-      <h3>Dénivelé par km · m/km · réel et trajectoire cible</h3>
-      <div class="stats-chart" id="chart-dpk"></div>
-      <div class="stats-legend">
-        <span><i style="background:var(--accent);"></i>Réel</span>
-        <span><i style="background:#7eb8f5;"></i>Cible</span>
-        <span><i style="background:var(--accent2);"></i>Forez · 33 m/km</span>
-        <span><i style="background:var(--red);"></i>Sancy · 60 m/km</span>
-      </div>
-      <p class="info"><strong>C'est ton principal point faible, et de loin.</strong> Tu tournes autour de 9–10 m/km hors mois de course, quand le Sancy en demande 60 — soit six fois plus. Le cardio et la cadence suivent, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui t'attend. Seul mars 2026 s'en approche (17,7 m/km), et uniquement grâce à la course elle-même.</p>
-      <p class="info" style="margin-top:0.5rem;">La courbe bleue est la trajectoire proposée, calée sur les objectifs de D+ hebdomadaire déjà inscrits dans l'onglet Sorties : montée progressive à 20 m/km d'ici décembre 2026, 24 en février, pic à 40 m/km en juillet 2027, puis affûtage. <strong>Un point important : la moyenne d'entraînement n'atteindra jamais les 60 m/km du jour J</strong>, et c'est normal — les sorties de semaine restent plates en Île-de-France. Ce qui doit approcher 60, c'est la <strong>sortie longue du samedi</strong> : c'est elle qu'il faut emmener à Fontainebleau, en Essonne, puis en Auvergne ou dans les Vosges en phase 4.</p>
-    </div>
-
-    <hr class="divider">
-
-    <h3 style="margin-bottom:0.75rem;">Fréquence cardiaque · repères et zones</h3>
-
-    <div class="grid-2" style="margin-bottom:1rem;">
-      <div class="card">
-        <div class="tag tag-green">FC de repos</div>
-        <div class="table-scroll">
-        <table style="margin:0;">
-          <tbody>
-            <tr><td class="muted">Juillet 2026</td><td><span class="mono">61 bpm</span></td></tr>
-            <tr><td class="muted">Juin 2026</td><td><span class="mono">62 bpm</span></td></tr>
-            <tr><td class="muted">Moyenne 2026</td><td><span class="mono">63 bpm</span></td></tr>
-            <tr><td class="muted">Moyenne 2025</td><td><span class="mono">66 bpm</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-        <p class="info">−3 bpm en un an, et la baisse continue pendant la blessure. C'est cohérent avec l'efficience cardiaque ci-dessus : le vélo a préservé la base aérobie et la charge réduite a favorisé la récupération.</p>
-      </div>
-      <div class="card">
-        <div class="tag tag-orange">FC max · estimation</div>
-        <div class="table-scroll">
-        <table style="margin:0;">
-          <tbody>
-            <tr><td class="muted">Max observée</td><td><span class="mono">192 bpm</span></td></tr>
-            <tr><td class="muted">Séance</td><td>Forez Trail · 8 mars 2026</td></tr>
-            <tr><td class="muted">2ᵉ valeur</td><td><span class="mono">187 bpm</span> <span class="muted" style="font-size:0.75rem;">(4 janv.)</span></td></tr>
-            <tr><td class="muted">Réserve cardiaque</td><td><span class="mono">131 bpm</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-        <p class="info">On retient la valeur mesurée plutôt qu'une formule type « 220 − âge » : un maximum atteint en course est bien plus fiable. La vraie FC max est peut-être 1 à 3 bpm au-dessus. À affiner avec un test de terrain, ou avec ton kiné/médecin du sport si tu veux une valeur validée.</p>
-      </div>
-    </div>
-
-    <div class="card" style="margin-bottom:1rem;">
-      <div class="tag tag-blue">Zones d'entraînement · méthode Karvonen</div>
-      <h3>Calculées sur la réserve cardiaque (192 − 61)</h3>
-      <div class="zone-row">
-        <span class="zone-name"><span class="zone-chip" style="background:#7eb8f5;"></span>Z1 · Récupération</span>
-        <span class="zone-bpm">127 – 140 bpm</span>
-      </div>
-      <div class="zone-row">
-        <span class="zone-name"><span class="zone-chip" style="background:var(--accent);"></span>Z2 · Endurance fondamentale</span>
-        <span class="zone-bpm">140 – 153 bpm</span>
-      </div>
-      <div class="zone-row">
-        <span class="zone-name"><span class="zone-chip" style="background:var(--accent2);"></span>Z3 · Tempo / seuil bas</span>
-        <span class="zone-bpm">153 – 166 bpm</span>
-      </div>
-      <div class="zone-row">
-        <span class="zone-name"><span class="zone-chip" style="background:var(--orange);"></span>Z4 · Seuil / résistance</span>
-        <span class="zone-bpm">166 – 179 bpm</span>
-      </div>
-      <div class="zone-row">
-        <span class="zone-name"><span class="zone-chip" style="background:var(--red);"></span>Z5 · VMA</span>
-        <span class="zone-bpm">179 – 192 bpm</span>
-      </div>
-      <p class="info" style="margin-top:0.75rem;"><strong>Constat en repassant tes séances dans ces zones : de janvier à mai, presque toutes tombent en Z3.</strong> C'est le piège classique — les sorties censées être faciles sont courues trop vite, ce qui fatigue sans construire la base aérobie et augmente le risque de blessure. Juin (145 bpm) et la sortie du 19 juillet (149 bpm) sont enfin en Z2 : c'est la bonne direction. Sur un objectif à 2 000 m D+, viser environ 80 % du volume en Z1–Z2 et réserver Z4–Z5 aux séances vraiment dédiées.</p>
-    </div>
-
-    <hr class="divider">
-
-    <div class="grid-2" style="margin-bottom:1rem;">
-      <div class="card">
-        <div class="tag tag-orange">Reprise course</div>
-        <div class="table-scroll">
-        <table style="margin:0;">
-          <tbody>
-            <tr><td class="muted">Dernière course</td><td><span class="mono">2 août</span> <span class="muted" style="font-size:0.72rem;">(15×1'C/1'M · reprise S3)</span></td></tr>
-            <tr><td class="muted">Palier atteint</td><td><span class="mono">15×(1'C/1'M)</span> <span class="muted" style="font-size:0.72rem;">→ blocs de 2 min</span></td></tr>
-            <tr><td class="muted">Arrêt précédent</td><td><span class="mono">22 j</span> <span class="muted" style="font-size:0.72rem;">(27 juin → 19 juil.)</span></td></tr>
-            <tr><td class="muted">Courses (juillet)</td><td><span class="mono">4</span> <span class="muted" style="font-size:0.72rem;">· 17,3 km</span></td></tr>
-            <tr><td class="muted">Séances vélo (juillet)</td><td><span class="mono">5</span> <span class="muted" style="font-size:0.72rem;">· 44,4 km</span></td></tr>
-            <tr><td class="muted">Ressenti (2 dern.)</td><td><span class="mono">cheville 5/5</span> · <span class="mono" style="color:var(--orange);">genou 2/5</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-        <p class="info">La sortie du 19 juillet n'est pas comptée dans les graphiques ci-dessus, faute de synchronisation Strava.</p>
-      </div>
-      <div class="card">
-        <div class="tag tag-blue">Repère course · Forez 2026</div>
-        <div class="table-scroll">
-        <table style="margin:0;">
-          <tbody>
-            <tr><td class="muted">Distance · D+</td><td><span class="mono">24,4 km · 933 m</span></td></tr>
-            <tr><td class="muted">Temps</td><td><span class="mono">2h58</span></td></tr>
-            <tr><td class="muted">Allure d'effort</td><td><span class="mono">5:17/km-eff</span></td></tr>
-            <tr><td class="muted">FC moy. / max</td><td><span class="mono">163 / 192 bpm</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-        <p class="info">Référence à battre sur l'édition 2027, qui sera plus longue (33 km · 1 100 m D+).</p>
-      </div>
-    </div>
-
-    <p class="info">Prochaine étape pour automatiser cette page : la fonction serverless (Cloudflare Workers) pour un bouton « actualiser » qui recalcule ces chiffres à la demande plutôt qu'à la main.</p>
-
-  </section>
-
 </main>
 
 <script src="app.js" defer></script>

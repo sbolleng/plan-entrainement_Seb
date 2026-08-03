@@ -34,7 +34,7 @@ function showSection(id, btn) {
     document.querySelectorAll('.tl-countdown[data-target]').forEach(el => {
       const target = parseTarget(el.dataset.target);
       const diff = Math.round((target - now) / (1000 * 60 * 60 * 24));
-      el.textContent = diff > 0 ? '· J-' + diff : (diff === 0 ? "· aujourd'hui" : '· J+' + Math.abs(diff));
+      el.textContent = diff > 0 ? 'J-' + diff : (diff === 0 ? "aujourd'hui" : 'J+' + Math.abs(diff));
     });
   }
   updateTimelineCountdowns();
@@ -82,10 +82,10 @@ function showSection(id, btn) {
   // ===== Compteur d'en-tête · prochaine course de la feuille de route =====
   const RACES = [
     { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail' },
-    { date: new Date('2026-11-28T09:00:00'), name: 'Trail de Senlis' },
-    { date: new Date('2027-01-31T09:00:00'), name: 'La Romagnatoise' },
-    { date: new Date('2027-03-07T09:00:00'), name: 'Forez Trails' },
-    { date: new Date('2027-09-13T09:00:00'), name: 'Sancy' }
+    { date: new Date('2026-11-29T09:30:00'), name: 'Trail de Senlis' },
+    { date: new Date('2027-01-31T09:30:00'), name: 'La Romagnatoise' },
+    { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
+    { date: new Date('2027-09-12T07:00:00'), name: 'Sancy' }
   ];
 
   function updateCountdown() {
