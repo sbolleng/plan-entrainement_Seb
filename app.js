@@ -13,29 +13,99 @@ function showSection(id, btn) {
     btn.classList.add('active');
   }
 
+  // ===== Comptes à rebours =====
+  // Une date sans heure (2027-01-31) est interprétée à minuit, heure locale.
+  function parseTarget(str) {
+    return new Date(str.indexOf('T') === -1 ? str + 'T00:00:00' : str);
+  }
+
+  // Décompose un écart en millisecondes en jours / heures / minutes / secondes.
+  function splitDelay(ms) {
+    return {
+      d: Math.floor(ms / 86400000),
+      h: Math.floor(ms / 3600000) % 24,
+      m: Math.floor(ms / 60000) % 60,
+      s: Math.floor(ms / 1000) % 60
+    };
+  }
+
   function updateTimelineCountdowns() {
     const now = new Date();
     document.querySelectorAll('.tl-countdown[data-target]').forEach(el => {
-      const target = new Date(el.dataset.target + 'T00:00:00');
+      const target = parseTarget(el.dataset.target);
       const diff = Math.round((target - now) / (1000 * 60 * 60 * 24));
       el.textContent = diff > 0 ? '· J-' + diff : (diff === 0 ? "· aujourd'hui" : '· J+' + Math.abs(diff));
     });
   }
   updateTimelineCountdowns();
 
+  // ===== Compteur J / H / M / S par course (onglet Objectif) =====
+  const CD_UNITS = [
+    { key: 'd', label: 'Jours' },
+    { key: 'h', label: 'Heures' },
+    { key: 'm', label: 'Minutes' },
+    { key: 's', label: 'Secondes' }
+  ];
+
+  function buildRaceCountdowns() {
+    document.querySelectorAll('.race-cd[data-target]').forEach(el => {
+      if (el.dataset.built) return;
+      el.innerHTML = CD_UNITS.map(u =>
+        '<div class="rc-cell"><span class="rc-num" data-unit="' + u.key + '">--</span>' +
+        '<span class="rc-lab">' + u.label + '</span></div>'
+      ).join('');
+      el.dataset.built = '1';
+    });
+  }
+
+  function updateRaceCountdowns() {
+    const now = Date.now();
+    document.querySelectorAll('.race-cd[data-target]').forEach(el => {
+      const diff = parseTarget(el.dataset.target).getTime() - now;
+      if (diff <= 0) {
+        if (!el.classList.contains('is-past')) {
+          el.classList.add('is-past');
+          el.innerHTML = 'Course courue';
+        }
+        return;
+      }
+      const t = splitDelay(diff);
+      el.querySelectorAll('.rc-num').forEach(num => {
+        const v = t[num.dataset.unit];
+        num.textContent = num.dataset.unit === 'd' ? v : String(v).padStart(2, '0');
+      });
+    });
+  }
+  buildRaceCountdowns();
+  updateRaceCountdowns();
+
+  // ===== Compteur d'en-tête · prochaine course de la feuille de route =====
+  const RACES = [
+    { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail' },
+    { date: new Date('2026-11-28T09:00:00'), name: 'Trail de Senlis' },
+    { date: new Date('2027-01-31T09:00:00'), name: 'La Romagnatoise' },
+    { date: new Date('2027-03-07T09:00:00'), name: 'Forez Trails' },
+    { date: new Date('2027-09-13T09:00:00'), name: 'Sancy' }
+  ];
+
   function updateCountdown() {
-    const races = [
-      { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
-      { date: new Date('2027-09-13T08:00:00'), name: 'Sancy' }
-    ];
     const now = new Date();
-    const next = races.find(r => r.date > now);
+    const next = RACES.find(r => r.date > now);
     if (!next) return;
-    const diff = Math.ceil((next.date - now) / (1000 * 60 * 60 * 24));
-    document.getElementById('countdown-days').textContent = diff;
+    const t = splitDelay(next.date - now);
+    document.getElementById('countdown-days').textContent = t.d;
+    document.getElementById('countdown-label').textContent = t.d > 1 ? 'jours' : 'jour';
+    document.getElementById('countdown-hms').textContent =
+      String(t.h).padStart(2, '0') + 'h ' + String(t.m).padStart(2, '0') + 'm ' + String(t.s).padStart(2, '0') + 's';
     document.getElementById('countdown-sub').textContent = '→ ' + next.name;
   }
   updateCountdown();
+
+  // Un seul intervalle pour tous les compteurs à la seconde.
+  setInterval(function () {
+    updateCountdown();
+    updateRaceCountdowns();
+  }, 1000);
 
   function toggleCheck(cid, id) {
     const container = document.getElementById(cid);
@@ -329,7 +399,11 @@ function showSection(id, btn) {
   function saveRep(el) {
     localStorage.setItem('sancy-rep-' + el.dataset.rep, el.checked ? '1' : '0');
     const row = el.closest('.rep-row');
-    if (row) row.classList.toggle('done', el.checked);
+    if (row) {
+      row.classList.toggle('done', el.checked);
+      // une séance rattrapée n'est plus « sautée »
+      if (el.checked) row.classList.remove('skipped');
+    }
     updateRepCounts();
   }
   function loadRep() {
