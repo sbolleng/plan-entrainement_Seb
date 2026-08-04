@@ -82,8 +82,10 @@ function showSection(id, btn) {
   // ===== Compteur d'en-tête · prochaine course de la feuille de route =====
   const RACES = [
     { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail' },
-    { date: new Date('2026-11-29T09:30:00'), name: 'Trail de Senlis' },
-    { date: new Date('2027-01-31T09:30:00'), name: 'La Romagnatoise' },
+    // Le bloc d'automne-hiver n'est pas tranché : on vise la première échéance
+    // possible (Deauville 15/11), puis la première course d'hiver possible (D2B 17/01).
+    { date: new Date('2026-11-15T08:00:00'), name: "bloc hiver · option à trancher" },
+    { date: new Date('2027-01-17T09:00:00'), name: "course d'hiver · option à trancher" },
     { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
     { date: new Date('2027-09-12T07:00:00'), name: 'Sancy' }
   ];
@@ -105,6 +107,7 @@ function showSection(id, btn) {
   setInterval(function () {
     updateCountdown();
     updateRaceCountdowns();
+    updateTimelineCountdowns();
   }, 1000);
 
   function toggleCheck(cid, id) {
