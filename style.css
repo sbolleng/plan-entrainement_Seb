@@ -795,6 +795,13 @@
     color: var(--accent2);
     white-space: nowrap;
   }
+  .rs-event {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.1rem;
+  }
   .rs-name { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
   .rs-name a { color: inherit; border-bottom: 1px solid rgba(255,212,0,0.35); }
   .rs-name a:hover { color: var(--accent2); }
@@ -817,7 +824,8 @@
     gap: 0.6rem;
     margin-top: 0.9rem;
   }
-  @media (max-width: 820px) { .opt-grid { grid-template-columns: 1fr; } }
+  .opt-grid-2 { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 820px) { .opt-grid, .opt-grid-2 { grid-template-columns: 1fr; } }
   .opt-card {
     display: flex;
     flex-direction: column;
@@ -872,7 +880,14 @@
     border-radius: 3px;
     letter-spacing: 0.04em;
   }
-  .opt-rname { font-size: 0.85rem; font-weight: 600; margin: 0.2rem 0 0.1rem; line-height: 1.35; }
+  .opt-event {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+  .opt-rname { font-size: 0.85rem; font-weight: 600; margin: 0.05rem 0 0.1rem; line-height: 1.35; }
   .opt-rname a { color: inherit; border-bottom: 1px solid rgba(255,212,0,0.35); }
   .opt-rname a:hover { color: var(--accent2); }
   .opt-rspecs { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--muted); }
