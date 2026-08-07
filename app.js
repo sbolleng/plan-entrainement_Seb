@@ -110,12 +110,6 @@ function showSection(id, btn) {
     updateTimelineCountdowns();
   }, 1000);
 
-  function toggleCheck(cid, id) {
-    const container = document.getElementById(cid);
-    const cb = document.getElementById(id);
-    container.classList.toggle('done', cb.checked);
-  }
-
   // ===== Highlight dynamique du jour en cours =====
   function pad2(n) { return n.toString().padStart(2, '0'); }
   function todayISO() {
@@ -124,37 +118,16 @@ function showSection(id, btn) {
   }
   function markToday() {
     const t = todayISO();
-    document.querySelectorAll('.week-day-card[data-date]').forEach(card => {
-      const d = card.dataset.date;
-      card.classList.remove('today', 'past');
-      if (d === t) card.classList.add('today');
-      else if (d < t) card.classList.add('past');
+    document.querySelectorAll('.day-row[data-date]').forEach(row => {
+      const d = row.dataset.date;
+      row.classList.remove('is-today', 'is-past');
+      if (d === t) row.classList.add('is-today');
+      else if (d < t) row.classList.add('is-past');
     });
   }
   markToday();
 
-  // ===== Suivi des séances (coché + commentaire) — stocké en local sur cet appareil =====
-  function saveLog(el) {
-    const day = el.dataset.day;
-    const key = 'sancy-log-' + day;
-    let data = {};
-    try { data = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { data = {}; }
-    if (el.type === 'checkbox') data.done = el.checked;
-    else data.comment = el.value;
-    localStorage.setItem(key, JSON.stringify(data));
-  }
-  function loadLogs() {
-    document.querySelectorAll('[data-day]').forEach(el => {
-      const key = 'sancy-log-' + el.dataset.day;
-      let data = {};
-      try { data = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { data = {}; }
-      if (el.type === 'checkbox') el.checked = !!data.done;
-      if (el.tagName === 'TEXTAREA') el.value = data.comment || '';
-    });
-  }
-  loadLogs();
-
-  // ===== Stats · graphiques de progression (données Strava, calculées le 04/08/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 07/08/2026) =====
   // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -171,7 +144,7 @@ function showSection(id, btn) {
     // réels, mais allure, cadence et efficience ne sont pas comparables aux mois de course
     // continue (les blocs de marche les faussent) — laissés à null volontairement.
     { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
-    { label: 'Août', distanceKm: 14.9,  dplusM: 275,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 18.5 },
+    { label: 'Août', distanceKm: 21.8,  dplusM: 487,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 22.4 },
   ];
 
   function fmtPace(sec) {
