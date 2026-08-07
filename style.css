@@ -1191,3 +1191,43 @@
     padding-top: 0.5rem;
     border-top: 1px solid var(--border);
   }
+
+  /* CATALOGUE D'EXERCICES (Guide · Renfo) */
+  .exo-cell { display: flex; align-items: center; gap: 0.6rem; }
+  .exo-thumb {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    position: relative;
+  }
+  /* Emplacement image : déposer le fichier dans img/ puis
+     <div class="exo-thumb"><img src="img/nom.jpg" alt=""></div> */
+  .exo-thumb::after {
+    content: 'img';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    color: var(--border);
+    letter-spacing: 0.1em;
+  }
+  .exo-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; }
+  .exo-thumb:has(img)::after { content: none; }
+  .exo-new {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(255,183,0,0.14);
+    color: var(--accent);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+  }
