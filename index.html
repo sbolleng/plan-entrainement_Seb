@@ -562,6 +562,46 @@
     </table>
     </div>
 
+
+    <hr class="divider">
+
+    <div class="phase-sep">Transverse · toutes phases</div>
+    <h3 style="margin-bottom:0.75rem;">Le renfo phase par phase</h3>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Volume</th><th>Dominante prioritaire</th><th>Ce qu'on cherche</th></tr>
+      </thead>
+      <tbody>
+        <tr class="plan-race">
+          <td><span class="muted" style="font-size:0.75rem;">Phase 0<br>Juil — Sept 2026</span></td>
+          <td><span class="mono" style="font-size:0.76rem;">30 min × 5–6/sem</span></td>
+          <td><span class="tag tag-orange" style="margin:0 0.2rem 0 0;">S</span><span class="tag tag-green" style="margin:0;">F</span><br><span class="muted" style="font-size:0.7rem;">Stabilité puis cuisses</span></td>
+          <td style="font-size:0.8rem; color:var(--muted);">Protéger l'os et le genou pendant la remontée de charge. La stabilité de hanche empêche le genou de rentrer, les cuisses encaissent l'impact à sa place.</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Phase 1<br>Sept — Déc 2026</span></td>
+          <td><span class="mono" style="font-size:0.76rem;">30 min × 5/sem</span></td>
+          <td><span class="tag tag-green" style="margin:0;">F</span><br><span class="muted" style="font-size:0.7rem;">Cuisses force</span></td>
+          <td style="font-size:0.8rem; color:var(--muted);">Encaisser le retour du dénivelé. Charges en hausse sur fentes, soulevé de terre et pont fessier, au rythme de la montée du D+ hebdomadaire.</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Phase 2<br>Jan — Mars 2027</span></td>
+          <td><span class="mono" style="font-size:0.76rem;">30–45 min × 4/sem</span></td>
+          <td><span class="tag tag-green" style="margin:0;">F</span><br><span class="muted" style="font-size:0.7rem;">Cuisses excentrique</span></td>
+          <td style="font-size:0.8rem; color:var(--muted);">Préparer la descente de Forez. Fentes bulgares en descente lente, chaise sur une jambe allongée : c'est l'excentrique qui tient le genou en D−.</td>
+        </tr>
+        <tr>
+          <td><span class="muted" style="font-size:0.75rem;">Phase 3<br>Avr — Sept 2027</span></td>
+          <td><span class="mono" style="font-size:0.76rem;">45 min × 3–4/sem</span></td>
+          <td><span class="tag tag-green" style="margin:0 0.2rem 0 0;">F</span><span class="tag tag-purple" style="margin:0;">A</span><br><span class="muted" style="font-size:0.7rem;">Excentrique + gainage</span></td>
+          <td style="font-size:0.8rem; color:var(--muted);">2 000 m de descente au Sancy. Le volume de renfo baisse au profit des sorties longues, mais l'excentrique et le gainage restent — ce sont eux qui tiennent sur la quatrième heure.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="info">Le catalogue d'exercices et la semaine type vivent dans Guide → Renfo. Le suivi de ce qui est réellement fait — tonnage, assiduité, progression de charge — est dans Profil → Renfo · suivi.</p>
+
   </section>
 
   <!-- ========== OBJECTIF 26-27 (ligne de temps des courses) ========== -->
@@ -1081,6 +1121,35 @@
     </div>
 
     <p class="info">Prochaine étape pour automatiser cette page : la fonction serverless (Cloudflare Workers) pour un bouton « actualiser » qui recalcule ces chiffres à la demande plutôt qu'à la main.</p>
+
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Renfo · suivi</h3>
+
+    <div id="renfo-kpi" class="rk-grid"></div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="tag tag-orange">Charge externe soulevée</div>
+      <h3>Tonnage par semaine · kg</h3>
+      <div class="stats-chart" id="chart-renfo"></div>
+      <p class="chart-maj" id="renfo-maj"></p>
+      <p class="info">Le poids du corps n'est pas compté dans le tonnage : il fausserait la comparaison entre un exercice lesté et une planche. Une semaine sans barre est une semaine sans séance loguée.</p>
+    </div>
+
+    <div class="card">
+      <div class="tag tag-blue">Progression par exercice</div>
+      <h3>Dernière charge et tendance</h3>
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Exercice</th><th>Dom.</th><th>Dernier volume</th><th>Charge</th><th>Tendance</th><th>Historique</th></tr>
+        </thead>
+        <tbody id="renfo-exos"></tbody>
+      </table>
+      </div>
+      <p class="info">La tendance compare la dernière séance à la précédente : la charge d'abord, le volume de répétitions si la charge n'a pas bougé.</p>
+    </div>
 
   </section>
   <!-- ========== GUIDE (Semaine type + Renfo + Vélo + Nutrition) ========== -->
@@ -1666,5 +1735,6 @@
 
 <script src="app.js" defer></script>
 
+<script src="data/renfo.js"></script>
 </body>
 </html>

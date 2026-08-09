@@ -367,3 +367,106 @@ function showSection(id, btn) {
   renderStatsCharts();
 
 
+
+  // ===== Renfo · indicateurs calculés depuis data/renfo.js =====
+  const DOM_LABEL = { F: 'Cuisses · force', S: 'Stabilité · fessiers', A: 'Abdos · tronc', H: 'Haut du corps' };
+  const DOM_TAG   = { F: 'tag-green', S: 'tag-orange', A: 'tag-purple', H: 'tag-blue' };
+
+  // Tonnage = charge externe uniquement. Le poids du corps n'est pas compté :
+  // il fausserait la comparaison entre un exercice lesté et une planche.
+  function tonnage(ex) { return ex.tenue ? 0 : ex.series * ex.reps * ex.charge; }
+  function seanceTonnage(s) { return s.exercices.reduce((a, e) => a + tonnage(e), 0); }
+
+  function daysBetween(a, b) { return Math.round((b - a) / 86400000); }
+
+  // Lundi de la semaine ISO contenant d
+  function weekStart(d) {
+    const x = new Date(d);
+    x.setDate(x.getDate() - ((x.getDay() + 6) % 7));
+    x.setHours(0, 0, 0, 0);
+    return x;
+  }
+
+  function renderRenfo() {
+    if (typeof RENFO_LOG === 'undefined') return;
+    const el = document.getElementById('renfo-kpi');
+    if (!el) return;
+
+    const seances = RENFO_LOG.seances.map(s => ({ ...s, d: new Date(s.date + 'T12:00:00') }))
+                                     .sort((a, b) => a.d - b.d);
+    if (!seances.length) return;
+    const now = new Date();
+
+    // --- tuiles ---
+    const last7 = seances.filter(s => daysBetween(s.d, now) < 7);
+    const tonnage7 = last7.reduce((a, s) => a + seanceTonnage(s), 0);
+
+    const parDom = {};
+    last7.forEach(s => s.exercices.forEach(e => { parDom[e.dom] = (parDom[e.dom] || 0) + tonnage(e); }));
+    const domTop = Object.keys(parDom).sort((a, b) => parDom[b] - parDom[a])[0];
+
+    const derniereF = seances.filter(s => s.exercices.some(e => e.dom === 'F')).pop();
+    const joursF = derniereF ? daysBetween(derniereF.d, now) : null;
+
+    const tuile = (k, v, sub, alerte) =>
+      '<div class="rk-tile' + (alerte ? ' is-alert' : '') + '">' +
+      '<span class="rk-key">' + k + '</span>' +
+      '<span class="rk-val">' + v + '</span>' +
+      '<span class="rk-sub">' + sub + '</span></div>';
+
+    el.innerHTML =
+      tuile('Séances · 7 jours', last7.length, last7.length ? 'objectif 5 par semaine' : 'aucune séance', last7.length < 3) +
+      tuile('Tonnage · 7 jours', tonnage7.toLocaleString('fr-FR') + ' kg', 'charge externe soulevée', false) +
+      tuile('Dominante servie', domTop ? DOM_LABEL[domTop] : '—', domTop ? Math.round(parDom[domTop] / tonnage7 * 100) + ' % du tonnage' : 'aucune donnée', false) +
+      tuile('Depuis les cuisses', joursF === null ? '—' : joursF + ' j', 'dernière séance dominante F', joursF !== null && joursF > 7);
+
+    // --- tonnage par semaine, 8 dernières semaines ---
+    const semaines = [];
+    for (let i = 7; i >= 0; i--) {
+      const start = weekStart(new Date(now.getTime() - i * 7 * 86400000));
+      const end = new Date(start.getTime() + 7 * 86400000);
+      const dedans = seances.filter(s => s.d >= start && s.d < end);
+      semaines.push({
+        label: String(start.getDate()).padStart(2, '0') + '/' + String(start.getMonth() + 1).padStart(2, '0'),
+        val: dedans.length ? dedans.reduce((a, s) => a + seanceTonnage(s), 0) : null,
+        current: i === 0
+      });
+    }
+    renderBarChart('chart-renfo', semaines, { formatter: v => Math.round(v / 100) / 10 + ' t' });
+
+    // --- progression de charge par exercice ---
+    const parExo = {};
+    seances.forEach(s => s.exercices.forEach(e => {
+      (parExo[e.nom] = parExo[e.nom] || []).push({ date: s.date, e: e, dom: e.dom });
+    }));
+    const lignes = Object.keys(parExo).sort().map(nom => {
+      const h = parExo[nom];
+      const d = h[h.length - 1], p = h.length > 1 ? h[h.length - 2] : null;
+      const vol = d.e.series * d.e.reps;
+      const volPrec = p ? p.e.series * p.e.reps : null;
+      let tend = '<span class="muted">première fois</span>';
+      if (p) {
+        const dc = d.e.charge - p.e.charge, dv = vol - volPrec;
+        if (dc > 0) tend = '<span class="rk-up">+' + dc + ' kg</span>';
+        else if (dc < 0) tend = '<span class="rk-down">' + dc + ' kg</span>';
+        else if (dv > 0) tend = '<span class="rk-up">+' + dv + ' reps</span>';
+        else if (dv < 0) tend = '<span class="rk-down">' + dv + ' reps</span>';
+        else tend = '<span class="muted">stable</span>';
+      }
+      const charge = d.e.charge ? d.e.charge + ' kg' : 'poids du corps';
+      const fait = d.e.series + '×' + d.e.reps + (d.e.tenue ? ' s' : '');
+      return '<tr><td><strong>' + nom + '</strong></td>' +
+        '<td><span class="tag ' + DOM_TAG[d.dom] + '" style="margin:0;">' + d.dom + '</span></td>' +
+        '<td><span class="mono" style="font-size:0.76rem;">' + fait + '</span></td>' +
+        '<td><span class="mono" style="font-size:0.76rem;">' + charge + '</span></td>' +
+        '<td>' + tend + '</td>' +
+        '<td><span class="muted" style="font-size:0.75rem;">' + d.date.split('-').reverse().slice(0, 2).join('/') + ' · ' + h.length + ' fois</span></td></tr>';
+    }).join('');
+    const tb = document.getElementById('renfo-exos');
+    if (tb) tb.innerHTML = lignes;
+
+    const maj = document.getElementById('renfo-maj');
+    if (maj) maj.textContent = 'Mis à jour le ' + RENFO_LOG.maj.split('-').reverse().join('/') +
+      ' · ' + seances.length + ' séances enregistrées depuis le ' + seances[0].date.split('-').reverse().join('/');
+  }
+  renderRenfo();
