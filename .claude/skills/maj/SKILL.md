@@ -135,6 +135,13 @@ semaine.
 
 ## 6 · Publication
 
+**Avant de committer, incrémenter le paramètre `?v=` des trois références
+d'`index.html`** — `style.css`, `data/renfo.js` et `app.js` — au format
+`AAAAMMJJ` suivi d'une lettre si plusieurs publications dans la journée.
+Sans ça, les navigateurs qui ont déjà visité le site continuent de servir
+l'ancien JavaScript et l'ancienne feuille de style depuis leur cache, et la
+mise à jour reste invisible.
+
 Committer sur la branche de travail, fusionner dans `main`, pousser, puis
 vérifier que le déploiement GitHub Pages passe au vert. Résumer ce qui a
 changé et ce qui mérite l'attention de Seb.
