@@ -1,8 +1,32 @@
-# Prompt de mise à jour complète du site
+# Mise à jour du site
 
-Copier-coller le bloc ci-dessous dans une session Claude Code sur ce dépôt.
-Il déclenche une mise à jour complète : lecture de Strava, recalage de toutes
-les pages, publication en ligne.
+## La commande
+
+Dans une session Claude Code ouverte sur ce dépôt :
+
+```
+/maj
+```
+
+C'est tout. Aucune commande git à taper : la session lit Strava, recale les
+pages, committe, fusionne dans `main` et vérifie le déploiement.
+
+### Variantes
+
+| Commande | Effet |
+|---|---|
+| `/maj` | Mise à jour complète |
+| `/maj rapide` | Chiffres et textes seulement, sans toucher à la mise en page |
+| `/maj semaine` | Bascule sur la semaine calendaire en cours et régénère les sept jours |
+| `/maj course Clam Trail 18/10` | Intègre un résultat de course et recale la suite du plan |
+| `/maj renfo` | Fait tourner les exercices de la semaine type |
+
+La commande est définie dans `.claude/skills/maj/SKILL.md`. Si elle n'est pas
+reconnue, le prompt complet ci-dessous fait la même chose en copier-coller.
+
+---
+
+## Le prompt équivalent, en copier-coller
 
 ---
 
