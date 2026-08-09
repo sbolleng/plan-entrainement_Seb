@@ -110,8 +110,8 @@ Fais la mise à jour complète du site.
 
 - Le site est publié par GitHub Pages depuis `main`. Toute mise à jour doit
   être fusionnée dans `main` pour être visible.
-- La page est protégée par un mot de passe côté client, sans valeur de
-  sécurité : ne pas y mettre d'information sensible.
+- Le site est public : dépôt public servi par GitHub Pages, sans
+  authentification. Ne pas y mettre d'information sensible.
 - Les mois de reprise course/marche ne sont pas comparables aux mois de course
   continue sur l'allure, la cadence et l'efficience cardiaque.
 - L'écart déterminant pour le Sancy est le D+ par kilomètre : environ 10 m/km

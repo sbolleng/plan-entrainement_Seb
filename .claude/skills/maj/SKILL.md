@@ -124,8 +124,8 @@ changé et ce qui mérite l'attention de Seb.
 
 ## Contexte à garder en tête
 
-- La page est protégée par un mot de passe côté client, sans valeur de
-  sécurité : n'y mettre aucune information sensible.
+- Le site est public : dépôt public servi par GitHub Pages, sans
+  authentification. N'y mettre aucune information sensible.
 - L'écart déterminant pour le Sancy est le D+ par kilomètre : environ 10 m/km
   aujourd'hui, 60 m/km demandés par la course.
 - Le renfo cuisses et stabilité est le seul levier direct sur la descente,
