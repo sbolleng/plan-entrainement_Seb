@@ -19,7 +19,7 @@ contexte.
 | `/maj` | Retour après quelques jours, ou doute sur la fraîcheur du site | Étapes 1 à 6 |
 | `/maj rapide` | Juste après une séance, pour recaler les chiffres | Étapes 1, 2 et 6. Ne toucher ni à la structure ni à la mise en page |
 | `/maj semaine` | Un lundi, quand la page affiche encore la semaine écoulée | Basculer sur la semaine calendaire en cours et régénérer les sept jours |
-| `/maj seance` | Une séance non trackée sur Strava, dictée dans le message | L'enregistrer dans le bon jour ; ajouter au catalogue tout exercice qui n'y figure pas |
+| `/maj seance` | Une séance non trackée sur Strava, dictée dans le message | L'ajouter à `data/renfo.js`, l'enregistrer dans le bon jour, et compléter le catalogue si un exercice y manque |
 | `/maj dossard` | Une inscription ouverte, prise, ou une date d'ouverture connue | Mettre à jour le statut dans Objectif et le bandeau « prochaine inscription » |
 | `/maj course` | **Après avoir couru une course**, pas avant | Marquer l'étape faite dans la ligne de temps Objectif, enregistrer le résultat, recaler la suite du plan |
 | `/maj renfo` | Lassitude des exercices, toutes les 2 à 3 semaines | Faire tourner les exercices de la semaine type en piochant dans le catalogue, dominantes inchangées |
@@ -92,6 +92,19 @@ basculer le surlignage sur la phase suivante.
 Vérifier que les périodes des tableaux de phase restent cohérentes avec le
 calendrier réel et les dates de course retenues.
 
+## 3 bis · Journal de renfo
+
+Toute séance de renforcement, qu'elle vienne d'une description Hevy sur Strava
+ou d'un message de Seb, doit être ajoutée à **`data/renfo.js`** — c'est la
+source de vérité de l'historique, et les indicateurs de Profil en découlent.
+Renseigner date, source, durée, puis chaque exercice avec sa dominante, ses
+séries, ses répétitions et sa charge (0 pour le poids du corps, `tenue: true`
+si les répétitions sont des secondes). Mettre à jour le champ `maj`.
+
+Garder les noms d'exercices **strictement identiques** d'une séance à l'autre :
+c'est sur le nom que se calcule la progression de charge. Tout exercice absent
+du catalogue de Guide → Renfo doit y être ajouté dans le même passage.
+
 ## 4 · Page « Profil »
 
 Données actuelles : sorties par semaine, renfo, volume cumulé, dernière
@@ -101,6 +114,10 @@ Réécrire le bloc « Progression & stats » : ce qui progresse, ce qui stagne, 
 qui décroche, puis trois conseils concrets pour les semaines qui viennent.
 **Appuyer chaque affirmation sur un chiffre.** Mettre à jour la date des six
 lignes « Mis à jour le … » sous les graphes.
+
+Le bloc « Renfo · suivi » se calcule tout seul depuis `data/renfo.js` : tuiles,
+tonnage hebdomadaire et progression par exercice. Rien à écrire à la main —
+mais penser à croiser ses chiffres avec l'état du genou dans l'analyse.
 
 ## 5 · Page « Objectif 26-27 »
 
@@ -130,5 +147,7 @@ changé et ce qui mérite l'attention de Seb.
   aujourd'hui, 60 m/km demandés par la course.
 - Le renfo cuisses et stabilité est le seul levier direct sur la descente,
   qui est ce qui fait réagir le genou.
-- Le catalogue d'exercices vit dans Guide → Renfo. Les dominantes de la
-  semaine type sont fixes, les exercices tournent.
+- Le renfo est réparti sur trois pages sans redondance : **Plan** porte la
+  prescription par phase, **Guide → Renfo** le catalogue et la semaine type,
+  **Profil** le suivi de ce qui est réellement fait.
+- Les dominantes de la semaine type sont fixes, les exercices tournent.
