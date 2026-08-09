@@ -9,32 +9,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="pw-gate" style="position:fixed;inset:0;background:#0e0f0f;color:#e8ebe8;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:sans-serif;">
-  <div style="text-align:center;">
-    <p style="margin-bottom:1rem;">Mot de passe</p>
-    <input id="pw-input" type="password" style="padding:0.5rem;border-radius:4px;border:1px solid #444;background:#161818;color:#e8ebe8;">
-    <button onclick="checkPw()" style="padding:0.5rem 1rem;margin-left:0.5rem;background:#c8f542;border:none;border-radius:4px;cursor:pointer;">Entrer</button>
-    <p id="pw-error" style="color:#e05c5c;margin-top:0.75rem;display:none;">Mot de passe incorrect</p>
-  </div>
-</div>
-<script>
-  if (sessionStorage.getItem('sancy-auth') === 'ok') {
-    document.getElementById('pw-gate').style.display = 'none';
-  }
-  function checkPw() {
-    const val = document.getElementById('pw-input').value;
-    if (val === 'Augerolles0803') {
-      sessionStorage.setItem('sancy-auth', 'ok');
-      document.getElementById('pw-gate').style.display = 'none';
-    } else {
-      document.getElementById('pw-error').style.display = 'block';
-    }
-  }
-  document.getElementById('pw-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') checkPw();
-  });
-</script>
-
 <header>
   <div class="header-grid">
     <div>
