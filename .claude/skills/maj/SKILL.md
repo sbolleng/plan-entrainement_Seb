@@ -10,14 +10,45 @@ visible qu'une fois fusionnée dans `main`.
 
 ## Arguments
 
-| Argument | Effet |
-|---|---|
-| *(aucun)* | Mise à jour complète : étapes 1 à 6 |
-| `rapide` | Étapes 1, 2 et 6 seulement. Ne toucher ni à la structure ni à la mise en page |
-| `semaine` | Basculer la page « Cette semaine » sur la semaine calendaire en cours et régénérer les sept jours |
-| `course <nom> <date>` | Intégrer un résultat de course : marquer l'étape faite dans la ligne de temps Objectif et recaler la suite du plan |
-| `renfo` | Faire tourner les exercices de la semaine type en piochant dans le catalogue, dominantes inchangées |
+Tout ce qui suit `/maj` est du texte libre : inutile de respecter une syntaxe.
+Les mots-clés ci-dessous orientent le travail, le reste de la phrase donne le
+contexte.
 
+| Commande | Quand l'utiliser | Ce qui est fait |
+|---|---|---|
+| `/maj` | Retour après quelques jours, ou doute sur la fraîcheur du site | Étapes 1 à 6 |
+| `/maj rapide` | Juste après une séance, pour recaler les chiffres | Étapes 1, 2 et 6. Ne toucher ni à la structure ni à la mise en page |
+| `/maj semaine` | Un lundi, quand la page affiche encore la semaine écoulée | Basculer sur la semaine calendaire en cours et régénérer les sept jours |
+| `/maj seance` | Une séance non trackée sur Strava, dictée dans le message | L'enregistrer dans le bon jour ; ajouter au catalogue tout exercice qui n'y figure pas |
+| `/maj dossard` | Une inscription ouverte, prise, ou une date d'ouverture connue | Mettre à jour le statut dans Objectif et le bandeau « prochaine inscription » |
+| `/maj course` | **Après avoir couru une course**, pas avant | Marquer l'étape faite dans la ligne de temps Objectif, enregistrer le résultat, recaler la suite du plan |
+| `/maj renfo` | Lassitude des exercices, toutes les 2 à 3 semaines | Faire tourner les exercices de la semaine type en piochant dans le catalogue, dominantes inchangées |
+
+### Exemples
+
+```
+/maj
+/maj rapide
+/maj semaine
+/maj semaine du 10 au 16 août
+
+/maj seance renfo hier : fentes bulgares 4x10, pont fessier 4x15, KB swing 3x15 10kg
+/maj seance j'ai fait 30 min de vélo d'appart ce matin, pas tracké
+
+/maj dossard je me suis inscrit à la VVX
+/maj dossard les inscriptions du Sancy ouvrent le 4 novembre à 10h
+/maj dossard Clam Trail : inscriptions ouvertes, 22 €
+
+/maj course Clam Trail 18/10
+/maj course Clam Trail 18/10, 20 K en 2h18, genou nickel, aucune douleur
+/maj course j'ai abandonné Senlis au 20e km, genou
+
+/maj renfo
+/maj renfo j'en ai marre des fentes bulgares, remplace-les
+```
+
+Sans mot-clé reconnaissable, faire une mise à jour complète et tenir compte du
+contexte donné dans la phrase.
 ## 1 · Données Strava
 
 Lire Strava depuis la date indiquée dans `app.js` (commentaire « données
@@ -72,6 +103,13 @@ qui décroche, puis trois conseils concrets pour les semaines qui viennent.
 lignes « Mis à jour le … » sous les graphes.
 
 ## 5 · Page « Objectif 26-27 »
+
+Sur `/maj course` : ne marquer une étape comme faite que si la course a
+réellement été courue. Enregistrer le temps réel à côté du temps cible,
+indiquer si l'objectif est tenu, et recaler les phases suivantes en
+conséquence — un abandon ou un temps très en dessous de la cible change la
+suite du plan, pas seulement la ligne de temps.
+
 
 Vérifier les dates d'ouverture des dossards dont l'échéance approche, en
 cherchant sur le web si besoin. Si une inscription est ouverte ou imminente,

@@ -11,15 +11,23 @@ Dans une session Claude Code ouverte sur ce dépôt :
 C'est tout. Aucune commande git à taper : la session lit Strava, recale les
 pages, committe, fusionne dans `main` et vérifie le déploiement.
 
-### Variantes
+### Les sept commandes
 
-| Commande | Effet |
-|---|---|
-| `/maj` | Mise à jour complète |
-| `/maj rapide` | Chiffres et textes seulement, sans toucher à la mise en page |
-| `/maj semaine` | Bascule sur la semaine calendaire en cours et régénère les sept jours |
-| `/maj course Clam Trail 18/10` | Intègre un résultat de course et recale la suite du plan |
-| `/maj renfo` | Fait tourner les exercices de la semaine type |
+| Commande | Quand | Exemple |
+|---|---|---|
+| `/maj` | Retour après quelques jours | `/maj` |
+| `/maj rapide` | Juste après une séance, chiffres seulement | `/maj rapide` |
+| `/maj semaine` | Le lundi, pour changer de semaine | `/maj semaine du 10 au 16 août` |
+| `/maj seance` | Séance non trackée sur Strava | `/maj seance renfo hier : fentes bulgares 4x10, KB swing 3x15 10kg` |
+| `/maj dossard` | Inscription ouverte ou prise | `/maj dossard je me suis inscrit à la VVX` |
+| `/maj course` | **Après** avoir couru une course | `/maj course Clam Trail 18/10, 20 K en 2h18, genou nickel` |
+| `/maj renfo` | Changer les exercices, toutes les 2-3 semaines | `/maj renfo j'en ai marre des fentes bulgares` |
+
+Tout ce qui suit la commande est du texte libre, il n'y a pas de syntaxe à
+respecter. En cas de doute, `/maj` tout court fait le tour de tout.
+
+**À noter** : `/maj course` ne servira pas avant le 18 octobre, date de Clam
+Trail. C'est la seule commande qui suppose une course déjà courue.
 
 La commande est définie dans `.claude/skills/maj/SKILL.md`. Si elle n'est pas
 reconnue, le prompt complet ci-dessous fait la même chose en copier-coller.
