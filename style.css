@@ -1271,12 +1271,14 @@
   .rk-down { color: var(--red); font-family: 'Space Mono', monospace; font-size: 0.76rem; }
 
   /* LIGNE RENFO DANS LES TABLEAUX DU PLAN */
-  tr.renfo-row td {
-    background: rgba(126,184,245,0.04);
-    font-size: 0.8rem;
+  /* Pas de badge sur cette ligne : c'est l'absence de pastille, jointe au fond
+     teinté, qui la distingue de la ligne de course juste au-dessus. */
+  tr.renfo-line td {
+    background: rgba(143,214,148,0.05);
+    font-size: 0.78rem;
     color: var(--muted);
-    padding-top: 0.5rem;
-    padding-bottom: 0.6rem;
     border-top: none;
   }
-  tr.renfo-row td strong { color: var(--text); }
+
+  /* VÉLO avait toujours réutilisé le bleu de FRAC, en style inline. */
+  .sb-velo { background: rgba(94,207,214,0.14); color: #5ecfd6; }
