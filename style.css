@@ -1269,3 +1269,14 @@
   .rk-sub { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 0.15rem; }
   .rk-up { color: var(--accent); font-family: 'Space Mono', monospace; font-size: 0.76rem; }
   .rk-down { color: var(--red); font-family: 'Space Mono', monospace; font-size: 0.76rem; }
+
+  /* LIGNE RENFO DANS LES TABLEAUX DU PLAN */
+  tr.renfo-row td {
+    background: rgba(126,184,245,0.04);
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-top: 0.5rem;
+    padding-bottom: 0.6rem;
+    border-top: none;
+  }
+  tr.renfo-row td strong { color: var(--text); }
