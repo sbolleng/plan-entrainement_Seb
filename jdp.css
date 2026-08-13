@@ -1,0 +1,112 @@
+/* ==========================================================================
+   JDP · surcouche de couleurs — Green And Rose Gold
+   --------------------------------------------------------------------------
+   Cette feuille se charge APRÈS style.css et ne fait que repeindre.
+   Aucune règle de mise en page ici : la structure reste celle du site.
+
+   Palette de référence (6 couleurs) :
+     Timber Green   #18332E   fonds
+     Hooker's Green #49796B   bordures marquées
+     Laurel Green   #A9BA9D   texte secondaire, étapes
+     Charm          #D07B87   accent principal → l'objectif Paris
+     Rose Gold      #B76E78   accent secondaire → liens, dates
+     Deep Puce      #A56269   alertes
+   Les fonds sont des nuances assombries de Timber Green : le noir bleuté du
+   site d'origine ne tient pas avec du vert.
+   ========================================================================== */
+
+:root {
+  --bg: #0E1D19;        /* Timber Green assombri */
+  --surface: #18332E;   /* Timber Green */
+  --surface2: #21453D;  /* Timber → Hooker's */
+  --border: #2F5A4E;    /* Hooker's assombri, lisible sans crier */
+  --accent: #D07B87;    /* Charm */
+  --accent2: #B76E78;   /* Rose Gold */
+  --text: #EDF2E9;
+  --muted: #8FA391;     /* Laurel Green assombri, pour rester lisible */
+  --red: #A56269;       /* Deep Puce */
+  --orange: #B76E78;    /* Rose Gold */
+}
+
+/* Vert laurier : couleur des étapes intermédiaires, par opposition au rose
+   qui est réservé à l'objectif. */
+
+/* --- liens ------------------------------------------------------------- */
+a,
+.rs-name a,
+.opt-rname a { border-bottom-color: rgba(183,110,120,0.4); }
+
+/* --- pastilles et étiquettes ------------------------------------------- */
+.tag-green  { background: rgba(169,186,157,0.14); color: #A9BA9D; }
+.tag-orange { background: rgba(183,110,120,0.14); color: var(--accent2); }
+.tag-red    { background: rgba(165,98,105,0.16);  color: var(--red); }
+.tag-blue   { background: rgba(169,186,157,0.14); color: #A9BA9D; }
+.tag-purple { background: rgba(208,123,135,0.14); color: var(--accent); }
+
+.status-ok   { background: rgba(169,186,157,0.12); color: #A9BA9D; }
+.status-warn { background: rgba(183,110,120,0.12); color: var(--accent2); }
+.status-ko   { background: rgba(165,98,105,0.14);  color: var(--red); }
+
+.sortie-badge.sb-ef    { background: rgba(169,186,157,0.12); color: #A9BA9D; }
+.sortie-badge.sb-long  { background: rgba(183,110,120,0.16); color: var(--accent2); }
+.sortie-badge.sb-frac  { background: rgba(73,121,107,0.35);  color: #A9BA9D; }
+.sortie-badge.sb-race  { background: rgba(208,123,135,0.18); color: var(--accent); }
+.sortie-badge.sb-tempo { background: rgba(165,98,105,0.18);  color: #C98A92; }
+.sortie-badge.sb-velo  { background: rgba(73,121,107,0.45);  color: #BFD2B4; }
+
+.day-cross { color: #A9BA9D; }
+
+/* --- ligne de temps des courses ---------------------------------------- */
+.rs-badge        { background: rgba(183,110,120,0.14); }
+.rs-badge-b      { background: rgba(208,123,135,0.14); color: var(--accent); }
+.rs-badge-goal   { background: rgba(208,123,135,0.2);  color: var(--accent); }
+.rs-badge-muted  { background: rgba(143,163,145,0.1);  color: var(--muted); }
+.rs-badge-choice {
+  background: rgba(169,186,157,0.1);
+  color: #A9BA9D;
+  border: 1px dashed rgba(169,186,157,0.4);
+}
+
+.race-step.is-goal {
+  border-left-color: var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(208,123,135,0.14);
+}
+.race-step.is-goal::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(208,123,135,0.22);
+}
+.race-step.is-goal .rc-num { color: var(--accent); }
+
+.opt-card.is-reco { box-shadow: inset 0 0 0 1px rgba(208,123,135,0.15); }
+.opt-tag,
+.cd-pill,
+.exo-new { background: rgba(208,123,135,0.14); }
+
+/* --- bandeau de repères et tableaux ------------------------------------ */
+.sb-item.sb-goal { border-left-color: var(--accent); }
+.dl-item.dl-goal { border-top-color: var(--accent); }
+.dl-item.dl-goal .dl-title { color: var(--accent); }
+tr.plan-race td { background: rgba(208,123,135,0.06); }
+tr.renfo-line td { background: rgba(169,186,157,0.05); }
+.day-row.is-today { box-shadow: inset 0 0 0 1px rgba(208,123,135,0.18); }
+.tl-item.current::before { box-shadow: 0 0 0 3px rgba(208,123,135,0.2); }
+.tl-item.goal::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(208,123,135,0.2);
+}
+
+/* --- pages en attente de contenu ---------------------------------------- */
+/* Les onglets autres qu'Objectif gardent leur ossature mais pas de données :
+   ce gris discret signale une zone à remplir, sans faire croire à un bug. */
+.todo {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  background: rgba(24,51,46,0.35);
+}
+.todo strong { color: #A9BA9D; font-weight: 600; }
+.dash { color: var(--muted); opacity: 0.55; }
