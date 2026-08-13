@@ -1282,3 +1282,16 @@
 
   /* VÉLO avait toujours réutilisé le bleu de FRAC, en style inline. */
   .sb-velo { background: rgba(94,207,214,0.14); color: #5ecfd6; }
+
+  /* Lien discret : aucun signe extérieur, curseur inchangé au survol.
+     Nécessaire parce que la règle globale sur <a> colore et souligne. */
+  .secret,
+  .secret:hover,
+  .secret:focus {
+    color: inherit;
+    border-bottom: none;
+    text-decoration: none;
+    cursor: inherit;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }

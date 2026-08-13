@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060b14">
+<meta name="robots" content="noindex">
+<title>TBD</title>
+<link rel="stylesheet" href="style.css?v=20260812d">
+<style>
+  /* Page volontairement nue : mêmes couleurs, rien d'autre. */
+  .tbd-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    text-align: center;
+  }
+  .tbd-mark {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+  .tbd-text {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(2rem, 9vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .tbd-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  /* Retour discret : le bandeau d'altimétrie sert de porte de sortie. */
+  .tbd-back { display: block; width: 100%; max-width: 420px; margin-top: 2rem; }
+  .tbd-back .altimetry-bar { margin-top: 0; }
+</style>
+</head>
+<body>
+  <div class="tbd-wrap">
+    <div class="tbd-mark">🔥</div>
+    <div class="tbd-text">TBD</div>
+    <div class="tbd-sub">…</div>
+    <a href="index.html" class="secret tbd-back" aria-label="Retour"><div class="altimetry-bar"></div></a>
+  </div>
+</body>
+</html>
