@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0E1D19">
+<meta name="robots" content="noindex">
+<title>JDP — Marathon de Paris 2028</title>
+<link rel="stylesheet" href="style.css?v=20260813a">
+<link rel="stylesheet" href="jdp.css?v=20260813a">
+</head>
+<body>
+<header>
+  <div class="header-grid">
+    <div>
+      <div class="eyebrow">Route vers Paris · 20 mois · août 2026 → avril 2028</div>
+      <h1>Objectif Marathon<br><em>de Paris 2028</em></h1>
+      <div class="race-stats">
+        <div class="stat">
+          <span class="stat-val">42,195 km</span>
+          <span class="stat-label">Distance objectif</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">Avril 2028</span>
+          <span class="stat-label">Date visée</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">7 courses</span>
+          <span class="stat-label">Étapes prépa</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">Finisher</span>
+          <span class="stat-label">Objectif</span>
+        </div>
+      </div>
+    </div>
+    <div class="countdown-block">
+      <span id="countdown-days">—</span>
+      <span class="countdown-label" id="countdown-label">jours</span>
+      <div class="countdown-hms" id="countdown-hms"></div>
+      <div class="countdown-sub">→ Marathon de Paris</div>
+      <div class="countdown-sub" id="countdown-next" style="opacity:0.75;"></div>
+    </div>
+  </div>
+  <div class="altimetry-bar"></div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="tab active" onclick="showSection('objectif', this)">Objectif 26-27-28</button>
+    <button class="tab" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
+    <button class="tab" onclick="showSection('plan', this)">Plan</button>
+    <button class="tab" onclick="showSection('profil', this)">Profil</button>
+    <button class="tab" onclick="showSection('guide', this)">Guide</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ========== OBJECTIF 26-27-28 ========== -->
+  <section id="objectif" class="section active">
+    <div class="section-title">Objectif 26-27-28 · La route vers Paris</div>
+
+    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Un objectif au bout : le Marathon de Paris, au printemps 2028. Entre ici et là-bas, deux courses déjà engagées à l'automne 2026, puis une saison 2027 en sept étapes dont trois restent à choisir. Chaque étape porte tout ce qui la concerne : profil, compte à rebours, rôle dans la préparation et état du dossard. Les courses simplement gardées à l'œil sont regroupées en bas de page.</p>
+
+    <div class="race-timeline">
+
+      <!-- ÉTAPE 1 · SEMI DE SAN SEBASTIÁN -->
+      <div class="race-step">
+        <div class="rs-top">
+          <span class="rs-badge">Étape 1 · inscrit ✔</span>
+          <span class="rs-when">Dim. 4 oct. 2026</span>
+        </div>
+        <div class="rs-event">Zurich Maratoia · Donostia-San Sebastián</div>
+        <h3 class="rs-name">Le Semi-marathon</h3>
+        <div class="rs-specs">21,1 km · route, plat · Saint-Sébastien (Pays basque, Espagne)</div>
+
+        <div class="race-cd" data-target="2026-10-04T09:00:00"></div>
+
+        <p class="rs-desc">Premier rendez-vous de la feuille de route, et premier semi de la séquence. Parcours de bord de mer, roulant du départ à l'arrivée : c'est un repère chrono propre, sans dénivelé pour brouiller la lecture. Le temps réalisé ici sert de point zéro à toute la préparation qui suit.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Rôle dans la prépa</span>
+            <p>Étalonnage. Un semi plat en début de cycle donne l'allure de référence sur laquelle se calent les séances de qualité de l'hiver.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p>Finir en aisance, sans chercher le chrono.<br><span class="rs-target">à définir après les premières séances</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p><strong style="color:var(--accent);">Inscription faite.</strong></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Logistique</span>
+            <p>Déplacement à prévoir · retrait du dossard la veille sur l'expo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 · TRAIL DU BÉRET -->
+      <div class="race-step">
+        <div class="rs-top">
+          <span class="rs-badge">Étape 2 · inscrit ✔</span>
+          <span class="rs-when">Dim. 15 nov. 2026</span>
+        </div>
+        <div class="rs-event">Trail du Béret · Cazes-Mondenard</div>
+        <h3 class="rs-name">Le 24 km</h3>
+        <div class="rs-specs">24 km · 790 m D+ · Cazes-Mondenard (82) · coteaux du Quercy</div>
+
+        <div class="race-cd" data-target="2026-11-15T09:00:00"></div>
+
+        <p class="rs-desc">Six semaines après San Sebastián, le contrepoint exact : même durée d'effort environ, mais sur du chemin et avec 790 m de dénivelé. Deux terrains, deux qualités — c'est ce qui fait la valeur de cet automne.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Rôle dans la prépa</span>
+            <p>Le volet dénivelé de l'automne. 790 m D+ sur 24 km, c'est le socle de côte qui manque au travail sur route.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p>Mode finisher, marche assumée dans les raides.<br><span class="rs-target">à définir</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p><strong style="color:var(--accent);">Inscription faite.</strong></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Enchaînement</span>
+            <p>Six semaines entre les deux courses : de quoi récupérer du semi et placer trois semaines de côte avant le Béret.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 3 · NOCTURNE DES ROIS -->
+      <div class="race-step">
+        <div class="rs-top">
+          <span class="rs-badge">Étape 3 · plaisir</span>
+          <span class="rs-when">Janv. 2027 · date à confirmer</span>
+        </div>
+        <div class="rs-event">Trail Nocturne des Rois · Villemur-sur-Tarn</div>
+        <h3 class="rs-name">Le 14 km</h3>
+        <div class="rs-specs">14 km · nocturne, frontale obligatoire · Villemur-sur-Tarn (31)</div>
+
+        <div class="race-cd" data-target="2027-01-09T18:00:00"></div>
+
+        <p class="rs-desc">Course courte, de nuit, en janvier : rien à y jouer, tout à y prendre. Ce type de dossard entretient la routine de course pendant le creux de l'hiver, quand les semaines s'étirent sans échéance.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Rôle dans la prépa</span>
+            <p>Entretien et plaisir. Aucune contrainte de plan : elle se court sur la forme du moment.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif</span>
+            <p>Passer une bonne soirée.<br><span class="rs-target">pas de temps cible</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p>Ouverture non communiquée · à surveiller à partir de novembre 2026.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Date</span>
+            <p>Non confirmée. L'épreuve se court traditionnellement le week-end de l'Épiphanie ; le décompte vise le samedi 9 janvier 2027.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 4 · L'AUGEROLLOISE -->
+      <div class="race-step is-b">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-b">Étape 4 · objectif trail de printemps</span>
+          <span class="rs-when">Dim. 7 mars 2027 · à confirmer</span>
+        </div>
+        <div class="rs-event">Forez Trails</div>
+        <h3 class="rs-name"><a href="https://www.finishers.com/course/forez-trails" target="_blank" rel="noopener">L'Augerolloise</a></h3>
+        <div class="rs-specs">33 km · 1 100 m D+ · Augerolles (63) · monts du Forez</div>
+
+        <div class="race-cd" data-target="2027-03-07T08:00:00"></div>
+
+        <p class="rs-desc">La plus longue et la plus dure des étapes de la saison : 33 km et 1 100 m de dénivelé dans les monts du Forez. C'est le premier des trois objectifs 2027 et le vrai test d'endurance de l'année — quatre heures d'effort continu, à comparer aux quatre heures que demandera Paris.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Rôle dans la prépa</span>
+            <p>Endurance longue. Sur un marathon route, la capacité à tenir quatre heures se construit aussi hors du bitume ; le trail la construit sans le coût articulaire de l'asphalte.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p>Finisher, gestion prudente sur la première heure.<br><span class="rs-target">à définir</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p>Tarif de base jusqu'au 31/01 sur l'édition 2026 — ouverture probable à l'automne 2026 sur <a href="https://www.finishers.com/course/forez-trails" target="_blank" rel="noopener">Finishers</a>.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Date</span>
+            <p>Non confirmée. L'édition 2026 s'est courue le dimanche 8 mars ; le décompte vise le dimanche 7 mars 2027.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 5 · MONTAUBAN — CHOIX DU FORMAT -->
+      <div class="race-step">
+        <div class="rs-top">
+          <span class="rs-badge">Étape 5 · choix du format</span>
+          <span class="rs-when">Fin mars 2027 · date à confirmer</span>
+        </div>
+        <div class="rs-event">Montauban</div>
+        <h3 class="rs-name">Le 10 km, ou le semi</h3>
+        <div class="rs-specs">Route · Montauban (82)</div>
+
+        <div class="race-cd" data-target="2027-03-28T09:30:00"></div>
+
+        <p class="rs-desc">Trois semaines après l'Augerolloise, une sortie sur route à domicile. C'est ce délai court qui commande le format : 33 km et 1 100 m D+ ne se digèrent pas en trois semaines pour tout le monde.</p>
+
+        <div class="fmt-grid">
+          <div class="fmt-card">
+            <div class="fmt-top">
+              <span class="fmt-name">10 K</span>
+              <span class="fmt-tag">option vitesse</span>
+            </div>
+            <div class="fmt-specs">10 km · route</div>
+            <p class="fmt-line"><strong>Si l'Augerolloise a laissé des traces.</strong> Une heure d'effort, aucun coût de récupération, et une mesure nette de la vitesse du moment.</p>
+            <p class="fmt-line"><span class="rs-target">temps cible à définir</span></p>
+          </div>
+          <div class="fmt-card is-reco">
+            <div class="fmt-top">
+              <span class="fmt-name">Semi</span>
+              <span class="fmt-tag">par défaut</span>
+            </div>
+            <div class="fmt-specs">21,1 km · route</div>
+            <p class="fmt-line"><strong>Si la récupération est bouclée.</strong> C'est le format comparable à San Sebastián : cinq mois plus tard, sur la même distance, on lit directement la progression.</p>
+            <p class="fmt-line"><span class="rs-target">viser mieux qu'en octobre</span></p>
+          </div>
+        </div>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Recommandation</span>
+            <p>Le semi, pour la comparaison directe avec octobre — mais le 10 km devient le choix par défaut si les jambes sont encore marquées par le trail.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p>Épreuve à identifier précisément · ouverture à surveiller dès janvier 2027.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Date</span>
+            <p>Non confirmée. Le décompte vise provisoirement le dimanche 28 mars 2027, trois semaines après l'Augerolloise.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 6 · SEMI TEST — À TROUVER -->
+      <div class="race-step is-choice">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-choice">Étape 6 · à trouver</span>
+          <span class="rs-when">2027 · créneau à arrêter</span>
+        </div>
+        <h3 class="rs-name">Le semi test</h3>
+        <div class="rs-specs">21,1 km · route · lieu et date à choisir</div>
+
+        <p class="rs-desc">Un semi chronométré, couru en cherchant le temps — pas en accompagnement. C'est la seule course de la saison où l'allure compte vraiment, parce que c'est elle qui donnera l'allure marathon de Paris. Deux pistes, à trancher selon l'envie de déplacement.</p>
+
+        <div class="opt-grid opt-grid-2">
+          <div class="opt-card">
+            <div class="opt-head"><span class="opt-label">Piste 1 · à domicile</span></div>
+            <div class="opt-race">
+              <div class="opt-event">Montauban</div>
+              <div class="opt-rname">Le semi local</div>
+              <div class="opt-rspecs">21,1 km · route · Montauban (82)</div>
+            </div>
+            <div class="opt-why"><strong>Zéro logistique.</strong> Pas de nuit d'hôtel, pas de trajet la veille : on arrive frais, on court, on rentre. Le meilleur cadre pour un test d'allure. Revers : si c'est déjà le format retenu en mars, on répète la même course deux fois dans l'année.</div>
+          </div>
+          <div class="opt-card">
+            <div class="opt-head"><span class="opt-label">Piste 2 · week-end ailleurs</span></div>
+            <div class="opt-race">
+              <div class="opt-event">À choisir</div>
+              <div class="opt-rname">Un semi rapide hors région</div>
+              <div class="opt-rspecs">21,1 km · route · parcours plat et roulant</div>
+            </div>
+            <div class="opt-why"><strong>Un vrai plateau, un vrai chrono.</strong> Les semis labellisés offrent des parcours plats, des meneurs d'allure et du monde à qui s'accrocher — trois raisons de courir plus vite. Coût : un week-end complet.</div>
+          </div>
+        </div>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Ce qui départage</span>
+            <p>Le but est un chrono fiable. Si l'un des deux offre des meneurs d'allure sur un parcours plat, il gagne — c'est ce qui fait la différence sur un semi test.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Créneau conseillé</span>
+            <p>Septembre ou octobre 2027, une fois la chaleur passée et avant le trail d'automne. À caler dès que le calendrier 2027 sort.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 7 · TRAIL D'AUTOMNE — À DÉFINIR -->
+      <div class="race-step is-choice">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-choice">Étape 7 · à définir</span>
+          <span class="rs-when">Automne 2027</span>
+        </div>
+        <h3 class="rs-name">Le trail d'automne</h3>
+        <div class="rs-specs">Distance et dénivelé à arrêter · candidats dans la liste de veille ci-dessous</div>
+
+        <p class="rs-desc">Dernière course avant le bloc marathon. Elle ferme la saison trail et doit rester compatible avec le début de la préparation spécifique Paris : plus elle est dure, plus elle coûte de semaines de récupération. Les candidats sérieux sont dans la liste de veille — Templiers en octobre, Trail du Lac, Trail des 3 Rocs en novembre.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Contrainte</span>
+            <p>Le bloc marathon de Paris démarre vers janvier 2028. Un trail à 1 500 m D+ mi-octobre passe ; le même mi-décembre mord sur la prépa.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">À décider</span>
+            <p>Après l'Augerolloise, une fois qu'on saura ce que le corps encaisse sur 33 km et 1 100 m D+.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJECTIF · MARATHON DE PARIS -->
+      <div class="race-step is-goal">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-goal">🏁 Objectif · finisher</span>
+          <span class="rs-when">Avril 2028 · date à confirmer</span>
+        </div>
+        <div class="rs-event">Schneider Electric Marathon de Paris</div>
+        <h3 class="rs-name"><a href="https://www.schneiderelectricparismarathon.com/" target="_blank" rel="noopener">Le Marathon de Paris</a></h3>
+        <div class="rs-specs">42,195 km · route · départ avenue des Champs-Élysées, arrivée avenue Foch</div>
+
+        <div class="race-cd" data-target="2028-04-09T08:45:00"></div>
+
+        <p class="rs-desc">Le plus grand marathon de France, 50 000 partants, un parcours plat qui traverse la ville de la Concorde au bois de Boulogne. Vingt mois de préparation pour un objectif simple : franchir la ligne. La distance ne se négocie pas — c'est le seul point de la feuille de route où le volume d'entraînement compte plus que le talent.</p>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">L'écart à combler</span>
+            <p>Le plus long effort programmé d'ici là est <strong>l'Augerolloise, 33 km</strong>. Paris ajoute <strong style="color:var(--accent);">9 km de plus, sur route et sans marche possible</strong>. C'est le seul écart qui compte.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Objectif · temps cible</span>
+            <p><strong style="color:var(--accent);">FINISHER.</strong><br><span class="rs-target" style="color:var(--accent);">à fixer après le semi test de 2027</span></p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Dossard</span>
+            <p><strong style="color:var(--accent2);">Point de vigilance :</strong> les inscriptions ouvrent environ dix-huit mois avant et le tarif grimpe par paliers. L'édition 2027 a ouvert en septembre 2026 — donc <strong>surveiller septembre 2027</strong> pour 2028.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">Date</span>
+            <p>Non confirmée. L'épreuve se court le deuxième dimanche d'avril ; le décompte vise le <strong>dimanche 9 avril 2028</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <details class="fold" open>
+      <summary>Courses à surveiller · candidates pour les étapes à définir</summary>
+      <div class="fold-body">
+        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Les courses qui ne sont pas encore dans la feuille de route mais qui alimentent les deux créneaux ouverts — le semi test et le trail d'automne — ainsi que les envies pour plus tard. « Non communiquée » signifie que l'organisateur n'a pas encore publié de date, pas qu'il n'y en a pas.</p>
+        <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Événement</th><th>Course</th><th>Distance · D+</th><th>Période</th><th>Ouverture des dossards</th><th>Rôle</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="2"><strong>GT Esprit Volcan</strong><br><span class="muted" style="font-size:0.75rem;">Auvergne · label UTMB</span></td>
+              <td>La Directissime</td>
+              <td>34 km · D+770 / D−1800</td>
+              <td rowspan="2">Septembre</td>
+              <td rowspan="2" class="muted">Non communiquée</td>
+              <td rowspan="2">Profil descendant très marqué : excellent pour les quadriceps, dur pour les genoux. Candidat au trail d'automne si l'envie est à la descente.</td>
+            </tr>
+            <tr>
+              <td>Le Gergotrail</td>
+              <td>22 km · D−900</td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong><a href="https://fr.milesrepublic.com/event/festival-des-templiers-5719" target="_blank" rel="noopener">Festival des Templiers</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12) · label UTMB</span></td>
+              <td>Le Marathon des Causses</td>
+              <td>33,6 km · D+1581</td>
+              <td rowspan="3">Octobre</td>
+              <td rowspan="3" class="muted"><strong style="color:var(--accent2);">~mi-janvier, à midi</strong> — les places partent en quelques heures</td>
+              <td rowspan="3">La référence du trail français. Trois formats proches en distance, très différents en dénivelé. Inscription à jouer un an à l'avance.</td>
+            </tr>
+            <tr>
+              <td>Le Marathon du Larzac</td>
+              <td>33,3 km · D+1400</td>
+            </tr>
+            <tr>
+              <td>La Mona Lisa</td>
+              <td>30,1 km · D+1176</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Grands Trails d'Auvergne</a></strong><br><span class="muted" style="font-size:0.75rem;">Aubusson-d'Auvergne (63)</span></td>
+              <td>Le Trail du Lac</td>
+              <td>27 km · D+850</td>
+              <td>Octobre</td>
+              <td class="muted">~fin décembre l'année précédente <span style="font-size:0.75rem;">(2026 : 24 déc. 2025 à midi)</span></td>
+              <td>Le plus raisonnable des candidats d'automne : 850 m D+ se digèrent en deux semaines, compatible avec un bloc marathon derrière.</td>
+            </tr>
+            <tr>
+              <td><strong>Trail des 3 Rocs</strong></td>
+              <td>Le 31 km</td>
+              <td>31 km · D+1400</td>
+              <td>Novembre</td>
+              <td class="muted">Non communiquée</td>
+              <td>Format le plus tardif de la liste. Attention au chevauchement avec le début de la préparation Paris.</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.xttr63.com/nos-evenements/trails-du-sancy-oxsitis-gr-invest/" target="_blank" rel="noopener">Trails du Sancy Oxsitis</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Mont-Dore (63)</span></td>
+              <td>Le 24 km</td>
+              <td>24 km · D+1160</td>
+              <td>Juin 2027</td>
+              <td class="muted">Ouvertures historiquement en novembre de l'année précédente — <strong style="color:var(--accent2);">à surveiller dès nov. 2026</strong></td>
+              <td>Optionnel. Beau terrain volcanique, mais tombe entre l'Augerolloise et le semi test : à ne prendre que si la forme suit.</td>
+            </tr>
+            <tr>
+              <td rowspan="2"><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15) · label UTMB</span></td>
+              <td>Le Trail des Crêtes</td>
+              <td>22 km · D+1200</td>
+              <td rowspan="2">Juillet 2027</td>
+              <td rowspan="2" class="muted">Non communiquée</td>
+              <td rowspan="2">Optionnel, et exigeant : la 4×1800 est le plus gros dénivelé de toute la liste. À réserver à un été sans autre objectif.</td>
+            </tr>
+            <tr>
+              <td>La 4×1800</td>
+              <td>35 km · D+2000</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </details>
+
+  </section>
+
+  <!-- ========== CETTE SEMAINE · ossature, sans contenu ========== -->
+  <section id="semaine_en_cours" class="section">
+
+    <div class="status-band band-4">
+      <div class="sb-item">
+        <span class="sb-key">Phase en cours</span>
+        <span class="sb-val dash">—</span>
+        <span class="sb-sub">à renseigner</span>
+      </div>
+      <div class="sb-item sb-alert">
+        <span class="sb-key">Prochaine inscription</span>
+        <span class="sb-val dash">—</span>
+        <span class="sb-sub">à renseigner</span>
+      </div>
+      <div class="sb-item">
+        <span class="sb-key">Prochaine course</span>
+        <span class="sb-val">Semi de San Sebastián <span class="tl-countdown" data-target="2026-10-04T09:00:00"></span></span>
+        <span class="sb-sub">21,1 km · route · Saint-Sébastien</span>
+      </div>
+      <div class="sb-item sb-goal">
+        <span class="sb-key">Objectif</span>
+        <span class="sb-val">Marathon de Paris <span class="tl-countdown" data-target="2028-04-09T08:45:00"></span></span>
+        <span class="sb-sub">42,195 km · route · Paris</span>
+      </div>
+    </div>
+
+    <div class="card card-accent" style="margin-bottom:1.5rem;">
+      <h3 style="margin-bottom:0.6rem;" class="dash">Le point de la semaine</h3>
+      <p style="font-size:0.85rem; color:var(--muted);">Bloc réécrit chaque semaine : où on en est, ce qui a été fait, l'état du corps, ce qui décroche.</p>
+    </div>
+
+    <div class="day-list">
+      <div class="day-row">
+        <div class="day-date"><span class="day-name">Lundi</span><span class="day-num dash">—</span></div>
+        <div class="day-acts"><div class="act act-rest"><div class="act-title dash">—</div></div></div>
+      </div>
+      <div class="day-row">
+        <div class="day-date"><span class="day-name">Mardi</span><span class="day-num dash">—</span></div>
+        <div class="day-acts"><div class="act act-rest"><div class="act-title dash">—</div></div></div>
+      </div>
+      <div class="day-row">
+        <div class="day-date"><span class="day-name">Mercredi</span><span class="day-num dash">—</span></div>
+        <div class="day-acts"><div class="act act-rest"><div class="act-title dash">—</div></div></div>
+      </div>
+      <div class="day-row">
+        <div class="day-date"><span class="day-name">Jeudi</span><span class="day-num dash">—</span></div>
+        <div class="day-acts"><div class="act act-rest"><div class="act-title dash">—</div></div></div>
+      </div>
+      <div class="day-row">
+        <div class="day-date"><span class="day-name">Vendredi</span><span class="day-num dash">—</span></div>
+        <div class="day-acts"><div class="act act-rest"><div class="act-title dash">—</div></div></div>
+      </div>
+      <div class="day-row">
+        <div class="day-date"><span class="day-name">Samedi</span><span class="day-num dash">—</span></div>
+        <div class="day-acts"><div class="act act-rest"><div class="act-title dash">—</div></div></div>
+      </div>
+      <div class="day-row">
+        <div class="day-date"><span class="day-name">Dimanche</span><span class="day-num dash">—</span></div>
+        <div class="day-acts"><div class="act act-rest"><div class="act-title dash">—</div></div></div>
+      </div>
+    </div>
+
+    <div class="todo" style="margin-top:1.5rem;"><strong>Page à alimenter.</strong> Un carré par activité et par jour, comme sur le site d'origine : course, renfo, vélo ou repos.</div>
+
+  </section>
+
+  <!-- ========== PLAN · ossature, sans contenu ========== -->
+  <section id="plan" class="section">
+    <div class="section-title">Plan d'entraînement · vers le Marathon de Paris</div>
+
+    <div class="card card-accent" style="margin-bottom:2rem;">
+      <h3 style="margin-bottom:0.6rem;" class="dash">Vingt mois, quatre phases</h3>
+      <p style="font-size:0.85rem; color:var(--muted);">Bloc d'introduction : la logique générale du plan, les volumes visés par phase, et les points de décision.</p>
+    </div>
+
+    <div class="phase-sep">Phase 1 · à définir</div>
+    <h3 style="margin-bottom:0.75rem;" class="dash">Intitulé de la phase</h3>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2"><span class="muted" style="font-size:0.75rem;">—</span></td>
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+        <tr class="renfo-line">
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="phase-sep">Phase 2 · à définir</div>
+    <h3 style="margin-bottom:0.75rem;" class="dash">Intitulé de la phase</h3>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2"><span class="muted" style="font-size:0.75rem;">—</span></td>
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+        <tr class="renfo-line">
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="phase-sep">Phase 3 · à définir</div>
+    <h3 style="margin-bottom:0.75rem;" class="dash">Intitulé de la phase</h3>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2"><span class="muted" style="font-size:0.75rem;">—</span></td>
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+        <tr class="renfo-line">
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="phase-sep">Phase 4 · spécifique marathon</div>
+    <h3 style="margin-bottom:0.75rem;" class="dash">Intitulé de la phase</h3>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Période</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2"><span class="muted" style="font-size:0.75rem;">—</span></td>
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+        <tr class="renfo-line">
+          <td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="todo" style="margin-top:1.5rem;"><strong>Tableaux à remplir.</strong> Deux lignes par période : la course sur la première, le renfo sur la seconde.</div>
+
+  </section>
+
+  <!-- ========== PROFIL · ossature, sans contenu ========== -->
+  <section id="profil" class="section">
+    <div class="section-title">Profil athlète · Données de référence</div>
+
+    <div class="card">
+      <div class="table-scroll">
+      <table>
+        <tbody>
+          <tr><td>Sorties par semaine</td><td class="dash">—</td></tr>
+          <tr><td>Renfo par semaine</td><td class="dash">—</td></tr>
+          <tr><td>Volume cumulé</td><td class="dash">—</td></tr>
+          <tr><td>Dernière course</td><td class="dash">—</td></tr>
+          <tr><td>Cadence moyenne</td><td class="dash">—</td></tr>
+          <tr><td>FC moyenne</td><td class="dash">—</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 0.75rem;">Progression &amp; stats</h3>
+
+    <div class="card card-accent" style="margin-bottom:1rem;">
+      <h3 style="margin-bottom:0.6rem;" class="dash">Ce que disent les chiffres</h3>
+      <p style="font-size:0.85rem; color:var(--muted);">Analyse réécrite à chaque mise à jour : ce qui progresse, ce qui stagne, ce qui décroche, puis trois conseils concrets.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem;">
+      <h3>Distance course · km</h3>
+      <div class="chart-maj">Mis à jour le —</div>
+      <div class="todo" style="margin-top:0.8rem;">Graphique en attente de données.</div>
+    </div>
+    <div class="card" style="margin-bottom:1rem;">
+      <h3>D+ cumulé · m</h3>
+      <div class="chart-maj">Mis à jour le —</div>
+      <div class="todo" style="margin-top:0.8rem;">Graphique en attente de données.</div>
+    </div>
+    <div class="card" style="margin-bottom:1rem;">
+      <h3>Allure · min/km</h3>
+      <div class="chart-maj">Mis à jour le —</div>
+      <div class="todo" style="margin-top:0.8rem;">Graphique en attente de données.</div>
+    </div>
+    <div class="card" style="margin-bottom:1rem;">
+      <h3>Foulée · pas/min</h3>
+      <div class="chart-maj">Mis à jour le —</div>
+      <div class="todo" style="margin-top:0.8rem;">Graphique en attente de données.</div>
+    </div>
+
+    <h3 style="margin:2rem 0 0.75rem;">Fréquence cardiaque · repères et zones</h3>
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Zone</th><th>Pulsations</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 0.75rem;">Renfo · suivi</h3>
+    <div class="card">
+      <h3>Tonnage par semaine · kg</h3>
+      <div class="chart-maj">Mis à jour le —</div>
+      <div class="todo" style="margin-top:0.8rem;">Se calculera tout seul dès qu'il y aura un journal de renfo.</div>
+    </div>
+
+  </section>
+
+  <!-- ========== GUIDE · ossature, sans contenu ========== -->
+  <section id="guide" class="section">
+    <div class="section-title">Guide d'entraînement · Renfo, vélo, nutrition</div>
+
+    <div class="subnav">
+      <button class="subtab active" onclick="showSubsection('g-renfo', this)">Renfo</button>
+      <button class="subtab" onclick="showSubsection('g-velo', this)">Vélo</button>
+      <button class="subtab" onclick="showSubsection('g-nutrition', this)">Nutrition</button>
+    </div>
+
+    <div id="g-renfo" class="subsection active">
+      <h2 style="margin-bottom:0.5rem;">Renforcement · catalogue</h2>
+      <div class="card card-accent" style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.6rem;" class="dash">Le conseil de la semaine</h3>
+        <p style="font-size:0.85rem; color:var(--muted);">Bloc réécrit chaque semaine, comme sur la page Cette semaine.</p>
+      </div>
+      <h3 style="margin-bottom:0.75rem;">Catalogue d'exercices</h3>
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Exercice</th><th>Dominante</th><th>Format</th><th>Points de vigilance</th></tr></thead>
+        <tbody>
+          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div id="g-velo" class="subsection">
+      <h2 style="margin-bottom:0.5rem;">Vélo · les séances types</h2>
+      <div class="card card-accent" style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.6rem;" class="dash">À quoi sert le vélo dans ce plan</h3>
+        <p style="font-size:0.85rem; color:var(--muted);">Description des types de séances — léger, intervalles, endurance — tels qu'ils apparaissent dans le Plan.</p>
+      </div>
+      <div class="todo">Section à écrire.</div>
+    </div>
+
+    <div id="g-nutrition" class="subsection">
+      <h2 style="margin-bottom:0.5rem;">Nutrition</h2>
+      <div class="card card-accent" style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.6rem;" class="dash">Principe directeur</h3>
+        <p style="font-size:0.85rem; color:var(--muted);">Timing péri-entraînement, repas quotidien, stratégie de course.</p>
+      </div>
+      <div class="todo">Section à écrire.</div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="jdp.js?v=20260813a" defer></script>
+</body>
+</html>
