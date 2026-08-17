@@ -8,8 +8,8 @@
 <meta name="robots" content="noindex">
 <title>JDP — Marathon de Paris 2028</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260813a">
-<link rel="stylesheet" href="jdp.css?v=20260813a">
+<link rel="stylesheet" href="style.css?v=20260817a">
+<link rel="stylesheet" href="jdp.css?v=20260817a">
 </head>
 <body>
 <header>
@@ -666,12 +666,14 @@
 
   <!-- ========== GUIDE · ossature, sans contenu ========== -->
   <section id="guide" class="section">
-    <div class="section-title">Guide d'entraînement · Renfo, vélo, nutrition</div>
+    <div class="section-title">Guide d'entraînement · Renfo, vélo, nutrition, équipement</div>
 
     <div class="subnav">
       <button class="subtab active" onclick="showSubsection('g-renfo', this)">Renfo</button>
       <button class="subtab" onclick="showSubsection('g-velo', this)">Vélo</button>
       <button class="subtab" onclick="showSubsection('g-nutrition', this)">Nutrition</button>
+      <button class="subtab" onclick="showSubsection('g-equipement', this)">Équipement</button>
+      <button class="subtab" onclick="showSubsection('g-autre', this)">Autre</button>
     </div>
 
     <div id="g-renfo" class="subsection active">
@@ -711,10 +713,174 @@
       <div class="todo">Section à écrire.</div>
     </div>
 
+    <!-- ---------- Équipement ---------- -->
+    <div id="g-equipement" class="subsection">
+      <h2 style="margin-bottom:0.5rem;">Équipement</h2>
+      <div class="card card-accent" style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.6rem;">Ce qu'on achète et ce qu'on apprend à utiliser</h3>
+        <p style="font-size:0.85rem; color:var(--muted);">Deux dossiers pour l'instant : les bâtons, et la frontale. Dans les deux
+        cas, le matériel ne vaut que par les sorties d'entraînement passées avec — pas par la fiche technique.</p>
+      </div>
+
+      <!-- ===== Article 1 · bâtons ===== -->
+      <h3 style="margin:0 0 0.75rem;">Bâtons de trail : outil indispensable ou gadget encombrant ?</h3>
+      <p style="font-size:0.9rem; margin-bottom:1.2rem;">Peu d'accessoires divisent autant les traileurs. Certains ne partent
+      jamais sans, d'autres les jugent inutiles, voire tricheurs. La vérité se niche dans la nuance : leur intérêt dépend du
+      dénivelé, de la distance, du terrain et de la maîtrise technique du coureur.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag tag-green">Le pour</span>
+          <ul class="clean">
+            <li><strong>Économie musculaire des jambes.</strong> En montée, ils mobilisent bras, épaules et dos pour participer
+            à la propulsion. Quadriceps et mollets sont moins sollicités, ce qui retarde la fatigue sur les longues distances —
+            souvent le facteur limitant en ultra.</li>
+            <li><strong>Des gains mesurés, mais ciblés.</strong> Une étude de 2023 parue dans l'<em>International Journal of
+            Sports Physiology and Performance</em> relève +2,5 % de performance en montée et une force au pied réduite de 2 à
+            5 %, mais uniquement à partir d'environ 26 % de pente. Une autre analyse évoque jusqu'à 5 % d'effort mécanique en
+            moins en côte, sans hausse significative de l'effort perçu.</li>
+            <li><strong>Descente et stabilité.</strong> Ils amortissent une partie du choc reçu par les genoux et offrent un
+            appui de plus sur terrain glissant, boueux ou instable.</li>
+            <li><strong>Régularité de cadence.</strong> Comme au ski de fond, ils aident à tenir un rythme constant sur les
+            longues ascensions soutenues.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag tag-red">Le contre</span>
+          <ul class="clean">
+            <li><strong>Un coût énergétique réel.</strong> C'est le point le plus souvent minimisé : la consommation d'oxygène
+            augmente d'environ 20 % et la fréquence cardiaque peut grimper de 10 à 20 battements par minute. Sur le plat, ce
+            surcoût était compensé par une vitesse de marche plus élevée — le compromis n'est plus automatique dès qu'on quitte
+            le terrain plat.</li>
+            <li><strong>Poids et encombrement.</strong> Même les modèles carbone les plus légers ajoutent 300 à 400 g, et il
+            faut les ranger dès qu'on ne s'en sert pas. Plier et déplier casse le rythme sans entraînement spécifique.</li>
+            <li><strong>Contre-productifs sur terrain roulant.</strong> Sur les portions plates, ils ralentissent et cassent la
+            dynamique de course. En descente très technique et rocailleuse, les mains sont plus utiles libres.</li>
+            <li><strong>Une technique à apprendre.</strong> Selon Mathieu Blanchard, mal utilisés ils peuvent faire monter le
+            cardio de 10 à 20 bpm et provoquer une explosion plus rapide qu'en courant sans.</li>
+            <li><strong>Interdits sur certaines courses.</strong> La Diagonale des Fous, par exemple, les proscrit pour limiter
+            l'érosion des sentiers. À vérifier dans le règlement avant d'investir.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin:1.5rem 0 0.75rem;">À partir de quand deviennent-ils vraiment utiles ?</h3>
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Format</th><th>Verdict</th><th>Pourquoi</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>&lt; 30 km et &lt; 1 000 m D+</td>
+            <td><span class="tag tag-red" style="margin:0;">Discutable</span></td>
+            <td>Sauf portions très raides ponctuelles.</td>
+          </tr>
+          <tr>
+            <td>1 000 à 1 500 m D+</td>
+            <td><span class="tag tag-orange" style="margin:0;">Pertinent</span></td>
+            <td>Surtout si les montées sont longues et soutenues.</td>
+          </tr>
+          <tr>
+            <td>&gt; 30 km, ultra, formats très marchés</td>
+            <td><span class="tag tag-green" style="margin:0;">Recommandé</span></td>
+            <td>Économie des jambes sur la durée.</td>
+          </tr>
+          <tr>
+            <td>Seuil technique</td>
+            <td><span class="tag tag-blue" style="margin:0;">15 à 26 %</span></td>
+            <td>Bénéfice mécanique net à partir de 15-26 % de pente selon les études. En dessous de 10 %, le plus souvent inutiles.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="card card-accent">
+        <h3 style="margin-bottom:0.6rem;">Conclusion</h3>
+        <p style="font-size:0.88rem; margin-bottom:0.8rem;">Les bâtons ne sont ni un gadget ni une solution miracle : c'est un
+        outil de gestion de l'effort, efficace dans un cadre précis. Leur intérêt grandit avec le dénivelé, la distance et la
+        technicité, et devient franchement marginal, voire contre-productif, sur les parcours roulants ou courts.</p>
+        <p style="font-size:0.88rem; margin-bottom:0.8rem;">Le vrai levier n'est pas l'achat mais l'entraînement avec : sans
+        pratique de la technique — alternée, simultanée, gestion montée/descente — les bâtons coûtent plus qu'ils ne rapportent
+        en énergie et en fréquence cardiaque. Le bon réflexe est de les tester à l'entraînement sur un parcours représentatif de
+        l'objectif visé, plutôt que de les découvrir le jour de la course.</p>
+        <p style="font-size:0.88rem;">Côté matériel, si l'idée de départ est un modèle carbone pliable léger type
+        <em>Trail Carbon 4 Flamingo</em> : carbone + pliable coche les bonnes cases — légèreté, faible encombrement — à condition
+        de prévoir assez de sorties d'entraînement avec avant la première course où ils serviront réellement.</p>
+      </div>
+      <p style="font-size:0.75rem; color:var(--muted); margin-bottom:2rem;">Sources principales : u-Trail, RunMotion Coach,
+      Outside.fr, U Run, Trail Performance, Trail et Fines Herbes, The Running Collective.</p>
+
+      <!-- ===== Article 2 · frontale ===== -->
+      <h3 style="margin:0 0 0.75rem;">Bien choisir sa frontale en trail</h3>
+      <p style="font-size:0.9rem; margin-bottom:1rem;">Une frontale ne se choisit pas au nombre de lumens affiché sur la boîte.
+      Quatre critères comptent vraiment.</p>
+      <ul class="clean" style="margin-bottom:1rem;">
+        <li><strong>La puissance utile.</strong> 200 à 400 lumens suffisent sur un sentier roulant. Il faut monter à 500-800 pour
+        une descente technique à bonne vitesse. Au-delà, le gain est marginal et se paie en autonomie et en poids.</li>
+        <li><strong>L'autonomie au bon mode.</strong> Les constructeurs communiquent sur le mode éco, celui qu'on n'utilise
+        jamais en course. Regarder l'autonomie au régime réellement employé, et privilégier une lampe régulée : elle tient son
+        flux jusqu'à la coupure, quand une lampe non régulée faiblit progressivement sans qu'on s'en aperçoive.</li>
+        <li><strong>Le poids et sa répartition.</strong> Sous 150 g, tout peut rester sur le front. Au-delà, il faut une batterie
+        déportée à l'arrière du crâne ou dans le sac : une masse en porte-à-faux ballotte à chaque foulée et devient vite
+        insupportable sur plusieurs heures.</li>
+        <li><strong>La forme du faisceau.</strong> Un faisceau mixte est indispensable : une nappe large pour voir où poser les
+        pieds, un faisceau focalisé pour lire le sentier à quinze ou vingt mètres. Un spot seul oblige à balayer en permanence et
+        fatigue le cou.</li>
+      </ul>
+      <p style="font-size:0.9rem;">Trois pièges pour finir. Le froid fait chuter la capacité des batteries lithium : par
+      température négative, garder la batterie de rechange près du corps. La plupart des règlements imposent une frontale
+      <em>et</em> un éclairage de secours à piles, à vérifier avant d'acheter. Enfin, une frontale se teste de nuit sur une
+      descente technique, pas dans un couloir : c'est là qu'on découvre si le faisceau écrase le relief et gomme les pierres.</p>
+    </div>
+
+    <!-- ---------- Autre ---------- -->
+    <div id="g-autre" class="subsection">
+      <h2 style="margin-bottom:0.5rem;">Autre</h2>
+      <div class="card card-accent" style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.6rem;">Hors sujet, mais utile en sortie</h3>
+        <p style="font-size:0.85rem; color:var(--muted);">Ce qu'on croise sur les chemins et qu'on ne sait pas nommer.</p>
+      </div>
+
+      <h3 style="margin:0 0 0.75rem;">Vache laitière ou vache à viande : comment les reconnaître</h3>
+      <p style="font-size:0.9rem; margin-bottom:1.2rem;">Les deux types de bovins ont été sélectionnés par l'élevage pour des
+      fonctions opposées, ce qui se lit directement dans leur morphologie.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag tag-blue">Laitière</span>
+          <ul class="clean">
+            <li><strong>Silhouette en triangle</strong>, maigre à l'avant : l'énergie va vers le lait plutôt que vers le muscle.
+            Côtes et colonne souvent visibles. La <strong>Holstein</strong>, robe noire et blanche, en est l'exemple type.</li>
+            <li><strong>Pis très développé</strong>, volumineux, bien attaché, avec des veines apparentes sur le ventre — les
+            « veines de lait ».</li>
+            <li><strong>Ossature saillante</strong> aux hanches et aux côtes, peau fine.</li>
+            <li><strong>Traite deux fois par jour</strong>, souvent en stabulation ou en alternance pâturage/étable.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag tag-orange">À viande</span>
+          <ul class="clean">
+            <li><strong>Silhouette rectangulaire</strong>, massive et musclée. L'arrière-train — gigot, cuisses — est
+            particulièrement développé, car c'est la zone la plus valorisée en boucherie. En France, la <strong>Charolaise</strong>
+            (blanche) ou la <strong>Limousine</strong> (robe fauve).</li>
+            <li><strong>Pis discret</strong>, juste suffisant pour nourrir son veau.</li>
+            <li><strong>Os invisibles</strong> sous une épaisse couche de muscle, notamment sur le dos et les cuisses.</li>
+            <li><strong>Plus de temps au pâturage</strong>, en troupeau, avec le veau jusqu'au sevrage.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card card-accent">
+        <h3 style="margin-bottom:0.6rem;">Le repère rapide</h3>
+        <p style="font-size:0.88rem;">Gros pis et corps maigre, anguleux → laitière. Petit pis mais corps trapu et très musclé →
+        viande. Certaines races dites « mixtes », comme la <strong>Normande</strong>, combinent les deux aptitudes avec un
+        physique intermédiaire.</p>
+      </div>
+    </div>
+
   </section>
 
 </main>
 
-<script src="jdp.js?v=20260813a" defer></script>
+<script src="jdp.js?v=20260817a" defer></script>
 </body>
 </html>
