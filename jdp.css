@@ -110,3 +110,142 @@ tr.renfo-line td { background: rgba(169,186,157,0.05); }
 }
 .todo strong { color: #A9BA9D; font-weight: 600; }
 .dash { color: var(--muted); opacity: 0.55; }
+
+/* --- Guide · mise en forme « page article » ------------------------------ */
+/* Les sous-onglets Équipement et Autre ne portent pas des fiches mais des
+   articles qui se lisent d'un bout à l'autre. On sort donc de la carte : une
+   colonne de texte étroite, une hiérarchie titre / sous-titre nette, et un
+   liseré pour séparer deux articles. Rien d'encadré : le bloc coupe la
+   lecture, le blanc tournant la porte. */
+
+/* Sommaire, en tête de sous-onglet. Volontairement discret : c'est un outil
+   de navigation, pas un élément de design. */
+.art-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.art-menu-label {
+  width: 100%;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+.art-menu a {
+  font-size: 0.88rem;
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+}
+.art-menu a::before {
+  content: '↓';
+  margin-right: 0.45rem;
+  color: var(--accent2);
+  font-size: 0.78rem;
+}
+.art-menu a:hover { color: var(--accent); border-bottom-color: rgba(208,123,135,0.5); }
+
+/* Le décalage compense la barre d'onglets collante quand on arrive par ancre. */
+.article {
+  max-width: 44rem;
+  scroll-margin-top: 5.5rem;
+}
+
+.art-title {
+  font-size: clamp(1.65rem, 4vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+.art-sub {
+  font-size: clamp(0.98rem, 2.2vw, 1.18rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.article p { font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.15rem; }
+/* Chapeau : le premier paragraphe porte l'article, il se lit plus gros. */
+.article .art-lede { font-size: 1.05rem; line-height: 1.7; color: var(--text); }
+
+.article h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 2.4rem 0 0.9rem;
+}
+.article h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.6rem 0 0.5rem;
+}
+
+/* Listes : un tiret fin plutôt qu'une puce, pour ne pas alourdir la colonne. */
+.article ul { list-style: none; margin: 0 0 1.3rem; }
+.article ul li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+.article ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.82em;
+  width: 8px;
+  height: 1px;
+  background: var(--accent2);
+}
+.article ol { margin: 0 0 1.3rem 1.4rem; }
+.article ol li { font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.5rem; padding-left: 0.3rem; }
+.article ol li::marker { color: var(--accent); font-family: 'Space Mono', monospace; font-size: 0.82rem; }
+
+.article blockquote {
+  border-left: 2px solid var(--accent);
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  margin: 0 0 1.3rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.article blockquote strong { color: #A9BA9D; }
+
+.art-tablabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 1.8rem 0 0.6rem;
+}
+.art-sources {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 1.8rem;
+}
+
+/* Le liseré : un segment d'accent qui s'efface dans la ligne de séparation. */
+.art-sep {
+  border: 0;
+  height: 2px;
+  margin: 4rem 0;
+  max-width: 44rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0,
+    var(--accent) 3.5rem,
+    rgba(47,90,78,0.9) 3.5rem,
+    rgba(47,90,78,0.9) 100%
+  );
+}
