@@ -9,8 +9,22 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-08-09',
+  maj: '2026-08-17',
   seances: [
+    // --- Séances de kinésithérapie du sport (cabinet) ---
+    // Comptées comme des séances de renfo : c'est du travail encadré sur le
+    // genou et la cheville. Le détail des exercices n'est pas connu, donc
+    // exercices reste vide — elles comptent dans le nombre de séances mais
+    // n'ajoutent aucun tonnage, faute de charge mesurée.
+    { date: '2026-07-07', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-07-09', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-07-16', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-07-20', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-07-24', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-07-28', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-07-30', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-08-04', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-08-07', source: 'kiné', duree: null, exercices: [] },
     {
       date: '2026-07-26', source: 'hevy', duree: 43,
       exercices: [
