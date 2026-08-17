@@ -81,11 +81,10 @@ function showSection(id, btn) {
 
   // ===== Compteur d'en-tête · prochaine course de la feuille de route =====
   const RACES = [
-    { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail' },
-    // Le bloc d'automne-hiver n'est pas tranché : on vise la première échéance
-    // possible (Deauville 15/11), puis la première course d'hiver possible (D2B 17/01).
-    { date: new Date('2026-11-15T08:00:00'), name: "bloc hiver · option à trancher" },
-    { date: new Date('2027-01-17T09:00:00'), name: "course d'hiver · option à trancher" },
+    { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail · 10 K' },
+    // Bloc d'automne-hiver tranché le 17/08/2026 : Rock'Angel puis D2B.
+    { date: new Date('2026-12-05T09:00:00'), name: "Rock'Angel" },
+    { date: new Date('2027-01-17T09:00:00'), name: 'D2B' },
     { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
     { date: new Date('2027-09-12T07:00:00'), name: 'Sancy' }
   ];
