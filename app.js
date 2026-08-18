@@ -81,11 +81,10 @@ function showSection(id, btn) {
 
   // ===== Compteur d'en-tête · prochaine course de la feuille de route =====
   const RACES = [
-    { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail' },
-    // Le bloc d'automne-hiver n'est pas tranché : on vise la première échéance
-    // possible (Deauville 15/11), puis la première course d'hiver possible (D2B 17/01).
-    { date: new Date('2026-11-15T08:00:00'), name: "bloc hiver · option à trancher" },
-    { date: new Date('2027-01-17T09:00:00'), name: "course d'hiver · option à trancher" },
+    { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail · 10 K' },
+    // Bloc d'automne-hiver tranché le 17/08/2026 : Rock'Angel puis D2B.
+    { date: new Date('2026-12-05T09:00:00'), name: "Rock'Angel" },
+    { date: new Date('2027-01-17T09:00:00'), name: 'D2B' },
     { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
     { date: new Date('2027-09-12T07:00:00'), name: 'Sancy' }
   ];
@@ -127,7 +126,7 @@ function showSection(id, btn) {
   }
   markToday();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 16/08/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 17/08/2026) =====
   // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -144,7 +143,7 @@ function showSection(id, btn) {
     // réels, mais allure, cadence et efficience ne sont pas comparables aux mois de course
     // continue (les blocs de marche les faussent) — laissés à null volontairement.
     { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
-    { label: 'Août', distanceKm: 44.8,  dplusM: 959,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 21.4 },
+    { label: 'Août', distanceKm: 55.4,  dplusM: 1104, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 19.9 },
   ];
 
   function fmtPace(sec) {
