@@ -253,31 +253,24 @@ tr.renfo-line td { background: rgba(169,186,157,0.05); }
 /* --- Objectif · lisibilité du nom d'épreuve ------------------------------ */
 /* Le nom de l'organisation porte autant d'information que le format couru :
    « Zurich Maratoia · Donostia-San Sebastián » dit où l'on va, « Le
-   Semi-marathon » dit seulement quoi. En Space Mono 0,65 rem gris et très
-   interlettré, il se lisait comme une référence technique et passait sous le
-   radar. Il repasse donc dans la police de texte, à un corps proche du nom de
-   course. La hiérarchie ne tient plus par la taille mais par la graisse et la
-   couleur : l'épreuve en 500 légèrement estompée, le format en 600 plein. */
-.rs-event {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1.35;
-  color: var(--text);
-  opacity: 0.82;
-  margin-bottom: 0.2rem;
-}
-.rs-name { font-size: 1.15rem; }
+   Semi-marathon » dit seulement quoi. En Space Mono gris et très interlettré,
+   il se lisait comme une référence technique et passait sous le radar.
 
-/* Même correction sur les cartes « gardées à l'œil », à l'échelle de la carte. */
+   La correction vit désormais dans style.css, partagée avec le site
+   principal : corps 0,95 rem, graisse 600, couleur d'accent — un chapeau
+   au-dessus d'un titre. Sur cette page l'accent est le Charm, pas l'ambre,
+   donc le rendu suit la palette sans qu'il y ait rien à redéfinir ici.
+   Ne reste que l'interlignage, utile sur les intitulés qui passent à la
+   ligne, et le même traitement sur les cartes « gardées à l'œil », que
+   style.css a laissées en mono minuscule. */
+.rs-event { line-height: 1.35; }
+
 .opt-event {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 1.35;
-  color: var(--text);
-  opacity: 0.82;
+  color: var(--accent);
 }
 .opt-rname { font-size: 0.92rem; }
