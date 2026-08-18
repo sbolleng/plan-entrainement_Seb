@@ -120,3 +120,121 @@ setInterval(function () {
   updateRaceCountdowns();
   updateTimelineCountdowns();
 }, 1000);
+
+// ===== Profil · graphiques de progression =====================================
+// Données issues de l'export Strava complet du 18/08/2026 (compte JDP).
+// Recalculées sur les douze derniers mois glissants, septembre 2025 → août 2026.
+// Août 2026 est un mois partiel : il s'arrête à la dernière activité, le 16.
+//
+// paceEffortSec = allure d'effort en secondes par km-effort, où le km-effort
+// ajoute 1 km fictif tous les 100 m de D+ (convention trail française). C'est
+// ce qui permet de comparer un footing plat à une sortie en montagne.
+// effBeats = battements par km-effort. Plus bas = meilleur rendement cardiaque.
+const statsMonthly = [
+  { label: 'Sep',  distanceKm: 98.6,  dplusM: 685,  paceEffortSec: 354, hrBpm: 168, effBeats: 992,  dpk: 6.9, renfoCount: 3 },
+  { label: 'Oct',  distanceKm: 80.3,  dplusM: 401,  paceEffortSec: 351, hrBpm: 162, effBeats: 950,  dpk: 5.0, renfoCount: 4 },
+  { label: 'Nov',  distanceKm: 88.4,  dplusM: 751,  paceEffortSec: 353, hrBpm: 159, effBeats: 938,  dpk: 8.5, renfoCount: 5 },
+  { label: 'Déc',  distanceKm: 53.8,  dplusM: 659,  paceEffortSec: 378, hrBpm: 158, effBeats: 993,  dpk: 12.3, renfoCount: 4 },
+  { label: 'Jan',  distanceKm: 70.5,  dplusM: 729,  paceEffortSec: 352, hrBpm: 152, effBeats: 881,  dpk: 10.3, renfoCount: 3 },
+  { label: 'Fév',  distanceKm: 112.6, dplusM: 900,  paceEffortSec: 388, hrBpm: 162, effBeats: 1047, dpk: 8.0, renfoCount: 0 },
+  { label: 'Mar',  distanceKm: 88.7,  dplusM: 1213, paceEffortSec: 335, hrBpm: 154, effBeats: 860,  dpk: 13.7, renfoCount: 0 },
+  { label: 'Avr',  distanceKm: 62.2,  dplusM: 86,   paceEffortSec: 444, hrBpm: 147, effBeats: 1117, dpk: 1.4, renfoCount: 1 },
+  { label: 'Mai',  distanceKm: 95.2,  dplusM: 318,  paceEffortSec: 364, hrBpm: 164, effBeats: 996,  dpk: 3.3, renfoCount: 0 },
+  { label: 'Juin', distanceKm: 70.7,  dplusM: 336,  paceEffortSec: 377, hrBpm: 158, effBeats: 997,  dpk: 4.7, renfoCount: 0 },
+  { label: 'Juil', distanceKm: 88.8,  dplusM: 271,  paceEffortSec: 382, hrBpm: 160, effBeats: 1019, dpk: 3.0, renfoCount: 1 },
+  { label: 'Août', distanceKm: 75.0,  dplusM: 1347, paceEffortSec: 345, hrBpm: 158, effBeats: 962,  dpk: 18.0, renfoCount: 1 }
+];
+
+function fmtPace(sec) {
+  if (sec === null || sec === undefined) return '—';
+  const m = Math.floor(sec / 60), s = Math.round(sec % 60);
+  return m + ':' + String(s).padStart(2, '0');
+}
+
+// Régression linéaire sur les points non nuls, pour la ligne de tendance.
+function linreg(values) {
+  const pts = [];
+  values.forEach((v, i) => { if (v !== null && v !== undefined) pts.push([i, v]); });
+  if (pts.length < 2) return null;
+  const n = pts.length;
+  const sx = pts.reduce((a, p) => a + p[0], 0);
+  const sy = pts.reduce((a, p) => a + p[1], 0);
+  const sxy = pts.reduce((a, p) => a + p[0] * p[1], 0);
+  const sxx = pts.reduce((a, p) => a + p[0] * p[0], 0);
+  const denom = n * sxx - sx * sx;
+  if (!denom) return null;
+  const slope = (n * sxy - sx * sy) / denom;
+  return { slope: slope, intercept: (sy - slope * sx) / n, first: pts[0][0], last: pts[pts.length - 1][0] };
+}
+
+function renderBarChart(containerId, series, opts) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  opts = opts || {};
+  const raw = series.map(s => s.val);
+  const nums = raw.filter(v => v !== null && v !== undefined);
+  if (!nums.length) return;
+
+  const max = opts.max !== undefined ? opts.max : Math.max(...nums);
+  const min = opts.invert ? Math.min(...nums) : 0;
+  // Pour les métriques « plus bas = mieux » (allure, battements) on inverse la
+  // hauteur : la barre la plus haute reste la meilleure performance.
+  const toPct = function (v) {
+    if (v === null || v === undefined) return 0;
+    if (opts.invert) {
+      if (max === min) return 60;
+      return ((max - v) / (max - min)) * 70 + 25;
+    }
+    return (v / max) * 100;
+  };
+
+  const cols = series.map(s => {
+    const pct = Math.max(toPct(s.val), 2);
+    const empty = (s.val === null || s.val === undefined);
+    const display = empty ? '—' : (opts.formatter ? opts.formatter(s.val) : Math.round(s.val));
+    const cls = 'stats-col' + (s.current ? ' is-current' : '') + (empty ? ' is-empty' : '');
+    return '<div class="' + cls + '">' +
+      '<div class="stats-bar" style="height:' + pct + '%"></div>' +
+      '<span class="stats-val" style="bottom:' + pct + '%">' + display + '</span>' +
+      '</div>';
+  }).join('');
+
+  const parts = [];
+  if (opts.trend !== false) {
+    const reg = linreg(raw);
+    if (reg) {
+      const n = series.length;
+      const xAt = function (i) { return ((i + 0.5) / n) * 100; };
+      parts.push('<line x1="' + xAt(reg.first) + '" y1="' + (100 - toPct(reg.intercept + reg.slope * reg.first)) +
+        '" x2="' + xAt(reg.last) + '" y2="' + (100 - toPct(reg.intercept + reg.slope * reg.last)) +
+        '" stroke="var(--accent2)" stroke-width="1.5" stroke-dasharray="4 3" vector-effect="non-scaling-stroke" />');
+    }
+  }
+  (opts.refLines || []).forEach(function (r) {
+    const y = 100 - toPct(r.val);
+    parts.push('<line x1="0" y1="' + y + '" x2="100" y2="' + y + '" stroke="' + (r.color || 'var(--red)') +
+      '" stroke-width="1" stroke-dasharray="2 3" vector-effect="non-scaling-stroke" />');
+  });
+  const svg = parts.length
+    ? '<svg class="stats-trend" viewBox="0 0 100 100" preserveAspectRatio="none">' + parts.join('') + '</svg>'
+    : '';
+
+  el.innerHTML = '<div class="stats-plot">' + cols + svg + '</div>' +
+                 '<div class="stats-labels">' + series.map(s => '<span>' + s.label + '</span>').join('') + '</div>';
+}
+
+function seriesFrom(key) {
+  return statsMonthly.map((m, i) => ({
+    label: m.label, val: m[key], current: i === statsMonthly.length - 1
+  }));
+}
+
+function renderStatsCharts() {
+  renderBarChart('chart-distance', seriesFrom('distanceKm'));
+  renderBarChart('chart-dplus', seriesFrom('dplusM'));
+  renderBarChart('chart-pace', seriesFrom('paceEffortSec'), { invert: true, formatter: fmtPace });
+  renderBarChart('chart-efficiency', seriesFrom('effBeats'), { invert: true });
+  renderBarChart('chart-renfo', seriesFrom('renfoCount'), { trend: false });
+}
+
+renderStatsCharts();
