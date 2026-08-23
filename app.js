@@ -126,7 +126,7 @@ function showSection(id, btn) {
   }
   markToday();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 19/08/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 23/08/2026) =====
   // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -143,7 +143,7 @@ function showSection(id, btn) {
     // réels, mais allure, cadence et efficience ne sont pas comparables aux mois de course
     // continue (les blocs de marche les faussent) — laissés à null volontairement.
     { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
-    { label: 'Août', distanceKm: 61.0,  dplusM: 1173, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 19.2 },
+    { label: 'Août', distanceKm: 79.5,  dplusM: 1337, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 16.8 },
   ];
 
   function fmtPace(sec) {
