@@ -143,7 +143,7 @@ function showSection(id, btn) {
     // réels, mais allure, cadence et efficience ne sont pas comparables aux mois de course
     // continue (les blocs de marche les faussent) — laissés à null volontairement.
     { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
-    { label: 'Août', distanceKm: 79.5,  dplusM: 1337, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 16.8 },
+    { label: 'Août', distanceKm: 85.1,  dplusM: 1348, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 15.8 },
   ];
 
   function fmtPace(sec) {
