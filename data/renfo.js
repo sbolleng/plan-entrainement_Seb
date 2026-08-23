@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-08-17',
+  maj: '2026-08-23',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -55,6 +55,21 @@ const RENFO_LOG = {
         { nom: 'Russian twist kettlebell', dom: 'A', series: 3, reps: 20, charge: 10 },
         { nom: 'Pompes', dom: 'H', series: 3, reps: 13, charge: 0 },
         { nom: 'Kettlebell swing 2 mains', dom: 'F', series: 3, reps: 15, charge: 10 }
+      ]
+    },
+    {
+      // Bloc de reprise, jour 1. Hevy indique 4:30 de moving_time, très
+      // probablement sous-évalué (ne compte pas les temps de repos entre
+      // séries) au vu du nombre d'exercices : durée réelle non fiable.
+      date: '2026-08-23', source: 'hevy', duree: null,
+      exercices: [
+        { nom: 'Squat', dom: 'F', series: 4, reps: 15, charge: 10 },
+        { nom: 'Fentes haltères', dom: 'F', series: 3, reps: 15, charge: 10 },
+        { nom: 'Step up haltères', dom: 'F', series: 3, reps: 15, charge: 0 },
+        { nom: 'Mollets', dom: 'F', series: 3, reps: 20, charge: 0 },
+        { nom: 'Gainage ventral', dom: 'A', series: 3, reps: 60, charge: 0, tenue: true },
+        { nom: 'Gainage latéral', dom: 'A', series: 3, reps: 30, charge: 0, tenue: true },
+        { nom: 'Crunch', dom: 'A', series: 3, reps: 20, charge: 0 }
       ]
     }
   ]
