@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-08-27',
+  maj: '2026-09-01',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -83,6 +83,19 @@ const RENFO_LOG = {
         { nom: 'Chaise sur une jambe', dom: 'S', series: 1, reps: 30, charge: 0, tenue: true },
         { nom: 'Squat sumo', dom: 'F', series: 1, reps: 15, charge: 10 },
         { nom: 'Russian twist kettlebell', dom: 'A', series: 1, reps: 20, charge: 10 }
+      ]
+    },
+    {
+      // Séance de kiné, loguée via Hevy sous le titre « Kiné 🏋️ ». Contenu
+      // connu cette fois, contrairement aux neuf séances de juillet-août.
+      // Durée Hevy (4:37) non fiable comme d'habitude.
+      // L'élévation latérale a été faite à 0 kg sur 3 séries et 1 kg sur la
+      // dernière : enregistrée à 0, l'écart de tonnage est négligeable.
+      date: '2026-08-31', source: 'kiné', duree: null,
+      exercices: [
+        { nom: 'Presse à cuisses 1 jambe', dom: 'F', series: 1, reps: 20, charge: 50 },
+        { nom: 'Élévation latérale jambe lestée', dom: 'S', series: 4, reps: 12, charge: 0 },
+        { nom: 'Fentes haltères', dom: 'F', series: 3, reps: 15, charge: 10 }
       ]
     }
   ]
