@@ -99,15 +99,15 @@ const RENFO_LOG = {
       ]
     },
     {
-      // « Entraînement du soir », jeudi 3 sept. Le 25 min continu prescrit
-      // ce jour-là n'a pas eu lieu (aucune course loguée) : à la place, une
-      // séance de renfo non prévue. Une seule série par exercice, durée
-      // Hevy (6:08) non fiable comme d'habitude — séance abrégée.
+      // Séance de kiné, jeudi 3 sept, loguée via Hevy sous le titre
+      // « Entraînement du soir ». Le 25 min continu prescrit ce jour-là
+      // n'a pas eu lieu (aucune course loguée) : la séance de kiné a pris
+      // sa place. Durée Hevy (6:08) non fiable comme d'habitude pour le kiné.
       // « Extensions Une Jambe » = Leg extension fait en unilatéral, noté
       // sous le nom du catalogue pour garder la progression de charge.
       // « Marche Latérale Bande Élastique » = même mouvement que « Pas
       // chassés demi-squat + levers latéraux », renommé à l'identique.
-      date: '2026-09-03', source: 'hevy', duree: null, incomplete: true,
+      date: '2026-09-03', source: 'kiné', duree: null,
       exercices: [
         { nom: 'Leg extension', dom: 'F', series: 1, reps: 12, charge: 12.5 },
         { nom: 'Squat une jambe', dom: 'F', series: 1, reps: 10, charge: 0 },
