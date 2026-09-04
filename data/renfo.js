@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-09-01',
+  maj: '2026-09-04',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -96,6 +96,22 @@ const RENFO_LOG = {
         { nom: 'Presse à cuisses 1 jambe', dom: 'F', series: 1, reps: 20, charge: 50 },
         { nom: 'Élévation latérale jambe lestée', dom: 'S', series: 4, reps: 12, charge: 0 },
         { nom: 'Fentes haltères', dom: 'F', series: 3, reps: 15, charge: 10 }
+      ]
+    },
+    {
+      // « Entraînement du soir », jeudi 3 sept. Le 25 min continu prescrit
+      // ce jour-là n'a pas eu lieu (aucune course loguée) : à la place, une
+      // séance de renfo non prévue. Une seule série par exercice, durée
+      // Hevy (6:08) non fiable comme d'habitude — séance abrégée.
+      // « Extensions Une Jambe » = Leg extension fait en unilatéral, noté
+      // sous le nom du catalogue pour garder la progression de charge.
+      // « Marche Latérale Bande Élastique » = même mouvement que « Pas
+      // chassés demi-squat + levers latéraux », renommé à l'identique.
+      date: '2026-09-03', source: 'hevy', duree: null, incomplete: true,
+      exercices: [
+        { nom: 'Leg extension', dom: 'F', series: 1, reps: 12, charge: 12.5 },
+        { nom: 'Squat une jambe', dom: 'F', series: 1, reps: 10, charge: 0 },
+        { nom: 'Pas chassés demi-squat + levers latéraux', dom: 'S', series: 1, reps: 30, charge: 0 }
       ]
     }
   ]
