@@ -126,7 +126,7 @@ function showSection(id, btn) {
   }
   markToday();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 01/09/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 04/09/2026) =====
   // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
