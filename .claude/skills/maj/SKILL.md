@@ -92,6 +92,24 @@ basculer le surlignage sur la phase suivante.
 Vérifier que les périodes des tableaux de phase restent cohérentes avec le
 calendrier réel et les dates de course retenues.
 
+Les tableaux de phase (Phase 1 et suivantes) sont des **gabarits génériques
+sur plusieurs semaines** — ne pas y inscrire de date précise de kiné, ça ne
+serait juste que pour une semaine sur les deux ou trois que couvre la ligne.
+Les dates précises de kiné vivent dans « Cette semaine », qui elle est
+régénérée chaque semaine avec les vraies dates. Le calendrier des rendez-vous
+de kiné à venir est gardé dans un commentaire HTML juste avant le tableau de
+la phase en cours (non affiché sur le site, sur demande de Seb) : y piocher
+les dates qui tombent dans la semaine affichée pour construire les jours de
+« Cette semaine », et mettre ce commentaire à jour au fil des nouveaux
+rendez-vous que Seb communique.
+
+Partout où une séance de kiné apparaît avec une date fixe (jour de « Cette
+semaine », ligne renfo d'un tableau de phase qui liste des semaines
+spécifiques comme l'ancien tableau de reprise) — utiliser la classe `.kine`
+sur le texte et `has-kine` sur la cellule (`<td class="has-kine">`) plutôt que
+des couleurs en dur : c'est ce qui distingue visuellement un rendez-vous
+imposé d'un créneau de renfo qu'on choisit soi-même.
+
 ## 3 bis · Journal de renfo
 
 Toute séance de renforcement, qu'elle vienne d'une description Hevy sur Strava
