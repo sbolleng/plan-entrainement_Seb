@@ -862,9 +862,13 @@
   .opt-why strong { color: var(--text); }
 
   /* Choix de format à l'intérieur d'une course (Clam Trail 10 K / 20 K) */
+  /* Les cartes d'option tiennent sur une seule ligne tant que la largeur le
+     permet — deux, trois ou quatre côte à côte se comparent d'un coup d'œil,
+     alors qu'une grille à deux colonnes casse la lecture dès la troisième.
+     En dessous de 200 px par carte, elles repassent naturellement à la ligne. */
   .fmt-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 0.5rem;
     margin-top: 0.9rem;
   }

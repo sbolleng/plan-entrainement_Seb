@@ -8,8 +8,8 @@
 <meta name="robots" content="noindex">
 <title>JDP — Marathon de Paris 2028</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260906b">
-<link rel="stylesheet" href="jdp.css?v=20260906b">
+<link rel="stylesheet" href="style.css?v=20260906c">
+<link rel="stylesheet" href="jdp.css?v=20260906c">
 </head>
 <body>
 <header>
@@ -27,7 +27,7 @@
           <span class="stat-label">Date visée</span>
         </div>
         <div class="stat">
-          <span class="stat-val">8 courses</span>
+          <span class="stat-val">7 courses</span>
           <span class="stat-label">Étapes prépa</span>
         </div>
         <div class="stat">
@@ -52,6 +52,7 @@
     <button class="tab active" onclick="showSection('objectif', this)">Objectif 26-28</button>
     <button class="tab" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
     <button class="tab" onclick="showSection('logistique', this)">Logistique</button>
+    <button class="tab" onclick="showSection('comparatif', this)">Comparatif</button>
     <button class="tab" onclick="showSection('palmares', this)">Palmarès</button>
     <button class="tab" onclick="showSection('guide', this)">Guide</button>
   </div>
@@ -209,44 +210,10 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 5 · LE SEMI DE FIN MARS -->
-      <div class="race-step">
-        <div class="rs-top">
-          <span class="rs-badge">Étape 5 · semi</span>
-          <span class="rs-when">Fin mars 2027 · date à confirmer</span>
-        </div>
-        <div class="rs-event">Montauban</div>
-        <h3 class="rs-name">Le semi de fin mars</h3>
-        <div class="rs-specs">21,1 km · route · Montauban (82)</div>
-
-        <div class="race-cd" data-target="2027-03-28T09:30:00"></div>
-
-        <p class="rs-desc">Trois semaines après l'Augerolloise, un semi sur route à domicile. Le 10 km est abandonné : prendre un dossard de 10 km pour enchaîner sur un semi n'avait pas de sens. Reste donc le semi, ou rien si le trail a laissé des traces — c'est le format comparable à San Sebastián, cinq mois plus tard sur la même distance, et on y lit directement la progression.</p>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Rôle dans la prépa</span>
-            <p>Comparaison directe avec octobre. Zéro logistique : on arrive frais, on court, on rentre.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Objectif · temps cible</span>
-            <p>Mieux qu'à San Sebastián.<br><span class="rs-target">sous 1h46</span></p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">À arbitrer</span>
-            <p><strong>Ce semi et le semi test de Dublin tombent tous les deux fin mars.</strong> Si les dates du voyage en Irlande correspondent, Dublin remplace celui-ci plutôt que de s'y ajouter.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Dossard</span>
-            <p>Épreuve à identifier précisément · ouverture à surveiller dès janvier 2027.</p>
-          </div>
-        </div>
-      </div>
-
       <!-- ÉTAPE 6 · SEMI TEST — TROIS CANDIDATS -->
       <div class="race-step is-choice">
         <div class="rs-top">
-          <span class="rs-badge rs-badge-choice">Étape 6 · semi test</span>
+          <span class="rs-badge rs-badge-choice">Étape 5 · semi test</span>
           <span class="rs-when">Printemps 2027 · course à choisir</span>
         </div>
         <div class="rs-event">Trois candidats</div>
@@ -259,7 +226,7 @@
           <div class="fmt-card is-reco">
             <div class="fmt-top"><span class="fmt-name">Dublin</span><span class="fmt-tag">choix 1</span></div>
             <div class="fmt-specs">Fin mars 2027 · Irlande</div>
-            <p class="fmt-line"><strong>Si les dates du voyage correspondent.</strong> Un semi à l'étranger, sur un parcours roulant, avec un vrai plateau et des meneurs d'allure. Remplace alors le semi de Montauban.</p>
+            <p class="fmt-line"><strong>Si les dates du voyage correspondent.</strong> Un semi à l'étranger, sur un parcours roulant, avec un vrai plateau et des meneurs d'allure.</p>
             <p class="fmt-line"><span class="rs-target">1h42 – 1h45</span></p>
           </div>
           <div class="fmt-card">
@@ -279,7 +246,7 @@
         <div class="rs-grid">
           <div class="rs-cell">
             <span class="rs-key">Ce qui départage</span>
-            <p>Les dates du voyage en Irlande. Si elles tombent bien, Dublin gagne sans discussion — plateau, parcours plat, meneurs d'allure — et prend la place du semi de fin mars. Sinon Albi, qui laisse un mois de récupération de plus.</p>
+            <p>Les dates du voyage en Irlande. Si elles tombent bien, Dublin gagne sans discussion : plateau, parcours plat, meneurs d'allure. Sinon Albi, qui laisse un mois de récupération de plus.</p>
           </div>
           <div class="rs-cell">
             <span class="rs-key">Objectif · temps cible</span>
@@ -299,7 +266,7 @@
       <!-- ÉTAPE 7 · VVX DE VOLVIC -->
       <div class="race-step">
         <div class="rs-top">
-          <span class="rs-badge">Étape 7 · trail</span>
+          <span class="rs-badge">Étape 6 · trail</span>
           <span class="rs-when">Ven. 7 mai 2027 · départ 9 h</span>
         </div>
         <div class="rs-event">Volvic Volcanic Experience</div>
@@ -333,7 +300,7 @@
       <!-- ÉTAPE 7 · TRAIL D'AUTOMNE — À DÉFINIR -->
       <div class="race-step is-choice">
         <div class="rs-top">
-          <span class="rs-badge rs-badge-choice">Étape 8 · à définir</span>
+          <span class="rs-badge rs-badge-choice">Étape 7 · à définir</span>
           <span class="rs-when">Automne 2027</span>
         </div>
         <h3 class="rs-name">Le trail d'automne</h3>
@@ -368,21 +335,21 @@
         <div class="fmt-grid">
           <div class="fmt-card is-reco">
             <div class="fmt-top"><span class="fmt-name">Rome</span><span class="fmt-tag">coup de cœur</span></div>
-            <div class="fmt-specs">42,195 km · route · Italie</div>
+            <div class="fmt-specs">Mi-mars 2028 · dossard 99 → 139 € · ≈ 600 €</div>
             <p class="fmt-line"><strong>L'envie d'abord.</strong> Courir dans Rome, c'est le genre de raison qui tient un plan de vingt mois debout quand la motivation baisse en janvier.</p>
-            <p class="fmt-line"><span class="rs-target">date et tarif à confirmer</span></p>
+            <p class="fmt-line"><a href="#comparatif" onclick="showSection('comparatif', document.querySelectorAll('nav .tab')[3]); return false;">Voir le comparatif détaillé →</a></p>
           </div>
           <div class="fmt-card">
             <div class="fmt-top"><span class="fmt-name">Barcelone</span><span class="fmt-tag">le plus rapide</span></div>
-            <div class="fmt-specs">42,195 km · route, roulant · Espagne</div>
+            <div class="fmt-specs">Mi-mars 2028 · dossard 90 → 100 € · ≈ 300 €</div>
             <p class="fmt-line"><strong>Logistique facile et parcours roulant.</strong> C'est le meilleur terrain des trois pour un chrono : si l'objectif des 4 heures se joue à quelques minutes, c'est ici qu'il se gagne.</p>
-            <p class="fmt-line"><span class="rs-target">date et tarif à confirmer</span></p>
+            <p class="fmt-line"><a href="#comparatif" onclick="showSection('comparatif', document.querySelectorAll('nav .tab')[3]); return false;">Voir le comparatif détaillé →</a></p>
           </div>
           <div class="fmt-card">
             <div class="fmt-top"><span class="fmt-name">Madrid</span><span class="fmt-tag">à deux</span></div>
-            <div class="fmt-specs">42,195 km · route, vallonné · Espagne</div>
+            <div class="fmt-specs">Fin avril 2028 · dossard 80 → 150 € · ≈ 200 €</div>
             <p class="fmt-line"><strong>Logistique facile, et un semi le même jour</strong> — de quoi courir à deux sur des formats différents. Revers : le parcours a du dénivelé, ce qui coûte des minutes sur l'objectif.</p>
-            <p class="fmt-line"><span class="rs-target">date et tarif à confirmer</span></p>
+            <p class="fmt-line"><a href="#comparatif" onclick="showSection('comparatif', document.querySelectorAll('nav .tab')[3]); return false;">Voir le comparatif détaillé →</a></p>
           </div>
         </div>
 
@@ -401,7 +368,7 @@
           </div>
           <div class="rs-cell">
             <span class="rs-key">Dossard</span>
-            <p><strong style="color:var(--accent2);">Dates, tarifs et ouvertures à renseigner pour les trois.</strong> C'est le premier arbitrage de la feuille de route : la ville commande le budget, le trajet et l'hôtel, donc tout l'onglet Logistique.</p>
+            <p>Dates, tarifs et budgets sont relevés pour les trois — voir l'onglet <strong>Comparatif</strong>. Reste à trancher : c'est le premier arbitrage de la feuille de route, la ville commandant le budget, le trajet et l'hôtel, donc tout l'onglet Logistique.</p>
           </div>
         </div>
       </div>
@@ -703,57 +670,114 @@
     </div>
   </section>
 
+  <!-- ========== COMPARATIF · les trois marathons ========== -->
+  <section id="comparatif" class="section">
+    <div class="section-title">Comparatif · Rome, Barcelone, Madrid</div>
+
+    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Le premier arbitrage de la feuille de route : la ville commande la date, le budget, le trajet et l'hôtel. Les chiffres ci-dessous sont ceux relevés pour les trois épreuves. <strong>Base commune à toutes les options</strong> : 2 à 3 nuits sur place, du vendredi au dimanche ou au lundi, à 100 € maximum la nuit.</p>
+
+    <div class="logi-tiles">
+      <div class="logi-tile"><span class="logi-val">Rome</span><span class="logi-key">Le coup de cœur</span><span class="logi-sub">≈ 600 € · le plus cher, et le plus désiré</span></div>
+      <div class="logi-tile"><span class="logi-val">Barcelone</span><span class="logi-key">Le plus rapide</span><span class="logi-sub">≈ 300 € · roulant, en voiture</span></div>
+      <div class="logi-tile"><span class="logi-val">Madrid</span><span class="logi-key">Le moins cher</span><span class="logi-sub">≈ 200 € · et un semi en parallèle</span></div>
+    </div>
+
+    <h3 style="margin:2rem 0 0.75rem;">Tout en un tableau</h3>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>&nbsp;</th><th>Rome</th><th>Barcelone</th><th>Madrid</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="muted">Date 2028</td>
+          <td>Dim. <strong>12 ou 19 mars</strong><br><span class="muted" style="font-size:0.75rem;">le 14 mars en 2027</span></td>
+          <td><strong>Mi-mars</strong><br><span class="muted" style="font-size:0.75rem;">le 14 mars en 2027</span></td>
+          <td><strong>Fin avril</strong><br><span class="muted" style="font-size:0.75rem;">le 25 avril en 2027</span></td>
+        </tr>
+        <tr>
+          <td class="muted">Dossard</td>
+          <td class="mono">99 € → 139 €</td>
+          <td class="mono">90 € → 100 €</td>
+          <td class="mono">80 € → 150 €</td>
+        </tr>
+        <tr>
+          <td class="muted">Ce qui est inclus</td>
+          <td>Médaille, sac, tee-shirt, ravito</td>
+          <td>Médaille, tee-shirt, ravito</td>
+          <td class="dash">Non détaillé</td>
+        </tr>
+        <tr>
+          <td class="muted">Trajet</td>
+          <td>Vol Toulouse → Fiumicino<br><span class="mono">250 €/pers.</span> <span class="muted" style="font-size:0.75rem;">direct rare</span></td>
+          <td>5 h de voiture<br><span class="mono">194 €</span> <span class="muted" style="font-size:0.75rem;">péage + essence, pour deux</span></td>
+          <td>Vol A/R<br><span class="mono">83 €</span></td>
+        </tr>
+        <tr>
+          <td class="muted">Dénivelé du parcours</td>
+          <td class="dash">Non relevé</td>
+          <td class="dash">Non relevé</td>
+          <td class="mono">370 m D+</td>
+        </tr>
+        <tr>
+          <td class="muted">Course pour T.</td>
+          <td>Fun Run 5 km la veille<br><span class="mono">15 €</span></td>
+          <td>Breakfast run 4 km la veille<br><span class="mono">gratuit</span></td>
+          <td>Semi-marathon<br><span class="mono">40 € → 130 €</span> <span class="muted" style="font-size:0.75rem;">233 m D+</span></td>
+        </tr>
+        <tr class="plan-race">
+          <td class="muted"><strong>Total relevé</strong></td>
+          <td><strong class="mono" style="color:var(--accent);">≈ 600 €</strong></td>
+          <td><strong class="mono" style="color:var(--accent);">≈ 300 €</strong></td>
+          <td><strong class="mono" style="color:var(--accent);">≈ 200 €</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p class="info">⚠️ <strong>Un point à vérifier sur les totaux.</strong> L'hôtel représente 200 à 300 € à lui seul, à 100 € la nuit sur deux ou trois nuits. Les totaux relevés ne sont cohérents avec cette base que pour Rome ; pour Barcelone et Madrid ils semblent l'exclure, ou compter un hébergement moins cher. À trancher avant d'en faire un plan d'épargne — c'est un écart de 200 à 300 € par option.</p>
+
+    <h3 style="margin:2rem 0 0.75rem;">Ce que chaque option apporte, et ce qu'elle coûte</h3>
+
+    <div class="fmt-grid">
+      <div class="fmt-card is-reco">
+        <div class="fmt-top"><span class="fmt-name">Rome</span><span class="fmt-tag">coup de cœur</span></div>
+        <div class="fmt-specs">Mi-mars 2028 · ≈ 600 €</div>
+        <p class="fmt-line"><strong>Pour.</strong> L'envie, d'abord — c'est le genre de raison qui tient un plan de vingt mois debout quand la motivation baisse en janvier. Et le dossard le mieux doté des trois : médaille, sac, tee-shirt.</p>
+        <p class="fmt-line"><strong>Contre.</strong> Trois fois le budget de Madrid. Le vol direct depuis Toulouse est rare, à 250 € par personne, donc 500 € à deux avant même le dossard.</p>
+      </div>
+      <div class="fmt-card">
+        <div class="fmt-top"><span class="fmt-name">Barcelone</span><span class="fmt-tag">le plus rapide</span></div>
+        <div class="fmt-specs">Mi-mars 2028 · ≈ 300 €</div>
+        <p class="fmt-line"><strong>Pour.</strong> Le parcours roulant, donc le meilleur terrain des trois si l'objectif des 4 heures se joue à quelques minutes. Et 5 h de voiture : pas d'avion, pas d'horaires, un coffre.</p>
+        <p class="fmt-line"><strong>Contre.</strong> 194 € de péage et d'essence, et cinq heures de route la veille d'un marathon — les jambes n'aiment pas. Le breakfast run de 4 km est court pour un accompagnant.</p>
+      </div>
+      <div class="fmt-card">
+        <div class="fmt-top"><span class="fmt-name">Madrid</span><span class="fmt-tag">le moins cher</span></div>
+        <div class="fmt-specs">Fin avril 2028 · ≈ 200 €</div>
+        <p class="fmt-line"><strong>Pour.</strong> Le vol à 83 € A/R écrase la comparaison, et c'est la seule des trois à proposer un vrai semi en parallèle — 21,1 km pour T. plutôt qu'une course de 4 ou 5 km.</p>
+        <p class="fmt-line"><strong>Contre.</strong> 370 m de D+ sur le parcours : sur un objectif à 5:41 au kilomètre, ça se paie. Et fin avril décale toute la préparation de six semaines.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 0.75rem;">Les trois questions qui tranchent</h3>
+    <div class="card card-accent">
+      <p style="font-size:0.85rem;"><strong>1. Le chrono compte-t-il vraiment ?</strong> Si oui, Barcelone. C'est le seul parcours annoncé comme roulant, et Madrid affiche 370 m de D+ — sur 42 km, à une allure de 5:41, un tel dénivelé peut coûter plusieurs minutes. Si l'objectif est de finir sans regarder la montre, ce critère disparaît et Rome reprend la main.</p>
+      <p style="font-size:0.85rem;"><strong>2. Mars ou fin avril ?</strong> Rome et Barcelone tombent mi-mars, Madrid fin avril. Six semaines d'écart, ce n'est pas neutre : un marathon mi-mars veut dire un bloc spécifique en plein hiver, un marathon fin avril laisse le printemps pour les sorties longues. Le calendrier 2027-2028 en dépend entièrement.</p>
+      <p style="font-size:0.85rem; margin-bottom:0;"><strong>3. Que fait l'accompagnant ?</strong> Madrid est la seule à proposer un semi. Rome offre un 5 km à 15 €, Barcelone un 4 km gratuit. Si l'idée est de courir à deux sur des formats sérieux, Madrid gagne — et se trouve être aussi la moins chère.</p>
+    </div>
+
+    <p class="info" style="margin-top:1.5rem;">Chiffres relevés dans le comparatif du 6 septembre 2026. Les tarifs de dossard sont donnés en fourchette parce qu'ils grimpent par paliers : s'inscrire tôt, c'est le bas de la fourchette.</p>
+  </section>
+
   <!-- ========== GUIDE · ossature, sans contenu ========== -->
   <section id="guide" class="section">
-    <div class="section-title">Guide d'entraînement · Renfo, vélo, nutrition, équipement</div>
+    <div class="section-title">Guide · équipement et divers</div>
 
     <div class="subnav">
-      <button class="subtab active" onclick="showSubsection('g-renfo', this)">Renfo</button>
-      <button class="subtab" onclick="showSubsection('g-velo', this)">Vélo</button>
-      <button class="subtab" onclick="showSubsection('g-nutrition', this)">Nutrition</button>
-      <button class="subtab" onclick="showSubsection('g-equipement', this)">Équipement</button>
+      <button class="subtab active" onclick="showSubsection('g-equipement', this)">Équipement</button>
       <button class="subtab" onclick="showSubsection('g-autre', this)">Autre</button>
     </div>
 
-    <div id="g-renfo" class="subsection active">
-      <h2 style="margin-bottom:0.5rem;">Renforcement · catalogue</h2>
-      <div class="card card-accent" style="margin-bottom:1.5rem;">
-        <h3 style="margin-bottom:0.6rem;" class="dash">Le conseil de la semaine</h3>
-        <p style="font-size:0.85rem; color:var(--muted);">Bloc réécrit chaque semaine, comme sur la page Cette semaine.</p>
-      </div>
-      <h3 style="margin-bottom:0.75rem;">Catalogue d'exercices</h3>
-      <div class="table-scroll">
-      <table>
-        <thead><tr><th>Exercice</th><th>Dominante</th><th>Format</th><th>Points de vigilance</th></tr></thead>
-        <tbody>
-          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
-          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
-          <tr><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
-        </tbody>
-      </table>
-      </div>
-    </div>
-
-    <div id="g-velo" class="subsection">
-      <h2 style="margin-bottom:0.5rem;">Vélo · les séances types</h2>
-      <div class="card card-accent" style="margin-bottom:1.5rem;">
-        <h3 style="margin-bottom:0.6rem;" class="dash">À quoi sert le vélo dans ce plan</h3>
-        <p style="font-size:0.85rem; color:var(--muted);">Description des types de séances — léger, intervalles, endurance — tels qu'ils apparaissent dans le Plan.</p>
-      </div>
-      <div class="todo">Section à écrire.</div>
-    </div>
-
-    <div id="g-nutrition" class="subsection">
-      <h2 style="margin-bottom:0.5rem;">Nutrition</h2>
-      <div class="card card-accent" style="margin-bottom:1.5rem;">
-        <h3 style="margin-bottom:0.6rem;" class="dash">Principe directeur</h3>
-        <p style="font-size:0.85rem; color:var(--muted);">Timing péri-entraînement, repas quotidien, stratégie de course.</p>
-      </div>
-      <div class="todo">Section à écrire.</div>
-    </div>
-
-    <!-- ---------- Équipement ---------- -->
-    <div id="g-equipement" class="subsection">
+    <div id="g-equipement" class="subsection active">
 
       <nav class="art-menu">
         <span class="art-menu-label">Dans cette rubrique</span>
@@ -1251,6 +1275,6 @@
 
 </main>
 
-<script src="jdp.js?v=20260906b" defer></script>
+<script src="jdp.js?v=20260906c" defer></script>
 </body>
 </html>
