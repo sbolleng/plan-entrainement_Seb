@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#060b14">
 <title>CAP — Projet Sancy 2027</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260906a">
+<link rel="stylesheet" href="style.css?v=20260906b">
 </head>
 <body>
 <header>
@@ -465,26 +465,14 @@
     <div class="phase-sep">Phase 1 · en cours · Septembre — Décembre 2026</div>
     <h3 style="margin-bottom:0.75rem;">Reconstruction du volume</h3>
 
-    <details class="fold" open>
-      <summary>Prochains rendez-vous de kiné · comptent comme séance de renfo</summary>
-      <div class="fold-body">
-      <p class="muted" style="font-size:0.8rem; margin-bottom:0.75rem;">Liste à compléter au fil des rendez-vous pris. Chaque rendez-vous compte comme l'une des trois séances de renfo de la semaine.</p>
-      <ul style="font-size:0.85rem; margin:0; padding-left:1.2rem; line-height:1.7;">
-        <li>Mer 9 sept, 18h45 — Justine Bonhomme</li>
-        <li>Ven 11 sept, 9h15 — Justine Bonhomme</li>
-        <li>Mar 15 sept, 8h45 — Léonore Isambert (remplaçante)</li>
-        <li>Ven 18 sept, 11h45 — Léonore Isambert (remplaçante)</li>
-        <li>Lun 21 sept, 18h15 — Justine Bonhomme</li>
-        <li>Jeu 24 sept, 18h45 — Justine Bonhomme</li>
-        <li>Lun 28 sept, 18h15 — Justine Bonhomme</li>
-        <li>Jeu 1<sup>er</sup> oct, 17h45 — Justine Bonhomme</li>
-        <li>Lun 5 oct, 17h45 — Justine Bonhomme</li>
-        <li>Jeu 8 oct, 18h15 — Justine Bonhomme</li>
-        <li>Lun 12 oct, 17h45 — Justine Bonhomme</li>
-        <li>Jeu 15 oct, 18h15 — Justine Bonhomme</li>
-      </ul>
-      </div>
-    </details>
+    <!-- Calendrier kiné (interne, non affiché) — chaque RDV compte comme une
+         des 3 séances de renfo hebdo ; sert à placer "Kiné" dans le tableau
+         ci-dessous à chaque /maj plutôt qu'un renfo générique.
+         Mer 9/09 18h45, Ven 11/09 9h15 (Justine Bonhomme)
+         Mar 15/09 8h45, Ven 18/09 11h45 (Léonore Isambert, remplaçante)
+         Lun 21/09 18h15, Jeu 24/09 18h45, Lun 28/09 18h15 (Justine Bonhomme)
+         Jeu 1/10 17h45, Lun 5/10 17h45, Jeu 8/10 18h15, Lun 12/10 17h45,
+         Jeu 15/10 18h15 (Justine Bonhomme) -->
     <div class="table-scroll">
     <table>
       <thead>
@@ -501,11 +489,11 @@
           <td><span class="sortie-badge sb-long">LONG</span> 12–16 km<br><span class="muted" style="font-size:0.72rem;">avec du D+</span></td>
         </tr>
         <tr class="renfo-line">
-          <td>Cuisses + fessier<br><span class="muted" style="font-size:0.72rem;">30–45 min · ou kiné</span></td>
+          <td>Cuisses + fessier<br><span class="muted" style="font-size:0.72rem;">30–45 min</span></td>
           <td><span class="muted">repos</span></td>
-          <td>Stabilité + abdos<br><span class="muted" style="font-size:0.72rem;">30–45 min · ou kiné</span></td>
+          <td><strong style="color:var(--accent);">Kiné</strong><br><span class="muted" style="font-size:0.72rem;">9/09 · 18h45</span></td>
           <td><span class="muted">repos</span></td>
-          <td>Cuisses + abdos<br><span class="muted" style="font-size:0.72rem;">30–45 min · ou kiné</span></td>
+          <td><strong style="color:var(--accent);">Kiné</strong><br><span class="muted" style="font-size:0.72rem;">11/09 · 9h15</span></td>
           <td>Option week-end<br><span class="muted" style="font-size:0.72rem;">20–30 min, 1 à 2×</span></td>
         </tr>
         <tr>
@@ -1962,8 +1950,8 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20260906a" defer></script>
-<script src="app.js?v=20260906a" defer></script>
+<script src="data/renfo.js?v=20260906b" defer></script>
+<script src="app.js?v=20260906b" defer></script>
 
 </body>
 </html>

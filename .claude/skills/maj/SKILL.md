@@ -92,6 +92,16 @@ basculer le surlignage sur la phase suivante.
 Vérifier que les périodes des tableaux de phase restent cohérentes avec le
 calendrier réel et les dates de course retenues.
 
+**À chaque passage, resynchroniser la ligne renfo de la période en cours du
+tableau de la phase active avec la semaine réelle** — ne pas laisser un
+placeholder générique (« ou kiné ») traîner. Le calendrier des rendez-vous de
+kiné à venir est gardé dans un commentaire HTML juste avant le tableau de la
+phase en cours (non affiché sur le site, sur demande de Seb) : y piocher les
+dates qui tombent dans la semaine affichée et les inscrire explicitement
+(« Kiné · 9/09 · 18h45 ») sur les bonnes colonnes, en dur, à la place d'une
+séance générique. Mettre à jour ce commentaire au fil des nouveaux rendez-vous
+que Seb communique.
+
 ## 3 bis · Journal de renfo
 
 Toute séance de renforcement, qu'elle vienne d'une description Hevy sur Strava
