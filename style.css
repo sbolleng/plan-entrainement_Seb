@@ -1447,3 +1447,53 @@
     box-shadow: inset 2px 0 0 var(--accent2);
   }
 
+  /* --- Logistique · tuiles de budget ---------------------------------------
+     Trois chiffres en tête d'onglet : ce que ça coûte, ce qui est déjà mis de
+     côté, ce qu'il reste à épargner chaque mois. La barre de progression rend
+     le deuxième lisible d'un coup d'œil, ce qu'un pourcentage seul ne fait pas. */
+  .logi-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 700px) { .logi-tiles { grid-template-columns: 1fr; } }
+  .logi-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 1.1rem 1.2rem;
+  }
+  .logi-val {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    color: var(--accent);
+  }
+  .logi-key {
+    display: block;
+    margin-top: 0.45rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .logi-sub {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .prov {
+    width: 100%;
+    height: 5px;
+    margin-top: 0.6rem;
+    background: var(--surface2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .prov i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+
