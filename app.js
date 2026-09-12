@@ -126,7 +126,7 @@ function showSection(id, btn) {
   }
   markToday();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 06/09/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 12/09/2026) =====
   // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -145,10 +145,11 @@ function showSection(id, btn) {
     { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
     { label: 'Août', distanceKm: 104.3, dplusM: 1454, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 13.9 },
     // Septembre : protocole terminé le 5/09, course continue désormais. Allure,
-    // cadence et efficience restent à null : 3 sorties encore trop différentes
-    // (34 min à 4:55/km, puis deux sorties avec D+ sans coupure entre elles) pour
-    // une moyenne mensuelle qui aurait un sens. FC non disponible sur ces séances.
-    { label: 'Sept', distanceKm: 30.1,  dplusM: 231,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 7.7 },
+    // cadence et efficience restent à null : 5 sorties encore trop différentes
+    // (34 min à 4:55/km, plusieurs sorties avec D+ variable, aucune coupure
+    // respectée) pour une moyenne mensuelle qui aurait un sens. FC non
+    // disponible sur ces séances.
+    { label: 'Sept', distanceKm: 49.5,  dplusM: 479,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 9.7 },
   ];
 
   function fmtPace(sec) {
