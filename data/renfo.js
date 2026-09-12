@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-09-04',
+  maj: '2026-09-12',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -113,6 +113,11 @@ const RENFO_LOG = {
         { nom: 'Squat une jambe', dom: 'F', series: 1, reps: 10, charge: 0 },
         { nom: 'Pas chassés demi-squat + levers latéraux', dom: 'S', series: 1, reps: 30, charge: 0 }
       ]
-    }
+    },
+    // Deux séances de kiné cette semaine, mercredi et jeudi, à la place du
+    // renfo prévu mardi (non fait) — contenu non communiqué, comme la
+    // plupart des séances de kiné avant le 31 août.
+    { date: '2026-09-09', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-09-10', source: 'kiné', duree: null, exercices: [] }
   ]
 };
