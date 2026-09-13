@@ -119,6 +119,13 @@ Renseigner date, source, durée, puis chaque exercice avec sa dominante, ses
 séries, ses répétitions et sa charge (0 pour le poids du corps, `tenue: true`
 si les répétitions sont des secondes). Mettre à jour le champ `maj`.
 
+**Sur les mouvements dynamiques (crunch, russian twist, fentes, squat…),
+privilégier un nombre de répétitions plutôt qu'un temps** quand on propose une
+séance : un temps fixe pousse à bâcler l'amplitude en fin de bloc pour
+« remplir » le chrono, et ne se compare pas d'une séance à l'autre. Garder le
+temps uniquement pour les tenues statiques (gainage sous toutes ses formes) où
+il n'y a rien à répéter.
+
 Garder les noms d'exercices **strictement identiques** d'une séance à l'autre :
 c'est sur le nom que se calcule la progression de charge. Tout exercice absent
 du catalogue de Guide → Renfo doit y être ajouté dans le même passage.
