@@ -81,10 +81,10 @@ function updateRaceCountdowns() {
 // ===== Compteur d'en-tête · l'objectif, pas la prochaine course =====
 // Contrairement au site d'origine, le gros compteur reste braqué sur Paris
 // 2028 du début à la fin. La prochaine étape défile en dessous, en petit.
-// Date provisoire : la ville n'est pas choisie, donc l'horaire réel non plus.
-// Rome et Barcelone se courent mi-mars, Madrid fin avril — le 1er avril 2028
-// est un repère médian, à remplacer dès que l'épreuve est retenue.
-const MARATHON = new Date('2028-04-01T09:00:00');
+// Date provisoire : Rome se court mi-mars, mais la date exacte de l'édition
+// 2028 n'est pas encore communiquée. Le 19 mars (un dimanche) sert de repère
+// jusqu'à l'annonce officielle, à remplacer dès qu'elle tombe.
+const MARATHON = new Date('2028-03-19T09:00:00');
 
 const STEPS = [
   { date: new Date('2026-10-04T09:00:00'), name: 'Semi de San Sebastián' },
