@@ -952,6 +952,7 @@
     font-size: 0.85rem;
     color: var(--accent);
   }
+  .rs-cell.is-wide { grid-column: 1 / -1; }
 
   /* BLOCS REPLIABLES */
   .fold {
