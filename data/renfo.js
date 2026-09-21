@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-09-12',
+  maj: '2026-09-21',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -118,6 +118,64 @@ const RENFO_LOG = {
     // renfo prévu mardi (non fait) — contenu non communiqué, comme la
     // plupart des séances de kiné avant le 31 août.
     { date: '2026-09-09', source: 'kiné', duree: null, exercices: [] },
-    { date: '2026-09-10', source: 'kiné', duree: null, exercices: [] }
+    { date: '2026-09-10', source: 'kiné', duree: null, exercices: [] },
+    {
+      // Séance abdos du dimanche, format circuit proposé le 13/09. Reps
+      // comptées sur crunch/russian twist, temps sur les trois gainages,
+      // conformément à la règle adoptée ce jour-là. « Relevé de Jambes
+      // Allongé » ajouté par Seb en plus du programme, absent du catalogue
+      // avant ce passage. Durée Hevy (8 min) très sous-évaluée pour 6
+      // exercices × 3 séries : non fiable.
+      date: '2026-09-13', source: 'hevy', duree: null,
+      exercices: [
+        { nom: 'Crunch', dom: 'A', series: 3, reps: 20, charge: 0 },
+        { nom: 'Russian twist kettlebell', dom: 'A', series: 3, reps: 20, charge: 10 },
+        { nom: 'Gainage dynamique', dom: 'A', series: 3, reps: 40, charge: 0, tenue: true },
+        { nom: 'Gainage latéral', dom: 'A', series: 3, reps: 60, charge: 0, tenue: true },
+        { nom: 'Relevé de jambes allongé', dom: 'A', series: 3, reps: 20, charge: 0 },
+        { nom: 'Gainage sur une jambe', dom: 'A', series: 3, reps: 60, charge: 0, tenue: true }
+      ]
+    },
+    {
+      // Séance courte du vendredi matin, loguée « Abdo ». Pompes en 3
+      // séries dégressives (20/16/13) : reps notées sur la dernière série,
+      // comme la convention déjà en place pour ce type de série.
+      date: '2026-09-18', source: 'hevy', duree: null,
+      exercices: [
+        { nom: 'Crunch', dom: 'A', series: 3, reps: 20, charge: 0 },
+        { nom: 'Pompes', dom: 'H', series: 3, reps: 13, charge: 0 }
+      ]
+    },
+    {
+      // Séance de kiné du 18/09, loguée cette fois avec le contenu complet
+      // (sport_type Hevy « PhysicalTherapy ») — une première depuis le
+      // début du suivi. Durée Hevy (45 min) plausible pour un vrai
+      // rendez-vous, gardée telle quelle.
+      // « Fentes (Haltère) » = Fentes haltères, « Marche Latérale Bande
+      // Élastique » = Pas chassés demi-squat + levers latéraux.
+      date: '2026-09-18', source: 'kiné', duree: 45,
+      exercices: [
+        { nom: 'Step up haltères', dom: 'F', series: 3, reps: 24, charge: 16 },
+        { nom: 'Fentes haltères', dom: 'F', series: 3, reps: 20, charge: 12 },
+        { nom: 'Pas chassés demi-squat + levers latéraux', dom: 'S', series: 2, reps: 40, charge: 0 }
+      ]
+    },
+    {
+      // « Abdo / Fessier / Équilibre » du 19/09. Fentes bulgares et squat
+      // une jambe loggés en une ou deux séries seulement (le reste en
+      // trois) : séance probablement écourtée en fin de programme.
+      // Reps notées sur la dernière série pour les exercices dégressifs
+      // (crunch 25/24/24, pompes 20/15/13, squat une jambe 24/22,
+      // russian twist 24/20/20). « Split Squat Bulgare (Haltère) » =
+      // Fentes bulgares, « squat une jambe lestée » = Squat une jambe.
+      date: '2026-09-19', source: 'hevy', duree: null, incomplete: true,
+      exercices: [
+        { nom: 'Crunch', dom: 'A', series: 3, reps: 24, charge: 0 },
+        { nom: 'Pompes', dom: 'H', series: 3, reps: 13, charge: 0 },
+        { nom: 'Fentes bulgares', dom: 'F', series: 1, reps: 40, charge: 10 },
+        { nom: 'Squat une jambe', dom: 'F', series: 2, reps: 22, charge: 10 },
+        { nom: 'Russian twist kettlebell', dom: 'A', series: 3, reps: 20, charge: 10 }
+      ]
+    }
   ]
 };
