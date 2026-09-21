@@ -91,10 +91,11 @@ const STEPS = [
   { date: new Date('2026-11-15T09:00:00'), name: 'Trail du Béret' },
   { date: new Date('2027-01-09T18:00:00'), name: 'Nocturne des Rois' },
   { date: new Date('2027-03-07T08:00:00'), name: "L'Augerolloise" },
-  { date: new Date('2027-03-28T09:30:00'), name: 'Le semi de fin mars' },
-  { date: new Date('2027-05-07T09:00:00'), name: 'La VVX · 26 km' },
-  { date: new Date('2027-10-24T08:00:00'), name: "Trail d'automne · à définir" }
+  { date: new Date('2027-10-24T08:00:00'), name: "Trail d'automne 27" }
 ];
+// Le semi de fin mars (single-date) et la VVX ont été retirés de la feuille
+// de route : le semi de test de printemps est désormais un choix entre
+// plusieurs candidats sans date unique, donc sans entrée de compte à rebours.
 
 function updateCountdown() {
   const now = new Date();
