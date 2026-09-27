@@ -63,7 +63,8 @@ documentées plus bas au cas où Seb reviendrait un jour sur ce choix.
 
 Un `/maj` couvre donc désormais les étapes **1** (données Strava), **3 bis**
 (journal de renfo), **4** (Profil) et **5** (Objectif 26-27), puis la
-publication (étape 6). Le point d'entrée par défaut du site est **Profil**.
+publication (étape 6). Le point d'entrée par défaut du site est **Objectif
+26-27** (demande explicite de Seb le 27/09/2026).
 
 ## 1 · Données Strava
 
