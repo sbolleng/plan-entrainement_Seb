@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#060b14">
 <title>CAP — Projet Sancy 2027</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260921d">
+<link rel="stylesheet" href="style.css?v=20260927a">
 </head>
 <body>
 <header>
@@ -46,17 +46,30 @@
 
 <nav>
   <div class="nav-inner">
-    <button class="tab active" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
-    <button class="tab" onclick="showSection('plan', this)">Plan</button>
+    <button class="tab active" onclick="showSection('profil', this)">Profil</button>
     <button class="tab" onclick="showSection('objectif', this)">Objectif 26-27</button>
-    <button class="tab" onclick="showSection('profil', this)">Profil</button>
     <button class="tab" onclick="showSection('guide', this)">Guide</button>
+    <button class="tab" onclick="showSection('archives', this)">Archives</button>
   </div>
 </nav>
 
 <main>
-  <!-- ========== CETTE SEMAINE ========== -->
-  <section id="semaine_en_cours" class="section active">
+  <!-- ========== ARCHIVES (Cette semaine + Plan, gelées le 27/09/2026) ========== -->
+  <section id="archives" class="section">
+    <div class="section-title">Archives · Cette semaine &amp; Plan</div>
+
+    <div class="card card-alert" style="margin-bottom:1.5rem;">
+      <div class="tag tag-red">Archivé le 27 septembre 2026</div>
+      <h3 style="margin-bottom:0.6rem;">Le plan d'entraînement est désormais construit et suivi dans RunMotion.</h3>
+      <p style="font-size:0.85rem; margin-bottom:0;">Ces deux pages — la semaine en cours et le plan de phases — ne sont plus mises à jour à partir d'ici : elles restent visibles telles qu'elles étaient à l'archivage, pour l'historique. Le suivi réel de l'entraînement (Strava, renfo, courbes de progression) continue de vivre dans <strong>Profil</strong>, et le calendrier des courses dans <strong>Objectif 26-27</strong>.</p>
+    </div>
+
+    <div class="subnav">
+      <button class="subtab active" onclick="showSubsection('arch-semaine', this)">Cette semaine</button>
+      <button class="subtab" onclick="showSubsection('arch-plan', this)">Plan</button>
+    </div>
+
+  <div id="arch-semaine" class="subsection active">
 
     <!-- REPÈRES · phase, inscription, prochaine course, objectif -->
     <div class="status-band band-4">
@@ -90,6 +103,7 @@
       <p style="font-size:0.85rem;"><strong>Le genou est stable sur six sorties très différentes — signal positif</strong>, jamais d'aggravation malgré des D+ qui vont du simple à plus de six fois. Mais la FC repos était remontée à 63 bpm au dernier contrôle (12/09), contre 59-52 avant — à revérifier maintenant qu'une sortie de cette ampleur est passée par là.</p>
       <p style="font-size:0.85rem; margin-bottom:0;"><strong>Ce qui décroche : le rythme des sorties reste imprévisible</strong>, même si le corps encaisse bien pour l'instant. Ça ne permet pas encore de distinguer une vraie progression construite d'une succession d'efforts qui passent par chance. Point positif à isoler : le contenu de kiné commence à être noté correctement, ce qui va enfin permettre de suivre le tonnage cuisses/fessier dans la durée.</p>
     </div>
+    <p class="muted" style="font-size:0.8rem;">Dernier état avant l'archivage du 27 septembre 2026 — le plan hebdomadaire est désormais géré dans RunMotion.</p>
 
     <!-- JOUR PAR JOUR -->
     <div class="day-list">
@@ -223,9 +237,9 @@
       <p style="font-size:0.85rem; margin-bottom:0;"><strong>Trois repères pour savoir si tu es dans les clous.</strong> Fin décembre 2026 : 40 km par semaine et une sortie longue de 20 km sans réaction du genou. Mars 2027 : refaire Forez au niveau de 2026 ou mieux, sur un parcours plus long. Juillet 2027 : une sortie de 30 km et 1 500 m D+ encaissée sans douleur en descente. Manquer le premier n'est pas grave, manquer le troisième signifierait revoir l'objectif à la baisse. <strong>Et un quatrième repère, hebdomadaire celui-là : deux séances de renfo cuisses par semaine, toutes les semaines.</strong> C'est la seule variable de ce tableau qui dépend entièrement de toi et qui ne progresse pas.</p>
     </div>
 
-  </section>
+  </div>
 
-  <section id="plan" class="section">
+  <div id="arch-plan" class="subsection">
     <div class="section-title">Plan d'entraînement · de la reprise au Sancy</div>
 
     <div class="card card-accent" style="margin-bottom:2rem;">
@@ -828,6 +842,8 @@
 
     <hr class="divider">
 
+  </div>
+
   </section>
 
   <!-- ========== OBJECTIF 26-27 (ligne de temps des courses) ========== -->
@@ -1134,7 +1150,7 @@
 
   </section>
   <!-- ========== PROFIL ========== -->
-  <section id="profil" class="section">
+  <section id="profil" class="section active">
     <div class="section-title">Profil athlète · Données de référence</div>
 
     <div class="card">
@@ -1149,10 +1165,10 @@
             <tr><td class="muted">VMA</td><td><span class="mono">13,7 km/h</span> <span class="muted" style="font-size:0.75rem;">demi-Cooper du 22/03/2026 (1 373 m en 6 min) · <strong>avant la fissure</strong>, à revalider mi-octobre · allure à VMA 4:23/km</span></td></tr>
             <tr><td class="muted">VO2max</td><td><span class="mono">46,0</span> <span class="muted" style="font-size:0.75rem;">ml/kg/min · « très bon » · Huawei GT6, sept. 2026 · 48,0 en août, léger repli</span></td></tr>
             <tr><td class="muted">Cadence</td><td><span class="mono">178 spm</span> <span class="muted" style="font-size:0.75rem;">record, sur la sortie continue du 01/09 · 132–163 sur les blocs course/marche du protocole</span></td></tr>
-            <tr><td class="muted">Volume hebdo</td><td><span class="mono">30,7 km</span> <span class="muted" style="font-size:0.75rem;">sur les 7 derniers jours (15 → 21 sept.) · 373 m D+</span></td></tr>
-            <tr><td class="muted">Volume cumulé depuis nov. 25</td><td><span class="mono">~811 km · 8 477 m D+ (course)</span></td></tr>
-            <tr><td class="muted">Sorties / semaine</td><td><span class="mono">2</span> <span class="muted" style="font-size:0.75rem;">17 sept. (5,9 km, 19 m D+) et 20 sept. (24,8 km, 354 m D+ — la plus grosse sortie depuis la fissure)</span></td></tr>
-            <tr><td class="muted">Renfo / semaine</td><td><span class="mono">3</span> <span class="muted" style="font-size:0.75rem;">kiné le 18/09 (contenu complet pour la première fois) + deux séances perso (18 et 19/09, abdos/fessier/équilibre)</span></td></tr>
+            <tr><td class="muted">Volume hebdo</td><td><span class="mono">9,0 km</span> <span class="muted" style="font-size:0.75rem;">sur les 7 derniers jours (21 → 27 sept.) · 24 m D+ — semaine de digestion volontaire après le 20/09</span></td></tr>
+            <tr><td class="muted">Volume cumulé depuis nov. 25</td><td><span class="mono">~820 km · 8 501 m D+ (course)</span></td></tr>
+            <tr><td class="muted">Sorties / semaine</td><td><span class="mono">1</span> <span class="muted" style="font-size:0.75rem;">23 sept. (8,95 km, 24 m D+) — premier vrai tempo depuis la fissure, FC moy. 165 bpm</span></td></tr>
+            <tr><td class="muted">Renfo / semaine</td><td><span class="mono">4</span> <span class="muted" style="font-size:0.75rem;">kiné les 21/09 (contenu complet) et 24/09 (non logué) + deux séances perso (22 et 27/09, cette dernière écourtée)</span></td></tr>
             <tr><td class="muted">Terrain principal</td><td>Clamart · bois de Meudon <span class="muted" style="font-size:0.75rem;">+ Paris centre · août : Bavière (vacances)</span></td></tr>
             <tr><td class="muted">Montre</td><td>Huawei Watch GT6</td></tr>
             <tr><td class="muted">Vélo</td><td><span class="mono">102,4 km</span> <span class="muted" style="font-size:0.75rem;">18 sorties · dont 58,0 km sur 13 sorties courtes depuis le 24/08</span></td></tr>
@@ -1229,23 +1245,23 @@
     <h3 style="margin-bottom:0.75rem;">Progression &amp; stats</h3>
 
     <div class="card card-accent" style="margin-bottom:1rem;">
-      <h3 style="margin-bottom:0.6rem;">Ce que disent les chiffres au 21 septembre 2026</h3>
+      <h3 style="margin-bottom:0.6rem;">Ce que disent les chiffres au 27 septembre 2026</h3>
       <p style="font-size:0.85rem;"><strong>La vraie progression de l'année, c'est la cadence.</strong> 154 pas/min en novembre, 167 en juin : +13 en huit mois, avec une courbe qui ne redescend jamais. C'est la métrique la plus utile de tout le tableau, parce qu'une cadence haute réduit le temps de contact au sol et l'impact par foulée — c'est-à-dire exactement ce qui fatigue le genou en descente. L'objectif de 170 était quasiment atteint avant l'arrêt.</p>
       <p style="font-size:0.85rem;"><strong>Juin était ton meilleur mois, et de loin.</strong> 75,5 km à 5'07 par km-effort, pour une FC moyenne de 145 — la plus basse des huit mois, alors que février tournait à 165. Tu courais plus vite en sollicitant moins le cœur. L'efficience cardiaque le confirme : 893 battements par km-effort en février, 780 en juin, soit 13 % de mieux. C'est la référence à retrouver, pas un pic accidentel.</p>
       <p style="font-size:0.85rem;"><strong>Le volume n'a jamais été le problème.</strong> ~76 km par mois de moyenne, remarquablement stable, avec un seul pic à 118,9 km en avril dont 37 km sur une seule sortie. Tu sais encaisser du kilométrage régulier — ce n'est pas là que se joue le Sancy.</p>
       <p style="font-size:0.85rem;"><strong>Le chantier, c'est le dénivelé par kilomètre.</strong> Tu tournes autour de 9 à 10 m/km sur l'année, avec une pointe à 17,7 en mars. Le Sancy demande <strong>60 m/km</strong>. C'est un facteur six, et c'est le seul écart qui compte vraiment. La trajectoire cible du graphe D+/km est là pour ça : 30 m/km à Forez en mars, puis la montée finale.</p>
-      <p style="font-size:0.85rem;"><strong>Le genou a signé deux notes parfaites fin août, puis sept sorties qui l'ont fait parler, toujours de la même façon.</strong> 5/5 le 26 sur le 6×(4') et 5/5 le 30 sur le 2×(9'), avec 87 m de D+ et après quatre jours d'arrêt. Puis, à partir du <strong>1<sup>er</sup> septembre</strong> (34 min à 4:55/km), le <strong>5</strong> (13,2 km, 105 m D+), le <strong>6</strong> (10 km, 98 m D+), le <strong>9</strong> (7,5 km, 56 m D+), le <strong>12</strong> (11,9 km, 191 m D+), le <strong>17</strong> (5,9 km, 19 m D+) et le <strong>20</strong> (24,8 km, <strong>354 m de D+</strong> — de loin la plus grosse depuis la fissure, et pourtant le même verdict) : « un peu senti, gérable », sept fois sur sept, quelle que soit la charge. C'est le signal le plus solide obtenu jusqu'ici — pas une note parfaite, mais une réponse qui ne s'aggrave pas même quand le volume est multiplié par six.</p>
-      <p style="font-size:0.85rem;"><strong>Le renfo a franchi un cap : la kiné loggue enfin son contenu.</strong> La séance du 18 septembre est la première depuis le début du suivi à préciser ses exercices (step up 3×24 à 16 kg, fentes haltères 3×20 à 12 kg) — jusqu'ici, la quasi-totalité des séances de kiné restait à zéro tonnage faute d'information. Deux séances personnelles s'y ajoutent la même semaine (18 et 19 septembre, format abdos/fessier/équilibre à 5 exercices), et le circuit du 13 septembre a introduit un nouvel exercice au catalogue (relevé de jambes allongé). Sur les <strong>23 séances de renfo loguées depuis le 7 juillet</strong>, la fréquence tient — trois séances sur la dernière semaine glissante, au-dessus de l'objectif.</p>
-      <p style="font-size:0.85rem;"><strong>Août se referme en plus gros mois depuis avril.</strong> 104,3 km et <strong>1 454 m de D+</strong>, soit <strong>13,9 m/km</strong>. Deuxième mois de l'année au-dessus de 100 km, premier depuis la fissure. Septembre démarre sur une base différente : la reprise Clinique du Coureur est terminée depuis le 5, la course continue avec du D+ remplace le fractionné plat, et les courbes d'allure, de cadence et d'efficience — à l'arrêt depuis juin — redeviendront lisibles dès qu'il y aura assez de sorties comparables.</p>
-      <p style="font-size:0.85rem;"><strong>Le vélo reste un appoint léger.</strong> Une sortie courte de 3,7 km le 19 septembre, sans intensité — le total passe à 102,4 km sur 18 sorties, dont 58,0 km depuis le 24 août. Toujours pas de quoi compter comme séance à part entière, mais le vélo n'est pas oublié.</p>
-      <p style="font-size:0.85rem; margin-bottom:0;"><strong>Trois conseils pour les semaines qui viennent.</strong> Premièrement, <strong>revérifier la FC repos</strong> après la sortie du 20 : elle était à 63 bpm le 12 septembre (contre 59/52 avant), et une sortie de 24,8 km/354 m D+ est le genre d'effort qui peut soit la faire grimper encore (fatigue), soit confirmer qu'elle redescend (adaptation) — les deux scénarios sont informatifs. Deuxièmement, <strong>capitaliser sur la kiné qui logue enfin son contenu</strong> : ça va permettre de suivre le tonnage cuisses/fessier semaine après semaine, plutôt que de deviner. Troisièmement, la sortie du 20 septembre est une vraie preuve de concept — le genou tient un choc de charge×6 sans aggravation — mais une preuve n'est pas une routine : la répéter dans deux ou trois semaines, pas dans deux ou trois jours, pour confirmer que c'est reproductible.</p>
+      <p style="font-size:0.85rem;"><strong>Le genou tient maintenant sur deux axes différents, pas juste le D+.</strong> Sept sorties d'affilée en « un peu senti, gérable » quelle que soit la charge de dénivelé (de 56 à 354 m), puis le <strong>23 septembre</strong> a testé un autre axe : un vrai tempo, 8,95 km à 5:45/km, <strong>FC moyenne 165 et pic à 179</strong> — la première séance d'intensité réelle depuis la fissure, tout terrain plat (24 m D+ seulement). Verdict identique une huitième fois : « un peu senti, gérable ». C'est une information neuve et rassurante — jusqu'ici, seul le D+ avait été mis à l'épreuve ; on sait désormais que l'intensité pure, elle non plus, ne fait pas empirer la réaction.</p>
+      <p style="font-size:0.85rem;"><strong>Le renfo continue de gagner en qualité de suivi, avec une ombre à surveiller.</strong> La kiné du 21 septembre est la deuxième séance d'affilée à être loguée avec son contenu complet (fentes 3×20 à 20 kg, pas chassés élastique), et introduit un nouvel exercice au catalogue — le <strong>step down latéral</strong>, un travail excentrique du quadriceps directement transférable à la descente. Sur les <strong>27 séances de renfo loguées depuis le 7 juillet</strong>, 4 sont tombées sur la seule semaine du 21 au 27 septembre, au-dessus de l'objectif de fréquence. Mais la séance perso du 27 s'est visiblement arrêtée en cours de route — pompes en chute libre 20/12/6, gainage coupé à 2 séries au lieu de 3, calories Hevy anormalement basses : un signal de fatigue à ne pas ignorer, pas une séance à reproduire telle quelle.</p>
+      <p style="font-size:0.85rem;"><strong>Septembre grimpe à 89,2 km et 876 m de D+, soit 9,8 m/km — sur 8 sorties toujours trop hétérogènes</strong> pour une moyenne d'allure ou de cadence qui aurait un sens (marche/course en juillet-août, D+ ponctuel, désormais un tempo plat). La reprise Clinique du Coureur est terminée depuis le 5 ; les courbes d'allure, de cadence et d'efficience — à l'arrêt depuis juin — redeviendront lisibles quand les sorties se ressembleront davantage d'une semaine à l'autre.</p>
+      <p style="font-size:0.85rem;"><strong>Le vélo est resté silencieux cette semaine.</strong> Aucune sortie depuis le 19 septembre — le total reste à 102,4 km sur 18 sorties, dont 58,0 km depuis le 24 août. Rien d'inquiétant, la marche du protocole n'a plus besoin de complément, mais à surveiller si ça devient durable.</p>
+      <p style="font-size:0.85rem; margin-bottom:0;"><strong>Trois conseils pour les semaines qui viennent.</strong> Premièrement, <strong>la FC repos reste à revérifier</strong> : toujours pas de nouvelle mesure depuis le 12 septembre (63 bpm, en hausse) malgré la sortie de 354 m de D+ et le tempo du 23 — c'est la seule variable de fatigue qui manque encore pour lire la semaine correctement. Deuxièmement, <strong>l'intensité peut revenir progressivement</strong> : le tempo du 23 est bien passé, mais une séance ne fait pas une habitude — un deuxième test dans deux à trois semaines, pas dans deux à trois jours, confirmera que c'est reproductible, comme pour le D+. Troisièmement, <strong>la séance écourtée du 27 mérite d'être écoutée plutôt que rattrapée</strong> : après une semaine avec 4 séances de renfo et un tempo, une vraie semaine calme vaut mieux qu'un forcing qui abîme la qualité d'exécution.</p>
     </div>
 
     <div class="card" style="margin-bottom:1rem;">
       <div class="tag tag-blue">Volume mensuel</div>
       <h3>Distance course · km</h3>
       <div class="stats-chart" id="chart-distance"></div>
-      <p class="chart-maj">Mis à jour le 21 septembre 2026 · source Strava</p>
+      <p class="chart-maj">Mis à jour le 27 septembre 2026 · source Strava</p>
       <p class="info">Avril = pic de l'année (118,9 km, dont une rando-course de 37 km). Juillet = le creux de la blessure : 17,3 km, aucune course avant le 19. <strong>Août remonte à 104,3 km</strong> — le deuxième mois au-dessus de 100 et le premier depuis la fissure. La courbe a retrouvé son niveau d'avant en quatre mois.</p>
     </div>
 
@@ -1253,7 +1269,7 @@
       <div class="tag tag-orange">Dénivelé mensuel</div>
       <h3>D+ cumulé · m</h3>
       <div class="stats-chart" id="chart-dplus"></div>
-      <p class="chart-maj">Mis à jour le 21 septembre 2026 · source Strava</p>
+      <p class="chart-maj">Mis à jour le 27 septembre 2026 · source Strava</p>
       <p class="info">Mars ressort grâce à Forez (933 m D+ sur une seule sortie). <strong>Août arrive juste derrière avec 1 454 m</strong>, mais pour une raison inverse : pas une grosse sortie, du relief accumulé au fil des vacances sur des séances qui auraient dû être plates. Septembre repart de zéro, en terrain francilien.</p>
     </div>
 
@@ -1261,7 +1277,7 @@
       <div class="tag tag-purple">Allure d'effort</div>
       <h3>Rythme corrigé du dénivelé · min/km-effort</h3>
       <div class="stats-chart" id="chart-pace"></div>
-      <p class="chart-maj">Mis à jour le 21 septembre 2026 · source Strava</p>
+      <p class="chart-maj">Mis à jour le 27 septembre 2026 · source Strava</p>
       <div class="stats-legend">
         <span><i style="background:var(--accent);"></i>Allure d'effort mensuelle</span>
         <span><i style="background:var(--accent2);"></i>Tendance</span>
@@ -1274,7 +1290,7 @@
       <div class="tag tag-green">Cadence moyenne</div>
       <h3>Foulée · pas/min</h3>
       <div class="stats-chart" id="chart-cadence"></div>
-      <p class="chart-maj">Mis à jour le 21 septembre 2026 · source Strava</p>
+      <p class="chart-maj">Mis à jour le 27 septembre 2026 · source Strava</p>
       <div class="stats-legend">
         <span><i style="background:var(--accent);"></i>Cadence mensuelle</span>
         <span><i style="background:var(--accent2);"></i>Repère 170 spm</span>
@@ -1286,7 +1302,7 @@
       <div class="tag tag-green">Efficience cardiaque</div>
       <h3>Battements par km-effort</h3>
       <div class="stats-chart" id="chart-efficiency"></div>
-      <p class="chart-maj">Mis à jour le 21 septembre 2026 · source Strava</p>
+      <p class="chart-maj">Mis à jour le 27 septembre 2026 · source Strava</p>
       <p class="info"><strong>La courbe descend = tu progresses.</strong> On divise le nombre total de battements d'une sortie par sa distance en km-effort : combien de battements de cœur te coûte 1 km. Ça neutralise à la fois l'allure, la distance et le dénivelé — c'est le KPI le plus honnête pour juger de la forme aérobie. <strong>Résultat : 893 en février → 781 en juin, soit −12,5 %.</strong> C'est une vraie amélioration, et le signal le plus solide de toutes ces courbes. La mesure s'arrête à juin : le protocole course/marche la rend ininterprétable, la marche faisant chuter la FC sans rapport avec la forme. <strong>C'est le premier indicateur à surveiller une fois la course continue installée</strong> — s'il revient sous 800, la base aérobie a tenu la blessure.</p>
     </div>
 
@@ -1294,7 +1310,7 @@
       <div class="tag tag-red">Écart de spécificité</div>
       <h3>Dénivelé par km · m/km · réel et trajectoire cible</h3>
       <div class="stats-chart" id="chart-dpk"></div>
-      <p class="chart-maj">Mis à jour le 21 septembre 2026 · source Strava</p>
+      <p class="chart-maj">Mis à jour le 27 septembre 2026 · source Strava</p>
       <div class="stats-legend">
         <span><i style="background:var(--accent);"></i>Réel</span>
         <span><i style="background:#7eb8f5;"></i>Cible</span>
@@ -1425,7 +1441,7 @@
 
       <hr class="divider">
 
-      <h3 style="margin-bottom:0.75rem;">Catalogue d'exercices · 28 mouvements</h3>
+      <h3 style="margin-bottom:0.75rem;">Catalogue d'exercices · 29 mouvements</h3>
       <div class="table-scroll">
       <table>
         <thead>
@@ -1574,6 +1590,19 @@
                   <td><span class="mono" style="font-size:0.76rem;">3 × 15 / jambe</span></td>
                   <td style="font-size:0.78rem;">Poids du corps → haltères 12 kg</td>
                   <td style="font-size:0.78rem; color:var(--muted);">Monte sur un banc ou une box, une jambe à la fois, sans élan ni poussée de la jambe restée au sol. Corrige le déficit entre les deux jambes comme les fentes bulgares, avec moins de sollicitation de l'équilibre.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="exo-cell">
+                      <div class="exo-thumb" title="Emplacement pour une image"></div>
+                      <div><strong>Step down latéral</strong> <span class="exo-new">nouveau</span></div>
+                    </div>
+                  </td>
+                  <td><span class="tag tag-green" style="margin:0;">F</span><br><span class="muted" style="font-size:0.7rem;">Cuisses · force</span></td>
+                  <td style="font-size:0.78rem;">Quadriceps (excentrique), moyen fessier, contrôle du genou</td>
+                  <td><span class="mono" style="font-size:0.76rem;">3 × 10 / jambe</span></td>
+                  <td style="font-size:0.78rem;">Poids du corps → haltère 10 kg</td>
+                  <td style="font-size:0.78rem; color:var(--muted);">Debout sur un step, descends l'autre pied vers le sol sur le côté en contrôlant la flexion du genou d'appui, sans le laisser rentrer vers l'intérieur, puis remonte. <strong>C'est un travail excentrique du quadriceps en descente latérale</strong> — le type d'effort qui se rapproche le plus de ce que le genou encaisse en descente de trail technique. Introduit par le kiné le 21/09.</td>
                 </tr>
                 <tr>
                   <td>
@@ -2367,8 +2396,8 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20260921d" defer></script>
-<script src="app.js?v=20260921d" defer></script>
+<script src="data/renfo.js?v=20260927a" defer></script>
+<script src="app.js?v=20260927a" defer></script>
 
 </body>
 </html>

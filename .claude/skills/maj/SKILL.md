@@ -49,6 +49,22 @@ contexte.
 
 Sans mot-clé reconnaissable, faire une mise à jour complète et tenir compte du
 contexte donné dans la phrase.
+
+## Archivage du 27 septembre 2026 · Plan et Cette semaine gelés
+
+Seb construit désormais son plan d'entraînement dans **RunMotion**. Les pages
+**Cette semaine** et **Plan** ont été glissées dans un nouvel onglet
+**Archives** (`showSubsection`, ids `arch-semaine` et `arch-plan`) et **ne
+sont plus mises à jour** — elles restent gelées telles qu'elles étaient à
+l'archivage, pour l'historique. En conséquence, **les étapes 2 et 3
+ci-dessous sont suspendues** jusqu'à nouvel ordre : ne plus régénérer les
+jours de la semaine ni toucher aux tableaux de phase. Elles restent
+documentées plus bas au cas où Seb reviendrait un jour sur ce choix.
+
+Un `/maj` couvre donc désormais les étapes **1** (données Strava), **3 bis**
+(journal de renfo), **4** (Profil) et **5** (Objectif 26-27), puis la
+publication (étape 6). Le point d'entrée par défaut du site est **Profil**.
+
 ## 1 · Données Strava
 
 Lire Strava depuis la date indiquée dans `app.js` (commentaire « données
@@ -66,7 +82,7 @@ mois de reprise course/marche, laisser allure, cadence, FC et efficience à
 `null` — les blocs de marche les faussent et les rendent incomparables aux
 mois de course continue. Recalculer le volume cumulé depuis novembre 2025.
 
-## 2 · Page « Cette semaine »
+## 2 · Page « Cette semaine » — suspendu depuis le 27/09/2026, voir plus haut
 
 - **Bandeau** : phase et semaine en cours, prochaine inscription à surveiller
   (première échéance du tableau des dossards de la page Objectif), prochaine
@@ -82,7 +98,7 @@ Si l'écart au protocole est significatif — palier sauté, repos non pris,
 dénivelé sur une séance censée être plate — le dire et **adapter la
 recommandation du jour** au lieu de recopier le plan.
 
-## 3 · Page « Plan »
+## 3 · Page « Plan » — suspendu depuis le 27/09/2026, voir plus haut
 
 Dans le tableau de la phase 0 : cocher les séances réalisées avec leur date,
 marquer les sautées, mettre à jour la colonne État, et déplacer la classe

@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-09-21',
+  maj: '2026-09-27',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -175,6 +175,54 @@ const RENFO_LOG = {
         { nom: 'Fentes bulgares', dom: 'F', series: 1, reps: 40, charge: 10 },
         { nom: 'Squat une jambe', dom: 'F', series: 2, reps: 22, charge: 10 },
         { nom: 'Russian twist kettlebell', dom: 'A', series: 3, reps: 20, charge: 10 }
+      ]
+    },
+    {
+      // Kiné du 21/09, loguée avec le contenu complet (deuxième fois après le
+      // 18/09). Durée Hevy 30:00 pile, plausible pour un vrai rendez-vous.
+      // « Fentes (Haltère) » = Fentes haltères, « Marche Latérale Bande
+      // Élastique » = Pas chassés demi-squat + levers latéraux (mappings déjà
+      // établis). « lateral step down lesté » est un mouvement nouveau —
+      // descente latérale contrôlée d'un step, travail excentrique du
+      // quadriceps très proche de ce qui est recherché pour la descente en
+      // trail — ajouté au catalogue sous « Step down latéral ».
+      date: '2026-09-21', source: 'kiné', duree: 30,
+      exercices: [
+        { nom: 'Fentes haltères', dom: 'F', series: 3, reps: 20, charge: 20 },
+        { nom: 'Pas chassés demi-squat + levers latéraux', dom: 'S', series: 2, reps: 40, charge: 0 },
+        { nom: 'Step down latéral', dom: 'F', series: 3, reps: 10, charge: 10 }
+      ]
+    },
+    {
+      // Séance perso du 22/09 (« Abdo »). Reps notées sur la dernière série
+      // pour le crunch (dégressif 25/20/20) et le relevé de jambes (dégressif
+      // 20/20/10) ; temps noté sur la dernière série pour le gainage latéral
+      // (3 tenues proches, ~2 min chacune). Durée Hevy (24:18) plausible pour
+      // 3 exercices × 3 séries dont deux minutes de gainage par série.
+      date: '2026-09-22', source: 'hevy', duree: 24,
+      exercices: [
+        { nom: 'Crunch', dom: 'A', series: 3, reps: 20, charge: 0 },
+        { nom: 'Gainage latéral', dom: 'A', series: 3, reps: 117, charge: 0, tenue: true },
+        { nom: 'Relevé de jambes allongé', dom: 'A', series: 3, reps: 10, charge: 0 }
+      ]
+    },
+    // Kiné du 24/09 (18h45, Justine Bonhomme) : confirmée faite par Seb, mais
+    // pas loguée dans Hevy — contenu inconnu, comme la plupart des séances de
+    // kiné avant le 18/09.
+    { date: '2026-09-24', source: 'kiné', duree: null, exercices: [] },
+    {
+      // Séance perso du 27/09 (« Abdo »), manifestement écourtée : gainage
+      // latéral coupé à 2 séries au lieu de 3 (2min01 puis seulement 1min09),
+      // pompes en chute libre 20/12/6, calories Hevy anormalement basses (61)
+      // pour 3 exercices. Reps/temps notés sur la dernière série. « relevé de
+      // jambes lestées » est la même charnière que « Relevé de jambes
+      // allongé » désormais lestée à 2 kg (avant : poids du corps) — logué
+      // sous le même nom pour garder la progression de charge.
+      date: '2026-09-27', source: 'hevy', duree: 18, incomplete: true,
+      exercices: [
+        { nom: 'Gainage latéral', dom: 'A', series: 2, reps: 69, charge: 0, tenue: true },
+        { nom: 'Relevé de jambes allongé', dom: 'A', series: 3, reps: 20, charge: 2 },
+        { nom: 'Pompes', dom: 'H', series: 3, reps: 6, charge: 0 }
       ]
     }
   ]
