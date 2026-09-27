@@ -97,9 +97,9 @@ N blocs + 5 min de marche). Une séance titrée 6×(2'C/1'M) qui dure 25 min est
 un 5×. Signaler tout écart entre le titre et la durée.
 
 Recalculer le mois en cours dans `statsMonthly` (`app.js`) : distance, D+,
-dpk, mais aussi désormais **allure d'effort, cadence, FC et efficience** —
-la reprise course/marche est terminée, tout mois de course continue se
-calcule normalement. Pour chaque métrique, pondérer par le temps de
+dpk, mais aussi **allure d'effort, cadence, FC et efficience** dès que le
+mois est un mois de course continue (la reprise course/marche est terminée
+depuis septembre 2026). Pour chaque métrique, pondérer par le temps de
 déplacement de chaque sortie du mois (pas une simple moyenne arithmétique) :
 - **paceSecPerKm** (allure d'effort) = somme des temps de déplacement ÷
   somme des km-effort (km-effort = km + D+/100 par sortie).
@@ -109,21 +109,23 @@ déplacement de chaque sortie du mois (pas une simple moyenne arithmétique) :
 - **effBeats** = somme des battements (FC moyenne × minutes) ÷ somme des
   km-effort.
 
-Récupérer FC moyenne et cadence par sortie via
-`get_activity_performance` (Strava), pas seulement `list_activities` qui ne
-les donne pas. Recalculer le volume cumulé depuis le nouveau départ de
-comptage de septembre 2026 (voir plus bas), pas depuis novembre 2025.
+Récupérer FC moyenne et cadence par sortie via `get_activity_performance`
+(Strava), pas seulement `list_activities` qui ne les donne pas. Recalculer
+le volume cumulé depuis novembre 2025 — **l'historique n'est pas effacé**,
+il reste affiché sur tous les graphes.
 
-**Nouveau départ de comptage (27/09/2026) :** à la demande de Seb,
-`statsMonthly` a été vidé de son historique nov. 2025 → août 2026 (avant/
-pendant la blessure) et redémarre à septembre 2026 comme mois 1. Les 6
-graphes de Profil (distance, D+, allure, cadence, efficience, D+/km)
-utilisent tous `seriesFrom()` sur ce même tableau désormais — il n'y a plus
-de cas particulier pour cadence/efficience limité aux 8 premiers mois.
-Ajouter simplement chaque nouveau mois à la suite du tableau. Le graphe
-D+/km (`chart-dpk`) a sa propre série codée en dur dans `renderStatsCharts()`
-(13 points mensuels, septembre 2026 → septembre 2027) : y ajouter la valeur
-réelle du mois à son index à chaque `/maj`.
+**Important, ne pas confondre avec un « nouveau départ » :** `statsMonthly`
+garde tout son historique nov. 2025 → août 2026. Juillet et août restent à
+`null` sur allure/cadence/FC/efficience (mois de reprise course/marche, pas
+comparables) — **c'est un trou volontaire, à laisser tel quel**, pas une
+absence de données à combler. Septembre referme ce trou avec de vraies
+valeurs calculées (premier mois de course continue depuis juin) ; chaque
+mois suivant s'ajoute normalement à la suite du tableau. Les 6 graphes de
+Profil utilisent tous `seriesFrom()` sur ce même tableau. Le graphe D+/km
+(`chart-dpk`) a sa propre série codée en dur dans `renderStatsCharts()`
+(23 points mensuels, nov. 2025 → sept. 2027, le dpk n'étant jamais nullé
+même sur les mois de reprise) : y ajouter la valeur réelle du mois à son
+index à chaque `/maj`.
 
 ## 2 · Page « Cette semaine » — suspendu depuis le 27/09/2026, voir plus haut
 
