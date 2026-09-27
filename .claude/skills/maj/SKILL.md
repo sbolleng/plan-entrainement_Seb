@@ -64,7 +64,25 @@ documentées plus bas au cas où Seb reviendrait un jour sur ce choix.
 Un `/maj` couvre donc désormais les étapes **1** (données Strava), **3 bis**
 (journal de renfo), **4** (Profil) et **5** (Objectif 26-27), puis la
 publication (étape 6). Le point d'entrée par défaut du site est **Objectif
-26-27** (demande explicite de Seb le 27/09/2026).
+26-27** (demande explicite de Seb le 27/09/2026). Une nouvelle page
+**Palmarès** existe aussi depuis cette date (voir étape 5).
+
+## Le genou n'est plus un sujet d'analyse (27/09/2026)
+
+Demande explicite de Seb : **arrêter de centrer les analyses sur le genou**,
+c'est derrière lui maintenant. En pratique :
+- Ne plus demander confirmation du ressenti genou après une grosse séance
+  (le réflexe `AskUserQuestion` utilisé jusqu'ici est abandonné).
+- Ne plus écrire de paragraphe d'analyse centré sur « le genou tient/lâche » —
+  dans Profil, Objectif ou ailleurs. Parler plutôt en termes de forme,
+  d'intensité, d'endurance, de tonnage renfo : les métriques normales d'un
+  athlète qui s'entraîne, sans arrière-plan médical.
+- Les descriptions techniques d'exercices dans Guide → Renfo peuvent
+  continuer à mentionner le genou comme articulation travaillée (c'est de
+  l'anatomie, pas de l'inquiétude) — la nuance porte sur le ton, pas sur le
+  mot.
+- Ne plus utiliser « depuis/avant la fissure » comme repère temporel ; dire
+  « depuis la reprise » ou donner une date si besoin.
 
 ## 1 · Données Strava
 
@@ -158,22 +176,48 @@ qui décroche, puis trois conseils concrets pour les semaines qui viennent.
 lignes « Mis à jour le … » sous les graphes.
 
 Le bloc « Renfo · suivi » se calcule tout seul depuis `data/renfo.js` : tuiles,
-tonnage hebdomadaire et progression par exercice. Rien à écrire à la main —
-mais penser à croiser ses chiffres avec l'état du genou dans l'analyse.
+tonnage hebdomadaire et progression par exercice. Rien à écrire à la main.
 
 ## 5 · Page « Objectif 26-27 »
 
+Depuis le 27/09/2026, chaque étape de la ligne de temps (`.race-step`) suit
+une structure fixe à 5 cellules dans son `.rs-grid` (2 colonnes, la dernière
+en pleine largeur via `.rs-cell.is-wide`) :
+1. **Objectif · temps cible** — temps visé, mode finisher ou chrono.
+2. **Dossard** — pris / à faire / pas encore ouvert. Chercher sur le web la
+   date d'ouverture quand elle n'est pas connue plutôt que de deviner ; si
+   l'info reste introuvable ou contradictoire, le dire explicitement et
+   proposer une meilleure estimation sourcée plutôt qu'un silence.
+3. **Rôle dans la prépa** — ce que cette course apporte (ou n'apporte pas)
+   pour le Sancy : terrain, D+, distance, place dans le bloc. Analyse de
+   forme et de spécificité, pas de bulletin médical.
+4. **Stratégie** — comment bien gérer la course pour aller au bout : allure,
+   ravitaillement, gestion du terrain. Pas de cadrage genou (voir plus haut).
+5. **Logistique** (`.rs-cell.is-wide`) — trajet depuis Paris, nuit sur place
+   ou non, météo/saison, réservation d'hébergement, matériel spécifique.
+
+Le paragraphe `.rs-desc` sous le compte à rebours doit être une description
+factuelle de la course (terrain, histoire, format), trouvée sur le web —
+plus un récit centré sur l'état de forme de Seb.
+
 Sur `/maj course` : ne marquer une étape comme faite que si la course a
 réellement été courue. Enregistrer le temps réel à côté du temps cible,
-indiquer si l'objectif est tenu, et recaler les phases suivantes en
-conséquence — un abandon ou un temps très en dessous de la cible change la
-suite du plan, pas seulement la ligne de temps.
-
+indiquer si l'objectif est tenu, recaler les phases suivantes en conséquence,
+et **ajouter le résultat à la page Palmarès** (tableau chronologique des
+courses courues, section `#palmares`) — un abandon ou un temps très en
+dessous de la cible change la suite du plan, pas seulement la ligne de temps.
 
 Vérifier les dates d'ouverture des dossards dont l'échéance approche, en
 cherchant sur le web si besoin. Si une inscription est ouverte ou imminente,
-la remonter dans le bandeau « prochaine inscription » de la page Cette
-semaine.
+le signaler à Seb.
+
+## Page « Palmarès »
+
+Page `#palmares`, entre Objectif et Profil dans le DOM (nav : juste après
+Objectif 26-27). Deux blocs : un tableau de résultats de courses (rempli au
+fil des `/maj course`), et le tableau « Meilleurs temps » dupliqué depuis
+Profil — les deux copies doivent rester synchronisées si l'une des deux
+change.
 
 ## 6 · Publication
 
@@ -194,9 +238,8 @@ changé et ce qui mérite l'attention de Seb.
   authentification. N'y mettre aucune information sensible.
 - L'écart déterminant pour le Sancy est le D+ par kilomètre : environ 10 m/km
   aujourd'hui, 60 m/km demandés par la course.
-- Le renfo cuisses et stabilité est le seul levier direct sur la descente,
-  qui est ce qui fait réagir le genou.
-- Le renfo est réparti sur trois pages sans redondance : **Plan** porte la
-  prescription par phase, **Guide → Renfo** le catalogue et la semaine type,
-  **Profil** le suivi de ce qui est réellement fait.
+- Le renfo cuisses et stabilité est le seul levier direct sur la descente.
+- Le renfo est réparti sur trois pages sans redondance : **Plan** (archivé)
+  portait la prescription par phase, **Guide → Renfo** garde le catalogue et
+  la semaine type, **Profil** le suivi de ce qui est réellement fait.
 - Les dominantes de la semaine type sont fixes, les exercices tournent.
