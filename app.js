@@ -127,28 +127,16 @@ function showSection(id, btn) {
   markToday();
 
   // ===== Stats · graphiques de progression (données Strava, calculées le 27/09/2026) =====
-  // Pour mettre à jour : remplacer ce tableau par un export frais depuis Strava.
+  // Pour mettre à jour : ajouter un mois par mois à la suite dans ce tableau.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
+  //
+  // Nouveau départ de comptage au 27/09/2026, à la demande de Seb : l'historique
+  // nov. 2025 → août 2026 (avant/pendant la blessure) est retiré des graphes.
+  // Septembre devient le mois 1 de la nouvelle série, calculé sur ses 8 sorties
+  // (moyennes pondérées par le temps de déplacement de chaque sortie).
   const statsMonthly = [
-    { label: 'Nov',  distanceKm: 68.1,  dplusM: 436,  paceSecPerKm: 322, cadenceSpm: 154, hrBpm: 152, effBeats: 773, dpk: 6.4 },
-    { label: 'Déc',  distanceKm: 75.1,  dplusM: 790,  paceSecPerKm: 350, cadenceSpm: 151, hrBpm: 151, effBeats: 862, dpk: 10.5 },
-    { label: 'Jan',  distanceKm: 71.4,  dplusM: 621,  paceSecPerKm: 326, cadenceSpm: 161, hrBpm: 156, effBeats: 875, dpk: 8.7 },
-    { label: 'Fév',  distanceKm: 62.4,  dplusM: 402,  paceSecPerKm: 319, cadenceSpm: 158, hrBpm: 165, effBeats: 893, dpk: 6.4 },
-    { label: 'Mar',  distanceKm: 72.8,  dplusM: 1290, paceSecPerKm: 325, cadenceSpm: 163, hrBpm: 163, effBeats: 861, dpk: 17.7 },
-    { label: 'Avr',  distanceKm: 118.9, dplusM: 1118, paceSecPerKm: 332, cadenceSpm: 163, hrBpm: 156, effBeats: 825, dpk: 9.4 },
-    { label: 'Mai',  distanceKm: 65.1,  dplusM: 650,  paceSecPerKm: 339, cadenceSpm: 163, hrBpm: 160, effBeats: 780, dpk: 10.0 },
-    { label: 'Juin', distanceKm: 75.5,  dplusM: 690,  paceSecPerKm: 307, cadenceSpm: 167, hrBpm: 145, effBeats: 781, dpk: 9.1 },
-    // Juillet et août sont des mois de reprise course/marche : la distance et le D+ sont
-    // réels, mais allure, cadence et efficience ne sont pas comparables aux mois de course
-    // continue (les blocs de marche les faussent) — laissés à null volontairement.
-    { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
-    { label: 'Août', distanceKm: 104.3, dplusM: 1454, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 13.9 },
-    // Septembre : protocole terminé le 5/09, course continue désormais. Allure,
-    // cadence et efficience restent à null : 8 sorties encore trop différentes
-    // (34 min à 4:55/km, sorties courtes, une longue à 24,8 km/354 m D+, un
-    // tempo à 5:45/km FC 165) pour une moyenne mensuelle qui aurait un sens.
-    { label: 'Sept', distanceKm: 89.2,  dplusM: 876,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 9.8 },
+    { label: 'Sept', distanceKm: 89.1, dplusM: 876, paceSecPerKm: 311, cadenceSpm: 171, hrBpm: 154, effBeats: 800, dpk: 9.8 },
   ];
 
   function fmtPace(sec) {
@@ -317,49 +305,25 @@ function showSection(id, btn) {
     renderBarChart('chart-distance', seriesFrom('distanceKm'));
     renderBarChart('chart-dplus', seriesFrom('dplusM'));
     renderBarChart('chart-pace', seriesFrom('paceSecPerKm'), { invert: true, formatter: fmtPace });
+    renderBarChart('chart-cadence', seriesFrom('cadenceSpm'), { refLines: [{ val: 170, color: 'var(--accent2)' }] });
+    renderBarChart('chart-efficiency', seriesFrom('effBeats'), { invert: true });
 
-    const moisReels = ['Nov', 'Déc', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'];
-
-    // Cadence · courbe
-    renderLineChart('chart-cadence', {
-      labels: moisReels,
-      min: 145, max: 172,
-      series: [{
-        values: statsMonthly.slice(0, 8).map(m => m.cadenceSpm),
-        color: 'var(--accent)', showValues: 'all'
-      }],
-      refLines: [{ val: 170, color: 'var(--accent2)' }]
-    });
-
-    // Efficience cardiaque · courbe (baisse = mieux)
-    renderLineChart('chart-efficiency', {
-      labels: moisReels,
-      min: 750, max: 910,
-      series: [{
-        values: statsMonthly.slice(0, 8).map(m => m.effBeats),
-        color: 'var(--accent)', showValues: 'all'
-      }]
-    });
-
-    // D+/km · réel + trajectoire cible jusqu'au Sancy
+    // D+/km · réel + trajectoire cible jusqu'au Sancy — série redémarrée en
+    // septembre 2026 (nouveau départ de comptage), 13 points mensuels jusqu'au
+    // Sancy en septembre 2027.
     renderLineChart('chart-dpk', {
       height: 160,
       min: 0, max: 65,
-      labels: ['Nov 25', '', '', '', 'Mar 26', '', '', '', 'Juil 26', '', '', '',
-               'Nov 26', '', '', '', 'Mar 27', '', '', '', 'Juil 27', '', 'Sep 27'],
+      labels: ['Sept 26', '', '', 'Déc 26', '', '', 'Mars 27', '', '', 'Juin 27', '', '', 'Sep 27'],
       formatter: v => v.toFixed(0),
       series: [
         {
-          values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1,
-                   10.1, 13.9, 9.8, null, null, null, null, null,
-                   null, null, null, null, null, null, null],
-          color: 'var(--accent)', showValues: [4, 7, 10]
+          values: [9.8, null, null, null, null, null, null, null, null, null, null, null, null],
+          color: 'var(--accent)', showValues: [0]
         },
         {
-          values: [null, null, null, null, null, null, null, 9.1,
-                   5, 10, 13, 16, 18, 20, 22, 24,
-                   33, 22, 28, 34, 40, 28, 60],
-          color: '#7eb8f5', dashed: true, showValues: [16, 20, 22]
+          values: [null, 13, 18, 22, 15, 24, 33, 22, 28, 34, 40, 28, 60],
+          color: '#7eb8f5', dashed: true, showValues: [6, 9, 12]
         }
       ],
       refLines: [
