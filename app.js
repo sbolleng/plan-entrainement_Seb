@@ -351,9 +351,9 @@ function showSection(id, btn) {
       series: [
         {
           values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1,
-                   null, null, null, null, null, null, null, null,
+                   10.1, 13.9, 9.8, null, null, null, null, null,
                    null, null, null, null, null, null, null],
-          color: 'var(--accent)', showValues: [4, 7]
+          color: 'var(--accent)', showValues: [4, 7, 10]
         },
         {
           values: [null, null, null, null, null, null, null, 9.1,
