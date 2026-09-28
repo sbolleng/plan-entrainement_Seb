@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#060b14">
 <title>CAP — Projet Sancy 2027</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260928b">
+<link rel="stylesheet" href="style.css?v=20260928c">
 </head>
 <body>
 <header>
@@ -1241,6 +1241,24 @@
 
     <hr class="divider">
 
+    <h3 style="margin-bottom:0.75rem;">Temps estimés · Huawei</h3>
+    <div class="card">
+      <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Prévisions calculées par l'app Huawei Santé à partir de l'historique et de la forme actuelle (capture du 28/09/2026) — des estimations de capacité, pas des chronos réalisés. À comparer aux vrais temps du tableau ci-dessus.</p>
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Distance</th><th>Temps</th><th>Allure</th></tr></thead>
+        <tbody>
+          <tr><td>5 km</td><td><span class="mono">22:38</span></td><td class="muted">4:32/km</td></tr>
+          <tr><td>10 km</td><td><span class="mono">46:26</span></td><td class="muted">4:39/km</td></tr>
+          <tr><td>Semi-marathon</td><td><span class="mono">1h41:28</span></td><td class="muted">4:49/km</td></tr>
+          <tr><td>Marathon</td><td><span class="mono">3h34:00</span></td><td class="muted">5:04/km</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <hr class="divider">
+
     <h3 style="margin-bottom:0.75rem;">Allures d'entraînement · Huawei</h3>
     <div class="card">
       <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Zones calculées par l'app Huawei Santé à partir des temps de course réels — capture du 12/09/2026. À croiser avec l'allure à VMA (4:23/km) calculée séparément à partir du demi-Cooper.</p>
@@ -1369,14 +1387,15 @@
         <div class="table-scroll">
         <table style="margin:0;">
           <tbody>
+            <tr><td class="muted">Septembre 2026</td><td><span class="mono">63 bpm</span> <span class="muted" style="font-size:0.72rem;">+6 vs août</span></td></tr>
             <tr><td class="muted">Juillet 2026</td><td><span class="mono">61 bpm</span></td></tr>
             <tr><td class="muted">Juin 2026</td><td><span class="mono">62 bpm</span></td></tr>
-            <tr><td class="muted">Moyenne 2026</td><td><span class="mono">63 bpm</span></td></tr>
+            <tr><td class="muted">Moyenne 2026</td><td><span class="mono">62 bpm</span></td></tr>
             <tr><td class="muted">Moyenne 2025</td><td><span class="mono">66 bpm</span></td></tr>
           </tbody>
         </table>
         </div>
-        <p class="info">−3 bpm en un an. C'est cohérent avec l'efficience cardiaque ci-dessus : la base aérobie a bien tenu malgré la charge réduite pendant la reprise.</p>
+        <p class="info">−4 bpm en un an sur la moyenne annuelle (62 contre 66). C'est cohérent avec l'efficience cardiaque ci-dessus : la base aérobie a bien tenu malgré la charge réduite pendant la reprise. Mais <strong>septembre remonte à 63 bpm, +6 par rapport à août</strong> (confirmé par l'app Huawei) — cohérent avec le signal de fatigue déjà repéré sur la FC repos récente, à surveiller.</p>
       </div>
       <div class="card">
         <div class="tag tag-orange">FC max · estimation</div>
@@ -2434,8 +2453,8 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20260928b" defer></script>
-<script src="app.js?v=20260928b" defer></script>
+<script src="data/renfo.js?v=20260928c" defer></script>
+<script src="app.js?v=20260928c" defer></script>
 
 </body>
 </html>
