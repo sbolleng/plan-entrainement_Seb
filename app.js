@@ -506,26 +506,41 @@ function showSection(id, btn) {
       return { dasharray: len.toFixed(2) + ' ' + C.toFixed(2), rotateDeg: (startFrac * 360).toFixed(2) };
     }
 
+    // café et alcool sont des compteurs (picto + Nx), pas des jauges continues.
+    const COUNTER_ICONS = { cafe: '☕', alcool: '🍺' };
+
     ringsEl.innerHTML = NUTRI_KEYS.map(function (key) {
       const n = NUTRITION_TARGETS[key];
       const value = Math.round(todayTotals[key] * 10) / 10;
-      const bandStart = n.min !== null ? n.min / n.capBasis : 0;
-      const bandEnd = n.max !== null ? n.max / n.capBasis : 1;
-      const fillFrac = Math.min(1, value / n.capBasis);
       const over = n.max !== null && value > n.max;
-      const band = arc(bandStart, bandEnd);
-      const fill = arc(0, fillFrac);
-      const targetTxt = n.min !== null && n.max !== null ? n.min + '–' + n.max
-        : n.min !== null ? 'min ' + n.min
-        : 'max ' + n.max;
       const remaining = n.min !== null && value < n.min
         ? 'Reste ' + Math.round(n.min - value) + n.unit
         : n.max !== null && value <= n.max
         ? 'Marge ' + Math.round(n.max - value) + n.unit
         : n.min !== null && n.max !== null
         ? 'Dans la cible' : '';
+
+      if (COUNTER_ICONS[key]) {
+        return (
+          '<div class="nutrient nutrient-counter">' +
+            '<div class="nutrient-name">' + n.label + '</div>' +
+            '<div class="counter-icon-wrap' + (over ? ' over' : '') + '"><span class="counter-icon">' + COUNTER_ICONS[key] + '</span></div>' +
+            '<div class="counter-value' + (over ? ' over' : '') + '">' + value + '×</div>' +
+            (remaining ? '<div class="nutrient-sub">' + remaining + '</div>' : '') +
+          '</div>'
+        );
+      }
+
+      const bandStart = n.min !== null ? n.min / n.capBasis : 0;
+      const bandEnd = n.max !== null ? n.max / n.capBasis : 1;
+      const fillFrac = Math.min(1, value / n.capBasis);
+      const band = arc(bandStart, bandEnd);
+      const fill = arc(0, fillFrac);
+      const targetTxt = n.min !== null && n.max !== null ? n.min + '–' + n.max
+        : n.min !== null ? 'min ' + n.min
+        : 'max ' + n.max;
       return (
-        '<div class="nutrient">' +
+        '<div class="nutrient' + (key === 'w' ? ' nutrient-water' : '') + '">' +
           '<div class="nutrient-name">' + n.label + '</div>' +
           '<div class="ring-wrap">' +
             '<svg viewBox="0 0 100 100">' +
