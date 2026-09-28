@@ -91,7 +91,7 @@ function showSection(id, btn) {
 
   function updateCountdown() {
     const now = new Date();
-    const next = RACES.find(r => r.date > now);
+    const next = RACES.find(r => r.name === 'Sancy');
     if (!next) return;
     const t = splitDelay(next.date - now);
     document.getElementById('countdown-days').textContent = t.d;
