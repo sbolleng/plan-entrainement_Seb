@@ -522,7 +522,7 @@ function showSection(id, btn) {
 
       if (COUNTER_ICONS[key]) {
         return (
-          '<div class="nutrient nutrient-counter">' +
+          '<div class="nutrient nutrient-extra nutrient-counter">' +
             '<div class="nutrient-name">' + n.label + '</div>' +
             '<div class="counter-icon-wrap' + (over ? ' over' : '') + '"><span class="counter-icon">' + COUNTER_ICONS[key] + '</span></div>' +
             '<div class="counter-value' + (over ? ' over' : '') + '">' + value + '×</div>' +
@@ -540,7 +540,7 @@ function showSection(id, btn) {
         : n.min !== null ? 'min ' + n.min
         : 'max ' + n.max;
       return (
-        '<div class="nutrient' + (key === 'w' ? ' nutrient-water' : '') + '">' +
+        '<div class="nutrient' + (key === 'w' ? ' nutrient-extra' : '') + '">' +
           '<div class="nutrient-name">' + n.label + '</div>' +
           '<div class="ring-wrap">' +
             '<svg viewBox="0 0 100 100">' +
