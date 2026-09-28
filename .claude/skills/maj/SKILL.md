@@ -23,6 +23,7 @@ contexte.
 | `/maj dossard` | Une inscription ouverte, prise, ou une date d'ouverture connue | Mettre à jour le statut dans Objectif et le bandeau « prochaine inscription » |
 | `/maj course` | **Après avoir couru une course**, pas avant | Marquer l'étape faite dans la ligne de temps Objectif, enregistrer le résultat, recaler la suite du plan |
 | `/maj renfo` | Lassitude des exercices, toutes les 2 à 3 semaines | Faire tourner les exercices de la semaine type en piochant dans le catalogue, dominantes inchangées |
+| `/maj repas` | Seb dicte ce qu'il a mangé, à tout moment de la journée | L'ajouter à `data/nutrition.js` sous le jour du message, avec ses macros estimées (p/g/l/f/s) |
 
 ### Exemples
 
@@ -42,6 +43,9 @@ contexte.
 /maj course Clam Trail 18/10
 /maj course Clam Trail 18/10, 20 K en 2h18, genou nickel, aucune douleur
 /maj course j'ai abandonné Senlis au 20e km, genou
+
+/maj repas ce midi : poulet, riz, légumes vapeur
+/maj repas petit-déj : 2 œufs, pain complet, purée d'amande
 
 /maj renfo
 /maj renfo j'en ai marre des fentes bulgares, remplace-les
@@ -65,7 +69,9 @@ Un `/maj` couvre donc désormais les étapes **1** (données Strava), **3 bis**
 (journal de renfo), **4** (Profil) et **5** (Objectif 26-27), puis la
 publication (étape 6). Le point d'entrée par défaut du site est **Objectif
 26-27** (demande explicite de Seb le 27/09/2026). Une nouvelle page
-**Palmarès** existe aussi depuis cette date (voir étape 5).
+**Palmarès** existe aussi depuis cette date (voir étape 5), ainsi qu'une page
+**Nutrition** (28/09/2026, voir étape 3 ter) entre Objectif et Palmarès dans
+la nav.
 
 ## Le genou n'est plus un sujet d'analyse (27/09/2026)
 
@@ -190,6 +196,34 @@ il n'y a rien à répéter.
 Garder les noms d'exercices **strictement identiques** d'une séance à l'autre :
 c'est sur le nom que se calcule la progression de charge. Tout exercice absent
 du catalogue de Guide → Renfo doit y être ajouté dans le même passage.
+
+## 3 ter · Page Nutrition (28/09/2026)
+
+Page de suivi quotidien, entre Objectif et Palmarès dans la nav. **Pas de
+formulaire de saisie sur la page** — Seb dicte ce qu'il mange par message
+(`/maj repas`), tout se passe dans `data/nutrition.js` et se recalcule à la
+publication :
+
+- **`NUTRITION_TARGETS`** : fourchette du jour par nutriment (p/g/l/f/s —
+  protéines/glucides/lipides/fibres/sel), `capBasis` (ce que représente un
+  cercle plein sur les jauges), et `sources` (aliments concrets pour les
+  suggestions — toujours des exemples précis comme *œuf, fromage blanc,
+  steak, poulet, raisin*, jamais une catégorie vague seule comme « fruits »
+  ou « légumineuses »). Ne change que si Seb donne de nouvelles cibles —
+  il a prévenu qu'elles bougeraient à l'approche d'une course (charge en
+  glucides) et le signalera lui-même.
+- **`NUTRITION_LOG.jours`** : un objet par jour (`date`, `repas: [...]`),
+  chaque repas portant `when`, `what` et ses macros estimées en grammes. Sur
+  `/maj repas`, ajouter le repas au jour du message (créer le jour s'il
+  n'existe pas encore), et mettre à jour le champ `maj`.
+- **`NUTRITION_PAIR_MEALS`** : propositions de repas concrets (pas une simple
+  liste d'aliments) pour les paires de nutriments les plus fréquemment en
+  retard ensemble. Étendre cette table plutôt que la carte Conseil elle-même
+  si de nouvelles combinaisons reviennent souvent.
+
+Tout le rendu (jauges du jour, carte Conseil, mosaïque du mois, séries en
+cours/meilleure) est calculé par `renderNutrition()` dans `app.js` à partir
+de ces trois structures — rien à écrire à la main dans `index.html`.
 
 ## 4 · Page « Profil »
 

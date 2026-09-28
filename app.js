@@ -453,3 +453,187 @@ function showSection(id, btn) {
       ' · ' + seances.length + ' séances enregistrées depuis le ' + seances[0].date.split('-').reverse().join('/');
   }
   renderRenfo();
+
+  // ===== Nutrition · rendu depuis data/nutrition.js =====
+  function renderNutrition() {
+    if (typeof NUTRITION_LOG === 'undefined') return;
+    const ringsEl = document.getElementById('nutri-rings');
+    if (!ringsEl) return;
+
+    const NUTRI_KEYS = ['p', 'g', 'l', 'f', 's'];
+    const byDate = {};
+    NUTRITION_LOG.jours.forEach(function (j) { byDate[j.date] = j; });
+
+    function totalsFor(jour) {
+      const t = { p: 0, g: 0, l: 0, f: 0, s: 0 };
+      if (!jour) return null;
+      jour.repas.forEach(function (r) { NUTRI_KEYS.forEach(function (k) { t[k] += r[k] || 0; }); });
+      return t;
+    }
+
+    function isRespected(t) {
+      return NUTRI_KEYS.every(function (k) {
+        const target = NUTRITION_TARGETS[k];
+        if (target.min !== null && t[k] < target.min) return false;
+        if (target.max !== null && t[k] > target.max) return false;
+        return true;
+      });
+    }
+
+    // ---- Aujourd'hui : jauges + conseil ----
+    const now = new Date();
+    const todayKey = todayISO();
+    const todayJour = byDate[todayKey];
+    const todayTotals = totalsFor(todayJour) || { p: 0, g: 0, l: 0, f: 0, s: 0 };
+    const hasToday = !!todayJour && todayJour.repas.length > 0;
+
+    const dateEl = document.getElementById('nutri-date');
+    if (dateEl) {
+      const txt = now.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+      dateEl.textContent = txt.charAt(0).toUpperCase() + txt.slice(1);
+    }
+
+    const R = 42, C = 2 * Math.PI * R;
+    function arc(startFrac, endFrac) {
+      const len = Math.max(0, (endFrac - startFrac)) * C;
+      return { dasharray: len.toFixed(2) + ' ' + C.toFixed(2), rotateDeg: (startFrac * 360).toFixed(2) };
+    }
+
+    ringsEl.innerHTML = NUTRI_KEYS.map(function (key) {
+      const n = NUTRITION_TARGETS[key];
+      const value = Math.round(todayTotals[key] * 10) / 10;
+      const bandStart = n.min !== null ? n.min / n.capBasis : 0;
+      const bandEnd = n.max !== null ? n.max / n.capBasis : 1;
+      const fillFrac = Math.min(1, value / n.capBasis);
+      const over = n.max !== null && value > n.max;
+      const band = arc(bandStart, bandEnd);
+      const fill = arc(0, fillFrac);
+      const targetTxt = n.min !== null && n.max !== null ? n.min + '–' + n.max
+        : n.min !== null ? 'min ' + n.min
+        : 'max ' + n.max;
+      const remaining = n.min !== null && value < n.min
+        ? 'Reste ' + Math.round(n.min - value) + n.unit
+        : n.max !== null && value <= n.max
+        ? 'Marge ' + Math.round(n.max - value) + n.unit
+        : n.min !== null && n.max !== null
+        ? 'Dans la cible' : '';
+      return (
+        '<div class="nutrient">' +
+          '<div class="nutrient-name">' + n.label + '</div>' +
+          '<div class="ring-wrap">' +
+            '<svg viewBox="0 0 100 100">' +
+              '<circle cx="50" cy="50" r="' + R + '" fill="none" stroke="var(--surface2)" stroke-width="8"/>' +
+              '<circle cx="50" cy="50" r="' + R + '" fill="none" stroke="rgba(74,222,128,0.35)" stroke-width="8" ' +
+                'stroke-dasharray="' + band.dasharray + '" transform="rotate(' + band.rotateDeg + ' 50 50)"/>' +
+              '<circle cx="50" cy="50" r="' + R + '" fill="none" stroke="' + (over ? 'var(--red)' : 'var(--accent)') + '" ' +
+                'stroke-width="8" stroke-linecap="round" ' +
+                'stroke-dasharray="' + fill.dasharray + '" transform="rotate(' + fill.rotateDeg + ' 50 50)"/>' +
+            '</svg>' +
+            '<div class="ring-center">' +
+              '<span class="ring-current">' + value + n.unit + '</span>' +
+              '<span class="ring-target">' + targetTxt + n.unit + '</span>' +
+            '</div>' +
+          '</div>' +
+          (remaining ? '<div class="nutrient-sub">' + remaining + '</div>' : '') +
+        '</div>'
+      );
+    }).join('');
+
+    const adviceEl = document.getElementById('nutri-advice');
+    if (adviceEl) {
+      if (!hasToday) {
+        adviceEl.innerHTML = '<p class="lede">Aucun repas noté aujourd\'hui pour l\'instant — dis-moi ce que tu manges et je te propose la suite au fil de la journée.</p>';
+      } else {
+        const withFloor = NUTRI_KEYS.filter(function (k) { return NUTRITION_TARGETS[k].min !== null; });
+        const short = withFloor
+          .map(function (k) {
+            const n = NUTRITION_TARGETS[k];
+            return { key: k, n: n, gap: n.min - todayTotals[k], rel: (n.min - todayTotals[k]) / n.min };
+          })
+          .filter(function (x) { return x.gap > 0; })
+          .sort(function (a, b) { return b.rel - a.rel; });
+
+        const salt = NUTRITION_TARGETS.s;
+        const saltVal = Math.round(todayTotals.s * 10) / 10;
+        const saltMsg = saltVal > salt.max
+          ? 'Le sel dépasse déjà le plafond du jour (' + saltVal + 'g / ' + salt.max + 'g) — évite les plats préparés et la charcuterie ce soir.'
+          : saltVal > salt.max * 0.8
+          ? 'Le sel approche du plafond (' + saltVal + 'g / ' + salt.max + 'g) — reste léger ce soir.'
+          : 'Le sel a de la marge (' + saltVal + 'g / ' + salt.max + 'g) — pas besoin d\'y penser ce soir.';
+
+        if (short.length === 0) {
+          adviceEl.innerHTML = '<p class="ok-msg">Toutes les cibles avec plancher sont déjà atteintes aujourd\'hui. ' + saltMsg + '</p>';
+        } else {
+          const top = short.slice(0, 2);
+          const names = top.map(function (x) { return x.n.label.toLowerCase(); });
+          const namesTxt = names.length > 1 ? names[0] + ' et ' + names[1] : names[0];
+          const pairKey = top.length > 1 ? [top[0].key, top[1].key].sort().join(',') : null;
+          const mealSuggestion = pairKey && NUTRITION_PAIR_MEALS[pairKey] ? NUTRITION_PAIR_MEALS[pairKey] : null;
+          adviceEl.innerHTML =
+            '<p class="lede">D\'après les repas déjà loggés, il te manque surtout du <strong>' + namesTxt +
+            '</strong> pour finir la journée. <strong>Demande-moi</strong> à tout moment "qu\'est-ce que je mange ce soir ?" pour une proposition à jour' +
+            (mealSuggestion ? ' — exemple pour l\'instant :</p><ul><li><strong>Proposition</strong> : ' + mealSuggestion + '</li>' : '.</p><ul>') +
+            top.map(function (x) {
+              return '<li><strong>' + x.n.label + '</strong> : reste ' + Math.round(x.gap) + x.n.unit +
+                (x.n.sources ? ' — ' + x.n.sources : '') + '.</li>';
+            }).join('') +
+            '<li>' + saltMsg + '</li>' +
+            '</ul>';
+        }
+      }
+    }
+
+    // ---- Mois en cours : mosaïque + séries ----
+    const calEl = document.getElementById('nutri-cal');
+    if (calEl) {
+      const year = now.getFullYear(), month = now.getMonth();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7; // 0 = lundi
+      const todayDate = now.getDate();
+
+      const statusByDay = {};
+      for (let d = 1; d <= daysInMonth; d++) {
+        const key = year + '-' + pad2(month + 1) + '-' + pad2(d);
+        const t = totalsFor(byDate[key]);
+        if (d > todayDate) statusByDay[d] = 'future';
+        else if (!t) statusByDay[d] = 'none';
+        else statusByDay[d] = isRespected(t) ? 'ok' : 'miss';
+      }
+
+      let html = '';
+      for (let i = 0; i < firstWeekday; i++) html += '<div class="nutri-day"></div>';
+      for (let d = 1; d <= daysInMonth; d++) {
+        let cls = 'nutri-day ' + statusByDay[d];
+        if (d === todayDate) cls += ' today';
+        html += '<div class="' + cls + '"></div>';
+      }
+      calEl.innerHTML = html;
+
+      // Série en cours (en remontant depuis aujourd'hui) et meilleure série du mois.
+      let current = 0;
+      for (let d = todayDate; d >= 1; d--) {
+        if (statusByDay[d] === 'ok') current++; else break;
+      }
+      let best = 0, run = 0;
+      for (let d = 1; d <= todayDate; d++) {
+        if (statusByDay[d] === 'ok') { run++; best = Math.max(best, run); } else { run = 0; }
+      }
+
+      const curEl = document.getElementById('nutri-streak-current');
+      const bestEl = document.getElementById('nutri-streak-best');
+      if (curEl) curEl.textContent = current;
+      if (bestEl) bestEl.textContent = best;
+
+      const todayStreakEl = document.getElementById('nutri-today-streak');
+      if (todayStreakEl) {
+        todayStreakEl.textContent = current > 0 ? '● ' + current + ' jour' + (current > 1 ? 's' : '') + ' respecté' + (current > 1 ? 's' : '') + ' d\'affilée' : '';
+      }
+
+      const monthLabelEl = document.getElementById('nutri-month-label');
+      if (monthLabelEl) {
+        const label = now.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+        monthLabelEl.textContent = label.charAt(0).toUpperCase() + label.slice(1);
+      }
+    }
+  }
+  renderNutrition();

@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#060b14">
 <title>CAP — Projet Sancy 2027</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260928c">
+<link rel="stylesheet" href="style.css?v=20260928d">
 </head>
 <body>
 <header>
@@ -47,6 +47,7 @@
 <nav>
   <div class="nav-inner">
     <button class="tab active" onclick="showSection('objectif', this)">Objectif 26-27</button>
+    <button class="tab" onclick="showSection('nutrition', this)">Nutrition</button>
     <button class="tab" onclick="showSection('palmares', this)">Palmarès</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
     <button class="tab" onclick="showSection('guide', this)">Guide</button>
@@ -1129,6 +1130,42 @@
       </div>
     </details>
 
+  </section>
+
+  <!-- ========== NUTRITION ========== -->
+  <section id="nutrition" class="section">
+    <div class="section-title">Nutrition · Suivi quotidien</div>
+    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Alimenté par ce que tu me dis manger au fil de la journée — pas de formulaire de saisie sur la page. Demande-moi à tout moment « qu'est-ce que je mange ce soir ? », je regarde ce qu'il te reste et je propose un repas.</p>
+
+    <div class="nutri-date-row">
+      <span class="nutri-big-date" id="nutri-date"></span>
+      <span class="nutri-streak" id="nutri-today-streak"></span>
+    </div>
+    <div class="nutrients" id="nutri-rings"></div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;">Conseil</h3>
+    <div class="nutri-advice" id="nutri-advice"></div>
+
+    <hr class="divider">
+
+    <h3 style="margin-bottom:0.75rem;" id="nutri-month-label">Ce mois-ci</h3>
+    <div class="nutri-streaks">
+      <div><b id="nutri-streak-current">0</b> jours d'affilée</div>
+      <div><b id="nutri-streak-best">0</b> meilleure série du mois</div>
+    </div>
+    <div class="nutri-tracker">
+      <div class="nutri-cal-weekdays">
+        <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+      <div class="nutri-cal-grid" id="nutri-cal"></div>
+      <div class="nutri-cal-legend">
+        <span><i class="nutri-swatch ok"></i> Respecté</span>
+        <span><i class="nutri-swatch miss"></i> Non respecté</span>
+        <span><i class="nutri-swatch none"></i> Pas de données</span>
+      </div>
+    </div>
   </section>
 
   <!-- ========== PALMARÈS ========== -->
@@ -2453,8 +2490,9 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20260928c" defer></script>
-<script src="app.js?v=20260928c" defer></script>
+<script src="data/renfo.js?v=20260928d" defer></script>
+<script src="data/nutrition.js?v=20260928d" defer></script>
+<script src="app.js?v=20260928d" defer></script>
 
 </body>
 </html>

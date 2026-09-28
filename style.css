@@ -11,6 +11,7 @@
   --muted: #8fa8c9;
   --red: #e05c5c;
   --orange: #f5a623;
+  --good: #4ade80;
 }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1531,4 +1532,52 @@
     overflow: hidden;
   }
   .prov i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+
+  /* ===== NUTRITION ===== */
+  .nutri-date-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 0.4rem; }
+  .nutri-big-date { font-size: 1.05rem; font-weight: 600; }
+  .nutri-streak { font-size: 0.78rem; color: var(--good); font-family: 'Space Mono', monospace; }
+
+  .nutrients { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.7rem; margin-bottom: 1.5rem; }
+  .nutrient {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 0.85rem 0.6rem 0.7rem; display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .nutrient-name { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.55rem; }
+  .ring-wrap { position: relative; width: 96px; height: 96px; }
+  .ring-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring-current { font-family: 'Space Mono', monospace; font-size: 1.05rem; font-weight: 700; color: var(--text); line-height: 1.1; }
+  .ring-target { font-size: 0.6rem; color: var(--muted); margin-top: 0.1rem; }
+  .nutrient-sub { margin-top: 0.5rem; font-size: 0.68rem; color: var(--muted); line-height: 1.3; }
+  .nutrient-sub strong { color: var(--text); }
+
+  .nutri-advice {
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; padding: 1rem 1.1rem;
+  }
+  .nutri-advice .lede { font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .nutri-advice .lede strong { color: var(--accent); }
+  .nutri-advice ul { margin: 0.4rem 0 0 1.1rem; padding: 0; font-size: 0.82rem; color: var(--muted); }
+  .nutri-advice li { margin-bottom: 0.25rem; }
+  .nutri-advice li strong { color: var(--text); }
+  .nutri-advice .ok-msg { font-size: 0.85rem; color: var(--good); }
+
+  .nutri-streaks { display: flex; gap: 1.25rem; margin-bottom: 0.6rem; font-size: 0.72rem; color: var(--muted); align-items: baseline; }
+  .nutri-streaks b { font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--good); font-weight: 700; }
+  .nutri-tracker { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.75rem; }
+  .nutri-cal-weekdays { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; margin-bottom: 2px; }
+  .nutri-cal-weekdays span { text-align: center; font-size: 0.55rem; font-family: 'Space Mono', monospace; color: var(--muted); }
+  .nutri-cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+  .nutri-day { aspect-ratio: 1; border-radius: 3px; background: var(--surface2); position: relative; }
+  .nutri-day.ok { background: var(--good); }
+  .nutri-day.miss { background: var(--red); }
+  .nutri-day.future { background: transparent; }
+  .nutri-day.today::after { content: ''; position: absolute; inset: 0; border-radius: 3px; box-shadow: 0 0 0 2px var(--accent2) inset; }
+  .nutri-cal-legend { display: flex; gap: 0.9rem; margin-top: 0.6rem; font-size: 0.65rem; color: var(--muted); flex-wrap: wrap; }
+  .nutri-cal-legend span { display: flex; align-items: center; gap: 0.3rem; }
+  .nutri-swatch { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+  .nutri-swatch.ok { background: var(--good); }
+  .nutri-swatch.miss { background: var(--red); }
+  .nutri-swatch.none { background: var(--surface2); }
 
