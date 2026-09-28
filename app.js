@@ -540,7 +540,7 @@ function showSection(id, btn) {
         : n.min !== null ? 'min ' + n.min
         : 'max ' + n.max;
       return (
-        '<div class="nutrient' + (key === 'w' ? ' nutrient-extra' : '') + '">' +
+        '<div class="nutrient' + ((key === 'w' || key === 's') ? ' nutrient-extra' : '') + '">' +
           '<div class="nutrient-name">' + n.label + '</div>' +
           '<div class="ring-wrap">' +
             '<svg viewBox="0 0 100 100">' +
