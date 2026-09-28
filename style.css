@@ -776,6 +776,18 @@
     letter-spacing: 0.04em;
   }
   .rs-desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.9rem; }
+  .utmb-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid rgba(143,168,201,0.35);
+    color: var(--muted);
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
 
   /* Étape « point de décision » : plusieurs scénarios possibles */
   .race-step.is-choice { border-left-style: dashed; }
