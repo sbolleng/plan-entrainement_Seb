@@ -620,7 +620,6 @@ function showSection(id, btn) {
     if (calEl) {
       const year = now.getFullYear(), month = now.getMonth();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
-      const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7; // 0 = lundi
       const todayDate = now.getDate();
 
       const statusByDay = {};
@@ -632,8 +631,9 @@ function showSection(id, btn) {
         else statusByDay[d] = isRespected(t) ? 'ok' : 'miss';
       }
 
+      // Le 1er du mois occupe toujours la première case de la première ligne
+      // (pas d'alignement sur un calendrier à colonnes de jour de semaine fixes).
       let html = '';
-      for (let i = 0; i < firstWeekday; i++) html += '<div class="nutri-day"></div>';
       for (let d = 1; d <= daysInMonth; d++) {
         let cls = 'nutri-day ' + statusByDay[d];
         if (d === todayDate) cls += ' today';
