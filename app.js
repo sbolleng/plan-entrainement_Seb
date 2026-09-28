@@ -636,7 +636,7 @@ function showSection(id, btn) {
       }
 
       let html = '';
-      for (let i = 0; i < firstWeekday; i++) html += '<div class="nutri-day"></div>';
+      for (let i = 0; i < firstWeekday; i++) html += '<div class="nutri-day future"></div>';
       for (let d = 1; d <= daysInMonth; d++) {
         let cls = 'nutri-day ' + statusByDay[d];
         if (d === todayDate) cls += ' today';
