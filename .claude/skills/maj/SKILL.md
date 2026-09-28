@@ -204,18 +204,24 @@ formulaire de saisie sur la page** — Seb dicte ce qu'il mange par message
 (`/maj repas`), tout se passe dans `data/nutrition.js` et se recalcule à la
 publication :
 
-- **`NUTRITION_TARGETS`** : fourchette du jour par nutriment (p/g/l/f/s —
-  protéines/glucides/lipides/fibres/sel), `capBasis` (ce que représente un
-  cercle plein sur les jauges), et `sources` (aliments concrets pour les
-  suggestions — toujours des exemples précis comme *œuf, fromage blanc,
-  steak, poulet, raisin*, jamais une catégorie vague seule comme « fruits »
-  ou « légumineuses »). Ne change que si Seb donne de nouvelles cibles —
-  il a prévenu qu'elles bougeraient à l'approche d'une course (charge en
-  glucides) et le signalera lui-même.
+- **`NUTRITION_TARGETS`** : fourchette du jour pour 8 clés — p/g/l/f/s
+  (protéines/glucides/lipides/fibres/sel, en grammes), `w` (eau, en litres),
+  `cafe` et `alcool` (nombre de fois, pas des grammes). `capBasis` = ce que
+  représente un cercle plein sur les jauges. `sources` (aliments concrets,
+  ex. *œuf, fromage blanc, steak, poulet, raisin* — jamais une catégorie
+  vague seule comme « fruits ») ne s'applique qu'à p/g/l/f. Les nutriments à
+  plafond seul (`s`, `cafe`, `alcool`) portent plutôt `overAdvice` /
+  `nearAdvice` / `fineAdvice` — trois phrases selon que la valeur du jour
+  dépasse, approche (≥ 80 %) ou reste sous le plafond ; l'eau (plancher seul)
+  a un simple rappel codé dans `renderNutrition()`, pas de champ dédié.
+  Ne changer ces cibles que si Seb en donne de nouvelles — il a prévenu que
+  les glucides bougeraient à l'approche d'une course, et préviendra lui-même.
 - **`NUTRITION_LOG.jours`** : un objet par jour (`date`, `repas: [...]`),
-  chaque repas portant `when`, `what` et ses macros estimées en grammes. Sur
-  `/maj repas`, ajouter le repas au jour du message (créer le jour s'il
-  n'existe pas encore), et mettre à jour le champ `maj`.
+  chaque repas portant `when`, `what` et ses valeurs pour les 8 clés (0 pour
+  celles qui ne s'appliquent pas) — un café ou un verre d'eau sont des
+  « repas » comme un autre, juste avec le reste à 0. Sur `/maj repas`,
+  ajouter le repas au jour du message (créer le jour s'il n'existe pas
+  encore), et mettre à jour le champ `maj`.
 - **`NUTRITION_PAIR_MEALS`** : propositions de repas concrets (pas une simple
   liste d'aliments) pour les paires de nutriments les plus fréquemment en
   retard ensemble. Étendre cette table plutôt que la carte Conseil elle-même

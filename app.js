@@ -460,13 +460,20 @@ function showSection(id, btn) {
     const ringsEl = document.getElementById('nutri-rings');
     if (!ringsEl) return;
 
-    const NUTRI_KEYS = ['p', 'g', 'l', 'f', 's'];
+    const NUTRI_KEYS = ['p', 'g', 'l', 'f', 's', 'w', 'cafe', 'alcool'];
+    const MEAL_KEYS = ['p', 'g', 'l', 'f']; // ceux qu'une proposition de repas peut vraiment combler
     const byDate = {};
     NUTRITION_LOG.jours.forEach(function (j) { byDate[j.date] = j; });
 
+    function emptyTotals() {
+      const t = {};
+      NUTRI_KEYS.forEach(function (k) { t[k] = 0; });
+      return t;
+    }
+
     function totalsFor(jour) {
-      const t = { p: 0, g: 0, l: 0, f: 0, s: 0 };
       if (!jour) return null;
+      const t = emptyTotals();
       jour.repas.forEach(function (r) { NUTRI_KEYS.forEach(function (k) { t[k] += r[k] || 0; }); });
       return t;
     }
@@ -484,7 +491,7 @@ function showSection(id, btn) {
     const now = new Date();
     const todayKey = todayISO();
     const todayJour = byDate[todayKey];
-    const todayTotals = totalsFor(todayJour) || { p: 0, g: 0, l: 0, f: 0, s: 0 };
+    const todayTotals = totalsFor(todayJour) || emptyTotals();
     const hasToday = !!todayJour && todayJour.repas.length > 0;
 
     const dateEl = document.getElementById('nutri-date');
@@ -544,8 +551,8 @@ function showSection(id, btn) {
       if (!hasToday) {
         adviceEl.innerHTML = '<p class="lede">Aucun repas noté aujourd\'hui pour l\'instant — dis-moi ce que tu manges et je te propose la suite au fil de la journée.</p>';
       } else {
-        const withFloor = NUTRI_KEYS.filter(function (k) { return NUTRITION_TARGETS[k].min !== null; });
-        const short = withFloor
+        // Repas manquants : seuls p/g/l/f peuvent vraiment se combler par une proposition de repas.
+        const short = MEAL_KEYS
           .map(function (k) {
             const n = NUTRITION_TARGETS[k];
             return { key: k, n: n, gap: n.min - todayTotals[k], rel: (n.min - todayTotals[k]) / n.min };
@@ -553,16 +560,26 @@ function showSection(id, btn) {
           .filter(function (x) { return x.gap > 0; })
           .sort(function (a, b) { return b.rel - a.rel; });
 
-        const salt = NUTRITION_TARGETS.s;
-        const saltVal = Math.round(todayTotals.s * 10) / 10;
-        const saltMsg = saltVal > salt.max
-          ? 'Le sel dépasse déjà le plafond du jour (' + saltVal + 'g / ' + salt.max + 'g) — évite les plats préparés et la charcuterie ce soir.'
-          : saltVal > salt.max * 0.8
-          ? 'Le sel approche du plafond (' + saltVal + 'g / ' + salt.max + 'g) — reste léger ce soir.'
-          : 'Le sel a de la marge (' + saltVal + 'g / ' + salt.max + 'g) — pas besoin d\'y penser ce soir.';
+        // Eau : simple rappel, pas de proposition de repas.
+        const water = NUTRITION_TARGETS.w;
+        const waterVal = Math.round(todayTotals.w * 10) / 10;
+        const waterMsg = waterVal < water.min
+          ? 'Eau : ' + waterVal + water.unit + ' / ' + water.min + water.unit + ' — reste ' +
+            (Math.round((water.min - waterVal) * 10) / 10) + water.unit + ', pense à boire, surtout après une sortie.'
+          : 'Eau : ' + waterVal + water.unit + ' / ' + water.min + water.unit + ' — objectif atteint.';
+
+        // Plafonds simples (sel, café, alcool) : jamais une proposition, juste une marge ou une alerte.
+        const capKeys = ['s', 'cafe', 'alcool'];
+        const capMsgs = capKeys.map(function (k) {
+          const n = NUTRITION_TARGETS[k];
+          const v = Math.round(todayTotals[k] * 10) / 10;
+          const advice = v > n.max ? n.overAdvice : v > n.max * 0.8 ? n.nearAdvice : n.fineAdvice;
+          return n.label + ' : ' + v + n.unit + ' / ' + n.max + n.unit + ' — ' + advice;
+        });
+        const extraLines = [waterMsg].concat(capMsgs).map(function (m) { return '<li>' + m + '</li>'; }).join('');
 
         if (short.length === 0) {
-          adviceEl.innerHTML = '<p class="ok-msg">Toutes les cibles avec plancher sont déjà atteintes aujourd\'hui. ' + saltMsg + '</p>';
+          adviceEl.innerHTML = '<p class="ok-msg">Toutes les cibles avec plancher sont déjà atteintes aujourd\'hui.</p><ul>' + extraLines + '</ul>';
         } else {
           const top = short.slice(0, 2);
           const names = top.map(function (x) { return x.n.label.toLowerCase(); });
@@ -577,7 +594,7 @@ function showSection(id, btn) {
               return '<li><strong>' + x.n.label + '</strong> : reste ' + Math.round(x.gap) + x.n.unit +
                 (x.n.sources ? ' — ' + x.n.sources : '') + '.</li>';
             }).join('') +
-            '<li>' + saltMsg + '</li>' +
+            extraLines +
             '</ul>';
         }
       }

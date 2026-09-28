@@ -3,13 +3,18 @@
 // Source de vérité du suivi nutrition quotidien. Alimenté par /maj repas
 // quand Seb dicte ce qu'il a mangé — jamais de saisie directe sur la page.
 //
-// p/g/l/f/s = protéines/glucides/lipides/fibres/sel, en grammes, par repas.
-// NUTRITION_TARGETS donne la fourchette du jour (min et/ou max, l'un des
-// deux peut être absent), capBasis = ce que représente un cercle plein sur
-// les jauges (un peu de marge au-delà du plafond, ou du plancher sans
-// plafond), et des exemples d'aliments concrets pour les propositions de
-// repas — jamais de catégorie vague comme « fruits » ou « légumineuses »
-// seules.
+// p/g/l/f/s = protéines/glucides/lipides/fibres/sel, en grammes ; w = eau, en
+// litres ; cafe/alcool = nombre de cafés / verres d'alcool — tous par repas
+// (un café ou un verre d'eau sont des « repas » comme un autre, juste avec
+// les autres champs à 0). NUTRITION_TARGETS donne la fourchette du jour (min
+// et/ou max, l'un des deux peut être absent), capBasis = ce que représente
+// un cercle plein sur les jauges (un peu de marge au-delà du plafond, ou du
+// plancher sans plafond), et des exemples d'aliments concrets pour les
+// propositions de repas — jamais de catégorie vague comme « fruits » ou
+// « légumineuses » seules. overAdvice/nearAdvice/fineAdvice ne servent
+// qu'aux nutriments à plafond seul (sel, café, alcool) : phrase affichée
+// selon que la valeur du jour dépasse, approche (≥80 %) ou reste sous le
+// plafond.
 
 const NUTRITION_TARGETS = {
   p: {
@@ -29,8 +34,25 @@ const NUTRITION_TARGETS = {
     sources: "lentilles, brocolis, pomme, flocons d'avoine"
   },
   s: {
-    label: 'Sel', unit: 'g', min: null, max: 5, capBasis: 6.5,
-    sources: null
+    label: 'Sel', unit: 'g', min: null, max: 5, capBasis: 6.5, sources: null,
+    overAdvice: 'dépasse déjà le plafond du jour — évite les plats préparés et la charcuterie ce soir.',
+    nearAdvice: 'approche du plafond — reste léger ce soir.',
+    fineAdvice: 'a de la marge — pas besoin d\'y penser ce soir.'
+  },
+  w: {
+    label: 'Eau', unit: 'L', min: 2, max: null, capBasis: 3, sources: null
+  },
+  cafe: {
+    label: 'Café', unit: '×', min: null, max: 2, capBasis: 3, sources: null,
+    overAdvice: 'trop de café aujourd\'hui — passe à la déca ou à la tisane pour la suite.',
+    nearAdvice: 'dernier café autorisé bientôt atteint — un dernier avant de passer à la déca.',
+    fineAdvice: 'encore de la marge.'
+  },
+  alcool: {
+    label: 'Alcool', unit: '×', min: null, max: 0, capBasis: 2, sources: null,
+    overAdvice: 'objectif zéro dépassé aujourd\'hui — pas de deuxième verre.',
+    nearAdvice: 'objectif zéro dépassé aujourd\'hui — pas de deuxième verre.',
+    fineAdvice: 'aucun alcool aujourd\'hui, comme prévu.'
   }
 };
 
@@ -49,7 +71,10 @@ const NUTRITION_PAIR_MEALS = {
 const NUTRITION_LOG = {
   maj: '2026-09-28',
   jours: [
-    // { date: '2026-09-28', repas: [ { when: '12:30', what: 'Poulet, riz, légumes vapeur', p: 38, g: 62, l: 20, f: 4, s: 1.1 } ] }
+    // { date: '2026-09-28', repas: [
+    //   { when: '12:30', what: 'Poulet, riz, légumes vapeur', p: 38, g: 62, l: 20, f: 4, s: 1.1, w: 0.3, cafe: 0, alcool: 0 },
+    //   { when: '15:00', what: 'Café', p: 0, g: 0, l: 0, f: 0, s: 0, w: 0, cafe: 1, alcool: 0 }
+    // ] }
     // Vide pour l'instant — se remplit au fil des /maj repas.
   ]
 };
