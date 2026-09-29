@@ -720,12 +720,10 @@ function showSection(id, btn) {
   window.addEventListener('pageshow', e => { if (e.persisted) checkNewVersion(); });
 
   // ===== Objectif · difficulté des courses (km-effort avec descente) =====
-  // km-effort = distance + D+/100 + D−/150. D−/150 vient du Leistungskilometer
-  // du Club alpin suisse (réservé aux descentes > 20 % pour la randonnée ; appliqué
-  // ici à toute la descente, qui charge les cuisses en course même en pente douce).
-  // Courses en boucle : D− = D+. Dates des options approximatives (« ~ »).
+  // km-effort = distance + D+/100 + D−/200 (coefficient de descente choisi par
+  // Seb le 29/09/2026). Courses en boucle : D− = D+. Dates des options
+  // approximatives (« ~ »).
   const PLAN_DIFFICULTY = [
-    { date: '2025-11-23', name: 'Clam Trail 2025', km: 10, dp: 128, dm: 128, kind: 'past' },
     { date: '2026-03-08', name: 'Forez Trails 2026', km: 24.4, dp: 933, dm: 933, kind: 'past', label: 'Forez 26' },
     { date: '2026-10-18', name: 'Clam Trail', km: 10, dp: 128, dm: 128, kind: 'firm' },
     { date: '2026-12-05', name: "Rock'Angel", km: 18.3, dp: 750, dm: 750, kind: 'firm' },
@@ -739,13 +737,13 @@ function showSection(id, btn) {
     { date: '2027-09-12', name: 'La Directissime', km: 34, dp: 770, dm: 1800, kind: 'goal', approx: true, label: 'Directissime' }
   ];
 
-  function kmEffort(r) { return r.km + r.dp / 100 + r.dm / 150; }
+  function kmEffort(r) { return r.km + r.dp / 100 + r.dm / 200; }
 
   function renderDifficultyChart() {
     const el = document.getElementById('chart-difficulty');
     if (!el) return;
 
-    const t0 = new Date('2025-10-15').getTime(), t1 = new Date('2027-10-10').getTime();
+    const t0 = new Date('2026-01-01').getTime(), t1 = new Date('2027-10-10').getTime();
     const yMax = 80;
     const xAt = d => 3 + ((new Date(d + 'T12:00:00').getTime() - t0) / (t1 - t0)) * 94;
     const yAt = v => 6 + (1 - v / yMax) * 86;
