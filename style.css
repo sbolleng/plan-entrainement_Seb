@@ -1683,3 +1683,4 @@
   .dc-key { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
   .dc-key.is-line { width: 16px; height: 2px; border-radius: 1px; }
   .dc-label.is-end { transform: translate(calc(-100% + 8px), 18px); }
+  .sb-item.sb-next { border-color: #b482ff; }
