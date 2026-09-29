@@ -87,7 +87,7 @@ function updateRaceCountdowns() {
 const MARATHON = new Date('2028-03-19T09:00:00');
 
 const STEPS = [
-  { date: new Date('2026-10-04T09:00:00'), name: 'Semi de San Sebastián' },
+  { date: new Date('2026-10-04T09:30:00'), name: 'Semi de San Sebastián' },
   { date: new Date('2026-11-15T09:00:00'), name: 'Trail du Béret' },
   { date: new Date('2027-01-16T18:00:00'), name: 'Nocturne des Rois' },
   { date: new Date('2027-03-07T08:00:00'), name: "L'Augerolloise" },
