@@ -75,7 +75,7 @@ const NUTRITION_LOG = {
       { when: 'Petit-déj', what: '4 madeleines, eau chaude au miel et citron', p: 8, g: 84, l: 29, f: 2, s: 0.7, w: 0.25, cafe: 0, alcool: 0 },
       { when: 'Midi', what: 'Filet de bar, risotto', p: 36, g: 55, l: 13, f: 1, s: 1.8, w: 0, cafe: 0, alcool: 0 },
       { when: 'Encas', what: 'Deux poignées d\'amandes', p: 13, g: 13, l: 30, f: 7, s: 0, w: 0, cafe: 0, alcool: 0 },
-      { when: 'Soir', what: 'Poulet pané, fromage blanc 0% sucré', p: 36, g: 26, l: 10, f: 1, s: 1.15, w: 0, cafe: 0, alcool: 0 },
+      { when: 'Soir', what: 'Poulet, pâtes, fromage blanc 0% sucré', p: 58, g: 83, l: 7, f: 3, s: 1, w: 0, cafe: 0, alcool: 0 },
       { when: 'Soir', what: 'Un demi de bière', p: 0, g: 10, l: 0, f: 0, s: 0, w: 0, cafe: 0, alcool: 1 }
     ] }
   ]

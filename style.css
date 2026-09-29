@@ -1637,3 +1637,9 @@
   .nutri-swatch.miss { background: var(--red); }
   .nutri-swatch.none { background: var(--surface2); }
 
+
+  /* ===== CETTE SEMAINE · liste d'actions ===== */
+  .todo-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .todo-item { display: flex; gap: 0.65rem; align-items: flex-start; font-size: 0.85rem; line-height: 1.5; }
+  .todo-box { flex: 0 0 auto; width: 14px; height: 14px; margin-top: 0.25rem; border: 1.5px solid var(--muted); border-radius: 3px; }
+  .todo-item.is-urgent .todo-box { border-color: var(--red); background: rgba(224,92,92,0.15); }

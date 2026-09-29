@@ -86,12 +86,12 @@ function showSection(id, btn) {
     { date: new Date('2026-12-05T09:00:00'), name: "Rock'Angel" },
     { date: new Date('2027-01-17T09:00:00'), name: 'D2B' },
     { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
-    { date: new Date('2027-09-12T07:00:00'), name: 'Sancy' }
+    { date: new Date('2027-09-12T10:00:00'), name: 'La Directissime' }
   ];
 
   function updateCountdown() {
     const now = new Date();
-    const next = RACES.find(r => r.name === 'Sancy');
+    const next = RACES.find(r => r.name === 'La Directissime');
     if (!next) return;
     const t = splitDelay(next.date - now);
     document.getElementById('countdown-days').textContent = t.d;
@@ -320,10 +320,10 @@ function showSection(id, btn) {
     renderBarChart('chart-cadence', seriesFrom('cadenceSpm'), { refLines: [{ val: 170, color: 'var(--accent2)' }] });
     renderBarChart('chart-efficiency', seriesFrom('effBeats'), { invert: true });
 
-    // D+/km · réel + trajectoire cible jusqu'au Sancy
+    // D+/km · réel + trajectoire cible jusqu'à la Directissime
     renderLineChart('chart-dpk', {
       height: 160,
-      min: 0, max: 65,
+      min: 0, max: 45,
       labels: ['Nov 25', '', '', '', 'Mar 26', '', '', '', 'Juil 26', '', '', '',
                'Nov 26', '', '', '', 'Mar 27', '', '', '', 'Juil 27', '', 'Sep 27'],
       formatter: v => v.toFixed(0),
@@ -337,13 +337,13 @@ function showSection(id, btn) {
         {
           values: [null, null, null, null, null, null, null, 9.1,
                    5, 10, 13, 16, 18, 20, 22, 24,
-                   33, 22, 28, 34, 40, 28, 60],
+                   33, 22, 28, 34, 40, 28, 23],
           color: '#7eb8f5', dashed: true, showValues: [16, 20, 22]
         }
       ],
       refLines: [
         { val: 33, color: 'var(--accent2)' },
-        { val: 60, color: 'var(--red)' }
+        { val: 23, color: 'var(--red)' }
       ]
     });
   }
@@ -506,6 +506,8 @@ function showSection(id, btn) {
       return { dasharray: len.toFixed(2) + ' ' + C.toFixed(2), rotateDeg: (startFrac * 360).toFixed(2) };
     }
 
+    function fmt(v) { return (Math.round(v * 10) / 10).toLocaleString('fr-FR'); }
+
     // café et alcool sont des compteurs (picto + Nx), pas des jauges continues.
     const COUNTER_ICONS = { cafe: '☕', alcool: '🍺' };
 
@@ -513,19 +515,22 @@ function showSection(id, btn) {
       const n = NUTRITION_TARGETS[key];
       const value = Math.round(todayTotals[key] * 10) / 10;
       const over = n.max !== null && value > n.max;
-      const remaining = n.min !== null && value < n.min
-        ? 'Reste ' + Math.round(n.min - value) + n.unit
-        : n.max !== null && value <= n.max
-        ? 'Marge ' + Math.round(n.max - value) + n.unit
+      const remaining = over
+        ? 'Dépassé de ' + fmt(value - n.max) + n.unit
+        : n.min !== null && value < n.min
+        ? 'Reste ' + fmt(n.min - value) + n.unit
         : n.min !== null && n.max !== null
-        ? 'Dans la cible' : '';
+        ? 'Dans la cible'
+        : n.max !== null
+        ? 'Marge ' + fmt(n.max - value) + n.unit
+        : 'Objectif atteint';
 
       if (COUNTER_ICONS[key]) {
         return (
           '<div class="nutrient nutrient-extra nutrient-counter">' +
             '<div class="nutrient-name">' + n.label + '</div>' +
             '<div class="counter-icon-wrap' + (over ? ' over' : '') + '"><span class="counter-icon">' + COUNTER_ICONS[key] + '</span></div>' +
-            '<div class="counter-value' + (over ? ' over' : '') + '">' + value + '×</div>' +
+            '<div class="counter-value' + (over ? ' over' : '') + '">' + fmt(value) + '×</div>' +
             (remaining ? '<div class="nutrient-sub">' + remaining + '</div>' : '') +
           '</div>'
         );
@@ -536,9 +541,9 @@ function showSection(id, btn) {
       const fillFrac = Math.min(1, value / n.capBasis);
       const band = arc(bandStart, bandEnd);
       const fill = arc(0, fillFrac);
-      const targetTxt = n.min !== null && n.max !== null ? n.min + '–' + n.max
-        : n.min !== null ? 'min ' + n.min
-        : 'max ' + n.max;
+      const targetTxt = n.min !== null && n.max !== null ? fmt(n.min) + '–' + fmt(n.max)
+        : n.min !== null ? 'min ' + fmt(n.min)
+        : 'max ' + fmt(n.max);
       return (
         '<div class="nutrient' + ((key === 'w' || key === 's') ? ' nutrient-extra' : '') + '">' +
           '<div class="nutrient-name">' + n.label + '</div>' +
@@ -552,7 +557,7 @@ function showSection(id, btn) {
                 'stroke-dasharray="' + fill.dasharray + '" transform="rotate(' + fill.rotateDeg + ' 50 50)"/>' +
             '</svg>' +
             '<div class="ring-center">' +
-              '<span class="ring-current">' + value + n.unit + '</span>' +
+              '<span class="ring-current">' + fmt(value) + n.unit + '</span>' +
               '<span class="ring-target">' + targetTxt + n.unit + '</span>' +
             '</div>' +
           '</div>' +
@@ -579,9 +584,19 @@ function showSection(id, btn) {
         const water = NUTRITION_TARGETS.w;
         const waterVal = Math.round(todayTotals.w * 10) / 10;
         const waterMsg = waterVal < water.min
-          ? 'Eau : ' + waterVal + water.unit + ' / ' + water.min + water.unit + ' — reste ' +
-            (Math.round((water.min - waterVal) * 10) / 10) + water.unit + ', pense à boire, surtout après une sortie.'
-          : 'Eau : ' + waterVal + water.unit + ' / ' + water.min + water.unit + ' — objectif atteint.';
+          ? 'Eau : ' + fmt(waterVal) + ' ' + water.unit + ' / ' + fmt(water.min) + ' ' + water.unit + ' — reste ' +
+            fmt(water.min - waterVal) + ' ' + water.unit + ', pense à boire, surtout après une sortie.'
+          : 'Eau : ' + fmt(waterVal) + ' ' + water.unit + ' / ' + fmt(water.min) + ' ' + water.unit + ' — objectif atteint.';
+
+        // Macros déjà au-dessus de leur plafond : à signaler pour alléger la suite.
+        const overMacros = MEAL_KEYS.filter(function (k) {
+          const n = NUTRITION_TARGETS[k];
+          return n.max !== null && todayTotals[k] > n.max;
+        }).map(function (k) {
+          const n = NUTRITION_TARGETS[k];
+          return n.label + ' : ' + fmt(todayTotals[k]) + ' ' + n.unit + ' / max ' + fmt(n.max) + ' ' + n.unit +
+            ' — déjà au-dessus du plafond, reste léger de ce côté pour la suite de la journée.';
+        });
 
         // Plafonds simples (sel, café, alcool) : jamais une proposition, juste une marge ou une alerte.
         const capKeys = ['s', 'cafe', 'alcool'];
@@ -589,24 +604,25 @@ function showSection(id, btn) {
           const n = NUTRITION_TARGETS[k];
           const v = Math.round(todayTotals[k] * 10) / 10;
           const advice = v > n.max ? n.overAdvice : v > n.max * 0.8 ? n.nearAdvice : n.fineAdvice;
-          return n.label + ' : ' + v + n.unit + ' / ' + n.max + n.unit + ' — ' + advice;
+          const sep = n.unit === '×' ? '' : ' ';
+          return n.label + ' : ' + fmt(v) + sep + n.unit + ' / ' + fmt(n.max) + sep + n.unit + ' — ' + advice;
         });
-        const extraLines = [waterMsg].concat(capMsgs).map(function (m) { return '<li>' + m + '</li>'; }).join('');
+        const extraLines = overMacros.concat([waterMsg]).concat(capMsgs).map(function (m) { return '<li>' + m + '</li>'; }).join('');
 
         if (short.length === 0) {
           adviceEl.innerHTML = '<p class="ok-msg">Toutes les cibles avec plancher sont déjà atteintes aujourd\'hui.</p><ul>' + extraLines + '</ul>';
         } else {
           const top = short.slice(0, 2);
-          const names = top.map(function (x) { return x.n.label.toLowerCase(); });
+          const names = top.map(function (x) { return 'des ' + x.n.label.toLowerCase(); });
           const namesTxt = names.length > 1 ? names[0] + ' et ' + names[1] : names[0];
           const pairKey = top.length > 1 ? [top[0].key, top[1].key].sort().join(',') : null;
           const mealSuggestion = pairKey && NUTRITION_PAIR_MEALS[pairKey] ? NUTRITION_PAIR_MEALS[pairKey] : null;
           adviceEl.innerHTML =
-            '<p class="lede">D\'après les repas déjà loggés, il te manque surtout du <strong>' + namesTxt +
+            '<p class="lede">D\'après les repas déjà loggés, il te manque surtout <strong>' + namesTxt +
             '</strong> pour finir la journée. <strong>Demande-moi</strong> à tout moment "qu\'est-ce que je mange ce soir ?" pour une proposition à jour' +
             (mealSuggestion ? ' — exemple pour l\'instant :</p><ul><li><strong>Proposition</strong> : ' + mealSuggestion + '</li>' : '.</p><ul>') +
             top.map(function (x) {
-              return '<li><strong>' + x.n.label + '</strong> : reste ' + Math.round(x.gap) + x.n.unit +
+              return '<li><strong>' + x.n.label + '</strong> : reste ' + fmt(x.gap) + ' ' + x.n.unit +
                 (x.n.sources ? ' — ' + x.n.sources : '') + '.</li>';
             }).join('') +
             extraLines +

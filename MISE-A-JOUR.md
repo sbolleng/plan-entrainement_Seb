@@ -114,5 +114,8 @@ Fais la mise à jour complète du site.
   authentification. Ne pas y mettre d'information sensible.
 - Les mois de reprise course/marche ne sont pas comparables aux mois de course
   continue sur l'allure, la cadence et l'efficience cardiaque.
-- L'écart déterminant pour le Sancy est le D+ par kilomètre : environ 10 m/km
-  aujourd'hui, 60 m/km demandés par la course.
+- Depuis le 29/09/2026, l'objectif final n'est plus le Sancy mais **la
+  Directissime** des Grands Trails Esprit Volcans (34 km, +770 m / −1 800 m,
+  ~12 sept. 2027, du sommet du puy de Dôme à Cournon). L'écart déterminant
+  est donc la **descente** : 53 m/km de D− le jour J, rien de comparable dans
+  l'entraînement actuel. Le D+ (23 m/km) passe au second plan.

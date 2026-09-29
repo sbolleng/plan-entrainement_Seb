@@ -5,26 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#060b14">
-<title>CAP — Projet Sancy 2027</title>
+<title>CAP — Objectif Directissime 2027</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260929d">
+<link rel="stylesheet" href="style.css?v=20260929e">
 </head>
 <body>
 <header>
   <div class="header-grid">
     <div>
-      <h1>Objectif Trails du<br><em>Sancy Oxsitis</em></h1>
+      <h1>Objectif Esprit Volcans<br><em>La Directissime</em></h1>
       <div class="race-stats">
         <div class="stat">
-          <span class="stat-val">33,5 km</span>
+          <span class="stat-val">34 km</span>
           <span class="stat-label">Distance objectif</span>
         </div>
         <div class="stat">
-          <span class="stat-val">+2 000 m</span>
-          <span class="stat-label">D+ objectif</span>
+          <span class="stat-val">+770 / −1 800 m</span>
+          <span class="stat-label">D+ / D− objectif</span>
         </div>
         <div class="stat">
-          <span class="stat-val">4 courses</span>
+          <span class="stat-val">5 courses</span>
           <span class="stat-label">Étapes prépa</span>
         </div>
         <div class="stat">
@@ -45,7 +45,8 @@
 
 <nav>
   <div class="nav-inner">
-    <button class="tab active" onclick="showSection('objectif', this)">Objectif 26-27</button>
+    <button class="tab active" onclick="showSection('semaine', this)">Cette semaine</button>
+    <button class="tab" onclick="showSection('objectif', this)">Objectif 26-27</button>
     <button class="tab" onclick="showSection('nutrition', this)">Nutrition</button>
     <button class="tab" onclick="showSection('palmares', this)">Palmarès</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
@@ -55,6 +56,149 @@
 </nav>
 
 <main>
+  <!-- ========== CETTE SEMAINE (to-do, régénérée chaque semaine) ========== -->
+  <section id="semaine" class="section active">
+    <div class="section-title">Cette semaine · 28 sept. → 4 oct. 2026</div>
+
+    <div class="status-band band-4">
+      <div class="sb-item">
+        <span class="sb-key">Semaine</span>
+        <span class="sb-val">28 sept. → 4 oct.</span>
+        <span class="sb-sub">plan des séances dans RunMotion · kiné lundi et jeudi</span>
+      </div>
+      <div class="sb-item sb-alert">
+        <span class="sb-key">Inscription à prendre</span>
+        <span class="sb-val">D2B · Le Touquet <span class="sb-when">ouvertes</span></span>
+        <span class="sb-sub">19 € sur traildes2baies.fr · depuis fin août</span>
+      </div>
+      <div class="sb-item">
+        <span class="sb-key">Prochaine course</span>
+        <span class="sb-val">Clam Trail <span class="tl-countdown" data-target="2026-10-18T10:00:00"></span></span>
+        <span class="sb-sub">10 km · 128 m D+ · dossard pris</span>
+      </div>
+      <div class="sb-item sb-goal">
+        <span class="sb-key">Objectif A</span>
+        <span class="sb-val">La Directissime <span class="tl-countdown" data-target="2027-09-12T10:00:00"></span></span>
+        <span class="sb-sub">34 km · +770 / −1 800 m · puy de Dôme → Cournon</span>
+      </div>
+    </div>
+
+    <div class="card card-accent" style="margin-bottom:1.5rem;">
+      <h3 style="margin-bottom:0.75rem;">À faire cette semaine</h3>
+      <ul class="todo-list">
+        <li class="todo-item is-urgent"><span class="todo-box"></span><div><strong>Prendre le dossard du D2B</strong> — inscriptions ouvertes depuis fin août, 19 € sur <a href="https://traildes2baies.fr/" target="_blank" rel="noopener">traildes2baies.fr</a>. C'est la seule étape de la feuille de route encore sans dossard.</div></li>
+        <li class="todo-item"><span class="todo-box"></span><div><strong>Kiné jeudi 1<sup>er</sup> octobre, 17 h 45</strong> — et me dire ce qui a été fait (exercices, séries, charges), comme pour celle de lundi, pour que le renfo soit logué.</div></li>
+        <li class="todo-item"><span class="todo-box"></span><div><strong>Remesurer la FC de repos</strong> — dernière valeur 63 bpm le 12/09, en hausse. Une mesure au réveil, avant de te lever, suffit.</div></li>
+        <li class="todo-item"><span class="todo-box"></span><div><strong>Réserver l'hébergement du Rock'Angel</strong> (5 déc., Roquefort-sur-Soulzon) — petit village, offre limitée : mieux vaut s'y prendre deux mois avant.</div></li>
+        <li class="todo-item"><span class="todo-box"></span><div><strong>Boire au moins 2 L d'eau par jour</strong> — seulement 0,25 L noté mardi, alors que tu as couru le soir. Pense à me dire aussi ce que tu bois, pas seulement ce que tu manges.</div></li>
+        <li class="todo-item"><span class="todo-box"></span><div><strong>M'envoyer les séances RunMotion de la semaine</strong> — je n'y ai pas accès : dis-moi ce qui est prévu jour par jour et je le place ci-dessous.</div></li>
+      </ul>
+      <p class="muted" style="font-size:0.75rem; margin:0.75rem 0 0;">À garder en tête, sans urgence : la date 2027 et l'ouverture des inscriptions de la Directissime ne sont pas encore publiées ; le choix du trail de printemps-été 27 se fera après Forez.</p>
+    </div>
+
+    <!-- JOUR PAR JOUR -->
+    <div class="day-list">
+      <div class="day-row" data-date="2026-09-28">
+        <div class="day-date">
+          <span class="day-flag">Aujourd'hui</span>
+          <span class="day-name">Lundi</span>
+          <span class="day-num">28</span>
+        </div>
+        <div class="day-acts">
+          <div class="act">
+            <span class="sortie-badge sb-frac">RENFO</span>
+            <div class="act-title"><span class="kine">Kiné</span> · 18 h 15</div>
+            <p class="act-desc">Rendez-vous prévu. Contenu pas encore transmis : dis-moi ce qui a été fait pour le loguer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-row" data-date="2026-09-29">
+        <div class="day-date">
+          <span class="day-flag">Aujourd'hui</span>
+          <span class="day-name">Mardi</span>
+          <span class="day-num">29</span>
+        </div>
+        <div class="day-acts">
+          <div class="act">
+            <span class="sortie-badge sb-ef">COURSE</span>
+            <div class="act-title">9,2 km · 154 m D+ · 55 min · fait</div>
+            <p class="act-desc">Sortie du soir à Clamart, 6:00/km, cadence 168 spm. Deux records personnels Strava sur la sortie.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-row" data-date="2026-09-30">
+        <div class="day-date">
+          <span class="day-flag">Aujourd'hui</span>
+          <span class="day-name">Mercredi</span>
+          <span class="day-num">30</span>
+        </div>
+        <div class="day-acts">
+          <div class="act act-rest">
+            <span class="sortie-badge sb-rest">PLAN</span>
+            <div class="act-title">Séance RunMotion</div>
+            <p class="act-desc">Selon le plan RunMotion — à me transmettre pour l'afficher ici.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-row" data-date="2026-10-01">
+        <div class="day-date">
+          <span class="day-flag">Aujourd'hui</span>
+          <span class="day-name">Jeudi</span>
+          <span class="day-num">1<sup>er</sup></span>
+        </div>
+        <div class="day-acts">
+          <div class="act">
+            <span class="sortie-badge sb-frac">RENFO</span>
+            <div class="act-title"><span class="kine">Kiné</span> · 17 h 45</div>
+            <p class="act-desc">Compte comme une des séances de renfo de la semaine.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-row" data-date="2026-10-02">
+        <div class="day-date">
+          <span class="day-flag">Aujourd'hui</span>
+          <span class="day-name">Vendredi</span>
+          <span class="day-num">2</span>
+        </div>
+        <div class="day-acts">
+          <div class="act act-rest">
+            <span class="sortie-badge sb-rest">PLAN</span>
+            <div class="act-title">Séance RunMotion</div>
+            <p class="act-desc">Selon le plan RunMotion — à me transmettre pour l'afficher ici.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-row" data-date="2026-10-03">
+        <div class="day-date">
+          <span class="day-flag">Aujourd'hui</span>
+          <span class="day-name">Samedi</span>
+          <span class="day-num">3</span>
+        </div>
+        <div class="day-acts">
+          <div class="act act-rest">
+            <span class="sortie-badge sb-rest">PLAN</span>
+            <div class="act-title">Séance RunMotion</div>
+            <p class="act-desc">Selon le plan RunMotion — à me transmettre pour l'afficher ici.</p>
+          </div>
+        </div>
+      </div>
+      <div class="day-row" data-date="2026-10-04">
+        <div class="day-date">
+          <span class="day-flag">Aujourd'hui</span>
+          <span class="day-name">Dimanche</span>
+          <span class="day-num">4</span>
+        </div>
+        <div class="day-acts">
+          <div class="act act-rest">
+            <span class="sortie-badge sb-rest">PLAN</span>
+            <div class="act-title">Séance RunMotion</div>
+            <p class="act-desc">Selon le plan RunMotion — à me transmettre pour l'afficher ici. Dernier dimanche à deux semaines du Clam Trail.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== ARCHIVES (Cette semaine + Plan, gelées le 27/09/2026) ========== -->
   <section id="archives" class="section">
     <div class="section-title">Archives · Cette semaine &amp; Plan</div>
@@ -848,10 +992,10 @@
   </section>
 
   <!-- ========== OBJECTIF 26-27 (ligne de temps des courses) ========== -->
-  <section id="objectif" class="section active">
-    <div class="section-title">Objectif 26-27 · La route vers le Sancy</div>
+  <section id="objectif" class="section">
+    <div class="section-title">Objectif 26-27 · La route vers la Directissime</div>
 
-    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Cinq étapes fermes — Clam Trail en octobre, le Rock'Angel en décembre, le D2B en janvier, Forez en mars, le Sancy en septembre. Plus aucun point de choix ouvert depuis le 17 août. Chaque étape porte tout ce qui la concerne : présentation de la course, compte à rebours, temps cible, état du dossard, rôle dans la préparation, stratégie et logistique. Le tableau en bas de page récapitule les dates d'ouverture des inscriptions des courses de repli, et <strong>Palmarès</strong> garde les résultats une fois les courses passées.</p>
+    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Quatre étapes fermes — Clam Trail en octobre, le Rock'Angel en décembre, le D2B en janvier, Forez en mars —, un trail de printemps-été 2027 encore à choisir parmi cinq candidats, puis l'objectif final : <strong>la Directissime des Grands Trails Esprit Volcans</strong> en septembre 2027, qui remplace le Sancy depuis le 29 septembre 2026. Chaque étape porte tout ce qui la concerne : présentation de la course, compte à rebours, temps cible, état du dossard, rôle dans la préparation, stratégie et logistique. Le tableau en bas de page récapitule les dates d'ouverture des inscriptions des courses de repli, et <strong>Palmarès</strong> garde les résultats une fois les courses passées.</p>
 
     <div class="race-timeline">
 
@@ -918,7 +1062,7 @@
           </div>
           <div class="rs-cell">
             <span class="rs-key">Rôle dans la prépa</span>
-            <p>Premier vrai test de dénivelé de la feuille de route : <strong>730 m sur 18 km, soit 40 m/km</strong>, quatre fois l'ordinaire d'entraînement et le terrain le plus proche du Sancy que puisse offrir un hiver en Île-de-France (causses et corniches calcaires). Sert à calibrer la descente technique avant de retrouver du D+ plus sérieux à Forez puis au Sancy.</p>
+            <p>Premier vrai test de dénivelé de la feuille de route : <strong>730 m sur 18 km, soit 40 m/km</strong>, quatre fois l'ordinaire d'entraînement et un terrain de causses et de corniches calcaires introuvable en Île-de-France. Sert surtout à calibrer la descente technique — le cœur de la Directissime — avant Forez puis le trail de printemps-été.</p>
           </div>
           <div class="rs-cell">
             <span class="rs-key">Stratégie</span>
@@ -991,7 +1135,7 @@
         <div class="rs-grid">
           <div class="rs-cell">
             <span class="rs-key">Objectif · temps cible</span>
-            <p>Répétition générale Sancy.<br><span class="rs-target">4h00 – 4h25</span></p>
+            <p>Répétition sur terrain volcanique.<br><span class="rs-target">4h00 – 4h25</span></p>
           </div>
           <div class="rs-cell">
             <span class="rs-key">Dossard</span>
@@ -999,7 +1143,7 @@
           </div>
           <div class="rs-cell">
             <span class="rs-key">Rôle dans la prépa</span>
-            <p>Le seul terrain de cette liste déjà connu : édition 2026 courue en 3h05 sur 24,4 km / 933 m D+. L'édition 2027 ajoute <strong style="color:var(--accent);">9 km et 170 m D+</strong> — même massif volcanique que le Sancy, même gestion d'effort sur plus de quatre heures. C'est la meilleure jauge disponible pour mesurer la progression réelle sur un an, terrain identique.</p>
+            <p>Le seul terrain de cette liste déjà connu : édition 2026 courue en 3h05 sur 24,4 km / 933 m D+. L'édition 2027 ajoute <strong style="color:var(--accent);">9 km et 170 m D+</strong> — même Auvergne volcanique que la Directissime, même distance (33 contre 34 km), même gestion d'effort sur quatre heures. C'est la meilleure jauge disponible pour mesurer la progression réelle sur un an, terrain identique.</p>
           </div>
           <div class="rs-cell">
             <span class="rs-key">Stratégie</span>
@@ -1012,46 +1156,129 @@
         </div>
       </div>
 
-      <!-- OBJECTIF A · SANCY -->
-      <div class="race-step is-goal">
+      <!-- ÉTAPE 5 · TRAIL DE PRINTEMPS-ÉTÉ 27 (choix ouvert) -->
+      <div class="race-step is-choice">
         <div class="rs-top">
-          <span class="rs-badge rs-badge-goal">🏔️ Objectif A · finisher</span>
+          <span class="rs-badge rs-badge-choice">Étape 5 · à définir</span>
           <span class="rs-top-right">
             <span class="utmb-badges">
               <span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span>
-              <span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span>
             </span>
-            <span class="rs-when">Sept. 2027 · à confirmer</span>
+            <span class="rs-when">Mai à juillet 2027</span>
           </span>
         </div>
-        <div class="rs-event">Trails du Sancy Oxsitis GR Invest · XTTR63</div>
-        <h3 class="rs-name"><a href="https://www.xttr63.com/nos-evenements/trails-du-sancy-oxsitis-gr-invest/" target="_blank" rel="noopener">Le Trail du Sancy</a></h3>
-        <div class="rs-specs">33,5 km · 2 000 m D+ · Le Mont-Dore (63) · départ et arrivée au parc municipal</div>
+        <div class="rs-event">Cinq candidats</div>
+        <h3 class="rs-name">Trail de printemps-été 27</h3>
+        <div class="rs-specs">De 22,5 à 42 km · de 1 160 à 2 000 m D+ · les cinq sont des courses UTMB Index</div>
 
-        <div class="race-cd" data-target="2027-09-12T07:00:00"></div>
+        <p class="rs-desc">Le grand test de dénivelé de la saison, entre Forez (mars) et la Directissime (septembre). C'est là que les jambes doivent rencontrer une vraie descente longue avant le jour J : plus le D− est gros, plus la course prépare bien à la Directissime.</p>
 
-        <p class="rs-desc">Les Trails du Sancy Oxsitis GR Invest, organisés par XTTR63 au Mont-Dore, se déroulent sur le massif du Sancy, le plus haut massif volcanique du Massif central. Le format estival de 33,5 km culmine à 2 000 m de D+, départ et arrivée au parc municipal du Mont-Dore, dans un décor de vallées glaciaires et de sommets dépassant 1 800 m.</p>
+        <div class="fmt-group">
+          <div class="fmt-group-label">Mai · Maxi-Race du lac d'Annecy (74)</div>
+          <div class="fmt-grid">
+            <div class="fmt-card">
+              <div class="fmt-top"><span class="fmt-name">Marathon eXpérience</span><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></div>
+              <div class="fmt-specs">~42 km · D+ 1 600 – 1 800 · dim. 30 mai 2027</div>
+              <p class="fmt-line">La plus longue des cinq. Distance et D+ exacts confirmés chaque année selon les autorisations — la catégorie UTMB a varié entre 20K et 50K selon les éditions. <a class="ext-link" href="https://www.finishers.com/course/maxi-race-lac-annecy" target="_blank" rel="noopener">Voir la course</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fmt-group">
+          <div class="fmt-group-label">Juin · Sancy Trail by Aûpa Outdoor, Chambon-sur-Lac (63)</div>
+          <div class="fmt-grid">
+            <div class="fmt-card">
+              <div class="fmt-top"><span class="fmt-name">Chambon Neige et Lac</span><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></div>
+              <div class="fmt-specs">24 km · D+ 1 160 · mi-juin 2027, date à confirmer</div>
+              <p class="fmt-line">Massif du Sancy, à 45 minutes de Clermont : le terrain le plus proche de celui de la Directissime. <a class="ext-link" href="https://www.finishers.com/course/sancy-trail" target="_blank" rel="noopener">Voir la course</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fmt-group">
+          <div class="fmt-group-label">Juin · Trail des 3 Pics, Arbas (31)</div>
+          <div class="fmt-grid">
+            <div class="fmt-card">
+              <div class="fmt-top"><span class="fmt-name">T3P · 22,5 km</span><span class="utmb-badges"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></span></div>
+              <div class="fmt-specs">22,5 km · D+ 1 410 · fin juin 2027 (2026 : 28 juin)</div>
+              <p class="fmt-line">Le plus raide des cinq au kilomètre (63 m/km), en Pyrénées. Attention au nom : sur le site officiel, le 22,5 km s'appelle <strong>T3P M</strong> ; le T3P L fait 36 km et 2 200 m D+. <a class="ext-link" href="https://www.finishers.com/course/trail-des-3-pics-arbas" target="_blank" rel="noopener">Voir la course</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fmt-group">
+          <div class="fmt-group-label">Juin · Trail du Bois des Côtes, Bailleval (60)</div>
+          <div class="fmt-grid">
+            <div class="fmt-card">
+              <div class="fmt-top"><span class="fmt-name">Trail 32 km</span><span class="utmb-badges"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></span></div>
+              <div class="fmt-specs">32 km · D+ 1 200 – 1 300 · fin juin 2027</div>
+              <p class="fmt-line"><strong>Le plus simple à caser :</strong> dans l'Oise, à une heure de Paris, faisable dans la journée. <a class="ext-link" href="https://www.finishers.com/course/trail-du-bois-des-cotes" target="_blank" rel="noopener">Voir la course</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fmt-group">
+          <div class="fmt-group-label">Juillet · Trail des 4×1800, Le Lioran (15)</div>
+          <div class="fmt-grid">
+            <div class="fmt-card">
+              <div class="fmt-top"><span class="fmt-name">La 4×1800</span><span class="utmb-badges"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></span></div>
+              <div class="fmt-specs">32 km · D+ 2 000 · ~mi-juillet 2027, date à confirmer</div>
+              <p class="fmt-line">Le plus gros dénivelé de la liste, dans le Cantal. Encore huit semaines avant la Directissime : juste assez pour récupérer. <a class="ext-link" href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Voir la course</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rs-grid">
+          <div class="rs-cell">
+            <span class="rs-key">Contrainte</span>
+            <p>Finir au moins six à huit semaines avant la Directissime (12 septembre, à confirmer) pour récupérer puis refaire un bloc de descente. Les cinq dates tiennent, la 4×1800 étant la plus serrée.</p>
+          </div>
+          <div class="rs-cell">
+            <span class="rs-key">À décider</span>
+            <p>Après Forez 2027, selon ce que les cuisses encaissent en descente sur 33 km. Les inscriptions de la Maxi-Race et du Sancy Trail ouvrent en général tôt : à surveiller dès janvier.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJECTIF A · LA DIRECTISSIME -->
+      <div class="race-step is-goal">
+        <div class="rs-top">
+          <span class="rs-badge rs-badge-goal">🌋 Objectif A · finisher</span>
+          <span class="rs-top-right">
+            <span class="utmb-badges">
+              <span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span>
+            </span>
+            <span class="rs-when">~Dim. 12 sept. 2027 · à confirmer</span>
+          </span>
+        </div>
+        <div class="rs-event">Grands Trails Esprit Volcans · Clermont-Ferrand</div>
+        <h3 class="rs-name"><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">La Directissime</a></h3>
+        <div class="rs-specs">34 km · +770 m / −1 800 m · du sommet du puy de Dôme à la Grande Halle d'Auvergne (Cournon, 63) · en ligne</div>
+
+        <div class="race-cd" data-target="2027-09-12T10:00:00"></div>
+
+        <p class="rs-desc">La Directissime est la course phare des Grands Trails Esprit Volcans, organisés chaque septembre autour de Clermont-Ferrand. Départ à 10h00 du sommet du puy de Dôme, arrivée à la Grande Halle d'Auvergne à Cournon : un tracé en ligne, à dominante très descendante, qui traverse deux sites inscrits au patrimoine mondial de l'UNESCO, la Chaîne des Puys et la faille de Limagne.</p>
 
         <div class="rs-grid">
           <div class="rs-cell">
             <span class="rs-key">Objectif · temps cible</span>
-            <p><strong style="color:#b482ff;">FINISHER.</strong><br><span class="rs-target" style="color:#b482ff;">5h00 – 5h45</span></p>
+            <p><strong style="color:#b482ff;">FINISHER.</strong><br><span class="rs-target" style="color:#b482ff;">~3h45 – 4h15</span><br><span class="muted" style="font-size:0.72rem;">Estimation à partir de l'allure d'effort de Forez 2026 — à recaler après Forez 2027.</span></p>
           </div>
           <div class="rs-cell">
             <span class="rs-key">Dossard</span>
-            <p><strong style="color:var(--accent2);">Pas encore ouvertes.</strong> À vérifier directement : l'hypothèse « ouverture en novembre » inscrite ici jusqu'ici semble fausse — l'édition qui vient de se courir ce week-end (27-28 septembre 2026) a ouvert ses inscriptions individuelles début avril, soit ~5 mois avant la course, pas 10. Si le même calendrier s'applique à l'édition 2027, l'ouverture serait plutôt à surveiller vers <strong>avril 2027</strong> sur <a href="https://www.xttr63.com/nos-evenements/trails-du-sancy-oxsitis-gr-invest/" target="_blank" rel="noopener">xttr63.com</a> — à confirmer, l'organisateur ne l'a pas encore annoncé.</p>
+            <p><strong style="color:var(--accent2);">Pas encore ouvertes.</strong> Date d'ouverture 2027 non trouvée — à surveiller sur <a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Finishers</a>. L'édition 2026 s'est courue le 13 septembre ; la date 2027 retenue ici (12 septembre) suit la même logique et reste à confirmer.</p>
           </div>
           <div class="rs-cell">
             <span class="rs-key">Rôle dans la prépa</span>
-            <p>C'est l'objectif final : le maximum atteint à ce jour est Forez 2026 (933 m D+ sur 24,4 km), le Sancy demande <strong style="color:#b482ff;">2 000 m sur 33,5 km</strong> — plus du double de dénivelé. Après le bloc d'hiver et la répétition générale de Forez 2027, la distance ne pose plus de problème ; c'est le dénivelé cumulé sur plus de cinq heures qui fait la course.</p>
+            <p>L'objectif final, avec un profil à l'inverse du Sancy : peu de montée (<strong>770 m, 23 m/km</strong>) mais <strong style="color:#b482ff;">1 800 m de descente, soit 53 m/km</strong>. Le chantier n'est plus d'aller chercher du D+, c'est d'apprendre aux cuisses à encaisser une descente de trois heures : travail excentrique en renfo, descentes répétées en sortie, et un trail de printemps-été choisi pour son D−.</p>
           </div>
           <div class="rs-cell">
             <span class="rs-key">Stratégie</span>
-            <p>Marche rapide assumée dans toute côte au-delà de 10 %. Ravitaillement toutes les 40 minutes dès le départ. Allure contenue sur les deux premières heures pour garder de la réserve sur la fin, le chrono restant secondaire face à l'objectif finisher.</p>
+            <p>Ne pas s'emballer dans la première descente depuis le sommet : c'est là qu'on grille les quadriceps pour la suite. Cadence haute et appuis courts dans toutes les pentes, marche assumée sur les rares montées, et garder de la cuisse pour les dix derniers kilomètres.</p>
           </div>
           <div class="rs-cell is-wide">
             <span class="rs-key">Logistique</span>
-            <p>Le Mont-Dore (Puy-de-Dôme), ~4h30-5h de route depuis Paris. Une nuit sur place est indispensable vu l'horaire de départ matinal ; réserver l'hébergement tôt, c'est l'épreuve phare du massif et l'affluence est forte. Vérifier la liste de matériel obligatoire (probable sur ce format) dès sa publication par XTTR63.</p>
+            <p>Clermont-Ferrand, ~3h30 de train ou de route depuis Paris. Nuit sur place la veille indispensable. Départ au sommet du puy de Dôme : l'accès (navettes, train panoramique des Dômes) sera précisé par l'organisation — à vérifier dès la publication du guide coureur. Arrivée à Cournon, prévoir le retour vers l'hébergement.</p>
           </div>
         </div>
       </div>
@@ -1059,12 +1286,12 @@
       <!-- HORIZON 2028 -->
       <div class="race-step is-horizon">
         <div class="rs-top">
-          <span class="rs-badge rs-badge-muted">Horizon · si le Sancy passe</span>
+          <span class="rs-badge rs-badge-muted">Horizon · si la Directissime passe</span>
           <span class="rs-when" style="color:var(--muted);">2028 ?</span>
         </div>
         <h3 class="rs-name" style="color:var(--muted);">Marathon de Paris — 42,195 km</h3>
         <div class="rs-specs">42,195 km · route · avenue des Champs-Élysées</div>
-        <p class="rs-desc" style="margin-top:0.6rem;">Rien n'est décidé, et rien ne se décide avant la ligne d'arrivée du Mont-Dore. Mais un trail de 33,5 km à 2 000 m D+ terminé, c'est un socle d'endurance qui rend le marathon route accessible à moyen terme. L'édition 2027 est déjà datée au dimanche 11 avril, inscriptions annoncées pour septembre 2026 — à rouvrir en octobre 2027 pour l'édition suivante.</p>
+        <p class="rs-desc" style="margin-top:0.6rem;">Rien n'est décidé, et rien ne se décide avant la ligne d'arrivée de Cournon. Mais un trail de 34 km terminé, c'est un socle d'endurance qui rend le marathon route accessible à moyen terme. L'édition 2027 est déjà datée au dimanche 11 avril, inscriptions annoncées pour septembre 2026 — à rouvrir en octobre 2027 pour l'édition suivante.</p>
       </div>
 
     </div>
@@ -1072,7 +1299,7 @@
     <details class="fold" open>
       <summary>Trails à surveiller · dates d'ouverture des dossards</summary>
       <div class="fold-body">
-        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Les courses qui ne sont pas dans la feuille de route mais qu'il faut garder à l'œil : préparations grandeur nature avant le Sancy, alternatives de repli, ou objectifs d'après. Vérifié le 17 août 2026 — « non communiquée » signifie que l'organisateur n'a pas encore publié de date, pas qu'il n'y en a pas.</p>
+        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Les courses qui ne sont pas dans la feuille de route mais qu'il faut garder à l'œil : alternatives de repli, préparations complémentaires, ou objectifs d'après. Les candidats du trail de printemps-été 27 sont dans l'étape 5 au-dessus, pas ici. Vérifié le 17 août 2026, complété le 29 septembre — « non communiquée » signifie que l'organisateur n'a pas encore publié de date, pas qu'il n'y en a pas.</p>
         <div class="table-scroll">
         <table>
           <thead>
@@ -1086,7 +1313,7 @@
               <td class="muted">Oui</td>
               <td>Week-end de l'Ascension<br><span class="muted" style="font-size:0.75rem;">6–9 mai 2027</span></td>
               <td class="muted"><strong style="color:var(--red);">Ouverture manquée</strong> — inscriptions ouvertes le 24 août 2026 à 12 h, 600 places parties trop vite. <strong>Pas de dossard.</strong></td>
-              <td>Écartée du plan faute de place. Elle devait être la préparation grandeur nature n°1 du Sancy ; la semaine de mi-mai devient une sortie longue délocalisée à la place. À retenter en 2028, ou à remplacer si une autre course de mai se libère.</td>
+              <td>Écartée du plan faute de place. Elle devait être la préparation grandeur nature de mai ; c'est désormais le rôle du trail de printemps-été 27 (étape 5). À retenter en 2028.</td>
             </tr>
             <tr>
               <td><strong><a href="https://www.marathondeauville.fr/semi-marathon" target="_blank" rel="noopener">Marathon Int. de Deauville</a></strong><br><span class="muted" style="font-size:0.75rem;">Deauville (14)</span></td>
@@ -1107,15 +1334,6 @@
               <td><strong style="color:var(--accent2);">La seule course d'hiver à dépasser 900 m D+.</strong> Écartée le 17 août, mais à garder à l'œil : si le bloc de volume de janvier se passe bien, elle reste la meilleure répétition possible avant Forez.</td>
             </tr>
             <tr>
-              <td><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15)</span></td>
-              <td>La 4×1800</td>
-              <td>32 km · D+2000</td>
-              <td><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
-              <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-juil. 2027</td>
-              <td class="muted">Non communiquée</td>
-              <td><strong style="color:var(--accent2);">Le profil du Sancy à deux mois près</strong> — même distance, même dénivelé. La meilleure répétition possible.</td>
-            </tr>
-            <tr>
               <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Grands Trails d'Auvergne</a></strong><br><span class="muted" style="font-size:0.75rem;">Aubusson-d'Auvergne (63)</span></td>
               <td>Le Trail du Lac</td>
               <td>27 km · D+850</td>
@@ -1131,7 +1349,7 @@
               <td><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
               <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-oct. 2027</td>
               <td class="muted"><strong style="color:var(--accent2);">~mi-janvier 2027, à midi</strong> <span style="font-size:0.75rem;">(2026 : lundi 19 janvier)</span> — les places partent en quelques heures</td>
-              <td>Après le Sancy. À noter si l'envie prend, mais l'inscription se joue un an avant.</td>
+              <td>Un mois après la Directissime. À noter si l'envie prend, mais l'inscription se joue un an avant.</td>
             </tr>
             <tr>
               <td><strong><a href="http://www.trailduchateaudepierrefonds.fr/" target="_blank" rel="noopener">Trail du Château de Pierrefonds</a></strong><br><span class="muted" style="font-size:0.75rem;">Pierrefonds (60)</span></td>
@@ -1143,13 +1361,31 @@
               <td>Même créneau que la Romagnatoise. Alternative de proximité si le déplacement en Auvergne tombe à l'eau.</td>
             </tr>
             <tr>
-              <td><strong><a href="https://www.finishers.com/course/maxi-race-lac-annecy" target="_blank" rel="noopener">Maxi-Race du lac d'Annecy</a></strong><br><span class="muted" style="font-size:0.75rem;">Annecy (74)</span></td>
-              <td>Format à préciser<br><span class="muted" style="font-size:0.75rem;">Quart de tOur ~20 km à tOur 100 km</span></td>
-              <td class="muted">Distance/D+ variables selon le format et l'édition</td>
-              <td class="muted">Oui</td>
-              <td>Ven. 28 → dim. 30 mai 2027</td>
+              <td><strong><a href="https://www.finishers.com/course/trail-les-40-bosses" target="_blank" rel="noopener">Les 40 Bosses</a></strong><br><span class="muted" style="font-size:0.75rem;">Saint-Leu-la-Forêt (95) · forêt de Montmorency</span></td>
+              <td>Le 20 km<br><span class="muted" style="font-size:0.75rem;">ou le 45 km</span></td>
+              <td>20 km · D+900<br><span class="muted" style="font-size:0.75rem;">45 km · D+2100</span></td>
+              <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span><br><span class="utmb-badge utmb-50k" style="margin-top:0.25rem;"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
+              <td>Sam. 5 ou dim. 6 déc. 2026<br><span class="muted" style="font-size:0.75rem;">à confirmer · 2025 : sam. 6 décembre</span></td>
               <td class="muted">Non communiquée</td>
-              <td>Ajoutée à surveiller. Le Marathon eXpérience (~38–42 km, 1 600–1 800 m D+) est le format le plus proche du profil Sancy ; à confirmer avec toi quel format viser avant d'aller plus loin.</td>
+              <td><strong style="color:var(--accent2);">Le vrai D+ d'Île-de-France</strong>, à 30 minutes de Paris. Tombe le même week-end que le Rock'Angel (5 déc.) : incompatible cette année, à garder pour décembre 2027 ou comme repli si le déplacement dans l'Aveyron tombe à l'eau.</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/trail-des-passerelles-du-monteynard" target="_blank" rel="noopener">Trail des Passerelles du Monteynard</a></strong><br><span class="muted" style="font-size:0.75rem;">Lac de Monteynard (38) · Isère</span></td>
+              <td>Trail de Côte Rouge<br><span class="muted" style="font-size:0.75rem;">ou le Maratrail</span></td>
+              <td>27 km · D+1300<br><span class="muted" style="font-size:0.75rem;">40 km · D+2150</span></td>
+              <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span><br><span class="utmb-badge utmb-50k" style="margin-top:0.25rem;"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
+              <td>Juillet 2027<br><span class="muted" style="font-size:0.75rem;">festival du 3 au 11 juil., date par course à confirmer</span></td>
+              <td class="muted">Non communiquée</td>
+              <td>Passerelles himalayennes au-dessus du lac. Même créneau que la 4×1800 : une alternative de juillet si aucun des cinq candidats de l'étape 5 ne convient.</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/trail-des-hauts-forts-Morzine-Avoriaz" target="_blank" rel="noopener">Trail des Hauts-Forts</a></strong><br><span class="muted" style="font-size:0.75rem;">Morzine-Avoriaz (74) · Portes du Soleil</span></td>
+              <td>Trail des Mines d'Or<br><span class="muted" style="font-size:0.75rem;">ou le Fornet (36 km)</span></td>
+              <td>23 km · D+1850<br><span class="muted" style="font-size:0.75rem;">36 km · D+2820</span></td>
+              <td class="muted">Oui</td>
+              <td>Début août 2027<br><span class="muted" style="font-size:0.75rem;">2026 : 8 août</span></td>
+              <td class="muted">Non communiquée</td>
+              <td>Vraie haute montagne, 80 m/km sur le 23 km. Cinq semaines seulement avant la Directissime : trop près pour un gros effort, plutôt à garder pour l'après.</td>
             </tr>
           </tbody>
         </table>
@@ -1226,7 +1462,7 @@
         </tbody>
       </table>
       </div>
-      <p class="info">Deux courses chronométrées à ce jour (temps officiels ; les temps de déplacement Strava, souvent différents, ne sont pas repris ici). Les prochaines étapes de la feuille de route — Clam Trail 2026, Rock'Angel, D2B, Forez 2027, le Sancy — viendront s'ajouter ici au fil des résultats. Pour la préparation à venir, voir <strong>Objectif 26-27</strong>.</p>
+      <p class="info">Deux courses chronométrées à ce jour (temps officiels ; les temps de déplacement Strava, souvent différents, ne sont pas repris ici). Les prochaines étapes de la feuille de route — Clam Trail 2026, Rock'Angel, D2B, Forez 2027, le trail de printemps-été, la Directissime — viendront s'ajouter ici au fil des résultats. Pour la préparation à venir, voir <strong>Objectif 26-27</strong>.</p>
     </div>
 
     <hr class="divider">
@@ -1369,8 +1605,8 @@
       <h3 style="margin-bottom:0.6rem;">Ce que disent les chiffres au 27 septembre 2026</h3>
       <p style="font-size:0.85rem;"><strong>La vraie progression de l'année, c'est la cadence.</strong> 154 pas/min en novembre, 167 en juin : +13 en huit mois, avec une courbe qui ne redescend jamais. C'est la métrique la plus utile de tout le tableau, parce qu'une cadence haute réduit le temps de contact au sol et l'impact par foulée en descente. L'objectif de 170 est maintenant atteint : <strong>171 spm en septembre</strong>, la mesure reprenant après le trou de juillet-août.</p>
       <p style="font-size:0.85rem;"><strong>Juin était le meilleur mois de la première série, et de loin.</strong> 75,5 km à 5'07 par km-effort, pour une FC moyenne de 145 — la plus basse des huit mois, alors que février tournait à 165. L'efficience cardiaque le confirme : 893 battements par km-effort en février, 780 en juin, soit 13 % de mieux. C'est la référence à retrouver maintenant que la mesure reprend.</p>
-      <p style="font-size:0.85rem;"><strong>Le volume n'a jamais été le problème.</strong> ~76 km par mois de moyenne sur la première série, avec un pic à 118,9 km en avril. Septembre s'inscrit dans la même logique avec 89,1 km : tu sais encaisser du kilométrage régulier — ce n'est pas là que se joue le Sancy.</p>
-      <p style="font-size:0.85rem;"><strong>Le chantier, c'est le dénivelé par kilomètre.</strong> Tu tournes autour de 9 à 10 m/km hors mois de course, avec une pointe à 17,7 en mars. Le Sancy demande <strong>60 m/km</strong>. C'est un facteur six, et c'est le seul écart qui compte vraiment. La trajectoire cible du graphe D+/km est là pour ça : 33 m/km à Forez en mars 2027, puis la montée finale.</p>
+      <p style="font-size:0.85rem;"><strong>Le volume n'a jamais été le problème.</strong> ~76 km par mois de moyenne sur la première série, avec un pic à 118,9 km en avril. Septembre s'inscrit dans la même logique avec 89,1 km : tu sais encaisser du kilométrage régulier — ce n'est pas là que se joue la Directissime.</p>
+      <p style="font-size:0.85rem;"><strong>Le chantier, c'est la descente.</strong> Depuis le 29 septembre, l'objectif final est la Directissime : <strong>770 m de D+ seulement (23 m/km), mais 1 800 m de D− (53 m/km)</strong>. En montée, l'écart avec tes 9 à 10 m/km habituels (pointe à 17,7 en mars) n'est plus que d'un facteur deux et demi. En descente, en revanche, rien dans l'entraînement actuel ne ressemble à trois heures de pente : c'est l'écart qui compte vraiment. La trajectoire cible du graphe D+/km reste utile — pas de descente sans montée d'abord — avec 33 m/km à Forez en mars 2027 et un pic au printemps-été.</p>
       <p style="font-size:0.85rem;"><strong>Le 23 septembre a ouvert un nouvel axe de travail : l'intensité.</strong> 8,95 km à 5:45/km, <strong>FC moyenne 165, pic à 179</strong> — un vrai tempo, le premier depuis la reprise, sur terrain plat (24 m D+ seulement). Jusqu'ici, l'entraînement portait surtout sur le volume et le D+ ; cette séance montre que le moteur aérobie répond aussi bien à l'intensité pure. Un bon point de départ pour réintroduire progressivement du travail de vitesse dans les semaines qui viennent.</p>
       <p style="font-size:0.85rem;"><strong>Le renfo continue de gagner en qualité de suivi, avec une ombre à surveiller.</strong> La kiné du 21 septembre est la deuxième séance d'affilée à être loguée avec son contenu complet (fentes 3×20 à 20 kg, pas chassés élastique), et introduit un nouvel exercice au catalogue — le <strong>step down latéral</strong>, un travail excentrique du quadriceps directement transférable à la descente. Sur les <strong>27 séances de renfo loguées depuis le 7 juillet</strong>, 4 sont tombées sur la seule semaine du 21 au 27 septembre, au-dessus de l'objectif de fréquence. Mais la séance perso du 27 s'est visiblement arrêtée en cours de route — pompes en chute libre 20/12/6, gainage coupé à 2 séries au lieu de 3, calories Hevy anormalement basses : un signal de fatigue à ne pas ignorer, pas une séance à reproduire telle quelle.</p>
       <p style="font-size:0.85rem;"><strong>Septembre referme le trou de juillet-août : 89,1 km et 876 m de D+, soit 9,8 m/km, pour une allure d'effort de 5:11/km-effort et 800 battements par km-effort.</strong> La reprise Clinique du Coureur est terminée depuis le 5 ; c'est le premier mois de course continue depuis juin, donc le premier point de comparaison valable avec la première série. Un seul mois ne trace pas encore de tendance, mais la mesure redevient lisible.</p>
@@ -1435,10 +1671,10 @@
         <span><i style="background:var(--accent);"></i>Réel</span>
         <span><i style="background:#7eb8f5;"></i>Cible</span>
         <span><i style="background:var(--accent2);"></i>Forez · 33 m/km</span>
-        <span><i style="background:var(--red);"></i>Sancy · 60 m/km</span>
+        <span><i style="background:var(--red);"></i>Directissime · 23 m/km D+</span>
       </div>
-      <p class="info"><strong>C'est le principal point faible, et de loin.</strong> <strong>9,8 m/km pour ce premier mois</strong>, quand le Sancy en demande 60 — soit six fois plus. Le cardio et la cadence suivent déjà bien, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui les attend le jour J. C'est la preuve par les chiffres que le D+ ne viendra pas tout seul : il faudra aller le chercher, sortie longue après sortie longue.</p>
-      <p class="info" style="margin-top:0.5rem;">La courbe bleue est la trajectoire proposée, calée sur les objectifs de D+ hebdomadaire déjà inscrits dans l'onglet Sorties : montée progressive à 20 m/km d'ici décembre 2026, 24 en février, pic à 40 m/km en juillet 2027, puis affûtage. <strong>Un point important : la moyenne d'entraînement n'atteindra jamais les 60 m/km du jour J</strong>, et c'est normal — les sorties de semaine restent plates en Île-de-France. Ce qui doit approcher 60, c'est la <strong>sortie longue du samedi</strong> : c'est elle qu'il faut emmener à Fontainebleau, en Essonne, puis en Auvergne ou dans les Vosges en phase 4.</p>
+      <p class="info"><strong>C'est le principal point faible, et de loin.</strong> <strong>9,8 m/km en septembre</strong>, quand la Directissime demande 23 m/km en montée — et surtout <strong>53 m/km en descente</strong>, que ce graphe ne montre pas : chaque mètre de D+ en sortie est aussi un mètre de D− pour les cuisses. Le cardio et la cadence suivent déjà bien, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui les attend le jour J : il faudra aller chercher les pentes, sortie longue après sortie longue.</p>
+      <p class="info" style="margin-top:0.5rem;">La courbe bleue est la trajectoire proposée, calée sur les objectifs de D+ hebdomadaire déjà inscrits dans l'onglet Sorties : montée progressive à 20 m/km d'ici décembre 2026, 24 en février, pic à 40 m/km en juillet 2027 autour du trail de printemps-été, puis retour vers les 23 m/km du jour J. <strong>Pour la Directissime, la moyenne mensuelle compte moins que la sortie longue</strong> : c'est elle qu'il faut emmener sur des pentes longues — Fontainebleau, la vallée de Chevreuse, puis l'Auvergne l'été — en travaillant la descente autant que la montée.</p>
     </div>
 
     <hr class="divider">
@@ -1557,7 +1793,7 @@
         <h3 style="margin-bottom:0.6rem;">Comment se servir du catalogue</h3>
         <p style="font-size:0.85rem;">Chaque séance mélange cuisses, fessier, stabilité et abdos plutôt qu'une dominante isolée — 30 à 45 minutes, quatre à cinq exercices. Les dominantes visées restent fixes d'une semaine à l'autre, mais <strong>les exercices tournent</strong> : change au moins un exercice par dominante toutes les deux à trois semaines, pour éviter l'usure et la lassitude. Mélange du rapide (kettlebell, pas chassés) et du plus lent et efficace (excentrique, isométrie) plutôt qu'un seul registre.</p>
         <p style="font-size:0.85rem;">La séance du jour est proposée dans l'onglet <strong>Cette semaine</strong>, le suivi de ce que tu fais réellement — tonnage, assiduité, progression de charge — dans <strong>Profil</strong>.</p>
-        <p style="font-size:0.85rem; margin-bottom:0;"><strong>Le conseil de la semaine.</strong> Les cuisses restent la priorité : c'est le levier direct sur la descente, l'exigence la plus dure du Sancy. Mets <strong>fentes bulgares, pont fessier et presse une jambe</strong> dans au moins une des trois séances hebdomadaires. Descente lente sur les fentes, trois secondes : c'est le travail excentrique qui construit la résistance en D−, pas la charge.</p>
+        <p style="font-size:0.85rem; margin-bottom:0;"><strong>Le conseil de la semaine.</strong> Les cuisses restent la priorité : c'est le levier direct sur la descente, l'exigence numéro un de la Directissime (1 800 m de D−). Mets <strong>fentes bulgares, pont fessier et presse une jambe</strong> dans au moins une des trois séances hebdomadaires. Descente lente sur les fentes, trois secondes : c'est le travail excentrique qui construit la résistance en D−, pas la charge.</p>
       </div>
 
       <hr class="divider">
@@ -1995,7 +2231,7 @@
             <td><span class="mono" style="font-size:0.76rem;">60 min</span></td>
             <td style="font-size:0.8rem;">15 min d'échauffement, 8 à 10 × (3 min résistance forte, cadence basse 60–70 / 2 min souple), 10 min de retour au calme.</td>
             <td><span class="mono" style="font-size:0.76rem;">Z3–Z4 sur les blocs · 155–170</span></td>
-            <td style="font-size:0.8rem; color:var(--muted);">Cadence basse et résistance forte : c'est ce qui se rapproche le plus du geste de montée raide. Le levier principal pour le D+ du Sancy.</td>
+            <td style="font-size:0.8rem; color:var(--muted);">Cadence basse et résistance forte : c'est ce qui se rapproche le plus du geste de montée raide. Le levier principal pour le D+ des trails de montagne.</td>
           </tr>
           <tr>
             <td><span class="sortie-badge sb-velo">VÉLO</span> <strong>65 à 70 min</strong><br><span class="muted" style="font-size:0.75rem;">phase spécifique</span></td>
@@ -2095,7 +2331,7 @@
 
       <hr class="divider">
 
-      <h3 style="margin-bottom:0.75rem;">Stratégie course (valable Forez, Sancy)</h3>
+      <h3 style="margin-bottom:0.75rem;">Stratégie course (valable Forez, trail de printemps-été, Directissime)</h3>
       <div class="table-scroll">
       <table>
         <thead><tr><th>Moment</th><th>Quoi</th><th>Objectif</th></tr></thead>
@@ -2517,9 +2753,9 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20260929d" defer></script>
-<script src="data/nutrition.js?v=20260929d" defer></script>
-<script src="app.js?v=20260929d" defer></script>
+<script src="data/renfo.js?v=20260929e" defer></script>
+<script src="data/nutrition.js?v=20260929e" defer></script>
+<script src="app.js?v=20260929e" defer></script>
 
 </body>
 </html>

@@ -37,7 +37,7 @@ contexte.
 /maj seance j'ai fait 30 min de vélo d'appart ce matin, pas tracké
 
 /maj dossard je me suis inscrit à la VVX
-/maj dossard les inscriptions du Sancy ouvrent le 4 novembre à 10h
+/maj dossard les inscriptions de la Directissime ouvrent le 4 novembre à 10h
 /maj dossard Clam Trail : inscriptions ouvertes, 22 €
 
 /maj course Clam Trail 18/10
@@ -133,7 +133,26 @@ Profil utilisent tous `seriesFrom()` sur ce même tableau. Le graphe D+/km
 même sur les mois de reprise) : y ajouter la valeur réelle du mois à son
 index à chaque `/maj`.
 
-## 2 · Page « Cette semaine » — suspendu depuis le 27/09/2026, voir plus haut
+## 2 bis · Nouvelle page « Cette semaine » (29/09/2026)
+
+Seb a redemandé une page **Cette semaine** vivante (`#semaine`, premier onglet,
+actif par défaut) — distincte de l'ancienne, qui reste gelée dans Archives.
+Ce n'est plus un plan d'entraînement (il vit dans RunMotion, auquel on n'a
+pas accès) mais une **liste de tout ce que Seb a à faire** dans la semaine :
+
+- **Bandeau** : semaine, inscription à prendre en priorité, prochaine course,
+  objectif A (La Directissime).
+- **À faire cette semaine** (`.todo-list`, `.todo-item.is-urgent` pour le plus
+  pressé) : dossards à prendre, kinés à venir, mesures à refaire (FC repos),
+  réservations, rappels nutrition, infos à m'envoyer.
+- **Jour par jour** : kinés (depuis le commentaire du calendrier kiné dans
+  Archives → Plan), séances réelles d'après Strava, et « Séance RunMotion »
+  pour les jours à venir tant que Seb ne les a pas dictées. Ne jamais
+  inventer le contenu d'une séance RunMotion.
+
+À régénérer sur `/maj semaine` et à rafraîchir sur tout `/maj`.
+
+## 2 · Ancienne page « Cette semaine » — suspendue depuis le 27/09/2026, voir plus haut
 
 - **Bandeau** : phase et semaine en cours, prochaine inscription à surveiller
   (première échéance du tableau des dossards de la page Objectif), prochaine
@@ -255,7 +274,7 @@ en pleine largeur via `.rs-cell.is-wide`) :
    l'info reste introuvable ou contradictoire, le dire explicitement et
    proposer une meilleure estimation sourcée plutôt qu'un silence.
 3. **Rôle dans la prépa** — ce que cette course apporte (ou n'apporte pas)
-   pour le Sancy : terrain, D+, distance, place dans le bloc. Analyse de
+   pour la Directissime : terrain, D+/D−, distance, place dans le bloc. Analyse de
    forme et de spécificité, pas de bulletin médical.
 4. **Stratégie** — comment bien gérer la course pour aller au bout : allure,
    ravitaillement, gestion du terrain. Pas de cadrage genou (voir plus haut).
@@ -302,8 +321,11 @@ changé et ce qui mérite l'attention de Seb.
 
 - Le site est public : dépôt public servi par GitHub Pages, sans
   authentification. N'y mettre aucune information sensible.
-- L'écart déterminant pour le Sancy est le D+ par kilomètre : environ 10 m/km
-  aujourd'hui, 60 m/km demandés par la course.
+- Depuis le 29/09/2026, l'objectif final n'est plus le Sancy mais **la
+  Directissime** des Grands Trails Esprit Volcans (34 km, +770 m / −1 800 m,
+  ~12 sept. 2027, du sommet du puy de Dôme à Cournon). L'écart déterminant
+  est donc la **descente** : 53 m/km de D− le jour J, rien de comparable dans
+  l'entraînement actuel. Le D+ (23 m/km) passe au second plan.
 - Le renfo cuisses et stabilité est le seul levier direct sur la descente.
 - Le renfo est réparti sur trois pages sans redondance : **Plan** (archivé)
   portait la prescription par phase, **Guide → Renfo** garde le catalogue et
