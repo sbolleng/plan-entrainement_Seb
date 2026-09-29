@@ -724,7 +724,6 @@ function showSection(id, btn) {
   // Seb le 29/09/2026). Courses en boucle : D− = D+. Dates des options
   // approximatives (« ~ »).
   const PLAN_DIFFICULTY = [
-    { date: '2026-03-08', name: 'Forez Trails 2026', km: 24.4, dp: 933, dm: 933, kind: 'past', label: 'Forez 26' },
     { date: '2026-10-18', name: 'Clam Trail', km: 10, dp: 128, dm: 128, kind: 'firm' },
     { date: '2026-12-05', name: "Rock'Angel", km: 18.3, dp: 750, dm: 750, kind: 'firm' },
     { date: '2027-01-17', name: 'D2B', km: 23.5, dp: 300, dm: 300, kind: 'firm', note: 'sable : difficulté sous-estimée par la formule' },
@@ -743,7 +742,7 @@ function showSection(id, btn) {
     const el = document.getElementById('chart-difficulty');
     if (!el) return;
 
-    const t0 = new Date('2026-01-01').getTime(), t1 = new Date('2027-10-10').getTime();
+    const t0 = new Date('2026-09-20').getTime(), t1 = new Date('2027-10-10').getTime();
     const yMax = 80;
     const xAt = d => 3 + ((new Date(d + 'T12:00:00').getTime() - t0) / (t1 - t0)) * 94;
     const yAt = v => 6 + (1 - v / yMax) * 86;
@@ -758,11 +757,6 @@ function showSection(id, btn) {
       svg += '<line x1="0" x2="100" y1="' + yAt(v) + '" y2="' + yAt(v) +
         '" stroke="var(--border)" stroke-width="1" vector-effect="non-scaling-stroke" />';
     });
-    const today = xAt(new Date().toISOString().slice(0, 10));
-    if (today > 0 && today < 100) {
-      svg += '<line x1="' + today + '" x2="' + today + '" y1="4" y2="94" stroke="var(--muted)" stroke-width="1" ' +
-        'stroke-dasharray="2 3" vector-effect="non-scaling-stroke" opacity="0.6" />';
-    }
     const path = pts.filter(p => p.kind === 'firm' || p.kind === 'goal').map(p => p.x + ',' + p.y).join(' ');
     svg += '<polyline points="' + path + '" fill="none" stroke="var(--accent)" stroke-width="2" ' +
       'vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />';
@@ -771,7 +765,6 @@ function showSection(id, btn) {
       '<div class="dc-plot">' +
         '<svg viewBox="0 0 100 100" preserveAspectRatio="none">' + svg + '</svg>' +
         [20, 40, 60, 80].map(v => '<span class="dc-ytick" style="bottom:' + (100 - yAt(v)) + '%">' + v + '</span>').join('') +
-        (today > 0 && today < 100 ? '<span class="dc-today" style="left:' + today + '%">auj.</span>' : '') +
         '<div class="dc-tip" role="status" hidden></div>' +
       '</div>' +
       '<div class="dc-xaxis"></div>';
@@ -828,7 +821,7 @@ function showSection(id, btn) {
     });
 
     const axis = el.querySelector('.dc-xaxis');
-    ['2026-01-01', '2026-04-01', '2026-07-01', '2026-10-01', '2027-01-01', '2027-04-01', '2027-07-01', '2027-10-01'].forEach(d => {
+    ['2026-10-01', '2026-12-01', '2027-02-01', '2027-04-01', '2027-06-01', '2027-08-01', '2027-10-01'].forEach(d => {
       const s = document.createElement('span');
       s.style.left = xAt(d) + '%';
       const m = new Date(d + 'T12:00:00');

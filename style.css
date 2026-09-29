@@ -776,7 +776,10 @@
     letter-spacing: 0.04em;
   }
   .rs-desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.9rem; }
-  .rs-top-right { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .utmb-badges.is-corner {
+    position: absolute; top: 0; right: 1rem; transform: translateY(-50%);
+    border-radius: 4px; box-shadow: 0 0 0 3px var(--bg);
+  }
   .utmb-badges { display: inline-flex; align-items: center; gap: 0.35rem; }
   .utmb-idx {
     display: inline-flex;
