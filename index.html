@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#060b14">
-<meta name="site-version" content="20260929g">
+<meta name="site-version" content="20260929h">
 <title>CAP — Objectif Directissime 2027</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260929g">
+<link rel="stylesheet" href="style.css?v=20260929h">
 </head>
 <body>
 <header>
@@ -997,6 +997,30 @@
     <div class="section-title">Objectif 26-27 · La route vers la Directissime</div>
 
     <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Quatre étapes fermes — Clam Trail en octobre, le Rock'Angel en décembre, le D2B en janvier, Forez en mars —, un trail de printemps-été 2027 encore à choisir parmi cinq candidats, puis l'objectif final : <strong>la Directissime des Grands Trails Esprit Volcans</strong> en septembre 2027, qui remplace le Sancy depuis le 29 septembre 2026. Chaque étape porte tout ce qui la concerne : présentation de la course, compte à rebours, temps cible, état du dossard, rôle dans la préparation, stratégie et logistique. Le tableau en bas de page récapitule les dates d'ouverture des inscriptions des courses de repli, et <strong>Palmarès</strong> garde les résultats une fois les courses passées.</p>
+
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="tag tag-purple">Progression</div>
+      <h3>Difficulté des courses · km-effort avec descente</h3>
+      <div id="chart-difficulty"></div>
+      <div class="dc-legend">
+        <span><i class="dc-key" style="background:var(--muted);"></i>Déjà courue</span>
+        <span><i class="dc-key is-line" style="background:var(--accent);"></i>Étape du plan</span>
+        <span><i class="dc-key" style="border:2px solid var(--accent); box-sizing:border-box;"></i>Option printemps-été</span>
+        <span><i class="dc-key" style="background:#b482ff;"></i>Objectif</span>
+      </div>
+      <p class="info"><strong>km-effort = distance + D+/100 + D−/150.</strong> Le D+/100 est la règle standard du trail (celle de l'ITRA). Le D−/150 vient du « kilomètre-effort » du Club alpin suisse, prévu à l'origine pour les descentes raides de randonnée ; il est appliqué ici à toute la descente, parce qu'en course elle use les cuisses même en pente douce. Sans lui, la Directissime (1 800 m de D−) paraîtrait plus facile que Forez. Deux limites : le sable du D2B n'entre dans aucune formule, et pour les courses en boucle le D− est supposé égal au D+. Touche un point pour le détail.</p>
+      <details class="fold" style="margin-top:0.75rem;">
+        <summary>Voir les chiffres</summary>
+        <div class="fold-body">
+          <div class="table-scroll">
+          <table>
+            <thead><tr><th>Date</th><th>Course</th><th>Statut</th><th>Distance</th><th>D+ / D− (m)</th><th>km-effort</th></tr></thead>
+            <tbody id="difficulty-table"></tbody>
+          </table>
+          </div>
+        </div>
+      </details>
+    </div>
 
     <div class="race-timeline">
 
@@ -2745,9 +2769,9 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20260929g" defer></script>
-<script src="data/nutrition.js?v=20260929g" defer></script>
-<script src="app.js?v=20260929g" defer></script>
+<script src="data/renfo.js?v=20260929h" defer></script>
+<script src="data/nutrition.js?v=20260929h" defer></script>
+<script src="app.js?v=20260929h" defer></script>
 
 </body>
 </html>

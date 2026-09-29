@@ -718,3 +718,142 @@ function showSection(id, btn) {
     checkNewVersion();
   });
   window.addEventListener('pageshow', e => { if (e.persisted) checkNewVersion(); });
+
+  // ===== Objectif · difficulté des courses (km-effort avec descente) =====
+  // km-effort = distance + D+/100 + D−/150. D−/150 vient du Leistungskilometer
+  // du Club alpin suisse (réservé aux descentes > 20 % pour la randonnée ; appliqué
+  // ici à toute la descente, qui charge les cuisses en course même en pente douce).
+  // Courses en boucle : D− = D+. Dates des options approximatives (« ~ »).
+  const PLAN_DIFFICULTY = [
+    { date: '2025-11-23', name: 'Clam Trail 2025', km: 10, dp: 128, dm: 128, kind: 'past' },
+    { date: '2026-03-08', name: 'Forez Trails 2026', km: 24.4, dp: 933, dm: 933, kind: 'past', label: 'Forez 26' },
+    { date: '2026-10-18', name: 'Clam Trail', km: 10, dp: 128, dm: 128, kind: 'firm' },
+    { date: '2026-12-05', name: "Rock'Angel", km: 18.3, dp: 750, dm: 750, kind: 'firm' },
+    { date: '2027-01-17', name: 'D2B', km: 23.5, dp: 300, dm: 300, kind: 'firm', note: 'sable : difficulté sous-estimée par la formule' },
+    { date: '2027-03-07', name: "Forez · L'Augerolloise", km: 33, dp: 1100, dm: 1100, kind: 'firm', label: 'Forez 27' },
+    { date: '2027-05-30', name: 'Maxi-Race · Marathon eXpérience', km: 42, dp: 1700, dm: 1700, kind: 'option', approx: true },
+    { date: '2027-06-15', name: 'Sancy Trail · Chambon Neige et Lac', km: 24, dp: 1160, dm: 1160, kind: 'option', approx: true },
+    { date: '2027-06-26', name: 'Trail du Bois des Côtes · 32 km', km: 32, dp: 1250, dm: 1250, kind: 'option', approx: true },
+    { date: '2027-06-28', name: 'Trail des 3 Pics · T3P L', km: 36, dp: 2200, dm: 2200, kind: 'option', approx: true, label: 'T3P L' },
+    { date: '2027-07-18', name: 'Trail des 4×1800', km: 32, dp: 2000, dm: 2000, kind: 'option', approx: true },
+    { date: '2027-09-12', name: 'La Directissime', km: 34, dp: 770, dm: 1800, kind: 'goal', approx: true, label: 'Directissime' }
+  ];
+
+  function kmEffort(r) { return r.km + r.dp / 100 + r.dm / 150; }
+
+  function renderDifficultyChart() {
+    const el = document.getElementById('chart-difficulty');
+    if (!el) return;
+
+    const t0 = new Date('2025-10-15').getTime(), t1 = new Date('2027-10-10').getTime();
+    const yMax = 80;
+    const xAt = d => 3 + ((new Date(d + 'T12:00:00').getTime() - t0) / (t1 - t0)) * 94;
+    const yAt = v => 6 + (1 - v / yMax) * 86;
+    const nf = v => (Math.round(v * 10) / 10).toLocaleString('fr-FR');
+    const COLORS = { past: 'var(--muted)', firm: 'var(--accent)', option: 'var(--accent)', goal: '#b482ff' };
+
+    const pts = PLAN_DIFFICULTY.map(r => Object.assign({}, r, { ke: kmEffort(r), x: xAt(r.date) }))
+      .map(r => Object.assign(r, { y: yAt(r.ke) }));
+
+    let svg = '';
+    [20, 40, 60, 80].forEach(v => {
+      svg += '<line x1="0" x2="100" y1="' + yAt(v) + '" y2="' + yAt(v) +
+        '" stroke="var(--border)" stroke-width="1" vector-effect="non-scaling-stroke" />';
+    });
+    const today = xAt(new Date().toISOString().slice(0, 10));
+    if (today > 0 && today < 100) {
+      svg += '<line x1="' + today + '" x2="' + today + '" y1="4" y2="94" stroke="var(--muted)" stroke-width="1" ' +
+        'stroke-dasharray="2 3" vector-effect="non-scaling-stroke" opacity="0.6" />';
+    }
+    const path = pts.filter(p => p.kind === 'firm' || p.kind === 'goal').map(p => p.x + ',' + p.y).join(' ');
+    svg += '<polyline points="' + path + '" fill="none" stroke="var(--accent)" stroke-width="2" ' +
+      'vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />';
+
+    el.innerHTML =
+      '<div class="dc-plot">' +
+        '<svg viewBox="0 0 100 100" preserveAspectRatio="none">' + svg + '</svg>' +
+        [20, 40, 60, 80].map(v => '<span class="dc-ytick" style="bottom:' + (100 - yAt(v)) + '%">' + v + '</span>').join('') +
+        (today > 0 && today < 100 ? '<span class="dc-today" style="left:' + today + '%">auj.</span>' : '') +
+        '<div class="dc-tip" role="status" hidden></div>' +
+      '</div>' +
+      '<div class="dc-xaxis"></div>';
+
+    const plot = el.querySelector('.dc-plot');
+    const tip = el.querySelector('.dc-tip');
+
+    function showTip(p, dot) {
+      tip.textContent = '';
+      const v = document.createElement('strong');
+      v.textContent = nf(p.ke) + ' km-effort';
+      const n = document.createElement('div');
+      n.textContent = p.name + (p.kind === 'option' ? ' (option)' : '');
+      const d = document.createElement('div');
+      d.className = 'dc-tip-sub';
+      const dateTxt = new Date(p.date + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+      d.textContent = (p.approx ? '~' : '') + dateTxt + ' · ' + nf(p.km) + ' km · +' + p.dp + ' / −' + p.dm + ' m' +
+        (p.note ? ' · ' + p.note : '');
+      tip.append(v, n, d);
+      tip.hidden = false;
+      tip.style.left = Math.min(Math.max(p.x, 18), 82) + '%';
+      tip.style.bottom = (100 - p.y) + '%';
+      plot.querySelectorAll('.dc-dot.is-on').forEach(x => x.classList.remove('is-on'));
+      dot.classList.add('is-on');
+    }
+    function hideTip() {
+      tip.hidden = true;
+      plot.querySelectorAll('.dc-dot.is-on').forEach(x => x.classList.remove('is-on'));
+    }
+
+    pts.forEach(p => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'dc-dot dc-' + p.kind;
+      dot.style.left = p.x + '%';
+      dot.style.bottom = (100 - p.y) + '%';
+      dot.style.setProperty('--dc-color', COLORS[p.kind]);
+      dot.setAttribute('aria-label', p.name + ' : ' + nf(p.ke) + ' km-effort');
+      dot.addEventListener('pointerenter', () => showTip(p, dot));
+      dot.addEventListener('focus', () => showTip(p, dot));
+      dot.addEventListener('click', () => showTip(p, dot));
+      dot.addEventListener('pointerleave', hideTip);
+      dot.addEventListener('blur', hideTip);
+      plot.appendChild(dot);
+      if (p.label) {
+        const lb = document.createElement('span');
+        lb.className = 'dc-label';
+        lb.style.left = p.x + '%';
+        lb.style.bottom = (100 - p.y) + '%';
+        if (p.x > 85) lb.classList.add('is-end');
+        lb.textContent = p.label + ' · ' + Math.round(p.ke);
+        plot.appendChild(lb);
+      }
+    });
+
+    const axis = el.querySelector('.dc-xaxis');
+    ['2026-01-01', '2026-04-01', '2026-07-01', '2026-10-01', '2027-01-01', '2027-04-01', '2027-07-01', '2027-10-01'].forEach(d => {
+      const s = document.createElement('span');
+      s.style.left = xAt(d) + '%';
+      const m = new Date(d + 'T12:00:00');
+      s.textContent = m.toLocaleDateString('fr-FR', { month: 'short' }).replace('.', '') + ' ' + String(m.getFullYear()).slice(2);
+      axis.appendChild(s);
+    });
+
+    const tbody = document.getElementById('difficulty-table');
+    if (tbody) {
+      tbody.textContent = '';
+      pts.forEach(p => {
+        const tr = document.createElement('tr');
+        const kindTxt = { past: 'courue', firm: 'prévue', option: 'option', goal: 'objectif' }[p.kind];
+        [(p.approx ? '~' : '') + new Date(p.date + 'T12:00:00').toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' }),
+         p.name, kindTxt, nf(p.km) + ' km', '+' + p.dp + ' / −' + p.dm, nf(p.ke)].forEach((txt, i) => {
+          const td = document.createElement('td');
+          td.textContent = txt;
+          if (i === 2 || i === 0) td.className = 'muted';
+          if (i === 5) td.className = 'mono';
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+  }
+  renderDifficultyChart();
