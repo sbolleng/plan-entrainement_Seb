@@ -776,13 +776,27 @@
     letter-spacing: 0.04em;
   }
   .rs-desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.9rem; }
+  .rs-top-right { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .utmb-badges { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .utmb-idx {
+    display: inline-flex;
+    height: 1.05rem;
+    border-radius: 3px;
+    overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+  .utmb-idx span { display: flex; align-items: center; padding: 0 0.4rem; }
+  .utmb-idx-u { background: #0a1a33; color: #fff; }
+  .utmb-idx-i { background: #4fd8ff; color: #0a1a33; }
   .utmb-badge {
     display: inline-flex;
     align-items: stretch;
     height: 1.05rem;
     border-radius: 3px;
     overflow: hidden;
-    margin-left: 0.5rem;
     vertical-align: middle;
   }
   .utmb-k {
