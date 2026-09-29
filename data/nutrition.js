@@ -69,12 +69,10 @@ const NUTRITION_PAIR_MEALS = {
 };
 
 const NUTRITION_LOG = {
-  maj: '2026-09-28',
+  maj: '2026-09-29',
   jours: [
-    // { date: '2026-09-28', repas: [
-    //   { when: '12:30', what: 'Poulet, riz, légumes vapeur', p: 38, g: 62, l: 20, f: 4, s: 1.1, w: 0.3, cafe: 0, alcool: 0 },
-    //   { when: '15:00', what: 'Café', p: 0, g: 0, l: 0, f: 0, s: 0, w: 0, cafe: 1, alcool: 0 }
-    // ] }
-    // Vide pour l'instant — se remplit au fil des /maj repas.
+    { date: '2026-09-29', repas: [
+      { when: 'Petit-déj', what: '4 madeleines, eau chaude au miel et citron', p: 8, g: 84, l: 29, f: 2, s: 0.7, w: 0.25, cafe: 0, alcool: 0 }
+    ] }
   ]
 };
