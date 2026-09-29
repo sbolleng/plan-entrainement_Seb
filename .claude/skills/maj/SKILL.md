@@ -306,12 +306,16 @@ change.
 
 ## 6 · Publication
 
-**Avant de committer, incrémenter le paramètre `?v=` des trois références
-d'`index.html`** — `style.css`, `data/renfo.js` et `app.js` — au format
-`AAAAMMJJ` suivi d'une lettre si plusieurs publications dans la journée.
-Sans ça, les navigateurs qui ont déjà visité le site continuent de servir
-l'ancien JavaScript et l'ancienne feuille de style depuis leur cache, et la
-mise à jour reste invisible.
+**Avant de committer, incrémenter la version partout d'un coup** : la balise
+`<meta name="site-version">` et le paramètre `?v=` de `style.css`,
+`data/renfo.js`, `data/nutrition.js` et `app.js` dans `index.html` (plus
+`style.css` dans `jdp.html`), au format `AAAAMMJJ` suivi d'une lettre si
+plusieurs publications dans la journée — un simple `sed` sur l'ancienne
+valeur suffit. Sans ça, les navigateurs servent l'ancien JavaScript et
+l'ancienne feuille de style depuis leur cache. La balise `site-version` sert
+en plus à `checkNewVersion()` (app.js) : un onglet resté ouvert ou une page
+servie depuis le cache se recharge tout seul dès qu'une version plus récente
+est en ligne — à condition qu'elle soit plus grande que la précédente.
 
 Committer sur la branche de travail, fusionner dans `main`, pousser, puis
 vérifier que le déploiement GitHub Pages passe au vert. Résumer ce qui a

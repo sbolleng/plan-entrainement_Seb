@@ -688,3 +688,33 @@ function showSection(id, btn) {
     }
   }
   renderNutrition();
+
+  // ===== Mise à jour automatique =====
+  // GitHub Pages laisse le navigateur garder index.html en cache ~10 min, et
+  // un onglet resté ouvert sur le téléphone ne se recharge jamais : on compare
+  // la version affichée à celle en ligne et on recharge si elle est plus récente.
+  function checkNewVersion() {
+    const meta = document.querySelector('meta[name="site-version"]');
+    if (!meta || !window.fetch || location.protocol === 'file:') return;
+    const current = meta.content;
+    fetch(location.pathname + '?check=' + Date.now(), { cache: 'no-store' })
+      .then(r => (r.ok ? r.text() : ''))
+      .then(html => {
+        const m = html.match(/<meta name="site-version" content="([^"]+)"/);
+        if (!m || m[1] <= current) return;
+        try {
+          if (sessionStorage.getItem('siteReloadedFor') === m[1]) return;
+          sessionStorage.setItem('siteReloadedFor', m[1]);
+        } catch (e) { /* stockage indisponible : on recharge quand même une fois */ }
+        location.replace(location.pathname + '?v=' + m[1] + location.hash);
+      })
+      .catch(() => {});
+  }
+  checkNewVersion();
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible') return;
+    markToday();
+    renderNutrition();
+    checkNewVersion();
+  });
+  window.addEventListener('pageshow', e => { if (e.persisted) checkNewVersion(); });
