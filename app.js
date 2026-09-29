@@ -689,6 +689,63 @@ function showSection(id, btn) {
   }
   renderNutrition();
 
+  // ===== Nutrition · historique (un bloc repliable par mois, jours notés seulement) =====
+  function renderNutritionHistory() {
+    const el = document.getElementById('nutri-history');
+    if (!el || typeof NUTRITION_LOG === 'undefined') return;
+    const KEYS = ['p', 'g', 'l', 'f', 's', 'w', 'cafe', 'alcool'];
+    const SHORT = { p: 'Prot.', g: 'Gluc.', l: 'Lip.', f: 'Fibres', s: 'Sel', w: 'Eau', cafe: 'Café', alcool: 'Alcool' };
+    const fmt = v => (Math.round(v * 10) / 10).toLocaleString('fr-FR');
+    const tgt = n => {
+      const u = n.unit === '×' ? '' : ' ' + n.unit;
+      if (n.min !== null && n.max !== null) return fmt(n.min) + '–' + fmt(n.max) + u;
+      if (n.min !== null) return '≥ ' + fmt(n.min) + u;
+      return (n.max === 0 ? '0' : '≤ ' + fmt(n.max)) + u;
+    };
+    const head = '<tr><th class="nh-sticky">Date</th>' + KEYS.map(k =>
+      '<th>' + SHORT[k] + '<span class="nh-tgt">' + tgt(NUTRITION_TARGETS[k]) + '</span></th>').join('') +
+      '<th>Journée</th></tr>';
+
+    const days = NUTRITION_LOG.jours.filter(j => j.repas && j.repas.length)
+      .slice().sort((a, b) => (a.date < b.date ? 1 : -1));
+    if (!days.length) { el.innerHTML = '<p class="muted" style="font-size:0.8rem;">Aucun jour noté pour l\'instant.</p>'; return; }
+
+    const months = [];
+    days.forEach(j => {
+      const m = j.date.slice(0, 7);
+      if (!months.length || months[months.length - 1].key !== m) months.push({ key: m, days: [] });
+      months[months.length - 1].days.push(j);
+    });
+
+    el.innerHTML = months.map((m, idx) => {
+      let okCount = 0;
+      const rows = m.days.map(j => {
+        const t = {};
+        KEYS.forEach(k => { t[k] = j.repas.reduce((a, r) => a + (r[k] || 0), 0); });
+        let ok = true;
+        const cells = KEYS.map(k => {
+          const n = NUTRITION_TARGETS[k];
+          const hi = n.max !== null && t[k] > n.max;
+          const lo = n.min !== null && t[k] < n.min;
+          if (hi || lo) ok = false;
+          return '<td class="nh-val' + (hi || lo ? ' nh-out' : '') + '">' + fmt(t[k]) + (hi ? ' ▲' : lo ? ' ▼' : '') + '</td>';
+        }).join('');
+        if (ok) okCount++;
+        const label = new Date(j.date + 'T12:00:00').toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' });
+        return '<tr><td class="nh-sticky nh-date">' + label + '</td>' + cells +
+          '<td><span class="nh-pill ' + (ok ? 'ok' : 'miss') + '">' + (ok ? 'Respecté' : 'Non respecté') + '</span></td></tr>';
+      }).join('');
+      const title = new Date(m.key + '-15T12:00:00').toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+      const n = m.days.length;
+      return '<details class="fold nh-month"' + (idx === 0 ? ' open' : '') + '><summary>' +
+        title.charAt(0).toUpperCase() + title.slice(1) + ' · ' + n + ' jour' + (n > 1 ? 's' : '') + ' noté' + (n > 1 ? 's' : '') +
+        ' · ' + okCount + ' respecté' + (okCount > 1 ? 's' : '') +
+        '</summary><div class="fold-body"><div class="table-scroll"><table class="nutri-hist"><thead>' + head +
+        '</thead><tbody>' + rows + '</tbody></table></div></div></details>';
+    }).join('');
+  }
+  renderNutritionHistory();
+
   // ===== Mise à jour automatique =====
   // GitHub Pages laisse le navigateur garder index.html en cache ~10 min, et
   // un onglet resté ouvert sur le téléphone ne se recharge jamais : on compare
@@ -715,6 +772,7 @@ function showSection(id, btn) {
     if (document.visibilityState !== 'visible') return;
     markToday();
     renderNutrition();
+    renderNutritionHistory();
     checkNewVersion();
   });
   window.addEventListener('pageshow', e => { if (e.persisted) checkNewVersion(); });

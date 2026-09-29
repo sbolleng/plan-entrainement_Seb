@@ -1684,3 +1684,15 @@
   .dc-key.is-line { width: 16px; height: 2px; border-radius: 1px; }
   .dc-label.is-end { transform: translate(calc(-100% + 8px), 18px); }
   .sb-item.sb-next { border-color: #b482ff; }
+
+  /* ===== NUTRITION · historique ===== */
+  .nutri-hist { margin-bottom: 0; }
+  .nutri-hist th, .nutri-hist td { white-space: nowrap; }
+  .nh-tgt { display: block; font-size: 0.55rem; color: var(--muted); letter-spacing: 0; text-transform: none; margin-top: 0.1rem; }
+  .nh-sticky { position: sticky; left: 0; z-index: 1; background: var(--surface); box-shadow: 1px 0 0 var(--border); }
+  .nh-date { font-weight: 600; }
+  .nh-val { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text); }
+  .nh-val.nh-out { color: var(--red); }
+  .nh-pill { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; }
+  .nh-pill::before { content: ''; width: 8px; height: 8px; border-radius: 2px; background: var(--good); }
+  .nh-pill.miss::before { background: var(--red); }

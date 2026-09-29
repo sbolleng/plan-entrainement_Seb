@@ -249,6 +249,10 @@ publication :
 Tout le rendu (jauges du jour, carte Conseil, mosaïque du mois, séries en
 cours/meilleure) est calculé par `renderNutrition()` dans `app.js` à partir
 de ces trois structures — rien à écrire à la main dans `index.html`.
+L'**historique** sous la mosaïque (un bloc repliable par mois, mois le plus
+récent ouvert, jours notés seulement, du plus récent au plus ancien, colonne
+Date figée sur téléphone) est calculé de la même façon par
+`renderNutritionHistory()`.
 
 ## 4 · Page « Profil »
 
