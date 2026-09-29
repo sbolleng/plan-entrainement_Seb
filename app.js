@@ -732,6 +732,7 @@ function showSection(id, btn) {
     { date: '2027-06-15', name: 'Sancy Trail · Chambon Neige et Lac', km: 24, dp: 1160, dm: 1160, kind: 'option', approx: true },
     { date: '2027-06-26', name: 'Trail du Bois des Côtes · 32 km', km: 32, dp: 1250, dm: 1250, kind: 'option', approx: true },
     { date: '2027-06-28', name: 'Trail des 3 Pics · T3P L', km: 36, dp: 2200, dm: 2200, kind: 'option', approx: true, label: 'T3P L' },
+    { date: '2027-06-28', name: 'Trail des 3 Pics · T3P M', km: 22.5, dp: 1410, dm: 1410, kind: 'option', approx: true },
     { date: '2027-07-18', name: 'Trail des 4×1800', km: 32, dp: 2000, dm: 2000, kind: 'option', approx: true },
     { date: '2027-09-12', name: 'La Directissime', km: 34, dp: 770, dm: 1800, kind: 'goal', approx: true, label: 'Directissime' }
   ];
