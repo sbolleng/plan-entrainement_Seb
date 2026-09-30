@@ -16,6 +16,17 @@
 // selon que la valeur du jour dépasse, approche (≥80 %) ou reste sous le
 // plafond.
 
+// Profil pour la calculatrice du besoin du jour (en haut de la page Nutrition).
+// Public, comme le reste du site. Modifiable aussi directement sur le téléphone :
+// ce qui y est saisi prend le pas sur ces valeurs, sur cet appareil seulement.
+// nap : sedentaire | peu | actif | tres (activité hors sport).
+const NUTRITION_PROFILE = {
+  sexe: 'homme', naissance: '', poids: 58.8, taille: 163, nap: 'peu'
+};
+
+// Cibles fixes : utilisées les jours sans calcul (ni saisie sur le téléphone, ni
+// champ « calc » noté ci-dessous). Dès que la calculatrice a de quoi calculer,
+// protéines, glucides, lipides, fibres et eau suivent le besoin du jour.
 const NUTRITION_TARGETS = {
   p: {
     label: 'Protéines', unit: 'g', min: 97, max: 119, capBasis: 137,
@@ -30,7 +41,7 @@ const NUTRITION_TARGETS = {
     sources: "huile d'olive, avocat, amandes, noix"
   },
   f: {
-    label: 'Fibres', unit: 'g', min: 25, max: null, capBasis: 40,
+    label: 'Fibres', unit: 'g', min: 30, max: null, capBasis: 45,
     sources: "lentilles, brocolis, pomme, flocons d'avoine"
   },
   s: {

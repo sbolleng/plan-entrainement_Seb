@@ -1696,3 +1696,30 @@
   .nh-pill { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; }
   .nh-pill::before { content: ''; width: 8px; height: 8px; border-radius: 2px; background: var(--good); }
   .nh-pill.miss::before { background: var(--red); }
+
+  /* ===== NUTRITION · calculatrice ===== */
+  .calc-card { margin-bottom: 1.25rem; padding: 1rem; }
+  .calc-card h3 { margin-bottom: 0.75rem; }
+  #nutri-calc label { display: flex; flex-direction: column; gap: 0.2rem; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); min-width: 0; }
+  #nutri-calc select, #nutri-calc input {
+    width: 100%; min-width: 0; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0.45rem 0.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 16px; letter-spacing: 0; text-transform: none;
+  }
+  #nutri-calc input:focus, #nutri-calc select:focus { outline: none; border-color: var(--accent); }
+  .calc-profile { display: grid; grid-template-columns: 1fr 1.4fr; gap: 0.5rem; margin-bottom: 0.5rem; }
+  @media (min-width: 640px) { .calc-profile { grid-template-columns: 0.9fr 1.3fr 1fr 1fr; } }
+  #nutri-calc .calc-full { margin-bottom: 0.5rem; }
+  .calc-unit { display: flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; color: var(--muted); text-transform: none; letter-spacing: 0; }
+  .calc-sports-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0.3rem 0 0.2rem; }
+  .calc-sport { display: grid; grid-template-columns: 1fr 5.2rem; gap: 0.4rem; margin-bottom: 0.35rem; }
+  .calc-result { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+  .calc-dej { display: flex; align-items: baseline; gap: 0.5rem; }
+  .calc-dej-val { font-family: 'Space Mono', monospace; font-size: 1.8rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .calc-dej-unit { font-size: 0.8rem; color: var(--muted); }
+  .calc-detail { font-size: 0.7rem; color: var(--muted); margin-top: 0.3rem; }
+  .calc-macros { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem 0.8rem; margin-top: 0.7rem; }
+  @media (min-width: 640px) { .calc-macros { grid-template-columns: repeat(4, 1fr); } }
+  .calc-macros span { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--text); }
+  .calc-macros b { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .calc-missing { font-size: 0.8rem; color: var(--accent2); }
+  .calc-note { font-size: 0.68rem; color: var(--muted); margin-top: 0.75rem; line-height: 1.45; }

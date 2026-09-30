@@ -249,6 +249,40 @@ publication :
 Tout le rendu (jauges du jour, carte Conseil, mosaïque du mois, séries en
 cours/meilleure) est calculé par `renderNutrition()` dans `app.js` à partir
 de ces trois structures — rien à écrire à la main dans `index.html`.
+**Calculatrice « Mon besoin du jour » (30/09/2026)**, en haut de la page,
+toujours ouverte. Réplique l'onglet « DEJ (journée) » de la calculette Excel
+de Seb : métabolisme de base de Black et al. (homme 1,083 × P^0,48 × T(m)^0,5
+× âge^−0,13 × 1000/4,1855 ; femme 0,963) × niveau d'activité hors sport
+(1,2 / 1,3 / 1,45 / 1,6) + Σ MET × poids × heures (3 sports max, liste
+courte de l'Excel + CrossFit). Répartition selon les repères de Seb :
+protéines 1,4–2 g/kg, glucides 50–60 % et lipides 25–35 % des kcal
+(carbo-loading 65–75 % / 15–25 %, veille 55–65 % / 15–25 %), fibres ≥ 30 g
+(≤ 15 g en carbo-loading et veille), eau ≥ 2 L + 0,5 L par heure de sport.
+Profil par défaut dans `NUTRITION_PROFILE` (public) ; ce que Seb saisit sur
+son téléphone est gardé dans son navigateur (`localStorage`) et prend le pas.
+Quand Seb me dit son sport du jour, l'ajouter au jour dans
+`NUTRITION_LOG.jours` sous `calc: { nap, phase, sports: [['j95', 1]] }` :
+les jours passés sont alors jugés sur leurs vraies cibles sur tous les
+appareils. Sans rien, un jour passé garde les cibles fixes.
+
+**Comment accompagner Seb sur la nutrition** (demandé le 30/09/2026) : à
+chaque repas décrit, donner la répartition glucides / protéines / lipides du
+repas, dire si c'est adapté à la phase du jour (il précise sa séance du
+jour), et ce qu'il faut ajuster ou compléter aux prochains repas ou
+collations. Ses repères : glucides 5–7 g/kg en modéré, 7–10 g/kg en intense ;
+protéines 1,4 g/kg en modéré, 2 g/kg en intense ; lipides ~30 %, 20 %
+(1,3 g/kg) avant compétition ; fibres 30 g, à réduire fortement à
+l'approche d'une course. Vigilance fer, sodium, antioxydants, vitamines B.
+Dernier repas 2–4 h avant l'effort : 60 % glucides, 15–20 % protéines
+maigres, 20 % lipides insaturés, peu de fibres. Avant une course : J-14 à
+J-4 habitudes saines, arrêt de l'alcool ; J-3 à J-1 carbo-loading (glucides
+70 %, féculents blancs, sans légumineuses, crucifères, complets, oléagineux,
+épices) ; veille glucides 60 %, lipides 20 % ; jour J petit-déjeuner 2–3 h
+avant (gâteau au yaourt, banana bread, pancakes + miel + yaourt + banane,
+fromage blanc + muesli + banane + miel, ou pain + œuf + fromage) ; pendant
+l'effort 30–60 g de glucides par heure ; après, boisson sodium + glucides
+et 1–1,2 g/kg de glucides dans l'heure.
+
 L'**historique** sous la mosaïque (un bloc repliable par mois, mois le plus
 récent ouvert, jours notés seulement, du plus récent au plus ancien, colonne
 Date figée sur téléphone) est calculé de la même façon par

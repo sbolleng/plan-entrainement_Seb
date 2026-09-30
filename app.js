@@ -454,6 +454,183 @@ function showSection(id, btn) {
   }
   renderRenfo();
 
+  // ===== Nutrition · calculatrice du besoin du jour =====
+  // Réplique l'onglet « DEJ (journée) » de la calculette Excel :
+  // métabolisme de base (Black et al.) × niveau d'activité + MET × poids × heures.
+  // Les kcal sont ensuite réparties selon les repères de Seb (30/09/2026) :
+  // protéines 1,4–2 g/kg, glucides et lipides en % des kcal selon la phase.
+  const CALC_SPORTS = [
+    ['', '— Aucun —', 0],
+    ['j8', 'Jogging à 8 km/h (7 min/km)', 8],
+    ['j95', 'Jogging à 9,5 km/h (6 min/km)', 10],
+    ['j13', 'Jogging à 13 km/h (4,5 min/km)', 13.5],
+    ['cross', 'Jogging (cross)', 9],
+    ['jm', 'Jogging / marche', 6],
+    ['m', 'Marche', 3],
+    ['m55', 'Marche (+5,5 km/h)', 4],
+    ['muscu', 'Musculation', 3],
+    ['crossfit', 'Crossfit', 9],
+    ['v1', 'Vélo (promenade)', 5],
+    ['v2', 'Vélo (19 à 22 km/h)', 7],
+    ['v3', 'Vélo (22 à 26 km/h)', 10],
+    ['n1', 'Natation récréative', 6],
+    ['n2', 'Natation (intensité modérée à élevée)', 9]
+  ];
+  const CALC_NAP = [
+    ['sedentaire', 'Sédentaire · majoritairement assis', 1.2],
+    ['peu', 'Peu actif · bureau avec déplacements', 1.3],
+    ['actif', 'Actif · majoritairement debout', 1.45],
+    ['tres', 'Très actif · en mouvement toute la journée', 1.6]
+  ];
+  const CALC_PHASES = {
+    train: { label: 'Entraînement', g: [50, 60], l: [25, 35], fib: [30, null] },
+    prep: { label: 'J-14 à J-4 avant une course', g: [50, 60], l: [25, 35], fib: [30, null] },
+    carbo: { label: 'Carbo-loading (J-3 à J-1)', g: [65, 75], l: [15, 25], fib: [null, 15] },
+    veille: { label: 'Veille de course', g: [55, 65], l: [15, 25], fib: [null, 15] }
+  };
+
+  function calcStore(key, val) {
+    try {
+      if (val === undefined) return JSON.parse(localStorage.getItem('nutriCalc.' + key) || 'null');
+      localStorage.setItem('nutriCalc.' + key, JSON.stringify(val));
+    } catch (e) { return null; }
+  }
+
+  function calcProfile() {
+    const base = typeof NUTRITION_PROFILE !== 'undefined' ? NUTRITION_PROFILE : {};
+    return Object.assign({ sexe: 'homme', naissance: '', poids: '', taille: '', nap: 'peu' }, base, calcStore('profile') || {});
+  }
+
+  // Saisie du jour : d'abord ce qui a été tapé sur ce téléphone, sinon ce que j'ai
+  // noté dans data/nutrition.js (champ « calc » du jour), sinon rien.
+  function calcDay(dateKey) {
+    const local = calcStore('day.' + dateKey);
+    if (local) return local;
+    if (typeof NUTRITION_LOG !== 'undefined') {
+      const j = NUTRITION_LOG.jours.find(x => x.date === dateKey);
+      if (j && j.calc) return j.calc;
+    }
+    return null;
+  }
+
+  function calcAge(naissance, ref) {
+    if (!naissance) return null;
+    const b = new Date(naissance + 'T12:00:00'), r = ref || new Date();
+    let a = r.getFullYear() - b.getFullYear();
+    if (r.getMonth() < b.getMonth() || (r.getMonth() === b.getMonth() && r.getDate() < b.getDate())) a--;
+    return a > 0 ? a : null;
+  }
+
+  function calcCompute(profile, day) {
+    const poids = parseFloat(profile.poids), taille = parseFloat(profile.taille), age = calcAge(profile.naissance);
+    if (!poids || !taille || !age) return null;
+    const coef = profile.sexe === 'femme' ? 0.963 : 1.083;
+    const mb = coef * Math.pow(poids, 0.48) * Math.pow(taille / 100, 0.5) * Math.pow(age, -0.13) * (1000 / 4.1855);
+    const napKey = (day && day.nap) || profile.nap || 'peu';
+    const nap = (CALC_NAP.find(n => n[0] === napKey) || CALC_NAP[1])[2];
+    let sportKcal = 0, sportH = 0;
+    ((day && day.sports) || []).forEach(s => {
+      const sp = CALC_SPORTS.find(x => x[0] === s[0]);
+      const h = parseFloat(s[1]) || 0;
+      if (sp && sp[2] && h > 0) { sportKcal += sp[2] * poids * h; sportH += h; }
+    });
+    const dej = mb * nap + sportKcal;
+    const phase = CALC_PHASES[(day && day.phase) || 'train'] || CALC_PHASES.train;
+    return {
+      age, mb, nap, sportKcal, sportH, dej, phase,
+      p: [1.4 * poids, 2 * poids],
+      g: [dej * phase.g[0] / 100 / 4, dej * phase.g[1] / 100 / 4],
+      l: [dej * phase.l[0] / 100 / 9, dej * phase.l[1] / 100 / 9],
+      w: 2 + 0.5 * sportH
+    };
+  }
+
+  // Cibles d'un jour : celles de la calculatrice si elle a de quoi calculer, sinon
+  // les cibles fixes de data/nutrition.js. Aujourd'hui, un jour sans sport saisi
+  // compte comme un jour de repos.
+  function nutritionTargetsFor(dateKey) {
+    const day = calcDay(dateKey);
+    if (!day && dateKey !== todayISO()) return NUTRITION_TARGETS;
+    const r = calcCompute(calcProfile(), day);
+    if (!r) return NUTRITION_TARGETS;
+    const T = JSON.parse(JSON.stringify(NUTRITION_TARGETS));
+    const round = v => Math.round(v);
+    T.p.min = round(r.p[0]); T.p.max = round(r.p[1]); T.p.capBasis = round(r.p[1] * 1.15);
+    T.g.min = round(r.g[0]); T.g.max = round(r.g[1]); T.g.capBasis = round(r.g[1] * 1.15);
+    T.l.min = round(r.l[0]); T.l.max = round(r.l[1]); T.l.capBasis = round(r.l[1] * 1.15);
+    T.f.min = r.phase.fib[0]; T.f.max = r.phase.fib[1];
+    T.f.capBasis = r.phase.fib[1] ? round(r.phase.fib[1] * 1.3) : round(r.phase.fib[0] * 1.5);
+    T.w.min = Math.round(r.w * 10) / 10; T.w.capBasis = Math.round(r.w * 1.5 * 10) / 10;
+    return T;
+  }
+
+  function renderNutriCalc() {
+    const el = document.getElementById('nutri-calc');
+    if (!el) return;
+    const today = todayISO();
+    const profile = calcProfile();
+    const day = calcDay(today) || { nap: profile.nap, phase: 'train', sports: [] };
+    const sports = (day.sports || []).concat([['', ''], ['', ''], ['', '']]).slice(0, 3);
+    const opt = (list, cur) => list.map(o => '<option value="' + o[0] + '"' + (o[0] === cur ? ' selected' : '') + '>' + o[1] + '</option>').join('');
+    const phaseOpts = Object.keys(CALC_PHASES).map(k => [k, CALC_PHASES[k].label]);
+
+    el.innerHTML =
+      '<div class="calc-row calc-profile">' +
+        '<label>Sexe<select data-f="sexe">' + opt([['homme', 'Homme'], ['femme', 'Femme']], profile.sexe) + '</select></label>' +
+        '<label>Naissance<input type="date" data-f="naissance" value="' + (profile.naissance || '') + '"></label>' +
+        '<label>Poids<span class="calc-unit"><input type="number" inputmode="decimal" step="0.1" data-f="poids" value="' + profile.poids + '">kg</span></label>' +
+        '<label>Taille<span class="calc-unit"><input type="number" inputmode="numeric" data-f="taille" value="' + profile.taille + '">cm</span></label>' +
+      '</div>' +
+      '<label class="calc-full">Hors sport<select data-d="nap">' + opt(CALC_NAP, day.nap || profile.nap) + '</select></label>' +
+      '<label class="calc-full">Phase<select data-d="phase">' + opt(phaseOpts, day.phase || 'train') + '</select></label>' +
+      '<div class="calc-sports-label">Sport du jour</div>' +
+      sports.map((s, i) =>
+        '<div class="calc-sport">' +
+          '<select data-s="' + i + '" aria-label="Sport ' + (i + 1) + '">' + opt(CALC_SPORTS, s[0]) + '</select>' +
+          '<span class="calc-unit"><input type="number" inputmode="decimal" step="0.25" min="0" data-h="' + i + '" value="' + (s[1] || '') + '" placeholder="0" aria-label="Heures sport ' + (i + 1) + '">h</span>' +
+        '</div>').join('') +
+      '<div class="calc-result" id="nutri-calc-result"></div>';
+
+    function save() {
+      const p = {};
+      el.querySelectorAll('[data-f]').forEach(i => { p[i.dataset.f] = i.value; });
+      p.nap = el.querySelector('[data-d="nap"]').value;
+      calcStore('profile', p);
+      const d = { nap: p.nap, phase: el.querySelector('[data-d="phase"]').value, sports: [] };
+      for (let i = 0; i < 3; i++) {
+        const id = el.querySelector('[data-s="' + i + '"]').value;
+        const h = el.querySelector('[data-h="' + i + '"]').value;
+        if (id) d.sports.push([id, h]);
+      }
+      calcStore('day.' + today, d);
+      showResult();
+      renderNutrition();
+      renderNutritionHistory();
+    }
+    el.querySelectorAll('input, select').forEach(i => i.addEventListener('change', save));
+    el.querySelectorAll('input[type="number"]').forEach(i => i.addEventListener('input', save));
+
+    function showResult() {
+      const out = document.getElementById('nutri-calc-result');
+      const r = calcCompute(calcProfile(), calcDay(today) || day);
+      if (!r) {
+        out.innerHTML = '<p class="calc-missing">Renseigne ta date de naissance, ton poids et ta taille pour calculer ton besoin du jour.</p>';
+        return;
+      }
+      const n = v => Math.round(v).toLocaleString('fr-FR');
+      out.innerHTML =
+        '<div class="calc-dej"><span class="calc-dej-val">' + n(r.dej) + '</span><span class="calc-dej-unit">kcal aujourd\'hui</span></div>' +
+        '<div class="calc-detail">Métabolisme ' + n(r.mb) + ' × ' + String(r.nap).replace('.', ',') + (r.sportKcal ? ' + sport ' + n(r.sportKcal) : ' · sans sport') + ' · ' + r.age + ' ans · ' + r.phase.label.toLowerCase() + '</div>' +
+        '<div class="calc-macros">' +
+          '<span><b>Glucides</b>' + n(r.g[0]) + '–' + n(r.g[1]) + ' g</span>' +
+          '<span><b>Protéines</b>' + n(r.p[0]) + '–' + n(r.p[1]) + ' g</span>' +
+          '<span><b>Lipides</b>' + n(r.l[0]) + '–' + n(r.l[1]) + ' g</span>' +
+          '<span><b>Eau</b>≥ ' + String(Math.round(r.w * 10) / 10).replace('.', ',') + ' L</span>' +
+        '</div>';
+    }
+    showResult();
+  }
+
   // ===== Nutrition · rendu depuis data/nutrition.js =====
   function renderNutrition() {
     if (typeof NUTRITION_LOG === 'undefined') return;
@@ -478,9 +655,10 @@ function showSection(id, btn) {
       return t;
     }
 
-    function isRespected(t) {
+    function isRespected(t, dateKey) {
+      const TD = nutritionTargetsFor(dateKey);
       return NUTRI_KEYS.every(function (k) {
-        const target = NUTRITION_TARGETS[k];
+        const target = TD[k];
         if (target.min !== null && t[k] < target.min) return false;
         if (target.max !== null && t[k] > target.max) return false;
         return true;
@@ -493,6 +671,7 @@ function showSection(id, btn) {
     const todayJour = byDate[todayKey];
     const todayTotals = totalsFor(todayJour) || emptyTotals();
     const hasToday = !!todayJour && todayJour.repas.length > 0;
+    const TT = nutritionTargetsFor(todayKey);
 
     const dateEl = document.getElementById('nutri-date');
     if (dateEl) {
@@ -512,7 +691,7 @@ function showSection(id, btn) {
     const COUNTER_ICONS = { cafe: '☕', alcool: '🍺' };
 
     ringsEl.innerHTML = NUTRI_KEYS.map(function (key) {
-      const n = NUTRITION_TARGETS[key];
+      const n = TT[key];
       const value = Math.round(todayTotals[key] * 10) / 10;
       const over = n.max !== null && value > n.max;
       const remaining = over
@@ -574,14 +753,14 @@ function showSection(id, btn) {
         // Repas manquants : seuls p/g/l/f peuvent vraiment se combler par une proposition de repas.
         const short = MEAL_KEYS
           .map(function (k) {
-            const n = NUTRITION_TARGETS[k];
+            const n = TT[k];
             return { key: k, n: n, gap: n.min - todayTotals[k], rel: (n.min - todayTotals[k]) / n.min };
           })
           .filter(function (x) { return x.gap > 0; })
           .sort(function (a, b) { return b.rel - a.rel; });
 
         // Eau : simple rappel, pas de proposition de repas.
-        const water = NUTRITION_TARGETS.w;
+        const water = TT.w;
         const waterVal = Math.round(todayTotals.w * 10) / 10;
         const waterMsg = waterVal < water.min
           ? 'Eau : ' + fmt(waterVal) + ' ' + water.unit + ' / ' + fmt(water.min) + ' ' + water.unit + ' — reste ' +
@@ -590,10 +769,10 @@ function showSection(id, btn) {
 
         // Macros déjà au-dessus de leur plafond : à signaler pour alléger la suite.
         const overMacros = MEAL_KEYS.filter(function (k) {
-          const n = NUTRITION_TARGETS[k];
+          const n = TT[k];
           return n.max !== null && todayTotals[k] > n.max;
         }).map(function (k) {
-          const n = NUTRITION_TARGETS[k];
+          const n = TT[k];
           return n.label + ' : ' + fmt(todayTotals[k]) + ' ' + n.unit + ' / max ' + fmt(n.max) + ' ' + n.unit +
             ' — déjà au-dessus du plafond, reste léger de ce côté pour la suite de la journée.';
         });
@@ -601,7 +780,7 @@ function showSection(id, btn) {
         // Plafonds simples (sel, café, alcool) : jamais une proposition, juste une marge ou une alerte.
         const capKeys = ['s', 'cafe', 'alcool'];
         const capMsgs = capKeys.map(function (k) {
-          const n = NUTRITION_TARGETS[k];
+          const n = TT[k];
           const v = Math.round(todayTotals[k] * 10) / 10;
           const advice = v > n.max ? n.overAdvice : v > n.max * 0.8 ? n.nearAdvice : n.fineAdvice;
           const sep = n.unit === '×' ? '' : ' ';
@@ -648,7 +827,7 @@ function showSection(id, btn) {
         const t = totalsFor(byDate[key]);
         if (d > todayDate) statusByDay[d] = 'future';
         else if (!t) statusByDay[d] = 'none';
-        else statusByDay[d] = isRespected(t) ? 'ok' : 'miss';
+        else statusByDay[d] = isRespected(t, key) ? 'ok' : 'miss';
       }
 
       let html = '';
@@ -687,6 +866,7 @@ function showSection(id, btn) {
       }
     }
   }
+  renderNutriCalc();
   renderNutrition();
 
   // ===== Nutrition · historique (un bloc repliable par mois, jours notés seulement) =====
@@ -695,6 +875,7 @@ function showSection(id, btn) {
     if (!el || typeof NUTRITION_LOG === 'undefined') return;
     const KEYS = ['p', 'g', 'l', 'f', 's', 'w', 'cafe', 'alcool'];
     const SHORT = { p: 'Prot.', g: 'Gluc.', l: 'Lip.', f: 'Fibres', s: 'Sel', w: 'Eau', cafe: 'Café', alcool: 'Alcool' };
+    const VARIABLE = ['p', 'g', 'l', 'f', 'w'];
     const fmt = v => (Math.round(v * 10) / 10).toLocaleString('fr-FR');
     const tgt = n => {
       const u = n.unit === '×' ? '' : ' ' + n.unit;
@@ -703,7 +884,7 @@ function showSection(id, btn) {
       return (n.max === 0 ? '0' : '≤ ' + fmt(n.max)) + u;
     };
     const head = '<tr><th class="nh-sticky">Date</th>' + KEYS.map(k =>
-      '<th>' + SHORT[k] + '<span class="nh-tgt">' + tgt(NUTRITION_TARGETS[k]) + '</span></th>').join('') +
+      '<th>' + SHORT[k] + '<span class="nh-tgt">' + (VARIABLE.indexOf(k) !== -1 ? 'selon le jour' : tgt(NUTRITION_TARGETS[k])) + '</span></th>').join('') +
       '<th>Journée</th></tr>';
 
     const days = NUTRITION_LOG.jours.filter(j => j.repas && j.repas.length)
@@ -722,13 +903,14 @@ function showSection(id, btn) {
       const rows = m.days.map(j => {
         const t = {};
         KEYS.forEach(k => { t[k] = j.repas.reduce((a, r) => a + (r[k] || 0), 0); });
+        const TD = nutritionTargetsFor(j.date);
         let ok = true;
         const cells = KEYS.map(k => {
-          const n = NUTRITION_TARGETS[k];
+          const n = TD[k];
           const hi = n.max !== null && t[k] > n.max;
           const lo = n.min !== null && t[k] < n.min;
           if (hi || lo) ok = false;
-          return '<td class="nh-val' + (hi || lo ? ' nh-out' : '') + '">' + fmt(t[k]) + (hi ? ' ▲' : lo ? ' ▼' : '') + '</td>';
+          return '<td class="nh-val' + (hi || lo ? ' nh-out' : '') + '" title="cible ' + tgt(n) + '">' + fmt(t[k]) + (hi ? ' ▲' : lo ? ' ▼' : '') + '</td>';
         }).join('');
         if (ok) okCount++;
         const label = new Date(j.date + 'T12:00:00').toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' });

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#060b14">
-<meta name="site-version" content="20260929m">
+<meta name="site-version" content="20260930a">
 <title>CAP — Objectif Directissime 2027</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20260929m">
+<link rel="stylesheet" href="style.css?v=20260930a">
 </head>
 <body>
 <header>
@@ -1390,7 +1390,12 @@
   <!-- ========== NUTRITION ========== -->
   <section id="nutrition" class="section">
     <div class="section-title">Nutrition · Suivi quotidien</div>
-    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Alimenté par ce que tu me dis manger au fil de la journée — pas de formulaire de saisie sur la page. Demande-moi à tout moment « qu'est-ce que je mange ce soir ? », je regarde ce qu'il te reste et je propose un repas.</p>
+
+    <div class="card calc-card">
+      <h3>Mon besoin du jour</h3>
+      <div id="nutri-calc"></div>
+      <p class="calc-note">Calcul de la calculette DEJ (métabolisme de base de Black et al. × activité hors sport + sport en METs), réparti selon tes repères : protéines 1,4–2 g/kg, glucides 50–60 %, lipides 25–35 % (65–75 % / 15–25 % en carbo-loading). Les jauges ci-dessous suivent ces cibles.</p>
+    </div>
 
     <div class="nutri-date-row">
       <span class="nutri-big-date" id="nutri-date"></span>
@@ -2751,9 +2756,9 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20260929m" defer></script>
-<script src="data/nutrition.js?v=20260929m" defer></script>
-<script src="app.js?v=20260929m" defer></script>
+<script src="data/renfo.js?v=20260930a" defer></script>
+<script src="data/nutrition.js?v=20260930a" defer></script>
+<script src="app.js?v=20260930a" defer></script>
 
 </body>
 </html>
