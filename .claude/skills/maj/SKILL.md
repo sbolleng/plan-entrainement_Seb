@@ -37,7 +37,7 @@ contexte.
 /maj seance j'ai fait 30 min de vélo d'appart ce matin, pas tracké
 
 /maj dossard je me suis inscrit à la VVX
-/maj dossard les inscriptions de la Directissime ouvrent le 4 novembre à 10h
+/maj dossard les inscriptions du Gergo Trail ouvrent le 4 novembre à 10h
 /maj dossard Clam Trail : inscriptions ouvertes, 22 €
 
 /maj course Clam Trail 18/10
@@ -63,8 +63,8 @@ demande de Seb le 30/09/2026 : il n'y a plus de tableau de phases à tenir.
 
 Un `/maj` couvre donc les étapes **1** (données Strava), **2 bis** (Cette
 semaine), **3 bis** (journal de renfo), **3 ter** (Nutrition), **4**
-(Profil) et **5** (Objectif 26-27), puis la publication (étape 6). Ordre de
-la nav : Cette semaine (onglet par défaut), Objectif 26-27, Nutrition,
+(Profil) et **5** (Objectif 26-28), puis la publication (étape 6). Ordre de
+la nav : Cette semaine (onglet par défaut), Objectif 26-28, Nutrition,
 Palmarès, Profil, Guide.
 
 ## Le genou n'est plus un sujet d'analyse (27/09/2026)
@@ -135,7 +135,7 @@ Ce n'est plus un plan d'entraînement (il vit dans RunMotion, auquel on n'a
 pas accès) mais une **liste de tout ce que Seb a à faire** dans la semaine :
 
 - **Bandeau** : semaine, inscription à prendre en priorité, prochaine course,
-  objectif A (La Directissime).
+  objectif A (l'OCC).
 - **À faire cette semaine** (`.todo-list`, `.todo-item.is-urgent` pour le plus
   pressé) : dossards à prendre, kinés à venir, mesures à refaire (FC repos),
   réservations, rappels nutrition, infos à m'envoyer.
@@ -262,7 +262,7 @@ lignes « Mis à jour le … » sous les graphes.
 Le bloc « Renfo · suivi » se calcule tout seul depuis `data/renfo.js` : tuiles,
 tonnage hebdomadaire et progression par exercice. Rien à écrire à la main.
 
-## 5 · Page « Objectif 26-27 »
+## 5 · Page « Objectif 26-28 »
 
 Depuis le 27/09/2026, chaque étape de la ligne de temps (`.race-step`) suit
 une structure fixe à 5 cellules dans son `.rs-grid` (2 colonnes, la dernière
@@ -273,7 +273,7 @@ en pleine largeur via `.rs-cell.is-wide`) :
    l'info reste introuvable ou contradictoire, le dire explicitement et
    proposer une meilleure estimation sourcée plutôt qu'un silence.
 3. **Rôle dans la prépa** — ce que cette course apporte (ou n'apporte pas)
-   pour la Directissime : terrain, D+/D−, distance, place dans le bloc. Analyse de
+   pour l'OCC : terrain, D+/D−, distance, place dans le bloc. Analyse de
    forme et de spécificité, pas de bulletin médical.
 4. **Stratégie** — comment bien gérer la course pour aller au bout : allure,
    ravitaillement, gestion du terrain. Pas de cadrage genou (voir plus haut).
@@ -298,7 +298,7 @@ le signaler à Seb.
 ## Page « Palmarès »
 
 Page `#palmares`, entre Objectif et Profil dans le DOM (nav : juste après
-Objectif 26-27). Deux blocs : un tableau de résultats de courses (rempli au
+Objectif 26-28). Deux blocs : un tableau de résultats de courses (rempli au
 fil des `/maj course`), et le tableau « Meilleurs temps » dupliqué depuis
 Profil — les deux copies doivent rester synchronisées si l'une des deux
 change.
@@ -324,11 +324,15 @@ changé et ce qui mérite l'attention de Seb.
 
 - Le site est public : dépôt public servi par GitHub Pages, sans
   authentification. N'y mettre aucune information sensible.
-- Depuis le 29/09/2026, l'objectif final n'est plus le Sancy mais **la
-  Directissime** des Grands Trails Esprit Volcans (34 km, +770 m / −1 800 m,
-  ~12 sept. 2027, du sommet du puy de Dôme à Cournon). L'écart déterminant
-  est donc la **descente** : 53 m/km de D− le jour J, rien de comparable dans
-  l'entraînement actuel. Le D+ (23 m/km) passe au second plan.
+- Depuis le 30/09/2026, l'objectif final est **l'OCC** (UTMB World Series
+  Finals, catégorie 50K, ~55–57 km / 3 400–3 500 m D+, Orsières → Chamonix,
+  fin août 2028, date exacte à confirmer). La Directissime est sortie de la
+  feuille de route, remplacée par le **Gergo Trail** (même week-end, 22 km,
+  900 m D+). Qualification OCC : un UTMB Index valide, toute catégorie, et au
+  moins 1 Running Stone obtenue dans les 24 mois (Stones uniquement sur les
+  UTMB World Series Events et Majors) — tirage au sort vers janvier 2028.
+  L'écart déterminant redevient le **D+ par km** : ~62 m/km le jour J contre
+  9–10 aujourd'hui.
 - Le renfo cuisses et stabilité est le seul levier direct sur la descente.
 - Le renfo est réparti sur deux pages sans redondance : **Guide → Renfo** garde le catalogue et
   la semaine type, **Profil** le suivi de ce qui est réellement fait.

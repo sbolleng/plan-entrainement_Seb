@@ -86,12 +86,12 @@ function showSection(id, btn) {
     { date: new Date('2026-12-05T09:00:00'), name: "Rock'Angel" },
     { date: new Date('2027-01-17T09:00:00'), name: 'D2B' },
     { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
-    { date: new Date('2027-09-12T10:00:00'), name: 'La Directissime' }
+    { date: new Date('2028-08-24T08:00:00'), name: 'OCC' }
   ];
 
   function updateCountdown() {
     const now = new Date();
-    const next = RACES.find(r => r.name === 'La Directissime');
+    const next = RACES.find(r => r.name === 'OCC');
     if (!next) return;
     const t = splitDelay(next.date - now);
     document.getElementById('countdown-days').textContent = t.d;
@@ -320,10 +320,10 @@ function showSection(id, btn) {
     renderBarChart('chart-cadence', seriesFrom('cadenceSpm'), { refLines: [{ val: 170, color: 'var(--accent2)' }] });
     renderBarChart('chart-efficiency', seriesFrom('effBeats'), { invert: true });
 
-    // D+/km · réel + trajectoire cible jusqu'à la Directissime
+    // D+/km · réel + trajectoire cible jusqu'au Gergo Trail, repère OCC
     renderLineChart('chart-dpk', {
       height: 160,
-      min: 0, max: 45,
+      min: 0, max: 65,
       labels: ['Nov 25', '', '', '', 'Mar 26', '', '', '', 'Juil 26', '', '', '',
                'Nov 26', '', '', '', 'Mar 27', '', '', '', 'Juil 27', '', 'Sep 27'],
       formatter: v => v.toFixed(0),
@@ -337,13 +337,13 @@ function showSection(id, btn) {
         {
           values: [null, null, null, null, null, null, null, 9.1,
                    5, 10, 13, 16, 18, 20, 22, 24,
-                   33, 22, 28, 34, 40, 28, 23],
+                   33, 22, 28, 34, 40, 28, 41],
           color: '#7eb8f5', dashed: true, showValues: [16, 20, 22]
         }
       ],
       refLines: [
         { val: 33, color: 'var(--accent2)' },
-        { val: 23, color: 'var(--red)' }
+        { val: 62, color: 'var(--red)' }
       ]
     });
   }
@@ -962,19 +962,22 @@ function showSection(id, btn) {
   // ===== Objectif · difficulté des courses (km-effort avec descente) =====
   // km-effort = distance + D+/100 + D−/200 (coefficient de descente choisi par
   // Seb le 29/09/2026). Courses en boucle : D− = D+. Dates des options
-  // approximatives (« ~ »).
+  // approximatives (« ~ »). La course de liaison, pas encore choisie, est une
+  // fourchette (kind 'range', bornes lo/hi) tracée en pointillé.
   const PLAN_DIFFICULTY = [
     { date: '2026-10-18', name: 'Clam Trail', km: 10, dp: 128, dm: 128, kind: 'firm' },
     { date: '2026-12-05', name: "Rock'Angel", km: 18.3, dp: 750, dm: 750, kind: 'firm' },
     { date: '2027-01-17', name: 'D2B', km: 23.5, dp: 300, dm: 300, kind: 'firm', note: 'sable : difficulté sous-estimée par la formule' },
     { date: '2027-03-07', name: "Forez · L'Augerolloise", km: 33, dp: 1100, dm: 1100, kind: 'firm', label: 'Forez 27' },
     { date: '2027-05-30', name: 'Maxi-Race · Marathon eXpérience', km: 42, dp: 1700, dm: 1700, kind: 'option', approx: true },
-    { date: '2027-06-15', name: 'Sancy Trail · Chambon Neige et Lac', km: 24, dp: 1160, dm: 1160, kind: 'option', approx: true },
     { date: '2027-06-26', name: 'Trail du Bois des Côtes · 32 km', km: 32, dp: 1250, dm: 1250, kind: 'option', approx: true },
     { date: '2027-06-28', name: 'Trail des 3 Pics · T3P L', km: 36, dp: 2200, dm: 2200, kind: 'option', approx: true, label: 'T3P L' },
-    { date: '2027-06-28', name: 'Trail des 3 Pics · T3P M', km: 22.5, dp: 1410, dm: 1410, kind: 'option', approx: true },
     { date: '2027-07-18', name: 'Trail des 4×1800', km: 32, dp: 2000, dm: 2000, kind: 'option', approx: true },
-    { date: '2027-09-12', name: 'La Directissime', km: 34, dp: 770, dm: 1800, kind: 'goal', approx: true, label: 'Directissime' }
+    { date: '2027-09-12', name: 'Gergo Trail', km: 22, dp: 900, dm: 900, kind: 'firm', approx: true, label: 'Gergo', labelBelow: true },
+    { date: '2028-01-15', name: 'Course de liaison · à définir', kind: 'range', approx: true,
+      lo: { km: 45, dp: 2500, dm: 2500 }, hi: { km: 55, dp: 3500, dm: 3500 } },
+    { date: '2028-08-24', name: 'OCC · UTMB World Series Finals 50K', km: 56, dp: 3450, dm: 3300, kind: 'goal', approx: true, label: 'OCC',
+      note: 'course en ligne, D− estimé' }
   ];
 
   function kmEffort(r) { return r.km + r.dp / 100 + r.dm / 200; }
@@ -983,18 +986,32 @@ function showSection(id, btn) {
     const el = document.getElementById('chart-difficulty');
     if (!el) return;
 
-    const t0 = new Date('2026-09-20').getTime(), t1 = new Date('2027-10-10').getTime();
-    const yMax = 80;
+    const t0 = new Date('2026-09-20').getTime(), t1 = new Date('2028-09-20').getTime();
+    const yMax = 120;
+    const TICKS = [30, 60, 90, 120];
     const xAt = d => 3 + ((new Date(d + 'T12:00:00').getTime() - t0) / (t1 - t0)) * 94;
     const yAt = v => 6 + (1 - v / yMax) * 86;
     const nf = v => (Math.round(v * 10) / 10).toLocaleString('fr-FR');
-    const COLORS = { past: 'var(--muted)', firm: 'var(--accent)', option: 'var(--accent)', goal: '#b482ff' };
+    const COLORS = { firm: 'var(--accent)', option: 'var(--accent)', range: 'var(--accent)', goal: '#b482ff' };
 
-    const pts = PLAN_DIFFICULTY.map(r => Object.assign({}, r, { ke: kmEffort(r), x: xAt(r.date) }))
-      .map(r => Object.assign(r, { y: yAt(r.ke) }));
+    const pts = PLAN_DIFFICULTY.map(r => {
+      const p = Object.assign({}, r, { x: xAt(r.date) });
+      if (r.kind === 'range') { p.keLo = kmEffort(r.lo); p.keHi = kmEffort(r.hi); p.ke = (p.keLo + p.keHi) / 2; }
+      else p.ke = kmEffort(r);
+      p.y = yAt(p.ke);
+      return p;
+    });
+    const keTxt = p => (p.kind === 'range' ? nf(p.keLo) + '–' + nf(p.keHi) : nf(p.ke));
+    const specTxt = p => p.kind === 'range'
+      ? p.lo.km + '–' + p.hi.km + ' km · +' + p.lo.dp + '–' + p.hi.dp + ' m'
+      : nf(p.km) + ' km · +' + p.dp + ' / −' + p.dm + ' m';
 
     let svg = '';
-    [20, 40, 60, 80].forEach(v => {
+    pts.filter(p => p.kind === 'range').forEach(p => {
+      svg += '<line x1="' + p.x + '" x2="' + p.x + '" y1="' + yAt(p.keHi) + '" y2="' + yAt(p.keLo) +
+        '" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3" vector-effect="non-scaling-stroke" />';
+    });
+    TICKS.forEach(v => {
       svg += '<line x1="0" x2="100" y1="' + yAt(v) + '" y2="' + yAt(v) +
         '" stroke="var(--border)" stroke-width="1" vector-effect="non-scaling-stroke" />';
     });
@@ -1005,7 +1022,7 @@ function showSection(id, btn) {
     el.innerHTML =
       '<div class="dc-plot">' +
         '<svg viewBox="0 0 100 100" preserveAspectRatio="none">' + svg + '</svg>' +
-        [20, 40, 60, 80].map(v => '<span class="dc-ytick" style="bottom:' + (100 - yAt(v)) + '%">' + v + '</span>').join('') +
+        TICKS.map(v => '<span class="dc-ytick" style="bottom:' + (100 - yAt(v)) + '%">' + v + '</span>').join('') +
         '<div class="dc-tip" role="status" hidden></div>' +
       '</div>' +
       '<div class="dc-xaxis"></div>';
@@ -1016,13 +1033,13 @@ function showSection(id, btn) {
     function showTip(p, dot) {
       tip.textContent = '';
       const v = document.createElement('strong');
-      v.textContent = nf(p.ke) + ' km-effort';
+      v.textContent = keTxt(p) + ' km-effort';
       const n = document.createElement('div');
       n.textContent = p.name + (p.kind === 'option' ? ' (option)' : '');
       const d = document.createElement('div');
       d.className = 'dc-tip-sub';
       const dateTxt = new Date(p.date + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
-      d.textContent = (p.approx ? '~' : '') + dateTxt + ' · ' + nf(p.km) + ' km · +' + p.dp + ' / −' + p.dm + ' m' +
+      d.textContent = (p.approx ? '~' : '') + dateTxt + ' · ' + specTxt(p) +
         (p.note ? ' · ' + p.note : '');
       tip.append(v, n, d);
       tip.hidden = false;
@@ -1056,13 +1073,14 @@ function showSection(id, btn) {
         lb.style.left = p.x + '%';
         lb.style.bottom = (100 - p.y) + '%';
         if (p.x > 85) lb.classList.add('is-end');
+        else if (p.labelBelow) lb.classList.add('is-below');
         lb.textContent = p.label + ' · ' + Math.round(p.ke);
         plot.appendChild(lb);
       }
     });
 
     const axis = el.querySelector('.dc-xaxis');
-    ['2026-10-01', '2026-12-01', '2027-02-01', '2027-04-01', '2027-06-01', '2027-08-01', '2027-10-01'].forEach(d => {
+    ['2026-10-01', '2027-02-01', '2027-06-01', '2027-10-01', '2028-02-01', '2028-06-01'].forEach(d => {
       const s = document.createElement('span');
       s.style.left = xAt(d) + '%';
       const m = new Date(d + 'T12:00:00');
@@ -1075,9 +1093,11 @@ function showSection(id, btn) {
       tbody.textContent = '';
       pts.forEach(p => {
         const tr = document.createElement('tr');
-        const kindTxt = { past: 'courue', firm: 'prévue', option: 'option', goal: 'objectif' }[p.kind];
+        const kindTxt = { firm: 'prévue', option: 'option', range: 'à définir', goal: 'objectif' }[p.kind];
+        const dist = p.kind === 'range' ? p.lo.km + '–' + p.hi.km + ' km' : nf(p.km) + ' km';
+        const den = p.kind === 'range' ? '+' + p.lo.dp + '–' + p.hi.dp : '+' + p.dp + ' / −' + p.dm;
         [(p.approx ? '~' : '') + new Date(p.date + 'T12:00:00').toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' }),
-         p.name, kindTxt, nf(p.km) + ' km', '+' + p.dp + ' / −' + p.dm, nf(p.ke)].forEach((txt, i) => {
+         p.name, kindTxt, dist, den, keTxt(p)].forEach((txt, i) => {
           const td = document.createElement('td');
           td.textContent = txt;
           if (i === 2 || i === 0) td.className = 'muted';
