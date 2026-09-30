@@ -21,7 +21,7 @@
 // ce qui y est saisi prend le pas sur ces valeurs, sur cet appareil seulement.
 // nap : sedentaire | peu | actif | tres (activité hors sport).
 const NUTRITION_PROFILE = {
-  sexe: 'homme', naissance: '', poids: 58.8, taille: 163, nap: 'peu'
+  sexe: 'homme', naissance: '1979-06-08', poids: 58.8, taille: 163, nap: 'peu'
 };
 
 // Cibles fixes : utilisées les jours sans calcul (ni saisie sur le téléphone, ni

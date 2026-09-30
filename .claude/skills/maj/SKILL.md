@@ -54,24 +54,18 @@ contexte.
 Sans mot-clé reconnaissable, faire une mise à jour complète et tenir compte du
 contexte donné dans la phrase.
 
-## Archivage du 27 septembre 2026 · Plan et Cette semaine gelés
+## Plan dans RunMotion, Archives supprimées (27 puis 30/09/2026)
 
-Seb construit désormais son plan d'entraînement dans **RunMotion**. Les pages
-**Cette semaine** et **Plan** ont été glissées dans un nouvel onglet
-**Archives** (`showSubsection`, ids `arch-semaine` et `arch-plan`) et **ne
-sont plus mises à jour** — elles restent gelées telles qu'elles étaient à
-l'archivage, pour l'historique. En conséquence, **les étapes 2 et 3
-ci-dessous sont suspendues** jusqu'à nouvel ordre : ne plus régénérer les
-jours de la semaine ni toucher aux tableaux de phase. Elles restent
-documentées plus bas au cas où Seb reviendrait un jour sur ce choix.
+Seb construit son plan d'entraînement dans **RunMotion**, auquel on n'a pas
+accès. Les anciennes pages **Cette semaine** et **Plan** ont d'abord été
+gelées dans un onglet Archives (27/09), puis **supprimées du site** à la
+demande de Seb le 30/09/2026 : il n'y a plus de tableau de phases à tenir.
 
-Un `/maj` couvre donc désormais les étapes **1** (données Strava), **3 bis**
-(journal de renfo), **4** (Profil) et **5** (Objectif 26-27), puis la
-publication (étape 6). Le point d'entrée par défaut du site est **Objectif
-26-27** (demande explicite de Seb le 27/09/2026). Une nouvelle page
-**Palmarès** existe aussi depuis cette date (voir étape 5), ainsi qu'une page
-**Nutrition** (28/09/2026, voir étape 3 ter) entre Objectif et Palmarès dans
-la nav.
+Un `/maj` couvre donc les étapes **1** (données Strava), **2 bis** (Cette
+semaine), **3 bis** (journal de renfo), **3 ter** (Nutrition), **4**
+(Profil) et **5** (Objectif 26-27), puis la publication (étape 6). Ordre de
+la nav : Cette semaine (onglet par défaut), Objectif 26-27, Nutrition,
+Palmarès, Profil, Guide.
 
 ## Le genou n'est plus un sujet d'analyse (27/09/2026)
 
@@ -136,7 +130,7 @@ index à chaque `/maj`.
 ## 2 bis · Nouvelle page « Cette semaine » (29/09/2026)
 
 Seb a redemandé une page **Cette semaine** vivante (`#semaine`, premier onglet,
-actif par défaut) — distincte de l'ancienne, qui reste gelée dans Archives.
+actif par défaut).
 Ce n'est plus un plan d'entraînement (il vit dans RunMotion, auquel on n'a
 pas accès) mais une **liste de tout ce que Seb a à faire** dans la semaine :
 
@@ -145,56 +139,23 @@ pas accès) mais une **liste de tout ce que Seb a à faire** dans la semaine :
 - **À faire cette semaine** (`.todo-list`, `.todo-item.is-urgent` pour le plus
   pressé) : dossards à prendre, kinés à venir, mesures à refaire (FC repos),
   réservations, rappels nutrition, infos à m'envoyer.
-- **Jour par jour** : kinés (depuis le commentaire du calendrier kiné dans
-  Archives → Plan), séances réelles d'après Strava, et « Séance RunMotion »
-  pour les jours à venir tant que Seb ne les a pas dictées. Ne jamais
-  inventer le contenu d'une séance RunMotion.
+- **Jour par jour** : kinés (depuis le commentaire HTML « Calendrier kiné »,
+  caché juste avant le jour par jour de `#semaine` — le tenir à jour au fil des
+  rendez-vous que Seb communique, sans nom de praticien : le site est public),
+  séances réelles d'après Strava, et les séances RunMotion.
+
+**Chaque dimanche, Seb envoie une capture de son plan RunMotion** pour la
+semaine qui vient : c'est le point de départ du `/maj semaine`. Recopier les
+séances prévues jour par jour (type, durée, allure ou contenu), garder le
+rappel « Dimanche : m'envoyer la capture du plan RunMotion » dans la liste À
+faire, et laisser « Séance RunMotion » sur un jour sans capture. Ne jamais
+inventer le contenu d'une séance.
 
 À régénérer sur `/maj semaine` et à rafraîchir sur tout `/maj`.
 
-## 2 · Ancienne page « Cette semaine » — suspendue depuis le 27/09/2026, voir plus haut
-
-- **Bandeau** : phase et semaine en cours, prochaine inscription à surveiller
-  (première échéance du tableau des dossards de la page Objectif), prochaine
-  course, objectif A.
-- **Bloc de description** : réécrire les quatre paragraphes dans cet ordre —
-  où on en est, la règle du palier, l'état du corps, ce qui décroche. Le titre
-  est le fait marquant de la semaine, pas un intitulé générique.
-- **Jour par jour** : régénérer les sept jours avec le bon `data-date`. Un
-  carré COURSE (ou REPOS) et un carré RENFO par jour. Sur les jours passés,
-  indiquer ce qui a réellement été fait d'après Strava.
-
-Si l'écart au protocole est significatif — palier sauté, repos non pris,
-dénivelé sur une séance censée être plate — le dire et **adapter la
-recommandation du jour** au lieu de recopier le plan.
-
-## 3 · Page « Plan » — suspendu depuis le 27/09/2026, voir plus haut
-
-Dans le tableau de la phase 0 : cocher les séances réalisées avec leur date,
-marquer les sautées, mettre à jour la colonne État, et déplacer la classe
-`plan-race` sur la ligne de la semaine en cours. Si la reprise est terminée,
-basculer le surlignage sur la phase suivante.
-
-Vérifier que les périodes des tableaux de phase restent cohérentes avec le
-calendrier réel et les dates de course retenues.
-
-Les tableaux de phase (Phase 1 et suivantes) sont des **gabarits génériques
-sur plusieurs semaines** — ne pas y inscrire de date précise de kiné, ça ne
-serait juste que pour une semaine sur les deux ou trois que couvre la ligne.
-Les dates précises de kiné vivent dans « Cette semaine », qui elle est
-régénérée chaque semaine avec les vraies dates. Le calendrier des rendez-vous
-de kiné à venir est gardé dans un commentaire HTML juste avant le tableau de
-la phase en cours (non affiché sur le site, sur demande de Seb) : y piocher
-les dates qui tombent dans la semaine affichée pour construire les jours de
-« Cette semaine », et mettre ce commentaire à jour au fil des nouveaux
-rendez-vous que Seb communique.
-
-Partout où une séance de kiné apparaît avec une date fixe (jour de « Cette
-semaine », ligne renfo d'un tableau de phase qui liste des semaines
-spécifiques comme l'ancien tableau de reprise) — utiliser la classe `.kine`
-sur le texte et `has-kine` sur la cellule (`<td class="has-kine">`) plutôt que
-des couleurs en dur : c'est ce qui distingue visuellement un rendez-vous
-imposé d'un créneau de renfo qu'on choisit soi-même.
+Partout où une séance de kiné apparaît avec une date fixe, utiliser la
+classe `.kine` sur le texte plutôt que des couleurs en dur : c'est ce qui
+distingue un rendez-vous imposé d'un créneau de renfo qu'on choisit soi-même.
 
 ## 3 bis · Journal de renfo
 
@@ -369,7 +330,6 @@ changé et ce qui mérite l'attention de Seb.
   est donc la **descente** : 53 m/km de D− le jour J, rien de comparable dans
   l'entraînement actuel. Le D+ (23 m/km) passe au second plan.
 - Le renfo cuisses et stabilité est le seul levier direct sur la descente.
-- Le renfo est réparti sur trois pages sans redondance : **Plan** (archivé)
-  portait la prescription par phase, **Guide → Renfo** garde le catalogue et
+- Le renfo est réparti sur deux pages sans redondance : **Guide → Renfo** garde le catalogue et
   la semaine type, **Profil** le suivi de ce qui est réellement fait.
 - Les dominantes de la semaine type sont fixes, les exercices tournent.
