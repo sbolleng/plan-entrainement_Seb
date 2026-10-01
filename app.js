@@ -292,7 +292,7 @@ function showSection(id, btn) {
         if (show) {
           const txt = cfg.formatter ? cfg.formatter(v) : v;
           dots += '<span style="position:absolute;left:' + left + '%;bottom:' + bottom +
-            '%;transform:translate(-50%,0);margin-bottom:9px;font-family:\'Space Mono\',monospace;' +
+            '%;transform:translate(' + (i === n - 1 ? '-100%' : '-50%') + ',0);margin-bottom:9px;font-family:\'Space Mono\',monospace;' +
             'font-size:0.55rem;color:var(--muted);white-space:nowrap;">' + txt + '</span>';
         }
       });
@@ -300,7 +300,8 @@ function showSection(id, btn) {
 
     const labels = cfg.labels.map(function (lb, i) {
       if (!lb) return '';
-      return '<span style="position:absolute;left:' + xAt(i) + '%;transform:translateX(-50%);' +
+      const shift = i === 0 ? '-10%' : i === n - 1 ? '-90%' : '-50%';
+      return '<span style="position:absolute;left:' + xAt(i) + '%;transform:translateX(' + shift + ');' +
         'font-size:0.58rem;color:var(--muted);white-space:nowrap;">' + lb + '</span>';
     }).join('');
 
@@ -320,25 +321,30 @@ function showSection(id, btn) {
     renderBarChart('chart-cadence', seriesFrom('cadenceSpm'), { refLines: [{ val: 170, color: 'var(--accent2)' }] });
     renderBarChart('chart-efficiency', seriesFrom('effBeats'), { invert: true });
 
-    // D+/km · réel + trajectoire cible jusqu'au Gergo Trail, repère OCC
+    // D+/km · réel + trajectoire cible jusqu'à l'OCC (août 2028)
     renderLineChart('chart-dpk', {
       height: 160,
       min: 0, max: 65,
-      labels: ['Nov 25', '', '', '', 'Mar 26', '', '', '', 'Juil 26', '', '', '',
-               'Nov 26', '', '', '', 'Mar 27', '', '', '', 'Juil 27', '', 'Sep 27'],
+      labels: ['Nov 25', '', '', '', '', '', 'Mai 26', '', '', '', '', '',
+               'Nov 26', '', '', '', '', '', 'Mai 27', '', '', '', '', '',
+               'Nov 27', '', '', '', '', '', '', '', '', 'Août 28'],
       formatter: v => v.toFixed(0),
       series: [
         {
           values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1,
                    10.1, 13.9, 9.8, null, null, null, null, null,
-                   null, null, null, null, null, null, null],
-          color: 'var(--accent)', showValues: [4, 7, 10]
+                   null, null, null, null, null, null, null, null,
+                   null, null, null, null, null, null, null, null, null, null],
+          color: 'var(--accent)', showValues: [4, 10]
         },
         {
+          // Cible : Forez (mars 27), pic printemps-été (juil. 27), Gergo (sept. 27),
+          // course de liaison (janv. 28), montée jusqu'à l'été 2028, OCC (août 28).
           values: [null, null, null, null, null, null, null, 9.1,
                    5, 10, 13, 16, 18, 20, 22, 24,
-                   33, 22, 28, 34, 40, 28, 41],
-          color: '#7eb8f5', dashed: true, showValues: [16, 20, 22]
+                   33, 22, 28, 34, 40, 28, 41, 30,
+                   34, 38, 48, 34, 38, 42, 46, 48, 50, 62],
+          color: '#7eb8f5', dashed: true, showValues: [16, 20, 22, 26, 33]
         }
       ],
       refLines: [
