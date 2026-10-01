@@ -95,6 +95,7 @@ const NUTRITION_LOG = {
       { when: 'Petit-déj', what: 'Deux œufs, eau chaude au miel et citron', p: 13, g: 7, l: 10, f: 0, s: 0.4, w: 0.25, cafe: 0, alcool: 0 },
       { when: 'Soir', what: '3 tranches de pain complet, Carré frais 0 %, 2 carottes crues, riz, poisson', p: 43, g: 99, l: 5, f: 12, s: 1.8, w: 0, cafe: 0, alcool: 0 },
       { when: 'Soir', what: 'Sardines (une boîte), une banane', p: 25, g: 27, l: 11, f: 3, s: 0.8, w: 0, cafe: 0, alcool: 0 },
+      { when: 'Soir', what: 'Petit bol de fromage blanc 0 %', p: 11, g: 6, l: 0, f: 0, s: 0.1, w: 0, cafe: 0, alcool: 0 },
       { when: 'Journée', what: 'Eau au fil de la journée (0,8 L au total)', p: 0, g: 0, l: 0, f: 0, s: 0, w: 0.55, cafe: 0, alcool: 0 },
       { when: 'Journée', what: '4 cafés', p: 0, g: 0, l: 0, f: 0, s: 0, w: 0, cafe: 4, alcool: 0 }
     ] }
