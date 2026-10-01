@@ -225,6 +225,9 @@ const RENFO_LOG = {
         { nom: 'Pompes', dom: 'H', series: 3, reps: 6, charge: 0 }
       ]
     },
+    // Kiné du 28/09 (18h15) : faite, à la place de la préparation physique
+    // RunMotion du jour, mais contenu non noté (Seb n'en a pas besoin).
+    { date: '2026-09-28', source: 'kiné', duree: null, exercices: [] },
     {
       // Kiné du 01/10 (17h45), loguée avec le contenu complet. Durée Hevy
       // 30:05, plausible. Mappings habituels : « Fentes (Haltère) » = Fentes
