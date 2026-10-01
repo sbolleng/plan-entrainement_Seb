@@ -80,7 +80,7 @@ const NUTRITION_PAIR_MEALS = {
 };
 
 const NUTRITION_LOG = {
-  maj: '2026-09-29',
+  maj: '2026-10-01',
   jours: [
     { date: '2026-09-29', repas: [
       { when: 'Petit-déj', what: '4 madeleines, eau chaude au miel et citron', p: 8, g: 84, l: 29, f: 2, s: 0.7, w: 0.25, cafe: 0, alcool: 0 },
@@ -89,6 +89,12 @@ const NUTRITION_LOG = {
       { when: 'Soir', what: 'Poulet, pâtes, fromage blanc 0% sucré', p: 58, g: 83, l: 7, f: 3, s: 1, w: 0, cafe: 0, alcool: 0 },
       { when: 'Soir', what: 'Un demi de bière', p: 0, g: 10, l: 0, f: 0, s: 0, w: 0, cafe: 0, alcool: 1 },
       { when: 'Journée', what: 'Eau au fil de la journée (2,4 L au total)', p: 0, g: 0, l: 0, f: 0, s: 0, w: 2.15, cafe: 0, alcool: 0 },
+      { when: 'Journée', what: '4 cafés', p: 0, g: 0, l: 0, f: 0, s: 0, w: 0, cafe: 4, alcool: 0 }
+    ] },
+    { date: '2026-10-01', repas: [
+      { when: 'Petit-déj', what: 'Deux œufs, eau chaude au miel et citron', p: 13, g: 7, l: 10, f: 0, s: 0.4, w: 0.25, cafe: 0, alcool: 0 },
+      { when: 'Soir', what: '3 tranches de pain complet, Carré frais 0 %, 2 carottes crues, riz, poisson', p: 43, g: 99, l: 5, f: 12, s: 1.8, w: 0, cafe: 0, alcool: 0 },
+      { when: 'Journée', what: 'Eau au fil de la journée (0,8 L au total)', p: 0, g: 0, l: 0, f: 0, s: 0, w: 0.55, cafe: 0, alcool: 0 },
       { when: 'Journée', what: '4 cafés', p: 0, g: 0, l: 0, f: 0, s: 0, w: 0, cafe: 4, alcool: 0 }
     ] }
   ]
