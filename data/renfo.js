@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-09-27',
+  maj: '2026-10-01',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -223,6 +223,20 @@ const RENFO_LOG = {
         { nom: 'Gainage latéral', dom: 'A', series: 2, reps: 69, charge: 0, tenue: true },
         { nom: 'Relevé de jambes allongé', dom: 'A', series: 3, reps: 20, charge: 2 },
         { nom: 'Pompes', dom: 'H', series: 3, reps: 6, charge: 0 }
+      ]
+    },
+    {
+      // Kiné du 01/10 (17h45), loguée avec le contenu complet. Durée Hevy
+      // 30:05, plausible. Mappings habituels : « Fentes (Haltère) » = Fentes
+      // haltères (40 reps par série, sans doute 20 par jambe), « Marche
+      // Latérale Bande Élastique » = Pas chassés demi-squat + levers latéraux,
+      // « Extension Jambe latérale avec Élastique » = Élévation latérale jambe
+      // lestée, ici avec un élastique plutôt qu'un poids (charge 0).
+      date: '2026-10-01', source: 'kiné', duree: 30,
+      exercices: [
+        { nom: 'Fentes haltères', dom: 'F', series: 3, reps: 40, charge: 20 },
+        { nom: 'Pas chassés demi-squat + levers latéraux', dom: 'S', series: 2, reps: 40, charge: 0 },
+        { nom: 'Élévation latérale jambe lestée', dom: 'S', series: 3, reps: 24, charge: 0 }
       ]
     }
   ]
