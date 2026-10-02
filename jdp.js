@@ -280,3 +280,94 @@ setInterval(function () {
 
   ssInit();
 })();
+
+// ===== Météo course San Sebastián · Open-Meteo (gratuit, sans clé, CORS ouvert) =====
+// Modèle ECMWF inclus dans l'agrégation Open-Meteo — référence en fiabilité
+// à courte échéance (ici J-2), donc pas besoin de comparer plusieurs sources.
+(function () {
+  const SS_LAT = 43.3183;
+  const SS_LON = -1.9812;
+  const SS_RACE_DAY = '2026-10-04';
+  const SS_RACE_HOURS = [9, 10, 11]; // fenêtre de course (départ 9h30, ~1h50)
+  const SS_PAST_CUTOFF = new Date('2026-10-05T00:00:00');
+  const SS_WEATHER_CACHE_KEY = 'jdp-ss-weather-v1';
+  const SS_WEATHER_CACHE_TTL = 15 * 60 * 1000;
+
+  const WMO_LABELS = {
+    0: ['☀️', 'Ciel dégagé'], 1: ['🌤️', 'Principalement dégagé'], 2: ['⛅', 'Partiellement nuageux'], 3: ['☁️', 'Couvert'],
+    45: ['🌫️', 'Brouillard'], 48: ['🌫️', 'Brouillard givrant'],
+    51: ['🌦️', 'Bruine légère'], 53: ['🌦️', 'Bruine'], 55: ['🌦️', 'Bruine forte'],
+    56: ['🌧️', 'Bruine verglaçante'], 57: ['🌧️', 'Bruine verglaçante forte'],
+    61: ['🌧️', 'Pluie légère'], 63: ['🌧️', 'Pluie'], 65: ['🌧️', 'Pluie forte'],
+    66: ['🌧️', 'Pluie verglaçante'], 67: ['🌧️', 'Pluie verglaçante forte'],
+    71: ['❄️', 'Neige légère'], 73: ['❄️', 'Neige'], 75: ['❄️', 'Neige forte'], 77: ['❄️', 'Grains de neige'],
+    80: ['🌦️', 'Averses légères'], 81: ['🌦️', 'Averses'], 82: ['🌧️', 'Averses fortes'],
+    85: ['❄️', 'Averses de neige'], 86: ['❄️', 'Averses de neige fortes'],
+    95: ['⛈️', 'Orage'], 96: ['⛈️', 'Orage avec grêle'], 99: ['⛈️', 'Orage avec grêle fort']
+  };
+
+  function renderWeatherError() {
+    const body = document.getElementById('ss-weather-body');
+    if (body) body.innerHTML = '<span class="weather-error">Météo indisponible pour l\'instant.</span>';
+  }
+
+  function renderWeatherPast() {
+    const body = document.getElementById('ss-weather-body');
+    if (body) body.innerHTML = '<span class="weather-error">Course passée.</span>';
+  }
+
+  function renderWeather(data) {
+    const body = document.getElementById('ss-weather-body');
+    if (!body) return;
+    const idx = data.hourly.time.findIndex(t => t === SS_RACE_DAY + 'T' + String(SS_RACE_HOURS[0]).padStart(2, '0') + ':00');
+    if (idx === -1) { renderWeatherError(); return; }
+
+    const temp = Math.round(data.hourly.temperature_2m[idx]);
+    const wind = Math.round(data.hourly.wind_speed_10m[idx]);
+    const code = data.hourly.weathercode[idx];
+    const [emoji, label] = WMO_LABELS[code] || ['🌡️', 'Prévision indisponible'];
+
+    let maxPrecip = 0;
+    SS_RACE_HOURS.forEach(h => {
+      const i = data.hourly.time.findIndex(t => t === SS_RACE_DAY + 'T' + String(h).padStart(2, '0') + ':00');
+      if (i !== -1) maxPrecip = Math.max(maxPrecip, data.hourly.precipitation_probability[i]);
+    });
+
+    body.innerHTML =
+      '<div class="weather-main"><span class="weather-icon">' + emoji + '</span><span class="weather-temp">' + temp + '°C</span></div>' +
+      '<div class="weather-desc">' + label + ' · au départ</div>' +
+      '<div class="weather-detail">💨 ' + wind + ' km/h · ☔ ' + maxPrecip + '%</div>';
+  }
+
+  function ssWeatherInit() {
+    const container = document.getElementById('ss-weather');
+    if (!container) return;
+
+    if (new Date() >= SS_PAST_CUTOFF) {
+      renderWeatherPast();
+      return;
+    }
+
+    try {
+      const cached = JSON.parse(sessionStorage.getItem(SS_WEATHER_CACHE_KEY) || 'null');
+      if (cached && (Date.now() - cached.fetchedAt) < SS_WEATHER_CACHE_TTL) {
+        renderWeather(cached.data);
+        return;
+      }
+    } catch (e) { /* cache illisible, on refait l'appel */ }
+
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + SS_LAT + '&longitude=' + SS_LON +
+      '&hourly=temperature_2m,precipitation_probability,wind_speed_10m,weathercode&timezone=Europe%2FMadrid' +
+      '&start_date=' + SS_RACE_DAY + '&end_date=' + SS_RACE_DAY;
+
+    fetch(url)
+      .then(r => { if (!r.ok) throw new Error('bad response'); return r.json(); })
+      .then(data => {
+        try { sessionStorage.setItem(SS_WEATHER_CACHE_KEY, JSON.stringify({ fetchedAt: Date.now(), data })); } catch (e) { /* stockage plein, tant pis */ }
+        renderWeather(data);
+      })
+      .catch(renderWeatherError);
+  }
+
+  ssWeatherInit();
+})();

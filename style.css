@@ -1062,6 +1062,25 @@
     .fg-mark { font-size: 0.56rem; }
   }
 
+  /* Cellule divisée en deux colonnes internes (ex. Dossard + Météo),
+     pour une cellule rs-cell qui a de la place à revendre. */
+  .split-2col { display: flex; gap: 0.8rem; }
+  .split-col { flex: 1; min-width: 0; }
+  .split-col + .split-col { border-left: 1px solid var(--border); padding-left: 0.8rem; }
+
+  .weather-body { margin-top: 0.3rem; }
+  .weather-loading, .weather-error { font-size: 0.72rem; color: var(--muted); }
+  .weather-main { display: flex; align-items: center; gap: 0.4rem; }
+  .weather-icon { font-size: 1.3rem; line-height: 1; }
+  .weather-temp { font-family: 'Space Mono', monospace; font-size: 1rem; font-weight: 700; color: var(--text); }
+  .weather-desc { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+  .weather-detail { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 0.3rem; }
+
+  @media (max-width: 600px) {
+    .split-2col { flex-direction: column; gap: 0.6rem; }
+    .split-col + .split-col { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 0.6rem; }
+  }
+
   /* Sous-groupes d'options à l'intérieur d'un même bloc (plusieurs
      événements, chacun avec son propre .fmt-grid de formats) */
   .fmt-group { margin-top: 1.1rem; }
