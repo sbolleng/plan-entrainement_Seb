@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <title>JDP — Marathon de Rome 2028</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>">
-<link rel="stylesheet" href="style.css?v=20261002a">
+<link rel="stylesheet" href="style.css?v=20261002b">
 <link rel="stylesheet" href="jdp.css?v=20260921a">
 </head>
 <body>
@@ -102,6 +102,58 @@
             <span class="mono">+34 843 98 92 10</span><br>
             Arrivée le vendredi 2 octobre à partir de 15 h, départ le dimanche 4 avant 11 h.<br>
             <span class="muted" style="font-size:0.75rem;">Reste à caler : le trajet, et le retrait du dossard la veille sur l'expo.</span></p>
+          </div>
+        </div>
+
+        <div class="live-track" id="ss-live-track">
+          <div class="live-track-head">
+            <div class="live-track-title"><span class="live-dot"></span>Suivi live · dossard 3395</div>
+            <div class="live-track-sub"><a class="ext-link" href="https://live.irteerak.com/results.html?id=medio-maraton-donostia-san-sebastian-rural-kutxa-2026-21k" target="_blank" rel="noopener" style="font-size:0.7rem;">Page officielle</a></div>
+          </div>
+
+          <div class="checkpoints">
+            <div class="cp-card" data-cp="5k">
+              <div class="cp-name">5 km</div>
+              <div class="cp-target">cible 26'30</div>
+              <input class="cp-input" data-cp-input="5k" placeholder="mm:ss" inputmode="numeric">
+              <div class="cp-delta" data-cp-delta="5k">—</div>
+              <div class="cp-pace" data-cp-pace="5k"></div>
+            </div>
+            <div class="cp-card" data-cp="10k">
+              <div class="cp-name">10 km</div>
+              <div class="cp-target">cible 52'30</div>
+              <input class="cp-input" data-cp-input="10k" placeholder="mm:ss" inputmode="numeric">
+              <div class="cp-delta" data-cp-delta="10k">—</div>
+              <div class="cp-pace" data-cp-pace="10k"></div>
+            </div>
+            <div class="cp-card" data-cp="20k">
+              <div class="cp-name">20 km</div>
+              <div class="cp-target">cible ≈ 1h44'25</div>
+              <input class="cp-input" data-cp-input="20k" placeholder="mm:ss ou h:mm:ss" inputmode="numeric">
+              <div class="cp-delta" data-cp-delta="20k">—</div>
+              <div class="cp-pace" data-cp-pace="20k"></div>
+            </div>
+            <div class="cp-card" data-cp="finish">
+              <div class="cp-name">Arrivée</div>
+              <div class="cp-target">cible 1h49'55–1h50'10</div>
+              <input class="cp-input" data-cp-input="finish" placeholder="h:mm:ss" inputmode="numeric">
+              <div class="cp-delta" data-cp-delta="finish">—</div>
+              <div class="cp-pace" data-cp-pace="finish"></div>
+            </div>
+          </div>
+
+          <div class="finish-gauge">
+            <div class="fg-bar">
+              <div class="fg-fill" id="ss-fg-fill" style="width:0%;"></div>
+              <div class="fg-mark is-target" style="left:44.4%;">1h48<br><span style="font-size:0.55rem;">cible</span></div>
+              <div class="fg-mark" style="left:55.6%;">1h50<br><span style="font-size:0.55rem;">phare</span></div>
+              <div class="fg-mark" style="left:72.2%;">1h53<br><span style="font-size:0.55rem;">PR</span></div>
+            </div>
+          </div>
+
+          <div class="live-msg" id="ss-live-msg">
+            <span class="emoji">⏳</span>
+            <span>Entre un temps au premier point de passage pour voir la projection.</span>
           </div>
         </div>
       </div>
@@ -1116,6 +1168,6 @@
 
 </main>
 
-<script src="jdp.js?v=20260929a" defer></script>
+<script src="jdp.js?v=20261002b" defer></script>
 </body>
 </html>

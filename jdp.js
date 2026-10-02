@@ -123,3 +123,160 @@ setInterval(function () {
   updateRaceCountdowns();
   updateTimelineCountdowns();
 }, 1000);
+
+// ===== Suivi live San Sebastián · points de passage saisis à la main =====
+// Pas d'accès possible aux données de live.irteerak.com depuis le site (pas
+// d'API publique connue) : on compare les temps relevés manuellement sur
+// leur page aux objectifs de la stratégie de course.
+(function () {
+  const SS_CHECKPOINTS = {
+    '5k':     { distKm: 5,    targetSec: 26 * 60 + 30 },
+    '10k':    { distKm: 10,   targetSec: 52 * 60 + 30 },
+    '20k':    { distKm: 20,   targetSec: 3600 + 44 * 60 + 25 },
+    'finish': { distKm: 21.1, targetSec: 3600 + 50 * 60 + 2 }
+  };
+  const SS_ORDER = ['5k', '10k', '20k', 'finish'];
+  const SS_GOAL_CIBLE = 3600 + 48 * 60;
+  const SS_GOAL_PHARE = 3600 + 50 * 60;
+  const SS_GOAL_PR = 3600 + 53 * 60;
+  const SS_GAUGE_MIN = 3600 + 40 * 60;
+  const SS_GAUGE_MAX = 3600 + 58 * 60;
+  const SS_STORAGE_PREFIX = 'jdp-ss-cp-';
+
+  function ssParseTime(str) {
+    const parts = str.trim().split(':');
+    if (parts.length < 2 || parts.length > 3 || parts.some(p => p === '' || isNaN(Number(p)))) return null;
+    const nums = parts.map(Number);
+    if (nums.length === 2) return nums[0] * 60 + nums[1];
+    return nums[0] * 3600 + nums[1] * 60 + nums[2];
+  }
+
+  function ssFormatDuration(totalSec) {
+    const sign = totalSec < 0 ? '-' : '';
+    totalSec = Math.round(Math.abs(totalSec));
+    const h = Math.floor(totalSec / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    const s = totalSec % 60;
+    const mm = h > 0 ? String(m).padStart(2, '0') : String(m);
+    const ss = String(s).padStart(2, '0');
+    return sign + (h > 0 ? h + 'h' + mm + "'" + ss : m + "'" + ss);
+  }
+
+  function ssFormatDelta(deltaSec) {
+    const sign = deltaSec >= 0 ? '+' : '-';
+    const abs = Math.round(Math.abs(deltaSec));
+    const m = Math.floor(abs / 60);
+    const s = abs % 60;
+    return sign + m + ':' + String(s).padStart(2, '0');
+  }
+
+  function ssFormatPace(secPerKm) {
+    const m = Math.floor(secPerKm / 60);
+    const s = Math.round(secPerKm % 60);
+    return m + "'" + String(s).padStart(2, '0') + '/km';
+  }
+
+  function ssRecompute() {
+    const track = document.getElementById('ss-live-track');
+    if (!track) return;
+
+    let prevDist = 0, prevSec = 0, lastFilled = null, lastFilledSec = null, lastFilledDist = null;
+
+    SS_ORDER.forEach(cp => {
+      const def = SS_CHECKPOINTS[cp];
+      const input = track.querySelector('[data-cp-input="' + cp + '"]');
+      const card = track.querySelector('[data-cp="' + cp + '"]');
+      const deltaEl = track.querySelector('[data-cp-delta="' + cp + '"]');
+      const paceEl = track.querySelector('[data-cp-pace="' + cp + '"]');
+      const sec = ssParseTime(input.value);
+
+      if (sec === null) {
+        card.classList.remove('is-done');
+        deltaEl.textContent = '—';
+        deltaEl.className = 'cp-delta';
+        paceEl.textContent = '';
+        prevDist = def.distKm;
+        prevSec = null;
+        return;
+      }
+
+      card.classList.add('is-done');
+      const delta = sec - def.targetSec;
+      deltaEl.textContent = ssFormatDelta(delta);
+      const cls = delta <= 10 ? 'ok' : (delta <= 45 ? 'warn' : 'bad');
+      deltaEl.className = 'cp-delta ' + cls;
+
+      if (prevSec !== null) {
+        const paceSec = (sec - prevSec) / (def.distKm - prevDist);
+        paceEl.textContent = ssFormatPace(paceSec);
+      } else {
+        paceEl.textContent = '';
+      }
+
+      prevDist = def.distKm;
+      prevSec = sec;
+      lastFilled = cp;
+      lastFilledSec = sec;
+      lastFilledDist = def.distKm;
+    });
+
+    const msgEl = document.getElementById('ss-live-msg');
+    const fillEl = document.getElementById('ss-fg-fill');
+    const emojiEl = msgEl.querySelector('.emoji');
+    const textEl = msgEl.querySelector('span:last-child');
+
+    if (lastFilled === null) {
+      fillEl.style.width = '0%';
+      emojiEl.textContent = '⏳';
+      textEl.textContent = 'Entre un temps au premier point de passage pour voir la projection.';
+      return;
+    }
+
+    const isFinished = lastFilled === 'finish';
+    const projectedSec = isFinished ? lastFilledSec : (lastFilledSec / lastFilledDist) * 21.1;
+    const pct = Math.max(0, Math.min(100, ((projectedSec - SS_GAUGE_MIN) / (SS_GAUGE_MAX - SS_GAUGE_MIN)) * 100));
+    fillEl.style.width = pct + '%';
+
+    const projStr = ssFormatDuration(projectedSec);
+    if (projectedSec <= SS_GOAL_CIBLE) {
+      emojiEl.textContent = '🟢';
+      textEl.textContent = (isFinished ? 'Terminé ! ' : 'Projection ≈ ' + projStr + ' — ') +
+        (isFinished ? 'Temps final : ' + projStr + '. Sous le temps cible, magnifique !' : 'en avance sur le temps cible, parfait.');
+    } else if (projectedSec <= SS_GOAL_PHARE) {
+      emojiEl.textContent = '🟢';
+      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'Projection ≈ ' + projStr + ' — ') +
+        'Entre la cible et l\'objectif phare, très bien.';
+    } else if (projectedSec <= SS_GOAL_PR) {
+      emojiEl.textContent = '🟡';
+      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'Projection ≈ ' + projStr + ' — ') +
+        'Sous le PR mais au-dessus de l\'objectif phare.';
+    } else {
+      emojiEl.textContent = isFinished ? '🏁' : '🔴';
+      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'Projection ≈ ' + projStr + ' — ') +
+        (isFinished ? 'Au-dessus du PR actuel, mais une course dans la jambe.' : 'au-dessus du PR actuel, ajuste l\'allure si tu peux.');
+    }
+  }
+
+  function ssInit() {
+    const track = document.getElementById('ss-live-track');
+    if (!track) return;
+
+    SS_ORDER.forEach(cp => {
+      const input = track.querySelector('[data-cp-input="' + cp + '"]');
+      const stored = localStorage.getItem(SS_STORAGE_PREFIX + cp);
+      if (stored) input.value = stored;
+      input.addEventListener('input', () => {
+        if (input.value.trim() === '') {
+          localStorage.removeItem(SS_STORAGE_PREFIX + cp);
+        } else {
+          localStorage.setItem(SS_STORAGE_PREFIX + cp, input.value);
+        }
+        ssRecompute();
+      });
+    });
+
+    ssRecompute();
+  }
+
+  ssInit();
+})();
