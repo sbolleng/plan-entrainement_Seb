@@ -956,6 +956,23 @@
   .ext-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
   .ext-link::after { content: ' ↗'; font-size: 0.8em; }
 
+  /* Pastille "en direct" : point qui pulse devant un lien de suivi live. */
+  .live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--red);
+    margin-right: 0.4rem;
+    vertical-align: middle;
+    animation: live-pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes live-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+    70% { box-shadow: 0 0 0 5px transparent; opacity: 0.55; }
+  }
+
   /* Sous-groupes d'options à l'intérieur d'un même bloc (plusieurs
      événements, chacun avec son propre .fmt-grid de formats) */
   .fmt-group { margin-top: 1.1rem; }
