@@ -335,7 +335,7 @@ setInterval(function () {
 
     body.innerHTML =
       '<div class="weather-main"><span class="weather-icon">' + emoji + '</span><span class="weather-temp">' + temp + '°C</span></div>' +
-      '<div class="weather-desc">' + label + ' · au départ</div>' +
+      '<div class="weather-desc">' + label + ' · dim. 4 oct., 9h30</div>' +
       '<div class="weather-detail">💨 ' + wind + ' km/h · ☔ ' + maxPrecip + '%</div>';
   }
 
