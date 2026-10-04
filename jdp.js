@@ -398,3 +398,32 @@ setInterval(function () {
 
   ssWeatherInit();
 })();
+
+// ===== Mise à jour automatique =====
+// Même mécanisme que sur le site de Seb : GitHub Pages laisse le navigateur
+// garder la page en cache ~10 min et un onglet resté ouvert ne se recharge
+// jamais. On compare la version affichée à celle en ligne, et on recharge.
+(function () {
+  function checkNewVersion() {
+    const meta = document.querySelector('meta[name="site-version"]');
+    if (!meta || !window.fetch || location.protocol === 'file:') return;
+    const current = meta.content;
+    fetch(location.pathname + '?check=' + Date.now(), { cache: 'no-store' })
+      .then(r => (r.ok ? r.text() : ''))
+      .then(html => {
+        const m = html.match(/<meta name="site-version" content="([^"]+)"/);
+        if (!m || m[1] <= current) return;
+        try {
+          if (sessionStorage.getItem('siteReloadedFor') === m[1]) return;
+          sessionStorage.setItem('siteReloadedFor', m[1]);
+        } catch (e) { /* stockage indisponible : on recharge quand même une fois */ }
+        location.replace(location.pathname + '?v=' + m[1] + location.hash);
+      })
+      .catch(() => {});
+  }
+  checkNewVersion();
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkNewVersion();
+  });
+  window.addEventListener('pageshow', e => { if (e.persisted) checkNewVersion(); });
+})();
