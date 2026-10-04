@@ -143,12 +143,27 @@ setInterval(function () {
   const SS_GAUGE_MAX = 3600 + 58 * 60;
   const SS_STORAGE_PREFIX = 'jdp-ss-cp-';
 
+  // Le pavé numérique du téléphone n'a pas de « : » : on accepte aussi les
+  // chiffres seuls, lus par la droite (2129 → 21:29, 14450 → 1:44:50).
   function ssParseTime(str) {
-    const parts = str.trim().split(':');
-    if (parts.length < 2 || parts.length > 3 || parts.some(p => p === '' || isNaN(Number(p)))) return null;
-    const nums = parts.map(Number);
+    const raw = str.trim();
+    if (raw === '') return null;
+    let nums;
+    if (/[^0-9]/.test(raw)) {
+      nums = raw.split(/[^0-9]+/).filter(p => p !== '').map(Number);
+    } else {
+      if (raw.length < 3 || raw.length > 6) return null;
+      const hh = raw.slice(0, -4), mm = raw.slice(-4, -2), ss = raw.slice(-2);
+      nums = hh ? [Number(hh), Number(mm), Number(ss)] : [Number(mm), Number(ss)];
+    }
+    if (nums.length < 2 || nums.length > 3 || nums[nums.length - 1] >= 60) return null;
     if (nums.length === 2) return nums[0] * 60 + nums[1];
     return nums[0] * 3600 + nums[1] * 60 + nums[2];
+  }
+
+  function ssFormatClock(sec) {
+    const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+    return (h > 0 ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(s).padStart(2, '0');
   }
 
   function ssFormatDuration(totalSec) {
@@ -272,6 +287,12 @@ setInterval(function () {
           localStorage.setItem(SS_STORAGE_PREFIX + cp, input.value);
         }
         ssRecompute();
+      });
+      input.addEventListener('change', () => {
+        const sec = ssParseTime(input.value);
+        if (sec === null) return;
+        input.value = ssFormatClock(sec);
+        localStorage.setItem(SS_STORAGE_PREFIX + cp, input.value);
       });
     });
 
