@@ -248,26 +248,32 @@ setInterval(function () {
     }
 
     const isFinished = lastFilled === 'finish';
-    const projectedSec = isFinished ? lastFilledSec : (lastFilledSec / lastFilledDist) * 21.1;
+    // La stratégie prévoit des allures différentes par segment : on projette
+    // l'arrivée prévue par le plan, décalée de l'écart au dernier point.
+    const projectedSec = isFinished ? lastFilledSec
+      : SS_CHECKPOINTS.finish.targetSec + (lastFilledSec - SS_CHECKPOINTS[lastFilled].targetSec);
     const pct = Math.max(0, Math.min(100, ((projectedSec - SS_GAUGE_MIN) / (SS_GAUGE_MAX - SS_GAUGE_MIN)) * 100));
     fillEl.style.width = pct + '%';
 
     const projStr = ssFormatDuration(projectedSec);
     if (projectedSec <= SS_GOAL_CIBLE) {
       emojiEl.textContent = '🟢';
-      textEl.textContent = (isFinished ? 'Terminé ! ' : 'Projection ≈ ' + projStr + ' — ') +
+      textEl.textContent = (isFinished ? 'Terminé ! ' : 'En tenant le plan : ≈ ' + projStr + ' — ') +
         (isFinished ? 'Temps final : ' + projStr + '. Sous le temps cible, magnifique !' : 'en avance sur le temps cible, parfait.');
     } else if (projectedSec <= SS_GOAL_PHARE) {
       emojiEl.textContent = '🟢';
-      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'Projection ≈ ' + projStr + ' — ') +
+      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'En tenant le plan : ≈ ' + projStr + ' — ') +
         'Entre la cible et l\'objectif phare, très bien.';
+    } else if (!isFinished && projectedSec <= SS_GOAL_PHARE + 15) {
+      emojiEl.textContent = '🟢';
+      textEl.textContent = 'En tenant le plan : ≈ ' + projStr + ' — pile sur l\'objectif phare, continue comme ça.';
     } else if (projectedSec <= SS_GOAL_PR) {
       emojiEl.textContent = '🟡';
-      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'Projection ≈ ' + projStr + ' — ') +
+      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'En tenant le plan : ≈ ' + projStr + ' — ') +
         'Sous le PR mais au-dessus de l\'objectif phare.';
     } else {
       emojiEl.textContent = isFinished ? '🏁' : '🔴';
-      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'Projection ≈ ' + projStr + ' — ') +
+      textEl.textContent = (isFinished ? 'Terminé ! Temps final : ' + projStr + '. ' : 'En tenant le plan : ≈ ' + projStr + ' — ') +
         (isFinished ? 'Au-dessus du PR actuel, mais une course dans la jambe.' : 'au-dessus du PR actuel, ajuste l\'allure si tu peux.');
     }
   }
