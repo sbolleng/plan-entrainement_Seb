@@ -49,6 +49,27 @@ La plus récente en haut.
 | 3 oct. 2026 | Vision | Application modulaire, activation des modules par utilisateur ; deux profils pilotes, ouverture possible ; application web, sans installation. |
 | Oct. 2026 | Données | Supabase retenu ; trois automatisations prioritaires : import Strava, bilan hebdomadaire, suivi du plan nutritionnel. |
 
+## Idées de modules
+
+Idées notées pour plus tard, sans jalon.
+
+### Calendrier annuel des courses (idée du 5 oct. 2026)
+
+Une vue de l'année d'un seul tenant, pour voir le planning en un coup d'œil, pas un simple récapitulatif.
+
+- Les 12 mois visibles ensemble, un petit carré par jour.
+- Chaque course est un carré de couleur vive à sa date (par exemple rouge ; l'objectif plus marqué).
+- Un liseré part de chaque course et remonte dans le temps sur la durée de sa préparation : deux liserés qui se superposent signalent deux préparations qui se chevauchent.
+- Les jours sans course ni liseré font apparaître les plages libres pour la récupération et la préparation.
+- Construit à partir de la même liste de courses que la page Objectif, sans double saisie.
+
+À trancher le moment venu :
+
+- [ ] Durée de préparation : fixée par type de course, ou saisie course par course ?
+- [ ] Liseré de récupération après chaque course, d'une autre couleur ?
+- [ ] Période affichée : année civile, ou 12 mois glissants ?
+- [ ] Module à part (« Calendrier »), ou bloc de la page Objectif ?
+
 ## Questions ouvertes
 
 - [ ] **Nom de l'application** : à arrêter d'ici au 10 octobre 2026 (recommandation : MyRunTools ; disponibilité à vérifier).
