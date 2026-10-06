@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-10-01',
+  maj: '2026-10-06',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -240,6 +240,33 @@ const RENFO_LOG = {
         { nom: 'Fentes haltères', dom: 'F', series: 3, reps: 40, charge: 20 },
         { nom: 'Pas chassés demi-squat + levers latéraux', dom: 'S', series: 2, reps: 40, charge: 0 },
         { nom: 'Élévation latérale jambe lestée', dom: 'S', series: 3, reps: 24, charge: 0 }
+      ]
+    },
+    {
+      // Séance perso du 04/10 (« Abdo »), 13 min. Crunch dégressif 20/17/17 :
+      // reps notées sur la dernière série. « Extension Jambe latérale avec
+      // Élastique » = Élévation latérale jambe lestée (élastique, charge 0),
+      // 20/24/24 noté 24.
+      date: '2026-10-04', source: 'hevy', duree: 13,
+      exercices: [
+        { nom: 'Crunch', dom: 'A', series: 3, reps: 17, charge: 0 },
+        { nom: 'Élévation latérale jambe lestée', dom: 'S', series: 3, reps: 24, charge: 0 }
+      ]
+    },
+    {
+      // Kiné du 05/10 (17h45), 30 min, contenu complet. « Squat Une Jambe
+      // Statique » = tenue isométrique sur une jambe, notée sous « Chaise sur
+      // une jambe » (même travail du quadriceps en isométrie). « Split Squat
+      // Bulgare (Haltère) » = Fentes bulgares, passées de 10 à 18 kg.
+      // « Around the World + Extension de Jambe (Kettlebell / Élastique) » est
+      // une variante nouvelle (kettlebell 4 kg autour du bassin + extension de
+      // la jambe libre à l'élastique) : ajoutée au catalogue sous son nom,
+      // distincte du « Kettlebell around the world » simple à 10 kg.
+      date: '2026-10-05', source: 'kiné', duree: 30,
+      exercices: [
+        { nom: 'Chaise sur une jambe', dom: 'S', series: 6, reps: 30, charge: 0, tenue: true },
+        { nom: 'Fentes bulgares', dom: 'F', series: 3, reps: 10, charge: 18 },
+        { nom: 'Around the world + extension de jambe', dom: 'S', series: 3, reps: 20, charge: 4 }
       ]
     }
   ]

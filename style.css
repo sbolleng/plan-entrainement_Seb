@@ -383,8 +383,11 @@
     overflow: visible;
   }
   .stats-labels { display: flex; gap: 0.45rem; margin-top: 0.4rem; }
+  @media (max-width: 480px) { .stats-labels span { letter-spacing: 0; font-size: 0.5rem; } }
   .stats-labels span {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
     text-align: center;
     font-size: 0.58rem;
     color: var(--muted);

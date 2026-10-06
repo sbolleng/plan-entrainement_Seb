@@ -126,7 +126,7 @@ function showSection(id, btn) {
   }
   markToday();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 27/09/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 06/10/2026) =====
   // Pour mettre à jour : ajouter un mois par mois à la suite dans ce tableau.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -146,9 +146,11 @@ function showSection(id, btn) {
     { label: 'Juil', distanceKm: 17.3,  dplusM: 175,  paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 10.1 },
     { label: 'Août', distanceKm: 104.3, dplusM: 1454, paceSecPerKm: null, cadenceSpm: null, hrBpm: null, effBeats: null, dpk: 13.9 },
     // Septembre : protocole terminé le 5/09, course continue reprise. La mesure
-    // reprend après le trou de juillet-août, calculée sur les 8 sorties du mois
+    // reprend après le trou de juillet-août, calculée sur les 10 sorties du mois
     // (moyennes pondérées par le temps de déplacement de chaque sortie).
-    { label: 'Sept', distanceKm: 89.1, dplusM: 876, paceSecPerKm: 311, cadenceSpm: 171, hrBpm: 154, effBeats: 800, dpk: 9.8 },
+    { label: 'Sept', distanceKm: 113.7, dplusM: 1226, paceSecPerKm: 311, cadenceSpm: 170, hrBpm: 154, effBeats: 795, dpk: 10.8 },
+    // Octobre en cours : 2 sorties au 06/10 (allure semi le 03, EF le 06).
+    { label: 'Oct', distanceKm: 18.7, dplusM: 184, paceSecPerKm: 330, cadenceSpm: 165, hrBpm: 154, effBeats: 846, dpk: 9.8 },
   ];
 
   function fmtPace(sec) {
@@ -332,7 +334,7 @@ function showSection(id, btn) {
       series: [
         {
           values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1,
-                   10.1, 13.9, 9.8, null, null, null, null, null,
+                   10.1, 13.9, 10.8, 9.8, null, null, null, null,
                    null, null, null, null, null, null, null, null,
                    null, null, null, null, null, null, null, null, null, null],
           color: 'var(--accent)', showValues: [4, 10]
