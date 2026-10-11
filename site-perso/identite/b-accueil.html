@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Accueil · Ambiance B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Ambiance B : Sentier. Accueil en couleur, articles sur fond blanc. */
+:root { --bg: #FFFFFF; --ink: #102F3A; --muted: #45606B; --line: #D3E3E8; --accent: #0D5870; --pop: #E8742A; --pop-ink: #B4500E; --hero-bg: #DCEBF0; --hero-ink: #0E3442; --band1: #F1F7F9; --band2: #FCEBDF; --line-2: #EFCBB2; --card-bg: #FFFFFF; --foot-bg: #0E3442; --foot-ink: #C8DEE5; --btn-bg: #0D5870; --btn-ink: #FFFFFF; --photo-bg: #BFD9E2; --photo-ink: #0E3442; --chip-bg: #E3EFF3; --chip-ink: #0D5870; --hand-ink: #B4500E; --title: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif; --title-w: 800; --title-ls: -0.035em; --em-style: normal; --radius: 12px; }
+
+.hero-t em, .art-t em { color: var(--pop-ink); }
+canvas.topo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; color: var(--accent); }
+.ridge { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 64px; z-index: 1; display: block; }
+.hero .wrap { padding-bottom: 5.5rem; }
+.sec { position: relative; --sec-bg: var(--bg); }
+.sec.band1 { --sec-bg: var(--band1); }
+.sec.band2 { --sec-bg: var(--band2); }
+.trail > .wrap { position: relative; }
+.trail .sec-h h2 { position: relative; }
+.trail .sec-h h2::before { content: ""; display: inline-block; width: .5em; height: .5em; margin-right: .35em; border-radius: 50%; background: var(--pop); vertical-align: .08em; }
+@media (min-width: 56rem) {
+  .trail > .wrap { padding-left: 4.5rem; }
+  .trail > .wrap::before { content: ""; position: absolute; left: 2.2rem; top: -4.5rem; bottom: -4.5rem; border-left: 4px dotted var(--pop); }
+  .trail .sec-h h2::before { position: absolute; left: -2.95rem; top: .3em; width: 1.25rem; height: 1.25rem; margin: 0; box-shadow: 0 0 0 6px var(--sec-bg); }
+  .trail.first > .wrap::before { top: 0; }
+  .trail.last > .wrap::before { bottom: auto; height: 5.6rem; }
+}
+
+</style>
+</head>
+<body>
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Ambiance B : Sentier</span>
+  <a href="b-accueil.html" aria-current="page">Accueil</a>
+  <a href="b-article.html">Article</a>
+  <span class="sp"></span>
+  <a href="index.html">← Les 3 ambiances</a>
+</div></div>
+<header class="site-head on-hero"><div class="wrap">
+  <a class="brand" href="b-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#articles">Articles</a></li><li><a href="#projets">Projets</a></li><li><a href="#en-ce-moment">En ce moment</a></li><li><a href="#a-propos">À propos</a></li></ul></nav>
+</div></header>
+<section class="hero" aria-label="Présentation">
+  <canvas class="topo" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-txt">
+      <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
+      <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
+      <p class="hero-sig"><span class="hand">Sébastien</span><span>Sébastien Bollengier</span></p>
+      <a class="btn" href="b-article.html">Lire le premier article →</a>
+    </div>
+    <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
+  </div>
+  <svg class="ridge" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 L0 40 L90 30 L170 38 L260 14 L340 28 L430 6 L510 24 L590 14 L670 34 L770 12 L860 28 L950 20 L1040 38 L1130 24 L1200 34 L1200 64 Z" fill="#FFFFFF"/><polyline points="0,40 90,30 170,38 260,14 340,28 430,6 510,24 590,14 670,34 770,12 860,28 950,20 1040,38 1130,24 1200,34" fill="none" stroke="#E8742A" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 11" vector-effect="non-scaling-stroke"/></svg>
+</section>
+
+<main>
+  <section class="sec trail first" id="articles"><div class="wrap">
+    <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
+    <article class="feature">
+      <p class="meta">Le premier · Octobre 2026 · 5 min de lecture</p>
+      <h3><a href="b-article.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
+      <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
+      <p><a class="go" href="b-article.html">Lire l'article →</a></p>
+    </article>
+    <p class="next-note">Le prochain arrive bientôt : une ou deux fois par mois.</p>
+  </div></section>
+
+  <section class="sec band1 trail" id="projets"><div class="wrap">
+    <div class="sec-h"><h2>Projets</h2><p>Ce que je construis, au travail comme à côté.</p></div>
+    <ul class="projects">
+      <li class="proj">
+        <p class="kicker">Projet personnel</p>
+        <h3>La boîte à outils du coureur</h3>
+        <p class="desc">Une application web pour préparer ses courses, sur route comme en trail : objectif, plan d'entraînement, nutrition, logistique. Je la conçois et la construis avec Claude.</p>
+        <p class="foot"><span class="pill-status">En cours</span></p>
+      </li>
+
+      <li class="proj">
+        <p class="kicker">Projet professionnel</p>
+        <h3><mark class="ph">[Titre du projet]</mark></h3>
+        <p class="desc"><mark class="ph">[Description dans la maquette privée]</mark></p>
+        <p class="foot"><span class="tag-note">À valider</span></p>
+      </li>
+      <li class="proj">
+        <p class="kicker">Projet professionnel</p>
+        <h3><mark class="ph">[Titre du projet]</mark></h3>
+        <p class="desc"><mark class="ph">[Description dans la maquette privée]</mark></p>
+        <p class="foot"><span class="tag-note">À valider</span></p>
+      </li>
+    </ul>
+  </div></section>
+
+  <section class="sec band2 trail" id="en-ce-moment"><div class="wrap">
+    <div class="sec-h"><h2>En ce moment</h2><p class="meta">Mis à jour le 11 octobre 2026</p></div>
+    <ul class="now">
+      <li><p class="kicker">Trail</p><h3>Cap sur l'OCC, en août 2028</h3><p>L'une des courses de l'UTMB Mont-Blanc. Prochain rendez-vous : le Clam Trail, le 18 octobre. <span class="tag-note">à confirmer</span></p></li>
+      <li><p class="kicker">Je me forme</p><h3><mark class="ph">[Ce que vous apprenez]</mark></h3><p><mark class="ph">[Détail dans la maquette privée]</mark> <span class="tag-note">à valider</span></p></li>
+      <li><p class="kicker">Ma toolbox</p><h3>Les outils du moment</h3><p>Claude pour écrire et construire mes outils, Strava et RunMotion pour courir.</p></li>
+      <li><p class="kicker">Je lis</p><h3>Sur ma table de chevet</h3><p><mark class="ph">[le livre en cours]</mark> Mes critiques sont sur Babelio.</p></li>
+    </ul>
+  </div></section>
+
+  <section class="sec trail last" id="a-propos"><div class="wrap">
+    <div class="sec-h"><h2>Qui écrit ?</h2></div>
+    <div class="about">
+      <div class="photo md" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
+      <div class="about-txt">
+        <p>Je m'appelle Sébastien Bollengier. Depuis vingt-cinq ans, je pilote des projets dans l'AdTech, la data et aujourd'hui l'IA.</p>
+        <p class="conviction">J'aime la transformation quand elle prend soin des gens : derrière chaque changement, il y a d'abord des femmes et des hommes.</p>
+        <p><span class="tag-note">Texte proposé, à valider</span></p>
+        <p class="kicker">Mes talents, selon Gallup</p>
+        <p><mark class="ph">[Vos cinq talents Gallup, dans la maquette privée]</mark></p>
+        <p><span class="tag-note">À valider : les afficher ?</span></p>
+        <div class="social">
+  <a class="pill" href="https://www.linkedin.com/" title="Votre profil LinkedIn (adresse à fournir)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z"/></svg><span>LinkedIn</span></a>
+  <a class="babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio (le vrai logo sera intégré)">B</a>
+</div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec band1"><div class="wrap"><aside class="nl" aria-label="Lettre d'information (bientôt)">
+  <p class="kicker">Bientôt</p>
+  <p class="nl-t">Recevoir les prochains articles par e-mail</p>
+  <p class="nl-d">Emplacement réservé à la future lettre. Rien n'est collecté pour l'instant.</p>
+</aside></div></section>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <a class="brand" href="b-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><a href="#mentions">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    function done() { b.textContent = 'Lien copié'; }
+    try { navigator.clipboard.writeText(location.href.split('#')[0]).then(done, done); } catch (e) { done(); }
+  });
+});
+
+(function () {
+  var c = document.querySelector('canvas.topo');
+  if (!c) return;
+  var hills = [[0.80, 0.35, 0.22, 1.0], [0.98, 0.95, 0.18, 0.75], [0.58, 1.05, 0.2, 0.55], [0.12, -0.05, 0.16, 0.5], [0.35, 0.55, 0.12, 0.25]];
+  function lerp(L, p, q) { return (L - p) / (q - p); }
+  function draw() {
+    var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = Math.max(1, Math.round(r.width)), H = Math.max(1, Math.round(r.height));
+    c.width = W * dpr; c.height = H * dpr;
+    var g = c.getContext('2d');
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, W, H);
+    var k = H / W;
+    function f(xn, yn) {
+      var v = 0;
+      for (var i = 0; i < hills.length; i++) {
+        var h = hills[i], dx = xn - h[0], dy = (yn - h[1]) * k;
+        v += h[3] * Math.exp(-(dx * dx + dy * dy) / (2 * h[2] * h[2]));
+      }
+      return v + 0.035 * Math.sin(xn * 11 + yn * 5) + 0.025 * Math.sin(yn * 13 - xn * 4);
+    }
+    var s = 7, nx = Math.ceil(W / s) + 1, ny = Math.ceil(H / s) + 1, F = new Float32Array(nx * ny);
+    for (var j = 0; j < ny; j++) for (var i = 0; i < nx; i++) F[j * nx + i] = f(i * s / W, j * s / H);
+    g.strokeStyle = getComputedStyle(c).color;
+    g.lineWidth = 1.1;
+    g.globalAlpha = W < 700 ? 0.2 : 0.32;
+    g.beginPath();
+    for (var L = 0.08; L < 1.3; L += 0.075) {
+      for (var j2 = 0; j2 < ny - 1; j2++) for (var i2 = 0; i2 < nx - 1; i2++) {
+        var a = F[j2 * nx + i2], b = F[j2 * nx + i2 + 1], cc = F[(j2 + 1) * nx + i2 + 1], d = F[(j2 + 1) * nx + i2];
+        var q = (a > L ? 8 : 0) | (b > L ? 4 : 0) | (cc > L ? 2 : 0) | (d > L ? 1 : 0);
+        if (q === 0 || q === 15) continue;
+        var x = i2 * s, y = j2 * s;
+        var T = [x + s * lerp(L, a, b), y], R = [x + s, y + s * lerp(L, b, cc)], B = [x + s * lerp(L, d, cc), y + s], Lf = [x, y + s * lerp(L, a, d)];
+        var segs = { 1: [[Lf, B]], 14: [[Lf, B]], 2: [[B, R]], 13: [[B, R]], 3: [[Lf, R]], 12: [[Lf, R]], 4: [[T, R]], 11: [[T, R]],
+                     5: [[Lf, T], [B, R]], 10: [[T, R], [Lf, B]], 6: [[T, B]], 9: [[T, B]], 7: [[Lf, T]], 8: [[Lf, T]] }[q];
+        for (var m = 0; m < segs.length; m++) { g.moveTo(segs[m][0][0], segs[m][0][1]); g.lineTo(segs[m][1][0], segs[m][1][1]); }
+      }
+    }
+    g.stroke();
+    if (W >= 900) {  // on efface les courbes derrière le texte, à gauche
+      g.globalAlpha = 1;
+      g.globalCompositeOperation = 'destination-out';
+      var grad = g.createLinearGradient(0, 0, W * 0.62, 0);
+      grad.addColorStop(0, 'rgba(0,0,0,0.9)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = grad;
+      g.fillRect(0, 0, W, H);
+      g.globalCompositeOperation = 'source-over';
+    }
+  }
+  draw();
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>

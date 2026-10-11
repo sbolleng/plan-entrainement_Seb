@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Accueil · Ambiance A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Ambiance A : Encre et soleil. Accueil en couleur, articles sur fond blanc. */
+:root { --bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --hero-bg: #14284B; --hero-ink: #FFFFFF; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --card-bg: #FFFFFF; --foot-bg: #14284B; --foot-ink: #C9D4E8; --btn-bg: #F2B937; --btn-ink: #14284B; --photo-bg: #22406F; --photo-ink: #DCE5F5; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hand-ink: #F2B937; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --radius: 4px; }
+
+.hero-t em, .art-t em { position: relative; white-space: nowrap; }
+.hero-t em::after, .art-t em::after { content: ""; position: absolute; left: -.03em; right: -.03em; bottom: -.05em; height: .2em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M4 14 C 60 3, 130 4, 196 9' stroke='%23F2B937' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%; z-index: -1; }
+.hero-t, .art-t { position: relative; z-index: 0; }
+.hero .photo { box-shadow: 0 0 0 6px #14284B, 0 0 0 8px #F2B937; }
+.brand { font-size: 1.7rem; }
+
+</style>
+</head>
+<body>
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Ambiance A : Encre et soleil</span>
+  <a href="a-accueil.html" aria-current="page">Accueil</a>
+  <a href="a-article.html">Article</a>
+  <span class="sp"></span>
+  <a href="index.html">← Les 3 ambiances</a>
+</div></div>
+<header class="site-head on-hero"><div class="wrap">
+  <a class="brand" href="a-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#articles">Articles</a></li><li><a href="#projets">Projets</a></li><li><a href="#en-ce-moment">En ce moment</a></li><li><a href="#a-propos">À propos</a></li></ul></nav>
+</div></header>
+<section class="hero" aria-label="Présentation">
+  
+  <div class="wrap">
+    <div class="hero-txt">
+      <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
+      <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
+      <p class="hero-sig"><span class="hand">Sébastien</span><span>Sébastien Bollengier</span></p>
+      <a class="btn" href="a-article.html">Lire le premier article →</a>
+    </div>
+    <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
+  </div>
+  
+</section>
+
+<main>
+  <section class="sec first" id="articles"><div class="wrap">
+    <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
+    <article class="feature">
+      <p class="meta">Le premier · Octobre 2026 · 5 min de lecture</p>
+      <h3><a href="a-article.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
+      <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
+      <p><a class="go" href="a-article.html">Lire l'article →</a></p>
+    </article>
+    <p class="next-note">Le prochain arrive bientôt : une ou deux fois par mois.</p>
+  </div></section>
+
+  <section class="sec band1" id="projets"><div class="wrap">
+    <div class="sec-h"><h2>Projets</h2><p>Ce que je construis, au travail comme à côté.</p></div>
+    <ul class="projects">
+      <li class="proj">
+        <p class="kicker">Projet personnel</p>
+        <h3>La boîte à outils du coureur</h3>
+        <p class="desc">Une application web pour préparer ses courses, sur route comme en trail : objectif, plan d'entraînement, nutrition, logistique. Je la conçois et la construis avec Claude.</p>
+        <p class="foot"><span class="pill-status">En cours</span></p>
+      </li>
+
+      <li class="proj">
+        <p class="kicker">Projet professionnel</p>
+        <h3><mark class="ph">[Titre du projet]</mark></h3>
+        <p class="desc"><mark class="ph">[Description dans la maquette privée]</mark></p>
+        <p class="foot"><span class="tag-note">À valider</span></p>
+      </li>
+      <li class="proj">
+        <p class="kicker">Projet professionnel</p>
+        <h3><mark class="ph">[Titre du projet]</mark></h3>
+        <p class="desc"><mark class="ph">[Description dans la maquette privée]</mark></p>
+        <p class="foot"><span class="tag-note">À valider</span></p>
+      </li>
+    </ul>
+  </div></section>
+
+  <section class="sec band2" id="en-ce-moment"><div class="wrap">
+    <div class="sec-h"><h2>En ce moment</h2><p class="meta">Mis à jour le 11 octobre 2026</p></div>
+    <ul class="now">
+      <li><p class="kicker">Trail</p><h3>Cap sur l'OCC, en août 2028</h3><p>L'une des courses de l'UTMB Mont-Blanc. Prochain rendez-vous : le Clam Trail, le 18 octobre. <span class="tag-note">à confirmer</span></p></li>
+      <li><p class="kicker">Je me forme</p><h3><mark class="ph">[Ce que vous apprenez]</mark></h3><p><mark class="ph">[Détail dans la maquette privée]</mark> <span class="tag-note">à valider</span></p></li>
+      <li><p class="kicker">Ma toolbox</p><h3>Les outils du moment</h3><p>Claude pour écrire et construire mes outils, Strava et RunMotion pour courir.</p></li>
+      <li><p class="kicker">Je lis</p><h3>Sur ma table de chevet</h3><p><mark class="ph">[le livre en cours]</mark> Mes critiques sont sur Babelio.</p></li>
+    </ul>
+  </div></section>
+
+  <section class="sec last" id="a-propos"><div class="wrap">
+    <div class="sec-h"><h2>Qui écrit ?</h2></div>
+    <div class="about">
+      <div class="photo md" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
+      <div class="about-txt">
+        <p>Je m'appelle Sébastien Bollengier. Depuis vingt-cinq ans, je pilote des projets dans l'AdTech, la data et aujourd'hui l'IA.</p>
+        <p class="conviction">J'aime la transformation quand elle prend soin des gens : derrière chaque changement, il y a d'abord des femmes et des hommes.</p>
+        <p><span class="tag-note">Texte proposé, à valider</span></p>
+        <p class="kicker">Mes talents, selon Gallup</p>
+        <p><mark class="ph">[Vos cinq talents Gallup, dans la maquette privée]</mark></p>
+        <p><span class="tag-note">À valider : les afficher ?</span></p>
+        <div class="social">
+  <a class="pill" href="https://www.linkedin.com/" title="Votre profil LinkedIn (adresse à fournir)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z"/></svg><span>LinkedIn</span></a>
+  <a class="babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio (le vrai logo sera intégré)">B</a>
+</div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec band1"><div class="wrap"><aside class="nl" aria-label="Lettre d'information (bientôt)">
+  <p class="kicker">Bientôt</p>
+  <p class="nl-t">Recevoir les prochains articles par e-mail</p>
+  <p class="nl-d">Emplacement réservé à la future lettre. Rien n'est collecté pour l'instant.</p>
+</aside></div></section>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <a class="brand" href="a-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><a href="#mentions">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    function done() { b.textContent = 'Lien copié'; }
+    try { navigator.clipboard.writeText(location.href.split('#')[0]).then(done, done); } catch (e) { done(); }
+  });
+});
+</script>
+</body>
+</html>

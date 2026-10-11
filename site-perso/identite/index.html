@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ambiances du site Bollengier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Young+Serif&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Page de choix : fond blanc, une colonne, puis trois fiches d'ambiance, la planche des typos et celle des éléments graphiques. */
+:root { --bg: #FFFFFF; --ink: #16191E; --muted: #474E59; --line: #DDE2E8; --soft: #F4F6F9; --accent: #1F4E9E; }
+.hub { max-width: 68rem; margin-inline: auto; padding-inline: 1.25rem; padding-block: 2.5rem 4rem; }
+@media (min-width: 48rem) { .hub { padding-inline: 2rem; } }
+.hub > header { max-width: 46rem; display: grid; gap: .9rem; }
+.hub .kick { font: 700 .82rem/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0; }
+.hub h1 { font: 700 clamp(2rem, 6vw, 2.9rem)/1.12 var(--sans); letter-spacing: -.015em; }
+.hub .lead { font-size: 1.2rem; color: var(--muted); margin: 0; }
+.hub h2.sec2 { font: 700 1.75rem/1.2 var(--sans); margin: 3.5rem 0 1.25rem; padding-top: 2rem; border-top: 2px solid var(--ink); }
+.took { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; max-width: 52rem; }
+.took li { display: grid; gap: .3rem; padding: 1rem 1.2rem; background: var(--soft); border-radius: 10px; }
+@media (min-width: 48rem) { .took li { grid-template-columns: 15rem minmax(0, 1fr); gap: 1.5rem; } }
+.took q { font-weight: 700; quotes: "«\00a0" "\00a0»"; }
+.took p { margin: 0; }
+.ambs { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
+.amb { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; background: #FFFFFF; min-width: 0; }
+.prev { border-bottom: 1px solid var(--line); }
+.prev-hero { padding: 1.4rem 1.2rem 1.6rem; min-height: 7.5rem; display: flex; align-items: flex-end; }
+.prev-t { font-size: 2rem; line-height: 1.05; }
+.pd { display: inline-flex; gap: 4px; margin-right: 5px; vertical-align: baseline; }
+.pd i { width: 6px; height: 6px; border-radius: 50%; display: block; }
+.prev-bands { display: grid; grid-template-columns: 1fr 1fr; height: 1.4rem; }
+.prev-art { background: #FFFFFF; padding: .8rem 1.2rem; display: grid; gap: 6px; }
+.prev-art i { display: block; height: 6px; border-radius: 3px; background: #D9DEE5; }
+.amb-body { padding: 1.25rem 1.25rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.amb-k { margin: 0; font: 700 .8rem/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.amb h3 { font: 700 1.6rem/1.2 var(--sans); }
+.amb-i { margin: 0 0 .4rem; }
+.amb h4 { margin: .8rem 0 .2rem; font: 700 .95rem/1.3 var(--sans); }
+.sw { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem; font-size: .95rem; }
+.sw li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr) auto; gap: .55rem; align-items: center; }
+.sw .chip { width: 1.2rem; height: 1.2rem; border-radius: 4px; border: 1px solid rgba(0,0,0,.12); }
+.sw code { font: .9rem ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); }
+.amb-f { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+.gr { margin: 0; padding-left: 1.1rem; display: grid; gap: .2rem; font-size: 1rem; }
+.open { margin: auto 0 0; padding-top: 1rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+.hbtn { display: inline-flex; font: 700 1rem/1.2 var(--sans); padding: .7rem 1.1rem; border-radius: 6px; text-decoration: none; color: var(--ink); border: 2px solid var(--ink); }
+.hbtn.main { background: var(--ink); color: #FFFFFF; }
+.hbtn:hover { opacity: .88; }
+.specs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.spec { padding-block: 1.4rem; border-bottom: 1px solid var(--line); display: grid; gap: .35rem; min-width: 0; }
+.spec p { margin: 0; }
+.spec-n { font-size: 1rem; }
+.spec-n span { color: var(--muted); margin-left: .5rem; }
+.spec-t { font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.08; color: #13294B; overflow-wrap: anywhere; }
+.spec-s { font-size: 1.45rem; line-height: 1.25; }
+.spec-d { color: var(--muted); }
+.gts { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.gt { border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem 1.2rem; display: grid; gap: .45rem; align-content: start; }
+.gt p { margin: 0; }
+.gt-n span { color: var(--muted); font-size: .95rem; margin-left: .35rem; }
+.gt-d { font-size: 1rem; color: var(--muted); }
+.gt-v { height: 6rem; border-radius: 8px; background: var(--soft); display: grid; place-items: center; overflow: hidden; position: relative; }
+.g-dots { display: inline-flex; gap: 12px; }
+.g-dots i { width: 22px; height: 22px; border-radius: 50%; background: #14284B; display: block; }
+.g-dots i.hot { background: #F2B937; }
+.g-under { font: italic 2.4rem/1 'Instrument Serif', Georgia, serif; color: #14284B; position: relative; }
+.g-under::after { content: ""; position: absolute; left: -2%; right: -2%; bottom: -.08em; height: .22em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M4 14 C 60 3, 130 4, 196 9' stroke='%23F2B937' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%; z-index: -1; }
+.g-under { z-index: 0; }
+.g-topo { width: 100%; height: 100%; }
+.g-topo ellipse { fill: none; stroke: #0D5870; stroke-opacity: .5; stroke-width: 1.4; }
+.g-path { position: relative; width: 70%; height: 4px; border-top: 4px dotted #E8742A; display: block; }
+.g-path i { position: absolute; top: -12px; width: 18px; height: 18px; border-radius: 50%; background: #E8742A; box-shadow: 0 0 0 4px #F4F6F9; }
+.g-path i:nth-child(1) { left: 0; } .g-path i:nth-child(2) { left: 45%; } .g-path i:nth-child(3) { right: 0; }
+.g-conf { position: absolute; inset: 0; }
+.g-conf i { position: absolute; width: 14px; height: 14px; border-radius: 50%; display: block; }
+.g-sig { font: 600 2.8rem/1 'Caveat', cursive; color: #1E4D8C; }
+.common { margin: 0; padding-left: 1.2rem; display: grid; gap: .5rem; max-width: 52rem; }
+.reply { max-width: 46rem; background: var(--soft); border-radius: 12px; padding: 1.25rem 1.4rem; margin: 0; }
+</style>
+</head>
+<body>
+<main class="hub">
+<header>
+  <p class="kick">…le début d'autre chose · Étape 2 : l'identité</p>
+  <h1>Trois ambiances pour votre site</h1>
+  <p class="lead">La structure 1 est validée. Voici trois façons de lui donner du relief : des fonds de couleur sur l'accueil, du blanc pour lire les articles, des éléments graphiques et une typo de titre propre à chaque ambiance. Votre accroche et votre article sont intégrés tels quels. Dans cette copie du dépôt GitHub, qui est public, ils sont remplacés par des emplacements : la version complète est dans la maquette privée.</p>
+  <p><mark class="ph">En jaune</mark> : ce qui reste à valider ou à compléter.</p>
+</header>
+
+<h2 class="sec2">Ce que j'ai repris de vous</h2>
+<ul class="took">
+  <li><q>Le titre du site</q><p>« …le début d'autre chose » devient le nom du site, en haut de chaque page. Les trois points en sont le logo.</p></li>
+  <li><q>Un titre, un résumé, la philosophie du site</q><p>Votre « accroche du site », trouvée dans votre document, ouvre l'accueil mot pour mot. Aucune mention d'une recherche d'emploi.</p></li>
+  <li><q>Faites-moi confiance</q><p>La confiance passe par vos textes, vos projets et un court « Qui écrit ? » : vingt-cinq ans de projets, et l'idée que le changement réussit quand on prend soin des gens.</p></li>
+  <li><q>Ma personne, mes réflexions, mes projets</q><p>Votre photo en grand dès l'accueil, une rubrique Projets ajoutée au menu, votre article en entier.</p></li>
+  <li><q>Mon profil Gallup</q><p>Vos cinq talents, d'où un site chaleureux et lumineux, qui donne envie de lire et de vous rencontrer.</p></li>
+</ul>
+
+<h2 class="sec2">Les trois ambiances</h2>
+<div class="ambs">
+<article class="amb">
+  <div class="prev" aria-hidden="true">
+    <div class="prev-hero" style="background:#14284B;color:#FFFFFF">
+      <span class="prev-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#F2B937"></i></span>le début d'<em style="font-style:italic">autre chose</em></span>
+    </div>
+    <div class="prev-bands"><span style="background:#EEF2F8"></span><span style="background:#FFF5D9"></span></div>
+    <div class="prev-art"><i></i><i></i><i style="width:70%"></i></div>
+  </div>
+  <div class="amb-body">
+    <p class="amb-k">Ambiance A</p>
+    <h3>Encre et soleil</h3>
+    <p class="amb-i">Un bleu nuit d'encre et un jaune soleil. La plus éditoriale des trois : sobre, contrastée, élégante, avec un trait de lumière pour célébrer.</p>
+    <h4>Couleurs</h4>
+    <ul class="sw"><li><span class="chip" style="background:#14284B"></span><span>Fond de l'accueil</span><code>#14284B</code></li><li><span class="chip" style="background:#EEF2F8"></span><span>Bandeau Projets</span><code>#EEF2F8</code></li><li><span class="chip" style="background:#FFF5D9"></span><span>Bandeau En ce moment</span><code>#FFF5D9</code></li><li><span class="chip" style="background:#1E4D8C"></span><span>Liens</span><code>#1E4D8C</code></li><li><span class="chip" style="background:#F2B937"></span><span>« L'autre chose »</span><code>#F2B937</code></li><li><span class="chip" style="background:#15233F"></span><span>Texte</span><code>#15233F</code></li></ul>
+    <h4>Typo des titres</h4>
+    <p class="amb-f" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400">Instrument Serif</p>
+    <h4>Éléments graphiques</h4>
+    <ul class="gr"><li>Les trois points, le dernier en jaune</li><li>Le trait de lumière sous « autre chose »</li><li>La signature manuscrite</li></ul>
+    <p class="open"><a class="hbtn main" href="a-accueil.html">Voir l'accueil</a><a class="hbtn" href="a-article.html">Voir l'article</a></p>
+  </div>
+</article><article class="amb">
+  <div class="prev" aria-hidden="true">
+    <div class="prev-hero" style="background:#DCEBF0;color:#0E3442">
+      <span class="prev-t" style="font-family:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;font-weight:800;letter-spacing:-0.035em"><span class="pd"><i style="background:#0E3442"></i><i style="background:#0E3442"></i><i style="background:#E8742A"></i></span>le début d'<em style="font-style:normal">autre chose</em></span>
+    </div>
+    <div class="prev-bands"><span style="background:#F1F7F9"></span><span style="background:#FCEBDF"></span></div>
+    <div class="prev-art"><i></i><i></i><i style="width:70%"></i></div>
+  </div>
+  <div class="amb-body">
+    <p class="amb-k">Ambiance B</p>
+    <h3>Sentier</h3>
+    <p class="amb-i">Un bleu de lac de montagne et l'orange des balises de trail. La plus claire des trois : des courbes de niveau, un chemin en pointillés, du relief au sens propre.</p>
+    <h4>Couleurs</h4>
+    <ul class="sw"><li><span class="chip" style="background:#DCEBF0"></span><span>Fond de l'accueil</span><code>#DCEBF0</code></li><li><span class="chip" style="background:#F1F7F9"></span><span>Bandeau Projets</span><code>#F1F7F9</code></li><li><span class="chip" style="background:#FCEBDF"></span><span>Bandeau En ce moment</span><code>#FCEBDF</code></li><li><span class="chip" style="background:#0D5870"></span><span>Liens</span><code>#0D5870</code></li><li><span class="chip" style="background:#E8742A"></span><span>Balise orange</span><code>#E8742A</code></li><li><span class="chip" style="background:#102F3A"></span><span>Texte</span><code>#102F3A</code></li></ul>
+    <h4>Typo des titres</h4>
+    <p class="amb-f" style="font-family:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;font-weight:800">Bricolage Grotesque</p>
+    <h4>Éléments graphiques</h4>
+    <ul class="gr"><li>Les courbes de niveau derrière le titre</li><li>La ligne de crête en pointillés orange</li><li>Le chemin en pointillés qui relie les rubriques</li></ul>
+    <p class="open"><a class="hbtn main" href="b-accueil.html">Voir l'accueil</a><a class="hbtn" href="b-article.html">Voir l'article</a></p>
+  </div>
+</article><article class="amb">
+  <div class="prev" aria-hidden="true">
+    <div class="prev-hero" style="background:#2B3CC4;color:#FFFFFF">
+      <span class="prev-t" style="font-family:'Young Serif', Georgia, serif;font-weight:400;letter-spacing:-0.01em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#FF5C8A"></i></span>le début d'<em style="font-style:normal">autre chose</em></span>
+    </div>
+    <div class="prev-bands"><span style="background:#F2F3FF"></span><span style="background:#FFF0F5"></span></div>
+    <div class="prev-art"><i></i><i></i><i style="width:70%"></i></div>
+  </div>
+  <div class="amb-body">
+    <p class="amb-k">Ambiance C</p>
+    <h3>Célébration</h3>
+    <p class="amb-i">Un bleu outremer franc, avec du rose framboise et du jaune. La plus joyeuse des trois : des confettis, des formes rondes, l'envie de célébrer.</p>
+    <h4>Couleurs</h4>
+    <ul class="sw"><li><span class="chip" style="background:#2B3CC4"></span><span>Fond de l'accueil</span><code>#2B3CC4</code></li><li><span class="chip" style="background:#F2F3FF"></span><span>Bandeau Projets</span><code>#F2F3FF</code></li><li><span class="chip" style="background:#FFF0F5"></span><span>Bandeau En ce moment</span><code>#FFF0F5</code></li><li><span class="chip" style="background:#FF5C8A"></span><span>Framboise</span><code>#FF5C8A</code></li><li><span class="chip" style="background:#FFC83D"></span><span>Soleil</span><code>#FFC83D</code></li><li><span class="chip" style="background:#1A1D3D"></span><span>Texte</span><code>#1A1D3D</code></li></ul>
+    <h4>Typo des titres</h4>
+    <p class="amb-f" style="font-family:'Young Serif', Georgia, serif;font-weight:400">Young Serif</p>
+    <h4>Éléments graphiques</h4>
+    <ul class="gr"><li>Les confettis autour de votre photo</li><li>Le soulignement en vague sous « autre chose »</li><li>Les formes rondes et la signature manuscrite</li></ul>
+    <p class="open"><a class="hbtn main" href="c-accueil.html">Voir l'accueil</a><a class="hbtn" href="c-article.html">Voir l'article</a></p>
+  </div>
+</article>
+</div>
+
+<h2 class="sec2">Les typographies de titre</h2>
+<p class="lead" style="margin-bottom:1rem">Chaque ambiance a la sienne, mais vous pouvez en choisir une autre. Le texte des articles, lui, reste en Source Serif, très lisible.</p>
+<ul class="specs">
+<li class="spec">
+  <p class="spec-n"><b>Instrument Serif</b> <span>Ambiance A</span></p>
+  <p class="spec-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em">…le début d'autre chose</p>
+  <p class="spec-s" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em">Derniers articles et projets</p>
+  <p class="spec-d">Fine et élégante, très éditoriale. Superbe en italique.</p>
+</li><li class="spec">
+  <p class="spec-n"><b>Bricolage Grotesque</b> <span>Ambiance B</span></p>
+  <p class="spec-t" style="font-family:'Bricolage Grotesque', system-ui, sans-serif;font-weight:800;letter-spacing:-0.035em">…le début d'autre chose</p>
+  <p class="spec-s" style="font-family:'Bricolage Grotesque', system-ui, sans-serif;font-weight:800;letter-spacing:-0.035em">Derniers articles et projets</p>
+  <p class="spec-d">Moderne et énergique, avec du caractère. Se lit de loin.</p>
+</li><li class="spec">
+  <p class="spec-n"><b>Young Serif</b> <span>Ambiance C</span></p>
+  <p class="spec-t" style="font-family:'Young Serif', Georgia, serif;font-weight:400;letter-spacing:-0.01em">…le début d'autre chose</p>
+  <p class="spec-s" style="font-family:'Young Serif', Georgia, serif;font-weight:400;letter-spacing:-0.01em">Derniers articles et projets</p>
+  <p class="spec-d">Ronde et chaleureuse, comme un livre qu'on aime.</p>
+</li><li class="spec">
+  <p class="spec-n"><b>Fraunces</b> <span>Autre piste</span></p>
+  <p class="spec-t" style="font-family:'Fraunces', Georgia, serif;font-weight:600;letter-spacing:-0.02em">…le début d'autre chose</p>
+  <p class="spec-s" style="font-family:'Fraunces', Georgia, serif;font-weight:600;letter-spacing:-0.02em">Derniers articles et projets</p>
+  <p class="spec-d">Douce et généreuse, entre le classique et la fantaisie.</p>
+</li><li class="spec">
+  <p class="spec-n"><b>DM Serif Display</b> <span>Autre piste</span></p>
+  <p class="spec-t" style="font-family:'DM Serif Display', Georgia, serif;font-weight:400;letter-spacing:-0.01em">…le début d'autre chose</p>
+  <p class="spec-s" style="font-family:'DM Serif Display', Georgia, serif;font-weight:400;letter-spacing:-0.01em">Derniers articles et projets</p>
+  <p class="spec-d">Contrastée et affirmée, façon couverture de magazine.</p>
+</li>
+</ul>
+
+<h2 class="sec2">Les éléments graphiques</h2>
+<ul class="gts">
+<li class="gt"><div class="gt-v"><span class="g-dots"><i></i><i></i><i class="hot"></i></span></div><p class="gt-n"><b>Les trois points</b> <span>Ambiance A, B, C</span></p><p class="gt-d">Le logo du site. Le dernier point, en couleur, c'est « l'autre chose ».</p></li><li class="gt"><div class="gt-v"><span class="g-under">autre chose</span></div><p class="gt-n"><b>Le trait de lumière</b> <span>Ambiance A</span></p><p class="gt-d">Un coup de pinceau jaune sous « autre chose », comme on surligne ce qui compte.</p></li><li class="gt"><div class="gt-v"><svg class="g-topo" viewBox="0 0 160 90" aria-hidden="true"><ellipse cx="110" cy="45" rx="60" ry="38"/><ellipse cx="112" cy="44" rx="44" ry="28"/><ellipse cx="115" cy="43" rx="28" ry="18"/><ellipse cx="117" cy="42" rx="13" ry="8"/><ellipse cx="30" cy="70" rx="34" ry="20"/><ellipse cx="30" cy="70" rx="18" ry="10"/></svg></div><p class="gt-n"><b>Les courbes de niveau</b> <span>Ambiance B</span></p><p class="gt-d">Le relief d'une carte de montagne : le trail, le chemin parcouru.</p></li><li class="gt"><div class="gt-v"><span class="g-path"><i></i><i></i><i></i></span></div><p class="gt-n"><b>Le chemin en pointillés</b> <span>Ambiance B</span></p><p class="gt-d">Une ligne de balises qui relie les rubriques de l'accueil, comme un sentier.</p></li><li class="gt"><div class="gt-v"><span class="g-conf"><i style="left:8%;top:20%;background:#FFC83D"></i><i style="left:30%;top:62%;background:#FF5C8A;width:18px;height:18px"></i><i style="left:52%;top:14%;background:#8FD3FF;width:22px;height:22px"></i><i style="left:74%;top:58%;background:#FFC83D;width:10px;height:10px"></i><i style="left:88%;top:22%;background:#FF5C8A"></i></span></div><p class="gt-n"><b>Les confettis</b> <span>Ambiance C</span></p><p class="gt-d">Des points de couleur autour de votre photo : l'envie de célébrer.</p></li><li class="gt"><div class="gt-v"><span class="g-sig">Sébastien</span></div><p class="gt-n"><b>La signature manuscrite</b> <span>Ambiance A, B, C</span></p><p class="gt-d">Votre prénom à la main au bas de chaque article : « écrite par moi ».</p></li>
+</ul>
+
+<h2 class="sec2">Commun aux trois ambiances</h2>
+<ul class="common">
+  <li>Les articles sur fond blanc, en grand, avec un interligne généreux.</li>
+  <li>Votre texte en entier, sans aucune modification.</li>
+  <li>La structure 1, avec une rubrique Projets en plus dans le menu.</li>
+  <li>Un site toujours clair : il ne passe plus en sombre selon le réglage du téléphone.</li>
+</ul>
+
+<h2 class="sec2">Pour me répondre</h2>
+<p class="reply">Mes questions sont dans la conversation. Vous pouvez répondre en quelques lettres et chiffres, depuis votre téléphone.</p>
+</main>
+</body>
+</html>

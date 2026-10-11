@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>…le début d'autre chose · Ambiance B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Ambiance B : Sentier. Accueil en couleur, articles sur fond blanc. */
+:root { --bg: #FFFFFF; --ink: #102F3A; --muted: #45606B; --line: #D3E3E8; --accent: #0D5870; --pop: #E8742A; --pop-ink: #B4500E; --hero-bg: #DCEBF0; --hero-ink: #0E3442; --band1: #F1F7F9; --band2: #FCEBDF; --line-2: #EFCBB2; --card-bg: #FFFFFF; --foot-bg: #0E3442; --foot-ink: #C8DEE5; --btn-bg: #0D5870; --btn-ink: #FFFFFF; --photo-bg: #BFD9E2; --photo-ink: #0E3442; --chip-bg: #E3EFF3; --chip-ink: #0D5870; --hand-ink: #B4500E; --title: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif; --title-w: 800; --title-ls: -0.035em; --em-style: normal; --radius: 12px; }
+
+.hero-t em, .art-t em { color: var(--pop-ink); }
+canvas.topo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; color: var(--accent); }
+.ridge { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 64px; z-index: 1; display: block; }
+.hero .wrap { padding-bottom: 5.5rem; }
+.sec { position: relative; --sec-bg: var(--bg); }
+.sec.band1 { --sec-bg: var(--band1); }
+.sec.band2 { --sec-bg: var(--band2); }
+.trail > .wrap { position: relative; }
+.trail .sec-h h2 { position: relative; }
+.trail .sec-h h2::before { content: ""; display: inline-block; width: .5em; height: .5em; margin-right: .35em; border-radius: 50%; background: var(--pop); vertical-align: .08em; }
+@media (min-width: 56rem) {
+  .trail > .wrap { padding-left: 4.5rem; }
+  .trail > .wrap::before { content: ""; position: absolute; left: 2.2rem; top: -4.5rem; bottom: -4.5rem; border-left: 4px dotted var(--pop); }
+  .trail .sec-h h2::before { position: absolute; left: -2.95rem; top: .3em; width: 1.25rem; height: 1.25rem; margin: 0; box-shadow: 0 0 0 6px var(--sec-bg); }
+  .trail.first > .wrap::before { top: 0; }
+  .trail.last > .wrap::before { bottom: auto; height: 5.6rem; }
+}
+
+</style>
+</head>
+<body>
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Ambiance B : Sentier</span>
+  <a href="b-accueil.html">Accueil</a>
+  <a href="b-article.html" aria-current="page">Article</a>
+  <span class="sp"></span>
+  <a href="index.html">← Les 3 ambiances</a>
+</div></div>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="b-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="b-accueil.html#articles" aria-current="page">Articles</a></li><li><a href="b-accueil.html#projets">Projets</a></li><li><a href="b-accueil.html#en-ce-moment">En ce moment</a></li><li><a href="b-accueil.html#a-propos">À propos</a></li></ul></nav>
+</div></header>
+<main class="wrap">
+<article class="art">
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="b-accueil.html">Accueil</a><span aria-hidden="true">›</span><a href="b-accueil.html#articles">Articles</a><span aria-hidden="true">›</span><span aria-current="page">…le début d'autre chose</span></nav>
+  <h1 class="art-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
+  <p class="meta">Par Sébastien Bollengier · Octobre 2026 · 5 min de lecture</p>
+  <div class="prose">
+<p class="lede"><mark class="ph">[Votre article, intégré mot pour mot dans la maquette privée. Ci-dessous, un texte de remplissage : Jules Verne, domaine public.]</mark></p>
+<p>En l'année 1872, la maison portant le numéro 7 de Saville-row, Burlington Gardens, maison dans laquelle Sheridan mourut en 1814, était habitée par Phileas Fogg, esq., l'un des membres les plus singuliers et les plus remarqués du Reform-Club de Londres, bien qu'il semblât prendre à tâche de ne rien faire qui pût attirer l'attention.</p>
+<p>À l'un des plus grands orateurs qui honorent l'Angleterre, succédait donc ce Phileas Fogg, personnage énigmatique, dont on ne savait rien, sinon que c'était un fort galant homme et l'un des plus beaux gentlemen de la haute société anglaise.</p>
+<p>Anglais, à coup sûr, Phileas Fogg n'était peut-être pas Londonien. On ne l'avait jamais vu ni à la Bourse, ni à la Banque, ni dans aucun des comptoirs de la Cité. Ce gentleman ne figurait dans aucun comité d'administration.</p>
+<p>Ce Phileas Fogg était-il riche ? Incontestablement. Mais comment il avait fait fortune, c'est ce que les mieux informés ne pouvaient dire, et Mr. Fogg était le dernier auquel il convînt de s'adresser pour l'apprendre.</p>
+  </div>
+  <p class="signature"><span class="hand">Sébastien</span></p>
+  <div class="art-end">
+    <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
+    <aside class="author" aria-label="L'auteur">
+      <div class="photo sm" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
+      <div>
+        <p class="author-n">Sébastien Bollengier</p>
+        <p class="author-d">Vingt-cinq ans de projets dans l'AdTech, la data et l'IA. J'écris ici une ou deux fois par mois.</p>
+        <p class="author-d"><a href="b-accueil.html#a-propos">Qui écrit ? →</a></p>
+      </div>
+    </aside>
+    <aside class="nl" aria-label="Lettre d'information (bientôt)">
+  <p class="kicker">Bientôt</p>
+  <p class="nl-t">Recevoir les prochains articles par e-mail</p>
+  <p class="nl-d">Emplacement réservé à la future lettre. Rien n'est collecté pour l'instant.</p>
+</aside>
+    <p><a class="back" href="b-accueil.html">← Retour à l'accueil</a></p>
+  </div>
+</article>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <a class="brand" href="b-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><a href="#mentions">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    function done() { b.textContent = 'Lien copié'; }
+    try { navigator.clipboard.writeText(location.href.split('#')[0]).then(done, done); } catch (e) { done(); }
+  });
+});
+</script>
+</body>
+</html>
