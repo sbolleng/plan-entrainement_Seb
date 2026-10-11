@@ -6,7 +6,7 @@
 <title>Ambiances du site Bollengier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Young+Serif&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
 <style>
 /* …le début d'autre chose : base commune aux trois ambiances.
    Une seule apparence, claire. Chaque page déclare dans :root ses couleurs et sa typo de titre ;
@@ -216,13 +216,12 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
         --mask-cercle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 70' preserveAspectRatio='none'%3E%3Cpath d='M30 12 C 80 2, 175 2, 205 22 C 228 40, 170 65, 100 65 C 40 65, 5 50, 9 32 C 13 15, 50 7, 84 6' stroke='black' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); }
 /* Effets sur « autre chose » : en style A dans les maquettes, et sur les vignettes de la page des propositions */
 .hero-t, .art-t, .fx-t { position: relative; z-index: 0; }
-.style-A .hero-t em, .style-A .art-t em, .fx-t em { position: relative; white-space: nowrap; }
-:root.fx-trait .style-A :is(.hero-t, .art-t) em::after, .fxdemo.fx-trait .fx-t em::after { content: ""; position: absolute; z-index: -1; background: var(--pop); left: -.03em; right: -.03em; bottom: -.05em; height: .2em; -webkit-mask: var(--mask-trait) no-repeat center / 100% 100%; mask: var(--mask-trait) no-repeat center / 100% 100%; }
-:root.fx-cercle .style-A :is(.hero-t, .art-t) em::after, .fxdemo.fx-cercle .fx-t em::after { content: ""; position: absolute; z-index: -1; background: var(--pop); left: -.16em; right: -.14em; top: -.02em; bottom: -.2em; -webkit-mask: var(--mask-cercle) no-repeat center / 100% 100%; mask: var(--mask-cercle) no-repeat center / 100% 100%; }
-:root.fx-surligne .style-A :is(.hero-t, .art-t) em, .fxdemo.fx-surligne .fx-t em { background: linear-gradient(transparent 56%, rgba(var(--pop-rgb), .5) 56%, rgba(var(--pop-rgb), .5) 92%, transparent 92%); padding-inline: .05em; }
-:root.fx-couleur .style-A .hero-t em, .fxdemo.fx-couleur .fx-t em { color: var(--pop); }
-:root.fx-couleur .style-A .art-t em { color: var(--pop-ink); }
-:root.fx-soleil .style-A :is(.hero-t, .art-t) .dots i:last-child, .fxdemo.fx-soleil .fx-t .dots i:last-child { width: .48em; height: .24em; border-radius: .48em .48em 0 0; margin-left: .07em; box-shadow: 0 0 .4em rgba(var(--pop-rgb), .55); }
+.style-fx .hero-t em, .style-fx .art-t em, .fx-t em { position: relative; white-space: nowrap; }
+:root.fx-trait .style-fx :is(.hero-t, .art-t) em::after, .fxdemo.fx-trait .fx-t em::after { content: ""; position: absolute; z-index: -1; background: var(--pop); left: -.03em; right: -.03em; bottom: -.05em; height: .2em; -webkit-mask: var(--mask-trait) no-repeat center / 100% 100%; mask: var(--mask-trait) no-repeat center / 100% 100%; }
+:root.fx-cercle .style-fx :is(.hero-t, .art-t) em::after, .fxdemo.fx-cercle .fx-t em::after { content: ""; position: absolute; z-index: -1; background: var(--pop); left: -.16em; right: -.14em; top: -.02em; bottom: -.2em; -webkit-mask: var(--mask-cercle) no-repeat center / 100% 100%; mask: var(--mask-cercle) no-repeat center / 100% 100%; }
+:root.fx-surligne .style-fx :is(.hero-t, .art-t) em, .fxdemo.fx-surligne .fx-t em { background: linear-gradient(transparent 56%, rgba(var(--pop-rgb), .5) 56%, rgba(var(--pop-rgb), .5) 92%, transparent 92%); padding-inline: .05em; }
+:root.fx-couleur .style-fx .hero-t em, .fxdemo.fx-couleur .fx-t em { color: var(--pop); }
+:root.fx-couleur .style-fx .art-t em { color: var(--pop-ink); }
 
 
 /* Style A : accueil sombre */
@@ -230,7 +229,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .style-A .brand { font-size: var(--brand-size, 1.5rem); }
 /* Style B : accueil clair, courbes de niveau, ligne de crête, chemin en pointillés */
 .style-B .hero-t em, .style-B .art-t em { color: var(--pop-ink); font-style: normal; }
-.style-B canvas.topo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; color: var(--accent); }
+.style-B canvas.topo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; color: var(--topo, var(--accent)); }
 .style-B .ridge { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 64px; z-index: 1; display: block; }
 .style-B .ridge polyline { stroke: var(--pop); }
 .style-B .hero .wrap { padding-bottom: 5.5rem; }
@@ -240,14 +239,17 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .style-B .sec.band2 { --sec-bg: var(--band2); }
 .style-B .trail > .wrap { position: relative; }
 .style-B .trail .sec-h h2 { position: relative; }
-.style-B .trail .sec-h h2::before { content: ""; display: inline-block; width: .5em; height: .5em; margin-right: .35em; border-radius: 50%; background: var(--pop); vertical-align: .08em; }
+.style-B .trail .sec-h h2::before { content: ""; display: inline-block; width: .5em; height: .5em; margin-right: .35em; border-radius: 50%; background: var(--trail, var(--pop)); vertical-align: .08em; }
 @media (min-width: 56rem) {
   .style-B .trail > .wrap { padding-left: 4.5rem; }
-  .style-B .trail > .wrap::before { content: ""; position: absolute; left: 2.2rem; top: -4.5rem; bottom: -4.5rem; border-left: 4px dotted var(--pop); }
+  .style-B .trail > .wrap::before { content: ""; position: absolute; left: 2.2rem; top: -4.5rem; bottom: -4.5rem; border-left: 4px dotted var(--trail, var(--pop)); }
   .style-B .trail .sec-h h2::before { position: absolute; left: -2.95rem; top: .3em; width: 1.25rem; height: 1.25rem; margin: 0; box-shadow: 0 0 0 6px var(--sec-bg); }
   .style-B .trail.first > .wrap::before { top: 0; }
   .style-B .trail.last > .wrap::before { bottom: auto; height: 5.6rem; }
 }
+/* Style B bleu nuit : le relief du style B, l'allure d'Encre et soleil */
+.style-N .hero-t em, .style-N .art-t em { color: inherit; font-style: italic; }
+.style-N .hero .photo { box-shadow: 0 0 0 6px var(--hero-bg), 0 0 0 8px var(--pop); }
 
 
 /* Une page, plusieurs écrans : un seul est visible à la fois */
@@ -321,9 +323,8 @@ body { background: #FFFFFF; }
 .spec-d { color: var(--muted); }
 
 .v-a-encre { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --pop-ink: #A26A00; --pop-rgb: 242, 185, 55; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --foot-bg: #14284B; --foot-ink: #C9D4E8; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hero-bg: #14284B; --hero-ink: #FFFFFF; --btn-bg: #F2B937; --btn-ink: #14284B; --photo-bg: #22406F; --photo-ink: #DCE5F5; --hand-ink: #F2B937; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --brand-size: 1.7rem; --radius: 4px; }
-.v-a-lac { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #102F3A; --muted: #45606B; --line: #D3E3E8; --accent: #0D5870; --pop: #E8742A; --pop-ink: #B4500E; --pop-rgb: 232, 116, 42; --band1: #F1F7F9; --band2: #FCEBDF; --line-2: #EFCBB2; --foot-bg: #0E3442; --foot-ink: #C8DEE5; --chip-bg: #E3EFF3; --chip-ink: #0D5870; --hero-bg: #0E3442; --hero-ink: #FFFFFF; --btn-bg: #E8742A; --btn-ink: #08222C; --photo-bg: #1A4E5F; --photo-ink: #D3E6EC; --hand-ink: #E8742A; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --brand-size: 1.7rem; --radius: 4px; }
 .v-b-lac { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #102F3A; --muted: #45606B; --line: #D3E3E8; --accent: #0D5870; --pop: #E8742A; --pop-ink: #B4500E; --pop-rgb: 232, 116, 42; --band1: #F1F7F9; --band2: #FCEBDF; --line-2: #EFCBB2; --foot-bg: #0E3442; --foot-ink: #C8DEE5; --chip-bg: #E3EFF3; --chip-ink: #0D5870; --hero-bg: #DCEBF0; --hero-ink: #0E3442; --btn-bg: #0D5870; --btn-ink: #FFFFFF; --photo-bg: #BFD9E2; --photo-ink: #0E3442; --hand-ink: #B4500E; --title: 'Fraunces', Georgia, serif; --title-w: 600; --title-ls: -0.02em; --brand-size: 1.4rem; --radius: 12px; }
-.v-b-encre { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --pop-ink: #A26A00; --pop-rgb: 242, 185, 55; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --foot-bg: #14284B; --foot-ink: #C9D4E8; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hero-bg: #E4EBF5; --hero-ink: #14284B; --btn-bg: #14284B; --btn-ink: #FFFFFF; --photo-bg: #C9D6EA; --photo-ink: #14284B; --hand-ink: #8A5A00; --title: 'Fraunces', Georgia, serif; --title-w: 600; --title-ls: -0.02em; --brand-size: 1.4rem; --radius: 12px; }
+.v-b-nuit { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --pop-ink: #A26A00; --pop-rgb: 242, 185, 55; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --foot-bg: #14284B; --foot-ink: #C9D4E8; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hero-bg: #14284B; --hero-ink: #FFFFFF; --btn-bg: #F2B937; --btn-ink: #14284B; --photo-bg: #22406F; --photo-ink: #DCE5F5; --hand-ink: #F2B937; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --brand-size: 1.7rem; --radius: 12px; --topo: #A9BCE0; --trail: #D99B1C; }
 </style>
 </head>
 <body>
@@ -332,9 +333,9 @@ body { background: #FFFFFF; }
 <header>
   <p class="kick">…le début d'autre chose</p>
   <h1>Les propositions</h1>
-  <p class="lead">Ouvrez l'accueil ou l'article de chaque déclinaison. En haut de chaque page, le bouton « Typo » change la typo des titres, et en style A l'effet sur « autre chose ».</p>
+  <p class="lead">Ouvrez l'accueil ou l'article de chaque déclinaison. En haut de chaque page, le bouton « Typo » change la typo des titres et, quand il y en a un, l'effet sur « autre chose ».</p>
 </header>
-<h2 class="sec2">Quatre déclinaisons</h2>
+<h2 class="sec2">Trois déclinaisons</h2>
 <div class="ambs">
 <article class="amb">
   <div class="prev" aria-hidden="true">
@@ -353,21 +354,6 @@ body { background: #FFFFFF; }
   </div>
 </article><article class="amb">
   <div class="prev" aria-hidden="true">
-    <div class="prev-hero" style="background-color:#0E3442;color:#FFFFFF;">
-      <span class="prev-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#E8742A"></i></span>le début d'<em style="font-style:italic">autre chose</em></span>
-    </div>
-    <div class="prev-bands"><span style="background:#FCEBDF"></span><span style="background:#F1F7F9"></span></div>
-    <div class="prev-art"><i></i><i></i><i style="width:70%"></i></div>
-  </div>
-  <div class="amb-body">
-    <p class="amb-k">Style A · Lac et balise</p>
-    <p class="amb-i">Accueil sombre et contrasté. Un effet met « autre chose » en valeur.</p>
-    <ul class="sw"><li><span class="chip" style="background:#0E3442"></span><span>Bleu lac profond</span><code>#0E3442</code></li><li><span class="chip" style="background:#E8742A"></span><span>Orange balise</span><code>#E8742A</code></li><li><span class="chip" style="background:#0D5870"></span><span>Bleu des liens</span><code>#0D5870</code></li><li><span class="chip" style="background:#F1F7F9"></span><span>Bandeau clair</span><code>#F1F7F9</code></li><li><span class="chip" style="background:#FCEBDF"></span><span>Bandeau chaud</span><code>#FCEBDF</code></li></ul>
-    <p class="amb-f">Typo de départ : <b>Instrument Serif</b></p>
-    <p class="open"><a class="hbtn main" href="#a-lac-accueil">Accueil</a><a class="hbtn" href="#a-lac-article">Article</a></p>
-  </div>
-</article><article class="amb">
-  <div class="prev" aria-hidden="true">
     <div class="prev-hero" style="background-color:#DCEBF0;color:#0E3442;background-image:repeating-radial-gradient(circle at 85% 30%, transparent 0 10px, rgba(13,88,112,.16) 10px 11px);">
       <span class="prev-t" style="font-family:'Fraunces', Georgia, serif;font-weight:600;letter-spacing:-0.02em"><span class="pd"><i style="background:#0E3442"></i><i style="background:#0E3442"></i><i style="background:#E8742A"></i></span>le début d'<em style="color:#B4500E;font-style:normal">autre chose</em></span>
     </div>
@@ -383,29 +369,25 @@ body { background: #FFFFFF; }
   </div>
 </article><article class="amb">
   <div class="prev" aria-hidden="true">
-    <div class="prev-hero" style="background-color:#E4EBF5;color:#14284B;background-image:repeating-radial-gradient(circle at 85% 30%, transparent 0 10px, rgba(13,88,112,.16) 10px 11px);">
-      <span class="prev-t" style="font-family:'Fraunces', Georgia, serif;font-weight:600;letter-spacing:-0.02em"><span class="pd"><i style="background:#14284B"></i><i style="background:#14284B"></i><i style="background:#F2B937"></i></span>le début d'<em style="color:#A26A00;font-style:normal">autre chose</em></span>
+    <div class="prev-hero" style="background-color:#14284B;color:#FFFFFF;background-image:repeating-radial-gradient(circle at 85% 30%, transparent 0 10px, rgba(169,188,224,.22) 10px 11px);">
+      <span class="prev-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#F2B937"></i></span>le début d'<em style="font-style:italic">autre chose</em></span>
     </div>
     <div class="prev-bands"><span style="background:#FFF5D9"></span><span style="background:#EEF2F8"></span></div>
     <div class="prev-art"><i></i><i></i><i style="width:70%"></i></div>
   </div>
   <div class="amb-body">
-    <p class="amb-k">Style B · Encre et soleil</p>
-    <p class="amb-i">Accueil clair et en relief : courbes de niveau, ligne de crête, chemin en pointillés.</p>
+    <p class="amb-k">Style B · Bleu nuit</p>
+    <p class="amb-i">Le relief du style B sur fond bleu nuit, avec les couleurs Encre et soleil.</p>
     <ul class="sw"><li><span class="chip" style="background:#14284B"></span><span>Bleu nuit</span><code>#14284B</code></li><li><span class="chip" style="background:#F2B937"></span><span>Jaune soleil</span><code>#F2B937</code></li><li><span class="chip" style="background:#1E4D8C"></span><span>Bleu des liens</span><code>#1E4D8C</code></li><li><span class="chip" style="background:#EEF2F8"></span><span>Bandeau clair</span><code>#EEF2F8</code></li><li><span class="chip" style="background:#FFF5D9"></span><span>Bandeau chaud</span><code>#FFF5D9</code></li></ul>
-    <p class="amb-f">Typo de départ : <b>Fraunces</b></p>
-    <p class="open"><a class="hbtn main" href="#b-encre-accueil">Accueil</a><a class="hbtn" href="#b-encre-article">Article</a></p>
+    <p class="amb-f">Typo de départ : <b>Instrument Serif</b></p>
+    <p class="open"><a class="hbtn main" href="#b-nuit-accueil">Accueil</a><a class="hbtn" href="#b-nuit-article">Article</a></p>
   </div>
 </article>
 </div>
-<h2 class="sec2">Cinq effets sur « autre chose »</h2>
-<p class="hint">Pour le style A.</p>
+<h2 class="sec2">Quatre effets sur « autre chose »</h2>
+<p class="hint">Pour le style A et le style B bleu nuit.</p>
 <ul class="gts">
 <li class="gt">
-  <div class="fxdemo fx-soleil" style="--pop:#F2B937;--pop-rgb:242, 185, 55;--pop-ink:#A26A00"><p class="fx-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></p></div>
-  <p class="gt-n"><b>Soleil levant</b></p>
-  <p class="gt-d">Le troisième point se lève comme un soleil : le début d'autre chose.</p>
-</li><li class="gt">
   <div class="fxdemo fx-cercle" style="--pop:#F2B937;--pop-rgb:242, 185, 55;--pop-ink:#A26A00"><p class="fx-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></p></div>
   <p class="gt-n"><b>Cercle</b></p>
   <p class="gt-d">Un cercle tracé au feutre autour des mots.</p>
@@ -423,7 +405,7 @@ body { background: #FFFFFF; }
   <p class="gt-d">Le trait de lumière de départ, pour comparer.</p>
 </li>
 </ul>
-<h2 class="sec2">Trois typos de titre</h2>
+<h2 class="sec2">Cinq typos de titre</h2>
 <ul class="specs">
 <li class="spec">
   <p class="spec-n"><b>Instrument Serif</b></p>
@@ -440,18 +422,28 @@ body { background: #FFFFFF; }
   <p class="spec-t" style="font-family:'DM Serif Display', Georgia, serif;font-weight:400;letter-spacing:-0.01em">…le début d'autre chose</p>
   <p class="spec-s" style="font-family:'DM Serif Display', Georgia, serif;font-weight:400;letter-spacing:-0.01em">Derniers articles</p>
   <p class="spec-d">Contrastée et affirmée, façon couverture de magazine.</p>
+</li><li class="spec">
+  <p class="spec-n"><b>Bricolage Grotesque</b></p>
+  <p class="spec-t" style="font-family:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;font-weight:800;letter-spacing:-0.035em">…le début d'autre chose</p>
+  <p class="spec-s" style="font-family:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;font-weight:800;letter-spacing:-0.035em">Derniers articles</p>
+  <p class="spec-d">Moderne et énergique, avec du caractère. Se lit de loin.</p>
+</li><li class="spec">
+  <p class="spec-n"><b>Young Serif</b></p>
+  <p class="spec-t" style="font-family:'Young Serif', Georgia, serif;font-weight:400;letter-spacing:-0.01em">…le début d'autre chose</p>
+  <p class="spec-s" style="font-family:'Young Serif', Georgia, serif;font-weight:400;letter-spacing:-0.01em">Derniers articles</p>
+  <p class="spec-d">Ronde et chaleureuse, comme un livre qu'on aime.</p>
 </li>
 </ul>
 </main>
 </div>
-<div class="screen v-a-encre style-A" id="a-encre-accueil" data-typo="instrument" hidden>
+<div class="screen v-a-encre style-A style-fx" id="a-encre-accueil" data-typo="instrument" hidden>
 <div class="bar"><div class="wrap bar-in">
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style A · Encre et soleil</span>
   <span class="bar-pages"><a href="#a-encre-accueil" aria-current="page">Accueil</a><a href="#a-encre-article">Article</a></span>
   <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
-    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="soleil" aria-pressed="false">Soleil levant</button><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
@@ -530,14 +522,14 @@ body { background: #FFFFFF; }
   <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><span>Mentions légales</span><span>Flux RSS</span><span>Aucun cookie de suivi</span></span>
 </div></footer>
 </div>
-<div class="screen v-a-encre style-A" id="a-encre-article" data-typo="instrument" hidden>
+<div class="screen v-a-encre style-A style-fx" id="a-encre-article" data-typo="instrument" hidden>
 <div class="bar"><div class="wrap bar-in">
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style A · Encre et soleil</span>
   <span class="bar-pages"><a href="#a-encre-accueil">Accueil</a><a href="#a-encre-article" aria-current="page">Article</a></span>
   <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
-    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="soleil" aria-pressed="false">Soleil levant</button><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
@@ -580,149 +572,13 @@ body { background: #FFFFFF; }
   <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><span>Mentions légales</span><span>Flux RSS</span><span>Aucun cookie de suivi</span></span>
 </div></footer>
 </div>
-<div class="screen v-a-lac style-A" id="a-lac-accueil" data-typo="instrument" hidden>
-<div class="bar"><div class="wrap bar-in">
-  <a href="#propositions">← Propositions</a>
-  <span class="bar-name">Style A · Lac et balise</span>
-  <span class="bar-pages"><a href="#a-lac-accueil" aria-current="page">Accueil</a><a href="#a-lac-article">Article</a></span>
-  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
-    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="soleil" aria-pressed="false">Soleil levant</button><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
-  </div></details>
-</div></div>
-<header class="site-head on-hero"><div class="wrap">
-  <a class="brand" href="#a-lac-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#a-lac-articles">Articles</a></li><li><a href="#a-lac-en-ce-moment">En ce moment</a></li><li><a href="#a-lac-a-propos">À propos</a></li><li><a href="#a-lac-autrement">Autrement</a></li></ul></nav>
-</div></header>
-<section class="hero" aria-label="Présentation">
-  
-  <div class="wrap">
-    <div class="hero-txt">
-      <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
-      <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
-      <p class="hero-sig"><span class="hand">Sébastien</span><span>Sébastien Bollengier</span></p>
-      <a class="btn" href="#a-lac-article">Lire le premier article →</a>
-    </div>
-    <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
-  </div>
-  
-</section>
-<main>
-  <section class="sec first" id="a-lac-articles"><div class="wrap">
-    <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
-    <article class="feature">
-      <p class="meta">Le premier · Octobre 2026 · 5 min de lecture</p>
-      <h3><a href="#a-lac-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
-      <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-      <p><a class="go" href="#a-lac-article">Lire l'article →</a></p>
-    </article>
-    <p class="next-note">Le prochain arrive bientôt : une ou deux fois par mois.</p>
-  </div></section>
-  <section class="sec band2" id="a-lac-en-ce-moment"><div class="wrap">
-    <div class="sec-h"><h2>En ce moment</h2><p class="meta">Mis à jour le 11 octobre 2026</p></div>
-    <div class="now-grid">
-      <article class="proj">
-        <p class="kicker">Mon projet</p>
-        <h3>La boîte à outils du coureur</h3>
-        <p class="desc">Je conçois et construis avec Claude une application web pour préparer ses courses, sur route comme en trail : objectif, plan d'entraînement, nutrition, logistique.</p>
-        <p class="foot"><span class="pill-status">En cours</span></p>
-      </article>
-      <ul class="now">
-        <li><p class="kicker">Trail</p><h3>Cap sur l'OCC, en août 2028</h3><p>L'une des courses de l'UTMB Mont-Blanc. Prochain rendez-vous : le Clam Trail, le 18 octobre. <span class="tag-note">à confirmer</span></p></li>
-        <li><p class="kicker">Formations</p><h3>J'apprends</h3><p><mark class="ph">[Vos formations dans la maquette privée]</mark></p></li>
-        <li><p class="kicker">Ma toolbox</p><h3>Les outils du moment</h3><p><mark class="ph">[Vos outils du moment dans la maquette privée]</mark></p></li>
-      </ul>
-    </div>
-  </div></section>
-  <section class="sec" id="a-lac-a-propos"><div class="wrap">
-    <div class="sec-h"><h2>Qui écrit ?</h2></div>
-    <div class="about">
-      <div class="photo md" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
-      <div class="about-txt">
-        <p><mark class="ph">[Votre présentation, tirée de votre CV, dans la maquette privée]</mark></p>
-        <h3 class="sub">Ce qui me porte</h3>
-        <p><mark class="ph">[Vos cinq talents Gallup, chacun avec une phrase, dans la maquette privée]</mark></p>
-        <div class="social">
-  <a class="pill" href="https://www.linkedin.com/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z"/></svg><span>LinkedIn</span></a>
-  <a class="babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio (le vrai logo sera intégré)">B</a>
-</div>
-      </div>
-    </div>
-  </div></section>
-  <section class="sec band1 last" id="a-lac-autrement"><div class="wrap">
-    <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
-    <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
-    </ul>
-    <p class="aussi"><mark class="ph">[Et aussi : d'autres passions, dans la maquette privée]</mark></p>
-  </div></section>
-  <section class="sec"><div class="wrap"><aside class="nl" aria-label="Lettre d'information (bientôt)">
-  <p class="kicker">Bientôt</p>
-  <p class="nl-t">Recevoir les prochains articles par e-mail</p>
-  <p class="nl-d">Emplacement réservé à la future lettre. Rien n'est collecté pour l'instant.</p>
-</aside></div></section>
-</main>
-<footer class="site-foot"><div class="wrap">
-  <a class="brand" href="#a-lac-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><span>Mentions légales</span><span>Flux RSS</span><span>Aucun cookie de suivi</span></span>
-</div></footer>
-</div>
-<div class="screen v-a-lac style-A" id="a-lac-article" data-typo="instrument" hidden>
-<div class="bar"><div class="wrap bar-in">
-  <a href="#propositions">← Propositions</a>
-  <span class="bar-name">Style A · Lac et balise</span>
-  <span class="bar-pages"><a href="#a-lac-accueil">Accueil</a><a href="#a-lac-article" aria-current="page">Article</a></span>
-  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
-    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="soleil" aria-pressed="false">Soleil levant</button><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
-  </div></details>
-</div></div>
-<header class="site-head"><div class="wrap">
-  <a class="brand" href="#a-lac-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#a-lac-articles" aria-current="page">Articles</a></li><li><a href="#a-lac-en-ce-moment">En ce moment</a></li><li><a href="#a-lac-a-propos">À propos</a></li><li><a href="#a-lac-autrement">Autrement</a></li></ul></nav>
-</div></header>
-<main class="wrap">
-<article class="art">
-  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="#a-lac-accueil">Accueil</a><span aria-hidden="true">›</span><a href="#a-lac-articles">Articles</a><span aria-hidden="true">›</span><span aria-current="page">…le début d'autre chose</span></nav>
-  <h1 class="art-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
-  <p class="meta">Par Sébastien Bollengier · Octobre 2026 · 5 min de lecture</p>
-  <div class="prose">
-<p class="lede"><mark class="ph">[Votre article, intégré mot pour mot dans la maquette privée. Ci-dessous, un texte de remplissage : Jules Verne, domaine public.]</mark></p>
-<p>En l'année 1872, la maison portant le numéro 7 de Saville-row, Burlington Gardens, maison dans laquelle Sheridan mourut en 1814, était habitée par Phileas Fogg, esq., l'un des membres les plus singuliers et les plus remarqués du Reform-Club de Londres, bien qu'il semblât prendre à tâche de ne rien faire qui pût attirer l'attention.</p>
-<p>À l'un des plus grands orateurs qui honorent l'Angleterre, succédait donc ce Phileas Fogg, personnage énigmatique, dont on ne savait rien, sinon que c'était un fort galant homme et l'un des plus beaux gentlemen de la haute société anglaise.</p>
-<p>Ce Phileas Fogg était-il riche ? Incontestablement. Mais comment il avait fait fortune, c'est ce que les mieux informés ne pouvaient dire, et Mr. Fogg était le dernier auquel il convînt de s'adresser pour l'apprendre.</p>
-  </div>
-  <p class="signature"><span class="hand">Sébastien</span></p>
-  <div class="art-end">
-    <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
-    <aside class="author" aria-label="L'auteur">
-      <div class="photo sm" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
-      <div>
-        <p class="author-n">Sébastien Bollengier</p>
-        <p class="author-d">Vingt-cinq ans de projets dans les médias, l'AdTech, la data et l'IA. J'écris ici une ou deux fois par mois.</p>
-        <p class="author-d"><a href="#a-lac-a-propos">Qui écrit ? →</a> · <a href="https://www.linkedin.com/">LinkedIn</a></p>
-      </div>
-    </aside>
-    <aside class="nl" aria-label="Lettre d'information (bientôt)">
-  <p class="kicker">Bientôt</p>
-  <p class="nl-t">Recevoir les prochains articles par e-mail</p>
-  <p class="nl-d">Emplacement réservé à la future lettre. Rien n'est collecté pour l'instant.</p>
-</aside>
-    <p><a class="back" href="#a-lac-accueil">← Retour à l'accueil</a></p>
-  </div>
-</article>
-</main>
-<footer class="site-foot"><div class="wrap">
-  <a class="brand" href="#a-lac-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><span>Mentions légales</span><span>Flux RSS</span><span>Aucun cookie de suivi</span></span>
-</div></footer>
-</div>
 <div class="screen v-b-lac style-B" id="b-lac-accueil" data-typo="fraunces" hidden>
 <div class="bar"><div class="wrap bar-in">
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style B · Lac et balise</span>
   <span class="bar-pages"><a href="#b-lac-accueil" aria-current="page">Accueil</a><a href="#b-lac-article">Article</a></span>
   <details class="bar-tune"><summary>Typo</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
     
   </div></details>
 </div></div>
@@ -808,7 +664,7 @@ body { background: #FFFFFF; }
   <span class="bar-name">Style B · Lac et balise</span>
   <span class="bar-pages"><a href="#b-lac-accueil">Accueil</a><a href="#b-lac-article" aria-current="page">Article</a></span>
   <details class="bar-tune"><summary>Typo</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
     
   </div></details>
 </div></div>
@@ -852,19 +708,19 @@ body { background: #FFFFFF; }
   <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><span>Mentions légales</span><span>Flux RSS</span><span>Aucun cookie de suivi</span></span>
 </div></footer>
 </div>
-<div class="screen v-b-encre style-B" id="b-encre-accueil" data-typo="fraunces" hidden>
+<div class="screen v-b-nuit style-B style-N style-fx" id="b-nuit-accueil" data-typo="instrument" hidden>
 <div class="bar"><div class="wrap bar-in">
   <a href="#propositions">← Propositions</a>
-  <span class="bar-name">Style B · Encre et soleil</span>
-  <span class="bar-pages"><a href="#b-encre-accueil" aria-current="page">Accueil</a><a href="#b-encre-article">Article</a></span>
-  <details class="bar-tune"><summary>Typo</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
-    
+  <span class="bar-name">Style B · Bleu nuit</span>
+  <span class="bar-pages"><a href="#b-nuit-accueil" aria-current="page">Accueil</a><a href="#b-nuit-article">Article</a></span>
+  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
-  <a class="brand" href="#b-encre-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-encre-articles">Articles</a></li><li><a href="#b-encre-en-ce-moment">En ce moment</a></li><li><a href="#b-encre-a-propos">À propos</a></li><li><a href="#b-encre-autrement">Autrement</a></li></ul></nav>
+  <a class="brand" href="#b-nuit-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-nuit-articles">Articles</a></li><li><a href="#b-nuit-en-ce-moment">En ce moment</a></li><li><a href="#b-nuit-a-propos">À propos</a></li><li><a href="#b-nuit-autrement">Autrement</a></li></ul></nav>
 </div></header>
 <section class="hero" aria-label="Présentation">
   <canvas class="topo" aria-hidden="true"></canvas>
@@ -873,24 +729,24 @@ body { background: #FFFFFF; }
       <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
       <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
       <p class="hero-sig"><span class="hand">Sébastien</span><span>Sébastien Bollengier</span></p>
-      <a class="btn" href="#b-encre-article">Lire le premier article →</a>
+      <a class="btn" href="#b-nuit-article">Lire le premier article →</a>
     </div>
     <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
   </div>
   <svg class="ridge" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 L0 40 L90 30 L170 38 L260 14 L340 28 L430 6 L510 24 L590 14 L670 34 L770 12 L860 28 L950 20 L1040 38 L1130 24 L1200 34 L1200 64 Z" fill="#FFFFFF"/><polyline points="0,40 90,30 170,38 260,14 340,28 430,6 510,24 590,14 670,34 770,12 860,28 950,20 1040,38 1130,24 1200,34" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 11" vector-effect="non-scaling-stroke"/></svg>
 </section>
 <main>
-  <section class="sec trail first" id="b-encre-articles"><div class="wrap">
+  <section class="sec trail first" id="b-nuit-articles"><div class="wrap">
     <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
     <article class="feature">
       <p class="meta">Le premier · Octobre 2026 · 5 min de lecture</p>
-      <h3><a href="#b-encre-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
+      <h3><a href="#b-nuit-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
       <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-      <p><a class="go" href="#b-encre-article">Lire l'article →</a></p>
+      <p><a class="go" href="#b-nuit-article">Lire l'article →</a></p>
     </article>
     <p class="next-note">Le prochain arrive bientôt : une ou deux fois par mois.</p>
   </div></section>
-  <section class="sec band2 trail" id="b-encre-en-ce-moment"><div class="wrap">
+  <section class="sec band2 trail" id="b-nuit-en-ce-moment"><div class="wrap">
     <div class="sec-h"><h2>En ce moment</h2><p class="meta">Mis à jour le 11 octobre 2026</p></div>
     <div class="now-grid">
       <article class="proj">
@@ -906,7 +762,7 @@ body { background: #FFFFFF; }
       </ul>
     </div>
   </div></section>
-  <section class="sec trail" id="b-encre-a-propos"><div class="wrap">
+  <section class="sec trail" id="b-nuit-a-propos"><div class="wrap">
     <div class="sec-h"><h2>Qui écrit ?</h2></div>
     <div class="about">
       <div class="photo md" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
@@ -921,7 +777,7 @@ body { background: #FFFFFF; }
       </div>
     </div>
   </div></section>
-  <section class="sec band1 trail last" id="b-encre-autrement"><div class="wrap">
+  <section class="sec band1 trail last" id="b-nuit-autrement"><div class="wrap">
     <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
     <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
     </ul>
@@ -934,27 +790,27 @@ body { background: #FFFFFF; }
 </aside></div></section>
 </main>
 <footer class="site-foot"><div class="wrap">
-  <a class="brand" href="#b-encre-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <a class="brand" href="#b-nuit-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
   <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><span>Mentions légales</span><span>Flux RSS</span><span>Aucun cookie de suivi</span></span>
 </div></footer>
 </div>
-<div class="screen v-b-encre style-B" id="b-encre-article" data-typo="fraunces" hidden>
+<div class="screen v-b-nuit style-B style-N style-fx" id="b-nuit-article" data-typo="instrument" hidden>
 <div class="bar"><div class="wrap bar-in">
   <a href="#propositions">← Propositions</a>
-  <span class="bar-name">Style B · Encre et soleil</span>
-  <span class="bar-pages"><a href="#b-encre-accueil">Accueil</a><a href="#b-encre-article" aria-current="page">Article</a></span>
-  <details class="bar-tune"><summary>Typo</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
-    
+  <span class="bar-name">Style B · Bleu nuit</span>
+  <span class="bar-pages"><a href="#b-nuit-accueil">Accueil</a><a href="#b-nuit-article" aria-current="page">Article</a></span>
+  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+    <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
-  <a class="brand" href="#b-encre-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-encre-articles" aria-current="page">Articles</a></li><li><a href="#b-encre-en-ce-moment">En ce moment</a></li><li><a href="#b-encre-a-propos">À propos</a></li><li><a href="#b-encre-autrement">Autrement</a></li></ul></nav>
+  <a class="brand" href="#b-nuit-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-nuit-articles" aria-current="page">Articles</a></li><li><a href="#b-nuit-en-ce-moment">En ce moment</a></li><li><a href="#b-nuit-a-propos">À propos</a></li><li><a href="#b-nuit-autrement">Autrement</a></li></ul></nav>
 </div></header>
 <main class="wrap">
 <article class="art">
-  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="#b-encre-accueil">Accueil</a><span aria-hidden="true">›</span><a href="#b-encre-articles">Articles</a><span aria-hidden="true">›</span><span aria-current="page">…le début d'autre chose</span></nav>
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="#b-nuit-accueil">Accueil</a><span aria-hidden="true">›</span><a href="#b-nuit-articles">Articles</a><span aria-hidden="true">›</span><span aria-current="page">…le début d'autre chose</span></nav>
   <h1 class="art-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
   <p class="meta">Par Sébastien Bollengier · Octobre 2026 · 5 min de lecture</p>
   <div class="prose">
@@ -971,7 +827,7 @@ body { background: #FFFFFF; }
       <div>
         <p class="author-n">Sébastien Bollengier</p>
         <p class="author-d">Vingt-cinq ans de projets dans les médias, l'AdTech, la data et l'IA. J'écris ici une ou deux fois par mois.</p>
-        <p class="author-d"><a href="#b-encre-a-propos">Qui écrit ? →</a> · <a href="https://www.linkedin.com/">LinkedIn</a></p>
+        <p class="author-d"><a href="#b-nuit-a-propos">Qui écrit ? →</a> · <a href="https://www.linkedin.com/">LinkedIn</a></p>
       </div>
     </aside>
     <aside class="nl" aria-label="Lettre d'information (bientôt)">
@@ -979,19 +835,19 @@ body { background: #FFFFFF; }
   <p class="nl-t">Recevoir les prochains articles par e-mail</p>
   <p class="nl-d">Emplacement réservé à la future lettre. Rien n'est collecté pour l'instant.</p>
 </aside>
-    <p><a class="back" href="#b-encre-accueil">← Retour à l'accueil</a></p>
+    <p><a class="back" href="#b-nuit-accueil">← Retour à l'accueil</a></p>
   </div>
 </article>
 </main>
 <footer class="site-foot"><div class="wrap">
-  <a class="brand" href="#b-encre-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <a class="brand" href="#b-nuit-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
   <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><span>Mentions légales</span><span>Flux RSS</span><span>Aucun cookie de suivi</span></span>
 </div></footer>
 </div>
 <script>
 (function () {
-  var TYPO = {"instrument":["Instrument Serif","'Instrument Serif', Georgia, serif","400","-0.005em","1.7rem"],"fraunces":["Fraunces","'Fraunces', Georgia, serif","600","-0.02em","1.4rem"],"dm":["DM Serif Display","'DM Serif Display', Georgia, serif","400","-0.01em","1.45rem"]};
-  var FX = ["soleil","cercle","surligne","couleur","trait"];
+  var TYPO = {"instrument":["Instrument Serif","'Instrument Serif', Georgia, serif","400","-0.005em","1.7rem"],"fraunces":["Fraunces","'Fraunces', Georgia, serif","600","-0.02em","1.4rem"],"dm":["DM Serif Display","'DM Serif Display', Georgia, serif","400","-0.01em","1.45rem"],"bricolage":["Bricolage Grotesque","'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif","800","-0.035em","1.35rem"],"young":["Young Serif","'Young Serif', Georgia, serif","400","-0.01em","1.35rem"]};
+  var FX = ["cercle","surligne","couleur","trait"];
   var root = document.documentElement;
 
   var hills = [[0.80, 0.35, 0.22, 1.0], [0.98, 0.95, 0.18, 0.75], [0.58, 1.05, 0.2, 0.55], [0.12, -0.05, 0.16, 0.5], [0.35, 0.55, 0.12, 0.25]];
@@ -1058,7 +914,7 @@ body { background: #FFFFFF; }
     press(document, 'data-typo', t);
   }
   function fx(f) {
-    if (FX.indexOf(f) < 0) f = 'soleil';
+    if (FX.indexOf(f) < 0) f = 'cercle';
     FX.forEach(function (n) { root.classList.remove('fx-' + n); });
     root.classList.add('fx-' + f);
     press(document, 'data-fx', f);
