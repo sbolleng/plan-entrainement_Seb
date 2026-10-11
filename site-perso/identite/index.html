@@ -6,7 +6,7 @@
 <title>Ambiances du site Bollengier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=DM+Serif+Display:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Young+Serif&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
 <style>
 /* …le début d'autre chose : base commune aux trois ambiances.
    Une seule apparence, claire. Chaque page déclare dans :root ses couleurs et sa typo de titre ;
@@ -248,7 +248,7 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
   .style-B .trail.last > .wrap::before { bottom: auto; height: 5.6rem; }
 }
 /* Style B bleu nuit : le relief du style B, l'allure d'Encre et soleil */
-.style-N .hero-t em, .style-N .art-t em { color: inherit; font-style: italic; }
+.style-N .hero-t em, .style-N .art-t em { color: inherit; }
 .style-N .hero .photo { box-shadow: 0 0 0 6px var(--hero-bg), 0 0 0 8px var(--pop); }
 
 
@@ -276,6 +276,31 @@ body { background: #FFFFFF; }
 .bar-panel .lbl { font-weight: 700; flex-basis: 100%; }
 .bar-panel button { font: 600 .9rem/1.2 var(--sans); color: var(--note-ink); background: rgba(255, 255, 255, .6); border: 1px solid #D9C35A; border-radius: 999px; padding: .3rem .75rem; cursor: pointer; }
 .bar-panel button[aria-pressed="true"] { background: var(--note-ink); color: var(--note); border-color: var(--note-ink); }
+
+/* En-tête : le nom, le menu, puis LinkedIn et Babelio un peu plus loin */
+.site-head .brand { order: 1; margin-right: auto; }
+.site-head .head-social { order: 2; display: flex; align-items: center; gap: .75rem; }
+.site-head nav { order: 3; flex-basis: 100%; }
+@media (min-width: 56rem) {
+  .site-head nav { order: 2; flex-basis: auto; }
+  .site-head .head-social { order: 3; margin-left: 1.25rem; }
+}
+.ico { display: inline-grid; place-items: center; color: inherit; text-decoration: none; opacity: .9; }
+.ico:hover { opacity: 1; }
+.ico svg { width: 1.6rem; height: 1.6rem; fill: currentColor; display: block; }
+.ico-babelio { width: 1.6rem; height: 1.6rem; border: 2px solid currentColor; border-radius: 50%; font: 700 .95rem/1 Georgia, serif; }
+
+/* Articles : trois mises en avant au plus */
+.features { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; }
+@media (min-width: 56rem) { .features { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.features .feature { max-width: none; padding: 1.6rem; display: flex; flex-direction: column; gap: .75rem; }
+.features .feature h3 { font-size: clamp(1.6rem, 3vw, 2rem); line-height: 1.12; }
+.features .feature .go { margin-top: auto; font-weight: 700; }
+.feature.upcoming h3, .feature.upcoming .excerpt { color: var(--muted); }
+:root.cards-carte .feature { background: var(--card-tint); border-color: transparent; }
+:root.cards-section .sec-articles { background: var(--card-tint); --sec-bg: var(--card-tint); }
+:root.cards-section .feature { background: #FFFFFF; border-color: transparent; box-shadow: 0 1px 2px rgba(20, 40, 75, .06), 0 10px 28px rgba(20, 40, 75, .10); }
+:root.cards-lisere .feature { border: 2px solid var(--accent); }
 
 /* Page des propositions */
 .hub { max-width: 68rem; margin-inline: auto; padding-inline: 1.25rem; padding-block: 2.25rem 4rem; }
@@ -314,7 +339,7 @@ body { background: #FFFFFF; }
 .gt-d { font-size: 1rem; color: var(--muted); }
 .fxdemo { background: #14284B; color: #FFFFFF; border-radius: 8px; padding: 1.4rem 1rem 1.6rem; }
 .fx-t { margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 2.3rem; line-height: 1.05; }
-.fx-t em { font-style: italic; }
+.fx-t em, .screen .hero-t em, .screen .art-t em { font-style: normal; }
 .specs { list-style: none; margin: 0; padding: 0; display: grid; }
 .spec { padding-block: 1.3rem; border-bottom: 1px solid var(--line); display: grid; gap: .35rem; min-width: 0; }
 .spec p { margin: 0; }
@@ -322,9 +347,9 @@ body { background: #FFFFFF; }
 .spec-s { font-size: 1.45rem; line-height: 1.25; }
 .spec-d { color: var(--muted); }
 
-.v-a-encre { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --pop-ink: #A26A00; --pop-rgb: 242, 185, 55; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --foot-bg: #14284B; --foot-ink: #C9D4E8; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hero-bg: #14284B; --hero-ink: #FFFFFF; --btn-bg: #F2B937; --btn-ink: #14284B; --photo-bg: #22406F; --photo-ink: #DCE5F5; --hand-ink: #F2B937; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --brand-size: 1.7rem; --radius: 4px; }
-.v-b-lac { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #102F3A; --muted: #45606B; --line: #D3E3E8; --accent: #0D5870; --pop: #E8742A; --pop-ink: #B4500E; --pop-rgb: 232, 116, 42; --band1: #F1F7F9; --band2: #FCEBDF; --line-2: #EFCBB2; --foot-bg: #0E3442; --foot-ink: #C8DEE5; --chip-bg: #E3EFF3; --chip-ink: #0D5870; --hero-bg: #DCEBF0; --hero-ink: #0E3442; --btn-bg: #0D5870; --btn-ink: #FFFFFF; --photo-bg: #BFD9E2; --photo-ink: #0E3442; --hand-ink: #B4500E; --title: 'Fraunces', Georgia, serif; --title-w: 600; --title-ls: -0.02em; --brand-size: 1.4rem; --radius: 12px; }
-.v-b-nuit { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --pop-ink: #A26A00; --pop-rgb: 242, 185, 55; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --foot-bg: #14284B; --foot-ink: #C9D4E8; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hero-bg: #14284B; --hero-ink: #FFFFFF; --btn-bg: #F2B937; --btn-ink: #14284B; --photo-bg: #22406F; --photo-ink: #DCE5F5; --hand-ink: #F2B937; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --brand-size: 1.7rem; --radius: 12px; --topo: #A9BCE0; --trail: #D99B1C; }
+.v-a-encre { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --pop-ink: #A26A00; --pop-rgb: 242, 185, 55; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --foot-bg: #14284B; --foot-ink: #C9D4E8; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hero-bg: #14284B; --hero-ink: #FFFFFF; --btn-bg: #F2B937; --btn-ink: #14284B; --photo-bg: #22406F; --photo-ink: #DCE5F5; --hand-ink: #F2B937; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --brand-size: 1.7rem; --radius: 4px; --card-tint: #E8EEF7; }
+.v-b-lac { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #102F3A; --muted: #45606B; --line: #D3E3E8; --accent: #0D5870; --pop: #E8742A; --pop-ink: #B4500E; --pop-rgb: 232, 116, 42; --band1: #F1F7F9; --band2: #FCEBDF; --line-2: #EFCBB2; --foot-bg: #0E3442; --foot-ink: #C8DEE5; --chip-bg: #E3EFF3; --chip-ink: #0D5870; --hero-bg: #DCEBF0; --hero-ink: #0E3442; --btn-bg: #0D5870; --btn-ink: #FFFFFF; --photo-bg: #BFD9E2; --photo-ink: #0E3442; --hand-ink: #B4500E; --title: 'Fraunces', Georgia, serif; --title-w: 600; --title-ls: -0.02em; --brand-size: 1.4rem; --radius: 12px; --card-tint: #E2EFF3; }
+.v-b-nuit { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #15233F; --muted: #4A5568; --line: #DCE3EC; --accent: #1E4D8C; --pop: #F2B937; --pop-ink: #A26A00; --pop-rgb: 242, 185, 55; --band1: #EEF2F8; --band2: #FFF5D9; --line-2: #E9DCB2; --foot-bg: #14284B; --foot-ink: #C9D4E8; --chip-bg: #EEF2F8; --chip-ink: #1E4D8C; --hero-bg: #14284B; --hero-ink: #FFFFFF; --btn-bg: #F2B937; --btn-ink: #14284B; --photo-bg: #22406F; --photo-ink: #DCE5F5; --hand-ink: #F2B937; --title: 'Instrument Serif', Georgia, serif; --title-w: 400; --title-ls: -0.005em; --brand-size: 1.7rem; --radius: 12px; --card-tint: #E8EEF7; --topo: #A9BCE0; --trail: #D99B1C; }
 </style>
 </head>
 <body>
@@ -333,14 +358,14 @@ body { background: #FFFFFF; }
 <header>
   <p class="kick">…le début d'autre chose</p>
   <h1>Les propositions</h1>
-  <p class="lead">Ouvrez l'accueil ou l'article de chaque déclinaison. En haut de chaque page, le bouton « Typo » change la typo des titres et, quand il y en a un, l'effet sur « autre chose ».</p>
+  <p class="lead">Ouvrez l'accueil ou l'article de chaque déclinaison. En haut de chaque page, le bouton « Réglages » change la typo des titres, l'effet sur « autre chose » et la mise en avant des articles.</p>
 </header>
 <h2 class="sec2">Trois déclinaisons</h2>
 <div class="ambs">
 <article class="amb">
   <div class="prev" aria-hidden="true">
     <div class="prev-hero" style="background-color:#14284B;color:#FFFFFF;">
-      <span class="prev-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#F2B937"></i></span>le début d'<em style="font-style:italic">autre chose</em></span>
+      <span class="prev-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#F2B937"></i></span>le début d'<em style="font-style:normal">autre chose</em></span>
     </div>
     <div class="prev-bands"><span style="background:#FFF5D9"></span><span style="background:#EEF2F8"></span></div>
     <div class="prev-art"><i></i><i></i><i style="width:70%"></i></div>
@@ -370,7 +395,7 @@ body { background: #FFFFFF; }
 </article><article class="amb">
   <div class="prev" aria-hidden="true">
     <div class="prev-hero" style="background-color:#14284B;color:#FFFFFF;background-image:repeating-radial-gradient(circle at 85% 30%, transparent 0 10px, rgba(169,188,224,.22) 10px 11px);">
-      <span class="prev-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#F2B937"></i></span>le début d'<em style="font-style:italic">autre chose</em></span>
+      <span class="prev-t" style="font-family:'Instrument Serif', Georgia, serif;font-weight:400;letter-spacing:-0.005em"><span class="pd"><i style="background:#FFFFFF"></i><i style="background:#FFFFFF"></i><i style="background:#F2B937"></i></span>le début d'<em style="font-style:normal">autre chose</em></span>
     </div>
     <div class="prev-bands"><span style="background:#FFF5D9"></span><span style="background:#EEF2F8"></span></div>
     <div class="prev-art"><i></i><i></i><i style="width:70%"></i></div>
@@ -405,7 +430,7 @@ body { background: #FFFFFF; }
   <p class="gt-d">Le trait de lumière de départ, pour comparer.</p>
 </li>
 </ul>
-<h2 class="sec2">Cinq typos de titre</h2>
+<h2 class="sec2">Trois typos de titre</h2>
 <ul class="specs">
 <li class="spec">
   <p class="spec-n"><b>Instrument Serif</b></p>
@@ -422,16 +447,6 @@ body { background: #FFFFFF; }
   <p class="spec-t" style="font-family:'DM Serif Display', Georgia, serif;font-weight:400;letter-spacing:-0.01em">…le début d'autre chose</p>
   <p class="spec-s" style="font-family:'DM Serif Display', Georgia, serif;font-weight:400;letter-spacing:-0.01em">Derniers articles</p>
   <p class="spec-d">Contrastée et affirmée, façon couverture de magazine.</p>
-</li><li class="spec">
-  <p class="spec-n"><b>Bricolage Grotesque</b></p>
-  <p class="spec-t" style="font-family:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;font-weight:800;letter-spacing:-0.035em">…le début d'autre chose</p>
-  <p class="spec-s" style="font-family:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;font-weight:800;letter-spacing:-0.035em">Derniers articles</p>
-  <p class="spec-d">Moderne et énergique, avec du caractère. Se lit de loin.</p>
-</li><li class="spec">
-  <p class="spec-n"><b>Young Serif</b></p>
-  <p class="spec-t" style="font-family:'Young Serif', Georgia, serif;font-weight:400;letter-spacing:-0.01em">…le début d'autre chose</p>
-  <p class="spec-s" style="font-family:'Young Serif', Georgia, serif;font-weight:400;letter-spacing:-0.01em">Derniers articles</p>
-  <p class="spec-d">Ronde et chaleureuse, comme un livre qu'on aime.</p>
 </li>
 </ul>
 </main>
@@ -441,14 +456,19 @@ body { background: #FFFFFF; }
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style A · Encre et soleil</span>
   <span class="bar-pages"><a href="#a-encre-accueil" aria-current="page">Accueil</a><a href="#a-encre-article">Article</a></span>
-  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+  <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
   <a class="brand" href="#a-encre-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#a-encre-articles">Articles</a></li><li><a href="#a-encre-en-ce-moment">En ce moment</a></li><li><a href="#a-encre-a-propos">À propos</a></li><li><a href="#a-encre-autrement">Autrement</a></li></ul></nav>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#a-encre-articles">Articles</a></li><li><a href="#a-encre-en-ce-moment">En ce moment</a></li><li><a href="#a-encre-autrement">Autrement</a></li><li><a href="#a-encre-a-propos">À propos</a></li></ul></nav>
+  <div class="head-social">
+    <a class="ico" href="https://www.linkedin.com/" aria-label="Mon profil LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a class="ico ico-babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio provisoire">B</a>
+  </div>
 </div></header>
 <section class="hero" aria-label="Présentation">
   
@@ -456,7 +476,7 @@ body { background: #FFFFFF; }
     <div class="hero-txt">
       <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
       <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
-      <p class="hero-sig"><span class="hand">Sébastien</span><span>Sébastien Bollengier</span></p>
+      <p class="hero-sig"><span class="hand">Sébastien Bollengier</span></p>
       <a class="btn" href="#a-encre-article">Lire le premier article →</a>
     </div>
     <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
@@ -464,15 +484,26 @@ body { background: #FFFFFF; }
   
 </section>
 <main>
-  <section class="sec first" id="a-encre-articles"><div class="wrap">
+  <section class="sec first sec-articles" id="a-encre-articles"><div class="wrap">
     <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
-    <article class="feature">
-      <p class="meta">Le premier · Octobre 2026 · 5 min de lecture</p>
-      <h3><a href="#a-encre-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
-      <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-      <p><a class="go" href="#a-encre-article">Lire l'article →</a></p>
-    </article>
-    <p class="next-note">Le prochain arrive bientôt : une ou deux fois par mois.</p>
+    <ul class="features">
+      <li class="feature">
+        <p class="meta">Octobre 2026 · 5 min de lecture</p>
+        <h3><a href="#a-encre-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
+        <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
+        <p class="go"><a href="#a-encre-article">Lire l'article →</a></p>
+      </li>
+      <li class="feature upcoming">
+        <p class="meta">Bientôt</p>
+        <h3>Prochain article</h3>
+        <p class="excerpt">À paraître.</p>
+      </li>
+      <li class="feature upcoming">
+        <p class="meta">Bientôt</p>
+        <h3>Article suivant</h3>
+        <p class="excerpt">À paraître.</p>
+      </li>
+    </ul>
   </div></section>
   <section class="sec band2" id="a-encre-en-ce-moment"><div class="wrap">
     <div class="sec-h"><h2>En ce moment</h2><p class="meta">Mis à jour le 11 octobre 2026</p></div>
@@ -490,7 +521,13 @@ body { background: #FFFFFF; }
       </ul>
     </div>
   </div></section>
-  <section class="sec" id="a-encre-a-propos"><div class="wrap">
+  <section class="sec band1" id="a-encre-autrement"><div class="wrap">
+    <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
+    <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
+    </ul>
+    <p class="aussi"><mark class="ph">[Et aussi : d'autres passions, dans la maquette privée]</mark></p>
+  </div></section>
+  <section class="sec last" id="a-encre-a-propos"><div class="wrap">
     <div class="sec-h"><h2>Qui écrit ?</h2></div>
     <div class="about">
       <div class="photo md" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
@@ -504,12 +541,6 @@ body { background: #FFFFFF; }
 </div>
       </div>
     </div>
-  </div></section>
-  <section class="sec band1 last" id="a-encre-autrement"><div class="wrap">
-    <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
-    <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
-    </ul>
-    <p class="aussi"><mark class="ph">[Et aussi : d'autres passions, dans la maquette privée]</mark></p>
   </div></section>
   <section class="sec"><div class="wrap"><aside class="nl" aria-label="Lettre d'information (bientôt)">
   <p class="kicker">Bientôt</p>
@@ -527,14 +558,19 @@ body { background: #FFFFFF; }
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style A · Encre et soleil</span>
   <span class="bar-pages"><a href="#a-encre-accueil">Accueil</a><a href="#a-encre-article" aria-current="page">Article</a></span>
-  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+  <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
   <a class="brand" href="#a-encre-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#a-encre-articles" aria-current="page">Articles</a></li><li><a href="#a-encre-en-ce-moment">En ce moment</a></li><li><a href="#a-encre-a-propos">À propos</a></li><li><a href="#a-encre-autrement">Autrement</a></li></ul></nav>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#a-encre-articles" aria-current="page">Articles</a></li><li><a href="#a-encre-en-ce-moment">En ce moment</a></li><li><a href="#a-encre-autrement">Autrement</a></li><li><a href="#a-encre-a-propos">À propos</a></li></ul></nav>
+  <div class="head-social">
+    <a class="ico" href="https://www.linkedin.com/" aria-label="Mon profil LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a class="ico ico-babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio provisoire">B</a>
+  </div>
 </div></header>
 <main class="wrap">
 <article class="art">
@@ -547,7 +583,7 @@ body { background: #FFFFFF; }
 <p>À l'un des plus grands orateurs qui honorent l'Angleterre, succédait donc ce Phileas Fogg, personnage énigmatique, dont on ne savait rien, sinon que c'était un fort galant homme et l'un des plus beaux gentlemen de la haute société anglaise.</p>
 <p>Ce Phileas Fogg était-il riche ? Incontestablement. Mais comment il avait fait fortune, c'est ce que les mieux informés ne pouvaient dire, et Mr. Fogg était le dernier auquel il convînt de s'adresser pour l'apprendre.</p>
   </div>
-  <p class="signature"><span class="hand">Sébastien</span></p>
+  <p class="signature"><span class="hand">Sébastien Bollengier</span></p>
   <div class="art-end">
     <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
     <aside class="author" aria-label="L'auteur">
@@ -577,14 +613,19 @@ body { background: #FFFFFF; }
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style B · Lac et balise</span>
   <span class="bar-pages"><a href="#b-lac-accueil" aria-current="page">Accueil</a><a href="#b-lac-article">Article</a></span>
-  <details class="bar-tune"><summary>Typo</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+  <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
   <a class="brand" href="#b-lac-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-lac-articles">Articles</a></li><li><a href="#b-lac-en-ce-moment">En ce moment</a></li><li><a href="#b-lac-a-propos">À propos</a></li><li><a href="#b-lac-autrement">Autrement</a></li></ul></nav>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-lac-articles">Articles</a></li><li><a href="#b-lac-en-ce-moment">En ce moment</a></li><li><a href="#b-lac-autrement">Autrement</a></li><li><a href="#b-lac-a-propos">À propos</a></li></ul></nav>
+  <div class="head-social">
+    <a class="ico" href="https://www.linkedin.com/" aria-label="Mon profil LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a class="ico ico-babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio provisoire">B</a>
+  </div>
 </div></header>
 <section class="hero" aria-label="Présentation">
   <canvas class="topo" aria-hidden="true"></canvas>
@@ -592,7 +633,7 @@ body { background: #FFFFFF; }
     <div class="hero-txt">
       <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
       <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
-      <p class="hero-sig"><span class="hand">Sébastien</span><span>Sébastien Bollengier</span></p>
+      <p class="hero-sig"><span class="hand">Sébastien Bollengier</span></p>
       <a class="btn" href="#b-lac-article">Lire le premier article →</a>
     </div>
     <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
@@ -600,15 +641,26 @@ body { background: #FFFFFF; }
   <svg class="ridge" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 L0 40 L90 30 L170 38 L260 14 L340 28 L430 6 L510 24 L590 14 L670 34 L770 12 L860 28 L950 20 L1040 38 L1130 24 L1200 34 L1200 64 Z" fill="#FFFFFF"/><polyline points="0,40 90,30 170,38 260,14 340,28 430,6 510,24 590,14 670,34 770,12 860,28 950,20 1040,38 1130,24 1200,34" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 11" vector-effect="non-scaling-stroke"/></svg>
 </section>
 <main>
-  <section class="sec trail first" id="b-lac-articles"><div class="wrap">
+  <section class="sec trail first sec-articles" id="b-lac-articles"><div class="wrap">
     <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
-    <article class="feature">
-      <p class="meta">Le premier · Octobre 2026 · 5 min de lecture</p>
-      <h3><a href="#b-lac-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
-      <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-      <p><a class="go" href="#b-lac-article">Lire l'article →</a></p>
-    </article>
-    <p class="next-note">Le prochain arrive bientôt : une ou deux fois par mois.</p>
+    <ul class="features">
+      <li class="feature">
+        <p class="meta">Octobre 2026 · 5 min de lecture</p>
+        <h3><a href="#b-lac-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
+        <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
+        <p class="go"><a href="#b-lac-article">Lire l'article →</a></p>
+      </li>
+      <li class="feature upcoming">
+        <p class="meta">Bientôt</p>
+        <h3>Prochain article</h3>
+        <p class="excerpt">À paraître.</p>
+      </li>
+      <li class="feature upcoming">
+        <p class="meta">Bientôt</p>
+        <h3>Article suivant</h3>
+        <p class="excerpt">À paraître.</p>
+      </li>
+    </ul>
   </div></section>
   <section class="sec band2 trail" id="b-lac-en-ce-moment"><div class="wrap">
     <div class="sec-h"><h2>En ce moment</h2><p class="meta">Mis à jour le 11 octobre 2026</p></div>
@@ -626,7 +678,13 @@ body { background: #FFFFFF; }
       </ul>
     </div>
   </div></section>
-  <section class="sec trail" id="b-lac-a-propos"><div class="wrap">
+  <section class="sec band1 trail" id="b-lac-autrement"><div class="wrap">
+    <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
+    <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
+    </ul>
+    <p class="aussi"><mark class="ph">[Et aussi : d'autres passions, dans la maquette privée]</mark></p>
+  </div></section>
+  <section class="sec trail last" id="b-lac-a-propos"><div class="wrap">
     <div class="sec-h"><h2>Qui écrit ?</h2></div>
     <div class="about">
       <div class="photo md" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
@@ -640,12 +698,6 @@ body { background: #FFFFFF; }
 </div>
       </div>
     </div>
-  </div></section>
-  <section class="sec band1 trail last" id="b-lac-autrement"><div class="wrap">
-    <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
-    <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
-    </ul>
-    <p class="aussi"><mark class="ph">[Et aussi : d'autres passions, dans la maquette privée]</mark></p>
   </div></section>
   <section class="sec"><div class="wrap"><aside class="nl" aria-label="Lettre d'information (bientôt)">
   <p class="kicker">Bientôt</p>
@@ -663,14 +715,19 @@ body { background: #FFFFFF; }
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style B · Lac et balise</span>
   <span class="bar-pages"><a href="#b-lac-accueil">Accueil</a><a href="#b-lac-article" aria-current="page">Article</a></span>
-  <details class="bar-tune"><summary>Typo</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+  <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
   <a class="brand" href="#b-lac-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-lac-articles" aria-current="page">Articles</a></li><li><a href="#b-lac-en-ce-moment">En ce moment</a></li><li><a href="#b-lac-a-propos">À propos</a></li><li><a href="#b-lac-autrement">Autrement</a></li></ul></nav>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-lac-articles" aria-current="page">Articles</a></li><li><a href="#b-lac-en-ce-moment">En ce moment</a></li><li><a href="#b-lac-autrement">Autrement</a></li><li><a href="#b-lac-a-propos">À propos</a></li></ul></nav>
+  <div class="head-social">
+    <a class="ico" href="https://www.linkedin.com/" aria-label="Mon profil LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a class="ico ico-babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio provisoire">B</a>
+  </div>
 </div></header>
 <main class="wrap">
 <article class="art">
@@ -683,7 +740,7 @@ body { background: #FFFFFF; }
 <p>À l'un des plus grands orateurs qui honorent l'Angleterre, succédait donc ce Phileas Fogg, personnage énigmatique, dont on ne savait rien, sinon que c'était un fort galant homme et l'un des plus beaux gentlemen de la haute société anglaise.</p>
 <p>Ce Phileas Fogg était-il riche ? Incontestablement. Mais comment il avait fait fortune, c'est ce que les mieux informés ne pouvaient dire, et Mr. Fogg était le dernier auquel il convînt de s'adresser pour l'apprendre.</p>
   </div>
-  <p class="signature"><span class="hand">Sébastien</span></p>
+  <p class="signature"><span class="hand">Sébastien Bollengier</span></p>
   <div class="art-end">
     <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
     <aside class="author" aria-label="L'auteur">
@@ -713,14 +770,19 @@ body { background: #FFFFFF; }
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style B · Bleu nuit</span>
   <span class="bar-pages"><a href="#b-nuit-accueil" aria-current="page">Accueil</a><a href="#b-nuit-article">Article</a></span>
-  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+  <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
   <a class="brand" href="#b-nuit-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-nuit-articles">Articles</a></li><li><a href="#b-nuit-en-ce-moment">En ce moment</a></li><li><a href="#b-nuit-a-propos">À propos</a></li><li><a href="#b-nuit-autrement">Autrement</a></li></ul></nav>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-nuit-articles">Articles</a></li><li><a href="#b-nuit-en-ce-moment">En ce moment</a></li><li><a href="#b-nuit-autrement">Autrement</a></li><li><a href="#b-nuit-a-propos">À propos</a></li></ul></nav>
+  <div class="head-social">
+    <a class="ico" href="https://www.linkedin.com/" aria-label="Mon profil LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a class="ico ico-babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio provisoire">B</a>
+  </div>
 </div></header>
 <section class="hero" aria-label="Présentation">
   <canvas class="topo" aria-hidden="true"></canvas>
@@ -728,7 +790,7 @@ body { background: #FFFFFF; }
     <div class="hero-txt">
       <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
       <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
-      <p class="hero-sig"><span class="hand">Sébastien</span><span>Sébastien Bollengier</span></p>
+      <p class="hero-sig"><span class="hand">Sébastien Bollengier</span></p>
       <a class="btn" href="#b-nuit-article">Lire le premier article →</a>
     </div>
     <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
@@ -736,15 +798,26 @@ body { background: #FFFFFF; }
   <svg class="ridge" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 L0 40 L90 30 L170 38 L260 14 L340 28 L430 6 L510 24 L590 14 L670 34 L770 12 L860 28 L950 20 L1040 38 L1130 24 L1200 34 L1200 64 Z" fill="#FFFFFF"/><polyline points="0,40 90,30 170,38 260,14 340,28 430,6 510,24 590,14 670,34 770,12 860,28 950,20 1040,38 1130,24 1200,34" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 11" vector-effect="non-scaling-stroke"/></svg>
 </section>
 <main>
-  <section class="sec trail first" id="b-nuit-articles"><div class="wrap">
+  <section class="sec trail first sec-articles" id="b-nuit-articles"><div class="wrap">
     <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
-    <article class="feature">
-      <p class="meta">Le premier · Octobre 2026 · 5 min de lecture</p>
-      <h3><a href="#b-nuit-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
-      <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-      <p><a class="go" href="#b-nuit-article">Lire l'article →</a></p>
-    </article>
-    <p class="next-note">Le prochain arrive bientôt : une ou deux fois par mois.</p>
+    <ul class="features">
+      <li class="feature">
+        <p class="meta">Octobre 2026 · 5 min de lecture</p>
+        <h3><a href="#b-nuit-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
+        <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
+        <p class="go"><a href="#b-nuit-article">Lire l'article →</a></p>
+      </li>
+      <li class="feature upcoming">
+        <p class="meta">Bientôt</p>
+        <h3>Prochain article</h3>
+        <p class="excerpt">À paraître.</p>
+      </li>
+      <li class="feature upcoming">
+        <p class="meta">Bientôt</p>
+        <h3>Article suivant</h3>
+        <p class="excerpt">À paraître.</p>
+      </li>
+    </ul>
   </div></section>
   <section class="sec band2 trail" id="b-nuit-en-ce-moment"><div class="wrap">
     <div class="sec-h"><h2>En ce moment</h2><p class="meta">Mis à jour le 11 octobre 2026</p></div>
@@ -762,7 +835,13 @@ body { background: #FFFFFF; }
       </ul>
     </div>
   </div></section>
-  <section class="sec trail" id="b-nuit-a-propos"><div class="wrap">
+  <section class="sec band1 trail" id="b-nuit-autrement"><div class="wrap">
+    <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
+    <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
+    </ul>
+    <p class="aussi"><mark class="ph">[Et aussi : d'autres passions, dans la maquette privée]</mark></p>
+  </div></section>
+  <section class="sec trail last" id="b-nuit-a-propos"><div class="wrap">
     <div class="sec-h"><h2>Qui écrit ?</h2></div>
     <div class="about">
       <div class="photo md" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
@@ -776,12 +855,6 @@ body { background: #FFFFFF; }
 </div>
       </div>
     </div>
-  </div></section>
-  <section class="sec band1 trail last" id="b-nuit-autrement"><div class="wrap">
-    <div class="sec-h"><h2>Moi, autrement</h2><p>Ce qui me fait du bien quand je ne travaille pas. <span class="tag-note">Rubrique proposée : à garder ou non</span></p></div>
-    <ul class="cards3"><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li><li class="card"><p class="kicker"><mark class="ph">[Centre d’intérêt]</mark></p><h3><mark class="ph">[Titre]</mark></h3><p><mark class="ph">[Une phrase dans la maquette privée]</mark></p></li>
-    </ul>
-    <p class="aussi"><mark class="ph">[Et aussi : d'autres passions, dans la maquette privée]</mark></p>
   </div></section>
   <section class="sec"><div class="wrap"><aside class="nl" aria-label="Lettre d'information (bientôt)">
   <p class="kicker">Bientôt</p>
@@ -799,14 +872,19 @@ body { background: #FFFFFF; }
   <a href="#propositions">← Propositions</a>
   <span class="bar-name">Style B · Bleu nuit</span>
   <span class="bar-pages"><a href="#b-nuit-accueil">Accueil</a><a href="#b-nuit-article" aria-current="page">Article</a></span>
-  <details class="bar-tune"><summary>Typo et effet</summary><div class="bar-panel">
-    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button><button type="button" data-typo="bricolage" aria-pressed="false">Bricolage Grotesque</button><button type="button" data-typo="young" aria-pressed="false">Young Serif</button></p>
+  <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
+    <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
   <a class="brand" href="#b-nuit-accueil"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
-  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-nuit-articles" aria-current="page">Articles</a></li><li><a href="#b-nuit-en-ce-moment">En ce moment</a></li><li><a href="#b-nuit-a-propos">À propos</a></li><li><a href="#b-nuit-autrement">Autrement</a></li></ul></nav>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="#b-nuit-articles" aria-current="page">Articles</a></li><li><a href="#b-nuit-en-ce-moment">En ce moment</a></li><li><a href="#b-nuit-autrement">Autrement</a></li><li><a href="#b-nuit-a-propos">À propos</a></li></ul></nav>
+  <div class="head-social">
+    <a class="ico" href="https://www.linkedin.com/" aria-label="Mon profil LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a class="ico ico-babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio provisoire">B</a>
+  </div>
 </div></header>
 <main class="wrap">
 <article class="art">
@@ -819,7 +897,7 @@ body { background: #FFFFFF; }
 <p>À l'un des plus grands orateurs qui honorent l'Angleterre, succédait donc ce Phileas Fogg, personnage énigmatique, dont on ne savait rien, sinon que c'était un fort galant homme et l'un des plus beaux gentlemen de la haute société anglaise.</p>
 <p>Ce Phileas Fogg était-il riche ? Incontestablement. Mais comment il avait fait fortune, c'est ce que les mieux informés ne pouvaient dire, et Mr. Fogg était le dernier auquel il convînt de s'adresser pour l'apprendre.</p>
   </div>
-  <p class="signature"><span class="hand">Sébastien</span></p>
+  <p class="signature"><span class="hand">Sébastien Bollengier</span></p>
   <div class="art-end">
     <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
     <aside class="author" aria-label="L'auteur">
@@ -846,7 +924,7 @@ body { background: #FFFFFF; }
 </div>
 <script>
 (function () {
-  var TYPO = {"instrument":["Instrument Serif","'Instrument Serif', Georgia, serif","400","-0.005em","1.7rem"],"fraunces":["Fraunces","'Fraunces', Georgia, serif","600","-0.02em","1.4rem"],"dm":["DM Serif Display","'DM Serif Display', Georgia, serif","400","-0.01em","1.45rem"],"bricolage":["Bricolage Grotesque","'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif","800","-0.035em","1.35rem"],"young":["Young Serif","'Young Serif', Georgia, serif","400","-0.01em","1.35rem"]};
+  var TYPO = {"instrument":["Instrument Serif","'Instrument Serif', Georgia, serif","400","-0.005em","1.7rem"],"fraunces":["Fraunces","'Fraunces', Georgia, serif","600","-0.02em","1.4rem"],"dm":["DM Serif Display","'DM Serif Display', Georgia, serif","400","-0.01em","1.45rem"]};
   var FX = ["cercle","surligne","couleur","trait"];
   var root = document.documentElement;
 
@@ -923,6 +1001,17 @@ body { background: #FFFFFF; }
   if (saved && TYPO[saved]) typo(saved);
   else document.querySelectorAll('.screen[data-typo]').forEach(function (s) { press(s, 'data-typo', s.getAttribute('data-typo')); });
   fx(get('maquette-effet'));
+  var CARDS = ["carte","section","lisere"];
+  function cards(k) {
+    if (CARDS.indexOf(k) < 0) k = 'carte';
+    CARDS.forEach(function (n) { root.classList.remove('cards-' + n); });
+    root.classList.add('cards-' + k);
+    press(document, 'data-cards', k);
+  }
+  cards(get('maquette-cartes'));
+  document.querySelectorAll('button[data-cards]').forEach(function (b) {
+    b.addEventListener('click', function () { put('maquette-cartes', b.getAttribute('data-cards')); cards(b.getAttribute('data-cards')); });
+  });
   document.querySelectorAll('button[data-typo]').forEach(function (b) {
     b.addEventListener('click', function () { put('maquette-typo', b.getAttribute('data-typo')); typo(b.getAttribute('data-typo')); });
   });
