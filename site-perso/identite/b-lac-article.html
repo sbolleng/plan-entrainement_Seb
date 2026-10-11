@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr" data-typo="fraunces">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>…le début d'autre chose · Style B, couleurs Lac et balise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Style B · couleurs Lac et balise. Accueil en couleur, articles sur fond blanc. */
+:root { --bg: #FFFFFF; --card-bg: #FFFFFF; --ink: #102F3A; --muted: #45606B; --line: #D3E3E8; --accent: #0D5870; --pop: #E8742A; --pop-ink: #B4500E; --pop-rgb: 232, 116, 42; --band1: #F1F7F9; --band2: #FCEBDF; --line-2: #EFCBB2; --foot-bg: #0E3442; --foot-ink: #C8DEE5; --chip-bg: #E3EFF3; --chip-ink: #0D5870; --hero-bg: #DCEBF0; --hero-ink: #0E3442; --btn-bg: #0D5870; --btn-ink: #FFFFFF; --photo-bg: #BFD9E2; --photo-ink: #0E3442; --hand-ink: #B4500E; --title: 'Fraunces', Georgia, serif; --title-w: 600; --title-ls: -0.02em; --brand-size: 1.4rem; --radius: 12px; }
+
+.hero-t em, .art-t em { color: var(--pop-ink); font-style: normal; }
+canvas.topo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; color: var(--accent); }
+.ridge { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 64px; z-index: 1; display: block; }
+.ridge polyline { stroke: var(--pop); }
+.hero .wrap { padding-bottom: 5.5rem; }
+.brand { font-size: var(--brand-size, 1.45rem); }
+.sec { position: relative; --sec-bg: var(--bg); }
+.sec.band1 { --sec-bg: var(--band1); }
+.sec.band2 { --sec-bg: var(--band2); }
+.trail > .wrap { position: relative; }
+.trail .sec-h h2 { position: relative; }
+.trail .sec-h h2::before { content: ""; display: inline-block; width: .5em; height: .5em; margin-right: .35em; border-radius: 50%; background: var(--pop); vertical-align: .08em; }
+@media (min-width: 56rem) {
+  .trail > .wrap { padding-left: 4.5rem; }
+  .trail > .wrap::before { content: ""; position: absolute; left: 2.2rem; top: -4.5rem; bottom: -4.5rem; border-left: 4px dotted var(--pop); }
+  .trail .sec-h h2::before { position: absolute; left: -2.95rem; top: .3em; width: 1.25rem; height: 1.25rem; margin: 0; box-shadow: 0 0 0 6px var(--sec-bg); }
+  .trail.first > .wrap::before { top: 0; }
+  .trail.last > .wrap::before { bottom: auto; height: 5.6rem; }
+}
+
+</style>
+</head>
+<body>
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Style B · couleurs Lac et balise</span>
+  <a href="b-lac-accueil.html">Accueil</a>
+  <a href="b-lac-article.html" aria-current="page">Article</a>
+  <span class="sp"></span>
+  <a href="index.html">← Les 4 déclinaisons</a>
+</div><div class="wrap mq-tools">
+  <span class="lbl">Typo :</span><span class="grp"><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></span>
+  
+</div></div>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="b-lac-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="b-lac-accueil.html#articles" aria-current="page">Articles</a></li><li><a href="b-lac-accueil.html#en-ce-moment">En ce moment</a></li><li><a href="b-lac-accueil.html#a-propos">À propos</a></li><li><a href="b-lac-accueil.html#autrement">Autrement</a></li></ul></nav>
+</div></header>
+<main class="wrap">
+<article class="art">
+  <nav class="crumbs" aria-label="Fil d'Ariane"><a href="b-lac-accueil.html">Accueil</a><span aria-hidden="true">›</span><a href="b-lac-accueil.html#articles">Articles</a><span aria-hidden="true">›</span><span aria-current="page">…le début d'autre chose</span></nav>
+  <h1 class="art-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
+  <p class="meta">Par Sébastien Bollengier · Octobre 2026 · 5 min de lecture</p>
+  <div class="prose">
+<p class="lede"><mark class="ph">[Votre article, intégré mot pour mot dans la maquette privée. Ci-dessous, un texte de remplissage : Jules Verne, domaine public.]</mark></p>
+<p>En l'année 1872, la maison portant le numéro 7 de Saville-row, Burlington Gardens, maison dans laquelle Sheridan mourut en 1814, était habitée par Phileas Fogg, esq., l'un des membres les plus singuliers et les plus remarqués du Reform-Club de Londres, bien qu'il semblât prendre à tâche de ne rien faire qui pût attirer l'attention.</p>
+<p>À l'un des plus grands orateurs qui honorent l'Angleterre, succédait donc ce Phileas Fogg, personnage énigmatique, dont on ne savait rien, sinon que c'était un fort galant homme et l'un des plus beaux gentlemen de la haute société anglaise.</p>
+<p>Ce Phileas Fogg était-il riche ? Incontestablement. Mais comment il avait fait fortune, c'est ce que les mieux informés ne pouvaient dire, et Mr. Fogg était le dernier auquel il convînt de s'adresser pour l'apprendre.</p>
+  </div>
+  <p class="signature"><span class="hand">Sébastien</span></p>
+  <div class="art-end">
+    <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
+    <aside class="author" aria-label="L'auteur">
+      <div class="photo sm" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
+      <div>
+        <p class="author-n">Sébastien Bollengier</p>
+        <p class="author-d">Vingt-cinq ans de projets dans les médias, l'AdTech, la data et l'IA. J'écris ici une ou deux fois par mois.</p>
+        <p class="author-d"><a href="b-lac-accueil.html#a-propos">Qui écrit ? →</a> · <a href="https://www.linkedin.com/">LinkedIn</a></p>
+      </div>
+    </aside>
+    <aside class="nl" aria-label="Lettre d'information (bientôt)">
+  <p class="kicker">Bientôt</p>
+  <p class="nl-t">Recevoir les prochains articles par e-mail</p>
+  <p class="nl-d">Emplacement réservé à la future lettre. Rien n'est collecté pour l'instant.</p>
+</aside>
+    <p><a class="back" href="b-lac-accueil.html">← Retour à l'accueil</a></p>
+  </div>
+</article>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <a class="brand" href="b-lac-accueil.html"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a>
+  <span class="foot-links"><span>© 2026 Sébastien Bollengier</span><a href="#mentions">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+(function () {
+  var TYPO = {"instrument":["Instrument Serif","'Instrument Serif', Georgia, serif","400","-0.005em","1.7rem"],"fraunces":["Fraunces","'Fraunces', Georgia, serif","600","-0.02em","1.4rem"],"dm":["DM Serif Display","'DM Serif Display', Georgia, serif","400","-0.01em","1.45rem"]};
+  var FX = ["soleil","cercle","surligne","couleur","trait"];
+  var root = document.documentElement;
+  function get(k, d) { try { return localStorage.getItem(k) || d; } catch (e) { return d; } }
+  function put(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function press(attr, val) {
+    document.querySelectorAll('button[' + attr + ']').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute(attr) === val ? 'true' : 'false'); });
+  }
+  function typo(t) {
+    var x = TYPO[t]; if (!x) return;
+    root.style.setProperty('--title', x[1]); root.style.setProperty('--title-w', x[2]);
+    root.style.setProperty('--title-ls', x[3]); root.style.setProperty('--brand-size', x[4]);
+    press('data-typo', t);
+  }
+  function fx(f) {
+    if (FX.indexOf(f) < 0) return;
+    FX.forEach(function (n) { root.classList.remove('fx-' + n); });
+    root.classList.add('fx-' + f);
+    press('data-fx', f);
+  }
+  typo(get('maquette-typo', root.getAttribute('data-typo')));
+  if (document.querySelector('[data-fx]')) fx(get('maquette-effet', root.getAttribute('data-fx')));
+  document.querySelectorAll('button[data-typo]').forEach(function (b) { b.addEventListener('click', function () { put('maquette-typo', b.getAttribute('data-typo')); typo(b.getAttribute('data-typo')); }); });
+  document.querySelectorAll('button[data-fx]').forEach(function (b) { b.addEventListener('click', function () { put('maquette-effet', b.getAttribute('data-fx')); fx(b.getAttribute('data-fx')); }); });
+})();
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    function done() { b.textContent = 'Lien copié'; }
+    try { navigator.clipboard.writeText(location.href.split('#')[0]).then(done, done); } catch (e) { done(); }
+  });
+});
+</script>
+</body>
+</html>
