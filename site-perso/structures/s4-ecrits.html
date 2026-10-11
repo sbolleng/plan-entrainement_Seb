@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Écrits · Structure 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="commun.css">
+<style>
+.k-hero{padding-block:3rem 2.5rem;display:grid;gap:1rem;max-width:46rem}
+.k-hero .kicker{margin:0}
+.k-hero h1{font-size:clamp(2rem,6vw,3.1rem);line-height:1.12;margin:0;letter-spacing:-.015em}
+.k-hero .lead{margin:0}
+.doors{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+.door{border:1px solid var(--line);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:.6rem;background:var(--bg)}
+.door h2{font-size:1.4rem;margin:0}
+.door p{margin:0;color:var(--ink-2);font-size:1rem}
+.door .door-last{color:var(--ink);font-weight:600;font-size:1.05rem}
+.door .door-go{margin-top:auto;padding-top:.6rem;font-weight:600}
+.k-band{margin-block:3rem;display:grid;gap:1.5rem;align-items:center;background:var(--soft);border-radius:10px;padding:1.5rem}
+@media(min-width:48rem){.k-band{grid-template-columns:auto 1fr auto;padding:2rem}}
+.k-band p{margin:0}
+.media-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.media-list li{display:grid;gap:.25rem;padding-block:1.25rem;border-bottom:1px solid var(--line)}
+.media-type{font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:1.5rem;color:var(--ink-2);margin-bottom:1.5rem}
+.empty b{color:var(--ink)}
+</style>
+</head>
+<body class="">
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Structure 4 : Le kiosque</span>
+  <a href="index.html">← Revenir aux 4 structures</a>
+</div></div>
+<header class="site-head"><div class="wrap">
+  <a class="logo" href="s4-accueil.html">Sébastien Bollengier<span aria-hidden="true">…</span></a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="s4-ecrits.html" aria-current="page">Écrits</a></li><li><a href="s4-en-ce-moment.html">En ce moment</a></li><li><a href="s4-medias.html">Médias</a></li><li><a href="s4-a-propos.html">À propos</a></li></ul></nav>
+</div></header>
+<main class="wrap">
+  <div class="page-head"><h1>Écrits</h1>
+  <p class="lead">Mes réflexions sur la data, l'AdTech et la gouvernance de l'IA. Une ou deux fois par mois.</p></div>
+  <ul class="posts"><li class="is-ex">
+  <p class="meta">Décembre 2026 · 6 min de lecture<span class="tag-ex">Exemple</span></p>
+  <h3 class="post-t"><a href="#">Gouvernance de l'IA : par où commencer ?</a></h3>
+  <p class="post-ex">Extrait d'exemple sur deux lignes, pour voir la place que prend un article dans la liste.</p>
+</li><li class="is-ex">
+  <p class="meta">Novembre 2026 · 7 min de lecture<span class="tag-ex">Exemple</span></p>
+  <h3 class="post-t"><a href="#">Vingt-cinq ans d'AdTech en cinq leçons</a></h3>
+  <p class="post-ex">Extrait d'exemple sur deux lignes, pour voir la place que prend un article dans la liste.</p>
+</li><li>
+  <p class="meta">Octobre 2026 · 8 min de lecture</p>
+  <h3 class="post-t"><a href="s4-article.html">…le début d'autre chose</a></h3>
+  <p class="post-ex"><mark class="ph">[Extrait : deux lignes tirées de votre article]</mark></p>
+</li></ul>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>© 2026 Sébastien Bollengier</span>
+  <span class="foot-links"><a href="s4-mentions.html">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    function done(){b.textContent='Lien copié';}
+    try{navigator.clipboard.writeText(location.href.split('#')[0]).then(done,done);}catch(e){done();}
+  });
+});
+
+</script>
+</body>
+</html>

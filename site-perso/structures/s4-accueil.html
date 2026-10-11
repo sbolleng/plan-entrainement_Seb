@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Accueil · Structure 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="commun.css">
+<style>
+.k-hero{padding-block:3rem 2.5rem;display:grid;gap:1rem;max-width:46rem}
+.k-hero .kicker{margin:0}
+.k-hero h1{font-size:clamp(2rem,6vw,3.1rem);line-height:1.12;margin:0;letter-spacing:-.015em}
+.k-hero .lead{margin:0}
+.doors{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+.door{border:1px solid var(--line);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:.6rem;background:var(--bg)}
+.door h2{font-size:1.4rem;margin:0}
+.door p{margin:0;color:var(--ink-2);font-size:1rem}
+.door .door-last{color:var(--ink);font-weight:600;font-size:1.05rem}
+.door .door-go{margin-top:auto;padding-top:.6rem;font-weight:600}
+.k-band{margin-block:3rem;display:grid;gap:1.5rem;align-items:center;background:var(--soft);border-radius:10px;padding:1.5rem}
+@media(min-width:48rem){.k-band{grid-template-columns:auto 1fr auto;padding:2rem}}
+.k-band p{margin:0}
+.media-list{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.media-list li{display:grid;gap:.25rem;padding-block:1.25rem;border-bottom:1px solid var(--line)}
+.media-type{font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:1.5rem;color:var(--ink-2);margin-bottom:1.5rem}
+.empty b{color:var(--ink)}
+</style>
+</head>
+<body class="">
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Structure 4 : Le kiosque</span>
+  <a href="index.html">← Revenir aux 4 structures</a>
+</div></div>
+<header class="site-head"><div class="wrap">
+  <a class="logo" href="s4-accueil.html">Sébastien Bollengier<span aria-hidden="true">…</span></a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="s4-ecrits.html">Écrits</a></li><li><a href="s4-en-ce-moment.html">En ce moment</a></li><li><a href="s4-medias.html">Médias</a></li><li><a href="s4-a-propos.html">À propos</a></li></ul></nav>
+</div></header>
+<main class="wrap">
+  <section class="k-hero">
+    <p class="kicker">Sébastien Bollengier</p>
+    <h1><mark class="ph">[Votre phrase-titre, par exemple : « Ce que 25 ans de data m'ont appris sur la confiance »]</mark></h1>
+    <p class="lead">25 ans d'expérience en AdTech, data, gouvernance de l'IA et pilotage de projets. J'écris ici une ou deux fois par mois.</p>
+  </section>
+
+  <ul class="doors">
+    <li class="door">
+      <p class="kicker">Écrits</p>
+      <h2>Mes articles</h2>
+      <p>Dernier paru :</p>
+      <p class="door-last">…le début d'autre chose</p>
+      <a class="door-go" href="s4-ecrits.html">Tous les écrits →</a>
+    </li>
+    <li class="door">
+      <p class="kicker">En ce moment</p>
+      <h2>Ce qui m'occupe</h2>
+      <p>Objectif UTMB, ma toolbox du moment, mes lectures.</p>
+      <p class="meta">Mis à jour le 11 octobre 2026</p>
+      <a class="door-go" href="s4-en-ce-moment.html">Voir la page →</a>
+    </li>
+    <li class="door">
+      <p class="kicker">Médias</p>
+      <h2>Interventions</h2>
+      <p>Podcasts, conférences, articles de presse où j'interviens.</p>
+      <a class="door-go" href="s4-medias.html">Voir les médias →</a>
+    </li>
+  </ul>
+
+  <section class="k-band">
+    <div class="photo big" role="img" aria-label="Emplacement de votre photo"><span>SB</span><mark class="ph ph-photo">votre photo</mark></div>
+    <div>
+      <p class="kicker">Qui suis-je ?</p>
+      <p><mark class="ph">[Deux phrases sur vous et sur ce que vous cherchez]</mark></p>
+    </div>
+    <a class="btn" href="s4-a-propos.html">Mon parcours</a>
+  </section>
+
+  <section class="blk"><aside class="nl nl-big" aria-label="Lettre d'information (bientôt)">
+  <p class="kicker">Bientôt</p>
+  <p class="nl-t">Recevoir les prochains articles par e-mail</p>
+  <p class="nl-d">Emplacement réservé à la future lettre d'information. Rien n'est collecté pour l'instant.</p>
+  <div class="nl-form" aria-hidden="true"><span class="nl-input">votre adresse e-mail</span><span class="nl-btn">S'inscrire</span></div>
+</aside></section>
+  <section class="blk"><div class="blk-h"><h2>Me retrouver</h2></div><div class="social big">
+  <a class="pill" href="https://www.linkedin.com/" title="Votre profil LinkedIn (adresse à fournir)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z"/></svg><span>LinkedIn</span></a>
+  <a class="babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio (le vrai logo sera intégré)">B</a>
+</div></section>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>© 2026 Sébastien Bollengier</span>
+  <span class="foot-links"><a href="s4-mentions.html">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    function done(){b.textContent='Lien copié';}
+    try{navigator.clipboard.writeText(location.href.split('#')[0]).then(done,done);}catch(e){done();}
+  });
+});
+
+</script>
+</body>
+</html>

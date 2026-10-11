@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Structures du site Bollengier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="commun.css">
+<style>
+/* Page de choix : une colonne lisible, puis une fiche par structure (schéma + plan + exemples + pour / contre). */
+.hub { max-width: 60rem; margin-inline: auto; padding-inline: 1.25rem; padding-block: 2.5rem 4rem; }
+@media (min-width: 48rem) { .hub { padding-inline: 2rem; } }
+.hub > header { max-width: 44rem; }
+.hub h1 { font-size: clamp(2rem, 6vw, 2.9rem); margin: .5rem 0 1rem; }
+.hub h2.sec { font-size: 1.75rem; margin: 3.5rem 0 1.25rem; padding-top: 2rem; border-top: 2px solid var(--ink); }
+.note-key { display: inline-block; margin-top: .5rem; font-size: 1rem; }
+
+/* Remarques -> changements */
+.fix { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.fix li { display: grid; gap: .35rem; padding: 1.1rem 1.25rem; background: var(--soft); border-radius: 10px; }
+@media (min-width: 48rem) { .fix li { grid-template-columns: 16rem minmax(0, 1fr); gap: 1.5rem; } }
+.fix q { font-weight: 700; quotes: "«\00a0" "\00a0»"; }
+.fix p { margin: 0; }
+
+/* Constats de recherche */
+.finds { list-style: none; margin: 0; padding: 0; counter-reset: f; display: grid; gap: 1.75rem; max-width: 46rem; }
+.finds li { display: grid; gap: .4rem; }
+.finds h3 { font-size: 1.25rem; margin: 0; }
+.finds p { margin: 0; }
+.src { font-size: .95rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: .2rem 1rem; }
+.finds li { min-width: 0; }
+.limit { font-size: 1rem; color: var(--ink-2); border-left: 4px solid var(--note-line); padding: .4rem 0 .4rem 1rem; margin-top: 2rem; max-width: 46rem; }
+
+/* Fiches structure */
+.st { display: grid; gap: 1.5rem; padding-block: 2.25rem; border-bottom: 1px solid var(--line); }
+.st:last-of-type { border-bottom: none; }
+@media (min-width: 52rem) { .st { grid-template-columns: 17rem minmax(0, 1fr); gap: 1.25rem 2.5rem; align-items: start; } }
+.st-h { grid-column: 1 / -1; }
+.st-l { display: grid; gap: 1rem; align-content: start; }
+.st-num { font-size: .9rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0; }
+.st h3 { font-size: 1.7rem; margin: .1rem 0 .4rem; }
+.st .principle { font-size: 1.2rem; margin: 0; max-width: 44rem; }
+.st h4 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 .5rem; }
+.st-r > p { margin: 0 0 .5rem; }
+.st-r { min-width: 0; }
+.open { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+/* Plan du site */
+.plan { border: 1px solid var(--line); border-radius: 10px; padding: 1rem; display: grid; gap: .8rem; }
+.plan-menu { margin: 0; display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; font-size: .95rem; }
+.plan-menu > span { color: var(--ink-2); margin-right: .25rem; }
+.plan-menu b { background: var(--accent-soft); color: var(--accent); border-radius: 4px; padding: .1rem .55rem; font-weight: 600; }
+.plan-pages { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr)); }
+.pp { background: var(--soft); border-radius: 8px; padding: .75rem .85rem; font-size: .98rem; }
+.pp-t { font-weight: 700; margin: 0 0 .25rem; }
+.pp ul { margin: 0; padding-left: 1.1rem; }
+.pp li { margin: .1rem 0; }
+.pp-child { margin-top: .45rem; font-size: .92rem; color: var(--ink-2); }
+
+/* Pour / contre */
+.pc { display: grid; gap: .75rem; }
+@media (min-width: 40rem) { .pc { grid-template-columns: 1fr 1fr; } }
+.pc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.pc li { padding-left: 1.6rem; position: relative; font-size: 1.02rem; }
+.pc li::before { position: absolute; left: 0; top: 0; font-weight: 700; }
+.pc .plus li::before { content: "+"; color: #1E6B3A; }
+.pc .minus li::before { content: "–"; color: #9A2F1F; }
+.pc h5 { font-size: .9rem; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .4rem; color: var(--ink-2); }
+.ex { margin: 0; padding-left: 1.1rem; }
+.ex li { margin: .2rem 0; }
+
+/* Schémas de page (miniatures) */
+.wf { width: 100%; max-width: 17rem; aspect-ratio: 4 / 3; border: 1.5px solid var(--line); border-radius: 8px; background: var(--bg); padding: 9px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; box-shadow: 0 1px 0 var(--line); }
+.wf i { display: block; height: 7px; border-radius: 2px; background: var(--line); }
+.wf i.a { background: var(--accent); }
+.wf i.t { height: 11px; background: #B9C2CE; }
+.wf i.T { height: 16px; background: #B9C2CE; }
+.wf .o { flex: none; width: 30px; height: 30px; border-radius: 50%; background: #CBD3DD; }
+.wf .o.s { width: 18px; height: 18px; }
+.wf .row { display: flex; gap: 6px; align-items: center; }
+.wf .col { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0; }
+.wf .hd { display: flex; justify-content: space-between; align-items: center; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.wf .hd .nv { display: flex; gap: 4px; }
+.wf .hd .nv i { width: 16px; height: 5px; }
+.wf .card { flex: 1; border: 1px solid var(--line); border-radius: 4px; padding: 5px; display: flex; flex-direction: column; gap: 4px; }
+.wf .side { width: 34%; background: var(--soft); border-radius: 4px; padding: 6px; display: flex; flex-direction: column; gap: 5px; }
+.wf .fill { flex: 1; }
+.w20 { width: 20%; } .w30 { width: 30%; } .w40 { width: 40%; } .w50 { width: 50%; } .w60 { width: 60%; } .w70 { width: 70%; } .w80 { width: 80%; } .w90 { width: 90%; }
+
+/* Recommandation */
+.reco { background: var(--accent-soft); border-radius: 12px; padding: 1.5rem; display: grid; gap: .75rem; max-width: 46rem; }
+.reco p { margin: 0; }
+.reco b { color: var(--accent); }
+.common { margin: 0; padding-left: 1.2rem; max-width: 46rem; display: grid; gap: .5rem; }
+.reply { margin: 0; padding-left: 1.4rem; max-width: 46rem; display: grid; gap: .6rem; }
+</style>
+</head>
+<body>
+<main class="hub">
+
+<header>
+  <p class="kicker">Votre site personnel · Étape 1 : la structure</p>
+  <h1>Quatre façons d'organiser votre site</h1>
+  <p class="lead">Avant les couleurs, la structure : quelles pages, dans quel ordre, et comment on passe de l'une à l'autre. Chaque proposition est un petit site cliquable. Ouvrez-les sur votre téléphone, comme le feront vos lecteurs venus de LinkedIn.</p>
+  <p class="note-key"><mark class="ph">En jaune</mark> : les notes de maquette et les textes qu'il vous restera à écrire.</p>
+</header>
+
+<h2 class="sec">Ce que j'ai changé après vos remarques</h2>
+<ul class="fix">
+  <li><q>Je pensais un fond plus clair</q><p>Fond blanc partout. La première version passait toute seule en sombre quand le téléphone est réglé en mode sombre : c'est sans doute ce que vous avez vu. Ce réglage automatique est supprimé.</p></li>
+  <li><q>Peu lisibles</q><p>Texte noir sur fond blanc, en plus grand (18 à 20 pixels), une seule famille de polices, plus de gris pâle ni de titres en italique fin.</p></li>
+  <li><q>On ne comprend pas où on va</q><p>Une vraie page par rubrique, un menu toujours visible (y compris sur téléphone), la page en cours soulignée en bleu, et le plan de chaque structure dessiné ci-dessous.</p></li>
+</ul>
+
+<h2 class="sec">Ce que font les sites vitrines qui fonctionnent</h2>
+<ol class="finds">
+  <li>
+    <h3>On sait en cinq secondes qui est la personne</h3>
+    <p>Une photo, un nom, une phrase. Rassam Yaghmaei, votre référence, ouvre son site sur une seule phrase : « Comprendre les règles invisibles du travail ». Les conseils aux candidats vont dans le même sens : la photo et l'accroche sont ce que les recruteurs regardent en premier, et l'accroche doit dire ce que vous cherchez.</p>
+    <p class="src"><a href="https://rassam.fr/">rassam.fr</a><a href="https://www.jobteaser.com/fr/advices/118-linkedin-8-astuces-pour-vous-faire-reperer-par-les-recruteurs">JobTeaser</a><a href="https://openclassrooms.com/en/courses/5218221-elaborez-votre-strategie-de-recherche-d-emploi/5283798-valorisez-votre-profil-sur-les-reseaux-sociaux-professionnels">OpenClassrooms</a></p>
+  </li>
+  <li>
+    <h3>Peu de rubriques, toujours les mêmes</h3>
+    <p>Trois à cinq entrées de menu, pas plus. Benedict Evans, analyste de la tech très suivi, n'en a que quatre : ses essais, sa lettre d'information, ses présentations et une page À propos. Philippe Silberzahn, professeur à emlyon, organise son site autour de ses articles, de ses ouvrages et d'une page À propos.</p>
+    <p class="src"><a href="https://www.ben-evans.com/">ben-evans.com</a><a href="https://philippesilberzahn.com/about/">philippesilberzahn.com</a></p>
+  </li>
+  <li>
+    <h3>Les lecteurs arrivent rarement par l'accueil</h3>
+    <p>Depuis LinkedIn ou un moteur de recherche, ils tombent directement sur un article. L'article doit donc dire qui l'a écrit, où l'on se trouve dans le site et où aller ensuite. C'est un principe de base de la navigation, repris par les règles d'accessibilité (critère WCAG 2.4.8, « Localisation »).</p>
+    <p class="src"><a href="https://app.uxcel.com/courses/information-architecture/youre-here-navigation-system-654/why-indicate-current-location-5301">Uxcel</a><a href="https://www.disabilityworld.org/toolkit/standards/wcag/2-4-8-location/">WCAG 2.4.8</a></p>
+  </li>
+  <li>
+    <h3>« En ce moment » est un format qui a fait ses preuves</h3>
+    <p>C'est la « page now » imaginée par l'entrepreneur Derek Sivers : une page courte qui dit sur quoi on est concentré. Un annuaire, nownownow.com, recense les sites qui en ont une. La date de mise à jour y est toujours affichée.</p>
+    <p class="src"><a href="https://sive.rs/nowff">sive.rs</a><a href="https://nownownow.com/p/hG5U">nownownow.com</a></p>
+  </li>
+  <li>
+    <h3>Les blogs les plus lus sont les plus sobres</h3>
+    <p>Paul Graham publie ses essais sous la forme d'une simple liste de titres. Tristan Nitot, ancien de Mozilla et de Qwant, et Simon Willison tiennent leur blog depuis 2002 avec une mise en page minimale : le texte d'abord.</p>
+    <p class="src"><a href="https://paulgraham.com/articles.html">paulgraham.com</a><a href="https://standblog.org/blog/">standblog.org</a><a href="https://simonwillison.net/about">simonwillison.net</a></p>
+  </li>
+</ol>
+<p class="limit">Mon environnement de travail n'a pas pu ouvrir ces sites directement, rassam.fr compris. Cette analyse s'appuie sur des recherches web ; les liens vous permettent de vérifier.</p>
+
+<h2 class="sec">Les quatre structures</h2>
+
+<section class="st" id="s1">
+  <div class="st-h">
+    <p class="st-num">Structure 1</p>
+    <h3>La carte de visite</h3>
+    <p class="principle">L'accueil dit qui vous êtes et ce que vous cherchez. Vos articles viennent juste après.</p>
+  </div>
+  <div class="st-l">
+    <div class="wf" aria-hidden="true">
+      <div class="hd"><i class="t w30"></i><span class="nv"><i class="a"></i><i></i><i></i><i></i></span></div>
+      <div class="row"><span class="o"></span><div class="col"><i class="T w60"></i><i class="w90"></i><i class="w70"></i><i class="a w30"></i></div></div>
+      <i class="t w40"></i><i class="w80"></i><i class="w70"></i><i class="w80"></i><i class="w60"></i>
+    </div>
+    <div class="open"><a class="btn btn-main" href="s1-accueil.html">Ouvrir la maquette</a><a class="btn" href="s1-article.html">Voir un article</a></div>
+  </div>
+  <div class="st-r">
+    <div class="plan">
+      <p class="plan-menu"><span>Menu :</span><b>Accueil</b><b>Articles</b><b>En ce moment</b><b>À propos</b></p>
+      <div class="plan-pages">
+        <div class="pp"><p class="pp-t">Accueil</p><ul><li>Photo, nom, accroche</li><li>Ce que je cherche</li><li>3 derniers articles</li><li>En ce moment, en bref</li><li>LinkedIn, Babelio</li></ul></div>
+        <div class="pp"><p class="pp-t">Articles</p><ul><li>Tous les articles</li></ul><p class="pp-child">→ chaque article a sa page</p></div>
+        <div class="pp"><p class="pp-t">En ce moment</p><ul><li>Page courte et datée</li></ul></div>
+        <div class="pp"><p class="pp-t">À propos</p><ul><li>Parcours, compétences</li><li>Contact</li></ul></div>
+      </div>
+    </div>
+    <h4>Qui fait comme ça</h4>
+    <ul class="ex"><li><a href="https://sive.rs/index.html">sive.rs</a> : Derek Sivers, entrepreneur et auteur. Une page d'accueil qui le présente, puis renvoie vers ses écrits et sa page « now ».</li></ul>
+    <h4>Pour vous</h4>
+    <div class="pc">
+      <div class="plus"><h5>Pour</h5><ul><li>Un recruteur comprend tout de suite qui vous êtes et ce que vous cherchez.</li><li>Fonctionne dès le lancement, même avec un seul article.</li></ul></div>
+      <div class="minus"><h5>Contre</h5><ul><li>Demande d'écrire une présentation soignée pour l'accueil.</li><li>Un peu moins « revue » qu'un carnet.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="st" id="s2">
+  <div class="st-h">
+    <p class="st-num">Structure 2</p>
+    <h3>Le carnet</h3>
+    <p class="principle">L'accueil, ce sont vos articles. Votre présentation tient dans une colonne sur le côté.</p>
+  </div>
+  <div class="st-l">
+    <div class="wf" aria-hidden="true">
+      <div class="hd"><i class="t w30"></i><span class="nv"><i class="a"></i><i></i><i></i></span></div>
+      <div class="row" style="align-items:stretch;flex:1">
+        <div class="col"><i class="T w50"></i><i class="t w80"></i><i class="w90"></i><i class="t w70"></i><i class="w90"></i><i class="t w80"></i><i class="w80"></i></div>
+        <div class="side"><span class="o s"></span><i class="w80"></i><i class="w60"></i><i class="t w70"></i><i class="w90"></i></div>
+      </div>
+    </div>
+    <div class="open"><a class="btn btn-main" href="s2-accueil.html">Ouvrir la maquette</a><a class="btn" href="s2-article.html">Voir un article</a></div>
+  </div>
+  <div class="st-r">
+    <div class="plan">
+      <p class="plan-menu"><span>Menu :</span><b>Articles</b><b>En ce moment</b><b>À propos</b></p>
+      <div class="plan-pages">
+        <div class="pp"><p class="pp-t">Articles (l'accueil)</p><ul><li>Liste des articles</li><li>Sur le côté : photo, 3 lignes sur vous, En ce moment, liens</li></ul><p class="pp-child">→ chaque article a sa page</p></div>
+        <div class="pp"><p class="pp-t">En ce moment</p><ul><li>Page courte et datée</li></ul></div>
+        <div class="pp"><p class="pp-t">À propos</p><ul><li>Parcours, compétences</li><li>Contact</li></ul></div>
+      </div>
+    </div>
+    <h4>Qui fait comme ça</h4>
+    <ul class="ex"><li><a href="https://paulgraham.com/articles.html">paulgraham.com</a> : Paul Graham, essayiste et investisseur</li><li><a href="https://standblog.org/blog/">standblog.org</a> : Tristan Nitot, ancien de Mozilla et de Qwant</li><li><a href="https://simonwillison.net/about">simonwillison.net</a> : Simon Willison, développeur et blogueur</li></ul>
+    <h4>Pour vous</h4>
+    <div class="pc">
+      <div class="plus"><h5>Pour</h5><ul><li>Met l'écriture au centre : c'est un vrai blog.</li><li>Le plus simple à faire vivre.</li></ul></div>
+      <div class="minus"><h5>Contre</h5><ul><li>Avec un seul article au lancement, l'accueil paraîtra vide.</li><li>Sur téléphone, votre présentation passe sous la liste. Seule une ligne « Par Sébastien Bollengier » reste en haut.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="st" id="s3">
+  <div class="st-h">
+    <p class="st-num">Structure 3</p>
+    <h3>Le profil en deux colonnes</h3>
+    <p class="principle">Votre identité reste fixe à gauche, le contenu défile à droite. Le menu suit votre lecture.</p>
+  </div>
+  <div class="st-l">
+    <div class="wf" aria-hidden="true">
+      <div class="row" style="align-items:stretch;flex:1">
+        <div class="side" style="width:40%"><span class="o"></span><i class="T w90"></i><i class="w80"></i><i class="w70"></i><span class="fill"></span><i class="a w60"></i><i class="w50"></i><i class="w60"></i><i class="w40"></i></div>
+        <div class="col"><i class="t w40"></i><i class="w90"></i><i class="w80"></i><i class="w90"></i><span class="fill"></span><i class="t w40"></i><i class="w90"></i><i class="w70"></i></div>
+      </div>
+    </div>
+    <div class="open"><a class="btn btn-main" href="s3-accueil.html">Ouvrir la maquette</a><a class="btn" href="s3-article.html">Voir un article</a></div>
+  </div>
+  <div class="st-r">
+    <div class="plan">
+      <p class="plan-menu"><span>Menu (sections) :</span><b>À propos</b><b>Articles</b><b>En ce moment</b><b>Liens</b></p>
+      <div class="plan-pages">
+        <div class="pp"><p class="pp-t">Colonne fixe</p><ul><li>Photo, nom, accroche</li><li>Menu des sections</li><li>LinkedIn, Babelio</li></ul></div>
+        <div class="pp"><p class="pp-t">Accueil (une seule page)</p><ul><li>À propos et parcours</li><li>Articles</li><li>En ce moment</li><li>Liens</li></ul><p class="pp-child">→ chaque article a sa page</p></div>
+      </div>
+    </div>
+    <h4>Qui fait comme ça</h4>
+    <ul class="ex"><li><a href="https://brittanychiang.com/">brittanychiang.com</a> : Brittany Chiang, ingénieure, avec les sections À propos, Expérience, Projets et Écrits</li></ul>
+    <h4>Pour vous</h4>
+    <div class="pc">
+      <div class="plus"><h5>Pour</h5><ul><li>On ne se perd jamais : le menu indique la section où l'on se trouve.</li><li>Proche d'un CV en ligne, très efficace pour les recruteurs.</li></ul></div>
+      <div class="minus"><h5>Contre</h5><ul><li>Sur téléphone, les deux colonnes s'empilent : la colonne fixe devient un en-tête.</li><li>Plus « profil » que « auteur » : vos textes sont moins mis en avant.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="st" id="s4">
+  <div class="st-h">
+    <p class="st-num">Structure 4</p>
+    <h3>Le kiosque</h3>
+    <p class="principle">Une grande phrase-titre, puis une porte d'entrée par type de contenu. C'est la piste la plus proche de rassam.fr.</p>
+  </div>
+  <div class="st-l">
+    <div class="wf" aria-hidden="true">
+      <div class="hd"><i class="t w30"></i><span class="nv"><i></i><i></i><i></i><i></i></span></div>
+      <i class="T w90"></i><i class="T w60"></i><i class="w70"></i>
+      <div class="row" style="align-items:stretch;flex:1"><div class="card"><i class="a w50"></i><i class="t w80"></i><i class="w90"></i></div><div class="card"><i class="a w50"></i><i class="t w80"></i><i class="w90"></i></div><div class="card"><i class="a w50"></i><i class="t w80"></i><i class="w90"></i></div></div>
+    </div>
+    <div class="open"><a class="btn btn-main" href="s4-accueil.html">Ouvrir la maquette</a><a class="btn" href="s4-article.html">Voir un article</a></div>
+  </div>
+  <div class="st-r">
+    <div class="plan">
+      <p class="plan-menu"><span>Menu :</span><b>Écrits</b><b>En ce moment</b><b>Médias</b><b>À propos</b></p>
+      <div class="plan-pages">
+        <div class="pp"><p class="pp-t">Accueil</p><ul><li>Phrase-titre</li><li>3 portes : Écrits, En ce moment, Médias</li><li>Qui suis-je ?</li><li>Lettre d'information mise en avant</li></ul></div>
+        <div class="pp"><p class="pp-t">Écrits</p><ul><li>Tous les articles</li></ul><p class="pp-child">→ chaque article a sa page</p></div>
+        <div class="pp"><p class="pp-t">Médias</p><ul><li>Podcasts, conférences, presse</li></ul></div>
+        <div class="pp"><p class="pp-t">En ce moment · À propos</p><ul><li>Comme la structure 1</li></ul></div>
+      </div>
+    </div>
+    <h4>Qui fait comme ça</h4>
+    <ul class="ex"><li><a href="https://rassam.fr/">rassam.fr</a> : écrits, médias, projet de livre</li><li><a href="https://www.ben-evans.com/">ben-evans.com</a> : essais, lettre d'information, présentations</li><li><a href="https://philippesilberzahn.com/ouvrages/">philippesilberzahn.com</a> : articles, ouvrages, conférences</li></ul>
+    <h4>Pour vous</h4>
+    <div class="pc">
+      <div class="plus"><h5>Pour</h5><ul><li>Prêt pour la suite : interventions, lettre d'information, et un livre un jour peut-être.</li><li>L'accueil a de l'allure même avec peu de contenu.</li></ul></div>
+      <div class="minus"><h5>Contre</h5><ul><li>La page Médias sera vide au départ.</li><li>Demande de trouver une phrase-titre forte.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<h2 class="sec">Ma recommandation</h2>
+<div class="reco">
+  <p><b>La structure 1, la carte de visite.</b> Au lancement, vous aurez un article et un objectif clair : être trouvé et compris par des recruteurs et des pairs. La carte de visite répond aux deux, dès le premier jour.</p>
+  <p>La 4 est la plus proche de votre référence, rassam.fr. Elle prendra tout son sens quand vous aurez des interventions à montrer : la page Médias serait vide au lancement.</p>
+  <p>La 1 évolue sans tout refaire. Quand les articles seront nombreux, on les remonte sur l'accueil, comme dans le carnet. Quand viendront les interventions, on ajoute une rubrique Médias, comme dans le kiosque.</p>
+</div>
+
+<h2 class="sec">Commun aux quatre structures</h2>
+<ul class="common">
+  <li>La page article : une colonne de texte d'environ 65 caractères, un fil d'Ariane en haut, l'auteur, le partage LinkedIn et l'article suivant en bas.</li>
+  <li>Le pied de page : mentions légales, flux RSS, aucun cookie de suivi.</li>
+  <li>L'emplacement de la future lettre d'information, sans formulaire actif.</li>
+  <li>Couleurs et polices volontairement neutres : on choisira le style à l'étape suivante, sur la structure retenue.</li>
+</ul>
+
+<h2 class="sec">Pour me répondre</h2>
+<ol class="reply">
+  <li>Le numéro de la structure qui vous parle le plus, ou un mélange : par exemple « la 1, avec la colonne fixe de la 3 ».</li>
+  <li>Ce qui vous plaît sur rassam.fr/medias. Je n'ai pas pu ouvrir la page : une capture d'écran m'aiderait beaucoup.</li>
+  <li>Dès que possible : le texte de votre premier article et une photo.</li>
+</ol>
+
+</main>
+</body>
+</html>

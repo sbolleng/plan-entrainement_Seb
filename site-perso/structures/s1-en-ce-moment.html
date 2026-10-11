@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>En ce moment · Structure 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="commun.css">
+
+</head>
+<body class="">
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Structure 1 : La carte de visite</span>
+  <a href="index.html">← Revenir aux 4 structures</a>
+</div></div>
+<header class="site-head"><div class="wrap">
+  <a class="logo" href="s1-accueil.html">Sébastien Bollengier<span aria-hidden="true">…</span></a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="s1-accueil.html">Accueil</a></li><li><a href="s1-articles.html">Articles</a></li><li><a href="s1-en-ce-moment.html" aria-current="page">En ce moment</a></li><li><a href="s1-a-propos.html">À propos</a></li></ul></nav>
+</div></header>
+<main class="wrap"><div class="page-head"><h1>En ce moment</h1>
+  <p class="lead">Ce qui m'occupe ces temps-ci. Je mets cette page à jour moi-même, au fil de l'eau.</p>
+  <p class="meta">Mis à jour le 11 octobre 2026</p></div>
+<ul class="now"><li><p class="kicker">Trail</p><h2>Objectif UTMB</h2><p>La préparation avance, sortie après sortie. <mark class="ph">[Où vous en êtes, prochaine course]</mark></p></li><li><p class="kicker">Outils</p><h2>Ma toolbox du moment</h2><p>Les outils qui me servent pour écrire, organiser et apprendre. <mark class="ph">[Liste à compléter]</mark></p></li><li><p class="kicker">Lecture</p><h2>Sur ma table de chevet</h2><p><mark class="ph">[Livre en cours]</mark> Mes critiques sont sur Babelio.</p></li></ul></main>
+<footer class="site-foot"><div class="wrap">
+  <span>© 2026 Sébastien Bollengier</span>
+  <span class="foot-links"><a href="s1-mentions.html">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    function done(){b.textContent='Lien copié';}
+    try{navigator.clipboard.writeText(location.href.split('#')[0]).then(done,done);}catch(e){done();}
+  });
+});
+
+</script>
+</body>
+</html>

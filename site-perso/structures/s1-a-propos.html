@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>À propos · Structure 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="commun.css">
+
+</head>
+<body class="">
+<div class="mq"><div class="wrap">
+  <span><b>Maquette</b> · Structure 1 : La carte de visite</span>
+  <a href="index.html">← Revenir aux 4 structures</a>
+</div></div>
+<header class="site-head"><div class="wrap">
+  <a class="logo" href="s1-accueil.html">Sébastien Bollengier<span aria-hidden="true">…</span></a>
+  <nav aria-label="Menu principal"><ul class="nav"><li><a href="s1-accueil.html">Accueil</a></li><li><a href="s1-articles.html">Articles</a></li><li><a href="s1-en-ce-moment.html">En ce moment</a></li><li><a href="s1-a-propos.html" aria-current="page">À propos</a></li></ul></nav>
+</div></header>
+<main class="wrap"><div class="page-head"><h1>À propos</h1>
+  <p class="lead">25 ans d'expérience en AdTech, data, gouvernance de l'IA et pilotage de projets. J'écris ici une ou deux fois par mois.</p></div>
+<div class="about">
+  <div class="photo big" role="img" aria-label="Emplacement de votre photo"><span>SB</span><mark class="ph ph-photo">votre photo</mark></div>
+  <div class="about-txt">
+    <h2>En bref</h2>
+    <p><mark class="ph">[Trois ou quatre phrases sur vous, à la première personne]</mark></p>
+    <h2>Ce que je cherche</h2>
+    <p><mark class="ph">[Le type de poste ou de mission que vous visez, en une phrase]</mark></p>
+    <h2>Ce que je sais faire</h2>
+    <ul class="chips"><li>AdTech</li><li>Data</li><li>Gouvernance de l'IA</li><li>Pilotage de projets</li></ul>
+    <h2>Parcours</h2>
+    <ol class="cv">
+      <li><span class="cv-d"><mark class="ph">[Années]</mark></span><span><mark class="ph">[Fonction, entreprise : une ligne]</mark></span></li>
+      <li><span class="cv-d"><mark class="ph">[Années]</mark></span><span><mark class="ph">[Fonction, entreprise : une ligne]</mark></span></li>
+      <li><span class="cv-d"><mark class="ph">[Années]</mark></span><span><mark class="ph">[Fonction, entreprise : une ligne]</mark></span></li>
+    </ol>
+    <h2>Me contacter</h2>
+    <p>Le plus simple est de m'écrire sur LinkedIn.</p>
+    <div class="social big">
+  <a class="pill" href="https://www.linkedin.com/" title="Votre profil LinkedIn (adresse à fournir)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z"/></svg><span>LinkedIn</span></a>
+  <a class="babelio" href="https://www.babelio.com/" aria-label="Mes critiques sur Babelio" title="Logo Babelio (le vrai logo sera intégré)">B</a>
+</div>
+  </div>
+</div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <span>© 2026 Sébastien Bollengier</span>
+  <span class="foot-links"><a href="s1-mentions.html">Mentions légales</a><a href="#rss">Flux RSS</a><span>Aucun cookie de suivi</span></span>
+</div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    function done(){b.textContent='Lien copié';}
+    try{navigator.clipboard.writeText(location.href.split('#')[0]).then(done,done);}catch(e){done();}
+  });
+});
+
+</script>
+</body>
+</html>
