@@ -18,11 +18,9 @@ contexte.
 |---|---|---|
 | `/maj` | Retour après quelques jours, ou doute sur la fraîcheur du site | Étapes 1 à 6 |
 | `/maj rapide` | Juste après une séance, pour recaler les chiffres | Étapes 1, 2 et 6. Ne toucher ni à la structure ni à la mise en page |
-| `/maj semaine` | Un lundi, quand la page affiche encore la semaine écoulée | Basculer sur la semaine calendaire en cours et régénérer les sept jours |
-| `/maj seance` | Une séance non trackée sur Strava, dictée dans le message | L'ajouter à `data/renfo.js`, l'enregistrer dans le bon jour, et compléter le catalogue si un exercice y manque |
+| `/maj semaine` | **La routine du dimanche** | Toujours commencer par rappeler le déroulé et ce qu'on attend de Seb (voir « Routine du dimanche » plus bas), puis mettre à jour toutes les pages |
 | `/maj dossard` | Une inscription ouverte, prise, ou une date d'ouverture connue | Mettre à jour le statut dans Objectif et le bandeau « prochaine inscription » |
 | `/maj course` | **Après avoir couru une course**, pas avant | Marquer l'étape faite dans la ligne de temps Objectif, enregistrer le résultat, recaler la suite du plan |
-| `/maj renfo` | Lassitude des exercices, toutes les 2 à 3 semaines | Faire tourner les exercices de la semaine type en piochant dans le catalogue, dominantes inchangées |
 | `/maj repas` | Seb dicte ce qu'il a mangé, à tout moment de la journée | L'ajouter à `data/nutrition.js` sous le jour du message, avec ses macros estimées (p/g/l/f/s) |
 
 ### Exemples
@@ -31,10 +29,7 @@ contexte.
 /maj
 /maj rapide
 /maj semaine
-/maj semaine du 10 au 16 août
-
-/maj seance renfo hier : fentes bulgares 4x10, pont fessier 4x15, KB swing 3x15 10kg
-/maj seance j'ai fait 30 min de vélo d'appart ce matin, pas tracké
+/maj semaine (avec la capture RunMotion et les horaires de kiné)
 
 /maj dossard je me suis inscrit à la VVX
 /maj dossard les inscriptions du Gergo Trail ouvrent le 4 novembre à 10h
@@ -46,13 +41,38 @@ contexte.
 
 /maj repas ce midi : poulet, riz, légumes vapeur
 /maj repas petit-déj : 2 œufs, pain complet, purée d'amande
-
-/maj renfo
-/maj renfo j'en ai marre des fentes bulgares, remplace-les
 ```
 
 Sans mot-clé reconnaissable, faire une mise à jour complète et tenir compte du
 contexte donné dans la phrase.
+
+## Routine du dimanche · `/maj semaine` (11/10/2026)
+
+**À chaque `/maj semaine`, commencer par afficher ce rappel à Seb**, court,
+avant tout travail :
+
+> **Mise à jour du dimanche**
+>
+> **Ce que j'attends de toi**
+> 1. La capture RunMotion de la semaine à venir.
+> 2. Les horaires de kiné de la semaine à venir.
+> 3. Si besoin, ce qui n'est ni sur Strava ni sur Hevy (séance non
+>    enregistrée, repas, FC au repos).
+>
+> **Ce que je fais**
+> 1. Import Strava : sorties et renfo de la semaine, stats du mois.
+> 2. Cette semaine : je clôture la semaine écoulée et je construis la
+>    nouvelle (RunMotion, kinés, liste « À faire »).
+> 3. Objectif : comptes à rebours, dossards, inscriptions qui approchent.
+> 4. Nutrition : je reporte les repas reçus.
+> 5. Palmarès : j'ajoute les courses courues dans la semaine.
+> 6. Profil : données actuelles, « Ce que disent les chiffres », graphiques.
+> 7. Publication, puis un résumé de ce qui a changé.
+
+Si la capture RunMotion ou les horaires de kiné manquent dans le message, les
+demander et attendre avant de construire la nouvelle semaine (l'import Strava
+et le reste peuvent avancer en attendant). Si tout est fourni, enchaîner
+directement : étapes 1, 2 bis, 3 bis, 3 ter, 4, 5, Palmarès, puis 6.
 
 ## Plan dans RunMotion, Archives supprimées (27 puis 30/09/2026)
 

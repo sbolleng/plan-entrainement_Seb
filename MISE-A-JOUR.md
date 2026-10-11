@@ -11,17 +11,16 @@ Dans une session Claude Code ouverte sur ce dépôt :
 C'est tout. Aucune commande git à taper : la session lit Strava, recale les
 pages, committe, fusionne dans `main` et vérifie le déploiement.
 
-### Les sept commandes
+### Les commandes
 
 | Commande | Quand | Exemple |
 |---|---|---|
 | `/maj` | Retour après quelques jours | `/maj` |
 | `/maj rapide` | Juste après une séance, chiffres seulement | `/maj rapide` |
-| `/maj semaine` | Le lundi, pour changer de semaine | `/maj semaine du 10 au 16 août` |
-| `/maj seance` | Séance non trackée sur Strava | `/maj seance renfo hier : fentes bulgares 4x10, KB swing 3x15 10kg` |
+| `/maj semaine` | Le dimanche : routine complète, je rappelle d'abord ce que j'attends (capture RunMotion, horaires de kiné) | `/maj semaine` + capture + kinés |
 | `/maj dossard` | Inscription ouverte ou prise | `/maj dossard je me suis inscrit à la VVX` |
 | `/maj course` | **Après** avoir couru une course | `/maj course Clam Trail 18/10, 20 K en 2h18, genou nickel` |
-| `/maj renfo` | Changer les exercices, toutes les 2-3 semaines | `/maj renfo j'en ai marre des fentes bulgares` |
+| `/maj repas` | Ce que tu as mangé, à tout moment | `/maj repas ce midi : poulet, riz, légumes vapeur` |
 
 Tout ce qui suit la commande est du texte libre, il n'y a pas de syntaxe à
 respecter. En cas de doute, `/maj` tout court fait le tour de tout.
