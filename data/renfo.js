@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-10-06',
+  maj: '2026-10-11',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -267,6 +267,24 @@ const RENFO_LOG = {
         { nom: 'Chaise sur une jambe', dom: 'S', series: 6, reps: 30, charge: 0, tenue: true },
         { nom: 'Fentes bulgares', dom: 'F', series: 3, reps: 10, charge: 18 },
         { nom: 'Around the world + extension de jambe', dom: 'S', series: 3, reps: 20, charge: 4 }
+      ]
+    },
+    {
+      // « Kiné / cardio » du vendredi 09/10 (17h45 sur Strava, le créneau
+      // prévu jeudi 18h15 n'apparaît pas), 30 min. Circuit au temps (40 s par
+      // série) sauf le grimpeur compté en reps : reps = secondes et tenue =
+      // true pour les blocs chronométrés, comme le gainage dynamique.
+      // « Fentes Marchées (Haltères) » = Fentes haltères (le catalogue couvre
+      // la version en marchant), ici 12 kg. « Squat Une Jambe (lestée) » =
+      // Squat une jambe. « Mountain Climber » = Grimpeur, « Burpee » et
+      // « Chaise (lestée) » entrent au catalogue.
+      date: '2026-10-09', source: 'kiné', duree: 30,
+      exercices: [
+        { nom: 'Grimpeur', dom: 'A', series: 4, reps: 40, charge: 0 },
+        { nom: 'Fentes haltères', dom: 'F', series: 4, reps: 40, charge: 12, tenue: true },
+        { nom: 'Burpee', dom: 'F', series: 4, reps: 40, charge: 0, tenue: true },
+        { nom: 'Chaise lestée', dom: 'F', series: 4, reps: 40, charge: 8, tenue: true },
+        { nom: 'Squat une jambe', dom: 'F', series: 4, reps: 40, charge: 8, tenue: true }
       ]
     }
   ]

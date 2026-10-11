@@ -81,7 +81,7 @@ function showSection(id, btn) {
 
   // ===== Compteur d'en-tête · prochaine course de la feuille de route =====
   const RACES = [
-    { date: new Date('2026-10-18T09:00:00'), name: 'Clam Trail · 10 K' },
+    { date: new Date('2026-10-18T10:00:00'), name: 'Clam Trail · 10 K' },
     // Bloc d'automne-hiver tranché le 17/08/2026 : Rock'Angel puis D2B.
     { date: new Date('2026-12-05T09:00:00'), name: "Rock'Angel" },
     { date: new Date('2027-01-17T09:00:00'), name: 'D2B' },
@@ -126,7 +126,7 @@ function showSection(id, btn) {
   }
   markToday();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 06/10/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 11/10/2026) =====
   // Pour mettre à jour : ajouter un mois par mois à la suite dans ce tableau.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -149,8 +149,8 @@ function showSection(id, btn) {
     // reprend après le trou de juillet-août, calculée sur les 10 sorties du mois
     // (moyennes pondérées par le temps de déplacement de chaque sortie).
     { label: 'Sept', distanceKm: 113.7, dplusM: 1226, paceSecPerKm: 311, cadenceSpm: 170, hrBpm: 154, effBeats: 795, dpk: 10.8 },
-    // Octobre en cours : 2 sorties au 06/10 (allure semi le 03, EF le 06).
-    { label: 'Oct', distanceKm: 18.7, dplusM: 184, paceSecPerKm: 330, cadenceSpm: 165, hrBpm: 154, effBeats: 846, dpk: 9.8 },
+    // Octobre en cours : 4 sorties au 11/10 (allure semi le 03, EF le 06, seuil le 10, sortie vallonnée le 11).
+    { label: 'Oct', distanceKm: 41.1, dplusM: 656, paceSecPerKm: 314, cadenceSpm: 165, hrBpm: 150, effBeats: 786, dpk: 16.0 },
   ];
 
   function fmtPace(sec) {
@@ -334,7 +334,7 @@ function showSection(id, btn) {
       series: [
         {
           values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1,
-                   10.1, 13.9, 10.8, 9.8, null, null, null, null,
+                   10.1, 13.9, 10.8, 16.0, null, null, null, null,
                    null, null, null, null, null, null, null, null,
                    null, null, null, null, null, null, null, null, null, null],
           color: 'var(--accent)', showValues: [4, 10]
