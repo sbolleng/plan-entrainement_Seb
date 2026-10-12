@@ -270,8 +270,8 @@ const RENFO_LOG = {
       ]
     },
     {
-      // « Kiné / cardio » du vendredi 09/10 (17h45 sur Strava, le créneau
-      // prévu jeudi 18h15 n'apparaît pas), 30 min. Circuit au temps (40 s par
+      // « Kiné / cardio » du vendredi 09/10 (17h45, déplacée du jeudi 8 à
+      // 18h15, confirmé par Seb), 30 min. Chaise lestée sur deux jambes. Circuit au temps (40 s par
       // série) sauf le grimpeur compté en reps : reps = secondes et tenue =
       // true pour les blocs chronométrés, comme le gainage dynamique.
       // « Fentes Marchées (Haltères) » = Fentes haltères (le catalogue couvre
