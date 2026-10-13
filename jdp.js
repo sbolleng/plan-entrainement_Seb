@@ -93,8 +93,9 @@ const STEPS = [
   { date: new Date('2027-03-07T08:00:00'), name: "L'Augerolloise" },
   { date: new Date('2027-10-24T08:00:00'), name: "Trail d'automne 27" }
 ];
-// Le semi de fin mars (single-date), la VVX et le semi de test de
-// printemps 27 ont été retirés de la feuille de route.
+// Le semi de fin mars (single-date) et la VVX ont été retirés de la feuille
+// de route. La Pins Just'à Pied (semi de test, fin mai 2027) n'est pas dans
+// cette liste tant que sa date 2027 n'est pas publiée.
 
 function updateCountdown() {
   const now = new Date();
