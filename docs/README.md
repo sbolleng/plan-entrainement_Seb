@@ -62,6 +62,7 @@ Une vue de l'année d'un seul tenant, pour voir le planning en un coup d'œil, p
 - Un liseré part de chaque course et remonte dans le temps sur la durée de sa préparation : deux liserés qui se superposent signalent deux préparations qui se chevauchent.
 - Les jours sans course ni liseré font apparaître les plages libres pour la récupération et la préparation.
 - Construit à partir de la même liste de courses que la page Objectif, sans double saisie.
+- **Prototype en ligne** depuis le 13 oct. 2026 sur la page de JDP, onglet Planning (composant `planning.js`), avec des durées provisoires et deux vues : 12 mois glissants, ou jusqu'à l'objectif.
 
 À trancher le moment venu :
 

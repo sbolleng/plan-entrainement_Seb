@@ -6,10 +6,10 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0E1D19">
 <meta name="robots" content="noindex">
-<meta name="site-version" content="20261013a">
+<meta name="site-version" content="20261013b">
 <title>JDP — Marathon de Rome 2028</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>">
-<link rel="stylesheet" href="style.css?v=20261012b">
+<link rel="stylesheet" href="style.css?v=20261013b">
 <link rel="stylesheet" href="jdp.css?v=20260921a">
 </head>
 <body>
@@ -51,6 +51,7 @@
 <nav>
   <div class="nav-inner">
     <button class="tab active" onclick="showSection('objectif', this)">Objectif 26-28</button>
+    <button class="tab" onclick="showSection('planning', this)">Planning</button>
     <button class="tab" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
     <button class="tab" onclick="showSection('logistique', this)">Logistique</button>
     <button class="tab" onclick="showSection('palmares', this)">Palmarès</button>
@@ -515,6 +516,13 @@
       </div>
     </details>
 
+  </section>
+
+  <!-- ========== PLANNING · la saison d'un coup d'œil (prototype) ========== -->
+  <section id="planning" class="section">
+    <div class="section-title">Planning · la saison d'un coup d'œil</div>
+    <p class="info" style="margin-top:0; margin-bottom:1.2rem;">Toutes les courses sur une seule vue : le temps de préparation qui précède chacune, la récupération qui la suit, et les chevauchements éventuels. Les jours restés sombres sont libres.</p>
+    <div id="jdp-planning" class="planning"></div>
   </section>
 
   <!-- ========== CETTE SEMAINE · le pense-bête ========== -->
@@ -1221,6 +1229,7 @@
 
 </main>
 
-<script src="jdp.js?v=20261013a" defer></script>
+<script src="planning.js?v=20261013b" defer></script>
+<script src="jdp.js?v=20261013b" defer></script>
 </body>
 </html>

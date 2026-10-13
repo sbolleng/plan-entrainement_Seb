@@ -428,3 +428,34 @@ setInterval(function () {
   });
   window.addEventListener('pageshow', e => { if (e.persisted) checkNewVersion(); });
 })();
+
+// ===== Onglet Planning · la saison d'un coup d'œil (prototype) =====
+// Les courses de la feuille de route, placées sur le calendrier par planning.js.
+// effort = km-effort (distance + D+/100 + D−/200, D− supposé égal au D+). Les
+// durées de préparation et de récupération suivent pour l'instant la règle
+// provisoire par défaut de planning.js, en attendant les vraies durées.
+(function () {
+  const root = document.getElementById('jdp-planning');
+  if (!root || typeof renderPlanning !== 'function') return;
+  renderPlanning(root, {
+    races: [
+      { date: '2026-10-04', name: 'Semi de San Sebastián', effort: 21.1 },
+      { date: '2026-11-15', name: 'Trail du Béret', effort: 35.9 },
+      { date: '2027-01-16', name: 'Nocturne des Rois', effort: 14, noPrep: true },
+      { date: '2027-03-07', name: "L'Augerolloise", effort: 49.5, key: true },
+      { from: '2027-05-24', to: '2027-05-31', when: 'fin mai', name: "La Pins Just'à Pied", effort: 21.1 },
+      { date: '2028-03-19', provisional: 'mi-mars', name: 'Marathon de Rome', effort: 42.2, key: true }
+    ],
+    candidates: [
+      { month: '2027-09', name: 'GT Esprit Volcan' },
+      { month: '2027-10', name: 'Festival des Templiers' },
+      { month: '2027-10', name: "Grands Trails d'Auvergne" },
+      { month: '2027-11', name: 'Trail des 3 Rocs' }
+    ],
+    views: [
+      { id: '12m', label: '12 mois', months: 12 },
+      { id: 'rome', label: "Jusqu'à Rome", until: '2028-03' }
+    ],
+    footnote: "Prototype. Durées de préparation (4, 6 ou 8 semaines) et de récupération (3, 7 ou 14 jours) provisoires, selon l'effort de la course : à définir. La Nocturne des Rois, course plaisir, n'a pas de préparation dédiée. La Pins Just'à Pied est placée sur la fin mai en attendant sa date, le marathon de Rome sur sa date provisoire. Les candidats du trail d'automne sont indiqués par mois ; le semi de test d'automne n'a pas encore de candidat."
+  });
+})();
