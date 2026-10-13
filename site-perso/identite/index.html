@@ -264,6 +264,11 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 /* Chapô de l'article : un cran plus grand et en demi-gras (demande du 13 octobre) */
 .prose .lede { font-size: 1.18em; font-weight: 600; line-height: 1.6; }
 
+/* Fin d'article : boutons de partage plus légers, sur une ligne, aux couleurs du bouton « Lire l'article » */
+.share { flex-wrap: nowrap; gap: .6rem; }
+.share .btn { padding: .5rem .9rem; font-size: .92rem; white-space: nowrap; cursor: pointer; }
+.art-end { margin-top: 1rem; }
+
 /* Source en note sous l'article */
 .art-source { font-family: var(--sans); font-size: .85rem; line-height: 1.5; color: var(--muted); margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 
@@ -406,7 +411,7 @@ body { background: #FFFFFF; }
   </div>
   
   <div class="art-end">
-    <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
+    <div class="share"><span>Partager</span><a class="btn" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn" type="button" data-copy>Copier le lien</button></div>
     <aside class="author" aria-label="L'auteur">
       <div class="photo sm" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
       <div>
