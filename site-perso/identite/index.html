@@ -301,12 +301,13 @@ body { background: #FFFFFF; }
 @media (min-width: 56rem) { .features { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .features .feature { max-width: none; padding: 1.6rem; display: flex; flex-direction: column; gap: .75rem; }
 .features .feature h3 { font-size: clamp(1.6rem, 3vw, 2rem); line-height: 1.12; }
-.features .feature .go { margin-top: auto; font-weight: 700; }
+.features .feature .go { margin-top: auto; padding-top: .35rem; }
 .features:has(> li:only-child) { grid-template-columns: minmax(0, 38rem); }
 :root.cards-carte .feature { background: var(--card-tint); border-color: transparent; }
 :root.cards-section .sec-articles { background: var(--card-tint); --sec-bg: var(--card-tint); }
 :root.cards-section .feature { background: #FFFFFF; border-color: transparent; box-shadow: 0 1px 2px rgba(20, 40, 75, .06), 0 10px 28px rgba(20, 40, 75, .10); }
 :root.cards-lisere .feature { border: 2px solid var(--accent); }
+:root.cards-ombre .feature { background: #FFFFFF; border-color: transparent; box-shadow: 0 2px 6px rgba(20, 40, 75, .08), 0 16px 36px rgba(20, 40, 75, .14); }
 
 /* Page des propositions */
 .hub { max-width: 68rem; margin-inline: auto; padding-inline: 1.25rem; padding-block: 2.25rem 4rem; }
@@ -466,7 +467,7 @@ body { background: #FFFFFF; }
   <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
     <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
-    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="ombre" aria-pressed="false">Ombre portée</button><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
@@ -484,7 +485,6 @@ body { background: #FFFFFF; }
       <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
       <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
       <p class="hero-sig"><span class="hand">Sébastien Bollengier</span></p>
-      <a class="btn" href="#a-encre-article">Lire le premier article →</a>
     </div>
     <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
   </div>
@@ -498,7 +498,7 @@ body { background: #FFFFFF; }
         <p class="meta">Octobre 2026 · 5 min de lecture</p>
         <h3><a href="#a-encre-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
         <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-        <p class="go"><a href="#a-encre-article">Lire l'article →</a></p>
+        <p class="go"><a class="btn" href="#a-encre-article">Lire l'article →</a></p>
       </li>
     </ul>
   </div></section>
@@ -548,7 +548,7 @@ body { background: #FFFFFF; }
   <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
     <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
-    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="ombre" aria-pressed="false">Ombre portée</button><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
@@ -603,7 +603,7 @@ body { background: #FFFFFF; }
   <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
     <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     
-    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="ombre" aria-pressed="false">Ombre portée</button><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
@@ -621,7 +621,6 @@ body { background: #FFFFFF; }
       <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
       <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
       <p class="hero-sig"><span class="hand">Sébastien Bollengier</span></p>
-      <a class="btn" href="#b-lac-article">Lire le premier article →</a>
     </div>
     <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
   </div>
@@ -635,7 +634,7 @@ body { background: #FFFFFF; }
         <p class="meta">Octobre 2026 · 5 min de lecture</p>
         <h3><a href="#b-lac-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
         <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-        <p class="go"><a href="#b-lac-article">Lire l'article →</a></p>
+        <p class="go"><a class="btn" href="#b-lac-article">Lire l'article →</a></p>
       </li>
     </ul>
   </div></section>
@@ -685,7 +684,7 @@ body { background: #FFFFFF; }
   <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
     <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     
-    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="ombre" aria-pressed="false">Ombre portée</button><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
@@ -740,7 +739,7 @@ body { background: #FFFFFF; }
   <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
     <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
-    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="ombre" aria-pressed="false">Ombre portée</button><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head on-hero"><div class="wrap">
@@ -758,7 +757,6 @@ body { background: #FFFFFF; }
       <h1 class="hero-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
       <p><mark class="ph">[Votre accroche du site, intégrée telle quelle dans la maquette privée]</mark></p>
       <p class="hero-sig"><span class="hand">Sébastien Bollengier</span></p>
-      <a class="btn" href="#b-nuit-article">Lire le premier article →</a>
     </div>
     <div class="hero-photo"><div class="photo " role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div></div>
   </div>
@@ -772,7 +770,7 @@ body { background: #FFFFFF; }
         <p class="meta">Octobre 2026 · 5 min de lecture</p>
         <h3><a href="#b-nuit-article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
         <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
-        <p class="go"><a href="#b-nuit-article">Lire l'article →</a></p>
+        <p class="go"><a class="btn" href="#b-nuit-article">Lire l'article →</a></p>
       </li>
     </ul>
   </div></section>
@@ -822,7 +820,7 @@ body { background: #FFFFFF; }
   <details class="bar-tune"><summary>Réglages</summary><div class="bar-panel">
     <p><span class="lbl">Typo des titres</span><button type="button" data-typo="instrument" aria-pressed="false">Instrument Serif</button><button type="button" data-typo="fraunces" aria-pressed="false">Fraunces</button><button type="button" data-typo="dm" aria-pressed="false">DM Serif Display</button></p>
     <p><span class="lbl">Effet sur « autre chose »</span><button type="button" data-fx="cercle" aria-pressed="false">Cercle</button><button type="button" data-fx="surligne" aria-pressed="false">Surligneur</button><button type="button" data-fx="couleur" aria-pressed="false">Couleur</button><button type="button" data-fx="trait" aria-pressed="false">Trait (avant)</button></p>
-    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
+    <p><span class="lbl">Mise en avant des articles</span><button type="button" data-cards="ombre" aria-pressed="false">Ombre portée</button><button type="button" data-cards="carte" aria-pressed="false">Carte teintée</button><button type="button" data-cards="section" aria-pressed="false">Fond de section</button><button type="button" data-cards="lisere" aria-pressed="false">Liseré marqué</button></p>
   </div></details>
 </div></div>
 <header class="site-head"><div class="wrap">
@@ -948,16 +946,16 @@ body { background: #FFFFFF; }
   if (saved && TYPO[saved]) typo(saved);
   else document.querySelectorAll('.screen[data-typo]').forEach(function (s) { press(s, 'data-typo', s.getAttribute('data-typo')); });
   fx(get('maquette-effet'));
-  var CARDS = ["carte","section","lisere"];
+  var CARDS = ["ombre","carte","section","lisere"];
   function cards(k) {
-    if (CARDS.indexOf(k) < 0) k = 'carte';
+    if (CARDS.indexOf(k) < 0) k = 'ombre';
     CARDS.forEach(function (n) { root.classList.remove('cards-' + n); });
     root.classList.add('cards-' + k);
     press(document, 'data-cards', k);
   }
-  cards(get('maquette-cartes'));
+  cards(get('maquette-cartes-v2'));
   document.querySelectorAll('button[data-cards]').forEach(function (b) {
-    b.addEventListener('click', function () { put('maquette-cartes', b.getAttribute('data-cards')); cards(b.getAttribute('data-cards')); });
+    b.addEventListener('click', function () { put('maquette-cartes-v2', b.getAttribute('data-cards')); cards(b.getAttribute('data-cards')); });
   });
   document.querySelectorAll('button[data-typo]').forEach(function (b) {
     b.addEventListener('click', function () { put('maquette-typo', b.getAttribute('data-typo')); typo(b.getAttribute('data-typo')); });
