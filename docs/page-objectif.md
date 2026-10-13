@@ -1,10 +1,10 @@
 # Page Objectif
 
-Brouillon v0.1 · 5 octobre 2026 · [Retour au sommaire](README.md) · Jalon 1 (10 octobre 2026)
+Brouillon v0.1 · 5 octobre 2026 · [Retour au sommaire](README.md) · Jalon 1 (octobre 2026) · preuve de concept
 
 ## 1. Rôle
 
-La page Objectif montre tout le chemin jusqu'à la course objectif : les courses étapes, leur statut, ce qu'il faut savoir sur chacune, et des outils dynamiques qui s'activent d'eux-mêmes à l'approche et le jour de la course. C'est le premier module livré ; il porte aussi le socle commun décrit dans la [spécification générale](specification-generale.md).
+La page Objectif montre tout le chemin jusqu'à la course objectif : les courses étapes, leur statut, ce qu'il faut savoir sur chacune, et des outils dynamiques qui s'activent d'eux-mêmes à l'approche et le jour de la course. C'est le premier module livré et la preuve de concept du projet : premier module branché sur la base de données Supabase. Il porte aussi le socle commun décrit dans la [spécification générale](specification-generale.md).
 
 ## 2. Ce qui existe aujourd'hui
 
@@ -125,7 +125,7 @@ Pour les courses labellisées : catégorie et index UTMB, affichés dans l'étap
 
 ## 7. Hors périmètre du module
 
-- **Courses à surveiller** : module séparé (jalon 1, deuxième livraison).
+- **Courses à surveiller** : module séparé (jalon 2).
 - **Formulaires de saisie** : V2, avec Supabase.
 - **Résultats et historique** : module Palmarès.
 

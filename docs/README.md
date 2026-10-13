@@ -21,9 +21,8 @@ Une application web modulaire pour les coureurs sur piste, sur route et en trail
 
 | Jalon | Échéance | Contenu |
 | --- | --- | --- |
-| 1 | 10 octobre 2026 | Nom de l'application ; socle commun (navigation, configuration par utilisateur, thèmes, en-tête) ; module Objectif ; module Courses à surveiller |
-| 2 | Non daté | Supabase (comptes, données privées) ; Réglages ; module Nutrition |
-| 3 | Non daté | Guide ; Profil et Palmarès ; Cette semaine |
+| 1 · preuve de concept | Octobre 2026 | Nom de l'application ; socle commun (navigation, configuration par utilisateur, thèmes, en-tête) ; base de données Supabase (comptes, données privées) et Réglages ; page Objectif, premier module branché sur la base ; module Nutrition |
+| 2 | Non daté, une fois la preuve de concept validée | Courses à surveiller ; Guide ; Profil et Palmarès ; Cette semaine |
 | En parallèle, après Supabase | Non daté | Import Strava automatique ; bilan hebdomadaire par Claude |
 | À positionner | — | Calculatrice ; Logistique ; Matériel |
 
@@ -35,6 +34,7 @@ La plus récente en haut.
 
 | Date | Sujet | Décision |
 | --- | --- | --- |
+| 13 oct. 2026 | Calendrier | Jalon 1 en octobre 2026, conçu comme une preuve de concept : base de données Supabase dès le départ, page Objectif comme premier module branché dessus, puis Nutrition. Courses à surveiller passe au jalon suivant. |
 | 5 oct. 2026 | Documentation | Les spécifications vivent en Markdown dans `docs/`, à côté du code ; une présentation sert à présenter le projet. La note de cadrage n'est plus tenue à jour. |
 | 5 oct. 2026 | Confidentialité | Le site sera protégé par la connexion Supabase (comptes individuels), pas par un hébergement à accès restreint. Le dépôt reste public ; chaque module devient privé quand son contenu passe dans Supabase. |
 | 5 oct. 2026 | En-tête | Décrit comme un chapitre de la spécification générale, pas dans un document séparé. |
@@ -72,8 +72,7 @@ Une vue de l'année d'un seul tenant, pour voir le planning en un coup d'œil, p
 
 ## Questions ouvertes
 
-- [ ] **Nom de l'application** : à arrêter d'ici au 10 octobre 2026 (recommandation : MyRunTools ; disponibilité à vérifier).
-- [ ] **Supabase** : plus tôt dans la feuille de route, puisqu'il porte désormais la confidentialité du site ?
+- [ ] **Nom de l'application** : à arrêter en octobre 2026 (recommandation : MyRunTools ; disponibilité à vérifier).
 - [ ] **Piste** : couverte dès le lancement, ou plus tard faute de profil pilote ?
 - [ ] **Calculatrice** : liste des calculs à valider ; livraison anticipée possible, car elle ne dépend d'aucune donnée.
 - [ ] **Ravitaillement en course** : repères de référence (glucides et eau par heure).
