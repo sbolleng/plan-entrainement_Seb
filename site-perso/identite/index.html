@@ -261,6 +261,9 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .card .babelio { border: none; width: auto; height: auto; color: var(--ink); }
 .card .babelio .babelio-logo { width: 2rem; height: 2rem; }
 
+/* Source en note sous l'article */
+.art-source { font-family: var(--sans); font-size: .85rem; line-height: 1.5; color: var(--muted); margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+
 /* En ce moment : trois éléments, présentés de la même façon */
 @media (min-width: 56rem) { .now.now3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2.5rem; } }
 .now li { align-content: start; }
@@ -324,7 +327,7 @@ body { background: #FFFFFF; }
     <div class="sec-h"><h2>Articles</h2><p>Mes réflexions, une ou deux fois par mois.</p></div>
     <ul class="features">
       <li class="feature">
-        <p class="meta">Octobre 2026 · 5 min de lecture</p>
+        <p class="meta">Octobre 2026 · 6 min de lecture</p>
         <h3><a href="#article"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'autre chose</a></h3>
         <p class="excerpt"><mark class="ph">[Extrait : la première phrase de votre article]</mark></p>
         <p class="go"><a class="btn" href="#article">Lire l'article →</a></p>
@@ -379,7 +382,7 @@ body { background: #FFFFFF; }
 <article class="art">
   <nav class="crumbs" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a><span aria-hidden="true">›</span><a href="#articles">Articles</a><span aria-hidden="true">›</span><span aria-current="page">…le début d'autre chose</span></nav>
   <h1 class="art-t"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">…</span>le début d'<em>autre chose</em></h1>
-  <p class="meta">Par Sébastien Bollengier · Octobre 2026 · 5 min de lecture</p>
+  <p class="meta">Par Sébastien Bollengier · Octobre 2026 · 6 min de lecture</p>
   <div class="prose">
 <p class="lede"><mark class="ph">[Votre article, intégré mot pour mot dans la maquette privée. Ci-dessous, un texte de remplissage : Jules Verne, domaine public.]</mark></p>
 <p>En l'année 1872, la maison portant le numéro 7 de Saville-row, Burlington Gardens, maison dans laquelle Sheridan mourut en 1814, était habitée par Phileas Fogg, esq., l'un des membres les plus singuliers et les plus remarqués du Reform-Club de Londres, bien qu'il semblât prendre à tâche de ne rien faire qui pût attirer l'attention.</p>
@@ -387,6 +390,7 @@ body { background: #FFFFFF; }
 <p>Ce Phileas Fogg était-il riche ? Incontestablement. Mais comment il avait fait fortune, c'est ce que les mieux informés ne pouvaient dire, et Mr. Fogg était le dernier auquel il convînt de s'adresser pour l'apprendre.</p>
   </div>
   <p class="signature"><span class="hand">Sébastien Bollengier</span></p>
+  
   <div class="art-end">
     <div class="share"><span>Partager</span><a class="btn ghost" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn ghost" type="button" data-copy>Copier le lien</button></div>
     <aside class="author" aria-label="L'auteur">
