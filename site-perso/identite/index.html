@@ -277,6 +277,10 @@ body { background: #FFFFFF; }
 .bar-panel button { font: 600 .9rem/1.2 var(--sans); color: var(--note-ink); background: rgba(255, 255, 255, .6); border: 1px solid #D9C35A; border-radius: 999px; padding: .3rem .75rem; cursor: pointer; }
 .bar-panel button[aria-pressed="true"] { background: var(--note-ink); color: var(--note); border-color: var(--note-ink); }
 
+/* Introduction de l'accueil : un cran plus petite que le texte des articles */
+.hero-txt p { font-size: 1.05rem; line-height: 1.6; }
+@media (min-width: 48rem) { .hero-txt p { font-size: 1.1rem; } }
+
 /* En-tête : le nom, le menu, puis LinkedIn et Babelio un peu plus loin */
 .site-head .brand { order: 1; margin-right: auto; }
 .site-head .head-social { order: 2; display: flex; align-items: center; gap: .75rem; }
