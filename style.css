@@ -1038,11 +1038,12 @@
     border-radius: 5px;
     background: var(--bg);
     border: 1px solid var(--border);
-    margin: 1.6rem 0 0.4rem;
+    margin: 2.4rem 0 0.4rem;
   }
   .fg-fill { position: absolute; top: 0; left: 0; height: 100%; border-radius: 5px; background: var(--accent); transition: width 0.3s ease; }
-  .fg-mark { position: absolute; top: -1.4rem; transform: translateX(-50%); font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); text-align: center; white-space: nowrap; }
-  .fg-mark::after { content: ''; position: absolute; top: 1.3rem; left: 50%; width: 1px; height: 10px; background: var(--border); }
+  /* Le libellé est ancré par le bas : sur deux lignes, il reste au-dessus de la barre. */
+  .fg-mark { position: absolute; bottom: calc(100% + 6px); transform: translateX(-50%); font-family: 'Space Mono', monospace; font-size: 0.6rem; line-height: 1.2; color: var(--muted); text-align: center; white-space: nowrap; }
+  .fg-mark::after { content: ''; position: absolute; top: 100%; left: 50%; width: 1px; height: 6px; background: var(--border); }
   .fg-mark.is-target { color: var(--accent); }
   .fg-mark.is-target::after { background: var(--accent); }
 
@@ -1061,6 +1062,7 @@
 
   @media (max-width: 600px) {
     .checkpoints { grid-template-columns: repeat(2, 1fr); }
+    .fg-bar { margin-top: 1.6rem; }
     .fg-mark span { display: none; }
     .fg-mark { font-size: 0.56rem; }
   }

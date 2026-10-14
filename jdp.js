@@ -143,6 +143,10 @@ setInterval(function () {
   const SS_GAUGE_MIN = 3600 + 40 * 60;
   const SS_GAUGE_MAX = 3600 + 58 * 60;
   const SS_STORAGE_PREFIX = 'jdp-ss-cp-';
+  // Résultats officiels (temps réels, pris aux tapis), relevés sur la page des
+  // résultats après la course : ils remplacent la saisie à la main.
+  const SS_OFFICIAL = { '5k': '26:29', '10k': '53:39', '20k': '1:49:44', 'finish': '1:56:05' };
+  const SS_OFFICIAL_GUN = "1h59'39";
 
   // Le pavé numérique du téléphone n'a pas de « : » : on accepte aussi les
   // chiffres seuls, lus par la droite (2129 → 21:29, 14450 → 1:44:50).
@@ -257,6 +261,12 @@ setInterval(function () {
     fillEl.style.width = pct + '%';
 
     const projStr = ssFormatDuration(projectedSec);
+    if (SS_OFFICIAL && isFinished) {
+      emojiEl.textContent = '🏁';
+      textEl.textContent = 'Résultat officiel : ' + projStr + ' en temps réel (' + SS_OFFICIAL_GUN + ' au coup de pistolet). ' +
+        'Au-dessus de l\'objectif phare (1h50) et du record du semi de Sète (1h53\'12).';
+      return;
+    }
     if (projectedSec <= SS_GOAL_CIBLE) {
       emojiEl.textContent = '🟢';
       textEl.textContent = (isFinished ? 'Terminé ! ' : 'En tenant le plan : ≈ ' + projStr + ' — ') +
@@ -285,6 +295,11 @@ setInterval(function () {
 
     SS_ORDER.forEach(cp => {
       const input = track.querySelector('[data-cp-input="' + cp + '"]');
+      if (SS_OFFICIAL) {
+        input.value = SS_OFFICIAL[cp];
+        input.readOnly = true;
+        return;
+      }
       const stored = localStorage.getItem(SS_STORAGE_PREFIX + cp);
       if (stored) input.value = stored;
       input.addEventListener('input', () => {
