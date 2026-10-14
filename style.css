@@ -1865,6 +1865,7 @@
   .pl-k.k-race { background: var(--pl-race); }
   .pl-k.k-key { background: var(--pl-race); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--accent); }
   .pl-k.k-approx { outline: 2px dashed var(--pl-race); outline-offset: -2px; }
+  .pl-k.k-cand { outline: 2px solid var(--pl-race); outline-offset: -2px; }
   .pl-k.k-prep { width: 20px; height: 5px; background: var(--accent); }
   .pl-k.k-rec { width: 20px; height: 0; border-top: 3px dotted var(--muted); border-radius: 0; }
   .pl-k.k-over { width: 20px; height: 5px; background: repeating-linear-gradient(45deg, var(--pl-race) 0 4px, transparent 4px 7px); }
@@ -1889,6 +1890,7 @@
   .pl-d.race { background: var(--pl-race); }
   .pl-d.key { background: var(--pl-race); box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--accent); position: relative; z-index: 1; }
   .pl-d.approx { background: transparent; outline: 2px dashed var(--pl-race); outline-offset: -2px; }
+  .pl-d.cand { background: transparent; outline: 2px solid var(--pl-race); outline-offset: -2px; }
   .pl-lanes { row-gap: 2px; margin-top: 4px; }
   .pl-b { height: var(--pl-lane); }
   .pl-b.prep { background: var(--accent); }

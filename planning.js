@@ -11,7 +11,9 @@
 //   date provisoire, ex. 'mi-mars'), noPrep (course sans préparation dédiée).
 //   Date pas encore publiée : { from, to, when: 'fin mai' } au lieu de date.
 //   effort = km-effort (distance + D+/100 + D−/200).
-// config.candidates : [{ month: 'AAAA-MM', name }], courses envisagées sans date.
+// config.candidates : courses envisagées, pas encore retenues : { month: 'AAAA-MM',
+//   name, note } ou, date connue, { date: 'AAAA-MM-JJ', name, note } (carré vide).
+//   note remplace « candidat » dans la liste du mois.
 // config.views : [{ id, label, months }] ou [{ id, label, until: 'AAAA-MM' }].
 // config.prepDays, config.recDays : durées en jours selon l'effort.
 // config.footnote : texte sous le calendrier.
@@ -77,7 +79,9 @@
     const views = cfg.views || [{ id: '12m', label: '12 mois', months: 12 }];
     let view = views[0].id;
 
+    const candidates = (cfg.candidates || []).map(c => Object.assign({ month: c.date ? c.date.slice(0, 7) : c.month }, c));
     const raceOn = day => races.find(r => (r.date ? r.date === day : day >= r.from && day <= r.to));
+    const candOn = day => candidates.find(c => c.date === day);
     const spanOn = (day, type) => spans.find(s => s.type === type && day >= s.a && day <= s.b);
     const inOverlap = day => overlaps.some(o => day >= o.a && day <= o.b);
 
@@ -108,13 +112,16 @@
         for (let dd = 1; dd <= 31; dd++) {
           if (dd > nDays) { cells += '<span class="pl-d none"></span>'; continue; }
           const date = new Date(y, m, dd), day = iso(date);
-          const race = raceOn(day), prep = spanOn(day, 'prep'), rec = spanOn(day, 'rec');
+          const race = raceOn(day), cand = candOn(day), prep = spanOn(day, 'prep'), rec = spanOn(day, 'rec');
           const cls = ['pl-d'];
           let tip = longDate(day);
           if (date.getDay() === 0 || date.getDay() === 6) cls.push('we');
           if (race) {
             cls.push(race.from ? 'approx' : race.key ? 'key' : 'race');
             tip += ' · ' + race.name + (race.from ? ' (' + race.when + ', date à confirmer)' : race.provisional ? ' (' + race.provisional + ', date provisoire)' : '');
+          } else if (cand) {
+            cls.push('cand');
+            tip += ' · ' + cand.name + ' (' + (cand.note || 'candidat') + ')';
           } else if (prep) {
             cls.push('prep');
             tip += ' · préparation : ' + prep.race.name;
@@ -145,8 +152,8 @@
           const when = r.from ? r.when : r.provisional ? r.provisional : String(parse(r.date).getDate());
           const note = r.from ? ' · date à confirmer' : r.provisional ? ' · date provisoire' : '';
           return '<div class="pl-chip' + (r.key ? ' key' : '') + '"><i>' + esc(when) + '</i>' + esc(r.name) + note + '</div>';
-        }).concat((cfg.candidates || []).filter(c => c.month === key).map(c =>
-          '<div class="pl-chip cand"><i>?</i>' + esc(c.name) + ' · candidat</div>'
+        }).concat(candidates.filter(c => c.month === key).map(c =>
+          '<div class="pl-chip cand"><i>' + (c.date ? parse(c.date).getDate() : '?') + '</i>' + esc(c.name) + ' · ' + esc(c.note || 'candidat') + '</div>'
         )).join('');
 
         rows += '<div class="pl-row"><div class="pl-m"><b>' + MONTH_LABELS[m] + '</b> ' + String(y).slice(2) + '</div>' +
@@ -176,6 +183,7 @@
         '<span><i class="pl-k k-race"></i>Course</span>' +
         '<span><i class="pl-k k-key"></i>Objectif</span>' +
         '<span><i class="pl-k k-approx"></i>Date à confirmer</span>' +
+        (candidates.some(c => c.date) ? '<span><i class="pl-k k-cand"></i>Candidat</span>' : '') +
         '<span><i class="pl-k k-prep"></i>Préparation</span>' +
         '<span><i class="pl-k k-rec"></i>Récupération</span>' +
         '<span><i class="pl-k k-over"></i>Chevauchement</span>' +
@@ -193,7 +201,7 @@
         '<div class="pl-cal">' + rows + '</div>' +
         '<div class="pl-notes">' +
           '<div class="pl-note warn"><h4>Chevauchements de préparation</h4><ul>' + overTxt + '</ul></div>' +
-          '<div class="pl-note"><h4>Plages libres de 10 jours ou plus' + ((cfg.candidates || []).length ? ', hors courses sans date' : '') + '</h4><ul>' + freeTxt + '</ul></div>' +
+          '<div class="pl-note"><h4>Plages libres de 10 jours ou plus' + (candidates.length ? ', hors candidats' : '') + '</h4><ul>' + freeTxt + '</ul></div>' +
         '</div>' +
         (cfg.footnote ? '<p class="pl-foot">' + esc(cfg.footnote) + '</p>' : '');
 
