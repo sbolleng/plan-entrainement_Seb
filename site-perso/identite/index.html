@@ -277,7 +277,9 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 .ludo-logo { display: block; background: currentColor; -webkit-mask: var(--ludo) no-repeat center / contain; mask: var(--ludo) no-repeat center / contain; }
 
 /* En ce moment : variantes à comparer (NOW=cartes|lignes) */
-.now-cartes .now li { background: #FFFFFF; border: none; border-radius: var(--radius, 12px); padding: 1.4rem 1.5rem; box-shadow: 0 2px 6px rgba(20, 40, 75, .06), 0 10px 24px rgba(20, 40, 75, .08); }
+/* Version A retenue le 14 octobre : cartes blanches avec l'ombre portée de la carte Articles, aussi pour Mon mode avion */
+.now-cartes .now li { background: #FFFFFF; border: none; border-radius: var(--radius, 12px); padding: 1.4rem 1.5rem; box-shadow: 0 2px 6px rgba(20, 40, 75, .08), 0 16px 36px rgba(20, 40, 75, .14); }
+.card.card-logo { background: #FFFFFF; border-color: transparent; box-shadow: 0 2px 6px rgba(20, 40, 75, .08), 0 16px 36px rgba(20, 40, 75, .14); }
 @media (min-width: 56rem) {
   .now-lignes .now.now3 { grid-template-columns: 1fr; gap: 0; }
   .now-lignes .now li { grid-template-columns: 16rem minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 3rem; padding: 1.4rem 0; align-items: start; }
@@ -375,7 +377,7 @@ body { background: #FFFFFF; }
       </li>
     </ul>
   </div></section>
-  <section class="sec band2 trail" id="en-ce-moment"><div class="wrap">
+  <section class="sec band2 trail now-cartes" id="en-ce-moment"><div class="wrap">
     <div class="sec-h"><h2>En ce moment</h2></div>
     <ul class="now now3">
       <li><p class="kicker">Faire</p><h3>La boîte à outils du coureur</h3><p><mark class="ph">[Votre texte dans la maquette privée]</mark></p></li>
