@@ -85,7 +85,7 @@ function showSection(id, btn) {
     // Bloc d'automne-hiver tranché le 17/08/2026 : Rock'Angel puis D2B.
     { date: new Date('2026-12-05T09:00:00'), name: "Rock'Angel" },
     { date: new Date('2027-01-17T09:00:00'), name: 'D2B' },
-    { date: new Date('2027-03-07T08:00:00'), name: 'Forez Trails' },
+    { date: new Date('2027-03-07T09:00:00'), name: 'Forez Trails' },
     { date: new Date('2028-08-24T08:00:00'), name: 'OCC' }
   ];
 
