@@ -288,6 +288,10 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
   .now-lignes .now li > p:not(.kicker) { grid-column: 2; grid-row: 1 / span 2; max-width: 40rem; }
 }
 
+/* Bouton de partage LinkedIn : le logo du menu, en blanc sur le bouton */
+.btn-li svg { width: 1.05rem; height: 1.05rem; fill: currentColor; flex: none; }
+.share .btn-li { gap: .45rem; }
+
 /* Source en note sous l'article */
 .art-source { font-family: var(--sans); font-size: .85rem; line-height: 1.5; color: var(--muted); margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 
@@ -435,13 +439,13 @@ body { background: #FFFFFF; }
   </div>
   
   <div class="art-end">
-    <div class="share"><span>Partager</span><a class="btn" href="https://www.linkedin.com/">Sur LinkedIn</a><button class="btn" type="button" data-copy>Copier le lien</button></div>
+    <div class="share"><span>Partager</span><a class="btn btn-li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsbolleng.github.io%2Fle-debut-dautre-chose%2F%23article" target="_blank" rel="noopener" data-share-li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span><span class="sr"> (partager l'article, nouvel onglet)</span></a><button class="btn" type="button" data-copy>Copier le lien</button></div>
     <aside class="author" aria-label="L'auteur">
       <div class="photo sm" role="img" aria-label="Emplacement de votre photo">SB<span class="tag-note">votre photo</span></div>
       <div>
         <p class="author-n">Sébastien Bollengier</p>
-        <p class="author-d">Vingt-cinq ans de projets dans les médias, l'AdTech, la data et l'IA. J'écris ici une ou deux fois par mois.</p>
-        <p class="author-d"><a href="#a-propos">Qui écrit ? →</a> · <a href="https://www.linkedin.com/">LinkedIn</a></p>
+        <p class="author-d">Je suis de ceux qui pensent qu'une transformation réussit d'abord par les gens. J'écris ici une ou deux fois par mois.</p>
+        <p class="author-d"><a href="#a-propos">Qui écrit ? →</a></p>
       </div>
     </aside>
     
@@ -525,8 +529,12 @@ body { background: #FFFFFF; }
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
       function done() { b.textContent = 'Lien copié'; }
-      try { navigator.clipboard.writeText(location.href.split('#')[0]).then(done, done); } catch (e) { done(); }
+      try { navigator.clipboard.writeText(location.href.split('#')[0] + '#article').then(done, done); } catch (e) { done(); }
     });
+  });
+  // partage LinkedIn : l'adresse de l'article, quel que soit le domaine du site
+  document.querySelectorAll('[data-share-li]').forEach(function (a) {
+    a.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.origin + location.pathname + '#article');
   });
 })();
 </script>
