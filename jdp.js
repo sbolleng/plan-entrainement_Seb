@@ -447,15 +447,18 @@ setInterval(function () {
       { date: '2028-03-19', provisional: 'mi-mars', name: 'Marathon de Rome', effort: 42.2, key: true }
     ],
     candidates: [
-      { month: '2027-09', name: 'GT Esprit Volcan' },
-      { month: '2027-10', name: 'Festival des Templiers' },
-      { month: '2027-10', name: "Grands Trails d'Auvergne" },
-      { month: '2027-11', name: 'Trail des 3 Rocs' }
+      { month: '2027-09', name: 'Semi de Seysses', note: '3e choix du semi d\'automne' },
+      { month: '2027-09', name: 'GT Esprit Volcan', note: 'candidat du trail d\'automne' },
+      { date: '2027-10-10', name: 'Semi de Tournefeuille', note: '1er choix du semi d\'automne' },
+      { month: '2027-10', name: 'Festival des Templiers', note: 'candidat du trail d\'automne' },
+      { month: '2027-10', name: "Grands Trails d'Auvergne", note: 'candidat du trail d\'automne' },
+      { month: '2027-11', name: 'Semi de Toulouse', note: '2e choix du semi d\'automne, date 2027 à confirmer (édition 2026 le 1er nov.)' },
+      { month: '2027-11', name: 'Trail des 3 Rocs', note: 'candidat du trail d\'automne' }
     ],
     views: [
       { id: '12m', label: '12 mois', months: 12 },
       { id: 'rome', label: "Jusqu'à Rome", until: '2028-03' }
     ],
-    footnote: "Prototype. Durées de préparation (4, 6 ou 8 semaines) et de récupération (3, 7 ou 14 jours) provisoires, selon l'effort de la course : à définir. La Nocturne des Rois, course plaisir, n'a pas de préparation dédiée. La Pins Just'à Pied est placée sur la fin mai en attendant sa date, le marathon de Rome sur sa date provisoire. Les candidats du trail d'automne sont indiqués par mois ; le semi de test d'automne n'a pas encore de candidat."
+    footnote: "Prototype. Durées de préparation (4, 6 ou 8 semaines) et de récupération (3, 7 ou 14 jours) provisoires, selon l'effort de la course : à définir. La Nocturne des Rois, course plaisir, n'a pas de préparation dédiée. La Pins Just'à Pied est placée sur la fin mai en attendant sa date, le marathon de Rome sur sa date provisoire. Les candidats du semi et du trail d'automne sont indiqués par mois, avec un carré vide quand leur date est connue."
   });
 })();
