@@ -146,7 +146,6 @@ setInterval(function () {
   // Résultats officiels (temps réels, pris aux tapis), relevés sur la page des
   // résultats après la course : ils remplacent la saisie à la main.
   const SS_OFFICIAL = { '5k': '26:29', '10k': '53:39', '20k': '1:49:44', 'finish': '1:56:05' };
-  const SS_OFFICIAL_GUN = "1h59'39";
 
   // Le pavé numérique du téléphone n'a pas de « : » : on accepte aussi les
   // chiffres seuls, lus par la droite (2129 → 21:29, 14450 → 1:44:50).
@@ -263,8 +262,7 @@ setInterval(function () {
     const projStr = ssFormatDuration(projectedSec);
     if (SS_OFFICIAL && isFinished) {
       emojiEl.textContent = '🏁';
-      textEl.textContent = 'Résultat officiel : ' + projStr + ' en temps réel (' + SS_OFFICIAL_GUN + ' au coup de pistolet). ' +
-        'Au-dessus de l\'objectif phare (1h50) et du record du semi de Sète (1h53\'12).';
+      textEl.textContent = 'Résultat officiel : ' + projStr + ' en temps réel.';
       return;
     }
     if (projectedSec <= SS_GOAL_CIBLE) {
