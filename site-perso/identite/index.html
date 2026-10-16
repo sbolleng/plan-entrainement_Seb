@@ -537,7 +537,7 @@ body { background: #FFFFFF; }
     for (var j = 0; j < ny; j++) for (var i = 0; i < nx; i++) F[j * nx + i] = f(i * s / W, j * s / H);
     g.strokeStyle = getComputedStyle(c).color;
     g.lineWidth = 1;
-    g.globalAlpha = W < 700 ? 0.3 : 0.42;
+    g.globalAlpha = W < 700 ? 0.14 : 0.3;
     g.beginPath();
     for (var L = -0.5; L < 3.2; L += 0.052) {
       for (var j2 = 0; j2 < ny - 1; j2++) for (var i2 = 0; i2 < nx - 1; i2++) {
