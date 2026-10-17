@@ -102,8 +102,8 @@ Fais la mise à jour complète du site.
 - **Changement de semaine** : ajouter « On passe à la semaine du JJ au JJ MOIS,
   régénère les sept jours. »
 - **Après une course** : ajouter « J'ai couru NOM le JJ/MM. Intègre le résultat,
-  marque l'étape comme faite dans la ligne de temps Objectif, et recale la
-  suite du plan. »
+  renseigne le résultat de la course dans data/courses.js, et recale la suite
+  du plan. »
 
 ## Rappels de contexte
 
@@ -113,12 +113,9 @@ Fais la mise à jour complète du site.
   authentification. Ne pas y mettre d'information sensible.
 - Les mois de reprise course/marche ne sont pas comparables aux mois de course
   continue sur l'allure, la cadence et l'efficience cardiaque.
-- Depuis le 30/09/2026, l'objectif final est **l'OCC** (UTMB World Series
-  Finals, catégorie 50K, ~55–57 km / 3 400–3 500 m D+, Orsières → Chamonix,
-  fin août 2028, date exacte à confirmer). La Directissime est sortie de la
-  feuille de route, remplacée par le **Gergo Trail** (même week-end, 22 km,
-  900 m D+). Qualification OCC : un UTMB Index valide, toute catégorie, et au
-  moins 1 Running Stone obtenue dans les 24 mois (Stones uniquement sur les
-  UTMB World Series Events et Majors) — tirage au sort vers janvier 2028.
-  L'écart déterminant redevient le **D+ par km** : ~62 m/km le jour J contre
-  9–10 aujourd'hui.
+- Depuis le 17/10/2026, la stratégie est **un objectif par an** : les
+  **Templiers** en 2027, le **Grand Raid des Pyrénées** en 2028 et **l'OCC**
+  en 2029 (60 km / 3 500 m D+, fin août, date à confirmer). Toute la feuille
+  de route vit dans `data/courses.js` (une course = un objet) : les blocs de
+  l'onglet Objectif 26-29, le graphique de difficulté, le compteur de Running
+  Stones (6 visées avant le 31/12/2028) et l'en-tête en découlent.

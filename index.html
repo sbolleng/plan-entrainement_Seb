@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#060b14">
-<meta name="site-version" content="20261014e">
-<title>CAP — Objectif OCC 2028</title>
+<meta name="site-version" content="20261017a">
+<title>CAP — Objectif OCC 2029</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>">
-<link rel="stylesheet" href="style.css?v=20261014e">
+<link rel="stylesheet" href="style.css?v=20261017a">
 </head>
 <body>
 <header>
   <div class="header-grid">
     <div>
-      <h1>Objectif UTMB World Series Finals<br><em>OCC 2028</em></h1>
+      <h1>Objectif UTMB World Series Finals<br><em>OCC 2029</em></h1>
       <div class="race-stats">
         <div class="stat">
-          <span class="stat-val">55–57 km</span>
+          <span class="stat-val">~60 km</span>
           <span class="stat-label">Distance objectif</span>
         </div>
         <div class="stat">
@@ -25,12 +25,12 @@
           <span class="stat-label">D+ objectif</span>
         </div>
         <div class="stat">
-          <span class="stat-val">7 courses</span>
+          <span class="stat-val" id="stat-courses">12 courses</span>
           <span class="stat-label">Étapes prépa</span>
         </div>
         <div class="stat">
-          <span class="stat-val">Finisher</span>
-          <span class="stat-label">Objectif</span>
+          <span class="stat-val" id="stat-stones">0 / 6</span>
+          <span class="stat-label">Stones</span>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
 <nav>
   <div class="nav-inner">
     <button class="tab active" onclick="showSection('semaine', this)">Cette semaine</button>
-    <button class="tab" onclick="showSection('objectif', this)">Objectif 26-28</button>
+    <button class="tab" onclick="showSection('objectif', this)">Objectif 26-29</button>
     <button class="tab" onclick="showSection('nutrition', this)">Nutrition</button>
     <button class="tab" onclick="showSection('palmares', this)">Palmarès</button>
     <button class="tab" onclick="showSection('profil', this)">Profil</button>
@@ -71,6 +71,7 @@
     <div class="card card-accent" style="margin-bottom:1.5rem;">
       <h3 style="margin-bottom:0.75rem;">À faire cette semaine</h3>
       <ul class="todo-list">
+        <li class="todo-item is-urgent"><span class="todo-box"></span><div><strong>Prendre le dossard du Trail 100 Andorra 21K</strong> (13 juin 2027, la première stone du plan) — inscriptions ouvertes sur <a href="https://andorra.utmb.world/registration" target="_blank" rel="noopener">andorra.utmb.world</a>, 126,97 € au tarif actuel. En 2026, tout était complet en deux mois.</div></li>
         <li class="todo-item"><span class="todo-box"></span><div><strong>Semaine de course : plus d'alcool jusqu'à dimanche</strong>, et samedi soir un dîner riche en glucides (féculents blancs) avec peu de fibres.</div></li>
         <li class="todo-item"><span class="todo-box"></span><div><strong>Préparer dimanche</strong> — retrait du dossard la veille ou le matin au Stade de la Plaine, chaussures de trail pour les sentiers du bois.</div></li>
         <li class="todo-item"><span class="todo-box"></span><div><strong>Remesurer la FC de repos</strong> — dernière valeur 63 bpm le 12/09. Une mesure au réveil, avant de te lever, suffit.</div></li>
@@ -78,7 +79,7 @@
         <li class="todo-item"><span class="todo-box"></span><div><strong>Réserver l'hébergement du Rock'Angel</strong> (5 déc., Roquefort-sur-Soulzon) — petit village, offre limitée : mieux vaut s'y prendre maintenant.</div></li>
         <li class="todo-item"><span class="todo-box"></span><div><strong>Dimanche : m'envoyer la capture du plan RunMotion</strong> et les horaires de kiné de la semaine qui vient, puis lancer <code>/maj semaine</code>.</div></li>
       </ul>
-      <p class="muted" style="font-size:0.75rem; margin:0.75rem 0 0;">Bloc RunMotion en cours : « Développement », 7 semaines avant le prochain objectif. À garder en tête, sans urgence : la date 2027 et l'ouverture des inscriptions du Gergo Trail ne sont pas encore publiées ; le choix du trail de printemps-été 27 se fera après Forez.</p>
+      <p class="muted" style="font-size:0.75rem; margin:0.75rem 0 0;">Bloc RunMotion en cours : « Développement », 7 semaines avant le prochain objectif. À garder en tête, sans urgence : les inscriptions des Templiers, objectif 2027, ouvrent mi-janvier 2027 à midi et partent en quelques heures.</p>
     </div>
 
     <!-- Calendrier kiné (interne, non affiché) — sert à placer les kinés dans le
@@ -187,23 +188,52 @@
     </div>
   </section>
 
-  <!-- ========== OBJECTIF 26-27 (ligne de temps des courses) ========== -->
+  <!-- ========== OBJECTIF 26-29 (feuille de route, construite depuis data/courses.js) ========== -->
   <section id="objectif" class="section">
-    <div class="section-title">Objectif 26-28 · La route vers l'OCC</div>
+    <div class="section-title">Objectif 26-29 · La route vers l'OCC</div>
 
-    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">L'objectif final est désormais <strong>l'OCC, la finale 50K des UTMB World Series, à Chamonix en août 2028</strong>. Pour y aller : quatre étapes fermes — Clam Trail en octobre, le Rock'Angel en décembre, le D2B en janvier, Forez en mars —, un trail de printemps-été 2027 à choisir parmi quatre candidats, le Gergo Trail en septembre 2027, puis une course de liaison encore à définir fin 2027 ou début 2028. Viendra ensuite le tirage au sort de l'OCC en janvier 2028, qui demande un UTMB Index valide et au moins une Running Stone. Chaque étape porte tout ce qui la concerne : présentation de la course, compte à rebours, temps cible, état du dossard, rôle dans la préparation, stratégie et logistique. Le tableau en bas de page récapitule les dates d'ouverture des inscriptions des courses de repli, et <strong>Palmarès</strong> garde les résultats une fois les courses passées.</p>
+    <div class="card stones-card" id="stones-card"></div>
+
+    <p class="info" style="margin-top:0; margin-bottom:1.5rem;">Un objectif par an : <strong>les Templiers en 2027</strong> (la Boffi Fifty), <strong>le Grand Raid des Pyrénées en 2028</strong> (le Tour du Moudang), puis <strong>l'OCC, la finale 50K des UTMB World Series, à Chamonix fin août 2029</strong>. Chaque saison culmine un peu plus haut que la précédente, et les courses UTMB World Series de 2027 et 2028 doivent rapporter les Running Stones du tirage de janvier 2029. Chaque course porte tout ce qui la concerne : présentation, compte à rebours, temps cible, dossard, rôle dans la préparation, stratégie et logistique. Les temps cibles partent de Forez 2026 et seront recalés après chaque course. Le tableau en bas de page garde les courses de repli, et <strong>Palmarès</strong> les résultats.</p>
+
+    <details class="fold">
+      <summary>Pourquoi ce plan : le cheminement complet</summary>
+      <div class="fold-body">
+        <p style="font-size:0.85rem;"><strong>Un objectif par an.</strong> 2027 : les Templiers (Boffi Fifty, 46,5 km, 2 005 m D+). 2028 : le Grand Raid des Pyrénées (Tour du Moudang, 60 km, 3 600 m D+). 2029 : l'OCC (~60 km, 3 500 m D+). L'OCC 2028 est abandonnée, car elle demandait trop de renoncements personnels d'ici là.</p>
+        <p style="font-size:0.85rem;"><strong>La progression.</strong> Chaque saison culmine plus haut que la précédente, et aucune grosse course ne dépasse la précédente de beaucoup plus d'un tiers en km-effort : Forez 50, 4×1800 67, Templiers 77, Alsace 71, Andorre 101, GRP 114, OCC 112. Le Moudang est le jumeau de l'OCC : en 2029, tu arrives à Chamonix en ayant déjà couru l'équivalent.</p>
+        <p style="font-size:0.85rem; margin-bottom:0.5rem;"><strong>Pourquoi chaque course.</strong></p>
+        <ul class="clean" style="margin-bottom:0.9rem;">
+          <li style="font-size:0.85rem;">Clam Trail : retrouver la routine de course.</li>
+          <li style="font-size:0.85rem;">Rock'Angel : premier vrai D+ (40 m/km) et descentes techniques.</li>
+          <li style="font-size:0.85rem;">D2B : la distance (23,5 km) et le renfort musculaire du sable.</li>
+          <li style="font-size:0.85rem;">Forez 2027 : répétition générale sur un terrain connu.</li>
+          <li style="font-size:0.85rem;">Andorre 21K : première stone, en altitude.</li>
+          <li style="font-size:0.85rem;">4×1800 : test de montagne longue, à une pente proche de celle de l'OCC.</li>
+          <li style="font-size:0.85rem;">Gergo (option) : dernier test, cinq semaines avant les Templiers.</li>
+          <li style="font-size:0.85rem;">Templiers : objectif 2027, un premier ~50 km sur la course pionnière du trail français.</li>
+          <li style="font-size:0.85rem;">Forez 2028 : ouverture de saison sur le même parcours qu'en 2027, pour mesurer la progression au chrono près.</li>
+          <li style="font-size:0.85rem;">Ventoux, Trail des Coteaux : une stone garantie (inscription directe) sur une course légère.</li>
+          <li style="font-size:0.85rem;">Alsace, Trail des Celtes : 2 stones et une sortie longue en conditions de course.</li>
+          <li style="font-size:0.85rem;">Andorre 50K : 2 stones et la répétition générale de l'été.</li>
+          <li style="font-size:0.85rem;">GRP, Tour du Moudang : objectif 2028, l'équivalent de l'OCC un an avant.</li>
+          <li style="font-size:0.85rem;">Grands Trails d'Auvergne (option) : course plaisir de fin de saison.</li>
+        </ul>
+        <p style="font-size:0.85rem;"><strong>Les stones.</strong> Une seule suffit pour entrer au tirage, mais les tirés au sort de l'OCC 2026 en avaient 5,5 en moyenne, et la demande augmente chaque année. Seules les courses UTMB World Series en rapportent, et seules celles gagnées avant le 31 décembre 2028 comptent pour le tirage de janvier 2029. Contrainte retenue : uniquement des courses en France et en Andorre. Le plan vise 6 stones (Andorre 21K : 1, Coteaux : 1, Celtes : 2, Andorre 50K : 2), plus le bonus mobilité de +30 % en venant en train. Si le tirage ne passe pas, les stones restent acquises et l'OCC glisse en 2030.</p>
+        <p style="font-size:0.85rem; margin-bottom:0;"><strong>Ce qui a été écarté.</strong> La Restonica et Kullamannen (trop loin), Nice Côte d'Azur (pas l'environnement recherché), la MCC (déjà dans l'univers UTMB), le Trail du Ventoux (le même jour que Forez 2027), le Mistral du Ventoux (trop proche des Celtes), et les anciens candidats de printemps-été (T3P L, Bois des Côtes, Maxi-Race), qui ne rapportent pas de stones.</p>
+      </div>
+    </details>
 
     <div class="card" style="margin-bottom:1.5rem;">
       <div class="tag tag-purple">Progression</div>
       <h3>Difficulté des courses · km-effort avec descente</h3>
       <div id="chart-difficulty"></div>
       <div class="dc-legend">
-        <span><i class="dc-key is-line" style="background:var(--accent);"></i>Étape du plan</span>
-        <span><i class="dc-key" style="border:2px solid var(--accent); box-sizing:border-box;"></i>Option printemps-été</span>
-        <span><i class="dc-key is-line" style="background:repeating-linear-gradient(90deg, var(--accent) 0 4px, transparent 4px 7px);"></i>Course de liaison (fourchette)</span>
-        <span><i class="dc-key" style="background:#b482ff;"></i>Objectif</span>
+        <span><i class="dc-key is-line" style="background:var(--accent);"></i>Étape</span>
+        <span><i class="dc-key" style="border:2px solid var(--accent); box-sizing:border-box;"></i>Option</span>
+        <span><i class="dc-key is-diamond" style="background:var(--accent);"></i>Objectif de l'année</span>
+        <span><i class="dc-key" style="background:#b482ff;"></i>Objectif final</span>
       </div>
-      <p class="info"><strong>km-effort = distance + D+/100 + D−/200.</strong> Le D+/100 est la règle standard du trail (celle de l'ITRA), qui ignore la descente. Le D−/200 l'ajoute : 1 km par tranche de 200 m de descente, parce qu'en course elle use les cuisses même en pente douce. La course de liaison, pas encore choisie, apparaît comme la fourchette visée (45–55 km, 2 500–3 500 m D+). Deux limites : le sable du D2B n'entre dans aucune formule, et pour les courses en boucle le D− est supposé égal au D+ (pour l'OCC, course en ligne, il est estimé à ~3 300 m). Touche un point pour le détail.</p>
+      <p class="info"><strong>km-effort = distance + D+/100 + D−/200.</strong> Le D+/100 est la règle standard du trail (celle de l'ITRA), qui ignore la descente. Le D−/200 l'ajoute : 1 km par tranche de 200 m de descente, parce qu'en course elle use les cuisses même en pente douce. Le galet sous un point signale une course qui rapporte des Running Stones. Deux limites : le sable du D2B n'entre dans aucune formule, et pour les courses en boucle le D− est supposé égal au D+ (pour l'OCC, course en ligne, il est estimé à ~3 300 m). Touche un point pour le détail.</p>
       <details class="fold" style="margin-top:0.75rem;">
         <summary>Voir les chiffres</summary>
         <div class="fold-body">
@@ -217,313 +247,12 @@
       </details>
     </div>
 
-    <div class="race-timeline">
-
-      <!-- ÉTAPE 1 · CLAM TRAIL — CHOIX DU FORMAT -->
-      <div class="race-step">
-        <div class="rs-top">
-          <span class="rs-badge">Étape 1 · retour au dossard</span>
-          <span class="rs-when">Dim. 18 oct. 2026</span>
-        </div>
-        <div class="rs-event">Clam Trail · CSM Clamart</div>
-        <h3 class="rs-name"><a href="https://www.finishers.com/course/clam-trail" target="_blank" rel="noopener">Le 10 K</a></h3>
-        <div class="rs-specs">10 km · 128 m D+ · Clamart (92) · trail urbain, rues du quartier Galvents-Corby et sentiers de la forêt de Clamart</div>
-
-        <div class="race-cd" data-target="2026-10-18T10:00:00"></div>
-
-        <p class="rs-desc">Le Clam'Trail est organisé par le CSM Clamart Athlétisme au cœur de la forêt de Clamart. Le format 10 km part à 10h00 de l'esplanade du Stade de la Plaine, traverse les rues du quartier Galvents-Corby puis les sentiers boisés de la forêt, pour 128 m de D+ — une course urbaine et forestière, sans rien de technique.</p>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Objectif · temps cible</span>
-            <p>Temps prévu par le plan RunMotion, soit 4:48/km.<br><span class="rs-target">~48 min</span></p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Dossard</span>
-            <p><strong style="color:var(--accent);">Dossard pris.</strong> Inscription confirmée sur le 10 km — plus rien à surveiller de ce côté.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Rôle dans la prépa</span>
-            <p>Peu de D+ (128 m), rien de technique : ce n'est pas un test de terrain. Sa valeur est ailleurs — <strong>premier dossard de la saison</strong>, retrait, échauffement, gestion du peloton au départ. Une répétition de la routine de course avant les échéances plus exigeantes de décembre et janvier.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Stratégie</span>
-            <p>Tenir 4:48/km sur les portions roulantes, sans chercher à garder l'allure dans les montées du bois : c'est là qu'on perd tout en voulant forcer. Profiter des passages en sous-bois pour retrouver l'appui sur terrain irrégulier avant les courses à D+.</p>
-          </div>
-          <div class="rs-cell is-wide">
-            <span class="rs-key">Logistique</span>
-            <p>Clamart (92), accessible en Transilien/RER depuis Paris — aucune nuit sur place nécessaire. Départ 10h00 du Stade de la Plaine (131 chemin du Parc), retrait du dossard habituellement la veille ou le matin même sur place. Chaussures de trail conseillées pour les sentiers forestiers.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 2 · ROCK'ANGEL -->
-      <div class="race-step">
-        <div class="rs-top">
-          <span class="rs-badge">Étape 2 · premier vrai D+</span>
-          <span class="rs-when">Sam. 5 déc. 2026</span>
-        </div>
-        <div class="rs-event">L'Hivernale des Templiers</div>
-        <h3 class="rs-name"><a href="https://www.hivernaledestempliers.com/rockangel/" target="_blank" rel="noopener">Le Rock'Angel</a></h3>
-        <div class="rs-specs">18,3 km · ~730–780 m D+ · Roquefort-sur-Soulzon (12) · causses et corniches</div>
-
-        <div class="race-cd" data-target="2026-12-05T09:00:00"></div>
-
-        <p class="rs-desc">Le Rock'Angel est l'une des courses de l'Hivernale des Templiers, version hivernale du Festival des Templiers dans les Grands Causses. Départ donné depuis l'intérieur des caves de Roquefort Société — dans la cave dite « cathédrale » — à rythme contrôlé jusqu'au grand porche où le peloton est lâché. Le parcours traverse des paysages minéraux, longe le rocher de Rocangel et les cirques de Saint-Paul-des-Fonts et de Tournemire, en plein terroir du Roquefort.</p>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Objectif · temps cible</span>
-            <p>Finir en gérant l'effort.<br><span class="rs-target">2h15 – 2h35</span></p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Dossard</span>
-            <p><strong style="color:var(--accent);">Dossard pris.</strong> Inscription confirmée.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Rôle dans la prépa</span>
-            <p>Premier vrai test de dénivelé de la feuille de route : <strong>730 m sur 18 km, soit 40 m/km</strong>, quatre fois l'ordinaire d'entraînement et un terrain de causses et de corniches calcaires introuvable en Île-de-France. Sert à calibrer montée et descente techniques avant Forez puis le trail de printemps-été.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Stratégie</span>
-            <p>Marche assumée dans les montées, énergie gardée pour la descente. En descente : appuis courts, cadence haute, plutôt que de longues foulées relâchées. Le chrono n'a aucune importance ici — c'est la qualité d'exécution en descente qui compte.</p>
-          </div>
-          <div class="rs-cell is-wide">
-            <span class="rs-key">Logistique</span>
-            <p>Roquefort-sur-Soulzon (Aveyron), ~6h de route ou de train depuis Paris — une nuit sur place est nécessaire. Décembre : prévoir des couches chaudes et de quoi affronter le vent des corniches. Réserver l'hébergement à l'avance, l'offre est limitée dans ce petit village. Prévoir d'arriver tôt pour le départ original depuis l'intérieur des caves.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 3 · D2B -->
-      <div class="race-step">
-        <span class="utmb-badges is-corner"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></span>
-        <div class="rs-top">
-          <span class="rs-badge">Étape 3 · distance</span>
-          <span class="rs-when">Dim. 17 janv. 2027</span>
-        </div>
-        <div class="rs-event">Trail des 2 Baies</div>
-        <h3 class="rs-name"><a href="https://www.finishers.com/course/trail-d2b" target="_blank" rel="noopener">Le D2B</a></h3>
-        <div class="rs-specs">23,5 km · 300 m D+ · Le Touquet-Paris-Plage (62) · sable, dunes et estran</div>
-
-        <div class="race-cd" data-target="2027-01-17T09:00:00"></div>
-
-        <p class="rs-desc">Le Trail des 2 Baies est un trail 100 % sable, disputé sur l'estran et les dunes du Touquet-Paris-Plage, entre la baie de Canche et la baie de Slack. Quatre distances sont proposées pour tous les niveaux. Le sable, souvent humide et instable selon la marée, en fait une épreuve à part : le relief compte moins que la résistance musculaire à un appui qui se dérobe.</p>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Objectif · temps cible</span>
-            <p>Tenir 2h45 d'effort continu.<br><span class="rs-target">2h45 – 3h05</span></p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Dossard</span>
-            <p><strong style="color:var(--accent);">Dossard pris</strong> le 14 octobre 2026 sur <a href="https://traildes2baies.fr/" target="_blank" rel="noopener">traildes2baies.fr</a> — plus rien à surveiller de ce côté.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Rôle dans la prépa</span>
-            <p>Le complément exact du Rock'Angel : là où décembre apporte la pente, janvier apporte la <strong>distance</strong> — 23,5 km, la plus longue course depuis Forez 2026, sur un profil quasi plat. Le sable sollicite les mollets et la stabilité de cheville différemment de la course sur sentier : un stimulus complémentaire, pas redondant.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Stratégie</span>
-            <p>Allure régulière, effort contenu sur les deux premières heures — c'est un test d'endurance, pas d'intensité. Attention au vent de la baie, qui double le coût sur l'estran ; ajuster l'allure selon le sens du vent plutôt que viser un chrono fixe.</p>
-          </div>
-          <div class="rs-cell is-wide">
-            <span class="rs-key">Logistique</span>
-            <p>Le Touquet-Paris-Plage (Pas-de-Calais), ~2h30 de route ou de train depuis Paris — faisable dans la journée selon l'horaire de départ, sinon une nuit sur place. Janvier en bord de mer : prévoir des vêtements chauds et coupe-vent pour l'avant/après-course, et de quoi protéger les yeux du sable soufflé par le vent.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="race-step is-b">
-        <div class="rs-top">
-          <span class="rs-badge rs-badge-b">Objectif B · répétition générale</span>
-          <span class="rs-when">Dim. 7 mars 2027</span>
-        </div>
-        <div class="rs-event">Forez Trails</div>
-        <h3 class="rs-name"><a href="https://www.finishers.com/course/forez-trails" target="_blank" rel="noopener">L'Augerolloise</a></h3>
-        <div class="rs-specs">33 km · 1 100 m D+ · Augerolles (63) · monts du Forez</div>
-
-        <div class="race-cd" data-target="2027-03-07T09:00:00"></div>
-
-        <p class="rs-desc">L'Augerolloise est le format intermédiaire des Forez Trails, organisés par Augerolles 2000 dans le Puy-de-Dôme, entre le Parc naturel régional Livradois-Forez et une zone Natura 2000. Quatre distances sont au programme (12, 24, 33 et 50 km), ouvertes en solo ou en duo sauf la plus courte. Le 33 km s'élance à 9h00, sur un tracé technique mais qui permet de rentrer avant la nuit.</p>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Objectif · temps cible</span>
-            <p>Répétition sur terrain volcanique.<br><span class="rs-target">4h00 – 4h25</span></p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Dossard</span>
-            <p><strong style="color:var(--accent);">Dossard pris</strong> le 14 octobre 2026. Reste à réserver l'hébergement de la veille.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Rôle dans la prépa</span>
-            <p>Le seul terrain de cette liste déjà connu : édition 2026 courue en 3h05 sur 24,4 km / 933 m D+. L'édition 2027 ajoute <strong style="color:var(--accent);">9 km et 170 m D+</strong> — même Auvergne volcanique que le Gergo Trail, et plus de quatre heures d'effort, la plus longue course de la feuille de route avant le printemps-été. C'est la meilleure jauge disponible pour mesurer la progression réelle sur un an, terrain identique.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Stratégie</span>
-            <p>Viser une allure d'effort au moins égale à 2026 malgré la distance et le D+ supplémentaires. Marche assumée dans les raidillons, ravitaillement réglé sur l'expérience de l'édition précédente plutôt qu'à l'improvisation.</p>
-          </div>
-          <div class="rs-cell is-wide">
-            <span class="rs-key">Logistique</span>
-            <p>Augerolles (Puy-de-Dôme), ~4h30 de route depuis Paris. Départ à 9h00 : une nuit sur place la veille est recommandée plutôt qu'un aller-retour dans la journée. Réserver un hébergement local (gîtes, village) suffisamment à l'avance vu le format weekend.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 5 · TRAIL DE PRINTEMPS-ÉTÉ 27 (choix ouvert) -->
-      <div class="race-step is-choice">
-        <span class="utmb-badges is-corner"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></span>
-        <div class="rs-top">
-          <span class="rs-badge rs-badge-choice">Étape 5 · à définir</span>
-          <span class="rs-when">Mai à juillet 2027</span>
-        </div>
-        <div class="rs-event">Quatre candidats</div>
-        <h3 class="rs-name">Trail de printemps-été 27</h3>
-        <div class="rs-specs">De 32 à 42 km · de 1 200 à 2 200 m D+ · les quatre sont des courses UTMB Index</div>
-
-        <p class="rs-desc">Le grand test de la saison, entre Forez (mars) et le Gergo Trail (septembre), et la première vraie marche vers l'OCC. Le critère de choix n'est plus la descente : c'est de valider un UTMB Index sur une course de montagne longue — un Index 50K étant la meilleure base pour l'OCC — et de préparer la Running Stone indispensable au tirage au sort.</p>
-        <p class="fmt-line" style="margin-top:0.6rem;"><strong>À vérifier :</strong> au-delà de leur Index 50K, le T3P L et la 4×1800 sont-ils aussi des UTMB World Series Events ou Majors ? C'est la condition pour y gagner une Running Stone, distincte de l'Index.</p>
-
-        <div class="fmt-group">
-          <div class="fmt-group-label">Mai · Maxi-Race du lac d'Annecy (74)</div>
-          <div class="fmt-grid">
-            <div class="fmt-card">
-              <div class="fmt-top"><span class="fmt-name">Marathon eXpérience</span><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></div>
-              <div class="fmt-specs">~42 km · D+ 1 600 – 1 800 · dim. 30 mai 2027</div>
-              <p class="fmt-line">La plus longue des quatre. Distance et D+ exacts confirmés chaque année selon les autorisations — la catégorie UTMB a varié entre 20K et 50K selon les éditions. <a class="ext-link" href="https://www.finishers.com/course/maxi-race-lac-annecy" target="_blank" rel="noopener">Voir la course</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="fmt-group">
-          <div class="fmt-group-label">Juin · Trail des 3 Pics, Arbas (31)</div>
-          <div class="fmt-grid">
-            <div class="fmt-card">
-              <div class="fmt-top"><span class="fmt-name">T3P L · 36 km</span><span class="utmb-badges"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></span></div>
-              <div class="fmt-specs">36 km · D+ 2 200 · fin juin 2027 (2026 : 28 juin)</div>
-              <p class="fmt-line"><strong>Le plus gros dénivelé des quatre</strong>, dans les Pyrénées : 61 m/km, le profil le plus proche de celui de l'OCC (~62 m/km). Le meilleur test, mais aussi le plus coûteux à récupérer. <a class="ext-link" href="https://www.finishers.com/course/trail-des-3-pics-arbas" target="_blank" rel="noopener">Voir la course</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="fmt-group">
-          <div class="fmt-group-label">Juin · Trail du Bois des Côtes, Bailleval (60)</div>
-          <div class="fmt-grid">
-            <div class="fmt-card">
-              <div class="fmt-top"><span class="fmt-name">Trail 32 km</span><span class="utmb-badges"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></span></div>
-              <div class="fmt-specs">32 km · D+ 1 200 – 1 300 · fin juin 2027</div>
-              <p class="fmt-line"><strong>Le plus simple à caser :</strong> dans l'Oise, à une heure de Paris, faisable dans la journée. <a class="ext-link" href="https://www.finishers.com/course/trail-du-bois-des-cotes" target="_blank" rel="noopener">Voir la course</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="fmt-group">
-          <div class="fmt-group-label">Juillet · Trail des 4×1800, Le Lioran (15)</div>
-          <div class="fmt-grid">
-            <div class="fmt-card">
-              <div class="fmt-top"><span class="fmt-name">La 4×1800</span><span class="utmb-badges"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></span></div>
-              <div class="fmt-specs">32 km · D+ 2 000 · ~mi-juillet 2027, date à confirmer</div>
-              <p class="fmt-line">Le plus raide au kilomètre (62 m/km, comme l'OCC), dans le Cantal. Huit semaines avant le Gergo Trail : largement le temps de récupérer. <a class="ext-link" href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Voir la course</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Contrainte</span>
-            <p>Finir au moins six semaines avant le Gergo Trail (12 septembre, à confirmer). Les quatre dates tiennent, la 4×1800 étant la plus proche.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">À décider</span>
-            <p>Après Forez 2027. Priorité à une course qui valide un Index 50K (T3P L ou 4×1800). Les inscriptions de la Maxi-Race ouvrent en général tôt : à surveiller dès janvier.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 6 · GERGO TRAIL -->
-      <div class="race-step">
-        <span class="utmb-badges is-corner"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></span>
-        <div class="rs-top">
-          <span class="rs-badge">Étape 6 · montée</span>
-          <span class="rs-when">~Dim. 12 sept. 2027 · à confirmer</span>
-        </div>
-        <div class="rs-event">Grands Trails Esprit Volcans · Clermont-Ferrand</div>
-        <h3 class="rs-name"><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Le Gergo Trail</a></h3>
-        <div class="rs-specs">22 km · 900 m D+ · départ et arrivée à la Grande Halle d'Auvergne (Cournon, 63) · plateau de Gergovie</div>
-
-        <div class="race-cd" data-target="2027-09-12T09:00:00"></div>
-
-        <p class="rs-desc">Le Gergo Trail est le format montagne des Grands Trails Esprit Volcans, le même week-end et au même endroit que la Directissime. Départ et arrivée à la Grande Halle d'Auvergne à Cournon : le parcours grimpe sur le plateau de Gergovie, traverse le bois des Fours à Chaux et le ravin de Vazilhat, et passe par le puy de Mardoux.</p>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Objectif · temps cible</span>
-            <p>Finir en gérant les montées.<br><span class="rs-target">~2h35 – 2h55</span><br><span class="muted" style="font-size:0.72rem;">35,5 km-effort (formule du site) à l'allure d'effort de Forez 2026, 4,8 min par km-effort — à recaler après Forez 2027.</span></p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Dossard</span>
-            <p><strong style="color:var(--accent2);">Pas encore ouvertes.</strong> Date d'ouverture 2027 non trouvée — à surveiller sur <a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">Finishers</a>. L'édition 2026 s'est courue le 13 septembre ; la date 2027 retenue ici (12 septembre) suit la même logique et reste à confirmer.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Rôle dans la prépa</span>
-            <p>Premier vrai test de montée pure orienté OCC : <strong>900 m de D+ sur 22 km, soit 41 m/km</strong>, en grande partie dans la montée vers le plateau de Gergovie. L'OCC en demandera ~62 m/km sur 55 km : le Gergo mesure comment le moteur et les jambes encaissent une montée soutenue, avant la course de liaison.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Stratégie</span>
-            <p>Partir prudemment : la course se joue dans la montée vers Gergovie. Marche active assumée dès que la pente se redresse, relances courtes sur les replats, et garder de la réserve pour la descente finale vers Cournon.</p>
-          </div>
-          <div class="rs-cell is-wide">
-            <span class="rs-key">Logistique</span>
-            <p>Clermont-Ferrand, ~3h30 de train ou de route depuis Paris. Nuit sur place la veille indispensable. Départ et arrivée au même endroit, à la Grande Halle d'Auvergne (Cournon) : pas de navette à prévoir, l'hébergement peut se choisir à proximité.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 7 · COURSE DE LIAISON (à définir) -->
-      <div class="race-step is-horizon">
-        <div class="rs-top">
-          <span class="rs-badge rs-badge-muted">Étape 7 · course de liaison</span>
-          <span class="rs-when" style="color:var(--muted);">Fin 2027 · début 2028</span>
-        </div>
-        <h3 class="rs-name" style="color:var(--muted);">Course de liaison 2027-2028</h3>
-        <div class="rs-specs">Objectif ~45–55 km · 2 500–3 500 m D+ · course non définie</div>
-        <p class="rs-desc" style="margin-top:0.6rem;">Le pont entre la plus grosse course connue à ce stade — 36 km et 2 200 m D+ si le T3P L est retenu — et les 55–57 km pour 3 400–3 500 m D+ de l'OCC. Aucune course choisie pour l'instant.</p>
-      </div>
-
-      <!-- ÉCHÉANCE · PRÉ-INSCRIPTION OCC -->
-      <div class="race-step is-horizon">
-        <div class="rs-top">
-          <span class="rs-badge rs-badge-muted">Échéance · pré-inscription OCC</span>
-          <span class="rs-when" style="color:var(--muted);">Janvier 2028</span>
-        </div>
-        <h3 class="rs-name" style="color:var(--muted);">Tirage au sort UTMB</h3>
-        <div class="rs-specs">Un UTMB Index valide (20K, 50K, 100K ou 100M) · au moins 1 Running Stone obtenue dans les 24 derniers mois</div>
-        <p class="rs-desc" style="margin-top:0.6rem;">L'inscription à l'OCC passe par le tirage au sort UTMB de janvier. Il faut remplir les deux critères au moment de s'inscrire : l'Index vient de n'importe quelle course UTMB Index, la Running Stone uniquement d'un UTMB World Series Event ou Major.</p>
-      </div>
-
-      <!-- OBJECTIF A · OCC -->
-      <div class="race-step is-goal">
-        <span class="utmb-badges is-corner"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></span>
-        <div class="rs-top">
-          <span class="rs-badge rs-badge-goal">🏔️ Objectif A · finisher</span>
-          <span class="rs-when">~Jeu. 24 août 2028 · à confirmer</span>
-        </div>
-        <div class="rs-event">UTMB World Series Finals · catégorie 50K</div>
-        <h3 class="rs-name"><a href="https://montblanc.utmb.world/races/OCC" target="_blank" rel="noopener">L'OCC</a></h3>
-        <div class="rs-specs">55–57 km · 3 400–3 500 m D+ · Orsières → Champex → Chamonix</div>
-
-        <div class="race-cd" data-target="2028-08-24T08:00:00"></div>
-
-        <p class="rs-desc">L'OCC — Orsières-Champex-Chamonix — est la finale 50K des UTMB World Series, courue pendant la semaine de l'UTMB Mont-Blanc, fin août. La date 2028 n'est pas encore publiée : le 24 août retenu ici est une estimation.</p>
-      </div>
-
-    </div>
+    <div class="race-timeline" id="race-timeline"></div>
 
     <details class="fold" open>
       <summary>Trails à surveiller · dates d'ouverture des dossards</summary>
       <div class="fold-body">
-        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Les courses qui ne sont pas dans la feuille de route mais qu'il faut garder à l'œil : alternatives de repli, préparations complémentaires, ou objectifs d'après. Les candidats du trail de printemps-été 27 sont dans l'étape 5 au-dessus, pas ici. Vérifié le 17 août 2026, complété le 29 septembre — « non communiquée » signifie que l'organisateur n'a pas encore publié de date, pas qu'il n'y en a pas.</p>
+        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Les courses qui ne sont pas dans la feuille de route mais qu'il faut garder à l'œil : alternatives de repli, préparations complémentaires, ou objectifs d'après. Les anciens candidats du printemps-été 2027 y sont aussi, écartés faute de stones. Vérifié le 17 août 2026, complété le 29 septembre et le 17 octobre — « non communiquée » signifie que l'organisateur n'a pas encore publié de date, pas qu'il n'y en a pas.</p>
         <div class="table-scroll">
         <table>
           <thead>
@@ -555,22 +284,6 @@
               <td class="muted">Non communiquée · ~40 €</td>
             </tr>
             <tr>
-              <td><strong><a href="https://fr.milesrepublic.com/event/grand-trail-dauvergne-6762" target="_blank" rel="noopener">Grands Trails d'Auvergne</a></strong><br><span class="muted" style="font-size:0.75rem;">Aubusson-d'Auvergne (63)</span></td>
-              <td>Le Trail du Lac</td>
-              <td>27 km · D+850</td>
-              <td><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
-              <td>~début oct. 2026</td>
-              <td class="muted">~fin décembre l'année précédente <span style="font-size:0.75rem;">(2026 : 24 déc. 2025 à midi)</span></td>
-            </tr>
-            <tr>
-              <td><strong><a href="https://fr.milesrepublic.com/event/festival-des-templiers-5719" target="_blank" rel="noopener">Festival des Templiers</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12)</span></td>
-              <td>Le Marathon des Causses</td>
-              <td>34,1 km · D+1581</td>
-              <td><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
-              <td><span class="tag tag-orange" style="margin:0;">À confirmer</span> ~mi-oct. 2027</td>
-              <td class="muted"><strong style="color:var(--accent2);">~mi-janvier 2027, à midi</strong> <span style="font-size:0.75rem;">(2026 : lundi 19 janvier)</span> — les places partent en quelques heures</td>
-            </tr>
-            <tr>
               <td><strong><a href="http://www.trailduchateaudepierrefonds.fr/" target="_blank" rel="noopener">Trail du Château de Pierrefonds</a></strong><br><span class="muted" style="font-size:0.75rem;">Pierrefonds (60)</span></td>
               <td>Le 27 km<br><span class="muted" style="font-size:0.75rem;">ou le 13 km</span></td>
               <td>27 km · D+600<br><span class="muted" style="font-size:0.75rem;">13 km · D+350</span></td>
@@ -584,6 +297,30 @@
               <td>20 km · D+900<br><span class="muted" style="font-size:0.75rem;">45 km · D+2100</span></td>
               <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span><br><span class="utmb-badge utmb-50k" style="margin-top:0.25rem;"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
               <td>Sam. 5 ou dim. 6 déc. 2026<br><span class="muted" style="font-size:0.75rem;">à confirmer · 2025 : sam. 6 décembre</span></td>
+              <td class="muted">Non communiquée</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/maxi-race-lac-annecy" target="_blank" rel="noopener">Maxi-Race du lac d'Annecy</a></strong><br><span class="muted" style="font-size:0.75rem;">Annecy (74)</span></td>
+              <td>Marathon eXpérience</td>
+              <td>~42 km · D+1600–1800</td>
+              <td><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
+              <td>Dim. 30 mai 2027</td>
+              <td class="muted">Non communiquée · ouvre en général tôt, à surveiller dès janvier</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/trail-des-3-pics-arbas" target="_blank" rel="noopener">Trail des 3 Pics</a></strong><br><span class="muted" style="font-size:0.75rem;">Arbas (31)</span></td>
+              <td>T3P L</td>
+              <td>36 km · D+2200</td>
+              <td><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
+              <td>Fin juin 2027<br><span class="muted" style="font-size:0.75rem;">2026 : 28 juin</span></td>
+              <td class="muted">Non communiquée</td>
+            </tr>
+            <tr>
+              <td><strong><a href="https://www.finishers.com/course/trail-du-bois-des-cotes" target="_blank" rel="noopener">Trail du Bois des Côtes</a></strong><br><span class="muted" style="font-size:0.75rem;">Bailleval (60)</span></td>
+              <td>Trail 32 km</td>
+              <td>32 km · D+1200–1300</td>
+              <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></td>
+              <td>Fin juin 2027</td>
               <td class="muted">Non communiquée</td>
             </tr>
             <tr>
@@ -688,7 +425,7 @@
         </tbody>
       </table>
       </div>
-      <p class="info">Deux courses chronométrées à ce jour (temps officiels ; les temps de déplacement Strava, souvent différents, ne sont pas repris ici). Les prochaines étapes de la feuille de route — Clam Trail 2026, Rock'Angel, D2B, Forez 2027, le trail de printemps-été, le Gergo Trail, la course de liaison, l'OCC — viendront s'ajouter ici au fil des résultats. Pour la préparation à venir, voir <strong>Objectif 26-28</strong>.</p>
+      <p class="info">Deux courses chronométrées à ce jour (temps officiels ; les temps de déplacement Strava, souvent différents, ne sont pas repris ici). Les prochaines courses de la feuille de route — Clam Trail, Rock'Angel, D2B, Forez, Andorre, le 4×1800 et les Templiers en 2027, la saison 2028 jusqu'au Grand Raid des Pyrénées, puis l'OCC en 2029 — viendront s'ajouter ici au fil des résultats. Pour la préparation à venir, voir <strong>Objectif 26-29</strong>.</p>
     </div>
 
     <hr class="divider">
@@ -832,9 +569,9 @@
       <p style="font-size:0.85rem;"><strong>La vraie progression de l'année, c'est la cadence.</strong> 154 pas/min en novembre, 167 en juin : +13 en huit mois, avec une courbe qui ne redescend jamais. C'est la métrique la plus utile de tout le tableau, parce qu'une cadence haute réduit le temps de contact au sol et l'impact par foulée en descente. L'objectif de 170 est atteint sur septembre complet (<strong>170 spm</strong>), mais les quatre sorties d'octobre restent toutes à <strong>165–166</strong>, seuil compris : ce n'est plus un accident de séance, la cadence a reculé de 5 pas.</p>
       <p style="font-size:0.85rem;"><strong>Juin était le meilleur mois de la première série, et de loin.</strong> 75,5 km à 5'07 par km-effort, pour une FC moyenne de 145 — la plus basse des huit mois, alors que février tournait à 165. L'efficience cardiaque le confirme : 893 battements par km-effort en février, 780 en juin, soit 13 % de mieux. C'est la référence à retrouver maintenant que la mesure reprend.</p>
       <p style="font-size:0.85rem;"><strong>Le volume n'a jamais été le problème.</strong> ~76 km par mois de moyenne sur la première série, avec un pic à 118,9 km en avril. Septembre termine à <strong>113,7 km</strong>, deuxième mois de l'année derrière avril, et octobre en est déjà à <strong>41,1 km au 11</strong>, dont 30,4 km sur les sept derniers jours : tu sais encaisser du kilométrage régulier — ce n'est pas là que se joue l'OCC.</p>
-      <p style="font-size:0.85rem;"><strong>Le chantier, c'est le dénivelé par kilomètre.</strong> L'objectif final est désormais l'OCC : <strong>55 à 57 km pour 3 400 à 3 500 m de D+, soit ~62 m/km</strong>. Tu tournais autour de 9 à 10 m/km hors mois de course, avec une pointe à 17,7 en mars : c'est un facteur six, et c'est l'écart qui compte vraiment. Octobre bouge enfin : <strong>16,0 m/km au 11</strong>, grâce à la sortie du dimanche 11 (13,6 km pour 371 m de D+, soit 27 m/km), la plus pentue depuis Forez. La trajectoire cible du graphe D+/km est là pour ça : 33 m/km à Forez en mars 2027, un pic au printemps-été, 41 m/km au Gergo Trail en septembre, puis un deuxième cycle jusqu'à 50 m/km à l'été 2028, avant l'OCC.</p>
+      <p style="font-size:0.85rem;"><strong>Le chantier, c'est le dénivelé par kilomètre.</strong> L'objectif final est désormais l'OCC 2029 : <strong>60 km pour 3 500 m de D+, soit ~58 m/km</strong>, avec deux marches avant elle : les Templiers en 2027 (43 m/km) et le Grand Raid des Pyrénées en 2028 (60 m/km). Tu tournais autour de 9 à 10 m/km hors mois de course, avec une pointe à 17,7 en mars : c'est un facteur six, et c'est l'écart qui compte vraiment. Octobre bouge enfin : <strong>16,0 m/km au 11</strong>, grâce à la sortie du dimanche 11 (13,6 km pour 371 m de D+, soit 27 m/km), la plus pentue depuis Forez. La trajectoire cible du graphe D+/km suit ces trois saisons : 33 m/km à Forez en mars 2027, 43 aux Templiers en octobre, 60 au GRP en août 2028, puis 58 à l'OCC en août 2029.</p>
       <p style="font-size:0.85rem;"><strong>L'intensité est là, peut-être même un peu trop.</strong> L'allure semi du 3 octobre a tenu des blocs entre <strong>4:44 et 4:57/km</strong>, pile l'estimation Huawei (4:49/km). Le seuil du samedi 10 (4 × 4 min) est sorti à <strong>4:21, 4:23, 4:39 et 4:14/km</strong> d'après la montre, pour une FC de 156 à 162 sur les blocs : plus vite que toute ta zone seuil (4:41 à 5:04/km), donc à la limite de l'anaérobie. Les récupérations sont bonnes en revanche, de 168 à 115 bpm en deux minutes. Et le dimanche 11, <strong>13,6 km et 371 m de D+ à 149 bpm de moyenne</strong>, dix battements sous l'endurance plate du 6 octobre (159) : la fatigue du début de mois semble passée.</p>
-      <p style="font-size:0.85rem;"><strong>Le renfo charge enfin.</strong> <strong>32 séances loguées depuis le 7 juillet</strong>, dont la séance kiné/cardio du 9 octobre : un circuit de 30 min (grimpeur, fentes haltères à 12 kg, burpees, chaise lestée à 8 kg, squat une jambe lesté) qui travaille l'endurance de force plutôt que la charge maximale. Surtout, les charges montent : fentes haltères à 20 kg sur 3 × 40 le 1<sup>er</sup> octobre (contre 3 × 20 le 21 septembre), et <strong>fentes bulgares passées de 10 à 18 kg</strong> le 5 octobre. Trois exercices entrent au catalogue cette semaine : grimpeur, burpee et chaise lestée. Ce sont les cuisses et la stabilité qui progressent, exactement ce que demandent les 3 400 m de D+ et de D− de l'OCC.</p>
+      <p style="font-size:0.85rem;"><strong>Le renfo charge enfin.</strong> <strong>32 séances loguées depuis le 7 juillet</strong>, dont la séance kiné/cardio du 9 octobre : un circuit de 30 min (grimpeur, fentes haltères à 12 kg, burpees, chaise lestée à 8 kg, squat une jambe lesté) qui travaille l'endurance de force plutôt que la charge maximale. Surtout, les charges montent : fentes haltères à 20 kg sur 3 × 40 le 1<sup>er</sup> octobre (contre 3 × 20 le 21 septembre), et <strong>fentes bulgares passées de 10 à 18 kg</strong> le 5 octobre. Trois exercices entrent au catalogue cette semaine : grimpeur, burpee et chaise lestée. Ce sont les cuisses et la stabilité qui progressent, exactement ce que demandent les 3 500 m de D+ et les ~3 300 m de D− de l'OCC.</p>
       <p style="font-size:0.85rem;"><strong>Septembre complet : 113,7 km et 1 226 m de D+, soit 10,8 m/km, pour une allure d'effort de 5:11/km-effort et 795 battements par km-effort.</strong> Premier mois de course continue depuis juin, donc le premier point de comparaison valable avec la première série — et il est bon : efficience proche du meilleur niveau de juin (781), D+/km au plus haut hors mois de course. Octobre fait mieux pour l'instant : <strong>786 battements par km-effort</strong> et 5:14/km-effort sur quatre sorties, à cinq battements du meilleur niveau de juin (781).</p>
       <p style="font-size:0.85rem; margin-bottom:0;"><strong>Trois conseils pour la semaine du Clam Trail.</strong> Premièrement, <strong>remesurer la FC repos</strong> : toujours rien depuis le 12 septembre (63 bpm). Une valeur au réveil avant dimanche dira si tu arrives frais. Deuxièmement, <strong>les 2 × 500 m de mercredi se courent à l'allure de dimanche, 4:48/km, pas plus vite</strong> : samedi, tous les blocs de seuil sont partis 10 à 30 s/km sous la zone visée. Même piège au départ du Clam Trail : un premier kilomètre à 4:48, pas à 4:20. Troisièmement, <strong>une semaine légère après jeudi</strong> : la kiné de jeudi est la dernière séance qui sollicite les cuisses, la piscine de vendredi reste une séance d'apprentissage, sans chercher à se fatiguer.</p>
     </div>
@@ -896,11 +633,11 @@
       <div class="stats-legend">
         <span><i style="background:var(--accent);"></i>Réel</span>
         <span><i style="background:#7eb8f5;"></i>Cible</span>
-        <span><i style="background:var(--accent2);"></i>Forez · 33 m/km</span>
-        <span><i style="background:var(--red);"></i>OCC · 62 m/km</span>
+        <span><i style="background:var(--accent2);"></i>Templiers · 43 m/km</span>
+        <span><i style="background:var(--red);"></i>OCC · 58 m/km</span>
       </div>
-      <p class="info"><strong>C'est le principal point faible, et de loin.</strong> <strong>10,8 m/km en septembre</strong>, quand l'OCC en demandera ~62 — six fois plus. Octobre remonte à 16,0 m/km au 11, porté par la sortie vallonnée du dimanche 11. Le cardio et la cadence suivent déjà bien, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui les attend le jour J : il faudra aller chercher les pentes, sortie longue après sortie longue.</p>
-      <p class="info" style="margin-top:0.5rem;">La courbe bleue est la trajectoire proposée, calée sur les étapes de la feuille de route. Premier cycle : montée progressive à 20 m/km d'ici décembre 2026, 24 en février, 33 à Forez en mars, pic à 40 m/km en juillet 2027 autour du trail de printemps-été, puis 41 au Gergo Trail en septembre. Deuxième cycle : coupure en octobre, ~48 m/km en janvier 2028 autour de la course de liaison, puis montée jusqu'à 50 m/km en juillet 2028 et 62 le jour de l'OCC. <strong>La moyenne d'entraînement n'atteindra jamais les ~62 m/km de l'OCC</strong>, et c'est normal : les sorties de semaine restent plates en Île-de-France. Ce qui doit s'en approcher, c'est la sortie longue : c'est elle qu'il faut emmener sur des pentes longues — Fontainebleau, la vallée de Chevreuse, puis l'Auvergne et la montagne l'été.</p>
+      <p class="info"><strong>C'est le principal point faible, et de loin.</strong> <strong>10,8 m/km en septembre</strong>, quand l'OCC en demandera ~58 — plus de cinq fois plus. Octobre remonte à 16,0 m/km au 11, porté par la sortie vallonnée du dimanche 11. Le cardio et la cadence suivent déjà bien, mais les jambes n'ont pour l'instant jamais rencontré le type d'effort qui les attend le jour J : il faudra aller chercher les pentes, sortie longue après sortie longue.</p>
+      <p class="info" style="margin-top:0.5rem;">La courbe bleue est la trajectoire proposée, calée sur les trois saisons de la feuille de route. 2027 : montée progressive à 20 m/km d'ici décembre 2026, 33 à Forez en mars, 36 à 40 autour d'Andorre et du 4×1800 l'été, puis 43 aux Templiers en octobre. 2028 : coupure en novembre, reprise à 36 pour Forez, 50 en juin avec Andorre, puis 60 au GRP en août. 2029 : nouvelle coupure, puis montée régulière jusqu'à 58 le jour de l'OCC. <strong>La moyenne d'entraînement n'atteindra jamais les ~58 m/km de l'OCC</strong>, et c'est normal : les sorties de semaine restent plates en Île-de-France. Ce qui doit s'en approcher, c'est la sortie longue : c'est elle qu'il faut emmener sur des pentes longues — Fontainebleau, la vallée de Chevreuse, puis l'Auvergne et la montagne l'été.</p>
     </div>
 
     <hr class="divider">
@@ -1608,7 +1345,7 @@
 
       <hr class="divider">
 
-      <h3 style="margin-bottom:0.75rem;">Stratégie course (valable Forez, trail de printemps-été, Gergo Trail, OCC)</h3>
+      <h3 style="margin-bottom:0.75rem;">Stratégie course (valable Forez, 4×1800, Templiers, GRP, OCC)</h3>
       <div class="table-scroll">
       <table>
         <thead><tr><th>Moment</th><th>Quoi</th><th>Objectif</th></tr></thead>
@@ -2030,9 +1767,10 @@
   </section>
 </main>
 
-<script src="data/renfo.js?v=20261014e" defer></script>
-<script src="data/nutrition.js?v=20261014e" defer></script>
-<script src="app.js?v=20261014e" defer></script>
+<script src="data/renfo.js?v=20261017a" defer></script>
+<script src="data/nutrition.js?v=20261017a" defer></script>
+<script src="data/courses.js?v=20261017a" defer></script>
+<script src="app.js?v=20261017a" defer></script>
 
 </body>
 </html>

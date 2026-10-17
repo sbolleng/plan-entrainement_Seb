@@ -83,8 +83,8 @@ demande de Seb le 30/09/2026 : il n'y a plus de tableau de phases à tenir.
 
 Un `/maj` couvre donc les étapes **1** (données Strava), **2 bis** (Cette
 semaine), **3 bis** (journal de renfo), **3 ter** (Nutrition), **4**
-(Profil) et **5** (Objectif 26-28), puis la publication (étape 6). Ordre de
-la nav : Cette semaine (onglet par défaut), Objectif 26-28, Nutrition,
+(Profil) et **5** (Objectif 26-29), puis la publication (étape 6). Ordre de
+la nav : Cette semaine (onglet par défaut), Objectif 26-29, Nutrition,
 Palmarès, Profil, Guide.
 
 ## Le genou n'est plus un sujet d'analyse (27/09/2026)
@@ -143,9 +143,10 @@ valeurs calculées (premier mois de course continue depuis juin) ; chaque
 mois suivant s'ajoute normalement à la suite du tableau. Les 6 graphes de
 Profil utilisent tous `seriesFrom()` sur ce même tableau. Le graphe D+/km
 (`chart-dpk`) a sa propre série codée en dur dans `renderStatsCharts()`
-(23 points mensuels, nov. 2025 → sept. 2027, le dpk n'étant jamais nullé
+(46 points mensuels, nov. 2025 → août 2029, le dpk n'étant jamais nullé
 même sur les mois de reprise) : y ajouter la valeur réelle du mois à son
-index à chaque `/maj`.
+index à chaque `/maj`. La trajectoire cible passe par Forez 2027 (33 m/km),
+les Templiers (43), le GRP (60) et l'OCC 2029 (58).
 
 ## 2 bis · Nouvelle page « Cette semaine » (29/09/2026)
 
@@ -282,43 +283,60 @@ lignes « Mis à jour le … » sous les graphes.
 Le bloc « Renfo · suivi » se calcule tout seul depuis `data/renfo.js` : tuiles,
 tonnage hebdomadaire et progression par exercice. Rien à écrire à la main.
 
-## 5 · Page « Objectif 26-28 »
+## 5 · Page « Objectif 26-29 » (17/10/2026)
 
-Depuis le 27/09/2026, chaque étape de la ligne de temps (`.race-step`) suit
-une structure fixe à 5 cellules dans son `.rs-grid` (2 colonnes, la dernière
-en pleine largeur via `.rs-cell.is-wide`) :
-1. **Objectif · temps cible** — temps visé, mode finisher ou chrono.
-2. **Dossard** — pris / à faire / pas encore ouvert. Chercher sur le web la
-   date d'ouverture quand elle n'est pas connue plutôt que de deviner ; si
-   l'info reste introuvable ou contradictoire, le dire explicitement et
-   proposer une meilleure estimation sourcée plutôt qu'un silence.
-3. **Rôle dans la prépa** — ce que cette course apporte (ou n'apporte pas)
-   pour l'OCC : terrain, D+/D−, distance, place dans le bloc. Analyse de
-   forme et de spécificité, pas de bulletin médical.
+Depuis le 17/10/2026, **toute la feuille de route vit dans `data/courses.js`**
+(`ROADMAP`) : une course = un objet. Les blocs de la frise, le graphique de
+difficulté et son tableau, le compteur de Running Stones, les tuiles
+« courses » et « stones » et le compte à rebours de l'en-tête se construisent
+depuis cette liste (`renderRoadmap()` et `renderDifficultyChart()` dans
+`app.js`). **Ne jamais réécrire un bloc de course dans `index.html`** : on
+modifie l'objet de la course. Le commentaire en tête du fichier décrit chaque
+champ.
+
+Chaque bloc suit la même structure : présentation (`desc`), compte à rebours,
+puis la grille de cellules :
+1. **Objectif · temps cible** — calculé tout seul (formule de Riegel depuis
+   `ROADMAP.reference`, fourchette ±5 %), sauf `cible.temps` fixé à la main
+   (Clam Trail : RunMotion ; D2B : le sable).
+2. **Dossard** (`dossard.statut` + `dossard.txt`) — pris / à prendre / pas
+   encore ouvertes / tirage. Chercher sur le web la date d'ouverture quand
+   elle n'est pas connue plutôt que de deviner ; si l'info reste introuvable
+   ou contradictoire, le dire explicitement et proposer une meilleure
+   estimation sourcée plutôt qu'un silence.
+3. **Rôle dans la prépa** (`role`) — ce que cette course apporte pour la
+   suite : terrain, D+/D−, distance, place dans la saison. Analyse de forme et
+   de spécificité, pas de bulletin médical.
 4. **Stratégie** — comment bien gérer la course pour aller au bout : allure,
    ravitaillement, gestion du terrain. Pas de cadrage genou (voir plus haut).
-5. **Logistique** (`.rs-cell.is-wide`) — trajet depuis Paris, nuit sur place
-   ou non, météo/saison, réservation d'hébergement, matériel spécifique.
+5. **Logistique** (pleine largeur) — trajet depuis Paris, nuit sur place ou
+   non, météo/saison, réservation d'hébergement, matériel spécifique.
+6. **Plan B** (`planB`, facultatif, pleine largeur).
 
-Le paragraphe `.rs-desc` sous le compte à rebours doit être une description
-factuelle de la course (terrain, histoire, format), trouvée sur le web —
-plus un récit centré sur l'état de forme de Seb.
+`desc` doit être une description factuelle de la course (terrain, histoire,
+format), trouvée sur le web — pas un récit centré sur l'état de forme de Seb.
+Les dates 2027-2029 non publiées portent `estimee: true` (« à confirmer »).
 
-Sur `/maj course` : ne marquer une étape comme faite que si la course a
-réellement été courue. Enregistrer le temps réel à côté du temps cible,
-indiquer si l'objectif est tenu, recaler les phases suivantes en conséquence,
-et **ajouter le résultat à la page Palmarès** (tableau chronologique des
-courses courues, section `#palmares`) — un abandon ou un temps très en
-dessous de la cible change la suite du plan, pas seulement la ligne de temps.
+Sur `/maj course` : ne renseigner `resultat` que si la course a réellement été
+finie (temps officiel, ex. `'2h18:40'`). Cette seule valeur remplace le compte
+à rebours par le temps, ajoute « Réalisé » à côté du temps cible et, pour une
+course UTMB World Series, passe le badge à « stone gagnée ✓ » et fait monter
+le compteur de stones et la tuile de l'en-tête. Ensuite : figer `cible.temps`
+des courses déjà courues, puis remplacer `ROADMAP.reference` par la course
+qui vient d'être courue (distance, D+, minutes) pour recaler tous les temps
+cibles suivants. Indiquer si l'objectif est tenu, et **ajouter le résultat à
+la page Palmarès** (section `#palmares`, écrite à la main). Un abandon ne
+renseigne pas `resultat` : le noter dans le texte du bloc, il change la suite
+du plan, pas seulement la ligne de temps.
 
 Vérifier les dates d'ouverture des dossards dont l'échéance approche, en
 cherchant sur le web si besoin. Si une inscription est ouverte ou imminente,
-le signaler à Seb.
+le signaler à Seb et l'ajouter à « À faire » dans Cette semaine.
 
 ## Page « Palmarès »
 
 Page `#palmares`, entre Objectif et Profil dans le DOM (nav : juste après
-Objectif 26-28). Deux blocs : un tableau de résultats de courses (rempli au
+Objectif 26-29). Deux blocs : un tableau de résultats de courses (rempli au
 fil des `/maj course`), et le tableau « Meilleurs temps » dupliqué depuis
 Profil — les deux copies doivent rester synchronisées si l'une des deux
 change.
@@ -327,7 +345,7 @@ change.
 
 **Avant de committer, incrémenter la version partout d'un coup** : la balise
 `<meta name="site-version">` et le paramètre `?v=` de `style.css`,
-`data/renfo.js`, `data/nutrition.js` et `app.js` dans `index.html` (plus
+`data/renfo.js`, `data/nutrition.js`, `data/courses.js` et `app.js` dans `index.html` (plus
 `style.css` dans `jdp.html`), au format `AAAAMMJJ` suivi d'une lettre si
 plusieurs publications dans la journée — un simple `sed` sur l'ancienne
 valeur suffit. Sans ça, les navigateurs servent l'ancien JavaScript et
@@ -344,15 +362,16 @@ changé et ce qui mérite l'attention de Seb.
 
 - Le site est public : dépôt public servi par GitHub Pages, sans
   authentification. N'y mettre aucune information sensible.
-- Depuis le 30/09/2026, l'objectif final est **l'OCC** (UTMB World Series
-  Finals, catégorie 50K, ~55–57 km / 3 400–3 500 m D+, Orsières → Chamonix,
-  fin août 2028, date exacte à confirmer). La Directissime est sortie de la
-  feuille de route, remplacée par le **Gergo Trail** (même week-end, 22 km,
-  900 m D+). Qualification OCC : un UTMB Index valide, toute catégorie, et au
-  moins 1 Running Stone obtenue dans les 24 mois (Stones uniquement sur les
-  UTMB World Series Events et Majors) — tirage au sort vers janvier 2028.
-  L'écart déterminant redevient le **D+ par km** : ~62 m/km le jour J contre
-  9–10 aujourd'hui.
+- Depuis le 17/10/2026, la stratégie est **un objectif par an** : les
+  **Templiers** en 2027 (Boffi Fifty, 46,5 km / 2 005 m D+ sur le site
+  officiel 2026), le **Grand Raid des Pyrénées** en 2028 (Tour du Moudang,
+  60 km / 3 600 m D+) et **l'OCC** en 2029 (UTMB World Series Finals 50K,
+  60 km / 3 500 m D+ depuis 2026, Orsières → Chamonix, fin août, date à
+  confirmer). L'OCC 2028 est abandonnée. Qualification : un UTMB Index valide
+  et au moins 1 Running Stone ; le plan vise 6 stones (Andorre 21K, Ventoux
+  Coteaux, Alsace Celtes, Andorre 50K) gagnées avant le 31/12/2028, pour le
+  tirage de janvier 2029. L'écart déterminant reste le **D+ par km** :
+  ~58 m/km à l'OCC contre 10 à 16 aujourd'hui.
 - Le renfo cuisses et stabilité est le seul levier direct sur la descente.
 - Le renfo est réparti sur deux pages sans redondance : **Guide → Renfo** garde le catalogue et
   la semaine type, **Profil** le suivi de ce qui est réellement fait.

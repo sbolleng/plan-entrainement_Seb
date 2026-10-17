@@ -39,6 +39,132 @@ function showSection(id, btn) {
   }
   updateTimelineCountdowns();
 
+  // ===== Objectif · feuille de route (data/courses.js) =====
+  // Une course = un objet de ROADMAP : la frise, le compteur de stones et
+  // l'en-tête se construisent ici, le graphique de difficulté plus bas.
+  const COURSES = ROADMAP.courses;
+  const FINALE = COURSES.find(c => c.type === 'final');
+  const fr1 = v => (Math.round(v * 10) / 10).toLocaleString('fr-FR');
+
+  // km-effort = distance + D+/100 + D−/200 (coefficient de descente choisi
+  // par Seb le 29/09/2026). Course en boucle : D− = D+.
+  function kmEffort(c) { return c.km + c.dp / 100 + (c.dm || c.dp) / 200; }
+
+  // Temps cible : formule de Riegel à partir de la course de référence,
+  // en fourchette ±5 % arrondie à 5 min.
+  function dureeTxt(min) {
+    const m = Math.round(min / 5) * 5;
+    return m < 60 ? m + ' min' : Math.floor(m / 60) + 'h' + String(m % 60).padStart(2, '0');
+  }
+  function cibleTxt(c) {
+    const ref = ROADMAP.reference;
+    const t = ref.minutes * Math.pow(kmEffort(c) / kmEffort(ref), ref.exposant);
+    return dureeTxt(t * 0.95) + ' – ' + dureeTxt(t * 1.05);
+  }
+
+  // Une course finie (résultat renseigné) a gagné ses stones.
+  function stonesTxt(c) {
+    const n = c.stones;
+    if (c.resultat) return (n > 1 ? n + ' stones gagnées' : 'stone gagnée') + ' ✓';
+    return '+' + n + (n > 1 ? ' stones' : ' stone');
+  }
+
+  const STEP_CLASS = { etape: '', option: ' is-choice', objectif: ' is-b', final: ' is-goal', echeance: ' is-horizon' };
+  const BADGE_CLASS = { etape: '', option: ' rs-badge-choice', objectif: ' rs-badge-b', final: ' rs-badge-goal', echeance: ' rs-badge-muted' };
+  const DOSSARD = {
+    'pris': ['Dossard pris', 'var(--accent)'],
+    'a-prendre': ['À prendre maintenant.', 'var(--red)'],
+    'pas-ouvert': ['Pas encore ouvertes.', 'var(--accent2)'],
+    'tirage': ['Tirage au sort.', 'var(--accent2)']
+  };
+  const UTMB_INDEX = '<span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span>';
+
+  function badgesHtml(c) {
+    let h = '';
+    if (c.index) h += UTMB_INDEX + (c.index === true ? '' : '<span class="utmb-badge utmb-' + c.index.toLowerCase() +
+      '"><span class="utmb-k">' + c.index + '</span><span class="utmb-mark">✓</span></span>');
+    if (c.stones) h += '<span class="utmb-idx utmb-stone' + (c.resultat ? ' is-won' : '') +
+      '"><span class="utmb-idx-u"></span><span class="utmb-stone-n">' + stonesTxt(c) + '</span></span>';
+    return h ? '<span class="utmb-badges is-corner">' + h + '</span>' : '';
+  }
+
+  function specsTxt(c) {
+    if (c.specs) return c.specs;
+    const f = c.formats || [c];
+    return f.map(x => fr1(x.km)).join(' ou ') + ' km · ' + (c.dpApprox ? '~' : '') +
+      f.map(x => x.dp.toLocaleString('fr-FR')).join(' ou ') + ' m D+ · ' + c.lieu + (c.terrain ? ' · ' + c.terrain : '');
+  }
+
+  function cellHtml(key, html, wide) {
+    return '<div class="rs-cell' + (wide ? ' is-wide' : '') + '"><span class="rs-key">' + key + '</span><p>' + html + '</p></div>';
+  }
+
+  function courseHtml(c) {
+    let h = '<div class="race-step' + STEP_CLASS[c.type] + '">' + badgesHtml(c) +
+      '<div class="rs-top"><span class="rs-badge' + BADGE_CLASS[c.type] + '">' + c.badge + '</span>' +
+      '<span class="rs-when">' + c.quand + (c.estimee ? ' · à confirmer' : '') + '</span></div>' +
+      (c.evenement ? '<div class="rs-event">' + c.evenement + '</div>' : '') +
+      '<h3 class="rs-name">' + (c.lien ? '<a href="' + c.lien + '" target="_blank" rel="noopener">' + c.nom + '</a>' : c.nom) + '</h3>' +
+      '<div class="rs-specs">' + specsTxt(c) + '</div>';
+    if (c.type !== 'echeance') h += c.resultat
+      ? '<div class="race-cd is-past">Course courue · ' + c.resultat + '</div>'
+      : '<div class="race-cd" data-target="' + c.date + '"></div>';
+    h += '<p class="rs-desc">' + c.desc + '</p>';
+    if (c.formats) h += '<div class="fmt-grid">' + c.formats.map(f =>
+      '<div class="fmt-card"><div class="fmt-top"><span class="fmt-name">' + f.nom + '</span></div>' +
+      '<div class="fmt-specs">' + fr1(f.km) + ' km · D+ ' + f.dp.toLocaleString('fr-FR') + ' · ' + Math.round(kmEffort(f)) + ' km-effort</div>' +
+      '<p class="fmt-line">' + f.txt + '</p></div>').join('') + '</div>';
+    if (c.dossard) {
+      const ci = c.cible, d = DOSSARD[c.dossard.statut];
+      const temps = ci.temps || (c.formats ? c.formats.map(f => f.nom + ' ' + cibleTxt(f)).join('<br>') : cibleTxt(c));
+      const note = ci.temps ? ci.note : (c.formats ? 'Calculé' : fr1(kmEffort(c)) + ' km-effort, calculé') +
+        ' au rythme de ' + ROADMAP.reference.nom + ', ralenti sur la durée, et recalé après chaque course.';
+      h += '<div class="rs-grid">' +
+        cellHtml('Objectif · temps cible', ci.txt + '<br><span class="rs-target">' + temps + '</span>' +
+          (c.resultat ? '<br>Réalisé : <strong>' + c.resultat + '</strong>' : '') +
+          (note ? '<span class="rs-note">' + note + '</span>' : '')) +
+        cellHtml('Dossard', '<strong style="color:' + d[1] + ';">' + d[0] + '</strong> ' + c.dossard.txt) +
+        cellHtml('Rôle dans la prépa', c.role) +
+        cellHtml('Stratégie', c.strategie) +
+        cellHtml('Logistique', c.logistique, true) +
+        (c.planB ? cellHtml('Plan B', c.planB, true) : '') + '</div>';
+    }
+    return h + '</div>';
+  }
+
+  function renderRoadmap() {
+    const tl = document.getElementById('race-timeline');
+    if (tl) {
+      let saison = 0, h = '';
+      COURSES.forEach(c => {
+        if (c.saison !== saison) {
+          saison = c.saison;
+          const s = ROADMAP.saisons[saison];
+          h += '<div class="rt-season">' + s.titre + ' <span>' + s.sous + '</span></div>';
+        }
+        h += courseHtml(c);
+      });
+      tl.innerHTML = h;
+    }
+
+    const prevues = COURSES.reduce((n, c) => n + (c.stones || 0), 0);
+    const gagnees = COURSES.reduce((n, c) => n + (c.resultat ? c.stones || 0 : 0), 0);
+    const rep = ROADMAP.stonesRepere;
+    const box = document.getElementById('stones-card');
+    if (box) box.innerHTML =
+      '<div><span class="stones-key">Stones pour le tirage de janvier 2029</span>' +
+      '<span class="stones-val">Stones gagnées : ' + gagnees + ' / ' + prevues + ' prévues</span></div>' +
+      '<div><div class="stones" style="--avg:' + rep.valeur + ';">' +
+      Array.from({ length: prevues }, (_, i) => '<span class="stone' + (i < gagnees ? ' is-won' : '') + '"></span>').join('') +
+      '<span class="stones-avg"></span></div><span class="stones-avg-txt">' + rep.txt + ' : ' + fr1(rep.valeur) + '</span></div>';
+
+    const st = document.getElementById('stat-stones');
+    if (st) st.textContent = gagnees + ' / ' + prevues;
+    const sc = document.getElementById('stat-courses');
+    if (sc) sc.textContent = COURSES.filter(c => c.type === 'etape' || c.type === 'objectif').length + ' courses';
+  }
+  renderRoadmap();
+
   // ===== Compteur J / H / M / S par course (onglet Objectif) =====
   const CD_UNITS = [
     { key: 'd', label: 'Jours' },
@@ -79,26 +205,14 @@ function showSection(id, btn) {
   buildRaceCountdowns();
   updateRaceCountdowns();
 
-  // ===== Compteur d'en-tête · prochaine course de la feuille de route =====
-  const RACES = [
-    { date: new Date('2026-10-18T10:00:00'), name: 'Clam Trail · 10 K' },
-    // Bloc d'automne-hiver tranché le 17/08/2026 : Rock'Angel puis D2B.
-    { date: new Date('2026-12-05T09:00:00'), name: "Rock'Angel" },
-    { date: new Date('2027-01-17T09:00:00'), name: 'D2B' },
-    { date: new Date('2027-03-07T09:00:00'), name: 'Forez Trails' },
-    { date: new Date('2028-08-24T08:00:00'), name: 'OCC' }
-  ];
-
+  // ===== Compteur d'en-tête · objectif final de la feuille de route =====
   function updateCountdown() {
-    const now = new Date();
-    const next = RACES.find(r => r.name === 'OCC');
-    if (!next) return;
-    const t = splitDelay(next.date - now);
+    const t = splitDelay(parseTarget(FINALE.date) - new Date());
     document.getElementById('countdown-days').textContent = t.d;
     document.getElementById('countdown-label').textContent = t.d > 1 ? 'jours' : 'jour';
     document.getElementById('countdown-hms').textContent =
       String(t.h).padStart(2, '0') + 'h ' + String(t.m).padStart(2, '0') + 'm ' + String(t.s).padStart(2, '0') + 's';
-    document.getElementById('countdown-sub').textContent = '→ ' + next.name;
+    document.getElementById('countdown-sub').textContent = '→ ' + FINALE.court + (FINALE.estimee ? ' · date à confirmer' : '');
   }
   updateCountdown();
 
@@ -323,35 +437,36 @@ function showSection(id, btn) {
     renderBarChart('chart-cadence', seriesFrom('cadenceSpm'), { refLines: [{ val: 170, color: 'var(--accent2)' }] });
     renderBarChart('chart-efficiency', seriesFrom('effBeats'), { invert: true });
 
-    // D+/km · réel + trajectoire cible jusqu'à l'OCC (août 2028)
+    // D+/km · réel + trajectoire cible jusqu'à l'OCC (août 2029)
     renderLineChart('chart-dpk', {
       height: 160,
       min: 0, max: 65,
-      labels: ['Nov 25', '', '', '', '', '', 'Mai 26', '', '', '', '', '',
-               'Nov 26', '', '', '', '', '', 'Mai 27', '', '', '', '', '',
-               'Nov 27', '', '', '', '', '', '', '', '', 'Août 28'],
+      labels: ['Nov 25', '', '', '', '', '', '', '', '', '', '', '',
+               'Nov 26', '', '', '', '', '', '', '', '', '', '', '',
+               'Nov 27', '', '', '', '', '', '', '', '', '', '', '',
+               'Nov 28', '', '', '', '', '', '', '', '', 'Août 29'],
       formatter: v => v.toFixed(0),
       series: [
         {
-          values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1,
-                   10.1, 13.9, 10.8, 16.0, null, null, null, null,
-                   null, null, null, null, null, null, null, null,
+          values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1, 10.1, 13.9, 10.8, 16.0,
+                   null, null, null, null, null, null, null, null, null, null, null, null,
+                   null, null, null, null, null, null, null, null, null, null, null, null,
                    null, null, null, null, null, null, null, null, null, null],
           color: 'var(--accent)', showValues: [4, 10]
         },
         {
-          // Cible : Forez (mars 27), pic printemps-été (juil. 27), Gergo (sept. 27),
-          // course de liaison (janv. 28), montée jusqu'à l'été 2028, OCC (août 28).
-          values: [null, null, null, null, null, null, null, 9.1,
-                   5, 10, 13, 16, 18, 20, 22, 24,
-                   33, 22, 28, 34, 40, 28, 41, 30,
-                   34, 38, 48, 34, 38, 42, 46, 48, 50, 62],
-          color: '#7eb8f5', dashed: true, showValues: [16, 20, 22, 26, 33]
+          // Cible : Forez (mars 27), Templiers (oct. 27), coupure, GRP (août 28),
+          // coupure, OCC (août 29). Creux de récupération après chaque objectif.
+          values: [null, null, null, null, null, null, null, 9.1, 5, 10, 13, 16,
+                   18, 20, 22, 24, 33, 26, 30, 36, 40, 34, 40, 43,
+                   26, 30, 32, 34, 36, 40, 44, 50, 52, 60, 30, 32,
+                   34, 36, 38, 40, 42, 45, 48, 52, 55, 58],
+          color: '#7eb8f5', dashed: true, showValues: [16, 23, 33, 45]
         }
       ],
       refLines: [
-        { val: 33, color: 'var(--accent2)' },
-        { val: 62, color: 'var(--red)' }
+        { val: 43, color: 'var(--accent2)' },
+        { val: 58, color: 'var(--red)' }
       ]
     });
   }
@@ -968,62 +1083,36 @@ function showSection(id, btn) {
   window.addEventListener('pageshow', e => { if (e.persisted) checkNewVersion(); });
 
   // ===== Objectif · difficulté des courses (km-effort avec descente) =====
-  // km-effort = distance + D+/100 + D−/200 (coefficient de descente choisi par
-  // Seb le 29/09/2026). Courses en boucle : D− = D+. Dates des options
-  // approximatives (« ~ »). La course de liaison, pas encore choisie, est une
-  // fourchette (kind 'range', bornes lo/hi) tracée en pointillé.
-  const PLAN_DIFFICULTY = [
-    { date: '2026-10-18', name: 'Clam Trail', km: 10, dp: 128, dm: 128, kind: 'firm' },
-    { date: '2026-12-05', name: "Rock'Angel", km: 18.3, dp: 750, dm: 750, kind: 'firm' },
-    { date: '2027-01-17', name: 'D2B', km: 23.5, dp: 300, dm: 300, kind: 'firm', note: 'sable : difficulté sous-estimée par la formule' },
-    { date: '2027-03-07', name: "Forez · L'Augerolloise", km: 33, dp: 1100, dm: 1100, kind: 'firm', label: 'Forez 27' },
-    { date: '2027-05-30', name: 'Maxi-Race · Marathon eXpérience', km: 42, dp: 1700, dm: 1700, kind: 'option', approx: true },
-    { date: '2027-06-26', name: 'Trail du Bois des Côtes · 32 km', km: 32, dp: 1250, dm: 1250, kind: 'option', approx: true },
-    { date: '2027-06-28', name: 'Trail des 3 Pics · T3P L', km: 36, dp: 2200, dm: 2200, kind: 'option', approx: true, label: 'T3P L' },
-    { date: '2027-07-18', name: 'Trail des 4×1800', km: 32, dp: 2000, dm: 2000, kind: 'option', approx: true },
-    { date: '2027-09-12', name: 'Gergo Trail', km: 22, dp: 900, dm: 900, kind: 'firm', approx: true, label: 'Gergo', labelBelow: true },
-    { date: '2028-01-15', name: 'Course de liaison · à définir', kind: 'range', approx: true,
-      lo: { km: 45, dp: 2500, dm: 2500 }, hi: { km: 55, dp: 3500, dm: 3500 } },
-    { date: '2028-08-24', name: 'OCC · UTMB World Series Finals 50K', km: 56, dp: 3450, dm: 3300, kind: 'goal', approx: true, label: 'OCC',
-      note: 'course en ligne, D− estimé' }
-  ];
-
-  function kmEffort(r) { return r.km + r.dp / 100 + r.dm / 200; }
-
+  // Un point par course de ROADMAP (un par format pour une option à plusieurs
+  // formats), relié de course en course hors options. Galet sous les courses
+  // qui rapportent des stones.
   function renderDifficultyChart() {
     const el = document.getElementById('chart-difficulty');
     if (!el) return;
 
-    const t0 = new Date('2026-09-20').getTime(), t1 = new Date('2028-09-20').getTime();
+    const t0 = new Date('2026-09-20').getTime(), t1 = new Date('2029-09-20').getTime();
     const yMax = 120;
     const TICKS = [30, 60, 90, 120];
-    const xAt = d => 3 + ((new Date(d + 'T12:00:00').getTime() - t0) / (t1 - t0)) * 94;
+    const xAt = d => 3 + ((parseTarget(d).getTime() - t0) / (t1 - t0)) * 94;
     const yAt = v => 6 + (1 - v / yMax) * 86;
-    const nf = v => (Math.round(v * 10) / 10).toLocaleString('fr-FR');
-    const COLORS = { firm: 'var(--accent)', option: 'var(--accent)', range: 'var(--accent)', goal: '#b482ff' };
+    const COLORS = { etape: 'var(--accent)', option: 'var(--accent)', objectif: 'var(--accent)', final: '#b482ff' };
+    const KIND = { etape: 'étape', option: 'option', objectif: "objectif de l'année", final: 'objectif final' };
 
-    const pts = PLAN_DIFFICULTY.map(r => {
-      const p = Object.assign({}, r, { x: xAt(r.date) });
-      if (r.kind === 'range') { p.keLo = kmEffort(r.lo); p.keHi = kmEffort(r.hi); p.ke = (p.keLo + p.keHi) / 2; }
-      else p.ke = kmEffort(r);
+    const pts = [];
+    COURSES.filter(c => c.km || c.formats).forEach(c => (c.formats || [c]).forEach(f => {
+      const p = { c: c, f: f, nom: c.court + (c.formats ? ' · ' + f.nom : ''), ke: kmEffort(f), x: xAt(c.date) };
       p.y = yAt(p.ke);
-      return p;
-    });
-    const keTxt = p => (p.kind === 'range' ? nf(p.keLo) + '–' + nf(p.keHi) : nf(p.ke));
-    const specTxt = p => p.kind === 'range'
-      ? p.lo.km + '–' + p.hi.km + ' km · +' + p.lo.dp + '–' + p.hi.dp + ' m'
-      : nf(p.km) + ' km · +' + p.dp + ' / −' + p.dm + ' m';
+      pts.push(p);
+    }));
+    const specTxt = p => fr1(p.f.km) + ' km · +' + p.f.dp + ' / −' + (p.f.dm || p.f.dp) + ' m';
+    const dateTxt = (p, opts) => (p.c.estimee ? '~' : '') + parseTarget(p.c.date).toLocaleDateString('fr-FR', opts);
 
     let svg = '';
-    pts.filter(p => p.kind === 'range').forEach(p => {
-      svg += '<line x1="' + p.x + '" x2="' + p.x + '" y1="' + yAt(p.keHi) + '" y2="' + yAt(p.keLo) +
-        '" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3" vector-effect="non-scaling-stroke" />';
-    });
     TICKS.forEach(v => {
       svg += '<line x1="0" x2="100" y1="' + yAt(v) + '" y2="' + yAt(v) +
         '" stroke="var(--border)" stroke-width="1" vector-effect="non-scaling-stroke" />';
     });
-    const path = pts.filter(p => p.kind === 'firm' || p.kind === 'goal').map(p => p.x + ',' + p.y).join(' ');
+    const path = pts.filter(p => p.c.type !== 'option').map(p => p.x + ',' + p.y).join(' ');
     svg += '<polyline points="' + path + '" fill="none" stroke="var(--accent)" stroke-width="2" ' +
       'vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round" />';
 
@@ -1041,18 +1130,18 @@ function showSection(id, btn) {
     function showTip(p, dot) {
       tip.textContent = '';
       const v = document.createElement('strong');
-      v.textContent = keTxt(p) + ' km-effort';
+      v.textContent = fr1(p.ke) + ' km-effort';
       const n = document.createElement('div');
-      n.textContent = p.name + (p.kind === 'option' ? ' (option)' : '');
+      n.textContent = p.nom + (p.c.type === 'option' ? ' (option)' : '');
       const d = document.createElement('div');
       d.className = 'dc-tip-sub';
-      const dateTxt = new Date(p.date + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
-      d.textContent = (p.approx ? '~' : '') + dateTxt + ' · ' + specTxt(p) +
-        (p.note ? ' · ' + p.note : '');
+      d.textContent = dateTxt(p, { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + specTxt(p) +
+        (p.c.stones ? ' · ' + stonesTxt(p.c) : '') + (p.c.noteKe ? ' · ' + p.c.noteKe : '');
       tip.append(v, n, d);
       tip.hidden = false;
       tip.style.left = Math.min(Math.max(p.x, 18), 82) + '%';
       tip.style.bottom = (100 - p.y) + '%';
+      tip.classList.toggle('is-below', p.y < 40);
       plot.querySelectorAll('.dc-dot.is-on').forEach(x => x.classList.remove('is-on'));
       dot.classList.add('is-on');
     }
@@ -1062,36 +1151,34 @@ function showSection(id, btn) {
     }
 
     pts.forEach(p => {
+      const pos = 'left:' + p.x + '%;bottom:' + (100 - p.y) + '%;';
+      if (p.c.stones) plot.insertAdjacentHTML('beforeend', '<span class="dc-stone' + (p.c.resultat ? ' is-won' : '') + '" style="' + pos + '"></span>');
       const dot = document.createElement('button');
       dot.type = 'button';
-      dot.className = 'dc-dot dc-' + p.kind;
-      dot.style.left = p.x + '%';
-      dot.style.bottom = (100 - p.y) + '%';
-      dot.style.setProperty('--dc-color', COLORS[p.kind]);
-      dot.setAttribute('aria-label', p.name + ' : ' + nf(p.ke) + ' km-effort');
+      dot.className = 'dc-dot dc-' + p.c.type;
+      dot.style.cssText = pos;
+      dot.style.setProperty('--dc-color', COLORS[p.c.type]);
+      dot.setAttribute('aria-label', p.nom + ' : ' + fr1(p.ke) + ' km-effort');
       dot.addEventListener('pointerenter', () => showTip(p, dot));
       dot.addEventListener('focus', () => showTip(p, dot));
       dot.addEventListener('click', () => showTip(p, dot));
       dot.addEventListener('pointerleave', hideTip);
       dot.addEventListener('blur', hideTip);
       plot.appendChild(dot);
-      if (p.label) {
+      if (p.c.etiquette) {
         const lb = document.createElement('span');
-        lb.className = 'dc-label';
-        lb.style.left = p.x + '%';
-        lb.style.bottom = (100 - p.y) + '%';
-        if (p.x > 85) lb.classList.add('is-end');
-        else if (p.labelBelow) lb.classList.add('is-below');
-        lb.textContent = p.label + ' · ' + Math.round(p.ke);
+        lb.className = 'dc-label' + (p.x > 85 ? ' is-end' : '');
+        lb.style.cssText = pos;
+        lb.textContent = p.c.etiquette + ' · ' + Math.round(p.ke);
         plot.appendChild(lb);
       }
     });
 
     const axis = el.querySelector('.dc-xaxis');
-    ['2026-10-01', '2027-02-01', '2027-06-01', '2027-10-01', '2028-02-01', '2028-06-01'].forEach(d => {
+    ['2026-10-01', '2027-04-01', '2027-10-01', '2028-04-01', '2028-10-01', '2029-04-01'].forEach(d => {
       const s = document.createElement('span');
       s.style.left = xAt(d) + '%';
-      const m = new Date(d + 'T12:00:00');
+      const m = parseTarget(d);
       s.textContent = m.toLocaleDateString('fr-FR', { month: 'short' }).replace('.', '') + ' ' + String(m.getFullYear()).slice(2);
       axis.appendChild(s);
     });
@@ -1101,11 +1188,9 @@ function showSection(id, btn) {
       tbody.textContent = '';
       pts.forEach(p => {
         const tr = document.createElement('tr');
-        const kindTxt = { firm: 'prévue', option: 'option', range: 'à définir', goal: 'objectif' }[p.kind];
-        const dist = p.kind === 'range' ? p.lo.km + '–' + p.hi.km + ' km' : nf(p.km) + ' km';
-        const den = p.kind === 'range' ? '+' + p.lo.dp + '–' + p.hi.dp : '+' + p.dp + ' / −' + p.dm;
-        [(p.approx ? '~' : '') + new Date(p.date + 'T12:00:00').toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' }),
-         p.name, kindTxt, dist, den, keTxt(p)].forEach((txt, i) => {
+        [dateTxt(p, { month: 'short', year: 'numeric' }), p.nom,
+         KIND[p.c.type] + (p.c.stones ? ' · ' + stonesTxt(p.c) : ''),
+         fr1(p.f.km) + ' km', '+' + p.f.dp + ' / −' + (p.f.dm || p.f.dp), fr1(p.ke)].forEach((txt, i) => {
           const td = document.createElement('td');
           td.textContent = txt;
           if (i === 2 || i === 0) td.className = 'muted';

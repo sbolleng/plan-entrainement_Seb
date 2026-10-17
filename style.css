@@ -731,6 +731,7 @@
     background: transparent;
   }
   .race-step.is-horizon::before { background: var(--surface); border-color: var(--border); }
+  .race-step.is-horizon .rs-when, .race-step.is-horizon .rs-name { color: var(--muted); }
 
   .rs-top {
     display: flex;
@@ -826,6 +827,10 @@
   }
   .utmb-20k .utmb-k { background: #ffe14d; }
   .utmb-50k .utmb-k { background: #ff8a3d; }
+  .utmb-stone .utmb-idx-u::before { content: ''; width: 0.6rem; height: 0.42rem; border-radius: 50%; border: 1.5px solid #4fd8ff; }
+  .utmb-stone.is-won .utmb-idx-u::before { background: #4fd8ff; }
+  .utmb-stone-n { background: #cfe9f7; color: #0a1a33; text-transform: uppercase; }
+  .utmb-stone.is-won .utmb-stone-n { background: var(--good); }
 
   /* Étape « point de décision » : plusieurs scénarios possibles */
   .race-step.is-choice { border-left-style: dashed; }
@@ -1131,6 +1136,17 @@
     color: var(--accent);
   }
   .rs-cell.is-wide { grid-column: 1 / -1; }
+  .rs-note { display: block; font-size: 0.72rem; margin-top: 0.2rem; }
+  .rt-season {
+    margin: 2rem 0 0.9rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+  }
+  .rt-season:first-child { margin-top: 0; }
+  .rt-season span { color: var(--muted); }
 
   /* BLOCS REPLIABLES */
   .fold {
@@ -1781,7 +1797,6 @@
   .dc-plot { position: relative; height: 220px; margin: 1rem 0 0 1.6rem; }
   .dc-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
   .dc-ytick { position: absolute; left: -1.6rem; transform: translateY(50%); font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); }
-  .dc-today { position: absolute; top: -0.2rem; transform: translate(-50%, -100%); font-size: 0.55rem; color: var(--muted); }
   .dc-xaxis { position: relative; height: 1.1rem; margin: 0.4rem 0 0 1.6rem; }
   .dc-xaxis span { position: absolute; transform: translateX(-50%); font-size: 0.58rem; color: var(--muted); white-space: nowrap; }
   .dc-dot {
@@ -1792,8 +1807,11 @@
     content: ''; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; border-radius: 50%;
     transform: translate(-50%, -50%); background: var(--dc-color); box-shadow: 0 0 0 2px var(--surface);
   }
-  .dc-dot.dc-option::after, .dc-dot.dc-range::after { background: var(--surface); border: 2px solid var(--dc-color); width: 10px; height: 10px; box-sizing: border-box; }
-  .dc-dot.dc-goal::after { width: 13px; height: 13px; }
+  .dc-dot.dc-option::after { background: var(--surface); border: 2px solid var(--dc-color); width: 10px; height: 10px; box-sizing: border-box; }
+  .dc-dot.dc-objectif::after { width: 11px; height: 11px; border-radius: 2px; transform: translate(-50%, -50%) rotate(45deg); }
+  .dc-dot.dc-final::after { width: 13px; height: 13px; }
+  .dc-stone { position: absolute; width: 10px; height: 7px; border-radius: 50%; border: 1.5px solid #4fd8ff; transform: translate(-50%, 13px); pointer-events: none; }
+  .dc-stone.is-won { background: #4fd8ff; }
   .dc-dot.is-on::after, .dc-dot:hover::after, .dc-dot:focus-visible::after { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--dc-color); }
   .dc-dot:focus { outline: none; }
   .dc-label {
@@ -1805,6 +1823,7 @@
     background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.6rem;
     font-size: 0.7rem; color: var(--muted); pointer-events: none; box-shadow: 0 6px 18px rgba(0,0,0,0.4);
   }
+  .dc-tip.is-below { transform: translate(-50%, calc(100% + 16px)); }
   .dc-tip strong { display: block; color: var(--text); font-family: 'Space Mono', monospace; font-size: 0.8rem; }
   .dc-tip div { color: var(--text); }
   .dc-tip .dc-tip-sub { color: var(--muted); font-size: 0.64rem; margin-top: 0.15rem; }
@@ -1812,8 +1831,18 @@
   .dc-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
   .dc-key { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
   .dc-key.is-line { width: 16px; height: 2px; border-radius: 1px; }
+  .dc-key.is-diamond { width: 8px; height: 8px; border-radius: 1px; transform: rotate(45deg); }
   .dc-label.is-end { transform: translate(calc(-100% + 8px), 18px); }
-  .dc-label.is-below { transform: translate(-50%, 18px); }
+
+  /* ===== OBJECTIF · compteur de Running Stones ===== */
+  .stones-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.9rem 1.5rem; margin-bottom: 1.5rem; }
+  .stones-key { display: block; font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .stones-val { font-family: 'Space Mono', monospace; font-size: 0.95rem; font-weight: 700; }
+  .stones { position: relative; display: flex; gap: 6px; }
+  .stone { width: 22px; height: 15px; border-radius: 50%; border: 2px solid #4fd8ff; }
+  .stone.is-won { background: #4fd8ff; }
+  .stones-avg { position: absolute; top: -5px; bottom: -5px; left: calc(var(--avg) * 28px - 4px); width: 2px; background: var(--red); }
+  .stones-avg-txt { display: block; font-size: 0.68rem; color: var(--red); margin-top: 0.4rem; }
   .sb-item.sb-next { border-color: #b482ff; }
 
   /* ===== NUTRITION · historique ===== */
