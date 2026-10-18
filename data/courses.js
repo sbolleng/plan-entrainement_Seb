@@ -28,7 +28,7 @@
 //                 cible.temps des courses déjà courues.
 
 const ROADMAP = {
-  maj: '2026-10-17',
+  maj: '2026-10-18',
 
   // Temps cible = minutes × (km-effort / km-effort de la référence)^exposant
   // (formule de Riegel : l'allure ralentit avec la durée), affiché à ±5 %.
@@ -57,7 +57,7 @@ const ROADMAP = {
       role: `Retrouver la routine de course : <strong>premier dossard de la saison</strong>, retrait, échauffement, gestion du peloton au départ. Peu de D+ (128 m), rien de technique : ce n'est pas un test de terrain, mais une répétition avant les échéances plus exigeantes de décembre et janvier.`,
       strategie: `Tenir 4:48/km sur les portions roulantes, sans chercher à garder l'allure dans les montées du bois : c'est là qu'on perd tout en voulant forcer. Profiter des passages en sous-bois pour retrouver l'appui sur terrain irrégulier avant les courses à D+.`,
       logistique: `Clamart (92), accessible en Transilien/RER depuis Paris — aucune nuit sur place nécessaire. Départ 10h00 du Stade de la Plaine (131 chemin du Parc), retrait du dossard habituellement la veille ou le matin même sur place. Chaussures de trail conseillées pour les sentiers forestiers.`,
-      resultat: null
+      resultat: '49:48'
     },
     {
       saison: 1, type: 'etape', badge: 'Étape · premier vrai D+',
