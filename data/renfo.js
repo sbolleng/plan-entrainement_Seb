@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-10-11',
+  maj: '2026-10-18',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -286,6 +286,10 @@ const RENFO_LOG = {
         { nom: 'Chaise lestée', dom: 'F', series: 4, reps: 40, charge: 8, tenue: true },
         { nom: 'Squat une jambe', dom: 'F', series: 4, reps: 40, charge: 8, tenue: true }
       ]
-    }
+    },
+    // Kinés du 13/10 (17h15) et du 15/10 (12h15) : faites, contenu non noté.
+    // Seules séances de la semaine avant le Clam Trail (confirmé par Seb).
+    { date: '2026-10-13', source: 'kiné', duree: null, exercices: [] },
+    { date: '2026-10-15', source: 'kiné', duree: null, exercices: [] }
   ]
 };
