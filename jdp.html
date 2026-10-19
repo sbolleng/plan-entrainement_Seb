@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0E1D19">
 <meta name="robots" content="noindex">
-<meta name="site-version" content="20261019b">
+<meta name="site-version" content="20261019c">
 <title>JDP — Marathon de Rome 2028</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>">
 <link rel="stylesheet" href="style.css?v=20261019a">
@@ -28,7 +28,7 @@
           <span class="stat-label">Date visée</span>
         </div>
         <div class="stat">
-          <span class="stat-val">7 courses</span>
+          <span class="stat-val">6 courses</span>
           <span class="stat-label">Étapes prépa</span>
         </div>
         <div class="stat">
@@ -52,7 +52,8 @@
   <div class="nav-inner">
     <button class="tab active" onclick="showSection('objectif', this)">Objectif 26-28</button>
     <button class="tab" onclick="showSection('planning', this)">Planning</button>
-    <button class="tab" onclick="showSection('semaine_en_cours', this)">Cette semaine</button>
+    <button class="tab" onclick="showSection('surveiller', this)">Courses à surveiller</button>
+    <button class="tab" onclick="showSection('semaine_en_cours', this)">Pense-bête</button>
     <button class="tab" onclick="showSection('logistique', this)">Logistique</button>
     <button class="tab" onclick="showSection('palmares', this)">Palmarès</button>
     <button class="tab" onclick="showSection('guide', this)">Guide</button>
@@ -66,114 +67,10 @@
 
     <div class="race-timeline">
 
-      <!-- ÉTAPE 1 · SEMI DE SAN SEBASTIÁN -->
+      <!-- ÉTAPE 1 · TRAIL DU BÉRET -->
       <div class="race-step">
         <div class="rs-top">
-          <span class="rs-badge">Étape 1 · courue ✔</span>
-          <span class="rs-when">Dim. 4 oct. 2026</span>
-        </div>
-        <div class="rs-event">Rural Kutxa Semi-Marathon de San Sebastian 2026</div>
-        <h3 class="rs-name"><a href="https://www.mediomaratonsansebastianruralkutxa.com/fr" target="_blank" rel="noopener">Le Semi-marathon</a></h3>
-        <div class="rs-specs">21,1 km · route, plat · Saint-Sébastien (Pays basque, Espagne)</div>
-
-        <div class="race-cd" data-target="2026-10-04T09:30:00"></div>
-
-        <p class="rs-desc">Premier rendez-vous de la feuille de route, et premier semi de la séquence. Parcours de bord de mer, roulant du départ à l'arrivée : c'est un repère chrono propre, sans dénivelé pour brouiller la lecture. Le temps réalisé ici sert de point zéro à toute la préparation qui suit.</p>
-
-        <div class="rs-grid">
-          <div class="rs-cell">
-            <span class="rs-key">Objectif · temps cible</span>
-            <p>Battre le semi de Sète (1h53'12) en restant en contrôle.<br><span class="rs-target">viser 1h48 · fourchette 1h47 – 1h50</span></p>
-          </div>
-          <div class="rs-cell">
-            <div class="split-2col">
-              <div class="split-col">
-                <span class="rs-key">Dossard</span>
-                <p><strong style="color:var(--accent);">N° 3395.</strong><br>
-                <a class="ext-link" href="https://live.irteerak.com/results.html?id=medio-maraton-donostia-san-sebastian-rural-kutxa-2026-21k" target="_blank" rel="noopener">Résultats officiels</a></p>
-              </div>
-              <div class="split-col" id="ss-weather">
-                <span class="rs-key">Météo course</span>
-                <div class="weather-body" id="ss-weather-body">
-                  <span class="weather-loading">Chargement…</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="rs-cell is-wide">
-            <span class="rs-key">Résultat</span>
-            <p><strong style="color:var(--accent);">1h56'05</strong> en temps réel · temps officiel 1h59'39 (au coup de pistolet) · 1 951e.<br>
-            Passages : 26'29 au 5 km, 53'39 au 10 km, 1h49'44 au 20 km.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Rôle dans la prépa</span>
-            <p>Étalonnage. Un semi plat en début de cycle donne l'allure de référence sur laquelle se calent les séances de qualité de l'hiver.</p>
-          </div>
-          <div class="rs-cell">
-            <span class="rs-key">Enchaînement</span>
-          </div>
-          <div class="rs-cell is-wide">
-            <span class="rs-key">Logistique</span>
-          </div>
-        </div>
-
-        <div class="live-track" id="ss-live-track">
-          <div class="live-track-head">
-            <div class="live-track-title">Résultats officiels · dossard 3395</div>
-            <div class="live-track-sub"><a class="ext-link" href="https://live.irteerak.com/results.html?id=medio-maraton-donostia-san-sebastian-rural-kutxa-2026-21k" target="_blank" rel="noopener" style="font-size:0.7rem;">Page officielle</a></div>
-          </div>
-
-          <div class="checkpoints">
-            <div class="cp-card" data-cp="5k">
-              <div class="cp-name">5 km</div>
-              <div class="cp-target">cible 26'30</div>
-              <input class="cp-input" data-cp-input="5k" placeholder="ex. 2630" inputmode="numeric">
-              <div class="cp-delta" data-cp-delta="5k">—</div>
-              <div class="cp-pace" data-cp-pace="5k"></div>
-            </div>
-            <div class="cp-card" data-cp="10k">
-              <div class="cp-name">10 km</div>
-              <div class="cp-target">cible 52'30</div>
-              <input class="cp-input" data-cp-input="10k" placeholder="ex. 5230" inputmode="numeric">
-              <div class="cp-delta" data-cp-delta="10k">—</div>
-              <div class="cp-pace" data-cp-pace="10k"></div>
-            </div>
-            <div class="cp-card" data-cp="20k">
-              <div class="cp-name">20 km</div>
-              <div class="cp-target">cible ≈ 1h44'25</div>
-              <input class="cp-input" data-cp-input="20k" placeholder="ex. 14425" inputmode="numeric">
-              <div class="cp-delta" data-cp-delta="20k">—</div>
-              <div class="cp-pace" data-cp-pace="20k"></div>
-            </div>
-            <div class="cp-card" data-cp="finish">
-              <div class="cp-name">Arrivée</div>
-              <div class="cp-target">cible 1h49'55–1h50'10</div>
-              <input class="cp-input" data-cp-input="finish" placeholder="ex. 14955" inputmode="numeric">
-              <div class="cp-delta" data-cp-delta="finish">—</div>
-              <div class="cp-pace" data-cp-pace="finish"></div>
-            </div>
-          </div>
-
-          <div class="finish-gauge">
-            <div class="fg-bar">
-              <div class="fg-fill" id="ss-fg-fill" style="width:0%;"></div>
-              <div class="fg-mark is-target" style="left:44.4%;">1h48<br><span style="font-size:0.55rem;">cible</span></div>
-              <div class="fg-mark" style="left:55.6%;">1h50<br><span style="font-size:0.55rem;">phare</span></div>
-              <div class="fg-mark" style="left:72.2%;">1h53<br><span style="font-size:0.55rem;">PR</span></div>
-            </div>
-          </div>
-
-          <div class="live-msg" id="ss-live-msg">
-            <span class="emoji">⏳</span>
-            <span>Entre un temps au premier point de passage pour voir la projection.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 2 · TRAIL DU BÉRET -->
-      <div class="race-step">
-        <div class="rs-top">
-          <span class="rs-badge">Étape 2 · inscrit ✔</span>
+          <span class="rs-badge">Étape 1 · inscrit ✔</span>
           <span class="rs-when">Dim. 15 nov. 2026</span>
         </div>
         <div class="rs-event">Trail du Béret · Cazes-Mondenard</div>
@@ -208,10 +105,10 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 3 · NOCTURNE DES ROIS -->
+      <!-- ÉTAPE 2 · NOCTURNE DES ROIS -->
       <div class="race-step">
         <div class="rs-top">
-          <span class="rs-badge">Étape 3 · plaisir</span>
+          <span class="rs-badge">Étape 2 · plaisir</span>
           <span class="rs-when">Sam. 16 janv. 2027</span>
         </div>
         <div class="rs-event">Trail Nocturne des Rois · Villemur-sur-Tarn</div>
@@ -245,10 +142,10 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 4 · L'AUGEROLLOISE -->
+      <!-- ÉTAPE 3 · L'AUGEROLLOISE -->
       <div class="race-step is-b">
         <div class="rs-top">
-          <span class="rs-badge rs-badge-b">Étape 4 · objectif trail de printemps</span>
+          <span class="rs-badge rs-badge-b">Étape 3 · objectif trail de printemps</span>
           <span class="rs-when">Dim. 7 mars 2027</span>
         </div>
         <div class="rs-event">Forez Trails</div>
@@ -282,10 +179,10 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 5 · LA PINS JUST'À PIED · SEMI DE TEST · PRINTEMPS 27 -->
+      <!-- ÉTAPE 4 · LA PINS JUST'À PIED · SEMI DE TEST · PRINTEMPS 27 -->
       <div class="race-step">
         <div class="rs-top">
-          <span class="rs-badge">Étape 5 · semi test</span>
+          <span class="rs-badge">Étape 4 · semi test</span>
           <span class="rs-when">Fin mai 2027 · date à confirmer</span>
         </div>
         <div class="rs-event">La Pins Just'à Pied · Pins-Justaret</div>
@@ -318,10 +215,10 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 6 · SEMI DE TOURNEFEUILLE · SEMI DE TEST · AUTOMNE 27 -->
+      <!-- ÉTAPE 5 · SEMI DE TOURNEFEUILLE · SEMI DE TEST · AUTOMNE 27 -->
       <div class="race-step">
         <div class="rs-top">
-          <span class="rs-badge">Étape 6 · semi test</span>
+          <span class="rs-badge">Étape 5 · semi test</span>
           <span class="rs-when">Dim. 10 oct. 2027</span>
         </div>
         <div class="rs-event">Semi-marathon de Tournefeuille · Challenge Levy</div>
@@ -356,10 +253,10 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 7 · TRAIL DES 3 ROCS · TRAIL D'AUTOMNE 27 -->
+      <!-- ÉTAPE 6 · TRAIL DES 3 ROCS · TRAIL D'AUTOMNE 27 -->
       <div class="race-step">
         <div class="rs-top">
-          <span class="rs-badge">Étape 7 · trail d'automne</span>
+          <span class="rs-badge">Étape 6 · trail d'automne</span>
           <span class="rs-when">Novembre 2027 · date à confirmer</span>
         </div>
         <div class="rs-event">Trail des 3 Rocs · Saint-Antonin-Noble-Val</div>
@@ -425,111 +322,6 @@
 
     </div>
 
-    <details class="fold" open>
-      <summary>Courses à surveiller · envies pour plus tard</summary>
-      <div class="fold-body">
-        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Les courses qui ne sont pas encore dans la feuille de route : des envies pour plus tard, à ne prendre que si la forme et le calendrier s'y prêtent. « Non communiquée » signifie que l'organisateur n'a pas encore publié de date, pas qu'il n'y en a pas.</p>
-        <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Événement</th><th>Course</th><th>Distance · D+</th><th>UTMB Index</th><th>Période</th><th>Ouverture des dossards</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Volvic Volcanic Experience</strong><br><span class="muted" style="font-size:0.75rem;">Volvic (63) · plateau volcanique</span></td>
-              <td>La VVX</td>
-              <td>26 km · D+650</td>
-              <td><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
-              <td>Mai 2027</td>
-              <td class="muted">Non communiquée <span style="font-size:0.75rem;">(les inscriptions partent vite sur cette épreuve)</span></td>
-            </tr>
-            <tr>
-              <td><strong><a href="https://www.finishers.com/course/sancy-trail" target="_blank" rel="noopener">Sancy Trail by Aûpa Outdoor</a></strong><br><span class="muted" style="font-size:0.75rem;">Chambon-sur-Lac (63)</span></td>
-              <td>Chambon Neige et Lac</td>
-              <td>24 km · D+1160</td>
-              <td><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
-              <td>Juin 2027</td>
-              <td class="muted">Ouvertures historiquement en novembre de l'année précédente — <strong style="color:var(--accent2);">à surveiller dès nov. 2026</strong></td>
-            </tr>
-            <tr>
-              <td rowspan="2"><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15) · label UTMB</span></td>
-              <td>Le Trail des Crêtes</td>
-              <td>22 km · D+1200</td>
-              <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></td>
-              <td rowspan="2">Juillet 2027</td>
-              <td rowspan="2" class="muted">Non communiquée</td>
-            </tr>
-            <tr>
-              <td>La 4×1800</td>
-              <td>35 km · D+2000</td>
-              <td><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
-            </tr>
-            <tr>
-              <td><strong><a href="https://www.fouleesseyssoises.fr/fouleepourlavie/" target="_blank" rel="noopener">La Foulée pour la Vie</a></strong><br><span class="muted" style="font-size:0.75rem;">Seysses (31) · 300 dossards, 22 €</span></td>
-              <td>Le semi-marathon</td>
-              <td>21,1 km · route, deux boucles de 10 km</td>
-              <td class="muted">—</td>
-              <td>Septembre 2027</td>
-              <td class="muted">Non communiquée</td>
-            </tr>
-            <tr>
-              <td rowspan="2"><strong><a href="https://www.mytrails.com/en/events/grand-trail-esprit-volcans_wBAtg" target="_blank" rel="noopener">GT Esprit Volcan</a></strong><br><span class="muted" style="font-size:0.75rem;">Auvergne · label UTMB</span></td>
-              <td>La Directissime</td>
-              <td>34 km · D+770 / D−1800</td>
-              <td rowspan="2"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
-              <td rowspan="2">Septembre 2027</td>
-              <td rowspan="2" class="muted">Non communiquée</td>
-            </tr>
-            <tr>
-              <td>Le Gergotrail</td>
-              <td>22 km · D−900</td>
-            </tr>
-            <tr>
-              <td rowspan="3"><strong>Festival des Templiers</strong><br><span class="muted" style="font-size:0.75rem;">Millau (12) · label UTMB</span></td>
-              <td><a href="https://www.festivaldestempliers.com/courses/marathon-des-causses" target="_blank" rel="noopener">Marathon des Causses</a></td>
-              <td>33,6 km · D+1581</td>
-              <td rowspan="3"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
-              <td rowspan="3">Octobre 2027</td>
-              <td rowspan="3" class="muted">Environ un an à l'avance <span style="font-size:0.75rem;">(places parties en quelques heures)</span></td>
-            </tr>
-            <tr>
-              <td><a href="https://www.festivaldestempliers.com/courses/marathon-du-larzac" target="_blank" rel="noopener">Marathon du Larzac</a></td>
-              <td>33,3 km · D+1400</td>
-            </tr>
-            <tr>
-              <td><a href="https://www.festivaldestempliers.com/courses/monna-lisa-trail" target="_blank" rel="noopener">Mona Lisa</a></td>
-              <td>30,1 km · D+1176</td>
-            </tr>
-            <tr>
-              <td><strong>Grands Trails d'Auvergne</strong><br><span class="muted" style="font-size:0.75rem;">Aubusson-d'Auvergne (63)</span></td>
-              <td><a href="https://www.grandstrailsauvergne.fr/les-courses/trail-du-lac/" target="_blank" rel="noopener">Trail du Lac</a></td>
-              <td>27 km · D+850</td>
-              <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></td>
-              <td>Octobre 2027</td>
-              <td class="muted">Non communiquée</td>
-            </tr>
-            <tr>
-              <td><strong><a href="https://harmonie-mutuelle.toulouserunexperience.fr/semi-marathon/" target="_blank" rel="noopener">Toulouse Métropole Run Expérience</a></strong><br><span class="muted" style="font-size:0.75rem;">Toulouse (31) · 18 000 dossards, sas avec meneurs d'allure, 45 €</span></td>
-              <td>Le semi-marathon</td>
-              <td>21,1 km · route</td>
-              <td class="muted">—</td>
-              <td>Automne 2027<br><span class="muted" style="font-size:0.75rem;">édition 2026 le 1er nov.</span></td>
-              <td class="muted">Non communiquée</td>
-            </tr>
-            <tr>
-              <td><strong>La Pastourelle</strong><br><span class="muted" style="font-size:0.75rem;">Salers (15) · Cantal</span></td>
-              <td>Le 31 km</td>
-              <td>31 km · D+1150</td>
-              <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></td>
-              <td>Mai · plus tard, pas en 2027</td>
-              <td class="muted">À vérifier <span style="font-size:0.75rem;">(ouvertures généralement en début d'année)</span></td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-    </details>
-
   </section>
 
   <!-- ========== PLANNING · la saison d'un coup d'œil (prototype) ========== -->
@@ -539,33 +331,183 @@
     <div id="jdp-planning" class="planning"></div>
   </section>
 
-  <!-- ========== CETTE SEMAINE · le pense-bête ========== -->
-  <section id="semaine_en_cours" class="section">
-    <div class="section-title">Cette semaine · ce qu'il y a à faire</div>
+  <!-- ========== COURSES À SURVEILLER · après mars 2028 ========== -->
+  <section id="surveiller" class="section">
+    <div class="section-title">Courses à surveiller · après mars 2028</div>
+    <p class="info" style="margin-top:0; margin-bottom:1.2rem;">Les envies pour après le marathon de Rome : des courses hors de la feuille de route, à ne prendre que si la forme et le calendrier s'y prêtent. Le mois donne la période habituelle de la course ; l'année n'est précisée que quand une édition est visée. « Non communiquée » signifie que l'organisateur n'a pas encore publié de date, pas qu'il n'y en a pas.</p>
 
-    <div class="card card-alert" style="margin-bottom:1.5rem; margin-top:1.5rem;">
-      <div class="tag tag-green">Décidé</div>
-      <h3 style="margin-bottom:0.6rem;">La ville du marathon : Rome</h3>
-      <p style="font-size:0.85rem; margin-bottom:0;">Rome est retenue, Barcelone et Madrid écartées. Reste à surveiller l'ouverture des dossards pour l'édition 2028 — non communiquée à ce jour, à guetter dès l'automne 2027 — puis à caler vol et hôtel dans l'onglet Logistique.</p>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Événement</th><th>Course</th><th>Distance · D+</th><th>UTMB Index</th><th>Période</th><th>Ouverture des dossards</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="https://chrono-start.com/challenge-levy/" target="_blank" rel="noopener">Challenge Levy</a></strong><br><span class="muted" style="font-size:0.75rem;">Autour de Toulouse · 12 à 15 courses par an, dont le semi de Tournefeuille · classé à partir de 5 courses</span></td>
+          <td>Toutes les courses, route et trail</td>
+          <td class="muted">Selon la course</td>
+          <td class="muted">—</td>
+          <td>Toute l'année</td>
+          <td class="muted">Course par course</td>
+        </tr>
+        <tr>
+          <td><strong>La Pastourelle</strong><br><span class="muted" style="font-size:0.75rem;">Salers (15) · Cantal</span></td>
+          <td><a href="https://lapastourelle.net/epreuves/trail-de-la-pastourelle/" target="_blank" rel="noopener">Le 31 km</a></td>
+          <td>31 km · D+1150</td>
+          <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></td>
+          <td>Mai 2028</td>
+          <td class="muted">À vérifier <span style="font-size:0.75rem;">(ouvertures généralement en début d'année)</span></td>
+        </tr>
+        <tr>
+          <td><strong>Volvic Volcanic Experience</strong><br><span class="muted" style="font-size:0.75rem;">Volvic (63) · plateau volcanique</span></td>
+          <td>La VVX</td>
+          <td>26 km · D+650</td>
+          <td><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
+          <td>Mai</td>
+          <td class="muted">Non communiquée <span style="font-size:0.75rem;">(les inscriptions partent vite sur cette épreuve)</span></td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://www.finishers.com/course/sancy-trail" target="_blank" rel="noopener">Sancy Trail by Aûpa Outdoor</a></strong><br><span class="muted" style="font-size:0.75rem;">Chambon-sur-Lac (63)</span></td>
+          <td>Chambon Neige et Lac</td>
+          <td>24 km · D+1160</td>
+          <td><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
+          <td>Juin</td>
+          <td class="muted">Ouvertures historiquement en novembre de l'année précédente</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong><a href="https://www.vallee-dordogne.com/agenda/evenements-sportifs/trail-rocamadour" target="_blank" rel="noopener">Trail de Rocamadour</a></strong><br><span class="muted" style="font-size:0.75rem;">Rocamadour (46) · Lot</span></td>
+          <td>L'Ouysse</td>
+          <td>24,5 km · D+900</td>
+          <td rowspan="3" class="muted">—</td>
+          <td rowspan="3">Juin</td>
+          <td rowspan="3" class="muted">À vérifier</td>
+        </tr>
+        <tr>
+          <td>L'Échine de l'âne</td>
+          <td>33,5 km · D+1400</td>
+        </tr>
+        <tr>
+          <td>La Durandale</td>
+          <td>56 km · D+2300</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://www.les3pics.fr/" target="_blank" rel="noopener">Trail des 3 Pics</a></strong><br><span class="muted" style="font-size:0.75rem;">Arbas (31) · Pyrénées</span></td>
+          <td>À choisir</td>
+          <td>Quatre formats en 2026, de 12 à 56 km</td>
+          <td class="muted">—</td>
+          <td>Juin</td>
+          <td class="muted">À vérifier</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong><a href="https://www.finishers.com/course/le-trail-des-4-x-1800" target="_blank" rel="noopener">Trail des 4×1800</a></strong><br><span class="muted" style="font-size:0.75rem;">Le Lioran (15) · label UTMB</span></td>
+          <td>Le Trail des Crêtes</td>
+          <td>22 km · D+1200</td>
+          <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></td>
+          <td rowspan="2">Juillet</td>
+          <td rowspan="2" class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td>La 4×1800</td>
+          <td>35 km · D+2000</td>
+          <td><span class="utmb-badge utmb-50k"><span class="utmb-k">50K</span><span class="utmb-mark">✓</span></span></td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://www.fouleesseyssoises.fr/fouleepourlavie/" target="_blank" rel="noopener">La Foulée pour la Vie</a></strong><br><span class="muted" style="font-size:0.75rem;">Seysses (31) · 300 dossards, 22 €</span></td>
+          <td>Le semi-marathon</td>
+          <td>21,1 km · route, deux boucles de 10 km</td>
+          <td class="muted">—</td>
+          <td>Septembre</td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong><a href="https://www.finishers.com/course/grand-trail-esprit-volcans" target="_blank" rel="noopener">GT Esprit Volcan</a></strong><br><span class="muted" style="font-size:0.75rem;">Auvergne · label UTMB</span></td>
+          <td>La Directissime</td>
+          <td>34 km · D+770 / D−1800</td>
+          <td rowspan="2"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
+          <td rowspan="2">Septembre</td>
+          <td rowspan="2" class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td>Le Gergotrail</td>
+          <td>22 km · D−900</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong><a href="https://www.festivaldestempliers.com/" target="_blank" rel="noopener">Festival des Templiers</a></strong><br><span class="muted" style="font-size:0.75rem;">Millau (12) · label UTMB</span></td>
+          <td><a href="https://www.festivaldestempliers.com/courses/marathon-des-causses" target="_blank" rel="noopener">Marathon des Causses</a></td>
+          <td>33,6 km · D+1581</td>
+          <td rowspan="3"><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
+          <td rowspan="3">Octobre</td>
+          <td rowspan="3" class="muted">Environ un an à l'avance <span style="font-size:0.75rem;">(places parties en quelques heures)</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.festivaldestempliers.com/courses/marathon-du-larzac" target="_blank" rel="noopener">Marathon du Larzac</a></td>
+          <td>33,3 km · D+1400</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.festivaldestempliers.com/courses/monna-lisa-trail" target="_blank" rel="noopener">Mona Lisa</a></td>
+          <td>30,1 km · D+1176</td>
+        </tr>
+        <tr>
+          <td><strong>Grands Trails d'Auvergne</strong><br><span class="muted" style="font-size:0.75rem;">Aubusson-d'Auvergne (63)</span></td>
+          <td><a href="https://www.grandstrailsauvergne.fr/les-courses/trail-du-lac/" target="_blank" rel="noopener">Trail du Lac</a></td>
+          <td>27 km · D+850</td>
+          <td><span class="utmb-badge utmb-20k"><span class="utmb-k">20K</span><span class="utmb-mark">✓</span></span></td>
+          <td>Octobre</td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://harmonie-mutuelle.toulouserunexperience.fr/semi-marathon/" target="_blank" rel="noopener">Toulouse Métropole Run Expérience</a></strong><br><span class="muted" style="font-size:0.75rem;">Toulouse (31) · 18 000 dossards, sas avec meneurs d'allure, 45 €</span></td>
+          <td>Le semi-marathon</td>
+          <td>21,1 km · route</td>
+          <td class="muted">—</td>
+          <td>Automne<br><span class="muted" style="font-size:0.75rem;">édition 2026 le 1er nov.</span></td>
+          <td class="muted">Non communiquée</td>
+        </tr>
+        <tr>
+          <td><strong>Marathon des Sables</strong><br><span class="muted" style="font-size:0.75rem;">Sahara (Maroc) · course par étapes</span></td>
+          <td>Une édition</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td>Un jour</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td><strong>UTMB Mont-Blanc</strong><br><span class="muted" style="font-size:0.75rem;">Chamonix (74)</span></td>
+          <td>Une des courses</td>
+          <td class="muted">—</td>
+          <td><span class="utmb-idx"><span class="utmb-idx-u">UTMB</span><span class="utmb-idx-i">INDEX</span></span></td>
+          <td>Un jour</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td><strong>Infinity Trail</strong><br><span class="muted" style="font-size:0.75rem;">Format backyard : une boucle de 6,7 km par heure, jusqu'au dernier en course · plusieurs éditions en France</span></td>
+          <td>Une édition</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td>Un jour</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td><strong>Grand Raid Réunion</strong><br><span class="muted" style="font-size:0.75rem;">La Réunion (974)</span></td>
+          <td>La Diagonale des Fous</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td>Un jour</td>
+          <td class="muted">—</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
+  </section>
 
-    <h3 style="margin:2rem 0 0.75rem;">Le pense-bête</h3>
+  <!-- ========== PENSE-BÊTE · ce qu'il y a à faire ========== -->
+  <section id="semaine_en_cours" class="section">
+    <div class="section-title">Pense-bête · ce qu'il y a à faire</div>
+
     <div class="table-scroll">
     <table>
       <thead><tr><th>Échéance</th><th>Quoi</th><th>Où ça en est</th><th>Statut</th></tr></thead>
       <tbody>
-        <tr class="plan-race">
-          <td class="mono">Fait</td>
-          <td><strong>Ville du marathon</strong><br><span class="muted" style="font-size:0.75rem;">Rome</span></td>
-          <td>Décidé. Barcelone et Madrid écartées.</td>
-          <td><span class="tag tag-green" style="margin:0;">Décidé</span></td>
-        </tr>
-        <tr>
-          <td class="mono">Fait</td>
-          <td><strong>Semi de San Sebastián</strong> · 4 oct.<br><span class="muted" style="font-size:0.75rem;">dossard et hôtel</span></td>
-          <td>Couru le 4 octobre en 1h56'05 (temps réel). Résultat dans le Palmarès.</td>
-          <td><span class="tag tag-green" style="margin:0;">Couru</span></td>
-        </tr>
         <tr>
           <td class="mono">Sept. 2026</td>
           <td><strong>Trail du Béret</strong> · 15 nov.<br><span class="muted" style="font-size:0.75rem;">dossard</span></td>
@@ -577,12 +519,6 @@
           <td><strong>Nocturne des Rois</strong> · 16 janv. 2027<br><span class="muted" style="font-size:0.75rem;">dossard</span></td>
           <td>Date confirmée. Dossard à retirer le 1er novembre 2026.</td>
           <td><span class="tag tag-orange" style="margin:0;">À faire</span></td>
-        </tr>
-        <tr>
-          <td class="mono">Nov. 2026</td>
-          <td><strong>Sancy Trail (Aûpa Outdoor)</strong> · juin 2027<br><span class="muted" style="font-size:0.75rem;">dossard, optionnel</span></td>
-          <td>Ouvertures historiquement en novembre de l'année précédente.</td>
-          <td><span class="tag tag-blue" style="margin:0;">Optionnel</span></td>
         </tr>
         <tr>
           <td class="mono">Déc. 2026</td>
@@ -617,9 +553,6 @@
       </tbody>
     </table>
     </div>
-
-    <h3 style="margin:2rem 0 0.75rem;">Réservations déjà faites</h3>
-    <p class="info" style="margin-top:0;">Aucune réservation en cours : celle de San Sebastián (hôtel du 2 au 4 octobre) est passée.</p>
   </section>
 
   <!-- ========== LOGISTIQUE · le marathon ========== -->
@@ -1125,48 +1058,8 @@
 
       <nav class="art-menu">
         <span class="art-menu-label">Dans cette rubrique</span>
-        <a href="#art-vaches">Vache laitière ou vache à viande</a>
         <a href="#art-strava">Exporter ses données Strava</a>
       </nav>
-
-      <!-- ===== Article · vaches ===== -->
-      <article class="article" id="art-vaches">
-        <h2 class="art-title">Vache laitière ou vache à viande</h2>
-        <p class="art-sub">Comment les reconnaître</p>
-
-        <p class="art-lede">Les deux types de bovins ont été sélectionnés par l'élevage pour des fonctions opposées, ce qui se lit
-        directement dans leur morphologie.</p>
-
-        <h3>La silhouette générale</h3>
-        <p>La vache laitière a une silhouette « en triangle » : maigre à l'avant, elle concentre son énergie vers la production de
-        lait plutôt que vers le muscle. On voit souvent ses côtes et sa colonne vertébrale. Une race comme la <strong>Holstein</strong>
-        (robe noire et blanche) est l'exemple type.</p>
-
-        <p>La vache à viande, elle, est massive et musclée, avec une silhouette « rectangulaire » ou trapue. L'arrière-train (gigot,
-        cuisses) est particulièrement développé, car c'est la zone la plus valorisée en boucherie. La <strong>Charolaise</strong>
-        (blanche) ou la <strong>Limousine</strong> (robe fauve) en sont des exemples typiques en France.</p>
-
-        <h3>Le pis (la mamelle)</h3>
-        <p>C'est le critère le plus fiable : une vache laitière a un pis très développé, volumineux, bien attaché, avec des veines
-        apparentes sur le ventre (les « veines de lait »). Une vache à viande a un pis discret, juste suffisant pour nourrir son
-        veau.</p>
-
-        <h3>L'ossature et la musculature</h3>
-        <p>Chez la laitière, les os des hanches et des côtes sont souvent visibles ; la peau est fine. Chez la vache à viande, on ne
-        voit quasiment pas les os : le corps est recouvert d'une épaisse couche de muscle, notamment sur le dos et les cuisses.</p>
-
-        <h3>Le comportement et l'usage</h3>
-        <p>Les laitières sont traites deux fois par jour et vivent souvent en stabulation ou alternent pâturage/étable selon les
-        exploitations. Les vaches à viande passent généralement plus de temps au pâturage en troupeau, avec leur veau à leurs côtés
-        jusqu'au sevrage.</p>
-
-        <h3>Un repère rapide</h3>
-        <p>Si l'animal a un gros pis et un corps maigre/anguleux → laitière. Si son pis est petit mais que son corps est trapu et
-        très musclé → viande. Certaines races dites « mixtes » (comme la <strong>Normande</strong>) combinent les deux aptitudes,
-        avec un physique intermédiaire.</p>
-      </article>
-
-      <hr class="art-sep">
 
       <!-- ===== Article · export Strava ===== -->
       <article class="article" id="art-strava">
@@ -1250,6 +1143,6 @@
 </main>
 
 <script src="planning.js?v=20261014a" defer></script>
-<script src="jdp.js?v=20261019a" defer></script>
+<script src="jdp.js?v=20261019b" defer></script>
 </body>
 </html>
