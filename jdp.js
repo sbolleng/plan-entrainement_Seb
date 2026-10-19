@@ -93,8 +93,9 @@ const STEPS = [
   { date: new Date('2027-10-10T09:40:00'), name: 'Semi de Tournefeuille' }
 ];
 // Le semi de fin mars (single-date) et la VVX ont été retirés de la feuille
-// de route ; le semi de San Sebastián, couru, est passé au Palmarès. La Pins Just'à Pied (fin mai 2027) et le Trail des 3 Rocs
-// (novembre 2027) n'y sont pas tant que leur date 2027 n'est pas publiée.
+// de route ; le semi de San Sebastián, couru, est passé au Palmarès. La Pins
+// Just'à Pied (fin mai 2027) et le Trail des 3 Rocs (novembre 2027) n'y sont
+// pas tant que leur date 2027 n'est pas publiée.
 // Semi de Tournefeuille : heure de départ de l'édition 2026, à confirmer.
 
 function updateCountdown() {
