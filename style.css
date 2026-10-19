@@ -1979,7 +1979,9 @@
   .pv2-btn:hover { background: var(--accent2); border-color: var(--accent2); }
   .pv2-btn.is-on { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--accent); }
   .pv2-ico { width: 0.95rem; height: 0.95rem; flex: none; }
-  .pv2-chev { font-size: 0.6rem; }
+  .pv2-chev { width: 0.85rem; height: 0.85rem; flex: none; transition: transform 0.15s; }
+  .pv2-btn[aria-expanded="true"] .pv2-chev, .pv2-clear .pv2-chev { transform: rotate(180deg); }
+  .pv2-clear .pv2-chev { width: 0.8rem; height: 0.8rem; margin-left: 0.3rem; vertical-align: -0.12em; }
   .pv2-count { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--muted); }
   .pv2-clear { background: none; border: none; padding: 0; font: inherit; font-size: 0.75rem; color: var(--accent); text-decoration: underline; cursor: pointer; }
   .pv2-clear[hidden] { display: none; }
@@ -2025,11 +2027,11 @@
   .pv2-check { display: inline-flex; align-items: center; gap: 0.35rem; margin-right: 0.6rem; font-size: 0.8rem; color: var(--text); cursor: pointer; }
   .pv2-check input { accent-color: var(--accent); }
   .pv2-table th { padding: 0; vertical-align: bottom; }
-  .pv2-table td { padding: 0.6rem 0.5rem; }
+  .pv2-table td { padding: 0.6rem 0.45rem; }
   .pv2-sort {
     display: block;
     width: 100%;
-    padding: 0.6rem 0.5rem;
+    padding: 0.6rem 0.45rem;
     font: inherit;
     letter-spacing: inherit;
     text-transform: inherit;
@@ -2042,8 +2044,12 @@
   }
   .pv2-sort:hover { color: var(--text); }
   .pv2-table th[aria-sort="ascending"] .pv2-sort, .pv2-table th[aria-sort="descending"] .pv2-sort { color: var(--accent); }
-  .pv2-arrow { margin-left: 0.35rem; }
-  .pv2-table th.pv2-more-cell { width: 1%; padding: 0 0.5rem; text-align: center; vertical-align: middle; }
+  .pv2-nw { white-space: nowrap; }
+  .pv2-sort-ico { display: inline-block; width: 0.6rem; height: 0.85rem; margin-left: 0.4rem; vertical-align: -0.15em; }
+  .pv2-sort-ico path { fill: currentColor; opacity: 0.45; }
+  .pv2-table th[aria-sort="ascending"] .pv2-up, .pv2-table th[aria-sort="descending"] .pv2-down { opacity: 1; }
+  .pv2-table th[aria-sort="ascending"] .pv2-down, .pv2-table th[aria-sort="descending"] .pv2-up { opacity: 0.2; }
+  .pv2-table th.pv2-more-cell { width: 1%; padding: 0 0.3rem; text-align: center; vertical-align: middle; }
   .pv2-more {
     display: inline-flex;
     align-items: center;
