@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-10-18',
+  maj: '2026-10-19',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -290,6 +290,8 @@ const RENFO_LOG = {
     // Kinés du 13/10 (17h15) et du 15/10 (12h15) : faites, contenu non noté.
     // Seules séances de la semaine avant le Clam Trail (confirmé par Seb).
     { date: '2026-10-13', source: 'kiné', duree: null, exercices: [] },
-    { date: '2026-10-15', source: 'kiné', duree: null, exercices: [] }
+    { date: '2026-10-15', source: 'kiné', duree: null, exercices: [] },
+    // Kiné du 19/10 (18h15), lendemain du Clam Trail : faite, contenu non noté.
+    { date: '2026-10-19', source: 'kiné', duree: null, exercices: [] }
   ]
 };
