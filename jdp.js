@@ -91,11 +91,12 @@ const STEPS = [
   { date: new Date('2026-11-15T09:00:00'), name: 'Trail du Béret' },
   { date: new Date('2027-01-16T18:00:00'), name: 'Nocturne des Rois' },
   { date: new Date('2027-03-07T08:00:00'), name: "L'Augerolloise" },
-  { date: new Date('2027-10-24T08:00:00'), name: "Trail d'automne 27" }
+  { date: new Date('2027-10-10T09:40:00'), name: 'Semi de Tournefeuille' }
 ];
 // Le semi de fin mars (single-date) et la VVX ont été retirés de la feuille
-// de route. La Pins Just'à Pied (semi de test, fin mai 2027) n'est pas dans
-// cette liste tant que sa date 2027 n'est pas publiée.
+// de route. La Pins Just'à Pied (fin mai 2027) et le Trail des 3 Rocs
+// (novembre 2027) n'y sont pas tant que leur date 2027 n'est pas publiée.
+// Semi de Tournefeuille : heure de départ de l'édition 2026, à confirmer.
 
 function updateCountdown() {
   const now = new Date();
@@ -457,21 +458,14 @@ setInterval(function () {
       { date: '2027-01-16', name: 'Nocturne des Rois', effort: 14, noPrep: true },
       { date: '2027-03-07', name: "L'Augerolloise", effort: 49.5, key: true },
       { from: '2027-05-24', to: '2027-05-31', when: 'fin mai', name: "La Pins Just'à Pied", effort: 21.1 },
+      { date: '2027-10-10', name: 'Semi de Tournefeuille', effort: 21.1 },
+      { from: '2027-11-01', to: '2027-11-30', when: 'novembre', name: 'Trail des 3 Rocs', effort: 52 },
       { date: '2028-03-19', provisional: 'mi-mars', name: 'Marathon de Rome', effort: 42.2, key: true }
-    ],
-    candidates: [
-      { month: '2027-09', name: 'Semi de Seysses', note: '3e choix du semi d\'automne' },
-      { month: '2027-09', name: 'GT Esprit Volcan', note: 'candidat du trail d\'automne' },
-      { date: '2027-10-10', name: 'Semi de Tournefeuille', note: '1er choix du semi d\'automne' },
-      { month: '2027-10', name: 'Festival des Templiers', note: 'candidat du trail d\'automne' },
-      { month: '2027-10', name: "Grands Trails d'Auvergne", note: 'candidat du trail d\'automne' },
-      { month: '2027-11', name: 'Semi de Toulouse', note: '2e choix du semi d\'automne, date 2027 à confirmer (édition 2026 le 1er nov.)' },
-      { month: '2027-11', name: 'Trail des 3 Rocs', note: 'candidat du trail d\'automne' }
     ],
     views: [
       { id: '12m', label: '12 mois', months: 12 },
       { id: 'rome', label: "Jusqu'à Rome", until: '2028-03' }
     ],
-    footnote: "Prototype. Durées de préparation (4, 6 ou 8 semaines) et de récupération (3, 7 ou 14 jours) provisoires, selon l'effort de la course : à définir. La Nocturne des Rois, course plaisir, n'a pas de préparation dédiée. La Pins Just'à Pied est placée sur la fin mai en attendant sa date, le marathon de Rome sur sa date provisoire. Les candidats du semi et du trail d'automne sont indiqués par mois, avec un carré vide quand leur date est connue."
+    footnote: "Prototype. Durées de préparation (4, 6 ou 8 semaines) et de récupération (3, 7 ou 14 jours) provisoires, selon l'effort de la course : à définir. La Nocturne des Rois, course plaisir, n'a pas de préparation dédiée. La Pins Just'à Pied est placée sur la fin mai et le Trail des 3 Rocs sur tout le mois de novembre en attendant leur date 2027, le marathon de Rome sur sa date provisoire."
   });
 })();
