@@ -15,6 +15,16 @@ Deux sites d'entraînement publiés par GitHub Pages depuis `main` : celui de Se
 - Tout fichier CSS ou JS modifié change de numéro dans son lien (`?v=AAAAMMJJx`), et la balise `site-version` de la page change aussi : c'est ce qui force les navigateurs, iPhone compris, à recharger.
 - Circuit git : branche de la session, fusion dans `main` (`--no-ff`), envoi des deux, puis vérification que la publication GitHub Pages a réussi, avant d'annoncer que c'est en ligne.
 
+## Quand Seb demande « la todo »
+
+Toujours répondre en quatre blocs, dans cet ordre :
+1. **Seb · courses et autres** (`index.html`) : liste « À faire cette semaine », kinés à venir, rappels.
+2. **Seb · le site lui-même** (`index.html`) : corrections ou contenus en attente sur la page.
+3. **JDP · courses et autres** (`jdp.html`) : onglet Pense-bête (dossards, hébergements, épargne).
+4. **JDP · le site lui-même** (`jdp.html`) : la liste « En attente sur le site de JDP » ci-dessous.
+
+« La todo de index » : blocs 1 et 2 seulement. « La todo de JDP » : blocs 3 et 4 seulement. Un bloc vide se dit (« rien en attente »), il ne disparaît pas.
+
 ## En attente sur le site de JDP (au 19 octobre 2026)
 
 - Onglet « Palmarès V2 », provisoire : remplacer le Palmarès actuel quand Seb le valide.
