@@ -1,4 +1,4 @@
-# Page Objectif
+# Objectif · spécification fonctionnelle
 
 Brouillon v0.1 · 5 octobre 2026 · [Retour au sommaire](README.md) · Jalon 1 (octobre 2026) · preuve de concept
 

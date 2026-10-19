@@ -85,13 +85,13 @@ Typographies : Space Grotesk pour les textes, Space Mono pour les chiffres et le
 
 | Module | Rôle | Jalon |
 | --- | --- | --- |
-| Objectif | Feuille de route jusqu'à la course objectif ([spécification](page-objectif.md)) | 1 |
+| Objectif | Feuille de route jusqu'à la course objectif ([spécification](module-objectif-specification.md)) | 1 |
 | Réglages | Activation des modules, thème, compte | 1 |
 | Nutrition | Journal alimentaire, cibles du jour, calcul du besoin, conseils | 1 |
 | Courses à surveiller | Veille des courses envisagées : dates, ouverture des inscriptions, index UTMB | 2 |
 | Guide | Articles et fiches pratiques, publics ou privés | 2 |
 | Profil | Données personnelles, zones d'entraînement, records | 2 |
-| Palmarès | Historique des courses et des performances | 2 |
+| Palmarès | Historique des courses et des performances ([spécification](module-palmares-specification.md)) | 2 |
 | Cette semaine | Synthèse des sept prochains jours, assemblée à partir des autres modules | 2 |
 | Calculatrice | Allure, vitesse, temps de passage, VMA, km-effort, pente, ravitaillement | À positionner |
 | Logistique | Transport, hébergement, retrait des dossards, horaires | À positionner |
