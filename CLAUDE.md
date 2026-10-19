@@ -14,3 +14,10 @@ Deux sites d'entraînement publiés par GitHub Pages depuis `main` : celui de Se
 - Dépôt public : aucun nom complet de tiers, aucune référence de réservation, aucun secret.
 - Tout fichier CSS ou JS modifié change de numéro dans son lien (`?v=AAAAMMJJx`), et la balise `site-version` de la page change aussi : c'est ce qui force les navigateurs, iPhone compris, à recharger.
 - Circuit git : branche de la session, fusion dans `main` (`--no-ff`), envoi des deux, puis vérification que la publication GitHub Pages a réussi, avant d'annoncer que c'est en ligne.
+
+## En attente sur le site de JDP (au 19 octobre 2026)
+
+- Onglet « Palmarès V2 », provisoire : remplacer le Palmarès actuel quand Seb le valide.
+- Dates 2027 de La Pins Just'à Pied et du Trail des 3 Rocs : ajouter compte à rebours et étape (`STEPS` de `jdp.js`) dès leur publication.
+- Kilométrage des chaussures : Seb doit le demander à JDP.
+- Planning : durées de préparation et de récupération à définir, plus tard.
