@@ -1,6 +1,6 @@
 # Palmarès · spécification fonctionnelle
 
-Version 0.6 · 19 octobre 2026 · [Retour au sommaire](README.md) · Jalon 2
+Version 0.7 · 19 octobre 2026 · [Retour au sommaire](README.md) · Jalon 2
 
 ## 1. Objet
 
@@ -78,8 +78,8 @@ Toutes les colonnes affichées se trient. L'ordre dépend du type de donnée :
 | Durée | Temps officiel, temps puce, allures | Plus court d'abord | Plus long d'abord |
 
 - **À l'ouverture** : tri par date, la plus récente en haut.
-- Choisir une colonne la trie dans son ordre par défaut ; la choisir à nouveau inverse l'ordre.
-- **Texte** : ordre alphabétique, sans tenir compte des majuscules ni des accents (« Épicurienne » se range avec les E).
+- Toucher l'en-tête d'une colonne la trie dans son ordre par défaut ; le toucher à nouveau inverse l'ordre.
+- **Texte** : ordre alphabétique, sans tenir compte des majuscules ni des accents (« Épicurienne » se range avec les E) ; les nombres y sont rangés par valeur (« 5 km » avant « 10 km »).
 - **Durées** : triées sur leur valeur, pas sur le texte (49'18 passe avant 1h04'24).
 - **Valeurs vides** : toujours en fin de liste, dans les deux ordres.
 - **Égalité** : départagée par la date, la plus récente d'abord.
@@ -92,14 +92,14 @@ Toutes les colonnes affichées se filtrent, selon leur type de donnée :
 | --- | --- | --- |
 | Date | Une année, ou une période du … au … | Les courses de 2025 |
 | Texte | Le champ contient le texte tapé, sans tenir compte des majuscules ni des accents | « sete » trouve « Sète » |
-| Choix | Une ou plusieurs valeurs cochées | Trail découverte et Trail court |
-| Nombre et durée | Minimum, maximum, ou les deux | Temps officiel sous 2 h |
+| Choix | Une ou plusieurs valeurs cochées, parmi celles présentes dans le tableau | Trail découverte et Trail court |
+| Nombre et durée | Minimum, maximum, ou les deux ; une durée s'écrit 2h, 1h30, 49'18… | Temps officiel sous 2 h |
 
+- **Panneau de filtres** : un bouton « Filtres », au-dessus du tableau, ouvre un panneau avec un réglage par colonne affichée. Le bouton indique le nombre de filtres actifs (« Filtres · 2 »).
+- À côté du bouton : le nombre de courses affichées, par exemple « 4 courses sur 7 », et, dès qu'un filtre est actif, une action unique qui les efface tous.
 - Les filtres de plusieurs colonnes se cumulent : une course doit les passer tous.
 - Plusieurs valeurs cochées dans une même colonne : une seule suffit.
 - Une course sans valeur dans une colonne filtrée est écartée.
-- Le nombre de courses affichées est indiqué, par exemple « 4 courses sur 7 ».
-- Une seule action efface tous les filtres.
 - Le tri s'applique aux courses filtrées.
 - Masquer une colonne retire son filtre.
 - Tri et filtres ne sont pas gardés en mémoire : chaque ouverture revient à la vue par défaut.

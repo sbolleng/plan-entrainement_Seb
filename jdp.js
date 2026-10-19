@@ -186,3 +186,23 @@ setInterval(function () {
     footnote: "Prototype. Durées de préparation (4, 6 ou 8 semaines) et de récupération (3, 7 ou 14 jours) provisoires, selon l'effort de la course : à définir. La Nocturne des Rois, course plaisir, n'a pas de préparation dédiée. La Pins Just'à Pied est placée sur la fin mai et le Trail des 3 Rocs sur tout le mois de novembre en attendant leur date 2027, le marathon de Rome sur sa date provisoire."
   });
 })();
+
+// ===== Onglet Palmarès V2 · d'après la spécification du module (prototype) =====
+// Les courses courues, mises en tableau par palmares.js. Faute de classement
+// officiel relevé, temps et allures sont ceux de la montre, sauf à San
+// Sebastián (temps officiel et temps puce du classement).
+(function () {
+  const root = document.getElementById('jdp-palmares-v2');
+  if (!root || typeof renderPalmares !== 'function') return;
+  renderPalmares(root, {
+    races: [
+      { date: '2025-03-30', course: '10 km de Montauban', type: 'Course sur route', sub: '10 km', dist: 10.1, dplus: 24, tOff: '51:46', pace: '5:08' },
+      { date: '2025-09-13', course: 'Épicurienne Trail', type: 'Trail', sub: 'Trail découverte', dist: 10.7, dplus: 199, tOff: '1:04:24', pace: '6:00' },
+      { date: '2025-10-05', course: 'Semi-marathon de Sète', type: 'Course sur route', sub: 'Semi-marathon', dist: 20.8, dplus: 56, tOff: '1:53:12', pace: '5:24' },
+      { date: '2025-11-30', course: 'Biscatrail', type: 'Trail', sub: 'Trail découverte', dist: 18.3, dplus: 340, tOff: '2:02:30', pace: '6:35' },
+      { date: '2026-03-08', course: "Forez Trail · L'Olmetoise", type: 'Trail', sub: 'Trail court', dist: 24.1, dplus: 932, tOff: '3:00:23', pace: '7:18' },
+      { date: '2026-03-29', course: '10 km de Montauban', type: 'Course sur route', sub: '10 km', dist: 10.0, dplus: 24, tOff: '49:18', pace: '4:55' },
+      { date: '2026-10-04', course: 'Semi de San Sebastián', type: 'Course sur route', sub: 'Semi-marathon', dist: 21.1, tOff: '1:59:39', tChip: '1:56:05', pace: '5:30', rank: 1951 }
+    ]
+  });
+})();
