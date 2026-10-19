@@ -188,21 +188,20 @@ setInterval(function () {
 })();
 
 // ===== Onglet Palmarès V2 · d'après la spécification du module (prototype) =====
-// Les courses courues, mises en tableau par palmares.js. Faute de classement
-// officiel relevé, temps et allures sont ceux de la montre, sauf à San
-// Sebastián (temps officiel et temps puce du classement).
+// Les courses courues, mises en tableau par palmares.js. Temps et allures sont
+// ceux de la montre, sauf à San Sebastián (temps puce du classement).
 (function () {
   const root = document.getElementById('jdp-palmares-v2');
   if (!root || typeof renderPalmares !== 'function') return;
   renderPalmares(root, {
     races: [
-      { date: '2025-03-30', course: '10 km de Montauban', type: 'Course sur route', sub: '10 km', dist: 10.1, dplus: 24, tOff: '51:46', pace: '5:08' },
-      { date: '2025-09-13', course: 'Épicurienne Trail', type: 'Trail', sub: 'Trail découverte', dist: 10.7, dplus: 199, tOff: '1:04:24', pace: '6:00' },
-      { date: '2025-10-05', course: 'Semi-marathon de Sète', type: 'Course sur route', sub: 'Semi-marathon', dist: 20.8, dplus: 56, tOff: '1:53:12', pace: '5:24' },
-      { date: '2025-11-30', course: 'Biscatrail', type: 'Trail', sub: 'Trail découverte', dist: 18.3, dplus: 340, tOff: '2:02:30', pace: '6:35' },
-      { date: '2026-03-08', course: "Forez Trail · L'Olmetoise", type: 'Trail', sub: 'Trail court', dist: 24.1, dplus: 932, tOff: '3:00:23', pace: '7:18' },
-      { date: '2026-03-29', course: '10 km de Montauban', type: 'Course sur route', sub: '10 km', dist: 10.0, dplus: 24, tOff: '49:18', pace: '4:55' },
-      { date: '2026-10-04', course: 'Semi de San Sebastián', type: 'Course sur route', sub: 'Semi-marathon', dist: 21.1, tOff: '1:59:39', tChip: '1:56:05', pace: '5:30', rank: 1951 }
+      { date: '2025-03-30', course: '10 km de Montauban', type: 'Course sur route', sub: '10 km', dist: 10.1, dplus: 24, time: '51:46', pace: '5:08' },
+      { date: '2025-09-13', course: 'Épicurienne Trail', type: 'Trail', sub: 'Trail découverte', dist: 10.7, dplus: 199, time: '1:04:24', pace: '6:00' },
+      { date: '2025-10-05', course: 'Semi-marathon de Sète', type: 'Course sur route', sub: 'Semi-marathon', dist: 20.8, dplus: 56, time: '1:53:12', pace: '5:24' },
+      { date: '2025-11-30', course: 'Biscatrail', type: 'Trail', sub: 'Trail découverte', dist: 18.3, dplus: 340, time: '2:02:30', pace: '6:35' },
+      { date: '2026-03-08', course: "Forez Trail · L'Olmetoise", type: 'Trail', sub: 'Trail court', dist: 24.1, dplus: 932, time: '3:00:23', pace: '7:18' },
+      { date: '2026-03-29', course: '10 km de Montauban', type: 'Course sur route', sub: '10 km', dist: 10.0, dplus: 24, time: '49:18', pace: '4:55' },
+      { date: '2026-10-04', course: 'Semi de San Sebastián', type: 'Course sur route', sub: 'Semi-marathon', dist: 21.1, time: '1:56:05', pace: '5:30', rank: 1951 }
     ]
   });
 })();

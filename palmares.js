@@ -2,14 +2,14 @@
 //
 // Composant partagé, en prototype. renderPalmares(élément, config) dessine le
 // tableau décrit par docs/module-palmares-specification.md, partie consultation :
-// tri en touchant l'en-tête d'une colonne, panneau de filtres, colonnes
-// facultatives (« Plus d'infos ») et records 🥇 calculés. L'édition viendra
-// avec la base de données.
+// tri en touchant l'en-tête d'une colonne, panneau de filtres repliable,
+// colonnes facultatives (bouton « + ») et records 🥇 calculés. L'édition
+// viendra avec la base de données.
 //
 // config.races : une course = { date: 'AAAA-MM-JJ', course, type, sub } avec,
-//   quand on les connaît : dist (km), dplus (m), tOff et tChip (temps officiel
-//   et temps puce, 'h:mm:ss' ou 'mm:ss'), pace (allure, 'm:ss'), rank (place au
-//   classement général), et les données montre wDist, wDplus, wTime, wPace, hr.
+//   quand on les connaît : dist (km), dplus (m), time (temps réalisé, 'h:mm:ss'
+//   ou 'mm:ss'), pace (allure, 'm:ss'), rank (place au classement général), et
+//   les données montre wDist, wDplus, wTime, wPace, hr.
 //   type et sub viennent de la liste de référence ci-dessous.
 (function () {
   // Liste de référence des types et sous-catégories, commune à l'application.
@@ -32,8 +32,7 @@
     { key: 'sub', label: 'Sous-catégorie', kind: 'choice' },
     { key: 'dist', label: 'Distance', kind: 'number', fmt: 'km' },
     { key: 'dplus', label: 'D+', kind: 'number', fmt: 'm' },
-    { key: 'tOff', label: 'Temps officiel', kind: 'duration', fmt: 'time' },
-    { key: 'tChip', label: 'Temps puce', kind: 'duration', fmt: 'time' },
+    { key: 'time', label: 'Temps', kind: 'duration', fmt: 'time' },
     { key: 'pace', label: 'Allure', kind: 'duration', fmt: 'pace' },
     { key: 'rank', label: 'Classement', kind: 'number', fmt: 'rank', optional: true },
     { key: 'wDist', label: 'Distance montre', kind: 'number', fmt: 'km', optional: true },
@@ -46,6 +45,8 @@
   const FIRST_DIR = { date: 'desc', text: 'asc', choice: 'asc', number: 'asc', duration: 'asc' };
   const UNIT = { km: 'km', m: 'm', bpm: 'bpm' };
   const HINT = { time: 'ex. 2h', pace: 'ex. 5:30' };
+  // Pas d'entonnoir parmi les emojis : on le dessine.
+  const FUNNEL = '<svg class="pv2-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 2.5h13l-5.2 6v4.7l-2.6 1.3V8.5z" fill="currentColor"/></svg>';
 
   const MONTHS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
   const pad = n => String(n).padStart(2, '0');
@@ -116,16 +117,16 @@
   }
 
   // Record 🥇, recalculé à chaque affichage : on écarte les courses sans temps
-  // officiel et les sous-catégories sans record, on groupe par sous-catégorie,
-  // on garde le temps le plus court ; en cas d'égalité, toutes l'ont.
+  // et les sous-catégories sans record, on groupe par sous-catégorie, on garde
+  // le temps le plus court ; en cas d'égalité, toutes l'ont.
   function markRecords(rows) {
     const best = {};
     rows.forEach(r => {
-      const sub = r.v.sub, t = r.v.tOff;
+      const sub = r.v.sub, t = r.v.time;
       if (t == null || !RECORD_SUBS.has(sub)) return;
       if (!(sub in best) || t < best[sub]) best[sub] = t;
     });
-    rows.forEach(r => { r.record = r.v.tOff != null && best[r.v.sub] === r.v.tOff; });
+    rows.forEach(r => { r.record = r.v.time != null && best[r.v.sub] === r.v.time; });
   }
 
   function isActive(col, f) {
@@ -187,7 +188,8 @@
     // ----- Squelette -----
     root.innerHTML =
       '<div class="pv2-bar">' +
-        '<button type="button" class="pv2-btn" data-act="filters" aria-expanded="false" aria-controls="' + uid + '-filters">Filtres</button>' +
+        '<button type="button" class="pv2-btn" data-act="filters" aria-expanded="false" aria-controls="' + uid + '-filters">' +
+          FUNNEL + '<span class="pv2-btn-label">Filtres</span><span class="pv2-chev" aria-hidden="true">▾</span></button>' +
         '<span class="pv2-count" aria-live="polite"></span>' +
         '<button type="button" class="pv2-clear" data-act="clear" hidden>Effacer les filtres</button>' +
       '</div>' +
@@ -198,7 +200,7 @@
             '<label class="pv2-check"><input type="checkbox" data-col="' + c.key + '"> ' + esc(c.label) + '</label>').join('') +
         '</div></div>' +
       '</div>' +
-      '<div class="table-scroll"><table class="pv2-table"><thead></thead><tbody></tbody></table></div>';
+      '<div class="card pv2-card"><div class="table-scroll"><table class="pv2-table"><thead></thead><tbody></tbody></table></div></div>';
 
     const $ = sel => root.querySelector(sel);
     const panel = $('#' + uid + '-filters'), colsPanel = $('#' + uid + '-cols');
@@ -230,7 +232,8 @@
         }
         const content = c.kind === 'date' ? body : '<div class="pv2-row">' + body + '</div>';
         return '<fieldset class="pv2-field"><legend class="pv2-legend">' + esc(c.label) + '</legend>' + content + '</fieldset>';
-      }).join('');
+      }).join('') +
+        '<div class="pv2-panel-foot"><button type="button" class="pv2-clear" data-act="filters-close">Réduire les filtres ▴</button></div>';
     }
 
     function renderTable() {
@@ -244,27 +247,54 @@
         const arrow = on ? '<span class="pv2-arrow" aria-hidden="true">' + (state.sort.dir === 'asc' ? '▲' : '▼') + '</span>' : '';
         return '<th aria-sort="' + aria + '"><button type="button" class="pv2-sort" data-sort="' + c.key + '">' + esc(c.label) + arrow + '</button></th>';
       }).join('') +
-        '<th class="pv2-more-cell"><button type="button" class="pv2-more" data-act="cols" aria-expanded="' + !colsPanel.hidden + '" aria-controls="' + uid + '-cols">Plus d\'infos</button></th></tr>';
+        '<th class="pv2-more-cell"><button type="button" class="pv2-more" data-act="cols" aria-expanded="' + !colsPanel.hidden + '" aria-controls="' + uid + '-cols" aria-label="Plus d\'infos : colonnes facultatives" title="Plus d\'infos">' + (colsPanel.hidden ? '+' : '−') + '</button></th></tr>';
 
       $('tbody').innerHTML = list.length ? list.map(r => '<tr>' + cols.map(c => {
-        const rec = c.key === 'tOff' && r.record ? ' <span class="pv2-rec" role="img" aria-label="record" title="Record · ' + esc(r.v.sub) + '">🥇</span>' : '';
-        const cls = c.kind === 'text' ? ' class="pv2-t"' : ' class="pv2-n"';
+        const rec = c.key === 'time' && r.record ? ' <span class="pv2-rec" role="img" aria-label="record" title="Record · ' + esc(r.v.sub) + '">🥇</span>' : '';
+        const cls = c.kind === 'text' ? ' class="pv2-t"' : c.kind === 'choice' ? '' : ' class="pv2-n"';
         return '<td' + cls + '>' + fmtCell(c, r.v[c.key]) + rec + '</td>';
       }).join('') + '<td class="pv2-pad"></td></tr>').join('')
         : '<tr><td class="pv2-none" colspan="' + (cols.length + 1) + '">Aucune course ne correspond aux filtres.</td></tr>';
 
       const n = cols.filter(c => isActive(c, state.filters[c.key])).length;
       $('.pv2-count').textContent = list.length + (list.length > 1 ? ' courses' : ' course') + ' sur ' + total;
-      $('[data-act="filters"]').textContent = n ? 'Filtres · ' + n : 'Filtres';
-      $('[data-act="filters"]').classList.toggle('is-on', n > 0);
+      $('.pv2-btn-label').textContent = n ? 'Filtres · ' + n : 'Filtres';
+      $('.pv2-btn').classList.toggle('is-on', n > 0);
       $('[data-act="clear"]').hidden = n === 0;
 
       if (focused) { const b = root.querySelector('[data-sort="' + focused + '"]'); if (b) b.focus(); }
+      fitTable();
     }
 
-    function togglePanel(el, btn) {
-      el.hidden = !el.hidden;
-      btn.setAttribute('aria-expanded', String(!el.hidden));
+    // Tableau trop large pour l'écran : plutôt que d'écraser les colonnes, on le
+    // laisse à sa largeur naturelle, une ligne par cellule, et il défile.
+    function fitTable() {
+      const scroll = $('.table-scroll'), table = $('table');
+      table.classList.remove('pv2-wide');
+      if (scroll.scrollWidth > scroll.clientWidth + 1) table.classList.add('pv2-wide');
+    }
+    // Revérifié dès que la largeur disponible change : onglet affiché (le tableau
+    // est dessiné onglet caché), écran tourné, fenêtre redimensionnée.
+    if (window.ResizeObserver) {
+      let lastWidth = -1;
+      new ResizeObserver(entries => {
+        const w = Math.round(entries[0].contentRect.width);
+        if (w !== lastWidth) { lastWidth = w; fitTable(); }
+      }).observe($('.table-scroll'));
+    } else {
+      window.addEventListener('resize', fitTable);
+    }
+
+    function setPanel(open) {
+      panel.hidden = !open;
+      $('.pv2-btn').setAttribute('aria-expanded', String(open));
+      $('.pv2-chev').textContent = open ? '▴' : '▾';
+    }
+    function setCols(open) {
+      colsPanel.hidden = !open;
+      const b = $('.pv2-more');
+      b.setAttribute('aria-expanded', String(open));
+      b.textContent = open ? '−' : '+';
     }
 
     root.addEventListener('click', e => {
@@ -279,8 +309,9 @@
       }
       const act = e.target.closest('[data-act]');
       if (!act) return;
-      if (act.dataset.act === 'filters') togglePanel(panel, act);
-      if (act.dataset.act === 'cols') togglePanel(colsPanel, act);
+      if (act.dataset.act === 'filters') setPanel(panel.hidden);
+      if (act.dataset.act === 'filters-close') { setPanel(false); $('.pv2-btn').focus(); }
+      if (act.dataset.act === 'cols') setCols(colsPanel.hidden);
       if (act.dataset.act === 'clear') { state.filters = {}; renderPanel(); renderTable(); }
     });
 
