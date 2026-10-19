@@ -9,7 +9,8 @@ Ce dossier rassemble les spécifications de l'application : ce qu'elle fait, com
 | Document | Contenu | État |
 | --- | --- | --- |
 | [Spécification générale](specification-generale.md) | Structure commune, en-tête, thèmes, modules, administration par l'utilisateur, données | Brouillon v0.1 |
-| [Page Objectif](page-objectif.md) | Premier module : feuille de route, comptes à rebours, difficulté, suivi en course, météo | Brouillon v0.1 |
+| [Module Objectif](module-objectif-specification.md) | Premier module : feuille de route, comptes à rebours, difficulté, suivi en course, météo | Brouillon v0.1 |
+| [Module Palmarès](module-palmares-specification.md) | Courses courues : colonnes, types et sous-catégories, records, tri, filtres, édition | Version 0.6 |
 
 Une spécification est rédigée pour chaque module au moment de le construire, pas avant.
 
@@ -34,6 +35,7 @@ La plus récente en haut.
 
 | Date | Sujet | Décision |
 | --- | --- | --- |
+| 19 oct. 2026 | Documentation | Spécification du module Palmarès ajoutée (version 0.6). Les spécifications de module suivent le nom `module-<nom>-specification.md`. |
 | 19 oct. 2026 | Objectif | Une course courue quitte la page Objectif et rejoint le Palmarès (appliqué sur la page de JDP). |
 | 19 oct. 2026 | Courses à surveiller | Onglet à part sur la page de JDP, sorti de la page Objectif : il rassemble les envies pour après l'objectif (mars 2028). |
 | 13 oct. 2026 | Calendrier | Jalon 1 en octobre 2026, conçu comme une preuve de concept : base de données Supabase dès le départ, page Objectif comme premier module branché dessus, puis Nutrition. Courses à surveiller passe au jalon suivant. |
