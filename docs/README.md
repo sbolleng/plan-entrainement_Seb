@@ -10,7 +10,7 @@ Ce dossier rassemble les spécifications de l'application : ce qu'elle fait, com
 | --- | --- | --- |
 | [Spécification générale](specification-generale.md) | Structure commune, en-tête, thèmes, modules, administration par l'utilisateur, données | Brouillon v0.1 |
 | [Module Objectif](module-objectif-specification.md) | Premier module : feuille de route, comptes à rebours, difficulté, suivi en course, météo | Brouillon v0.1 |
-| [Module Palmarès](module-palmares-specification.md) | Courses courues : colonnes, types et sous-catégories, records, tri, filtres, édition | Version 0.8 |
+| [Module Palmarès](module-palmares-specification.md) | Courses courues : colonnes, types et sous-catégories, records, tri, filtres, édition | Version 0.9 |
 
 Une spécification est rédigée pour chaque module au moment de le construire, pas avant.
 
@@ -35,6 +35,7 @@ La plus récente en haut.
 
 | Date | Sujet | Décision |
 | --- | --- | --- |
+| 19 oct. 2026 | Palmarès | Indicateur de tri (deux flèches) sur chaque en-tête de colonne. |
 | 19 oct. 2026 | Palmarès | Une seule colonne Temps, saisie par l'utilisateur ; bouton « + » pour les colonnes facultatives ; panneau de filtres repliable. |
 | 19 oct. 2026 | Palmarès | Filtres présentés dans un panneau ouvert par un bouton « Filtres » ; tri en touchant l'en-tête d'une colonne. Prototype de la V2 sur la page de JDP, onglet Palmarès V2, à côté de l'actuel. |
 | 19 oct. 2026 | Documentation | Spécification du module Palmarès ajoutée (version 0.6). Les spécifications de module suivent le nom `module-<nom>-specification.md`. |

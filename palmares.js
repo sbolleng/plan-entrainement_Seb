@@ -45,8 +45,12 @@
   const FIRST_DIR = { date: 'desc', text: 'asc', choice: 'asc', number: 'asc', duration: 'asc' };
   const UNIT = { km: 'km', m: 'm', bpm: 'bpm' };
   const HINT = { time: 'ex. 2h', pace: 'ex. 5:30' };
-  // Pas d'entonnoir parmi les emojis : on le dessine.
+  // Pas d'entonnoir parmi les emojis : on le dessine, comme les flèches, plus
+  // lisibles en icônes qu'en caractères.
   const FUNNEL = '<svg class="pv2-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 2.5h13l-5.2 6v4.7l-2.6 1.3V8.5z" fill="currentColor"/></svg>';
+  const CHEVRON = '<svg class="pv2-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  // Deux flèches sur chaque en-tête : la colonne se trie ; celle du sens choisi s'allume.
+  const SORT_ICON = '<svg class="pv2-sort-ico" viewBox="0 0 10 14" aria-hidden="true"><path class="pv2-up" d="M5 1l4 5H1z"/><path class="pv2-down" d="M5 13L1 8h8z"/></svg>';
 
   const MONTHS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
   const pad = n => String(n).padStart(2, '0');
@@ -189,7 +193,7 @@
     root.innerHTML =
       '<div class="pv2-bar">' +
         '<button type="button" class="pv2-btn" data-act="filters" aria-expanded="false" aria-controls="' + uid + '-filters">' +
-          FUNNEL + '<span class="pv2-btn-label">Filtres</span><span class="pv2-chev" aria-hidden="true">▾</span></button>' +
+          FUNNEL + '<span class="pv2-btn-label">Filtres</span>' + CHEVRON + '</button>' +
         '<span class="pv2-count" aria-live="polite"></span>' +
         '<button type="button" class="pv2-clear" data-act="clear" hidden>Effacer les filtres</button>' +
       '</div>' +
@@ -233,7 +237,7 @@
         const content = c.kind === 'date' ? body : '<div class="pv2-row">' + body + '</div>';
         return '<fieldset class="pv2-field"><legend class="pv2-legend">' + esc(c.label) + '</legend>' + content + '</fieldset>';
       }).join('') +
-        '<div class="pv2-panel-foot"><button type="button" class="pv2-clear" data-act="filters-close">Réduire les filtres ▴</button></div>';
+        '<div class="pv2-panel-foot"><button type="button" class="pv2-clear" data-act="filters-close">Réduire les filtres' + CHEVRON + '</button></div>';
     }
 
     function renderTable() {
@@ -244,8 +248,11 @@
       $('thead').innerHTML = '<tr>' + cols.map(c => {
         const on = state.sort.key === c.key;
         const aria = on ? (state.sort.dir === 'asc' ? 'ascending' : 'descending') : 'none';
-        const arrow = on ? '<span class="pv2-arrow" aria-hidden="true">' + (state.sort.dir === 'asc' ? '▲' : '▼') + '</span>' : '';
-        return '<th aria-sort="' + aria + '"><button type="button" class="pv2-sort" data-sort="' + c.key + '">' + esc(c.label) + arrow + '</button></th>';
+        // L'icône reste collée au dernier mot quand le titre passe à la ligne
+        // (coupure possible après une espace ou un trait d'union).
+        const cut = Math.max(c.label.lastIndexOf(' '), c.label.lastIndexOf('-')) + 1;
+        const label = esc(c.label.slice(0, cut)) + '<span class="pv2-nw">' + esc(c.label.slice(cut)) + SORT_ICON + '</span>';
+        return '<th aria-sort="' + aria + '"><button type="button" class="pv2-sort" data-sort="' + c.key + '">' + label + '</button></th>';
       }).join('') +
         '<th class="pv2-more-cell"><button type="button" class="pv2-more" data-act="cols" aria-expanded="' + !colsPanel.hidden + '" aria-controls="' + uid + '-cols" aria-label="Plus d\'infos : colonnes facultatives" title="Plus d\'infos">' + (colsPanel.hidden ? '+' : '−') + '</button></th></tr>';
 
@@ -288,7 +295,6 @@
     function setPanel(open) {
       panel.hidden = !open;
       $('.pv2-btn').setAttribute('aria-expanded', String(open));
-      $('.pv2-chev').textContent = open ? '▴' : '▾';
     }
     function setCols(open) {
       colsPanel.hidden = !open;

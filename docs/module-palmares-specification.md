@@ -1,6 +1,6 @@
 # Palmarès · spécification fonctionnelle
 
-Version 0.8 · 19 octobre 2026 · [Retour au sommaire](README.md) · Jalon 2
+Version 0.9 · 19 octobre 2026 · [Retour au sommaire](README.md) · Jalon 2
 
 ## 1. Objet
 
@@ -77,6 +77,7 @@ Toutes les colonnes affichées se trient. L'ordre dépend du type de donnée :
 
 - **À l'ouverture** : tri par date, la plus récente en haut.
 - Toucher l'en-tête d'une colonne la trie dans son ordre par défaut ; le toucher à nouveau inverse l'ordre.
+- **Indicateur de tri** : chaque en-tête porte deux petites flèches, haut et bas, pour signaler que la colonne se trie. Sur la colonne triée, la flèche du sens choisi est mise en avant.
 - **Texte** : ordre alphabétique, sans tenir compte des majuscules ni des accents (« Épicurienne » se range avec les E) ; les nombres y sont rangés par valeur (« 5 km » avant « 10 km »).
 - **Durées** : triées sur leur valeur, pas sur le texte (49'18 passe avant 1h04'24).
 - **Valeurs vides** : toujours en fin de liste, dans les deux ordres.
