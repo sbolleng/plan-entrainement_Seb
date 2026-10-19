@@ -141,5 +141,5 @@ Pour les courses labellisées : catégorie et index UTMB, affichés dans l'étap
 ## 9. Questions ouvertes
 
 - [ ] Ordre des cellules d'une étape : identique pour tous, ou propre à chaque utilisateur ?
-- [ ] Course passée : reste-t-elle dans la feuille de route (avec son résultat) ou part-elle au Palmarès ?
+- [x] Course passée : elle quitte la feuille de route et rejoint le Palmarès (décidé le 19 oct. 2026).
 - [ ] Course à choisir : comment présenter les candidats (liste, comparatif) ?
