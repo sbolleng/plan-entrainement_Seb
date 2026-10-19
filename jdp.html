@@ -6,10 +6,10 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0E1D19">
 <meta name="robots" content="noindex">
-<meta name="site-version" content="20261019f">
+<meta name="site-version" content="20261019g">
 <title>JDP — Marathon de Rome 2028</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>">
-<link rel="stylesheet" href="style.css?v=20261019a">
+<link rel="stylesheet" href="style.css?v=20261019b">
 <link rel="stylesheet" href="jdp.css?v=20260921a">
 </head>
 <body>
@@ -56,6 +56,7 @@
     <button class="tab" onclick="showSection('semaine_en_cours', this)">Pense-bête</button>
     <button class="tab" onclick="showSection('logistique', this)">Logistique</button>
     <button class="tab" onclick="showSection('palmares', this)">Palmarès</button>
+    <button class="tab" onclick="showSection('palmares_v2', this)">Palmarès V2</button>
     <button class="tab" onclick="showSection('guide', this)">Guide</button>
   </div>
 </nav>
@@ -664,6 +665,11 @@
     </div>
   </section>
 
+  <!-- ========== PALMARÈS V2 · d'après la spécification du module (prototype) ========== -->
+  <section id="palmares_v2" class="section">
+    <div id="jdp-palmares-v2" class="pv2"></div>
+  </section>
+
   <!-- ========== GUIDE · ossature, sans contenu ========== -->
   <section id="guide" class="section">
     <div class="subnav">
@@ -1130,6 +1136,7 @@
 </main>
 
 <script src="planning.js?v=20261014a" defer></script>
-<script src="jdp.js?v=20261019c" defer></script>
+<script src="palmares.js?v=20261019a" defer></script>
+<script src="jdp.js?v=20261019d" defer></script>
 </body>
 </html>
