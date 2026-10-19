@@ -5,7 +5,7 @@ Deux sites d'entraînement publiés par GitHub Pages depuis `main` : celui de Se
 ## Qui fait quoi
 
 - `index.html`, `app.js`, `data/` : site de Seb, mis à jour par la commande `/maj` (`.claude/skills/maj/SKILL.md`, `MISE-A-JOUR.md`).
-- `jdp.html`, `jdp.js`, `jdp.css` : site de JDP, dans sa discussion dédiée.
+- `jdp.html`, `jdp.js`, `jdp.css` : site de JDP, mis à jour à la demande, dans la même discussion que celui de Seb.
 - Partagés : `style.css`, `planning.js`, `palmares.js`. Ne pas toucher à la page de l'autre profil sans demande.
 
 ## Règles
