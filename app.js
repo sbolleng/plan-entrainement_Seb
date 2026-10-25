@@ -240,7 +240,7 @@ function showSection(id, btn) {
   }
   markToday();
 
-  // ===== Stats · graphiques de progression (données Strava, calculées le 18/10/2026) =====
+  // ===== Stats · graphiques de progression (données Strava, calculées le 25/10/2026) =====
   // Pour mettre à jour : ajouter un mois par mois à la suite dans ce tableau.
   // paceSecPerKm = allure d'effort (km-effort = km + D+/100), extérieur uniquement.
   // effBeats = battements par km-effort (efficience cardiaque, baisse = mieux).
@@ -263,8 +263,8 @@ function showSection(id, btn) {
     // reprend après le trou de juillet-août, calculée sur les 10 sorties du mois
     // (moyennes pondérées par le temps de déplacement de chaque sortie).
     { label: 'Sept', distanceKm: 113.7, dplusM: 1226, paceSecPerKm: 311, cadenceSpm: 170, hrBpm: 154, effBeats: 795, dpk: 10.8 },
-    // Octobre en cours : 5 sorties au 18/10 (allure semi le 03, EF le 06, seuil le 10, sortie vallonnée le 11, Clam Trail le 18).
-    { label: 'Oct', distanceKm: 51.0, dplusM: 865, paceSecPerKm: 301, cadenceSpm: 167, hrBpm: 152, effBeats: 764, dpk: 17.0 },
+    // Octobre en cours : 7 sorties au 25/10 (allure semi le 03, EF le 06, seuil le 10, sortie vallonnée le 11, Clam Trail le 18, sortie du 23, sortie longue le 25).
+    { label: 'Oct', distanceKm: 86.8, dplusM: 1337, paceSecPerKm: 299, cadenceSpm: 169, hrBpm: 153, effBeats: 762, dpk: 15.4 },
   ];
 
   function fmtPace(sec) {
@@ -448,7 +448,7 @@ function showSection(id, btn) {
       formatter: v => v.toFixed(0),
       series: [
         {
-          values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1, 10.1, 13.9, 10.8, 17.0,
+          values: [6.4, 10.5, 8.7, 6.4, 17.7, 9.4, 10.0, 9.1, 10.1, 13.9, 10.8, 15.4,
                    null, null, null, null, null, null, null, null, null, null, null, null,
                    null, null, null, null, null, null, null, null, null, null, null, null,
                    null, null, null, null, null, null, null, null, null, null],
