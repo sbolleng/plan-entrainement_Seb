@@ -9,7 +9,7 @@
 // Pour une séance au temps (gainage), reps = secondes et tenue = true.
 
 const RENFO_LOG = {
-  maj: '2026-10-19',
+  maj: '2026-10-25',
   seances: [
     // --- Séances de kinésithérapie du sport (cabinet) ---
     // Comptées comme des séances de renfo : c'est du travail encadré sur le
@@ -292,6 +292,16 @@ const RENFO_LOG = {
     { date: '2026-10-13', source: 'kiné', duree: null, exercices: [] },
     { date: '2026-10-15', source: 'kiné', duree: null, exercices: [] },
     // Kiné du 19/10 (18h15), lendemain du Clam Trail : faite, contenu non noté.
-    { date: '2026-10-19', source: 'kiné', duree: null, exercices: [] }
+    { date: '2026-10-19', source: 'kiné', duree: null, exercices: [] },
+    {
+      // Séance « Abdo » du 20/10 (Hevy) : crunch 25/20/20, gainage latéral
+      // 2 min 08 et 2 min 09, pompes 19/16/16. Reps notées sur la dernière série.
+      date: '2026-10-20', source: 'hevy', duree: 17,
+      exercices: [
+        { nom: 'Crunch', dom: 'A', series: 3, reps: 20, charge: 0 },
+        { nom: 'Gainage latéral', dom: 'A', series: 2, reps: 129, charge: 0, tenue: true },
+        { nom: 'Pompes', dom: 'H', series: 3, reps: 16, charge: 0 }
+      ]
+    }
   ]
 };

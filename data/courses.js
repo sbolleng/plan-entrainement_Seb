@@ -28,12 +28,12 @@
 //                 cible.temps des courses déjà courues.
 
 const ROADMAP = {
-  maj: '2026-10-18',
+  maj: '2026-10-25',
 
   // Temps cible = minutes × (km-effort / km-effort de la référence)^exposant
   // (formule de Riegel : l'allure ralentit avec la durée), affiché à ±5 %.
   // À remplacer par la dernière course courue après chaque résultat.
-  reference: { nom: 'Forez 2026', km: 24.4, dp: 933, minutes: 185, exposant: 1.10 },
+  reference: { nom: 'Clam Trail 2026', km: 10, dp: 128, minutes: 49.8, exposant: 1.10 },
 
   stonesRepere: { valeur: 5.5, txt: 'Moyenne des tirés au sort OCC 2026' },
 
@@ -64,11 +64,11 @@ const ROADMAP = {
       date: '2026-12-05T09:00', quand: 'Sam. 5 déc. 2026',
       evenement: "L'Hivernale des Templiers", nom: "Le Rock'Angel", court: "Rock'Angel",
       lien: 'https://www.hivernaledestempliers.com/rockangel/',
-      km: 18.3, dp: 750, dpApprox: true, lieu: 'Roquefort-sur-Soulzon (12)', terrain: 'causses et corniches',
+      km: 18.3, dp: 728, dm: 780, lieu: 'Roquefort-sur-Soulzon (12)', terrain: 'causses et corniches',
       desc: `Le Rock'Angel est l'une des courses de l'Hivernale des Templiers, version hivernale du Festival des Templiers dans les Grands Causses. Départ donné depuis l'intérieur des caves de Roquefort Société — dans la cave dite « cathédrale » — à rythme contrôlé jusqu'au grand porche où le peloton est lâché. Le parcours traverse des paysages minéraux, longe le rocher de Rocangel et les cirques de Saint-Paul-des-Fonts et de Tournemire, en plein terroir du Roquefort.`,
       cible: { txt: "Finir en gérant l'effort." },
       dossard: { statut: 'pris', txt: '— inscription confirmée.' },
-      role: `Premier vrai D+ et premières descentes techniques : <strong>~750 m sur 18 km, soit 40 m/km</strong>, quatre fois l'ordinaire d'entraînement, sur un terrain de causses et de corniches calcaires introuvable en Île-de-France. Sert à calibrer montée et descente avant Forez.`,
+      role: `Premier vrai D+ et premières descentes techniques : <strong>728 m de D+ et 780 m de D− sur 18,3 km, soit 40 m/km</strong>, quatre fois l'ordinaire d'entraînement, sur un terrain de causses et de corniches calcaires introuvable en Île-de-France. Sert à calibrer montée et descente avant Forez.`,
       strategie: `Marche assumée dans les montées, énergie gardée pour la descente. En descente : appuis courts, cadence haute, plutôt que de longues foulées relâchées. Le chrono compte moins que la qualité d'exécution en descente.`,
       logistique: `Roquefort-sur-Soulzon (Aveyron), ~6h de route ou de train depuis Paris — une nuit sur place est nécessaire. Décembre : prévoir des couches chaudes et de quoi affronter le vent des corniches. Réserver l'hébergement à l'avance, l'offre est limitée dans ce petit village. Prévoir d'arriver tôt pour le départ original depuis l'intérieur des caves.`,
       resultat: null
